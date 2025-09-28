@@ -27,7 +27,7 @@ type WatchlistAPIService service
 type WatchlistAPIWatchlistAddRequest struct {
 	ctx context.Context
 	ApiService *WatchlistAPIService
-	chain string
+	chain ChainSymbol
 	walletAddress string
 }
 
@@ -45,7 +45,7 @@ CONTROLLER.WATCHLIST.ADD.DESCRIPTION
  @param walletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
  @return WatchlistAPIWatchlistAddRequest
 */
-func (a *WatchlistAPIService) WatchlistAdd(ctx context.Context, chain string, walletAddress string) WatchlistAPIWatchlistAddRequest {
+func (a *WatchlistAPIService) WatchlistAdd(ctx context.Context, chain ChainSymbol, walletAddress string) WatchlistAPIWatchlistAddRequest {
 	return WatchlistAPIWatchlistAddRequest{
 		ApiService: a,
 		ctx: ctx,

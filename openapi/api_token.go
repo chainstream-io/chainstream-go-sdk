@@ -28,7 +28,7 @@ type TokenAPIService service
 type TokenAPIGetCandlesRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 	resolution *Resolution
 	from *float32
@@ -74,7 +74,7 @@ CONTROLLER.TOKEN.GET_CANDLES.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetCandlesRequest
 */
-func (a *TokenAPIService) GetCandles(ctx context.Context, chain string, tokenAddress string) TokenAPIGetCandlesRequest {
+func (a *TokenAPIService) GetCandles(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetCandlesRequest {
 	return TokenAPIGetCandlesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -176,7 +176,7 @@ func (a *TokenAPIService) GetCandlesExecute(r TokenAPIGetCandlesRequest) ([]Cand
 type TokenAPIGetCreationRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 }
 
@@ -194,7 +194,7 @@ CONTROLLER.TOKEN.GET_CREATION.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetCreationRequest
 */
-func (a *TokenAPIService) GetCreation(ctx context.Context, chain string, tokenAddress string) TokenAPIGetCreationRequest {
+func (a *TokenAPIService) GetCreation(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetCreationRequest {
 	return TokenAPIGetCreationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -283,7 +283,7 @@ func (a *TokenAPIService) GetCreationExecute(r TokenAPIGetCreationRequest) (*Tok
 type TokenAPIGetHoldersRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 	cursor *string
 	limit *float32
@@ -322,7 +322,7 @@ CONTROLLER.TOKEN.GET_HOLDERS.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetHoldersRequest
 */
-func (a *TokenAPIService) GetHolders(ctx context.Context, chain string, tokenAddress string) TokenAPIGetHoldersRequest {
+func (a *TokenAPIService) GetHolders(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetHoldersRequest {
 	return TokenAPIGetHoldersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -426,7 +426,7 @@ func (a *TokenAPIService) GetHoldersExecute(r TokenAPIGetHoldersRequest) (*Token
 type TokenAPIGetHoldersMultiRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 	walletAddresses *string
 }
@@ -451,7 +451,7 @@ CONTROLLER.TOKEN.GET_HOLDERS_MULTI.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetHoldersMultiRequest
 */
-func (a *TokenAPIService) GetHoldersMulti(ctx context.Context, chain string, tokenAddress string) TokenAPIGetHoldersMultiRequest {
+func (a *TokenAPIService) GetHoldersMulti(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetHoldersMultiRequest {
 	return TokenAPIGetHoldersMultiRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -544,7 +544,7 @@ func (a *TokenAPIService) GetHoldersMultiExecute(r TokenAPIGetHoldersMultiReques
 type TokenAPIGetMarketDataRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 }
 
@@ -562,7 +562,7 @@ CONTROLLER.TOKEN.GET_MARKET_CAP.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetMarketDataRequest
 */
-func (a *TokenAPIService) GetMarketData(ctx context.Context, chain string, tokenAddress string) TokenAPIGetMarketDataRequest {
+func (a *TokenAPIService) GetMarketData(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetMarketDataRequest {
 	return TokenAPIGetMarketDataRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -651,7 +651,7 @@ func (a *TokenAPIService) GetMarketDataExecute(r TokenAPIGetMarketDataRequest) (
 type TokenAPIGetMarketDataMultiRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddresses *string
 }
 
@@ -674,7 +674,7 @@ CONTROLLER.TOKEN.GET_MARKET_DATA_MULTI.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return TokenAPIGetMarketDataMultiRequest
 */
-func (a *TokenAPIService) GetMarketDataMulti(ctx context.Context, chain string) TokenAPIGetMarketDataMultiRequest {
+func (a *TokenAPIService) GetMarketDataMulti(ctx context.Context, chain ChainSymbol) TokenAPIGetMarketDataMultiRequest {
 	return TokenAPIGetMarketDataMultiRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -765,7 +765,7 @@ func (a *TokenAPIService) GetMarketDataMultiExecute(r TokenAPIGetMarketDataMulti
 type TokenAPIGetMetadataRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 }
 
@@ -783,7 +783,7 @@ CONTROLLER.TOKEN.GET_METADATA.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetMetadataRequest
 */
-func (a *TokenAPIService) GetMetadata(ctx context.Context, chain string, tokenAddress string) TokenAPIGetMetadataRequest {
+func (a *TokenAPIService) GetMetadata(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetMetadataRequest {
 	return TokenAPIGetMetadataRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -872,7 +872,7 @@ func (a *TokenAPIService) GetMetadataExecute(r TokenAPIGetMetadataRequest) (*Tok
 type TokenAPIGetMetadataMultiRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddresses *string
 }
 
@@ -895,7 +895,7 @@ CONTROLLER.TOKEN.GET_METADATA_MULTI.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return TokenAPIGetMetadataMultiRequest
 */
-func (a *TokenAPIService) GetMetadataMulti(ctx context.Context, chain string) TokenAPIGetMetadataMultiRequest {
+func (a *TokenAPIService) GetMetadataMulti(ctx context.Context, chain ChainSymbol) TokenAPIGetMetadataMultiRequest {
 	return TokenAPIGetMetadataMultiRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -986,7 +986,7 @@ func (a *TokenAPIService) GetMetadataMultiExecute(r TokenAPIGetMetadataMultiRequ
 type TokenAPIGetMintAndBurnRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 	cursor *string
 	limit *float32
@@ -1032,7 +1032,7 @@ CONTROLLER.TOKEN.GET_MINT_AND_BURN.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetMintAndBurnRequest
 */
-func (a *TokenAPIService) GetMintAndBurn(ctx context.Context, chain string, tokenAddress string) TokenAPIGetMintAndBurnRequest {
+func (a *TokenAPIService) GetMintAndBurn(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetMintAndBurnRequest {
 	return TokenAPIGetMintAndBurnRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1142,7 +1142,7 @@ func (a *TokenAPIService) GetMintAndBurnExecute(r TokenAPIGetMintAndBurnRequest)
 type TokenAPIGetPoolsRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 }
 
@@ -1160,7 +1160,7 @@ CONTROLLER.TOKEN.GET_POOLS.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetPoolsRequest
 */
-func (a *TokenAPIService) GetPools(ctx context.Context, chain string, tokenAddress string) TokenAPIGetPoolsRequest {
+func (a *TokenAPIService) GetPools(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetPoolsRequest {
 	return TokenAPIGetPoolsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1249,7 +1249,7 @@ func (a *TokenAPIService) GetPoolsExecute(r TokenAPIGetPoolsRequest) ([]DexPoolD
 type TokenAPIGetPriceByTimeRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 	timestamp *float32
 }
@@ -1274,7 +1274,7 @@ CONTROLLER.TOKEN.GET_PRICE_BY_TIME.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetPriceByTimeRequest
 */
-func (a *TokenAPIService) GetPriceByTime(ctx context.Context, chain string, tokenAddress string) TokenAPIGetPriceByTimeRequest {
+func (a *TokenAPIService) GetPriceByTime(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetPriceByTimeRequest {
 	return TokenAPIGetPriceByTimeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1367,7 +1367,7 @@ func (a *TokenAPIService) GetPriceByTimeExecute(r TokenAPIGetPriceByTimeRequest)
 type TokenAPIGetPricesRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 	cursor *string
 	limit *float32
@@ -1406,7 +1406,7 @@ CONTROLLER.TOKEN.GET_PRICES.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetPricesRequest
 */
-func (a *TokenAPIService) GetPrices(ctx context.Context, chain string, tokenAddress string) TokenAPIGetPricesRequest {
+func (a *TokenAPIService) GetPrices(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetPricesRequest {
 	return TokenAPIGetPricesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1510,7 +1510,7 @@ func (a *TokenAPIService) GetPricesExecute(r TokenAPIGetPricesRequest) (*TokenPr
 type TokenAPIGetSecurityRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 }
 
@@ -1528,7 +1528,7 @@ CONTROLLER.TOKEN.GET_SECURITY.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetSecurityRequest
 */
-func (a *TokenAPIService) GetSecurity(ctx context.Context, chain string, tokenAddress string) TokenAPIGetSecurityRequest {
+func (a *TokenAPIService) GetSecurity(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetSecurityRequest {
 	return TokenAPIGetSecurityRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1617,7 +1617,7 @@ func (a *TokenAPIService) GetSecurityExecute(r TokenAPIGetSecurityRequest) (map[
 type TokenAPIGetStatsRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 }
 
@@ -1635,7 +1635,7 @@ CONTROLLER.TOKEN.GET_STATS.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetStatsRequest
 */
-func (a *TokenAPIService) GetStats(ctx context.Context, chain string, tokenAddress string) TokenAPIGetStatsRequest {
+func (a *TokenAPIService) GetStats(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetStatsRequest {
 	return TokenAPIGetStatsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1724,7 +1724,7 @@ func (a *TokenAPIService) GetStatsExecute(r TokenAPIGetStatsRequest) (*TokenStat
 type TokenAPIGetStatsMultiRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddresses *string
 }
 
@@ -1747,7 +1747,7 @@ CONTROLLER.TOKEN.GET_STATS_MULTI.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return TokenAPIGetStatsMultiRequest
 */
-func (a *TokenAPIService) GetStatsMulti(ctx context.Context, chain string) TokenAPIGetStatsMultiRequest {
+func (a *TokenAPIService) GetStatsMulti(ctx context.Context, chain ChainSymbol) TokenAPIGetStatsMultiRequest {
 	return TokenAPIGetStatsMultiRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1838,7 +1838,7 @@ func (a *TokenAPIService) GetStatsMultiExecute(r TokenAPIGetStatsMultiRequest) (
 type TokenAPIGetTokenRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 }
 
@@ -1856,7 +1856,7 @@ CONTROLLER.TOKEN.GET.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetTokenRequest
 */
-func (a *TokenAPIService) GetToken(ctx context.Context, chain string, tokenAddress string) TokenAPIGetTokenRequest {
+func (a *TokenAPIService) GetToken(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetTokenRequest {
 	return TokenAPIGetTokenRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1945,7 +1945,7 @@ func (a *TokenAPIService) GetTokenExecute(r TokenAPIGetTokenRequest) (*Token, *h
 type TokenAPIGetTokensRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddresses *string
 	sortBy *string
 	sortDirection *string
@@ -1989,7 +1989,7 @@ CONTROLLER.TOKEN.GET_TOKENS.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return TokenAPIGetTokensRequest
 */
-func (a *TokenAPIService) GetTokens(ctx context.Context, chain string) TokenAPIGetTokensRequest {
+func (a *TokenAPIService) GetTokens(ctx context.Context, chain ChainSymbol) TokenAPIGetTokensRequest {
 	return TokenAPIGetTokensRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2100,7 +2100,7 @@ func (a *TokenAPIService) GetTokensExecute(r TokenAPIGetTokensRequest) ([]Token,
 type TokenAPIGetTopHoldersRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress string
 }
 
@@ -2118,7 +2118,7 @@ CONTROLLER.TOKEN.GET_TOP_HOLDERS.DESCRIPTION
  @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
  @return TokenAPIGetTopHoldersRequest
 */
-func (a *TokenAPIService) GetTopHolders(ctx context.Context, chain string, tokenAddress string) TokenAPIGetTopHoldersRequest {
+func (a *TokenAPIService) GetTopHolders(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetTopHoldersRequest {
 	return TokenAPIGetTopHoldersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2207,7 +2207,7 @@ func (a *TokenAPIService) GetTopHoldersExecute(r TokenAPIGetTopHoldersRequest) (
 type TokenAPIListTokenRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
-	chain string
+	chain ChainSymbol
 	cursor *string
 	limit *float32
 	direction *string
@@ -3140,7 +3140,7 @@ CONTROLLER.TOKEN.GET_TOKEN_LIST.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return TokenAPIListTokenRequest
 */
-func (a *TokenAPIService) ListToken(ctx context.Context, chain string) TokenAPIListTokenRequest {
+func (a *TokenAPIService) ListToken(ctx context.Context, chain ChainSymbol) TokenAPIListTokenRequest {
 	return TokenAPIListTokenRequest{
 		ApiService: a,
 		ctx: ctx,

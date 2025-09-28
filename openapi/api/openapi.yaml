@@ -8,8 +8,7 @@ info:
   title: Dex Aggregator API
   version: "1.0"
 servers:
-- description: Chainstream Production
-  url: https://api-dex.chainstream.io
+- url: /
 tags:
 - description: ""
   name: Endpoints
@@ -113,18 +112,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       responses:
         "200":
@@ -192,18 +180,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       requestBody:
         content:
@@ -234,18 +211,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       requestBody:
         content:
@@ -276,18 +242,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: DTO.DEX.QUOTE.DEX
         explode: true
@@ -370,18 +325,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       requestBody:
         content:
@@ -530,18 +474,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: DTO.PAGE.CURSOR.DESCRIPTION
         explode: true
@@ -672,18 +605,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: DTO.PAGE.CURSOR.DESCRIPTION
         explode: true
@@ -821,18 +743,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: DTO.PAGE.CURSOR.DESCRIPTION
         explode: true
@@ -942,18 +853,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: DTO.PAGE.CURSOR.DESCRIPTION
         explode: true
@@ -1143,18 +1043,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESSES.DESCRIPTION
         explode: true
@@ -1267,18 +1156,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -1312,18 +1190,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESSES.DESCRIPTION
         explode: true
@@ -1394,18 +1261,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -1441,18 +1297,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -1486,18 +1331,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESSES.DESCRIPTION
         explode: true
@@ -1661,18 +1495,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -1737,18 +1560,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -1793,18 +1605,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -1875,18 +1676,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -1920,18 +1710,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -1965,18 +1744,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESSES.DESCRIPTION
         explode: true
@@ -2038,18 +1806,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -2114,18 +1871,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -2168,18 +1914,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -2213,18 +1948,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -2303,18 +2027,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: DTO.PAGE.CURSOR.DESCRIPTION
         explode: true
@@ -3463,18 +3176,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -3508,18 +3210,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.TOKENADDRESS.DESCRIPTION
         explode: false
@@ -3553,18 +3244,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.POOLADDRESS.DESCRIPTION
         explode: false
@@ -3598,18 +3278,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: CONTROLLER.RANKING.HOT_TOKENS.DURATION.DESCRIPTION
         explode: false
@@ -3781,18 +3450,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: DTO.TOKEN.REQUEST.SORT_BY
         explode: true
@@ -3950,18 +3608,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: DTO.TOKEN.REQUEST.SORT_BY
         explode: true
@@ -4119,18 +3766,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: DTO.TOKEN.REQUEST.SORT_BY
         explode: true
@@ -4288,18 +3924,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: DTO.TOKEN.REQUEST.SORT_BY
         explode: true
@@ -4457,18 +4082,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.WALLETADDRESS.DESCRIPTION
         explode: false
@@ -4513,18 +4127,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.WALLETADDRESS.DESCRIPTION
         explode: false
@@ -4560,18 +4163,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.WALLETADDRESS.DESCRIPTION
         explode: false
@@ -4614,18 +4206,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.WALLETADDRESS.DESCRIPTION
         explode: false
@@ -4665,18 +4246,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       requestBody:
         content:
@@ -4707,18 +4277,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       requestBody:
         content:
@@ -4868,19 +4427,7 @@ paths:
         name: chain
         required: false
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          example: sol
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: form
       responses:
         "200":
@@ -5011,18 +4558,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       requestBody:
         content:
@@ -5053,18 +4589,7 @@ paths:
         name: chain
         required: true
         schema:
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
-          type: string
+          $ref: "#/components/schemas/ChainSymbol"
         style: simple
       - description: GLOBAL.WALLETADDRESS.DESCRIPTION
         explode: false
@@ -5354,6 +4879,19 @@ components:
       - explorerUrl
       - name
       - symbol
+    ChainSymbol:
+      enum:
+      - sol
+      - base
+      - bsc
+      - polygon
+      - arbitrum
+      - optimism
+      - avalanche
+      - ethereum
+      - zksync
+      - sui
+      type: string
     BlockchainLatestBlockDTO:
       example:
         blockhash: "123"
@@ -8885,20 +8423,10 @@ components:
         claimedAmount: 1717334400
       properties:
         chain:
+          allOf:
+          - $ref: "#/components/schemas/ChainSymbol"
           description: GLOBAL.CHAIN.DESCRIPTION
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
           example: sol
-          type: string
         id:
           description: DTO.RED_PACKET.ID
           example: Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB
@@ -8997,20 +8525,10 @@ components:
           example: Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB
           type: string
         chain:
+          allOf:
+          - $ref: "#/components/schemas/ChainSymbol"
           description: DTO.RED_PACKET.CHAIN
-          enum:
-          - sol
-          - base
-          - bsc
-          - polygon
-          - arbitrum
-          - optimism
-          - avalanche
-          - ethereum
-          - zksync
-          - sui
           example: sol
-          type: string
         claimer:
           description: DTO.RED_PACKET.CLAIMER
           example: Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB

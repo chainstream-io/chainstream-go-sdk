@@ -27,7 +27,7 @@ type TradeAPIService service
 type TradeAPIGetActivitiesRequest struct {
 	ctx context.Context
 	ApiService *TradeAPIService
-	chain string
+	chain ChainSymbol
 	cursor *string
 	limit *float32
 	direction *string
@@ -120,7 +120,7 @@ CONTROLLER.TRADE.GET.TOKEN_ACTIVITIES.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return TradeAPIGetActivitiesRequest
 */
-func (a *TradeAPIService) GetActivities(ctx context.Context, chain string) TradeAPIGetActivitiesRequest {
+func (a *TradeAPIService) GetActivities(ctx context.Context, chain ChainSymbol) TradeAPIGetActivitiesRequest {
 	return TradeAPIGetActivitiesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -246,7 +246,7 @@ func (a *TradeAPIService) GetActivitiesExecute(r TradeAPIGetActivitiesRequest) (
 type TradeAPIGetGainersLosersRequest struct {
 	ctx context.Context
 	ApiService *TradeAPIService
-	chain string
+	chain ChainSymbol
 	cursor *string
 	limit *float32
 	direction *string
@@ -304,7 +304,7 @@ CONTROLLER.TRADE.GET.GAINERS_LOSERS.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return TradeAPIGetGainersLosersRequest
 */
-func (a *TradeAPIService) GetGainersLosers(ctx context.Context, chain string) TradeAPIGetGainersLosersRequest {
+func (a *TradeAPIService) GetGainersLosers(ctx context.Context, chain ChainSymbol) TradeAPIGetGainersLosersRequest {
 	return TradeAPIGetGainersLosersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -424,7 +424,7 @@ func (a *TradeAPIService) GetGainersLosersExecute(r TradeAPIGetGainersLosersRequ
 type TradeAPIGetTopTradersRequest struct {
 	ctx context.Context
 	ApiService *TradeAPIService
-	chain string
+	chain ChainSymbol
 	tokenAddress *string
 	cursor *string
 	limit *float32
@@ -489,7 +489,7 @@ CONTROLLER.TRADE.GET.TOP_TRADERS.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return TradeAPIGetTopTradersRequest
 */
-func (a *TradeAPIService) GetTopTraders(ctx context.Context, chain string) TradeAPIGetTopTradersRequest {
+func (a *TradeAPIService) GetTopTraders(ctx context.Context, chain ChainSymbol) TradeAPIGetTopTradersRequest {
 	return TradeAPIGetTopTradersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -613,7 +613,7 @@ func (a *TradeAPIService) GetTopTradersExecute(r TradeAPIGetTopTradersRequest) (
 type TradeAPIGetTradesRequest struct {
 	ctx context.Context
 	ApiService *TradeAPIService
-	chain string
+	chain ChainSymbol
 	cursor *string
 	limit *float32
 	direction *string
@@ -706,7 +706,7 @@ CONTROLLER.TRADE.GET.TOKEN.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return TradeAPIGetTradesRequest
 */
-func (a *TradeAPIService) GetTrades(ctx context.Context, chain string) TradeAPIGetTradesRequest {
+func (a *TradeAPIService) GetTrades(ctx context.Context, chain ChainSymbol) TradeAPIGetTradesRequest {
 	return TradeAPIGetTradesRequest{
 		ApiService: a,
 		ctx: ctx,

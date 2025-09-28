@@ -27,7 +27,7 @@ type DexPoolAPIService service
 type DexPoolAPIGetDexpoolRequest struct {
 	ctx context.Context
 	ApiService *DexPoolAPIService
-	chain string
+	chain ChainSymbol
 	poolAddress string
 }
 
@@ -45,7 +45,7 @@ CONTROLLER.DEXPOOL.GET.DESCRIPTION
  @param poolAddress GLOBAL.POOLADDRESS.DESCRIPTION
  @return DexPoolAPIGetDexpoolRequest
 */
-func (a *DexPoolAPIService) GetDexpool(ctx context.Context, chain string, poolAddress string) DexPoolAPIGetDexpoolRequest {
+func (a *DexPoolAPIService) GetDexpool(ctx context.Context, chain ChainSymbol, poolAddress string) DexPoolAPIGetDexpoolRequest {
 	return DexPoolAPIGetDexpoolRequest{
 		ApiService: a,
 		ctx: ctx,

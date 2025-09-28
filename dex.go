@@ -15,14 +15,13 @@ import (
 )
 
 const (
-	LIB_VERSION = "0.1.6"
+	LIB_VERSION = "0.1.7"
 )
 
 // TokenProvider represents a token provider interface
 type TokenProvider interface {
 	GetToken() (string, error)
 }
-
 
 // DexAggregatorOptions represents DEX aggregator options
 type DexAggregatorOptions struct {
@@ -33,31 +32,32 @@ type DexAggregatorOptions struct {
 
 // DexClient represents the main DEX client - similar to JavaScript's DexClient class
 type DexClient struct {
-	requestCtx     *api.DexRequestContext
-	configuration  *openapi.Configuration
-	client         *openapi.APIClient
-	stream         *api.StreamApi
-	
+	requestCtx    *api.DexRequestContext
+	configuration *openapi.Configuration
+	client        *openapi.APIClient
+	stream        *api.StreamApi
+
 	// API services - similar to JavaScript's public readonly fields
-	Dex            *openapi.DexAPIService
-	DexPool        *openapi.DexPoolAPIService
-	Token          *openapi.TokenAPIService
-	Wallet         *openapi.WalletAPIService
-	Trade          *openapi.TradeAPIService
-	Ranking        *openapi.RankingAPIService
-	Transaction    *openapi.TransactionAPIService
-	Moonshot       *openapi.DefiSolanaMoonshotAPIService
-	Pumpfun        *openapi.DefiSolanaPumpfunAPIService
-	Stream         *api.StreamApi
-	RedPacket      *openapi.RedPacketAPIService
-	Ipfs           *openapi.IpfsAPIService
-	Blockchain     *openapi.BlockchainAPIService
-	Watchlist      *openapi.WatchlistAPIService
-	Jobs           *openapi.JobsAPIService
+	Dex         *openapi.DexAPIService
+	DexPool     *openapi.DexPoolAPIService
+	Token       *openapi.TokenAPIService
+	Wallet      *openapi.WalletAPIService
+	Trade       *openapi.TradeAPIService
+	Ranking     *openapi.RankingAPIService
+	Transaction *openapi.TransactionAPIService
+	Moonshot    *openapi.DefiSolanaMoonshotAPIService
+	Pumpfun     *openapi.DefiSolanaPumpfunAPIService
+	Stream      *api.StreamApi
+	RedPacket   *openapi.RedPacketAPIService
+	Ipfs        *openapi.IpfsAPIService
+	Blockchain  *openapi.BlockchainAPIService
+	Watchlist   *openapi.WatchlistAPIService
+	Jobs        *openapi.JobsAPIService
 }
 
 // NewDexClient creates a new DEX client - similar to JavaScript's constructor
-func NewDexClient(accessToken string, options *DexAggregatorOptions) (*DexClient, error) {
+// createDexClient is a helper function to create a DEX client with common setup
+func createDexClient(accessToken string, tokenProvider TokenProvider, options *DexAggregatorOptions) (*DexClient, error) {
 	if options == nil {
 		options = &DexAggregatorOptions{}
 	}
@@ -71,100 +71,28 @@ func NewDexClient(accessToken string, options *DexAggregatorOptions) (*DexClient
 	streamUrl := options.StreamUrl
 	if streamUrl == "" {
 		streamUrl = "wss://realtime-dex.chainstream.io/connection/websocket"
+	}
+
+	// Get token (either from string or provider)
+	var token string
+	var err error
+	if tokenProvider != nil {
+		token, err = tokenProvider.GetToken()
+		if err != nil {
+			return nil, fmt.Errorf("failed to get initial token: %w", err)
+		}
+	} else {
+		token = accessToken
 	}
 
 	// Create request context
 	requestCtx := &api.DexRequestContext{
 		BaseUrl:     serverUrl,
 		StreamUrl:   streamUrl,
-		AccessToken: accessToken,
+		AccessToken: token,
 	}
-
-	// Create configuration
-	config := openapi.NewConfiguration()
-	config.Servers = []openapi.ServerConfiguration{
-		{
-			URL:         serverUrl,
-			Description: "Production server",
-		},
-	}
-	config.UserAgent = fmt.Sprintf("dex/%s/go", LIB_VERSION)
-	config.Debug = options.Debug
-
-	// Set authentication
-	config.DefaultHeader = map[string]string{
-		"Authorization": "Bearer " + accessToken,
-		"User-Agent":    fmt.Sprintf("dex/%s/go", LIB_VERSION),
-	}
-
-	// Create API client
-	client := openapi.NewAPIClient(config)
-
-	// Create stream API
-	stream := api.NewStreamApi(requestCtx)
-
-	// Create DEX client
-	dexClient := &DexClient{
-		requestCtx:    requestCtx,
-		configuration: config,
-		client:        client,
-		stream:        stream,
-		
-		// Set API services - similar to JavaScript's this.dex = new DexApi(config)
-		Dex:            client.DexAPI,
-		DexPool:        client.DexPoolAPI,
-		Token:          client.TokenAPI,
-		Wallet:         client.WalletAPI,
-		Trade:          client.TradeAPI,
-		Ranking:        client.RankingAPI,
-		Transaction:    client.TransactionAPI,
-		Moonshot:       client.DefiSolanaMoonshotAPI,
-		Pumpfun:        client.DefiSolanaPumpfunAPI,
-		Stream:         stream,
-		RedPacket:      client.RedPacketAPI,
-		Ipfs:           client.IpfsAPI,
-		Blockchain:     client.BlockchainAPI,
-		Watchlist:      client.WatchlistAPI,
-		Jobs:           client.JobsAPI,
-	}
-
-	// Connect to stream service - similar to JavaScript's this.stream.connect()
-	if err := stream.Connect(); err != nil {
-		return nil, fmt.Errorf("failed to connect to stream service: %w", err)
-	}
-
-	return dexClient, nil
-}
-
-// NewDexClientWithTokenProvider creates a DEX client with token provider
-func NewDexClientWithTokenProvider(tokenProvider TokenProvider, options *DexAggregatorOptions) (*DexClient, error) {
-	if options == nil {
-		options = &DexAggregatorOptions{}
-	}
-
-	// Set default values
-	serverUrl := options.ServerUrl
-	if serverUrl == "" {
-		serverUrl = "https://api-dex.chainstream.io"
-	}
-
-	streamUrl := options.StreamUrl
-	if streamUrl == "" {
-		streamUrl = "wss://realtime-dex.chainstream.io/connection/websocket"
-	}
-
-	// Get initial token
-	token, err := tokenProvider.GetToken()
-	if err != nil {
-		return nil, fmt.Errorf("failed to get initial token: %w", err)
-	}
-
-	// Create request context
-	requestCtx := &api.DexRequestContext{
-		BaseUrl:       serverUrl,
-		StreamUrl:     streamUrl,
-		AccessToken:   token,
-		TokenProvider: tokenProvider.GetToken,
+	if tokenProvider != nil {
+		requestCtx.TokenProvider = tokenProvider.GetToken
 	}
 
 	// Create configuration
@@ -196,23 +124,23 @@ func NewDexClientWithTokenProvider(tokenProvider TokenProvider, options *DexAggr
 		configuration: config,
 		client:        client,
 		stream:        stream,
-		
+
 		// Set API services
-		Dex:            client.DexAPI,
-		DexPool:        client.DexPoolAPI,
-		Token:          client.TokenAPI,
-		Wallet:         client.WalletAPI,
-		Trade:          client.TradeAPI,
-		Ranking:        client.RankingAPI,
-		Transaction:    client.TransactionAPI,
-		Moonshot:       client.DefiSolanaMoonshotAPI,
-		Pumpfun:        client.DefiSolanaPumpfunAPI,
-		Stream:         stream,
-		RedPacket:      client.RedPacketAPI,
-		Ipfs:           client.IpfsAPI,
-		Blockchain:     client.BlockchainAPI,
-		Watchlist:      client.WatchlistAPI,
-		Jobs:           client.JobsAPI,
+		Dex:         client.DexAPI,
+		DexPool:     client.DexPoolAPI,
+		Token:       client.TokenAPI,
+		Wallet:      client.WalletAPI,
+		Trade:       client.TradeAPI,
+		Ranking:     client.RankingAPI,
+		Transaction: client.TransactionAPI,
+		Moonshot:    client.DefiSolanaMoonshotAPI,
+		Pumpfun:     client.DefiSolanaPumpfunAPI,
+		Stream:      stream,
+		RedPacket:   client.RedPacketAPI,
+		Ipfs:        client.IpfsAPI,
+		Blockchain:  client.BlockchainAPI,
+		Watchlist:   client.WatchlistAPI,
+		Jobs:        client.JobsAPI,
 	}
 
 	// Connect to stream service
@@ -221,6 +149,15 @@ func NewDexClientWithTokenProvider(tokenProvider TokenProvider, options *DexAggr
 	}
 
 	return dexClient, nil
+}
+
+func NewDexClient(accessToken string, options *DexAggregatorOptions) (*DexClient, error) {
+	return createDexClient(accessToken, nil, options)
+}
+
+// NewDexClientWithTokenProvider creates a DEX client with token provider
+func NewDexClientWithTokenProvider(tokenProvider TokenProvider, options *DexAggregatorOptions) (*DexClient, error) {
+	return createDexClient("", tokenProvider, options)
 }
 
 // WaitForJob waits for job completion - similar to JavaScript's waitForJob method
@@ -239,7 +176,7 @@ func (d *DexClient) WaitForJob(jobId string, timeout time.Duration) (map[string]
 
 	// Build SSE URL
 	sseUrl := fmt.Sprintf("%s/jobs/%s/streaming", d.requestCtx.BaseUrl, jobId)
-	
+
 	// Create HTTP request
 	req, err := http.NewRequest("GET", sseUrl, nil)
 	if err != nil {
@@ -305,7 +242,7 @@ func (d *DexClient) WaitForJobWithContext(ctx context.Context, jobId string) (ma
 
 	// Build SSE URL
 	sseUrl := fmt.Sprintf("%s/jobs/%s/streaming", d.requestCtx.BaseUrl, jobId)
-	
+
 	// Create HTTP request with context
 	req, err := http.NewRequestWithContext(ctx, "GET", sseUrl, nil)
 	if err != nil {
@@ -335,18 +272,18 @@ func (d *DexClient) WaitForJobWithContext(ctx context.Context, jobId string) (ma
 		case <-ctx.Done():
 			return nil, ctx.Err()
 		default:
-		line := scanner.Text()
-		
-		if strings.HasPrefix(line, "data: ") {
-			jsonData := strings.TrimPrefix(line, "data: ")
-			if jsonData == "" {
-				continue
-			}
-				
-			var data map[string]interface{}
-			if err := json.Unmarshal([]byte(jsonData), &data); err != nil {
-				return nil, fmt.Errorf("failed to decode response: %w", err)
-			}
+			line := scanner.Text()
+
+			if strings.HasPrefix(line, "data: ") {
+				jsonData := strings.TrimPrefix(line, "data: ")
+				if jsonData == "" {
+					continue
+				}
+
+				var data map[string]interface{}
+				if err := json.Unmarshal([]byte(jsonData), &data); err != nil {
+					return nil, fmt.Errorf("failed to decode response: %w", err)
+				}
 
 				if status, ok := data["status"].(string); ok {
 					if status == "error" {

@@ -75,7 +75,7 @@ ctx = context.WithValue(context.Background(), openapi.ContextOperationServerVari
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api-dex.chainstream.io*
+All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -152,6 +152,7 @@ Class | Method | HTTP request | Description
  - [BooleanResultDTO](docs/BooleanResultDTO.md)
  - [CalculatePnlInput](docs/CalculatePnlInput.md)
  - [Candle](docs/Candle.md)
+ - [ChainSymbol](docs/ChainSymbol.md)
  - [ClaimRedPacketInput](docs/ClaimRedPacketInput.md)
  - [CreateEndpointInput](docs/CreateEndpointInput.md)
  - [CreateRedPacketInput](docs/CreateRedPacketInput.md)

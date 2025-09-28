@@ -28,7 +28,7 @@ type DexAPIService service
 type DexAPICreateTokenRequest struct {
 	ctx context.Context
 	ApiService *DexAPIService
-	chain string
+	chain ChainSymbol
 	createTokenInput *CreateTokenInput
 }
 
@@ -51,7 +51,7 @@ CONTROLLER.DEX.CREATE.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return DexAPICreateTokenRequest
 */
-func (a *DexAPIService) CreateToken(ctx context.Context, chain string) DexAPICreateTokenRequest {
+func (a *DexAPIService) CreateToken(ctx context.Context, chain ChainSymbol) DexAPICreateTokenRequest {
 	return DexAPICreateTokenRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -282,7 +282,7 @@ func (a *DexAPIService) ListDexExecute(r DexAPIListDexRequest) (*DexPage, *http.
 type DexAPIQuoteRequest struct {
 	ctx context.Context
 	ApiService *DexAPIService
-	chain string
+	chain ChainSymbol
 	dex *string
 	amount *string
 	inputMint *string
@@ -340,7 +340,7 @@ CONTROLLER.DEX.QUOTE.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return DexAPIQuoteRequest
 */
-func (a *DexAPIService) Quote(ctx context.Context, chain string) DexAPIQuoteRequest {
+func (a *DexAPIService) Quote(ctx context.Context, chain ChainSymbol) DexAPIQuoteRequest {
 	return DexAPIQuoteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -451,7 +451,7 @@ func (a *DexAPIService) QuoteExecute(r DexAPIQuoteRequest) (*QuoteResponse, *htt
 type DexAPIRouteRequest struct {
 	ctx context.Context
 	ApiService *DexAPIService
-	chain string
+	chain ChainSymbol
 	swapRouteInput *SwapRouteInput
 }
 
@@ -473,7 +473,7 @@ CONTROLLER.DEX.ROUTE.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return DexAPIRouteRequest
 */
-func (a *DexAPIService) Route(ctx context.Context, chain string) DexAPIRouteRequest {
+func (a *DexAPIService) Route(ctx context.Context, chain ChainSymbol) DexAPIRouteRequest {
 	return DexAPIRouteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -565,7 +565,7 @@ func (a *DexAPIService) RouteExecute(r DexAPIRouteRequest) (*SwapRouteResponse, 
 type DexAPISwapRequest struct {
 	ctx context.Context
 	ApiService *DexAPIService
-	chain string
+	chain ChainSymbol
 	swapInput *SwapInput
 }
 
@@ -587,7 +587,7 @@ CONTROLLER.DEX.SWAP.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return DexAPISwapRequest
 */
-func (a *DexAPIService) Swap(ctx context.Context, chain string) DexAPISwapRequest {
+func (a *DexAPIService) Swap(ctx context.Context, chain ChainSymbol) DexAPISwapRequest {
 	return DexAPISwapRequest{
 		ApiService: a,
 		ctx: ctx,

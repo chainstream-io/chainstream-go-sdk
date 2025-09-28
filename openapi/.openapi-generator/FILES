@@ -26,6 +26,7 @@ docs/BlockchainLatestBlockDTO.md
 docs/BooleanResultDTO.md
 docs/CalculatePnlInput.md
 docs/Candle.md
+docs/ChainSymbol.md
 docs/ClaimRedPacketInput.md
 docs/CreateEndpointInput.md
 docs/CreateRedPacketInput.md
@@ -113,6 +114,7 @@ model_blockchain_latest_block_dto.go
 model_boolean_result_dto.go
 model_calculate_pnl_input.go
 model_candle.go
+model_chain_symbol.go
 model_claim_red_packet_input.go
 model_create_endpoint_input.go
 model_create_red_packet_input.go

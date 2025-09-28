@@ -27,7 +27,7 @@ type RedPacketAPIService service
 type RedPacketAPIClaimRedpacketRequest struct {
 	ctx context.Context
 	ApiService *RedPacketAPIService
-	chain string
+	chain ChainSymbol
 	claimRedPacketInput *ClaimRedPacketInput
 }
 
@@ -49,7 +49,7 @@ CONTROLLER.RED_PACKET.CLAIM.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return RedPacketAPIClaimRedpacketRequest
 */
-func (a *RedPacketAPIService) ClaimRedpacket(ctx context.Context, chain string) RedPacketAPIClaimRedpacketRequest {
+func (a *RedPacketAPIService) ClaimRedpacket(ctx context.Context, chain ChainSymbol) RedPacketAPIClaimRedpacketRequest {
 	return RedPacketAPIClaimRedpacketRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -141,7 +141,7 @@ func (a *RedPacketAPIService) ClaimRedpacketExecute(r RedPacketAPIClaimRedpacket
 type RedPacketAPICreateRedpacketRequest struct {
 	ctx context.Context
 	ApiService *RedPacketAPIService
-	chain string
+	chain ChainSymbol
 	createRedPacketInput *CreateRedPacketInput
 }
 
@@ -163,7 +163,7 @@ CONTROLLER.RED_PACKET.CREATE.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return RedPacketAPICreateRedpacketRequest
 */
-func (a *RedPacketAPIService) CreateRedpacket(ctx context.Context, chain string) RedPacketAPICreateRedpacketRequest {
+func (a *RedPacketAPIService) CreateRedpacket(ctx context.Context, chain ChainSymbol) RedPacketAPICreateRedpacketRequest {
 	return RedPacketAPICreateRedpacketRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -628,7 +628,7 @@ type RedPacketAPIGetRedpacketsRequest struct {
 	limit *float32
 	direction *string
 	creator *string
-	chain *string
+	chain *ChainSymbol
 }
 
 // DTO.RED_PACKET.CURSOR
@@ -656,7 +656,7 @@ func (r RedPacketAPIGetRedpacketsRequest) Creator(creator string) RedPacketAPIGe
 }
 
 // DTO.RED_PACKET.CHAIN
-func (r RedPacketAPIGetRedpacketsRequest) Chain(chain string) RedPacketAPIGetRedpacketsRequest {
+func (r RedPacketAPIGetRedpacketsRequest) Chain(chain ChainSymbol) RedPacketAPIGetRedpacketsRequest {
 	r.chain = &chain
 	return r
 }
@@ -906,7 +906,7 @@ func (a *RedPacketAPIService) GetRedpacketsByAddressExecute(r RedPacketAPIGetRed
 type RedPacketAPIRedpacketSendRequest struct {
 	ctx context.Context
 	ApiService *RedPacketAPIService
-	chain string
+	chain ChainSymbol
 	redPacketSendTxInput *RedPacketSendTxInput
 }
 
@@ -928,7 +928,7 @@ CONTROLLER.RED_PACKET.SEND.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return RedPacketAPIRedpacketSendRequest
 */
-func (a *RedPacketAPIService) RedpacketSend(ctx context.Context, chain string) RedPacketAPIRedpacketSendRequest {
+func (a *RedPacketAPIService) RedpacketSend(ctx context.Context, chain ChainSymbol) RedPacketAPIRedpacketSendRequest {
 	return RedPacketAPIRedpacketSendRequest{
 		ApiService: a,
 		ctx: ctx,

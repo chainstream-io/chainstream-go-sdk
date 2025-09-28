@@ -27,7 +27,7 @@ type WalletAPIService service
 type WalletAPICalculatePnlRequest struct {
 	ctx context.Context
 	ApiService *WalletAPIService
-	chain string
+	chain ChainSymbol
 	walletAddress string
 	calculatePnlInput *CalculatePnlInput
 }
@@ -51,7 +51,7 @@ CONTROLLER.WALLET.CALCULATE_PNL.DESCRIPTION
  @param walletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
  @return WalletAPICalculatePnlRequest
 */
-func (a *WalletAPIService) CalculatePnl(ctx context.Context, chain string, walletAddress string) WalletAPICalculatePnlRequest {
+func (a *WalletAPIService) CalculatePnl(ctx context.Context, chain ChainSymbol, walletAddress string) WalletAPICalculatePnlRequest {
 	return WalletAPICalculatePnlRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -145,7 +145,7 @@ func (a *WalletAPIService) CalculatePnlExecute(r WalletAPICalculatePnlRequest) (
 type WalletAPIGetBalanceRequest struct {
 	ctx context.Context
 	ApiService *WalletAPIService
-	chain string
+	chain ChainSymbol
 	walletAddress string
 	tokenAddress *string
 }
@@ -170,7 +170,7 @@ CONTROLLER.WALLET.GET_BALANCES.DESCRIPTION
  @param walletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
  @return WalletAPIGetBalanceRequest
 */
-func (a *WalletAPIService) GetBalance(ctx context.Context, chain string, walletAddress string) WalletAPIGetBalanceRequest {
+func (a *WalletAPIService) GetBalance(ctx context.Context, chain ChainSymbol, walletAddress string) WalletAPIGetBalanceRequest {
 	return WalletAPIGetBalanceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -262,7 +262,7 @@ func (a *WalletAPIService) GetBalanceExecute(r WalletAPIGetBalanceRequest) (*Wal
 type WalletAPIGetPnlRequest struct {
 	ctx context.Context
 	ApiService *WalletAPIService
-	chain string
+	chain ChainSymbol
 	walletAddress string
 	tokenAddress *string
 }
@@ -287,7 +287,7 @@ CONTROLLER.WALLET.GET_PNL.DESCRIPTION
  @param walletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
  @return WalletAPIGetPnlRequest
 */
-func (a *WalletAPIService) GetPnl(ctx context.Context, chain string, walletAddress string) WalletAPIGetPnlRequest {
+func (a *WalletAPIService) GetPnl(ctx context.Context, chain ChainSymbol, walletAddress string) WalletAPIGetPnlRequest {
 	return WalletAPIGetPnlRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -379,7 +379,7 @@ func (a *WalletAPIService) GetPnlExecute(r WalletAPIGetPnlRequest) ([]WalletPnlD
 type WalletAPIGetPnlStatsRequest struct {
 	ctx context.Context
 	ApiService *WalletAPIService
-	chain string
+	chain ChainSymbol
 	walletAddress string
 }
 
@@ -397,7 +397,7 @@ CONTROLLER.WALLET.GET_PNL_STATS.DESCRIPTION
  @param walletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
  @return WalletAPIGetPnlStatsRequest
 */
-func (a *WalletAPIService) GetPnlStats(ctx context.Context, chain string, walletAddress string) WalletAPIGetPnlStatsRequest {
+func (a *WalletAPIService) GetPnlStats(ctx context.Context, chain ChainSymbol, walletAddress string) WalletAPIGetPnlStatsRequest {
 	return WalletAPIGetPnlStatsRequest{
 		ApiService: a,
 		ctx: ctx,

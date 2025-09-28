@@ -23,7 +23,7 @@ var _ MappedNullable = &RedPacketDTO{}
 // RedPacketDTO struct for RedPacketDTO
 type RedPacketDTO struct {
 	// GLOBAL.CHAIN.DESCRIPTION
-	Chain string `json:"chain"`
+	Chain ChainSymbol `json:"chain"`
 	// DTO.RED_PACKET.ID
 	Id string `json:"id"`
 	// DTO.RED_PACKET.SHARE_ID
@@ -64,7 +64,7 @@ type _RedPacketDTO RedPacketDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRedPacketDTO(chain string, id string, shareId string, txHash string, creator string, mint string, totalAmount string, memo string, maxClaims float32, claimAuthority string, expired bool, expiration float32, createdAt float32, expiredAt float32, claimedCount float32, claimedAmount string, refundedAmount string) *RedPacketDTO {
+func NewRedPacketDTO(chain ChainSymbol, id string, shareId string, txHash string, creator string, mint string, totalAmount string, memo string, maxClaims float32, claimAuthority string, expired bool, expiration float32, createdAt float32, expiredAt float32, claimedCount float32, claimedAmount string, refundedAmount string) *RedPacketDTO {
 	this := RedPacketDTO{}
 	this.Chain = chain
 	this.Id = id
@@ -95,9 +95,9 @@ func NewRedPacketDTOWithDefaults() *RedPacketDTO {
 }
 
 // GetChain returns the Chain field value
-func (o *RedPacketDTO) GetChain() string {
+func (o *RedPacketDTO) GetChain() ChainSymbol {
 	if o == nil {
-		var ret string
+		var ret ChainSymbol
 		return ret
 	}
 
@@ -106,7 +106,7 @@ func (o *RedPacketDTO) GetChain() string {
 
 // GetChainOk returns a tuple with the Chain field value
 // and a boolean to check if the value has been set.
-func (o *RedPacketDTO) GetChainOk() (*string, bool) {
+func (o *RedPacketDTO) GetChainOk() (*ChainSymbol, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -114,7 +114,7 @@ func (o *RedPacketDTO) GetChainOk() (*string, bool) {
 }
 
 // SetChain sets field value
-func (o *RedPacketDTO) SetChain(v string) {
+func (o *RedPacketDTO) SetChain(v ChainSymbol) {
 	o.Chain = v
 }
 

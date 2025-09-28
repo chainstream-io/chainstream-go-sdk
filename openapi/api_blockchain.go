@@ -27,7 +27,7 @@ type BlockchainAPIService service
 type BlockchainAPIGetLatestBlockRequest struct {
 	ctx context.Context
 	ApiService *BlockchainAPIService
-	chain string
+	chain ChainSymbol
 }
 
 func (r BlockchainAPIGetLatestBlockRequest) Execute() (*BlockchainLatestBlockDTO, *http.Response, error) {
@@ -43,7 +43,7 @@ CONTROLLER.GET_LATEST_BLOCK.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return BlockchainAPIGetLatestBlockRequest
 */
-func (a *BlockchainAPIService) GetLatestBlock(ctx context.Context, chain string) BlockchainAPIGetLatestBlockRequest {
+func (a *BlockchainAPIService) GetLatestBlock(ctx context.Context, chain ChainSymbol) BlockchainAPIGetLatestBlockRequest {
 	return BlockchainAPIGetLatestBlockRequest{
 		ApiService: a,
 		ctx: ctx,

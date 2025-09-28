@@ -28,7 +28,7 @@ type RankingAPIService service
 type RankingAPIGetFinalStretchTokensRequest struct {
 	ctx context.Context
 	ApiService *RankingAPIService
-	chain string
+	chain ChainSymbol
 	sortBy *string
 	sortDirection *string
 	rangeFilters *[]FilterCondition
@@ -100,7 +100,7 @@ CONTROLLER.RANKING.FINAL_STRETCH_TOKENS.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return RankingAPIGetFinalStretchTokensRequest
 */
-func (a *RankingAPIService) GetFinalStretchTokens(ctx context.Context, chain string) RankingAPIGetFinalStretchTokensRequest {
+func (a *RankingAPIService) GetFinalStretchTokens(ctx context.Context, chain ChainSymbol) RankingAPIGetFinalStretchTokensRequest {
 	return RankingAPIGetFinalStretchTokensRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -254,7 +254,7 @@ func (a *RankingAPIService) GetFinalStretchTokensExecute(r RankingAPIGetFinalStr
 type RankingAPIGetHotTokensRequest struct {
 	ctx context.Context
 	ApiService *RankingAPIService
-	chain string
+	chain ChainSymbol
 	duration string
 	sortBy *string
 	sortDirection *string
@@ -328,7 +328,7 @@ CONTROLLER.RANKING.HOT_TOKENS.DESCRIPTION
  @param duration CONTROLLER.RANKING.HOT_TOKENS.DURATION.DESCRIPTION
  @return RankingAPIGetHotTokensRequest
 */
-func (a *RankingAPIService) GetHotTokens(ctx context.Context, chain string, duration string) RankingAPIGetHotTokensRequest {
+func (a *RankingAPIService) GetHotTokens(ctx context.Context, chain ChainSymbol, duration string) RankingAPIGetHotTokensRequest {
 	return RankingAPIGetHotTokensRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -484,7 +484,7 @@ func (a *RankingAPIService) GetHotTokensExecute(r RankingAPIGetHotTokensRequest)
 type RankingAPIGetMigratedTokensRequest struct {
 	ctx context.Context
 	ApiService *RankingAPIService
-	chain string
+	chain ChainSymbol
 	sortBy *string
 	sortDirection *string
 	rangeFilters *[]FilterCondition
@@ -556,7 +556,7 @@ CONTROLLER.RANKING.MIGRATED_TOKENS.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return RankingAPIGetMigratedTokensRequest
 */
-func (a *RankingAPIService) GetMigratedTokens(ctx context.Context, chain string) RankingAPIGetMigratedTokensRequest {
+func (a *RankingAPIService) GetMigratedTokens(ctx context.Context, chain ChainSymbol) RankingAPIGetMigratedTokensRequest {
 	return RankingAPIGetMigratedTokensRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -710,7 +710,7 @@ func (a *RankingAPIService) GetMigratedTokensExecute(r RankingAPIGetMigratedToke
 type RankingAPIGetNewTokensRequest struct {
 	ctx context.Context
 	ApiService *RankingAPIService
-	chain string
+	chain ChainSymbol
 	sortBy *string
 	sortDirection *string
 	rangeFilters *[]FilterCondition
@@ -782,7 +782,7 @@ CONTROLLER.RANKING.NEW_TOKENS.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return RankingAPIGetNewTokensRequest
 */
-func (a *RankingAPIService) GetNewTokens(ctx context.Context, chain string) RankingAPIGetNewTokensRequest {
+func (a *RankingAPIService) GetNewTokens(ctx context.Context, chain ChainSymbol) RankingAPIGetNewTokensRequest {
 	return RankingAPIGetNewTokensRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -936,7 +936,7 @@ func (a *RankingAPIService) GetNewTokensExecute(r RankingAPIGetNewTokensRequest)
 type RankingAPIGetStocksTokensRequest struct {
 	ctx context.Context
 	ApiService *RankingAPIService
-	chain string
+	chain ChainSymbol
 	sortBy *string
 	sortDirection *string
 	rangeFilters *[]FilterCondition
@@ -1008,7 +1008,7 @@ CONTROLLER.RANKING.STOCKS_TOKENS.DESCRIPTION
  @param chain GLOBAL.CHAIN.DESCRIPTION
  @return RankingAPIGetStocksTokensRequest
 */
-func (a *RankingAPIService) GetStocksTokens(ctx context.Context, chain string) RankingAPIGetStocksTokensRequest {
+func (a *RankingAPIService) GetStocksTokens(ctx context.Context, chain ChainSymbol) RankingAPIGetStocksTokensRequest {
 	return RankingAPIGetStocksTokensRequest{
 		ApiService: a,
 		ctx: ctx,
