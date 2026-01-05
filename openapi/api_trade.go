@@ -38,6 +38,7 @@ type TradeAPIGetActivitiesRequest struct {
 	afterTimestamp *float32
 	beforeBlockHeight *float32
 	afterBlockHeight *float32
+	transactionsSignature *string
 	type_ *string
 }
 
@@ -98,6 +99,12 @@ func (r TradeAPIGetActivitiesRequest) BeforeBlockHeight(beforeBlockHeight float3
 // DTO.TRADE.QUERY.AFTER_BLOCK_HEIGHT
 func (r TradeAPIGetActivitiesRequest) AfterBlockHeight(afterBlockHeight float32) TradeAPIGetActivitiesRequest {
 	r.afterBlockHeight = &afterBlockHeight
+	return r
+}
+
+// DTO.TRADE.QUERY.TRANSACTIONS_SIGNATURE
+func (r TradeAPIGetActivitiesRequest) TransactionsSignature(transactionsSignature string) TradeAPIGetActivitiesRequest {
+	r.transactionsSignature = &transactionsSignature
 	return r
 }
 
@@ -185,6 +192,9 @@ func (a *TradeAPIService) GetActivitiesExecute(r TradeAPIGetActivitiesRequest) (
 	}
 	if r.afterBlockHeight != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "afterBlockHeight", r.afterBlockHeight, "form", "")
+	}
+	if r.transactionsSignature != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "transactionsSignature", r.transactionsSignature, "form", "")
 	}
 	if r.type_ != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
@@ -624,6 +634,7 @@ type TradeAPIGetTradesRequest struct {
 	afterTimestamp *float32
 	beforeBlockHeight *float32
 	afterBlockHeight *float32
+	transactionsSignature *string
 	type_ *string
 }
 
@@ -684,6 +695,12 @@ func (r TradeAPIGetTradesRequest) BeforeBlockHeight(beforeBlockHeight float32) T
 // DTO.TRADE.QUERY.AFTER_BLOCK_HEIGHT
 func (r TradeAPIGetTradesRequest) AfterBlockHeight(afterBlockHeight float32) TradeAPIGetTradesRequest {
 	r.afterBlockHeight = &afterBlockHeight
+	return r
+}
+
+// DTO.TRADE.QUERY.TRANSACTIONS_SIGNATURE
+func (r TradeAPIGetTradesRequest) TransactionsSignature(transactionsSignature string) TradeAPIGetTradesRequest {
+	r.transactionsSignature = &transactionsSignature
 	return r
 }
 
@@ -771,6 +788,9 @@ func (a *TradeAPIService) GetTradesExecute(r TradeAPIGetTradesRequest) (*TradePa
 	}
 	if r.afterBlockHeight != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "afterBlockHeight", r.afterBlockHeight, "form", "")
+	}
+	if r.transactionsSignature != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "transactionsSignature", r.transactionsSignature, "form", "")
 	}
 	if r.type_ != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")

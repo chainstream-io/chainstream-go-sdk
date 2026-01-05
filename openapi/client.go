@@ -66,6 +66,8 @@ type APIClient struct {
 
 	JobsAPI *JobsAPIService
 
+	KYTAPI *KYTAPIService
+
 	RankingAPI *RankingAPIService
 
 	RedPacketAPI *RedPacketAPIService
@@ -105,6 +107,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EndpointAPI = (*EndpointAPIService)(&c.common)
 	c.IpfsAPI = (*IpfsAPIService)(&c.common)
 	c.JobsAPI = (*JobsAPIService)(&c.common)
+	c.KYTAPI = (*KYTAPIService)(&c.common)
 	c.RankingAPI = (*RankingAPIService)(&c.common)
 	c.RedPacketAPI = (*RedPacketAPIService)(&c.common)
 	c.TokenAPI = (*TokenAPIService)(&c.common)

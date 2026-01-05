@@ -1,104 +1,24 @@
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
 *.so
-*.dylib
 
-# Test binary, built with `go test -c`
+# Folders
+_obj
+_test
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
+
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+
+_testmain.go
+
+*.exe
 *.test
-
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-
-# Dependency directories (remove the comment below to include it)
-# vendor/
-
-# Go workspace file
-go.work
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Build artifacts
-/bin/
-/build/
-/dist/
-
-# Temporary files
-*.tmp
-*.temp
-*.log
-
-# Test coverage reports
-coverage.txt
-coverage.html
-coverage.out
-
-# Benchmark results
-*.bench
-
-# Profiling files
 *.prof
-*.pprof
-
-# Local development files
-.env
-.env.local
-.env.development
-.env.test
-.env.production
-
-# Generated files that shouldn't be committed
-# (uncomment if you have generated files you want to ignore)
-# *_gen.go
-# *_generated.go
-
-# Documentation build output
-/docs/build/
-
-# Example applications (if any)
-/examples/*/bin/
-/examples/*/vendor/
-
-# Local test data
-/testdata/local/
-*.testdata
-
-# Backup files
-*.bak
-*.backup
-
-# Lock files (uncomment if you want to ignore them)
-# go.sum
-
-# Module cache (if using Go modules proxy)
-# /pkg/mod/
-
-# Local configuration files
-config.local.yaml
-config.local.yml
-config.local.json
-
-# Development scripts output
-*.pid
-*.seed
-*.pid.lock
-
-/tests/
-
-run_all_tests.sh
-run_domain_test.sh

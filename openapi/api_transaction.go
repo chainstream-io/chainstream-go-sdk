@@ -24,6 +24,224 @@ import (
 // TransactionAPIService TransactionAPI service
 type TransactionAPIService service
 
+type TransactionAPIEstimateGasLimitRequest struct {
+	ctx context.Context
+	ApiService *TransactionAPIService
+	chain string
+	estimateGasLimitInput *EstimateGasLimitInput
+}
+
+// CONTROLLER.TRANSACTION.ESTIMATE_GAS_LIMIT.BODY
+func (r TransactionAPIEstimateGasLimitRequest) EstimateGasLimitInput(estimateGasLimitInput EstimateGasLimitInput) TransactionAPIEstimateGasLimitRequest {
+	r.estimateGasLimitInput = &estimateGasLimitInput
+	return r
+}
+
+func (r TransactionAPIEstimateGasLimitRequest) Execute() (*EstimateGasLimitResponse, *http.Response, error) {
+	return r.ApiService.EstimateGasLimitExecute(r)
+}
+
+/*
+EstimateGasLimit CONTROLLER.TRANSACTION.ESTIMATE_GAS_LIMIT.SUMMARY
+
+CONTROLLER.TRANSACTION.ESTIMATE_GAS_LIMIT.DESCRIPTION
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param chain GLOBAL.CHAIN.DESCRIPTION
+ @return TransactionAPIEstimateGasLimitRequest
+*/
+func (a *TransactionAPIService) EstimateGasLimit(ctx context.Context, chain string) TransactionAPIEstimateGasLimitRequest {
+	return TransactionAPIEstimateGasLimitRequest{
+		ApiService: a,
+		ctx: ctx,
+		chain: chain,
+	}
+}
+
+// Execute executes the request
+//  @return EstimateGasLimitResponse
+func (a *TransactionAPIService) EstimateGasLimitExecute(r TransactionAPIEstimateGasLimitRequest) (*EstimateGasLimitResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EstimateGasLimitResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransactionAPIService.EstimateGasLimit")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/transaction/{chain}/estimate-gas-limit"
+	localVarPath = strings.Replace(localVarPath, "{"+"chain"+"}", url.PathEscape(parameterValueToString(r.chain, "chain")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.estimateGasLimitInput == nil {
+		return localVarReturnValue, nil, reportError("estimateGasLimitInput is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.estimateGasLimitInput
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type TransactionAPIGetGasPriceRequest struct {
+	ctx context.Context
+	ApiService *TransactionAPIService
+	chain string
+}
+
+func (r TransactionAPIGetGasPriceRequest) Execute() (*GasPriceResponse, *http.Response, error) {
+	return r.ApiService.GetGasPriceExecute(r)
+}
+
+/*
+GetGasPrice CONTROLLER.TRANSACTION.GET_GAS_PRICE.SUMMARY
+
+CONTROLLER.TRANSACTION.GET_GAS_PRICE.DESCRIPTION
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param chain GLOBAL.CHAIN.DESCRIPTION
+ @return TransactionAPIGetGasPriceRequest
+*/
+func (a *TransactionAPIService) GetGasPrice(ctx context.Context, chain string) TransactionAPIGetGasPriceRequest {
+	return TransactionAPIGetGasPriceRequest{
+		ApiService: a,
+		ctx: ctx,
+		chain: chain,
+	}
+}
+
+// Execute executes the request
+//  @return GasPriceResponse
+func (a *TransactionAPIService) GetGasPriceExecute(r TransactionAPIGetGasPriceRequest) (*GasPriceResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GasPriceResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransactionAPIService.GetGasPrice")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/transaction/{chain}/gas-price"
+	localVarPath = strings.Replace(localVarPath, "{"+"chain"+"}", url.PathEscape(parameterValueToString(r.chain, "chain")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type TransactionAPISendRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService

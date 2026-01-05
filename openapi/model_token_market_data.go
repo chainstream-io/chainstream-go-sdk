@@ -48,12 +48,64 @@ type TokenMarketData struct {
 	TvlInUsd string `json:"tvlInUsd"`
 	// DTO.TOKEN.MARKET_CAP.COMPLETION_RATIO
 	CompletionRatio *string `json:"completionRatio,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.DEV_COUNT
-	DevTeamCount *float32 `json:"devTeamCount,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.DEV_AMOUNT
-	DevTeamAmount *string `json:"devTeamAmount,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.DEV_RATIO
-	DevTeamRatio *string `json:"devTeamRatio,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.TOP50_TOTAL_HOLDINGS
+	Top50TotalHoldings *string `json:"top50TotalHoldings,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.TOP50_HOLDINGS_RATIO
+	Top50HoldingsRatio *string `json:"top50HoldingsRatio,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.BLUECHIP_TOTAL_HOLDERS
+	BluechipTotalHolders *string `json:"bluechipTotalHolders,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.BLUECHIP_TOTAL_HOLDINGS
+	BluechipTotalHoldings *string `json:"bluechipTotalHoldings,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.BLUECHIP_HOLDINGS_RATIO
+	BluechipHoldingsRatio *string `json:"bluechipHoldingsRatio,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.KOL_TOTAL_HOLDERS
+	KolTotalHolders *string `json:"kolTotalHolders,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.KOL_TOTAL_HOLDINGS
+	KolTotalHoldings *string `json:"kolTotalHoldings,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.KOL_HOLDINGS_RATIO
+	KolHoldingsRatio *string `json:"kolHoldingsRatio,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.SNIPER_TOTAL_HOLDERS
+	SniperTotalHolders *string `json:"sniperTotalHolders,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.SNIPER_TOTAL_HOLDINGS
+	SniperTotalHoldings *string `json:"sniperTotalHoldings,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.SNIPER_HOLDINGS_RATIO
+	SniperHoldingsRatio *string `json:"sniperHoldingsRatio,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.PRO_TOTAL_HOLDERS
+	ProTotalHolders *string `json:"proTotalHolders,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.PRO_TOTAL_HOLDINGS
+	ProTotalHoldings *string `json:"proTotalHoldings,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.PRO_HOLDINGS_RATIO
+	ProHoldingsRatio *string `json:"proHoldingsRatio,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.INSIDER_TOTAL_HOLDERS
+	InsiderTotalHolders *string `json:"insiderTotalHolders,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.INSIDER_TOTAL_HOLDINGS
+	InsiderTotalHoldings *string `json:"insiderTotalHoldings,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.INSIDER_HOLDINGS_RATIO
+	InsiderHoldingsRatio *string `json:"insiderHoldingsRatio,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.SANDWISH_TOTAL_HOLDERS
+	SandwishTotalHolders *string `json:"sandwishTotalHolders,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.SANDWISH_TOTAL_HOLDINGS
+	SandwishTotalHoldings *string `json:"sandwishTotalHoldings,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.SANDWISH_HOLDINGS_RATIO
+	SandwishHoldingsRatio *string `json:"sandwishHoldingsRatio,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.FRESH_TOTAL_HOLDERS
+	FreshTotalHolders *string `json:"freshTotalHolders,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.FRESH_TOTAL_HOLDINGS
+	FreshTotalHoldings *string `json:"freshTotalHoldings,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.FRESH_HOLDINGS_RATIO
+	FreshHoldingsRatio *string `json:"freshHoldingsRatio,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.BUNDLE_TOTAL_HOLDERS
+	BundleTotalHolders *string `json:"bundleTotalHolders,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.BUNDLE_TOTAL_HOLDINGS
+	BundleTotalHoldings *string `json:"bundleTotalHoldings,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.BUNDLE_HOLDINGS_RATIO
+	BundleHoldingsRatio *string `json:"bundleHoldingsRatio,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.DEV_TOTAL_HOLDERS
+	DevTotalHolders *string `json:"devTotalHolders,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.DEV_TOTAL_HOLDINGS
+	DevTotalHoldings *string `json:"devTotalHoldings,omitempty"`
+	// DTO.TOKEN.MARKET_CAP.DEV_HOLDINGS_RATIO
+	DevHoldingsRatio *string `json:"devHoldingsRatio,omitempty"`
 }
 
 type _TokenMarketData TokenMarketData
@@ -456,100 +508,932 @@ func (o *TokenMarketData) SetCompletionRatio(v string) {
 	o.CompletionRatio = &v
 }
 
-// GetDevTeamCount returns the DevTeamCount field value if set, zero value otherwise.
-func (o *TokenMarketData) GetDevTeamCount() float32 {
-	if o == nil || IsNil(o.DevTeamCount) {
-		var ret float32
-		return ret
-	}
-	return *o.DevTeamCount
-}
-
-// GetDevTeamCountOk returns a tuple with the DevTeamCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TokenMarketData) GetDevTeamCountOk() (*float32, bool) {
-	if o == nil || IsNil(o.DevTeamCount) {
-		return nil, false
-	}
-	return o.DevTeamCount, true
-}
-
-// HasDevTeamCount returns a boolean if a field has been set.
-func (o *TokenMarketData) HasDevTeamCount() bool {
-	if o != nil && !IsNil(o.DevTeamCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetDevTeamCount gets a reference to the given float32 and assigns it to the DevTeamCount field.
-func (o *TokenMarketData) SetDevTeamCount(v float32) {
-	o.DevTeamCount = &v
-}
-
-// GetDevTeamAmount returns the DevTeamAmount field value if set, zero value otherwise.
-func (o *TokenMarketData) GetDevTeamAmount() string {
-	if o == nil || IsNil(o.DevTeamAmount) {
+// GetTop50TotalHoldings returns the Top50TotalHoldings field value if set, zero value otherwise.
+func (o *TokenMarketData) GetTop50TotalHoldings() string {
+	if o == nil || IsNil(o.Top50TotalHoldings) {
 		var ret string
 		return ret
 	}
-	return *o.DevTeamAmount
+	return *o.Top50TotalHoldings
 }
 
-// GetDevTeamAmountOk returns a tuple with the DevTeamAmount field value if set, nil otherwise
+// GetTop50TotalHoldingsOk returns a tuple with the Top50TotalHoldings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenMarketData) GetDevTeamAmountOk() (*string, bool) {
-	if o == nil || IsNil(o.DevTeamAmount) {
+func (o *TokenMarketData) GetTop50TotalHoldingsOk() (*string, bool) {
+	if o == nil || IsNil(o.Top50TotalHoldings) {
 		return nil, false
 	}
-	return o.DevTeamAmount, true
+	return o.Top50TotalHoldings, true
 }
 
-// HasDevTeamAmount returns a boolean if a field has been set.
-func (o *TokenMarketData) HasDevTeamAmount() bool {
-	if o != nil && !IsNil(o.DevTeamAmount) {
+// HasTop50TotalHoldings returns a boolean if a field has been set.
+func (o *TokenMarketData) HasTop50TotalHoldings() bool {
+	if o != nil && !IsNil(o.Top50TotalHoldings) {
 		return true
 	}
 
 	return false
 }
 
-// SetDevTeamAmount gets a reference to the given string and assigns it to the DevTeamAmount field.
-func (o *TokenMarketData) SetDevTeamAmount(v string) {
-	o.DevTeamAmount = &v
+// SetTop50TotalHoldings gets a reference to the given string and assigns it to the Top50TotalHoldings field.
+func (o *TokenMarketData) SetTop50TotalHoldings(v string) {
+	o.Top50TotalHoldings = &v
 }
 
-// GetDevTeamRatio returns the DevTeamRatio field value if set, zero value otherwise.
-func (o *TokenMarketData) GetDevTeamRatio() string {
-	if o == nil || IsNil(o.DevTeamRatio) {
+// GetTop50HoldingsRatio returns the Top50HoldingsRatio field value if set, zero value otherwise.
+func (o *TokenMarketData) GetTop50HoldingsRatio() string {
+	if o == nil || IsNil(o.Top50HoldingsRatio) {
 		var ret string
 		return ret
 	}
-	return *o.DevTeamRatio
+	return *o.Top50HoldingsRatio
 }
 
-// GetDevTeamRatioOk returns a tuple with the DevTeamRatio field value if set, nil otherwise
+// GetTop50HoldingsRatioOk returns a tuple with the Top50HoldingsRatio field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenMarketData) GetDevTeamRatioOk() (*string, bool) {
-	if o == nil || IsNil(o.DevTeamRatio) {
+func (o *TokenMarketData) GetTop50HoldingsRatioOk() (*string, bool) {
+	if o == nil || IsNil(o.Top50HoldingsRatio) {
 		return nil, false
 	}
-	return o.DevTeamRatio, true
+	return o.Top50HoldingsRatio, true
 }
 
-// HasDevTeamRatio returns a boolean if a field has been set.
-func (o *TokenMarketData) HasDevTeamRatio() bool {
-	if o != nil && !IsNil(o.DevTeamRatio) {
+// HasTop50HoldingsRatio returns a boolean if a field has been set.
+func (o *TokenMarketData) HasTop50HoldingsRatio() bool {
+	if o != nil && !IsNil(o.Top50HoldingsRatio) {
 		return true
 	}
 
 	return false
 }
 
-// SetDevTeamRatio gets a reference to the given string and assigns it to the DevTeamRatio field.
-func (o *TokenMarketData) SetDevTeamRatio(v string) {
-	o.DevTeamRatio = &v
+// SetTop50HoldingsRatio gets a reference to the given string and assigns it to the Top50HoldingsRatio field.
+func (o *TokenMarketData) SetTop50HoldingsRatio(v string) {
+	o.Top50HoldingsRatio = &v
+}
+
+// GetBluechipTotalHolders returns the BluechipTotalHolders field value if set, zero value otherwise.
+func (o *TokenMarketData) GetBluechipTotalHolders() string {
+	if o == nil || IsNil(o.BluechipTotalHolders) {
+		var ret string
+		return ret
+	}
+	return *o.BluechipTotalHolders
+}
+
+// GetBluechipTotalHoldersOk returns a tuple with the BluechipTotalHolders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetBluechipTotalHoldersOk() (*string, bool) {
+	if o == nil || IsNil(o.BluechipTotalHolders) {
+		return nil, false
+	}
+	return o.BluechipTotalHolders, true
+}
+
+// HasBluechipTotalHolders returns a boolean if a field has been set.
+func (o *TokenMarketData) HasBluechipTotalHolders() bool {
+	if o != nil && !IsNil(o.BluechipTotalHolders) {
+		return true
+	}
+
+	return false
+}
+
+// SetBluechipTotalHolders gets a reference to the given string and assigns it to the BluechipTotalHolders field.
+func (o *TokenMarketData) SetBluechipTotalHolders(v string) {
+	o.BluechipTotalHolders = &v
+}
+
+// GetBluechipTotalHoldings returns the BluechipTotalHoldings field value if set, zero value otherwise.
+func (o *TokenMarketData) GetBluechipTotalHoldings() string {
+	if o == nil || IsNil(o.BluechipTotalHoldings) {
+		var ret string
+		return ret
+	}
+	return *o.BluechipTotalHoldings
+}
+
+// GetBluechipTotalHoldingsOk returns a tuple with the BluechipTotalHoldings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetBluechipTotalHoldingsOk() (*string, bool) {
+	if o == nil || IsNil(o.BluechipTotalHoldings) {
+		return nil, false
+	}
+	return o.BluechipTotalHoldings, true
+}
+
+// HasBluechipTotalHoldings returns a boolean if a field has been set.
+func (o *TokenMarketData) HasBluechipTotalHoldings() bool {
+	if o != nil && !IsNil(o.BluechipTotalHoldings) {
+		return true
+	}
+
+	return false
+}
+
+// SetBluechipTotalHoldings gets a reference to the given string and assigns it to the BluechipTotalHoldings field.
+func (o *TokenMarketData) SetBluechipTotalHoldings(v string) {
+	o.BluechipTotalHoldings = &v
+}
+
+// GetBluechipHoldingsRatio returns the BluechipHoldingsRatio field value if set, zero value otherwise.
+func (o *TokenMarketData) GetBluechipHoldingsRatio() string {
+	if o == nil || IsNil(o.BluechipHoldingsRatio) {
+		var ret string
+		return ret
+	}
+	return *o.BluechipHoldingsRatio
+}
+
+// GetBluechipHoldingsRatioOk returns a tuple with the BluechipHoldingsRatio field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetBluechipHoldingsRatioOk() (*string, bool) {
+	if o == nil || IsNil(o.BluechipHoldingsRatio) {
+		return nil, false
+	}
+	return o.BluechipHoldingsRatio, true
+}
+
+// HasBluechipHoldingsRatio returns a boolean if a field has been set.
+func (o *TokenMarketData) HasBluechipHoldingsRatio() bool {
+	if o != nil && !IsNil(o.BluechipHoldingsRatio) {
+		return true
+	}
+
+	return false
+}
+
+// SetBluechipHoldingsRatio gets a reference to the given string and assigns it to the BluechipHoldingsRatio field.
+func (o *TokenMarketData) SetBluechipHoldingsRatio(v string) {
+	o.BluechipHoldingsRatio = &v
+}
+
+// GetKolTotalHolders returns the KolTotalHolders field value if set, zero value otherwise.
+func (o *TokenMarketData) GetKolTotalHolders() string {
+	if o == nil || IsNil(o.KolTotalHolders) {
+		var ret string
+		return ret
+	}
+	return *o.KolTotalHolders
+}
+
+// GetKolTotalHoldersOk returns a tuple with the KolTotalHolders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetKolTotalHoldersOk() (*string, bool) {
+	if o == nil || IsNil(o.KolTotalHolders) {
+		return nil, false
+	}
+	return o.KolTotalHolders, true
+}
+
+// HasKolTotalHolders returns a boolean if a field has been set.
+func (o *TokenMarketData) HasKolTotalHolders() bool {
+	if o != nil && !IsNil(o.KolTotalHolders) {
+		return true
+	}
+
+	return false
+}
+
+// SetKolTotalHolders gets a reference to the given string and assigns it to the KolTotalHolders field.
+func (o *TokenMarketData) SetKolTotalHolders(v string) {
+	o.KolTotalHolders = &v
+}
+
+// GetKolTotalHoldings returns the KolTotalHoldings field value if set, zero value otherwise.
+func (o *TokenMarketData) GetKolTotalHoldings() string {
+	if o == nil || IsNil(o.KolTotalHoldings) {
+		var ret string
+		return ret
+	}
+	return *o.KolTotalHoldings
+}
+
+// GetKolTotalHoldingsOk returns a tuple with the KolTotalHoldings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetKolTotalHoldingsOk() (*string, bool) {
+	if o == nil || IsNil(o.KolTotalHoldings) {
+		return nil, false
+	}
+	return o.KolTotalHoldings, true
+}
+
+// HasKolTotalHoldings returns a boolean if a field has been set.
+func (o *TokenMarketData) HasKolTotalHoldings() bool {
+	if o != nil && !IsNil(o.KolTotalHoldings) {
+		return true
+	}
+
+	return false
+}
+
+// SetKolTotalHoldings gets a reference to the given string and assigns it to the KolTotalHoldings field.
+func (o *TokenMarketData) SetKolTotalHoldings(v string) {
+	o.KolTotalHoldings = &v
+}
+
+// GetKolHoldingsRatio returns the KolHoldingsRatio field value if set, zero value otherwise.
+func (o *TokenMarketData) GetKolHoldingsRatio() string {
+	if o == nil || IsNil(o.KolHoldingsRatio) {
+		var ret string
+		return ret
+	}
+	return *o.KolHoldingsRatio
+}
+
+// GetKolHoldingsRatioOk returns a tuple with the KolHoldingsRatio field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetKolHoldingsRatioOk() (*string, bool) {
+	if o == nil || IsNil(o.KolHoldingsRatio) {
+		return nil, false
+	}
+	return o.KolHoldingsRatio, true
+}
+
+// HasKolHoldingsRatio returns a boolean if a field has been set.
+func (o *TokenMarketData) HasKolHoldingsRatio() bool {
+	if o != nil && !IsNil(o.KolHoldingsRatio) {
+		return true
+	}
+
+	return false
+}
+
+// SetKolHoldingsRatio gets a reference to the given string and assigns it to the KolHoldingsRatio field.
+func (o *TokenMarketData) SetKolHoldingsRatio(v string) {
+	o.KolHoldingsRatio = &v
+}
+
+// GetSniperTotalHolders returns the SniperTotalHolders field value if set, zero value otherwise.
+func (o *TokenMarketData) GetSniperTotalHolders() string {
+	if o == nil || IsNil(o.SniperTotalHolders) {
+		var ret string
+		return ret
+	}
+	return *o.SniperTotalHolders
+}
+
+// GetSniperTotalHoldersOk returns a tuple with the SniperTotalHolders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetSniperTotalHoldersOk() (*string, bool) {
+	if o == nil || IsNil(o.SniperTotalHolders) {
+		return nil, false
+	}
+	return o.SniperTotalHolders, true
+}
+
+// HasSniperTotalHolders returns a boolean if a field has been set.
+func (o *TokenMarketData) HasSniperTotalHolders() bool {
+	if o != nil && !IsNil(o.SniperTotalHolders) {
+		return true
+	}
+
+	return false
+}
+
+// SetSniperTotalHolders gets a reference to the given string and assigns it to the SniperTotalHolders field.
+func (o *TokenMarketData) SetSniperTotalHolders(v string) {
+	o.SniperTotalHolders = &v
+}
+
+// GetSniperTotalHoldings returns the SniperTotalHoldings field value if set, zero value otherwise.
+func (o *TokenMarketData) GetSniperTotalHoldings() string {
+	if o == nil || IsNil(o.SniperTotalHoldings) {
+		var ret string
+		return ret
+	}
+	return *o.SniperTotalHoldings
+}
+
+// GetSniperTotalHoldingsOk returns a tuple with the SniperTotalHoldings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetSniperTotalHoldingsOk() (*string, bool) {
+	if o == nil || IsNil(o.SniperTotalHoldings) {
+		return nil, false
+	}
+	return o.SniperTotalHoldings, true
+}
+
+// HasSniperTotalHoldings returns a boolean if a field has been set.
+func (o *TokenMarketData) HasSniperTotalHoldings() bool {
+	if o != nil && !IsNil(o.SniperTotalHoldings) {
+		return true
+	}
+
+	return false
+}
+
+// SetSniperTotalHoldings gets a reference to the given string and assigns it to the SniperTotalHoldings field.
+func (o *TokenMarketData) SetSniperTotalHoldings(v string) {
+	o.SniperTotalHoldings = &v
+}
+
+// GetSniperHoldingsRatio returns the SniperHoldingsRatio field value if set, zero value otherwise.
+func (o *TokenMarketData) GetSniperHoldingsRatio() string {
+	if o == nil || IsNil(o.SniperHoldingsRatio) {
+		var ret string
+		return ret
+	}
+	return *o.SniperHoldingsRatio
+}
+
+// GetSniperHoldingsRatioOk returns a tuple with the SniperHoldingsRatio field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetSniperHoldingsRatioOk() (*string, bool) {
+	if o == nil || IsNil(o.SniperHoldingsRatio) {
+		return nil, false
+	}
+	return o.SniperHoldingsRatio, true
+}
+
+// HasSniperHoldingsRatio returns a boolean if a field has been set.
+func (o *TokenMarketData) HasSniperHoldingsRatio() bool {
+	if o != nil && !IsNil(o.SniperHoldingsRatio) {
+		return true
+	}
+
+	return false
+}
+
+// SetSniperHoldingsRatio gets a reference to the given string and assigns it to the SniperHoldingsRatio field.
+func (o *TokenMarketData) SetSniperHoldingsRatio(v string) {
+	o.SniperHoldingsRatio = &v
+}
+
+// GetProTotalHolders returns the ProTotalHolders field value if set, zero value otherwise.
+func (o *TokenMarketData) GetProTotalHolders() string {
+	if o == nil || IsNil(o.ProTotalHolders) {
+		var ret string
+		return ret
+	}
+	return *o.ProTotalHolders
+}
+
+// GetProTotalHoldersOk returns a tuple with the ProTotalHolders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetProTotalHoldersOk() (*string, bool) {
+	if o == nil || IsNil(o.ProTotalHolders) {
+		return nil, false
+	}
+	return o.ProTotalHolders, true
+}
+
+// HasProTotalHolders returns a boolean if a field has been set.
+func (o *TokenMarketData) HasProTotalHolders() bool {
+	if o != nil && !IsNil(o.ProTotalHolders) {
+		return true
+	}
+
+	return false
+}
+
+// SetProTotalHolders gets a reference to the given string and assigns it to the ProTotalHolders field.
+func (o *TokenMarketData) SetProTotalHolders(v string) {
+	o.ProTotalHolders = &v
+}
+
+// GetProTotalHoldings returns the ProTotalHoldings field value if set, zero value otherwise.
+func (o *TokenMarketData) GetProTotalHoldings() string {
+	if o == nil || IsNil(o.ProTotalHoldings) {
+		var ret string
+		return ret
+	}
+	return *o.ProTotalHoldings
+}
+
+// GetProTotalHoldingsOk returns a tuple with the ProTotalHoldings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetProTotalHoldingsOk() (*string, bool) {
+	if o == nil || IsNil(o.ProTotalHoldings) {
+		return nil, false
+	}
+	return o.ProTotalHoldings, true
+}
+
+// HasProTotalHoldings returns a boolean if a field has been set.
+func (o *TokenMarketData) HasProTotalHoldings() bool {
+	if o != nil && !IsNil(o.ProTotalHoldings) {
+		return true
+	}
+
+	return false
+}
+
+// SetProTotalHoldings gets a reference to the given string and assigns it to the ProTotalHoldings field.
+func (o *TokenMarketData) SetProTotalHoldings(v string) {
+	o.ProTotalHoldings = &v
+}
+
+// GetProHoldingsRatio returns the ProHoldingsRatio field value if set, zero value otherwise.
+func (o *TokenMarketData) GetProHoldingsRatio() string {
+	if o == nil || IsNil(o.ProHoldingsRatio) {
+		var ret string
+		return ret
+	}
+	return *o.ProHoldingsRatio
+}
+
+// GetProHoldingsRatioOk returns a tuple with the ProHoldingsRatio field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetProHoldingsRatioOk() (*string, bool) {
+	if o == nil || IsNil(o.ProHoldingsRatio) {
+		return nil, false
+	}
+	return o.ProHoldingsRatio, true
+}
+
+// HasProHoldingsRatio returns a boolean if a field has been set.
+func (o *TokenMarketData) HasProHoldingsRatio() bool {
+	if o != nil && !IsNil(o.ProHoldingsRatio) {
+		return true
+	}
+
+	return false
+}
+
+// SetProHoldingsRatio gets a reference to the given string and assigns it to the ProHoldingsRatio field.
+func (o *TokenMarketData) SetProHoldingsRatio(v string) {
+	o.ProHoldingsRatio = &v
+}
+
+// GetInsiderTotalHolders returns the InsiderTotalHolders field value if set, zero value otherwise.
+func (o *TokenMarketData) GetInsiderTotalHolders() string {
+	if o == nil || IsNil(o.InsiderTotalHolders) {
+		var ret string
+		return ret
+	}
+	return *o.InsiderTotalHolders
+}
+
+// GetInsiderTotalHoldersOk returns a tuple with the InsiderTotalHolders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetInsiderTotalHoldersOk() (*string, bool) {
+	if o == nil || IsNil(o.InsiderTotalHolders) {
+		return nil, false
+	}
+	return o.InsiderTotalHolders, true
+}
+
+// HasInsiderTotalHolders returns a boolean if a field has been set.
+func (o *TokenMarketData) HasInsiderTotalHolders() bool {
+	if o != nil && !IsNil(o.InsiderTotalHolders) {
+		return true
+	}
+
+	return false
+}
+
+// SetInsiderTotalHolders gets a reference to the given string and assigns it to the InsiderTotalHolders field.
+func (o *TokenMarketData) SetInsiderTotalHolders(v string) {
+	o.InsiderTotalHolders = &v
+}
+
+// GetInsiderTotalHoldings returns the InsiderTotalHoldings field value if set, zero value otherwise.
+func (o *TokenMarketData) GetInsiderTotalHoldings() string {
+	if o == nil || IsNil(o.InsiderTotalHoldings) {
+		var ret string
+		return ret
+	}
+	return *o.InsiderTotalHoldings
+}
+
+// GetInsiderTotalHoldingsOk returns a tuple with the InsiderTotalHoldings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetInsiderTotalHoldingsOk() (*string, bool) {
+	if o == nil || IsNil(o.InsiderTotalHoldings) {
+		return nil, false
+	}
+	return o.InsiderTotalHoldings, true
+}
+
+// HasInsiderTotalHoldings returns a boolean if a field has been set.
+func (o *TokenMarketData) HasInsiderTotalHoldings() bool {
+	if o != nil && !IsNil(o.InsiderTotalHoldings) {
+		return true
+	}
+
+	return false
+}
+
+// SetInsiderTotalHoldings gets a reference to the given string and assigns it to the InsiderTotalHoldings field.
+func (o *TokenMarketData) SetInsiderTotalHoldings(v string) {
+	o.InsiderTotalHoldings = &v
+}
+
+// GetInsiderHoldingsRatio returns the InsiderHoldingsRatio field value if set, zero value otherwise.
+func (o *TokenMarketData) GetInsiderHoldingsRatio() string {
+	if o == nil || IsNil(o.InsiderHoldingsRatio) {
+		var ret string
+		return ret
+	}
+	return *o.InsiderHoldingsRatio
+}
+
+// GetInsiderHoldingsRatioOk returns a tuple with the InsiderHoldingsRatio field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetInsiderHoldingsRatioOk() (*string, bool) {
+	if o == nil || IsNil(o.InsiderHoldingsRatio) {
+		return nil, false
+	}
+	return o.InsiderHoldingsRatio, true
+}
+
+// HasInsiderHoldingsRatio returns a boolean if a field has been set.
+func (o *TokenMarketData) HasInsiderHoldingsRatio() bool {
+	if o != nil && !IsNil(o.InsiderHoldingsRatio) {
+		return true
+	}
+
+	return false
+}
+
+// SetInsiderHoldingsRatio gets a reference to the given string and assigns it to the InsiderHoldingsRatio field.
+func (o *TokenMarketData) SetInsiderHoldingsRatio(v string) {
+	o.InsiderHoldingsRatio = &v
+}
+
+// GetSandwishTotalHolders returns the SandwishTotalHolders field value if set, zero value otherwise.
+func (o *TokenMarketData) GetSandwishTotalHolders() string {
+	if o == nil || IsNil(o.SandwishTotalHolders) {
+		var ret string
+		return ret
+	}
+	return *o.SandwishTotalHolders
+}
+
+// GetSandwishTotalHoldersOk returns a tuple with the SandwishTotalHolders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetSandwishTotalHoldersOk() (*string, bool) {
+	if o == nil || IsNil(o.SandwishTotalHolders) {
+		return nil, false
+	}
+	return o.SandwishTotalHolders, true
+}
+
+// HasSandwishTotalHolders returns a boolean if a field has been set.
+func (o *TokenMarketData) HasSandwishTotalHolders() bool {
+	if o != nil && !IsNil(o.SandwishTotalHolders) {
+		return true
+	}
+
+	return false
+}
+
+// SetSandwishTotalHolders gets a reference to the given string and assigns it to the SandwishTotalHolders field.
+func (o *TokenMarketData) SetSandwishTotalHolders(v string) {
+	o.SandwishTotalHolders = &v
+}
+
+// GetSandwishTotalHoldings returns the SandwishTotalHoldings field value if set, zero value otherwise.
+func (o *TokenMarketData) GetSandwishTotalHoldings() string {
+	if o == nil || IsNil(o.SandwishTotalHoldings) {
+		var ret string
+		return ret
+	}
+	return *o.SandwishTotalHoldings
+}
+
+// GetSandwishTotalHoldingsOk returns a tuple with the SandwishTotalHoldings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetSandwishTotalHoldingsOk() (*string, bool) {
+	if o == nil || IsNil(o.SandwishTotalHoldings) {
+		return nil, false
+	}
+	return o.SandwishTotalHoldings, true
+}
+
+// HasSandwishTotalHoldings returns a boolean if a field has been set.
+func (o *TokenMarketData) HasSandwishTotalHoldings() bool {
+	if o != nil && !IsNil(o.SandwishTotalHoldings) {
+		return true
+	}
+
+	return false
+}
+
+// SetSandwishTotalHoldings gets a reference to the given string and assigns it to the SandwishTotalHoldings field.
+func (o *TokenMarketData) SetSandwishTotalHoldings(v string) {
+	o.SandwishTotalHoldings = &v
+}
+
+// GetSandwishHoldingsRatio returns the SandwishHoldingsRatio field value if set, zero value otherwise.
+func (o *TokenMarketData) GetSandwishHoldingsRatio() string {
+	if o == nil || IsNil(o.SandwishHoldingsRatio) {
+		var ret string
+		return ret
+	}
+	return *o.SandwishHoldingsRatio
+}
+
+// GetSandwishHoldingsRatioOk returns a tuple with the SandwishHoldingsRatio field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetSandwishHoldingsRatioOk() (*string, bool) {
+	if o == nil || IsNil(o.SandwishHoldingsRatio) {
+		return nil, false
+	}
+	return o.SandwishHoldingsRatio, true
+}
+
+// HasSandwishHoldingsRatio returns a boolean if a field has been set.
+func (o *TokenMarketData) HasSandwishHoldingsRatio() bool {
+	if o != nil && !IsNil(o.SandwishHoldingsRatio) {
+		return true
+	}
+
+	return false
+}
+
+// SetSandwishHoldingsRatio gets a reference to the given string and assigns it to the SandwishHoldingsRatio field.
+func (o *TokenMarketData) SetSandwishHoldingsRatio(v string) {
+	o.SandwishHoldingsRatio = &v
+}
+
+// GetFreshTotalHolders returns the FreshTotalHolders field value if set, zero value otherwise.
+func (o *TokenMarketData) GetFreshTotalHolders() string {
+	if o == nil || IsNil(o.FreshTotalHolders) {
+		var ret string
+		return ret
+	}
+	return *o.FreshTotalHolders
+}
+
+// GetFreshTotalHoldersOk returns a tuple with the FreshTotalHolders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetFreshTotalHoldersOk() (*string, bool) {
+	if o == nil || IsNil(o.FreshTotalHolders) {
+		return nil, false
+	}
+	return o.FreshTotalHolders, true
+}
+
+// HasFreshTotalHolders returns a boolean if a field has been set.
+func (o *TokenMarketData) HasFreshTotalHolders() bool {
+	if o != nil && !IsNil(o.FreshTotalHolders) {
+		return true
+	}
+
+	return false
+}
+
+// SetFreshTotalHolders gets a reference to the given string and assigns it to the FreshTotalHolders field.
+func (o *TokenMarketData) SetFreshTotalHolders(v string) {
+	o.FreshTotalHolders = &v
+}
+
+// GetFreshTotalHoldings returns the FreshTotalHoldings field value if set, zero value otherwise.
+func (o *TokenMarketData) GetFreshTotalHoldings() string {
+	if o == nil || IsNil(o.FreshTotalHoldings) {
+		var ret string
+		return ret
+	}
+	return *o.FreshTotalHoldings
+}
+
+// GetFreshTotalHoldingsOk returns a tuple with the FreshTotalHoldings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetFreshTotalHoldingsOk() (*string, bool) {
+	if o == nil || IsNil(o.FreshTotalHoldings) {
+		return nil, false
+	}
+	return o.FreshTotalHoldings, true
+}
+
+// HasFreshTotalHoldings returns a boolean if a field has been set.
+func (o *TokenMarketData) HasFreshTotalHoldings() bool {
+	if o != nil && !IsNil(o.FreshTotalHoldings) {
+		return true
+	}
+
+	return false
+}
+
+// SetFreshTotalHoldings gets a reference to the given string and assigns it to the FreshTotalHoldings field.
+func (o *TokenMarketData) SetFreshTotalHoldings(v string) {
+	o.FreshTotalHoldings = &v
+}
+
+// GetFreshHoldingsRatio returns the FreshHoldingsRatio field value if set, zero value otherwise.
+func (o *TokenMarketData) GetFreshHoldingsRatio() string {
+	if o == nil || IsNil(o.FreshHoldingsRatio) {
+		var ret string
+		return ret
+	}
+	return *o.FreshHoldingsRatio
+}
+
+// GetFreshHoldingsRatioOk returns a tuple with the FreshHoldingsRatio field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetFreshHoldingsRatioOk() (*string, bool) {
+	if o == nil || IsNil(o.FreshHoldingsRatio) {
+		return nil, false
+	}
+	return o.FreshHoldingsRatio, true
+}
+
+// HasFreshHoldingsRatio returns a boolean if a field has been set.
+func (o *TokenMarketData) HasFreshHoldingsRatio() bool {
+	if o != nil && !IsNil(o.FreshHoldingsRatio) {
+		return true
+	}
+
+	return false
+}
+
+// SetFreshHoldingsRatio gets a reference to the given string and assigns it to the FreshHoldingsRatio field.
+func (o *TokenMarketData) SetFreshHoldingsRatio(v string) {
+	o.FreshHoldingsRatio = &v
+}
+
+// GetBundleTotalHolders returns the BundleTotalHolders field value if set, zero value otherwise.
+func (o *TokenMarketData) GetBundleTotalHolders() string {
+	if o == nil || IsNil(o.BundleTotalHolders) {
+		var ret string
+		return ret
+	}
+	return *o.BundleTotalHolders
+}
+
+// GetBundleTotalHoldersOk returns a tuple with the BundleTotalHolders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetBundleTotalHoldersOk() (*string, bool) {
+	if o == nil || IsNil(o.BundleTotalHolders) {
+		return nil, false
+	}
+	return o.BundleTotalHolders, true
+}
+
+// HasBundleTotalHolders returns a boolean if a field has been set.
+func (o *TokenMarketData) HasBundleTotalHolders() bool {
+	if o != nil && !IsNil(o.BundleTotalHolders) {
+		return true
+	}
+
+	return false
+}
+
+// SetBundleTotalHolders gets a reference to the given string and assigns it to the BundleTotalHolders field.
+func (o *TokenMarketData) SetBundleTotalHolders(v string) {
+	o.BundleTotalHolders = &v
+}
+
+// GetBundleTotalHoldings returns the BundleTotalHoldings field value if set, zero value otherwise.
+func (o *TokenMarketData) GetBundleTotalHoldings() string {
+	if o == nil || IsNil(o.BundleTotalHoldings) {
+		var ret string
+		return ret
+	}
+	return *o.BundleTotalHoldings
+}
+
+// GetBundleTotalHoldingsOk returns a tuple with the BundleTotalHoldings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetBundleTotalHoldingsOk() (*string, bool) {
+	if o == nil || IsNil(o.BundleTotalHoldings) {
+		return nil, false
+	}
+	return o.BundleTotalHoldings, true
+}
+
+// HasBundleTotalHoldings returns a boolean if a field has been set.
+func (o *TokenMarketData) HasBundleTotalHoldings() bool {
+	if o != nil && !IsNil(o.BundleTotalHoldings) {
+		return true
+	}
+
+	return false
+}
+
+// SetBundleTotalHoldings gets a reference to the given string and assigns it to the BundleTotalHoldings field.
+func (o *TokenMarketData) SetBundleTotalHoldings(v string) {
+	o.BundleTotalHoldings = &v
+}
+
+// GetBundleHoldingsRatio returns the BundleHoldingsRatio field value if set, zero value otherwise.
+func (o *TokenMarketData) GetBundleHoldingsRatio() string {
+	if o == nil || IsNil(o.BundleHoldingsRatio) {
+		var ret string
+		return ret
+	}
+	return *o.BundleHoldingsRatio
+}
+
+// GetBundleHoldingsRatioOk returns a tuple with the BundleHoldingsRatio field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetBundleHoldingsRatioOk() (*string, bool) {
+	if o == nil || IsNil(o.BundleHoldingsRatio) {
+		return nil, false
+	}
+	return o.BundleHoldingsRatio, true
+}
+
+// HasBundleHoldingsRatio returns a boolean if a field has been set.
+func (o *TokenMarketData) HasBundleHoldingsRatio() bool {
+	if o != nil && !IsNil(o.BundleHoldingsRatio) {
+		return true
+	}
+
+	return false
+}
+
+// SetBundleHoldingsRatio gets a reference to the given string and assigns it to the BundleHoldingsRatio field.
+func (o *TokenMarketData) SetBundleHoldingsRatio(v string) {
+	o.BundleHoldingsRatio = &v
+}
+
+// GetDevTotalHolders returns the DevTotalHolders field value if set, zero value otherwise.
+func (o *TokenMarketData) GetDevTotalHolders() string {
+	if o == nil || IsNil(o.DevTotalHolders) {
+		var ret string
+		return ret
+	}
+	return *o.DevTotalHolders
+}
+
+// GetDevTotalHoldersOk returns a tuple with the DevTotalHolders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetDevTotalHoldersOk() (*string, bool) {
+	if o == nil || IsNil(o.DevTotalHolders) {
+		return nil, false
+	}
+	return o.DevTotalHolders, true
+}
+
+// HasDevTotalHolders returns a boolean if a field has been set.
+func (o *TokenMarketData) HasDevTotalHolders() bool {
+	if o != nil && !IsNil(o.DevTotalHolders) {
+		return true
+	}
+
+	return false
+}
+
+// SetDevTotalHolders gets a reference to the given string and assigns it to the DevTotalHolders field.
+func (o *TokenMarketData) SetDevTotalHolders(v string) {
+	o.DevTotalHolders = &v
+}
+
+// GetDevTotalHoldings returns the DevTotalHoldings field value if set, zero value otherwise.
+func (o *TokenMarketData) GetDevTotalHoldings() string {
+	if o == nil || IsNil(o.DevTotalHoldings) {
+		var ret string
+		return ret
+	}
+	return *o.DevTotalHoldings
+}
+
+// GetDevTotalHoldingsOk returns a tuple with the DevTotalHoldings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetDevTotalHoldingsOk() (*string, bool) {
+	if o == nil || IsNil(o.DevTotalHoldings) {
+		return nil, false
+	}
+	return o.DevTotalHoldings, true
+}
+
+// HasDevTotalHoldings returns a boolean if a field has been set.
+func (o *TokenMarketData) HasDevTotalHoldings() bool {
+	if o != nil && !IsNil(o.DevTotalHoldings) {
+		return true
+	}
+
+	return false
+}
+
+// SetDevTotalHoldings gets a reference to the given string and assigns it to the DevTotalHoldings field.
+func (o *TokenMarketData) SetDevTotalHoldings(v string) {
+	o.DevTotalHoldings = &v
+}
+
+// GetDevHoldingsRatio returns the DevHoldingsRatio field value if set, zero value otherwise.
+func (o *TokenMarketData) GetDevHoldingsRatio() string {
+	if o == nil || IsNil(o.DevHoldingsRatio) {
+		var ret string
+		return ret
+	}
+	return *o.DevHoldingsRatio
+}
+
+// GetDevHoldingsRatioOk returns a tuple with the DevHoldingsRatio field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetDevHoldingsRatioOk() (*string, bool) {
+	if o == nil || IsNil(o.DevHoldingsRatio) {
+		return nil, false
+	}
+	return o.DevHoldingsRatio, true
+}
+
+// HasDevHoldingsRatio returns a boolean if a field has been set.
+func (o *TokenMarketData) HasDevHoldingsRatio() bool {
+	if o != nil && !IsNil(o.DevHoldingsRatio) {
+		return true
+	}
+
+	return false
+}
+
+// SetDevHoldingsRatio gets a reference to the given string and assigns it to the DevHoldingsRatio field.
+func (o *TokenMarketData) SetDevHoldingsRatio(v string) {
+	o.DevHoldingsRatio = &v
 }
 
 func (o TokenMarketData) MarshalJSON() ([]byte, error) {
@@ -591,14 +1475,92 @@ func (o TokenMarketData) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CompletionRatio) {
 		toSerialize["completionRatio"] = o.CompletionRatio
 	}
-	if !IsNil(o.DevTeamCount) {
-		toSerialize["devTeamCount"] = o.DevTeamCount
+	if !IsNil(o.Top50TotalHoldings) {
+		toSerialize["top50TotalHoldings"] = o.Top50TotalHoldings
 	}
-	if !IsNil(o.DevTeamAmount) {
-		toSerialize["devTeamAmount"] = o.DevTeamAmount
+	if !IsNil(o.Top50HoldingsRatio) {
+		toSerialize["top50HoldingsRatio"] = o.Top50HoldingsRatio
 	}
-	if !IsNil(o.DevTeamRatio) {
-		toSerialize["devTeamRatio"] = o.DevTeamRatio
+	if !IsNil(o.BluechipTotalHolders) {
+		toSerialize["bluechipTotalHolders"] = o.BluechipTotalHolders
+	}
+	if !IsNil(o.BluechipTotalHoldings) {
+		toSerialize["bluechipTotalHoldings"] = o.BluechipTotalHoldings
+	}
+	if !IsNil(o.BluechipHoldingsRatio) {
+		toSerialize["bluechipHoldingsRatio"] = o.BluechipHoldingsRatio
+	}
+	if !IsNil(o.KolTotalHolders) {
+		toSerialize["kolTotalHolders"] = o.KolTotalHolders
+	}
+	if !IsNil(o.KolTotalHoldings) {
+		toSerialize["kolTotalHoldings"] = o.KolTotalHoldings
+	}
+	if !IsNil(o.KolHoldingsRatio) {
+		toSerialize["kolHoldingsRatio"] = o.KolHoldingsRatio
+	}
+	if !IsNil(o.SniperTotalHolders) {
+		toSerialize["sniperTotalHolders"] = o.SniperTotalHolders
+	}
+	if !IsNil(o.SniperTotalHoldings) {
+		toSerialize["sniperTotalHoldings"] = o.SniperTotalHoldings
+	}
+	if !IsNil(o.SniperHoldingsRatio) {
+		toSerialize["sniperHoldingsRatio"] = o.SniperHoldingsRatio
+	}
+	if !IsNil(o.ProTotalHolders) {
+		toSerialize["proTotalHolders"] = o.ProTotalHolders
+	}
+	if !IsNil(o.ProTotalHoldings) {
+		toSerialize["proTotalHoldings"] = o.ProTotalHoldings
+	}
+	if !IsNil(o.ProHoldingsRatio) {
+		toSerialize["proHoldingsRatio"] = o.ProHoldingsRatio
+	}
+	if !IsNil(o.InsiderTotalHolders) {
+		toSerialize["insiderTotalHolders"] = o.InsiderTotalHolders
+	}
+	if !IsNil(o.InsiderTotalHoldings) {
+		toSerialize["insiderTotalHoldings"] = o.InsiderTotalHoldings
+	}
+	if !IsNil(o.InsiderHoldingsRatio) {
+		toSerialize["insiderHoldingsRatio"] = o.InsiderHoldingsRatio
+	}
+	if !IsNil(o.SandwishTotalHolders) {
+		toSerialize["sandwishTotalHolders"] = o.SandwishTotalHolders
+	}
+	if !IsNil(o.SandwishTotalHoldings) {
+		toSerialize["sandwishTotalHoldings"] = o.SandwishTotalHoldings
+	}
+	if !IsNil(o.SandwishHoldingsRatio) {
+		toSerialize["sandwishHoldingsRatio"] = o.SandwishHoldingsRatio
+	}
+	if !IsNil(o.FreshTotalHolders) {
+		toSerialize["freshTotalHolders"] = o.FreshTotalHolders
+	}
+	if !IsNil(o.FreshTotalHoldings) {
+		toSerialize["freshTotalHoldings"] = o.FreshTotalHoldings
+	}
+	if !IsNil(o.FreshHoldingsRatio) {
+		toSerialize["freshHoldingsRatio"] = o.FreshHoldingsRatio
+	}
+	if !IsNil(o.BundleTotalHolders) {
+		toSerialize["bundleTotalHolders"] = o.BundleTotalHolders
+	}
+	if !IsNil(o.BundleTotalHoldings) {
+		toSerialize["bundleTotalHoldings"] = o.BundleTotalHoldings
+	}
+	if !IsNil(o.BundleHoldingsRatio) {
+		toSerialize["bundleHoldingsRatio"] = o.BundleHoldingsRatio
+	}
+	if !IsNil(o.DevTotalHolders) {
+		toSerialize["devTotalHolders"] = o.DevTotalHolders
+	}
+	if !IsNil(o.DevTotalHoldings) {
+		toSerialize["devTotalHoldings"] = o.DevTotalHoldings
+	}
+	if !IsNil(o.DevHoldingsRatio) {
+		toSerialize["devHoldingsRatio"] = o.DevHoldingsRatio
 	}
 	return toSerialize, nil
 }

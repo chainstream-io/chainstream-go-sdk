@@ -25,7 +25,7 @@ type RedPacketClaimDTO struct {
 	// DTO.RED_PACKET.PACKET_ID
 	PacketId string `json:"packetId"`
 	// DTO.RED_PACKET.CHAIN
-	Chain ChainSymbol `json:"chain"`
+	Chain Chain `json:"chain"`
 	// DTO.RED_PACKET.CLAIMER
 	Claimer string `json:"claimer"`
 	// DTO.RED_PACKET.MINT
@@ -46,7 +46,7 @@ type _RedPacketClaimDTO RedPacketClaimDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRedPacketClaimDTO(packetId string, chain ChainSymbol, claimer string, mint string, amount string, claimedAt float32, creator string, txHash string) *RedPacketClaimDTO {
+func NewRedPacketClaimDTO(packetId string, chain Chain, claimer string, mint string, amount string, claimedAt float32, creator string, txHash string) *RedPacketClaimDTO {
 	this := RedPacketClaimDTO{}
 	this.PacketId = packetId
 	this.Chain = chain
@@ -92,9 +92,9 @@ func (o *RedPacketClaimDTO) SetPacketId(v string) {
 }
 
 // GetChain returns the Chain field value
-func (o *RedPacketClaimDTO) GetChain() ChainSymbol {
+func (o *RedPacketClaimDTO) GetChain() Chain {
 	if o == nil {
-		var ret ChainSymbol
+		var ret Chain
 		return ret
 	}
 
@@ -103,7 +103,7 @@ func (o *RedPacketClaimDTO) GetChain() ChainSymbol {
 
 // GetChainOk returns a tuple with the Chain field value
 // and a boolean to check if the value has been set.
-func (o *RedPacketClaimDTO) GetChainOk() (*ChainSymbol, bool) {
+func (o *RedPacketClaimDTO) GetChainOk() (*Chain, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -111,7 +111,7 @@ func (o *RedPacketClaimDTO) GetChainOk() (*ChainSymbol, bool) {
 }
 
 // SetChain sets field value
-func (o *RedPacketClaimDTO) SetChain(v ChainSymbol) {
+func (o *RedPacketClaimDTO) SetChain(v Chain) {
 	o.Chain = v
 }
 

@@ -22,6 +22,8 @@ var _ MappedNullable = &CreateRedPacketInput{}
 
 // CreateRedPacketInput struct for CreateRedPacketInput
 type CreateRedPacketInput struct {
+	// DTO.RED_PACKET.CHAIN
+	Chain string `json:"chain"`
 	// DTO.RED_PACKET.CREATOR
 	Creator string `json:"creator"`
 	// DTO.RED_PACKET.MINT
@@ -46,8 +48,9 @@ type _CreateRedPacketInput CreateRedPacketInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateRedPacketInput(creator string, mint string, maxClaims float32) *CreateRedPacketInput {
+func NewCreateRedPacketInput(chain string, creator string, mint string, maxClaims float32) *CreateRedPacketInput {
 	this := CreateRedPacketInput{}
+	this.Chain = chain
 	this.Creator = creator
 	this.Mint = mint
 	this.MaxClaims = maxClaims
@@ -60,6 +63,30 @@ func NewCreateRedPacketInput(creator string, mint string, maxClaims float32) *Cr
 func NewCreateRedPacketInputWithDefaults() *CreateRedPacketInput {
 	this := CreateRedPacketInput{}
 	return &this
+}
+
+// GetChain returns the Chain field value
+func (o *CreateRedPacketInput) GetChain() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Chain
+}
+
+// GetChainOk returns a tuple with the Chain field value
+// and a boolean to check if the value has been set.
+func (o *CreateRedPacketInput) GetChainOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Chain, true
+}
+
+// SetChain sets field value
+func (o *CreateRedPacketInput) SetChain(v string) {
+	o.Chain = v
 }
 
 // GetCreator returns the Creator field value
@@ -304,6 +331,7 @@ func (o CreateRedPacketInput) MarshalJSON() ([]byte, error) {
 
 func (o CreateRedPacketInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["chain"] = o.Chain
 	toSerialize["creator"] = o.Creator
 	toSerialize["mint"] = o.Mint
 	toSerialize["maxClaims"] = o.MaxClaims
@@ -330,6 +358,7 @@ func (o *CreateRedPacketInput) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"chain",
 		"creator",
 		"mint",
 		"maxClaims",

@@ -280,6 +280,113 @@ func (a *TokenAPIService) GetCreationExecute(r TokenAPIGetCreationRequest) (*Tok
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type TokenAPIGetDevTokensRequest struct {
+	ctx context.Context
+	ApiService *TokenAPIService
+	chain ChainSymbol
+	devAddress string
+}
+
+func (r TokenAPIGetDevTokensRequest) Execute() ([]DevTokenDTO, *http.Response, error) {
+	return r.ApiService.GetDevTokensExecute(r)
+}
+
+/*
+GetDevTokens CONTROLLER.TOKEN.GET_DEV_TOKENS.SUMMARY
+
+CONTROLLER.TOKEN.GET_DEV_TOKENS.DESCRIPTION
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param devAddress Developer address
+ @return TokenAPIGetDevTokensRequest
+*/
+func (a *TokenAPIService) GetDevTokens(ctx context.Context, chain ChainSymbol, devAddress string) TokenAPIGetDevTokensRequest {
+	return TokenAPIGetDevTokensRequest{
+		ApiService: a,
+		ctx: ctx,
+		chain: chain,
+		devAddress: devAddress,
+	}
+}
+
+// Execute executes the request
+//  @return []DevTokenDTO
+func (a *TokenAPIService) GetDevTokensExecute(r TokenAPIGetDevTokensRequest) ([]DevTokenDTO, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []DevTokenDTO
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokenAPIService.GetDevTokens")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/token/{chain}/dev/{devAddress}/tokens"
+	localVarPath = strings.Replace(localVarPath, "{"+"chain"+"}", url.PathEscape(parameterValueToString(r.chain, "chain")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"devAddress"+"}", url.PathEscape(parameterValueToString(r.devAddress, "devAddress")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type TokenAPIGetHoldersRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
@@ -1883,6 +1990,117 @@ func (a *TokenAPIService) GetTokenExecute(r TokenAPIGetTokenRequest) (*Token, *h
 	localVarPath := localBasePath + "/v1/token/{chain}/{tokenAddress}"
 	localVarPath = strings.Replace(localVarPath, "{"+"chain"+"}", url.PathEscape(parameterValueToString(r.chain, "chain")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"tokenAddress"+"}", url.PathEscape(parameterValueToString(r.tokenAddress, "tokenAddress")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type TokenAPIGetTokenTradersRequest struct {
+	ctx context.Context
+	ApiService *TokenAPIService
+	chain ChainSymbol
+	tokenAddress string
+	tag TokenTraderTag
+}
+
+func (r TokenAPIGetTokenTradersRequest) Execute() ([]TokenTrader, *http.Response, error) {
+	return r.ApiService.GetTokenTradersExecute(r)
+}
+
+/*
+GetTokenTraders CONTROLLER.TOKEN.GET_TOKEN_TRADERS.SUMMARY
+
+CONTROLLER.TOKEN.GET_TOKEN_TRADERS.DESCRIPTION
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param tag Token trader tag
+ @return TokenAPIGetTokenTradersRequest
+*/
+func (a *TokenAPIService) GetTokenTraders(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag) TokenAPIGetTokenTradersRequest {
+	return TokenAPIGetTokenTradersRequest{
+		ApiService: a,
+		ctx: ctx,
+		chain: chain,
+		tokenAddress: tokenAddress,
+		tag: tag,
+	}
+}
+
+// Execute executes the request
+//  @return []TokenTrader
+func (a *TokenAPIService) GetTokenTradersExecute(r TokenAPIGetTokenTradersRequest) ([]TokenTrader, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []TokenTrader
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokenAPIService.GetTokenTraders")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/token/{chain}/{tokenAddress}/traders/{tag}"
+	localVarPath = strings.Replace(localVarPath, "{"+"chain"+"}", url.PathEscape(parameterValueToString(r.chain, "chain")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tokenAddress"+"}", url.PathEscape(parameterValueToString(r.tokenAddress, "tokenAddress")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tag"+"}", url.PathEscape(parameterValueToString(r.tag, "tag")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

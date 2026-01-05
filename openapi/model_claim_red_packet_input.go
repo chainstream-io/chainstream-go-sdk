@@ -22,6 +22,8 @@ var _ MappedNullable = &ClaimRedPacketInput{}
 
 // ClaimRedPacketInput struct for ClaimRedPacketInput
 type ClaimRedPacketInput struct {
+	// DTO.RED_PACKET.CHAIN
+	Chain string `json:"chain"`
 	// DTO.RED_PACKET.PACKET_ID
 	PacketId *string `json:"packetId,omitempty"`
 	// DTO.RED_PACKET.SHARE_ID
@@ -38,8 +40,9 @@ type _ClaimRedPacketInput ClaimRedPacketInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClaimRedPacketInput(claimer string) *ClaimRedPacketInput {
+func NewClaimRedPacketInput(chain string, claimer string) *ClaimRedPacketInput {
 	this := ClaimRedPacketInput{}
+	this.Chain = chain
 	this.Claimer = claimer
 	return &this
 }
@@ -50,6 +53,30 @@ func NewClaimRedPacketInput(claimer string) *ClaimRedPacketInput {
 func NewClaimRedPacketInputWithDefaults() *ClaimRedPacketInput {
 	this := ClaimRedPacketInput{}
 	return &this
+}
+
+// GetChain returns the Chain field value
+func (o *ClaimRedPacketInput) GetChain() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Chain
+}
+
+// GetChainOk returns a tuple with the Chain field value
+// and a boolean to check if the value has been set.
+func (o *ClaimRedPacketInput) GetChainOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Chain, true
+}
+
+// SetChain sets field value
+func (o *ClaimRedPacketInput) SetChain(v string) {
+	o.Chain = v
 }
 
 // GetPacketId returns the PacketId field value if set, zero value otherwise.
@@ -182,6 +209,7 @@ func (o ClaimRedPacketInput) MarshalJSON() ([]byte, error) {
 
 func (o ClaimRedPacketInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["chain"] = o.Chain
 	if !IsNil(o.PacketId) {
 		toSerialize["packetId"] = o.PacketId
 	}
@@ -200,6 +228,7 @@ func (o *ClaimRedPacketInput) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"chain",
 		"claimer",
 	}
 

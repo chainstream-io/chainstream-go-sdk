@@ -628,7 +628,7 @@ type RedPacketAPIGetRedpacketsRequest struct {
 	limit *float32
 	direction *string
 	creator *string
-	chain *ChainSymbol
+	chain *string
 }
 
 // DTO.RED_PACKET.CURSOR
@@ -656,7 +656,7 @@ func (r RedPacketAPIGetRedpacketsRequest) Creator(creator string) RedPacketAPIGe
 }
 
 // DTO.RED_PACKET.CHAIN
-func (r RedPacketAPIGetRedpacketsRequest) Chain(chain ChainSymbol) RedPacketAPIGetRedpacketsRequest {
+func (r RedPacketAPIGetRedpacketsRequest) Chain(chain string) RedPacketAPIGetRedpacketsRequest {
 	r.chain = &chain
 	return r
 }

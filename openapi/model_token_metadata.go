@@ -48,6 +48,10 @@ type TokenMetadata struct {
 	TokenCreatedAt *float32 `json:"tokenCreatedAt,omitempty"`
 	// DTO.TOKEN.METADATA.DESCRIPTION
 	Description *string `json:"description,omitempty"`
+	// DTO.TOKEN.METADATA.DEV_TOTAL_TOKENS
+	DevTotalTokens *float32 `json:"devTotalTokens,omitempty"`
+	// DTO.TOKEN.METADATA.DEV_LAST_TOKEN_CREATED_AT
+	DevLastTokenCreatedAt *string `json:"devLastTokenCreatedAt,omitempty"`
 }
 
 type _TokenMetadata TokenMetadata
@@ -450,6 +454,70 @@ func (o *TokenMetadata) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetDevTotalTokens returns the DevTotalTokens field value if set, zero value otherwise.
+func (o *TokenMetadata) GetDevTotalTokens() float32 {
+	if o == nil || IsNil(o.DevTotalTokens) {
+		var ret float32
+		return ret
+	}
+	return *o.DevTotalTokens
+}
+
+// GetDevTotalTokensOk returns a tuple with the DevTotalTokens field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMetadata) GetDevTotalTokensOk() (*float32, bool) {
+	if o == nil || IsNil(o.DevTotalTokens) {
+		return nil, false
+	}
+	return o.DevTotalTokens, true
+}
+
+// HasDevTotalTokens returns a boolean if a field has been set.
+func (o *TokenMetadata) HasDevTotalTokens() bool {
+	if o != nil && !IsNil(o.DevTotalTokens) {
+		return true
+	}
+
+	return false
+}
+
+// SetDevTotalTokens gets a reference to the given float32 and assigns it to the DevTotalTokens field.
+func (o *TokenMetadata) SetDevTotalTokens(v float32) {
+	o.DevTotalTokens = &v
+}
+
+// GetDevLastTokenCreatedAt returns the DevLastTokenCreatedAt field value if set, zero value otherwise.
+func (o *TokenMetadata) GetDevLastTokenCreatedAt() string {
+	if o == nil || IsNil(o.DevLastTokenCreatedAt) {
+		var ret string
+		return ret
+	}
+	return *o.DevLastTokenCreatedAt
+}
+
+// GetDevLastTokenCreatedAtOk returns a tuple with the DevLastTokenCreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMetadata) GetDevLastTokenCreatedAtOk() (*string, bool) {
+	if o == nil || IsNil(o.DevLastTokenCreatedAt) {
+		return nil, false
+	}
+	return o.DevLastTokenCreatedAt, true
+}
+
+// HasDevLastTokenCreatedAt returns a boolean if a field has been set.
+func (o *TokenMetadata) HasDevLastTokenCreatedAt() bool {
+	if o != nil && !IsNil(o.DevLastTokenCreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetDevLastTokenCreatedAt gets a reference to the given string and assigns it to the DevLastTokenCreatedAt field.
+func (o *TokenMetadata) SetDevLastTokenCreatedAt(v string) {
+	o.DevLastTokenCreatedAt = &v
+}
+
 func (o TokenMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -488,6 +556,12 @@ func (o TokenMetadata) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.DevTotalTokens) {
+		toSerialize["devTotalTokens"] = o.DevTotalTokens
+	}
+	if !IsNil(o.DevLastTokenCreatedAt) {
+		toSerialize["devLastTokenCreatedAt"] = o.DevLastTokenCreatedAt
 	}
 	return toSerialize, nil
 }

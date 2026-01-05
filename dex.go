@@ -10,12 +10,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/chainstream-io/chainstream-go-sdk/api"
-	"github.com/chainstream-io/chainstream-go-sdk/openapi"
+	"github.com/chainstream-io/github.com/chainstream-io/chainstream-go-sdk/api"
+	"github.com/chainstream-io/github.com/chainstream-io/chainstream-go-sdk/openapi"
 )
 
 const (
-	LIB_VERSION = "0.1.7"
+	LIB_VERSION = "0.1.8"
 )
 
 // TokenProvider represents a token provider interface
@@ -52,6 +52,8 @@ type DexClient struct {
 	Ipfs        *openapi.IpfsAPIService
 	Blockchain  *openapi.BlockchainAPIService
 	Watchlist   *openapi.WatchlistAPIService
+	KYT         *openapi.KYTAPIService
+	Endpoint    *openapi.EndpointAPIService
 	Jobs        *openapi.JobsAPIService
 }
 
@@ -140,6 +142,8 @@ func createDexClient(accessToken string, tokenProvider TokenProvider, options *D
 		Ipfs:        client.IpfsAPI,
 		Blockchain:  client.BlockchainAPI,
 		Watchlist:   client.WatchlistAPI,
+		KYT:         client.KYTAPI,
+		Endpoint:    client.EndpointAPI,
 		Jobs:        client.JobsAPI,
 	}
 

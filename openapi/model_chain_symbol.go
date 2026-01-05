@@ -28,7 +28,7 @@ const (
 	CHAINSYMBOL_ARBITRUM ChainSymbol = "arbitrum"
 	CHAINSYMBOL_OPTIMISM ChainSymbol = "optimism"
 	CHAINSYMBOL_AVALANCHE ChainSymbol = "avalanche"
-	CHAINSYMBOL_ETHEREUM ChainSymbol = "ethereum"
+	CHAINSYMBOL_ETH ChainSymbol = "eth"
 	CHAINSYMBOL_ZKSYNC ChainSymbol = "zksync"
 	CHAINSYMBOL_SUI ChainSymbol = "sui"
 )
@@ -42,7 +42,7 @@ var AllowedChainSymbolEnumValues = []ChainSymbol{
 	"arbitrum",
 	"optimism",
 	"avalanche",
-	"ethereum",
+	"eth",
 	"zksync",
 	"sui",
 }

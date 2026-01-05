@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/centrifugal/centrifuge-go"
+	"github.com/chainstream-io/centrifuge-go"
 )
 
 const (
@@ -19,9 +19,9 @@ const (
 
 // DexRequestContext represents the request context for WebSocket connections
 type DexRequestContext struct {
-	BaseUrl      string
-	StreamUrl    string
-	AccessToken  string
+	BaseUrl       string
+	StreamUrl     string
+	AccessToken   string
 	TokenProvider func() (string, error)
 }
 
@@ -75,8 +75,8 @@ func (s *StreamApi) Connect() error {
 			}
 			return s.requestCtx.AccessToken, nil
 		},
-		ReadTimeout: 30 * time.Second,
-		WriteTimeout: 30 * time.Second,
+		ReadTimeout:      30 * time.Second,
+		WriteTimeout:     30 * time.Second,
 		HandshakeTimeout: 30 * time.Second,
 	}
 
@@ -159,7 +159,7 @@ func (s *StreamApi) Subscribe(channel string, callback StreamCallback[interface{
 			log.Printf("[streaming] error parsing JSON: %v", err)
 			return
 		}
-		
+
 		// Dispatch message to listeners
 		s.dispatchMessage(channel, jsonData)
 	})
@@ -204,7 +204,7 @@ func (s *StreamApi) Unsubscribe(channel string, callback StreamCallback[interfac
 	// If no listeners left, unsubscribe
 	if len(s.listenersMap[channel]) == 0 {
 		delete(s.listenersMap, channel)
-		
+
 		// Get subscription and unsubscribe
 		if sub, exists := s.client.GetSubscription(channel); exists && sub != nil {
 			sub.Unsubscribe()
@@ -445,11 +445,11 @@ func (s *StreamApi) SubscribeWalletBalance(chain, walletAddress string, callback
 		}
 
 		balance := WalletBalance{
-			WalletAddress:    dataMap["a"].(string),
-			TokenAddress:     dataMap["ta"].(string),
-			TokenPriceInUsd:  s.formatScientificNotation(dataMap["tpiu"]),
-			Balance:          s.formatScientificNotation(dataMap["b"]),
-			Timestamp:        int64(dataMap["t"].(float64)),
+			WalletAddress:   dataMap["a"].(string),
+			TokenAddress:    dataMap["ta"].(string),
+			TokenPriceInUsd: s.formatScientificNotation(dataMap["tpiu"]),
+			Balance:         s.formatScientificNotation(dataMap["b"]),
+			Timestamp:       int64(dataMap["t"].(float64)),
 		}
 
 		callback(balance)
@@ -466,32 +466,32 @@ func (s *StreamApi) SubscribeWalletPnl(chain, walletAddress string, callback Str
 		}
 
 		pnl := WalletTokenPnl{
-			WalletAddress:              dataMap["a"].(string),
-			TokenAddress:               dataMap["ta"].(string),
-			TokenPriceInUsd:            s.formatScientificNotation(dataMap["tpiu"]),
-			Timestamp:                  int64(dataMap["t"].(float64)),
-			OpenTime:                   int64(dataMap["ot"].(float64)),
-			LastTime:                   int64(dataMap["lt"].(float64)),
-			CloseTime:                  int64(dataMap["ct"].(float64)),
-			BuyAmount:                  s.formatScientificNotation(dataMap["ba"]),
-			BuyAmountInUsd:             s.formatScientificNotation(dataMap["baiu"]),
-			BuyCount:                   int(dataMap["bs"].(float64)),
-			BuyCount30d:                int(dataMap["bs30d"].(float64)),
-			BuyCount7d:                 int(dataMap["bs7d"].(float64)),
-			SellAmount:                 s.formatScientificNotation(dataMap["sa"]),
-			SellAmountInUsd:            s.formatScientificNotation(dataMap["saiu"]),
-			SellCount:                  int(dataMap["ss"].(float64)),
-			SellCount30d:               int(dataMap["ss30d"].(float64)),
-			SellCount7d:                int(dataMap["ss7d"].(float64)),
-			HeldDurationTimestamp:      int64(dataMap["hdts"].(float64)),
-			AverageBuyPriceInUsd:       s.formatScientificNotation(dataMap["abpiu"]),
-			AverageSellPriceInUsd:      s.formatScientificNotation(dataMap["aspiu"]),
-			UnrealizedProfitInUsd:     s.formatScientificNotation(dataMap["upiu"]),
-			UnrealizedProfitRatio:      s.formatScientificNotation(dataMap["upr"]),
-			RealizedProfitInUsd:        s.formatScientificNotation(dataMap["rpiu"]),
-			RealizedProfitRatio:        s.formatScientificNotation(dataMap["rpr"]),
-			TotalRealizedProfitInUsd:   s.formatScientificNotation(dataMap["trpiu"]),
-			TotalRealizedProfitRatio:   s.formatScientificNotation(dataMap["trr"]),
+			WalletAddress:            dataMap["a"].(string),
+			TokenAddress:             dataMap["ta"].(string),
+			TokenPriceInUsd:          s.formatScientificNotation(dataMap["tpiu"]),
+			Timestamp:                int64(dataMap["t"].(float64)),
+			OpenTime:                 int64(dataMap["ot"].(float64)),
+			LastTime:                 int64(dataMap["lt"].(float64)),
+			CloseTime:                int64(dataMap["ct"].(float64)),
+			BuyAmount:                s.formatScientificNotation(dataMap["ba"]),
+			BuyAmountInUsd:           s.formatScientificNotation(dataMap["baiu"]),
+			BuyCount:                 int(dataMap["bs"].(float64)),
+			BuyCount30d:              int(dataMap["bs30d"].(float64)),
+			BuyCount7d:               int(dataMap["bs7d"].(float64)),
+			SellAmount:               s.formatScientificNotation(dataMap["sa"]),
+			SellAmountInUsd:          s.formatScientificNotation(dataMap["saiu"]),
+			SellCount:                int(dataMap["ss"].(float64)),
+			SellCount30d:             int(dataMap["ss30d"].(float64)),
+			SellCount7d:              int(dataMap["ss7d"].(float64)),
+			HeldDurationTimestamp:    int64(dataMap["hdts"].(float64)),
+			AverageBuyPriceInUsd:     s.formatScientificNotation(dataMap["abpiu"]),
+			AverageSellPriceInUsd:    s.formatScientificNotation(dataMap["aspiu"]),
+			UnrealizedProfitInUsd:    s.formatScientificNotation(dataMap["upiu"]),
+			UnrealizedProfitRatio:    s.formatScientificNotation(dataMap["upr"]),
+			RealizedProfitInUsd:      s.formatScientificNotation(dataMap["rpiu"]),
+			RealizedProfitRatio:      s.formatScientificNotation(dataMap["rpr"]),
+			TotalRealizedProfitInUsd: s.formatScientificNotation(dataMap["trpiu"]),
+			TotalRealizedProfitRatio: s.formatScientificNotation(dataMap["trr"]),
 		}
 
 		callback(pnl)
@@ -540,11 +540,11 @@ func (s *StreamApi) SubscribeDexPoolBalance(chain, poolAddress string, callback 
 		}
 
 		balance := DexPoolBalance{
-			PoolAddress:           dataMap["a"].(string),
-			TokenAAddress:         dataMap["taa"].(string),
-			TokenALiquidityInUsd:  s.formatScientificNotation(dataMap["taliu"]),
-			TokenBAddress:         dataMap["tba"].(string),
-			TokenBLiquidityInUsd:  s.formatScientificNotation(dataMap["tbliu"]),
+			PoolAddress:          dataMap["a"].(string),
+			TokenAAddress:        dataMap["taa"].(string),
+			TokenALiquidityInUsd: s.formatScientificNotation(dataMap["taliu"]),
+			TokenBAddress:        dataMap["tba"].(string),
+			TokenBLiquidityInUsd: s.formatScientificNotation(dataMap["tbliu"]),
 		}
 
 		callback(balance)

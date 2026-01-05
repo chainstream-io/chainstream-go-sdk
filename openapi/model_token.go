@@ -48,12 +48,16 @@ type Token struct {
 	TokenCreatedAt *float32 `json:"tokenCreatedAt,omitempty"`
 	// DTO.TOKEN.METADATA.DESCRIPTION
 	Description *string `json:"description,omitempty"`
+	// DTO.TOKEN.METADATA.DEV_TOTAL_TOKENS
+	DevTotalTokens *float32 `json:"devTotalTokens,omitempty"`
+	// DTO.TOKEN.METADATA.DEV_LAST_TOKEN_CREATED_AT
+	DevLastTokenCreatedAt *string `json:"devLastTokenCreatedAt,omitempty"`
 	// DTO.TOKEN.MARKET_ID
 	Market *string `json:"market,omitempty"`
 	// DTO.TOKEN.EXTENSION
 	Extension map[string]interface{} `json:"extension,omitempty"`
 	// DTO.TOKEN.STATS
-	Stats TokenStat `json:"stats"`
+	Stats *TokenStat `json:"stats,omitempty"`
 	// DTO.TOKEN.LIQUIDITY
 	Liquidity []DexPoolDTO `json:"liquidity,omitempty"`
 	// DTO.TOKEN.MARKET_CAP_INFO
@@ -66,14 +70,13 @@ type _Token Token
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewToken(chain string, decimals float32, name string, symbol string, address string, stats TokenStat, marketData TokenMarketData) *Token {
+func NewToken(chain string, decimals float32, name string, symbol string, address string, marketData TokenMarketData) *Token {
 	this := Token{}
 	this.Chain = chain
 	this.Decimals = decimals
 	this.Name = name
 	this.Symbol = symbol
 	this.Address = address
-	this.Stats = stats
 	this.MarketData = marketData
 	return &this
 }
@@ -462,6 +465,70 @@ func (o *Token) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetDevTotalTokens returns the DevTotalTokens field value if set, zero value otherwise.
+func (o *Token) GetDevTotalTokens() float32 {
+	if o == nil || IsNil(o.DevTotalTokens) {
+		var ret float32
+		return ret
+	}
+	return *o.DevTotalTokens
+}
+
+// GetDevTotalTokensOk returns a tuple with the DevTotalTokens field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Token) GetDevTotalTokensOk() (*float32, bool) {
+	if o == nil || IsNil(o.DevTotalTokens) {
+		return nil, false
+	}
+	return o.DevTotalTokens, true
+}
+
+// HasDevTotalTokens returns a boolean if a field has been set.
+func (o *Token) HasDevTotalTokens() bool {
+	if o != nil && !IsNil(o.DevTotalTokens) {
+		return true
+	}
+
+	return false
+}
+
+// SetDevTotalTokens gets a reference to the given float32 and assigns it to the DevTotalTokens field.
+func (o *Token) SetDevTotalTokens(v float32) {
+	o.DevTotalTokens = &v
+}
+
+// GetDevLastTokenCreatedAt returns the DevLastTokenCreatedAt field value if set, zero value otherwise.
+func (o *Token) GetDevLastTokenCreatedAt() string {
+	if o == nil || IsNil(o.DevLastTokenCreatedAt) {
+		var ret string
+		return ret
+	}
+	return *o.DevLastTokenCreatedAt
+}
+
+// GetDevLastTokenCreatedAtOk returns a tuple with the DevLastTokenCreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Token) GetDevLastTokenCreatedAtOk() (*string, bool) {
+	if o == nil || IsNil(o.DevLastTokenCreatedAt) {
+		return nil, false
+	}
+	return o.DevLastTokenCreatedAt, true
+}
+
+// HasDevLastTokenCreatedAt returns a boolean if a field has been set.
+func (o *Token) HasDevLastTokenCreatedAt() bool {
+	if o != nil && !IsNil(o.DevLastTokenCreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetDevLastTokenCreatedAt gets a reference to the given string and assigns it to the DevLastTokenCreatedAt field.
+func (o *Token) SetDevLastTokenCreatedAt(v string) {
+	o.DevLastTokenCreatedAt = &v
+}
+
 // GetMarket returns the Market field value if set, zero value otherwise.
 func (o *Token) GetMarket() string {
 	if o == nil || IsNil(o.Market) {
@@ -526,28 +593,36 @@ func (o *Token) SetExtension(v map[string]interface{}) {
 	o.Extension = v
 }
 
-// GetStats returns the Stats field value
+// GetStats returns the Stats field value if set, zero value otherwise.
 func (o *Token) GetStats() TokenStat {
-	if o == nil {
+	if o == nil || IsNil(o.Stats) {
 		var ret TokenStat
 		return ret
 	}
-
-	return o.Stats
+	return *o.Stats
 }
 
-// GetStatsOk returns a tuple with the Stats field value
+// GetStatsOk returns a tuple with the Stats field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Token) GetStatsOk() (*TokenStat, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Stats) {
 		return nil, false
 	}
-	return &o.Stats, true
+	return o.Stats, true
 }
 
-// SetStats sets field value
+// HasStats returns a boolean if a field has been set.
+func (o *Token) HasStats() bool {
+	if o != nil && !IsNil(o.Stats) {
+		return true
+	}
+
+	return false
+}
+
+// SetStats gets a reference to the given TokenStat and assigns it to the Stats field.
 func (o *Token) SetStats(v TokenStat) {
-	o.Stats = v
+	o.Stats = &v
 }
 
 // GetLiquidity returns the Liquidity field value if set, zero value otherwise.
@@ -645,13 +720,21 @@ func (o Token) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.DevTotalTokens) {
+		toSerialize["devTotalTokens"] = o.DevTotalTokens
+	}
+	if !IsNil(o.DevLastTokenCreatedAt) {
+		toSerialize["devLastTokenCreatedAt"] = o.DevLastTokenCreatedAt
+	}
 	if !IsNil(o.Market) {
 		toSerialize["market"] = o.Market
 	}
 	if !IsNil(o.Extension) {
 		toSerialize["extension"] = o.Extension
 	}
-	toSerialize["stats"] = o.Stats
+	if !IsNil(o.Stats) {
+		toSerialize["stats"] = o.Stats
+	}
 	if !IsNil(o.Liquidity) {
 		toSerialize["liquidity"] = o.Liquidity
 	}
@@ -669,7 +752,6 @@ func (o *Token) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"symbol",
 		"address",
-		"stats",
 		"marketData",
 	}
 
