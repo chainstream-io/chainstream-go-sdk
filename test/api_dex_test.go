@@ -11,7 +11,7 @@ package chainstream_test
 
 import (
 	"context"
-	openapi "github.com/chainstream-io/github.com/chainstream-io/chainstream-go-sdk/openapi"
+	openapi "github.com/chainstream-io/chainstream-go-sdk/openapi"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"

@@ -10,12 +10,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/chainstream-io/github.com/chainstream-io/chainstream-go-sdk/api"
-	"github.com/chainstream-io/github.com/chainstream-io/chainstream-go-sdk/openapi"
+	"github.com/chainstream-io/chainstream-go-sdk/api"
+	"github.com/chainstream-io/chainstream-go-sdk/openapi"
 )
 
 const (
-	LIB_VERSION = "0.1.8"
+	LIB_VERSION = "0.1.9"
 )
 
 // TokenProvider represents a token provider interface
