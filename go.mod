@@ -3,12 +3,12 @@ module github.com/chainstream-io/chainstream-go-sdk
 go 1.23
 
 require (
-	github.com/chainstream-io/centrifuge-go v0.0.0-20260105135918-3778066c71c8
+	github.com/chainstream-io/centrifuge-go v0.0.1
 	github.com/stretchr/testify v1.10.0
 )
 
 require (
-	github.com/centrifugal/protocol v0.16.0 // indirect
+	github.com/chainstream-io/protocol v0.0.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
@@ -24,5 +24,3 @@ require (
 	google.golang.org/protobuf v1.36.6 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
-
-replace github.com/centrifugal/protocol => github.com/chainstream-io/protocol v0.0.0-20250809142339-f22827f207fe

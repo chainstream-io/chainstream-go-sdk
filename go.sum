@@ -1,7 +1,7 @@
-github.com/chainstream-io/centrifuge-go v0.0.0-20260105135918-3778066c71c8 h1:cX7fbC9uR8gskEhxlXM2UwU/jEdlvtibTwmvh3Yye1c=
-github.com/chainstream-io/centrifuge-go v0.0.0-20260105135918-3778066c71c8/go.mod h1:mvwZqWktCCHdrZxbBk0HZDPfN4H9CFabjkgiUM9YNjI=
-github.com/chainstream-io/protocol v0.0.0-20250809142339-f22827f207fe h1:07Me14TPvS/XoAq7HSd/YwlpeKaLF9NpYMInerJ4+M4=
-github.com/chainstream-io/protocol v0.0.0-20250809142339-f22827f207fe/go.mod h1:Hcx0Xy/MhCT85Zno3umflh91oJ+FCKk9EPk/MINZhmQ=
+github.com/chainstream-io/centrifuge-go v0.0.1 h1:a1V9ywXzd7MhqAWEI7QcoXzJfyPJ1jf+v8zxUaMDmTw=
+github.com/chainstream-io/centrifuge-go v0.0.1/go.mod h1:DqpdezXrYYi7+w+aQrivG9Xi6r7di0K6xBjybw28wiw=
+github.com/chainstream-io/protocol v0.0.1 h1:LBQ2X+r3SXtxNTVJFaXVcP7jp5i2f8OyGYty4ojDsZE=
+github.com/chainstream-io/protocol v0.0.1/go.mod h1:LVtbpkrLFf88ZZNQf2moLIh+nOECLPFThUJIxGUiLB0=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/google/go-cmp v0.5.5 h1:Khx7svrCpmxxtHBq5j2mp/xVjsi8hQMfNLvJFAlrGgU=
