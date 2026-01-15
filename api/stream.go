@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"net/http"
 	"strconv"
 	"strings"
 	"sync"
@@ -66,14 +67,34 @@ func (s *StreamApi) Connect() error {
 		token = s.requestCtx.AccessToken
 	}
 
+	// Create HTTP headers with Authorization for WebSocket handshake
+	headers := make(http.Header)
+	headers.Set("Authorization", fmt.Sprintf("Bearer %s", token))
+	headers.Set("User-Agent", fmt.Sprintf("chainstream-io/sdk/go/%s", LIB_VERSION))
+
 	// Create Centrifuge client configuration
 	config := centrifuge.Config{
-		Token: token,
+		Token:  token,
+		Header: headers,
 		GetToken: func(ctx centrifuge.ConnectionTokenEvent) (string, error) {
+			var newToken string
+			var err error
 			if s.requestCtx.TokenProvider != nil {
-				return s.requestCtx.TokenProvider()
+				newToken, err = s.requestCtx.TokenProvider()
+			} else {
+				newToken = s.requestCtx.AccessToken
+				err = nil
 			}
-			return s.requestCtx.AccessToken, nil
+			if err != nil {
+				return "", err
+			}
+			// Update HTTP headers with new token for reconnection
+			log.Println("[streaming] getToken called, updating headers...")
+			newHeaders := make(http.Header)
+			newHeaders.Set("Authorization", fmt.Sprintf("Bearer %s", newToken))
+			newHeaders.Set("User-Agent", fmt.Sprintf("chainstream-io/sdk/go/%s", LIB_VERSION))
+			s.client.SetHttpHeaders(newHeaders)
+			return newToken, nil
 		},
 		ReadTimeout:      30 * time.Second,
 		WriteTimeout:     30 * time.Second,
