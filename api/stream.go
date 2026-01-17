@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"net/http"
+	"net/url"
 	"strconv"
 	"strings"
 	"sync"
@@ -15,7 +15,7 @@ import (
 )
 
 const (
-	LIB_VERSION = "0.0.10"
+	LIB_VERSION = "0.0.11"
 )
 
 // DexRequestContext represents the request context for WebSocket connections
@@ -53,6 +53,18 @@ func NewStreamApi(requestCtx *DexRequestContext) *StreamApi {
 	}
 }
 
+// buildWsUrl builds WebSocket URL with token as query parameter
+func (s *StreamApi) buildWsUrl(endpoint string, token string) string {
+	u, err := url.Parse(endpoint)
+	if err != nil {
+		return endpoint
+	}
+	q := u.Query()
+	q.Set("token", token)
+	u.RawQuery = q.Encode()
+	return u.String()
+}
+
 // Connect establishes WebSocket connection to the server using Centrifuge
 func (s *StreamApi) Connect() error {
 	// Get access token
@@ -67,42 +79,25 @@ func (s *StreamApi) Connect() error {
 		token = s.requestCtx.AccessToken
 	}
 
-	// Create HTTP headers with Authorization for WebSocket handshake
-	headers := make(http.Header)
-	headers.Set("Authorization", fmt.Sprintf("Bearer %s", token))
-	headers.Set("User-Agent", fmt.Sprintf("chainstream-io/sdk/go/%s", LIB_VERSION))
+	// Build WebSocket URL with token
+	wsUrl := s.buildWsUrl(s.requestCtx.StreamUrl, token)
 
 	// Create Centrifuge client configuration
 	config := centrifuge.Config{
-		Token:  token,
-		Header: headers,
+		Token: token,
 		GetToken: func(ctx centrifuge.ConnectionTokenEvent) (string, error) {
-			var newToken string
-			var err error
 			if s.requestCtx.TokenProvider != nil {
-				newToken, err = s.requestCtx.TokenProvider()
-			} else {
-				newToken = s.requestCtx.AccessToken
-				err = nil
+				return s.requestCtx.TokenProvider()
 			}
-			if err != nil {
-				return "", err
-			}
-			// Update HTTP headers with new token for reconnection
-			log.Println("[streaming] getToken called, updating headers...")
-			newHeaders := make(http.Header)
-			newHeaders.Set("Authorization", fmt.Sprintf("Bearer %s", newToken))
-			newHeaders.Set("User-Agent", fmt.Sprintf("chainstream-io/sdk/go/%s", LIB_VERSION))
-			s.client.SetHttpHeaders(newHeaders)
-			return newToken, nil
+			return s.requestCtx.AccessToken, nil
 		},
 		ReadTimeout:      30 * time.Second,
 		WriteTimeout:     30 * time.Second,
 		HandshakeTimeout: 30 * time.Second,
 	}
 
-	// Create Centrifuge client
-	client := centrifuge.NewJsonClient(s.requestCtx.StreamUrl, config)
+	// Create Centrifuge client with token in URL
+	client := centrifuge.NewJsonClient(wsUrl, config)
 
 	// Set up event handlers
 	client.OnConnected(func(e centrifuge.ConnectedEvent) {
@@ -570,6 +565,438 @@ func (s *StreamApi) SubscribeDexPoolBalance(chain, poolAddress string, callback 
 
 		callback(balance)
 	}, "", "subscribeDexPoolBalance")
+}
+
+// SubscribeNewTokensMetadata subscribes to new tokens metadata
+func (s *StreamApi) SubscribeNewTokensMetadata(chain string, callback StreamCallback[[]TokenMetadata]) Unsubscribe {
+	channel := fmt.Sprintf("dex-new-tokens-metadata:%s", chain)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataArr, ok := data.([]interface{})
+		if !ok {
+			return
+		}
+
+		var result []TokenMetadata
+		for _, item := range dataArr {
+			itemMap, ok := item.(map[string]interface{})
+			if !ok {
+				continue
+			}
+
+			metadata := TokenMetadata{
+				TokenAddress: itemMap["a"].(string),
+			}
+			if val, ok := itemMap["n"]; ok {
+				metadata.Name = PtrString(val.(string))
+			}
+			if val, ok := itemMap["s"]; ok {
+				metadata.Symbol = PtrString(val.(string))
+			}
+			if val, ok := itemMap["iu"]; ok {
+				metadata.ImageUrl = PtrString(val.(string))
+			}
+			if val, ok := itemMap["de"]; ok {
+				metadata.Description = PtrString(val.(string))
+			}
+			if val, ok := itemMap["cts"]; ok {
+				cts := int64(val.(float64))
+				metadata.CreatedAtMs = &cts
+			}
+			if sm, ok := itemMap["sm"].(map[string]interface{}); ok {
+				metadata.SocialMedia = &SocialMedia{}
+				if v, ok := sm["tw"]; ok {
+					metadata.SocialMedia.Twitter = PtrString(v.(string))
+				}
+				if v, ok := sm["tg"]; ok {
+					metadata.SocialMedia.Telegram = PtrString(v.(string))
+				}
+				if v, ok := sm["w"]; ok {
+					metadata.SocialMedia.Website = PtrString(v.(string))
+				}
+			}
+
+			result = append(result, metadata)
+		}
+
+		callback(result)
+	}, "", "subscribeNewTokensMetadata")
+}
+
+// SubscribeTokenSupply subscribes to token supply data
+func (s *StreamApi) SubscribeTokenSupply(chain, tokenAddress string, callback StreamCallback[TokenSupply], filter string) Unsubscribe {
+	channel := fmt.Sprintf("dex-token-supply:%s_%s", chain, tokenAddress)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataMap, ok := data.(map[string]interface{})
+		if !ok {
+			return
+		}
+
+		supply := TokenSupply{
+			TokenAddress: dataMap["a"].(string),
+			Timestamp:    int64(dataMap["ts"].(float64)),
+		}
+		if val, ok := dataMap["s"]; ok {
+			supply.Supply = PtrString(s.formatScientificNotation(val))
+		}
+		if val, ok := dataMap["mc"]; ok {
+			supply.MarketCapInUsd = PtrString(s.formatScientificNotation(val))
+		}
+
+		callback(supply)
+	}, filter, "subscribeTokenSupply")
+}
+
+// SubscribeTokenLiquidity subscribes to token liquidity data
+func (s *StreamApi) SubscribeTokenLiquidity(chain, tokenAddress string, callback StreamCallback[TokenLiquidity], filter string) Unsubscribe {
+	channel := fmt.Sprintf("dex-token-general-stat-num:%s_%s", chain, tokenAddress)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataMap, ok := data.(map[string]interface{})
+		if !ok {
+			return
+		}
+
+		liquidity := TokenLiquidity{
+			TokenAddress: dataMap["a"].(string),
+			MetricType:   MetricType(dataMap["t"].(string)),
+			Value:        s.formatScientificNotation(dataMap["v"]),
+			Timestamp:    int64(dataMap["ts"].(float64)),
+		}
+
+		callback(liquidity)
+	}, filter, "subscribeTokenLiquidity")
+}
+
+// SubscribeRankingTokensLiquidity subscribes to ranking tokens liquidity data
+func (s *StreamApi) SubscribeRankingTokensLiquidity(chain string, channelType ChannelType, callback StreamCallback[[]TokenLiquidity]) Unsubscribe {
+	channel := fmt.Sprintf("dex-ranking-token-general_stat_num-list:%s_%s", chain, channelType)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataArr, ok := data.([]interface{})
+		if !ok {
+			return
+		}
+
+		var result []TokenLiquidity
+		for _, item := range dataArr {
+			itemMap, ok := item.(map[string]interface{})
+			if !ok {
+				continue
+			}
+
+			liquidity := TokenLiquidity{
+				TokenAddress: itemMap["a"].(string),
+				MetricType:   MetricType(itemMap["t"].(string)),
+				Value:        s.formatScientificNotation(itemMap["v"]),
+				Timestamp:    int64(itemMap["ts"].(float64)),
+			}
+			result = append(result, liquidity)
+		}
+
+		callback(result)
+	}, "", "subscribeRankingTokensLiquidity")
+}
+
+// SubscribeRankingTokensStats subscribes to ranking tokens stats
+func (s *StreamApi) SubscribeRankingTokensStats(chain string, channelType ChannelType, callback StreamCallback[[]TokenStat]) Unsubscribe {
+	channel := fmt.Sprintf("dex-ranking-token-stats-list:%s_%s", chain, channelType)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataArr, ok := data.([]interface{})
+		if !ok {
+			return
+		}
+
+		var result []TokenStat
+		for _, item := range dataArr {
+			itemMap, ok := item.(map[string]interface{})
+			if !ok {
+				continue
+			}
+
+			stat := TokenStat{
+				Address:   itemMap["a"].(string),
+				Timestamp: int64(itemMap["t"].(float64)),
+			}
+
+			// 1m data
+			if val, ok := itemMap["b1m"]; ok {
+				stat.Buys1m = PtrInt(int(val.(float64)))
+			}
+			if val, ok := itemMap["s1m"]; ok {
+				stat.Sells1m = PtrInt(int(val.(float64)))
+			}
+			if val, ok := itemMap["bviu1m"]; ok {
+				stat.BuyVolumeInUsd1m = PtrString(s.formatScientificNotation(val))
+			}
+			if val, ok := itemMap["sviu1m"]; ok {
+				stat.SellVolumeInUsd1m = PtrString(s.formatScientificNotation(val))
+			}
+			if val, ok := itemMap["p"]; ok {
+				stat.Price = PtrString(s.formatScientificNotation(val))
+			}
+
+			result = append(result, stat)
+		}
+
+		callback(result)
+	}, "", "subscribeRankingTokensStats")
+}
+
+// SubscribeRankingTokensHolders subscribes to ranking tokens holders
+func (s *StreamApi) SubscribeRankingTokensHolders(chain string, channelType ChannelType, callback StreamCallback[[]TokenHolder]) Unsubscribe {
+	channel := fmt.Sprintf("dex-ranking-token-holding-list:%s_%s", chain, channelType)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataArr, ok := data.([]interface{})
+		if !ok {
+			return
+		}
+
+		var result []TokenHolder
+		for _, item := range dataArr {
+			itemMap, ok := item.(map[string]interface{})
+			if !ok {
+				continue
+			}
+
+			holder := TokenHolder{
+				TokenAddress: itemMap["a"].(string),
+				Timestamp:    int64(itemMap["ts"].(float64)),
+			}
+			if val, ok := itemMap["h"]; ok {
+				holder.Holders = PtrInt(int(val.(float64)))
+			}
+			if val, ok := itemMap["t100a"]; ok {
+				holder.Top100Amount = PtrString(s.formatScientificNotation(val))
+			}
+			if val, ok := itemMap["t10a"]; ok {
+				holder.Top10Amount = PtrString(s.formatScientificNotation(val))
+			}
+
+			result = append(result, holder)
+		}
+
+		callback(result)
+	}, "", "subscribeRankingTokensHolders")
+}
+
+// SubscribeRankingTokensSupply subscribes to ranking tokens supply
+func (s *StreamApi) SubscribeRankingTokensSupply(chain string, channelType ChannelType, callback StreamCallback[[]TokenSupply]) Unsubscribe {
+	channel := fmt.Sprintf("dex-ranking-token-supply-list:%s_%s", chain, channelType)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataArr, ok := data.([]interface{})
+		if !ok {
+			return
+		}
+
+		var result []TokenSupply
+		for _, item := range dataArr {
+			itemMap, ok := item.(map[string]interface{})
+			if !ok {
+				continue
+			}
+
+			supply := TokenSupply{
+				TokenAddress: itemMap["a"].(string),
+				Timestamp:    int64(itemMap["ts"].(float64)),
+			}
+			if val, ok := itemMap["s"]; ok {
+				supply.Supply = PtrString(s.formatScientificNotation(val))
+			}
+			if val, ok := itemMap["mc"]; ok {
+				supply.MarketCapInUsd = PtrString(s.formatScientificNotation(val))
+			}
+
+			result = append(result, supply)
+		}
+
+		callback(result)
+	}, "", "subscribeRankingTokensSupply")
+}
+
+// SubscribeRankingTokensBondingCurve subscribes to ranking tokens bonding curve
+func (s *StreamApi) SubscribeRankingTokensBondingCurve(chain string, callback StreamCallback[[]TokenBondingCurve]) Unsubscribe {
+	channel := fmt.Sprintf("dex-ranking-token-bounding-curve-list:%s_new", chain)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataArr, ok := data.([]interface{})
+		if !ok {
+			return
+		}
+
+		var result []TokenBondingCurve
+		for _, item := range dataArr {
+			itemMap, ok := item.(map[string]interface{})
+			if !ok {
+				continue
+			}
+
+			bc := TokenBondingCurve{}
+			if val, ok := itemMap["a"]; ok {
+				bc.TokenAddress = PtrString(val.(string))
+			}
+			if val, ok := itemMap["pr"]; ok {
+				bc.ProgressRatio = PtrString(s.formatScientificNotation(val))
+			}
+
+			result = append(result, bc)
+		}
+
+		callback(result)
+	}, "", "subscribeRankingTokensBondingCurve")
+}
+
+// SubscribeWalletPnlList subscribes to wallet PnL list data
+func (s *StreamApi) SubscribeWalletPnlList(chain, walletAddress string, callback StreamCallback[[]WalletPnl]) Unsubscribe {
+	channel := fmt.Sprintf("dex-wallet-pnl-list:%s_%s", chain, walletAddress)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataArr, ok := data.([]interface{})
+		if !ok {
+			return
+		}
+
+		var result []WalletPnl
+		for _, item := range dataArr {
+			itemMap, ok := item.(map[string]interface{})
+			if !ok {
+				continue
+			}
+
+			pnl := WalletPnl{
+				WalletAddress:        itemMap["a"].(string),
+				Buys:                 int(itemMap["bs"].(float64)),
+				BuyAmount:            s.formatScientificNotation(itemMap["ba"]),
+				BuyAmountInUsd:       s.formatScientificNotation(itemMap["baiu"]),
+				AverageBuyPriceInUsd: s.formatScientificNotation(itemMap["abpiu"]),
+				SellAmount:           s.formatScientificNotation(itemMap["sa"]),
+				SellAmountInUsd:      s.formatScientificNotation(itemMap["saiu"]),
+				Sells:                int(itemMap["ss"].(float64)),
+				Wins:                 int(itemMap["ws"].(float64)),
+				WinRatio:             s.formatScientificNotation(itemMap["wr"]),
+				PnlInUsd:             s.formatScientificNotation(itemMap["piu"]),
+				AveragePnlInUsd:      s.formatScientificNotation(itemMap["apiu"]),
+				PnlRatio:             s.formatScientificNotation(itemMap["pr"]),
+				ProfitableDays:       int(itemMap["pd"].(float64)),
+				LosingDays:           int(itemMap["ld"].(float64)),
+				Tokens:               int(itemMap["ts"].(float64)),
+				Resolution:           itemMap["r"].(string),
+			}
+
+			result = append(result, pnl)
+		}
+
+		callback(result)
+	}, "", "subscribeWalletPnlList")
+}
+
+// SubscribeWalletTrade subscribes to wallet trade data
+func (s *StreamApi) SubscribeWalletTrade(chain, walletAddress string, callback StreamCallback[TradeActivity], filter string) Unsubscribe {
+	channel := fmt.Sprintf("dex-wallet-trade:%s_%s", chain, walletAddress)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataMap, ok := data.(map[string]interface{})
+		if !ok {
+			return
+		}
+
+		trade := TradeActivity{
+			TokenAddress:      dataMap["a"].(string),
+			Timestamp:         int64(dataMap["t"].(float64)),
+			Kind:              dataMap["k"].(string),
+			BuyAmount:         s.formatScientificNotation(dataMap["ba"]),
+			BuyAmountInUsd:    s.formatScientificNotation(dataMap["baiu"]),
+			BuyTokenAddress:   dataMap["btma"].(string),
+			BuyTokenName:      dataMap["btn"].(string),
+			BuyTokenSymbol:    dataMap["bts"].(string),
+			BuyWalletAddress:  dataMap["bwa"].(string),
+			SellAmount:        s.formatScientificNotation(dataMap["sa"]),
+			SellAmountInUsd:   s.formatScientificNotation(dataMap["saiu"]),
+			SellTokenAddress:  dataMap["stma"].(string),
+			SellTokenName:     dataMap["stn"].(string),
+			SellTokenSymbol:   dataMap["sts"].(string),
+			SellWalletAddress: dataMap["swa"].(string),
+			TxHash:            dataMap["h"].(string),
+		}
+
+		callback(trade)
+	}, filter, "subscribeWalletTrade")
+}
+
+// SubscribeRankingTokensList subscribes to ranking tokens list
+func (s *StreamApi) SubscribeRankingTokensList(chain string, rankingType RankingType, dex *Dex, callback StreamCallback[[]RankingTokenList]) Unsubscribe {
+	var channel string
+	if dex != nil {
+		channel = fmt.Sprintf("dex-ranking-list:%s_%s_%s", chain, rankingType, *dex)
+	} else {
+		channel = fmt.Sprintf("dex-ranking-list:%s_%s", chain, rankingType)
+	}
+
+	return s.Subscribe(channel, func(data interface{}) {
+		dataArr, ok := data.([]interface{})
+		if !ok {
+			return
+		}
+
+		var result []RankingTokenList
+		for _, item := range dataArr {
+			itemMap, ok := item.(map[string]interface{})
+			if !ok {
+				continue
+			}
+
+			rankingItem := RankingTokenList{}
+
+			// Parse metadata (t)
+			if t, ok := itemMap["t"].(map[string]interface{}); ok {
+				rankingItem.Metadata = &TokenMetadata{
+					TokenAddress: t["a"].(string),
+				}
+				if val, ok := t["n"]; ok {
+					rankingItem.Metadata.Name = PtrString(val.(string))
+				}
+				if val, ok := t["s"]; ok {
+					rankingItem.Metadata.Symbol = PtrString(val.(string))
+				}
+				if val, ok := t["iu"]; ok {
+					rankingItem.Metadata.ImageUrl = PtrString(val.(string))
+				}
+				if val, ok := t["cts"]; ok {
+					cts := int64(val.(float64))
+					rankingItem.Metadata.CreatedAtMs = &cts
+				}
+			}
+
+			// Parse bonding curve (bc)
+			if bc, ok := itemMap["bc"].(map[string]interface{}); ok {
+				rankingItem.BondingCurve = &TokenBondingCurve{}
+				if val, ok := bc["pr"]; ok {
+					rankingItem.BondingCurve.ProgressRatio = PtrString(s.formatScientificNotation(val))
+				}
+			}
+
+			// Parse supply (s)
+			if sup, ok := itemMap["s"].(map[string]interface{}); ok {
+				rankingItem.Supply = &TokenSupply{
+					TokenAddress: sup["a"].(string),
+				}
+				if val, ok := sup["s"]; ok {
+					rankingItem.Supply.Supply = PtrString(s.formatScientificNotation(val))
+				}
+				if val, ok := sup["mc"]; ok {
+					rankingItem.Supply.MarketCapInUsd = PtrString(s.formatScientificNotation(val))
+				}
+			}
+
+			// Parse stat (ts)
+			if ts, ok := itemMap["ts"].(map[string]interface{}); ok {
+				rankingItem.Stat = &TokenStat{
+					Address: ts["a"].(string),
+				}
+				if val, ok := ts["p"]; ok {
+					rankingItem.Stat.Price = PtrString(s.formatScientificNotation(val))
+				}
+			}
+
+			result = append(result, rankingItem)
+		}
+
+		callback(result)
+	}, "", "subscribeRankingTokensList")
 }
 
 // Helper functions

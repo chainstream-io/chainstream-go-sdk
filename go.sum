@@ -1,5 +1,5 @@
-github.com/chainstream-io/centrifuge-go v0.0.2 h1:Oh5rWxKxyxOyJisLdhe7l78sPldxugk8jUvrBVihE8w=
-github.com/chainstream-io/centrifuge-go v0.0.2/go.mod h1:DqpdezXrYYi7+w+aQrivG9Xi6r7di0K6xBjybw28wiw=
+github.com/chainstream-io/centrifuge-go v0.0.3 h1:zPVPlCRUbxXaooRQx8efwL88GUecjIk5JngUIcIW6Xw=
+github.com/chainstream-io/centrifuge-go v0.0.3/go.mod h1:DqpdezXrYYi7+w+aQrivG9Xi6r7di0K6xBjybw28wiw=
 github.com/chainstream-io/protocol v0.0.1 h1:LBQ2X+r3SXtxNTVJFaXVcP7jp5i2f8OyGYty4ojDsZE=
 github.com/chainstream-io/protocol v0.0.1/go.mod h1:LVtbpkrLFf88ZZNQf2moLIh+nOECLPFThUJIxGUiLB0=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
