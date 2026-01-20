@@ -14,10 +14,6 @@ import (
 	"github.com/chainstream-io/centrifuge-go"
 )
 
-const (
-	LIB_VERSION = "0.0.11"
-)
-
 // DexRequestContext represents the request context for WebSocket connections
 type DexRequestContext struct {
 	BaseUrl       string
@@ -34,6 +30,8 @@ type StreamApi struct {
 	ctx          context.Context
 	cancel       context.CancelFunc
 	requestCtx   *DexRequestContext
+	connected    bool
+	connectMutex sync.Mutex
 }
 
 // StreamCallback represents a callback function for stream data
@@ -65,8 +63,55 @@ func (s *StreamApi) buildWsUrl(endpoint string, token string) string {
 	return u.String()
 }
 
-// Connect establishes WebSocket connection to the server using Centrifuge
+// Connect establishes WebSocket connection to the server using Centrifuge.
+// This is automatically called when you use subscribe methods if not already connected.
+// You can also call this method manually for explicit control.
 func (s *StreamApi) Connect() error {
+	s.connectMutex.Lock()
+	defer s.connectMutex.Unlock()
+
+	if s.connected {
+		return nil
+	}
+
+	return s.connectInternal()
+}
+
+// Disconnect closes the WebSocket connection
+func (s *StreamApi) Disconnect() error {
+	s.connectMutex.Lock()
+	defer s.connectMutex.Unlock()
+
+	s.cancel()
+	if s.client != nil {
+		s.client.Close()
+	}
+	s.connected = false
+	return nil
+}
+
+// IsConnected returns whether the WebSocket is connected
+func (s *StreamApi) IsConnected() bool {
+	s.connectMutex.Lock()
+	defer s.connectMutex.Unlock()
+	return s.connected
+}
+
+// ensureConnected ensures WebSocket is connected, auto-connect if not
+func (s *StreamApi) ensureConnected() error {
+	s.connectMutex.Lock()
+	defer s.connectMutex.Unlock()
+
+	if s.connected {
+		return nil
+	}
+
+	// Need to connect
+	return s.connectInternal()
+}
+
+// connectInternal is the internal connect logic (must be called with connectMutex held)
+func (s *StreamApi) connectInternal() error {
 	// Get access token
 	var token string
 	var err error
@@ -119,20 +164,18 @@ func (s *StreamApi) Connect() error {
 		return fmt.Errorf("failed to connect: %w", err)
 	}
 
-	return nil
-}
-
-// Disconnect closes the WebSocket connection
-func (s *StreamApi) Disconnect() error {
-	s.cancel()
-	if s.client != nil {
-		s.client.Close()
-	}
+	s.connected = true
 	return nil
 }
 
 // Subscribe subscribes to a channel using Centrifuge protocol
 func (s *StreamApi) Subscribe(channel string, callback StreamCallback[interface{}], filter, methodName string) Unsubscribe {
+	// Ensure connected before subscribing
+	if err := s.ensureConnected(); err != nil {
+		log.Printf("[streaming] error connecting: %v", err)
+		return func() {}
+	}
+
 	s.mutex.Lock()
 	defer s.mutex.Unlock()
 
@@ -140,8 +183,6 @@ func (s *StreamApi) Subscribe(channel string, callback StreamCallback[interface{
 	processedFilter := filter
 	if filter != "" && methodName != "" {
 		processedFilter = ReplaceFilterFields(filter, methodName)
-		fmt.Printf("🔍 Original filter: %s\n", filter)
-		fmt.Printf("🔍 Processed filter: %s\n", processedFilter)
 	}
 
 	// Create subscription options

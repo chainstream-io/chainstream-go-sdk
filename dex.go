@@ -15,7 +15,7 @@ import (
 )
 
 const (
-	LIB_VERSION = "0.1.12"
+	LIB_VERSION = "0.1.13"
 )
 
 // TokenProvider represents a token provider interface
@@ -28,6 +28,11 @@ type DexAggregatorOptions struct {
 	Debug     bool   `json:"debug,omitempty"`
 	ServerUrl string `json:"serverUrl,omitempty"`
 	StreamUrl string `json:"streamUrl,omitempty"`
+	// AutoConnectWebSocket controls whether to automatically connect to WebSocket on initialization.
+	// Default: false
+	// If set to true, WebSocket will connect automatically.
+	// If false or not set, connection will happen automatically when you use subscribe methods.
+	AutoConnectWebSocket bool `json:"autoConnectWebSocket,omitempty"`
 }
 
 // DexClient represents the main DEX client - similar to JavaScript's DexClient class
@@ -147,9 +152,11 @@ func createDexClient(accessToken string, tokenProvider TokenProvider, options *D
 		Jobs:        client.JobsAPI,
 	}
 
-	// Connect to stream service
-	if err := stream.Connect(); err != nil {
-		return nil, fmt.Errorf("failed to connect to stream service: %w", err)
+	// Only auto-connect WebSocket if explicitly enabled
+	if options.AutoConnectWebSocket {
+		if err := stream.Connect(); err != nil {
+			return nil, fmt.Errorf("failed to connect to stream service: %w", err)
+		}
 	}
 
 	return dexClient, nil
