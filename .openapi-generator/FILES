@@ -67,12 +67,6 @@ docs/JobsAPI.md
 docs/KYTAPI.md
 docs/KYTRegisterTransferRequest.md
 docs/KYTRegisterWithdrawalRequest.md
-docs/KytAddressDTO.md
-docs/KytAddressPage.md
-docs/KytTransferDTO.md
-docs/KytTransferPage.md
-docs/KytWithdrawalDTO.md
-docs/KytWithdrawalPage.md
 docs/Link.md
 docs/MoonshotCreateTokenInput.md
 docs/MoonshotCreateTokenReply.md
@@ -178,14 +172,8 @@ model_gainers_and_losers_page.go
 model_gas_price_response.go
 model_job_dto.go
 model_job_streaming_dto.go
-model_kyt_address_dto.go
-model_kyt_address_page.go
 model_kyt_register_transfer_request.go
 model_kyt_register_withdrawal_request.go
-model_kyt_transfer_dto.go
-model_kyt_transfer_page.go
-model_kyt_withdrawal_dto.go
-model_kyt_withdrawal_page.go
 model_link.go
 model_moonshot_create_token_input.go
 model_moonshot_create_token_reply.go

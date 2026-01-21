@@ -137,6 +137,7 @@ func (a *RankingAPIService) GetFinalStretchTokensExecute(r RankingAPIGetFinalStr
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "form", "")
 	} else {
 		var defaultValue string = "DESC"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", defaultValue, "form", "")
 		r.sortDirection = &defaultValue
 	}
 	if r.rangeFilters != nil {
@@ -367,6 +368,7 @@ func (a *RankingAPIService) GetHotTokensExecute(r RankingAPIGetHotTokensRequest)
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "form", "")
 	} else {
 		var defaultValue string = "DESC"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", defaultValue, "form", "")
 		r.sortDirection = &defaultValue
 	}
 	if r.rangeFilters != nil {
@@ -593,6 +595,7 @@ func (a *RankingAPIService) GetMigratedTokensExecute(r RankingAPIGetMigratedToke
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "form", "")
 	} else {
 		var defaultValue string = "DESC"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", defaultValue, "form", "")
 		r.sortDirection = &defaultValue
 	}
 	if r.rangeFilters != nil {
@@ -819,6 +822,7 @@ func (a *RankingAPIService) GetNewTokensExecute(r RankingAPIGetNewTokensRequest)
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "form", "")
 	} else {
 		var defaultValue string = "DESC"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", defaultValue, "form", "")
 		r.sortDirection = &defaultValue
 	}
 	if r.rangeFilters != nil {
@@ -1045,6 +1049,7 @@ func (a *RankingAPIService) GetStocksTokensExecute(r RankingAPIGetStocksTokensRe
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "form", "")
 	} else {
 		var defaultValue string = "DESC"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", defaultValue, "form", "")
 		r.sortDirection = &defaultValue
 	}
 	if r.rangeFilters != nil {

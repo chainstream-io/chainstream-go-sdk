@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**GetEndpointSecret**](EndpointAPI.md#GetEndpointSecret) | **Get** /v1/webhook/endpoint/{id}/secret | CONTROLLER.ENDPOINT.GET.SECRET.SUMMARY
 [**ListEndpoints**](EndpointAPI.md#ListEndpoints) | **Get** /v1/webhook/endpoint | CONTROLLER.ENDPOINT.LIST.SUMMARY
 [**RotateEndpointSecret**](EndpointAPI.md#RotateEndpointSecret) | **Post** /v1/webhook/endpoint/{id}/secret/rotate | CONTROLLER.ENDPOINT.ROTATE.SUMMARY
-[**UpdateEndpoint**](EndpointAPI.md#UpdateEndpoint) | **Patch** /v1/webhook/endpoint/{id} | CONTROLLER.ENDPOINT.UPDATE.SUMMARY
+[**UpdateEndpoint**](EndpointAPI.md#UpdateEndpoint) | **Patch** /v1/webhook/endpoint | CONTROLLER.ENDPOINT.UPDATE.SUMMARY
 
 
 

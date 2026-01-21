@@ -164,12 +164,14 @@ func (a *TradeAPIService) GetActivitiesExecute(r TradeAPIGetActivitiesRequest) (
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue float32 = 20
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
 	} else {
 		var defaultValue string = "next"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	if r.tokenAddress != nil {
@@ -351,30 +353,35 @@ func (a *TradeAPIService) GetGainersLosersExecute(r TradeAPIGetGainersLosersRequ
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue float32 = 10
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
 	} else {
 		var defaultValue string = "next"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	if r.type_ != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
 	} else {
 		var defaultValue string = "1W"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", defaultValue, "form", "")
 		r.type_ = &defaultValue
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "form", "")
 	} else {
 		var defaultValue string = "PnL"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", defaultValue, "form", "")
 		r.sortBy = &defaultValue
 	}
 	if r.sortType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sortType", r.sortType, "form", "")
 	} else {
 		var defaultValue string = "desc"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortType", defaultValue, "form", "")
 		r.sortType = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -539,12 +546,14 @@ func (a *TradeAPIService) GetTopTradersExecute(r TradeAPIGetTopTradersRequest) (
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue float32 = 10
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
 	} else {
 		var defaultValue string = "next"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddress", r.tokenAddress, "form", "")
@@ -552,18 +561,21 @@ func (a *TradeAPIService) GetTopTradersExecute(r TradeAPIGetTopTradersRequest) (
 		parameterAddToHeaderOrQuery(localVarQueryParams, "timeFrame", r.timeFrame, "form", "")
 	} else {
 		var defaultValue string = "30m"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "timeFrame", defaultValue, "form", "")
 		r.timeFrame = &defaultValue
 	}
 	if r.sortType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sortType", r.sortType, "form", "")
 	} else {
 		var defaultValue string = "desc"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortType", defaultValue, "form", "")
 		r.sortType = &defaultValue
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "form", "")
 	} else {
 		var defaultValue string = "volume"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", defaultValue, "form", "")
 		r.sortBy = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -760,12 +772,14 @@ func (a *TradeAPIService) GetTradesExecute(r TradeAPIGetTradesRequest) (*TradePa
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue float32 = 20
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
 	} else {
 		var defaultValue string = "next"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	if r.tokenAddress != nil {

@@ -513,6 +513,7 @@ func (a *EndpointAPIService) ListEndpointsExecute(r EndpointAPIListEndpointsRequ
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue float32 = 100
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.iterator != nil {
@@ -522,6 +523,7 @@ func (a *EndpointAPIService) ListEndpointsExecute(r EndpointAPIListEndpointsRequ
 		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	} else {
 		var defaultValue string = "ascending"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", defaultValue, "form", "")
 		r.order = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -726,7 +728,7 @@ func (a *EndpointAPIService) UpdateEndpointExecute(r EndpointAPIUpdateEndpointRe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/webhook/endpoint/{id}"
+	localVarPath := localBasePath + "/v1/webhook/endpoint"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

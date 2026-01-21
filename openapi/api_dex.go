@@ -220,6 +220,7 @@ func (a *DexAPIService) ListDexExecute(r DexAPIListDexRequest) (*DexPage, *http.
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue float32 = 20
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.dexProgram != nil {

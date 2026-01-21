@@ -26,6 +26,10 @@ type AddressExposure struct {
 	Category string `json:"category"`
 	// DTO.KYT.ADDRESS_EXPOSURE.VALUE
 	Value float32 `json:"value"`
+	// DTO.KYT.ADDRESS_EXPOSURE.EXPOSURE_TYPE
+	ExposureType string `json:"exposureType"`
+	// DTO.KYT.ADDRESS_EXPOSURE.DIRECTION
+	Direction string `json:"direction"`
 }
 
 type _AddressExposure AddressExposure
@@ -34,10 +38,12 @@ type _AddressExposure AddressExposure
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddressExposure(category string, value float32) *AddressExposure {
+func NewAddressExposure(category string, value float32, exposureType string, direction string) *AddressExposure {
 	this := AddressExposure{}
 	this.Category = category
 	this.Value = value
+	this.ExposureType = exposureType
+	this.Direction = direction
 	return &this
 }
 
@@ -97,6 +103,54 @@ func (o *AddressExposure) SetValue(v float32) {
 	o.Value = v
 }
 
+// GetExposureType returns the ExposureType field value
+func (o *AddressExposure) GetExposureType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ExposureType
+}
+
+// GetExposureTypeOk returns a tuple with the ExposureType field value
+// and a boolean to check if the value has been set.
+func (o *AddressExposure) GetExposureTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ExposureType, true
+}
+
+// SetExposureType sets field value
+func (o *AddressExposure) SetExposureType(v string) {
+	o.ExposureType = v
+}
+
+// GetDirection returns the Direction field value
+func (o *AddressExposure) GetDirection() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Direction
+}
+
+// GetDirectionOk returns a tuple with the Direction field value
+// and a boolean to check if the value has been set.
+func (o *AddressExposure) GetDirectionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Direction, true
+}
+
+// SetDirection sets field value
+func (o *AddressExposure) SetDirection(v string) {
+	o.Direction = v
+}
+
 func (o AddressExposure) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -109,6 +163,8 @@ func (o AddressExposure) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["category"] = o.Category
 	toSerialize["value"] = o.Value
+	toSerialize["exposureType"] = o.ExposureType
+	toSerialize["direction"] = o.Direction
 	return toSerialize, nil
 }
 
@@ -119,6 +175,8 @@ func (o *AddressExposure) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"category",
 		"value",
+		"exposureType",
+		"direction",
 	}
 
 	allProperties := make(map[string]interface{})

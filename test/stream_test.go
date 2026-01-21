@@ -16,7 +16,6 @@ import (
 	"testing"
 	"time"
 
-	chainstream "github.com/chainstream-io/chainstream-go-sdk"
 	"github.com/chainstream-io/chainstream-go-sdk/api"
 )
 
@@ -27,8 +26,8 @@ func TestStreamWebSocket(t *testing.T) {
 	fmt.Println("Starting WebSocket subscription test...")
 
 	// Create DexClient (WebSocket will auto-connect on subscribe)
-	client, err := chainstream.NewDexClient(token, &chainstream.DexAggregatorOptions{
-		StreamUrl: "wss://realtime-dex.chainstream.io/connection/websocket",
+	client, err := openapi.NewDexClient(token, &openapi.DexAggregatorOptions{
+		StreamUrl: "wss://realtime-dex.openapi.io/connection/websocket",
 	})
 	if err != nil {
 		t.Fatalf("Failed to create client: %v", err)

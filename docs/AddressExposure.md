@@ -6,12 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Category** | **string** | DTO.KYT.ADDRESS_EXPOSURE.CATEGORY | 
 **Value** | **float32** | DTO.KYT.ADDRESS_EXPOSURE.VALUE | 
+**ExposureType** | **string** | DTO.KYT.ADDRESS_EXPOSURE.EXPOSURE_TYPE | 
+**Direction** | **string** | DTO.KYT.ADDRESS_EXPOSURE.DIRECTION | 
 
 ## Methods
 
 ### NewAddressExposure
 
-`func NewAddressExposure(category string, value float32, ) *AddressExposure`
+`func NewAddressExposure(category string, value float32, exposureType string, direction string, ) *AddressExposure`
 
 NewAddressExposure instantiates a new AddressExposure object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +66,46 @@ and a boolean to check if the value has been set.
 `func (o *AddressExposure) SetValue(v float32)`
 
 SetValue sets Value field to given value.
+
+
+### GetExposureType
+
+`func (o *AddressExposure) GetExposureType() string`
+
+GetExposureType returns the ExposureType field if non-nil, zero value otherwise.
+
+### GetExposureTypeOk
+
+`func (o *AddressExposure) GetExposureTypeOk() (*string, bool)`
+
+GetExposureTypeOk returns a tuple with the ExposureType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExposureType
+
+`func (o *AddressExposure) SetExposureType(v string)`
+
+SetExposureType sets ExposureType field to given value.
+
+
+### GetDirection
+
+`func (o *AddressExposure) GetDirection() string`
+
+GetDirection returns the Direction field if non-nil, zero value otherwise.
+
+### GetDirectionOk
+
+`func (o *AddressExposure) GetDirectionOk() (*string, bool)`
+
+GetDirectionOk returns a tuple with the Direction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDirection
+
+`func (o *AddressExposure) SetDirection(v string)`
+
+SetDirection sets Direction field to given value.
 
 
 

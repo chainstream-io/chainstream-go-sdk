@@ -1238,6 +1238,40 @@ paths:
       summary: CONTROLLER.TOKEN.GET_TOKENS.SUMMARY
       tags:
       - Token
+  /v1/token/{chain}/{tokenAddress}:
+    get:
+      description: CONTROLLER.TOKEN.GET.DESCRIPTION
+      operationId: get.token
+      parameters:
+      - description: GLOBAL.CHAIN.DESCRIPTION
+        explode: false
+        in: path
+        name: chain
+        required: true
+        schema:
+          $ref: "#/components/schemas/ChainSymbol"
+        style: simple
+      - description: GLOBAL.TOKENADDRESS.DESCRIPTION
+        explode: false
+        in: path
+        name: tokenAddress
+        required: true
+        schema:
+          example: 6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Token"
+          description: ""
+      security:
+      - bearer: []
+      summary: CONTROLLER.TOKEN.GET.SUMMARY
+      tags:
+      - Token
   /v1/token/{chain}/{tokenAddress}/metadata:
     get:
       description: CONTROLLER.TOKEN.GET_METADATA.DESCRIPTION
@@ -3292,40 +3326,6 @@ paths:
       summary: CONTROLLER.TOKEN.GET_SECURITY.SUMMARY
       tags:
       - Token
-  /v1/token/{chain}/{tokenAddress}:
-    get:
-      description: CONTROLLER.TOKEN.GET.DESCRIPTION
-      operationId: get.token
-      parameters:
-      - description: GLOBAL.CHAIN.DESCRIPTION
-        explode: false
-        in: path
-        name: chain
-        required: true
-        schema:
-          $ref: "#/components/schemas/ChainSymbol"
-        style: simple
-      - description: GLOBAL.TOKENADDRESS.DESCRIPTION
-        explode: false
-        in: path
-        name: tokenAddress
-        required: true
-        schema:
-          example: 6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Token"
-          description: ""
-      security:
-      - bearer: []
-      summary: CONTROLLER.TOKEN.GET.SUMMARY
-      tags:
-      - Token
   /v1/token/{chain}/dev/{devAddress}/tokens:
     get:
       description: CONTROLLER.TOKEN.GET_DEV_TOKENS.DESCRIPTION
@@ -5152,120 +5152,6 @@ paths:
       summary: CONTROLLER.KYT.GET_ADDRESS_RISK.SUMMARY
       tags:
       - KYT
-  /v1/kyt/transfers:
-    get:
-      description: CONTROLLER.KYT.GET_KYT_TRANSFERS.DESCRIPTION
-      operationId: get.kyt.transfers
-      parameters:
-      - description: DTO.KYT.STANDARD_PAGING_QUERY.PAGE
-        explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          default: 1
-          minimum: 1
-          type: number
-        style: form
-      - description: DTO.KYT.STANDARD_PAGING_QUERY.PAGE_SIZE
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          default: 20
-          maximum: 100
-          minimum: 1
-          type: number
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/KytTransferPage"
-          description: ""
-      security:
-      - bearer: []
-      summary: CONTROLLER.KYT.GET_KYT_TRANSFERS.SUMMARY
-      tags:
-      - KYT
-  /v1/kyt/addresses:
-    get:
-      description: CONTROLLER.KYT.GET_KYT_ADDRESSES.DESCRIPTION
-      operationId: get.kyt.addresses
-      parameters:
-      - description: DTO.KYT.STANDARD_PAGING_QUERY.PAGE
-        explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          default: 1
-          minimum: 1
-          type: number
-        style: form
-      - description: DTO.KYT.STANDARD_PAGING_QUERY.PAGE_SIZE
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          default: 20
-          maximum: 100
-          minimum: 1
-          type: number
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/KytAddressPage"
-          description: ""
-      security:
-      - bearer: []
-      summary: CONTROLLER.KYT.GET_KYT_ADDRESSES.SUMMARY
-      tags:
-      - KYT
-  /v1/kyt/withdrawals:
-    get:
-      description: CONTROLLER.KYT.GET_KYT_WITHDRAWALS.DESCRIPTION
-      operationId: get.kyt.withdrawals
-      parameters:
-      - description: DTO.KYT.STANDARD_PAGING_QUERY.PAGE
-        explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          default: 1
-          minimum: 1
-          type: number
-        style: form
-      - description: DTO.KYT.STANDARD_PAGING_QUERY.PAGE_SIZE
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          default: 20
-          maximum: 100
-          minimum: 1
-          type: number
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/KytWithdrawalPage"
-          description: ""
-      security:
-      - bearer: []
-      summary: CONTROLLER.KYT.GET_KYT_WITHDRAWALS.SUMMARY
-      tags:
-      - KYT
   /v1/webhook/endpoint:
     get:
       description: CONTROLLER.ENDPOINT.LIST.DESCRIPTION
@@ -5312,6 +5198,28 @@ paths:
       security:
       - bearer: []
       summary: CONTROLLER.ENDPOINT.LIST.SUMMARY
+      tags:
+      - Endpoint
+    patch:
+      description: CONTROLLER.ENDPOINT.UPDATE.DESCRIPTION
+      operationId: update.endpoint
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateEndpointInput"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EndpointResponse"
+          description: ""
+      security:
+      - bearer: []
+      summary: CONTROLLER.ENDPOINT.UPDATE.SUMMARY
       tags:
       - Endpoint
     post:
@@ -5381,28 +5289,6 @@ paths:
       security:
       - bearer: []
       summary: CONTROLLER.ENDPOINT.GET.SUMMARY
-      tags:
-      - Endpoint
-    patch:
-      description: CONTROLLER.ENDPOINT.UPDATE.DESCRIPTION
-      operationId: update.endpoint
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UpdateEndpointInput"
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EndpointResponse"
-          description: ""
-      security:
-      - bearer: []
-      summary: CONTROLLER.ENDPOINT.UPDATE.SUMMARY
       tags:
       - Endpoint
   /v1/webhook/endpoint/{id}/secret:
@@ -10254,8 +10140,10 @@ components:
       - address
     AddressExposure:
       example:
+        exposureType: indirect
         category: exchange
         value: 424895.68594
+        direction: both_directions
       properties:
         category:
           description: DTO.KYT.ADDRESS_EXPOSURE.CATEGORY
@@ -10265,16 +10153,30 @@ components:
           description: DTO.KYT.ADDRESS_EXPOSURE.VALUE
           example: 424895.68594
           type: number
+        exposureType:
+          description: DTO.KYT.ADDRESS_EXPOSURE.EXPOSURE_TYPE
+          example: indirect
+          type: string
+        direction:
+          description: DTO.KYT.ADDRESS_EXPOSURE.DIRECTION
+          example: both_directions
+          type: string
       required:
       - category
+      - direction
+      - exposureType
       - value
     AddressRiskResponseDTO:
       example:
         exposures:
-        - category: exchange
+        - exposureType: indirect
+          category: exchange
           value: 424895.68594
-        - category: exchange
+          direction: both_directions
+        - exposureType: indirect
+          category: exchange
           value: 424895.68594
+          direction: both_directions
         riskReason: riskReason
         cluster: cluster
         address: 0x0038AC785dfB6C82b2c9A7B3B6854e08a10cb9f1
@@ -10337,236 +10239,6 @@ components:
       - riskReason
       - status
       - triggers
-    KytTransferDTO:
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        externalId: externalId
-        id: 5.637376656633329
-        txHash: txHash
-        orgId: orgId
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        id:
-          description: DTO.KYT.KYT_TRANSFER.ID
-          type: number
-        orgId:
-          description: DTO.KYT.KYT_TRANSFER.ORG_ID
-          type: string
-        txHash:
-          description: DTO.KYT.KYT_TRANSFER.TX_HASH
-          type: string
-        externalId:
-          description: DTO.KYT.KYT_TRANSFER.EXTERNAL_ID
-          type: string
-        createdAt:
-          description: DTO.KYT.KYT_TRANSFER.CREATED_AT
-          format: date-time
-          type: string
-        updatedAt:
-          description: DTO.KYT.KYT_TRANSFER.UPDATED_AT
-          format: date-time
-          type: string
-      required:
-      - createdAt
-      - externalId
-      - id
-      - orgId
-      - txHash
-      - updatedAt
-    KytTransferPage:
-      example:
-        total: 0.8008281904610115
-        data:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          externalId: externalId
-          id: 5.637376656633329
-          txHash: txHash
-          orgId: orgId
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          externalId: externalId
-          id: 5.637376656633329
-          txHash: txHash
-          orgId: orgId
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        totalPages: 5.962133916683182
-        pageSize: 1.4658129805029452
-        page: 6.027456183070403
-      properties:
-        total:
-          description: DTO.KYT.STANDARD_PAGE.TOTAL
-          type: number
-        page:
-          description: DTO.KYT.STANDARD_PAGE.PAGE
-          type: number
-        pageSize:
-          description: DTO.KYT.STANDARD_PAGE.PAGE_SIZE
-          type: number
-        totalPages:
-          description: DTO.KYT.STANDARD_PAGE.TOTAL_PAGES
-          type: number
-        data:
-          description: DTO.KYT.KYT_TRANSFER_PAGE.DATA
-          items:
-            $ref: "#/components/schemas/KytTransferDTO"
-          type: array
-      required:
-      - data
-      - page
-      - pageSize
-      - total
-      - totalPages
-    KytAddressDTO:
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        address: address
-        id: 5.637376656633329
-        orgId: orgId
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        id:
-          description: DTO.KYT.KYT_ADDRESS.ID
-          type: number
-        orgId:
-          description: DTO.KYT.KYT_ADDRESS.ORG_ID
-          type: string
-        address:
-          description: DTO.KYT.KYT_ADDRESS.ADDRESS
-          type: string
-        createdAt:
-          description: DTO.KYT.KYT_ADDRESS.CREATED_AT
-          format: date-time
-          type: string
-        updatedAt:
-          description: DTO.KYT.KYT_ADDRESS.UPDATED_AT
-          format: date-time
-          type: string
-      required:
-      - address
-      - createdAt
-      - id
-      - orgId
-      - updatedAt
-    KytAddressPage:
-      example:
-        total: 0.8008281904610115
-        data:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          address: address
-          id: 5.637376656633329
-          orgId: orgId
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          address: address
-          id: 5.637376656633329
-          orgId: orgId
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        totalPages: 5.962133916683182
-        pageSize: 1.4658129805029452
-        page: 6.027456183070403
-      properties:
-        total:
-          description: DTO.KYT.STANDARD_PAGE.TOTAL
-          type: number
-        page:
-          description: DTO.KYT.STANDARD_PAGE.PAGE
-          type: number
-        pageSize:
-          description: DTO.KYT.STANDARD_PAGE.PAGE_SIZE
-          type: number
-        totalPages:
-          description: DTO.KYT.STANDARD_PAGE.TOTAL_PAGES
-          type: number
-        data:
-          description: DTO.KYT.KYT_ADDRESS_PAGE.DATA
-          items:
-            $ref: "#/components/schemas/KytAddressDTO"
-          type: array
-      required:
-      - data
-      - page
-      - pageSize
-      - total
-      - totalPages
-    KytWithdrawalDTO:
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        address: address
-        externalId: externalId
-        id: 5.637376656633329
-        orgId: orgId
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        id:
-          description: DTO.KYT.KYT_WITHDRAWAL.ID
-          type: number
-        orgId:
-          description: DTO.KYT.KYT_WITHDRAWAL.ORG_ID
-          type: string
-        address:
-          description: DTO.KYT.KYT_WITHDRAWAL.ADDRESS
-          type: string
-        externalId:
-          description: DTO.KYT.KYT_WITHDRAWAL.EXTERNAL_ID
-          type: string
-        createdAt:
-          description: DTO.KYT.KYT_WITHDRAWAL.CREATED_AT
-          format: date-time
-          type: string
-        updatedAt:
-          description: DTO.KYT.KYT_WITHDRAWAL.UPDATED_AT
-          format: date-time
-          type: string
-      required:
-      - address
-      - createdAt
-      - externalId
-      - id
-      - orgId
-      - updatedAt
-    KytWithdrawalPage:
-      example:
-        total: 0.8008281904610115
-        data:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          address: address
-          externalId: externalId
-          id: 5.637376656633329
-          orgId: orgId
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          address: address
-          externalId: externalId
-          id: 5.637376656633329
-          orgId: orgId
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        totalPages: 5.962133916683182
-        pageSize: 1.4658129805029452
-        page: 6.027456183070403
-      properties:
-        total:
-          description: DTO.KYT.STANDARD_PAGE.TOTAL
-          type: number
-        page:
-          description: DTO.KYT.STANDARD_PAGE.PAGE
-          type: number
-        pageSize:
-          description: DTO.KYT.STANDARD_PAGE.PAGE_SIZE
-          type: number
-        totalPages:
-          description: DTO.KYT.STANDARD_PAGE.TOTAL_PAGES
-          type: number
-        data:
-          description: DTO.KYT.KYT_WITHDRAWAL_PAGE.DATA
-          items:
-            $ref: "#/components/schemas/KytWithdrawalDTO"
-          type: array
-      required:
-      - data
-      - page
-      - pageSize
-      - total
-      - totalPages
     EndpointResponse:
       example:
         filter: filter

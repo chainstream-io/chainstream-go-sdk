@@ -36,42 +36,6 @@ func Test_chainstream_KYTAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test KYTAPIService GetKytAddresses", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.KYTAPI.GetKytAddresses(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test KYTAPIService GetKytTransfers", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.KYTAPI.GetKytTransfers(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test KYTAPIService GetKytWithdrawals", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.KYTAPI.GetKytWithdrawals(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test KYTAPIService GetTransferAlerts", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -468,12 +468,14 @@ func (a *TokenAPIService) GetHoldersExecute(r TokenAPIGetHoldersRequest) (*Token
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue float32 = 20
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
 	} else {
 		var defaultValue string = "next"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1178,18 +1180,21 @@ func (a *TokenAPIService) GetMintAndBurnExecute(r TokenAPIGetMintAndBurnRequest)
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue float32 = 20
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
 	} else {
 		var defaultValue string = "next"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	if r.type_ != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
 	} else {
 		var defaultValue string = "all"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", defaultValue, "form", "")
 		r.type_ = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1552,12 +1557,14 @@ func (a *TokenAPIService) GetPricesExecute(r TokenAPIGetPricesRequest) (*TokenPr
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue float32 = 20
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
 	} else {
 		var defaultValue string = "next"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -2248,6 +2255,7 @@ func (a *TokenAPIService) GetTokensExecute(r TokenAPIGetTokensRequest) ([]Token,
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "form", "")
 	} else {
 		var defaultValue string = "DESC"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", defaultValue, "form", "")
 		r.sortDirection = &defaultValue
 	}
 	if r.filterBy != nil {
@@ -3395,18 +3403,21 @@ func (a *TokenAPIService) ListTokenExecute(r TokenAPIListTokenRequest) (*TokenLi
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue float32 = 20
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
 	} else {
 		var defaultValue string = "next"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	if r.sort != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
 	} else {
 		var defaultValue string = "desc"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "")
 		r.sort = &defaultValue
 	}
 	if r.sortBy != nil {
@@ -3956,12 +3967,14 @@ func (a *TokenAPIService) SearchExecute(r TokenAPISearchRequest) (*TokenPage, *h
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue float32 = 20
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.sort != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
 	} else {
 		var defaultValue string = "desc"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "")
 		r.sort = &defaultValue
 	}
 	if r.protocols != nil {
