@@ -392,4 +392,3 @@ func (v *NullableCreateTokenInput) UnmarshalJSON(src []byte) error {
 	return json.Unmarshal(src, &v.value)
 }
 
-

@@ -31,8 +31,8 @@ type TokenAPIGetCandlesRequest struct {
 	chain ChainSymbol
 	tokenAddress string
 	resolution *Resolution
-	from *float32
-	to *float32
+	from *string
+	to *string
 	limit *float32
 }
 
@@ -43,13 +43,13 @@ func (r TokenAPIGetCandlesRequest) Resolution(resolution Resolution) TokenAPIGet
 }
 
 // DTO.CANDLE.FROM
-func (r TokenAPIGetCandlesRequest) From(from float32) TokenAPIGetCandlesRequest {
+func (r TokenAPIGetCandlesRequest) From(from string) TokenAPIGetCandlesRequest {
 	r.from = &from
 	return r
 }
 
 // DTO.CANDLE.TO
-func (r TokenAPIGetCandlesRequest) To(to float32) TokenAPIGetCandlesRequest {
+func (r TokenAPIGetCandlesRequest) To(to string) TokenAPIGetCandlesRequest {
 	r.to = &to
 	return r
 }
@@ -109,15 +109,15 @@ func (a *TokenAPIService) GetCandlesExecute(r TokenAPIGetCandlesRequest) ([]Cand
 		return localVarReturnValue, nil, reportError("resolution is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "resolution", r.resolution, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "resolution", r.resolution, "")
 	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
 	}
 	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -462,20 +462,18 @@ func (a *TokenAPIService) GetHoldersExecute(r TokenAPIGetHoldersRequest) (*Token
 	localVarFormParams := url.Values{}
 
 	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue float32 = 20
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
 	} else {
 		var defaultValue string = "next"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -595,7 +593,7 @@ func (a *TokenAPIService) GetHoldersMultiExecute(r TokenAPIGetHoldersMultiReques
 		return localVarReturnValue, nil, reportError("walletAddresses is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "walletAddresses", r.walletAddresses, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "walletAddresses", r.walletAddresses, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -816,7 +814,7 @@ func (a *TokenAPIService) GetMarketDataMultiExecute(r TokenAPIGetMarketDataMulti
 		return localVarReturnValue, nil, reportError("tokenAddresses is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddresses", r.tokenAddresses, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddresses", r.tokenAddresses, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1037,7 +1035,7 @@ func (a *TokenAPIService) GetMetadataMultiExecute(r TokenAPIGetMetadataMultiRequ
 		return localVarReturnValue, nil, reportError("tokenAddresses is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddresses", r.tokenAddresses, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddresses", r.tokenAddresses, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1174,27 +1172,24 @@ func (a *TokenAPIService) GetMintAndBurnExecute(r TokenAPIGetMintAndBurnRequest)
 	localVarFormParams := url.Values{}
 
 	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue float32 = 20
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
 	} else {
 		var defaultValue string = "next"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "")
 	} else {
 		var defaultValue string = "all"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", defaultValue, "form", "")
 		r.type_ = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1256,6 +1251,48 @@ type TokenAPIGetPoolsRequest struct {
 	ApiService *TokenAPIService
 	chain ChainSymbol
 	tokenAddress string
+	sortBy *string
+	sortDirection *string
+	minTvlInSol *float32
+	maxTvlInSol *float32
+	minTvlInUsd *float32
+	maxTvlInUsd *float32
+}
+
+// DTO.POOL.SORT_BY
+func (r TokenAPIGetPoolsRequest) SortBy(sortBy string) TokenAPIGetPoolsRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+// DTO.POOL.SORT_DIRECTION
+func (r TokenAPIGetPoolsRequest) SortDirection(sortDirection string) TokenAPIGetPoolsRequest {
+	r.sortDirection = &sortDirection
+	return r
+}
+
+// DTO.POOL.MIN_TVL_IN_SOL
+func (r TokenAPIGetPoolsRequest) MinTvlInSol(minTvlInSol float32) TokenAPIGetPoolsRequest {
+	r.minTvlInSol = &minTvlInSol
+	return r
+}
+
+// DTO.POOL.MAX_TVL_IN_SOL
+func (r TokenAPIGetPoolsRequest) MaxTvlInSol(maxTvlInSol float32) TokenAPIGetPoolsRequest {
+	r.maxTvlInSol = &maxTvlInSol
+	return r
+}
+
+// DTO.POOL.MIN_TVL_IN_USD
+func (r TokenAPIGetPoolsRequest) MinTvlInUsd(minTvlInUsd float32) TokenAPIGetPoolsRequest {
+	r.minTvlInUsd = &minTvlInUsd
+	return r
+}
+
+// DTO.POOL.MAX_TVL_IN_USD
+func (r TokenAPIGetPoolsRequest) MaxTvlInUsd(maxTvlInUsd float32) TokenAPIGetPoolsRequest {
+	r.maxTvlInUsd = &maxTvlInUsd
+	return r
 }
 
 func (r TokenAPIGetPoolsRequest) Execute() ([]DexPoolDTO, *http.Response, error) {
@@ -1304,6 +1341,27 @@ func (a *TokenAPIService) GetPoolsExecute(r TokenAPIGetPoolsRequest) ([]DexPoolD
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "")
+	} else {
+		var defaultValue string = "desc"
+		r.sortDirection = &defaultValue
+	}
+	if r.minTvlInSol != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "minTvlInSol", r.minTvlInSol, "")
+	}
+	if r.maxTvlInSol != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "maxTvlInSol", r.maxTvlInSol, "")
+	}
+	if r.minTvlInUsd != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "minTvlInUsd", r.minTvlInUsd, "")
+	}
+	if r.maxTvlInUsd != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "maxTvlInUsd", r.maxTvlInUsd, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1421,7 +1479,7 @@ func (a *TokenAPIService) GetPriceByTimeExecute(r TokenAPIGetPriceByTimeRequest)
 		return localVarReturnValue, nil, reportError("timestamp is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "timestamp", r.timestamp, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "timestamp", r.timestamp, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1551,20 +1609,18 @@ func (a *TokenAPIService) GetPricesExecute(r TokenAPIGetPricesRequest) (*TokenPr
 	localVarFormParams := url.Values{}
 
 	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue float32 = 20
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
 	} else {
 		var defaultValue string = "next"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1894,7 +1950,7 @@ func (a *TokenAPIService) GetStatsMultiExecute(r TokenAPIGetStatsMultiRequest) (
 		return localVarReturnValue, nil, reportError("tokenAddresses is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddresses", r.tokenAddresses, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddresses", r.tokenAddresses, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2247,15 +2303,14 @@ func (a *TokenAPIService) GetTokensExecute(r TokenAPIGetTokensRequest) ([]Token,
 		return localVarReturnValue, nil, reportError("tokenAddresses is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddresses", r.tokenAddresses, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddresses", r.tokenAddresses, "")
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "")
 	} else {
 		var defaultValue string = "DESC"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", defaultValue, "form", "")
 		r.sortDirection = &defaultValue
 	}
 	if r.filterBy != nil {
@@ -2263,10 +2318,10 @@ func (a *TokenAPIService) GetTokensExecute(r TokenAPIGetTokensRequest) ([]Token,
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "filterBy", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "filterBy", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "filterBy", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "filterBy", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -3397,409 +3452,406 @@ func (a *TokenAPIService) ListTokenExecute(r TokenAPIListTokenRequest) (*TokenLi
 	localVarFormParams := url.Values{}
 
 	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue float32 = 20
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
 	} else {
 		var defaultValue string = "next"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	if r.sort != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
 	} else {
 		var defaultValue string = "desc"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "")
 		r.sort = &defaultValue
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
 	}
 	if r.minH24VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_volume_in_usd", r.minH24VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_volume_in_usd", r.minH24VolumeInUsd, "")
 	}
 	if r.maxH24VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_volume_in_usd", r.maxH24VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_volume_in_usd", r.maxH24VolumeInUsd, "")
 	}
 	if r.minH24PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_price_change_ratio", r.minH24PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_price_change_ratio", r.minH24PriceChangeRatio, "")
 	}
 	if r.maxH24PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_price_change_ratio", r.maxH24PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_price_change_ratio", r.maxH24PriceChangeRatio, "")
 	}
 	if r.minH24Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_buys", r.minH24Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_buys", r.minH24Buys, "")
 	}
 	if r.maxH24Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_buys", r.maxH24Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_buys", r.maxH24Buys, "")
 	}
 	if r.minH24Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_sells", r.minH24Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_sells", r.minH24Sells, "")
 	}
 	if r.maxH24Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_sells", r.maxH24Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_sells", r.maxH24Sells, "")
 	}
 	if r.minH24Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_trades", r.minH24Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_trades", r.minH24Trades, "")
 	}
 	if r.maxH24Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_trades", r.maxH24Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_trades", r.maxH24Trades, "")
 	}
 	if r.minH24Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_buyers", r.minH24Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_buyers", r.minH24Buyers, "")
 	}
 	if r.maxH24Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_buyers", r.maxH24Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_buyers", r.maxH24Buyers, "")
 	}
 	if r.minH24Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_sellers", r.minH24Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_sellers", r.minH24Sellers, "")
 	}
 	if r.maxH24Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_sellers", r.maxH24Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_sellers", r.maxH24Sellers, "")
 	}
 	if r.minH24BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_buy_volume_in_usd", r.minH24BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_buy_volume_in_usd", r.minH24BuyVolumeInUsd, "")
 	}
 	if r.maxH24BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_buy_volume_in_usd", r.maxH24BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_buy_volume_in_usd", r.maxH24BuyVolumeInUsd, "")
 	}
 	if r.minH24SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_sell_volume_in_usd", r.minH24SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h24_sell_volume_in_usd", r.minH24SellVolumeInUsd, "")
 	}
 	if r.maxH24SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_sell_volume_in_usd", r.maxH24SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h24_sell_volume_in_usd", r.maxH24SellVolumeInUsd, "")
 	}
 	if r.minH4VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_volume_in_usd", r.minH4VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_volume_in_usd", r.minH4VolumeInUsd, "")
 	}
 	if r.maxH4VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_volume_in_usd", r.maxH4VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_volume_in_usd", r.maxH4VolumeInUsd, "")
 	}
 	if r.minH4PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_price_change_ratio", r.minH4PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_price_change_ratio", r.minH4PriceChangeRatio, "")
 	}
 	if r.maxH4PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_price_change_ratio", r.maxH4PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_price_change_ratio", r.maxH4PriceChangeRatio, "")
 	}
 	if r.minH4Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_buys", r.minH4Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_buys", r.minH4Buys, "")
 	}
 	if r.maxH4Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_buys", r.maxH4Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_buys", r.maxH4Buys, "")
 	}
 	if r.minH4Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_sells", r.minH4Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_sells", r.minH4Sells, "")
 	}
 	if r.maxH4Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_sells", r.maxH4Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_sells", r.maxH4Sells, "")
 	}
 	if r.minH4Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_trades", r.minH4Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_trades", r.minH4Trades, "")
 	}
 	if r.maxH4Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_trades", r.maxH4Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_trades", r.maxH4Trades, "")
 	}
 	if r.minH4Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_buyers", r.minH4Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_buyers", r.minH4Buyers, "")
 	}
 	if r.maxH4Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_buyers", r.maxH4Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_buyers", r.maxH4Buyers, "")
 	}
 	if r.minH4Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_sellers", r.minH4Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_sellers", r.minH4Sellers, "")
 	}
 	if r.maxH4Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_sellers", r.maxH4Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_sellers", r.maxH4Sellers, "")
 	}
 	if r.minH4BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_buy_volume_in_usd", r.minH4BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_buy_volume_in_usd", r.minH4BuyVolumeInUsd, "")
 	}
 	if r.maxH4BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_buy_volume_in_usd", r.maxH4BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_buy_volume_in_usd", r.maxH4BuyVolumeInUsd, "")
 	}
 	if r.minH4SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_sell_volume_in_usd", r.minH4SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h4_sell_volume_in_usd", r.minH4SellVolumeInUsd, "")
 	}
 	if r.maxH4SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_sell_volume_in_usd", r.maxH4SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h4_sell_volume_in_usd", r.maxH4SellVolumeInUsd, "")
 	}
 	if r.minH1VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_volume_in_usd", r.minH1VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_volume_in_usd", r.minH1VolumeInUsd, "")
 	}
 	if r.maxH1VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_volume_in_usd", r.maxH1VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_volume_in_usd", r.maxH1VolumeInUsd, "")
 	}
 	if r.minH1PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_price_change_ratio", r.minH1PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_price_change_ratio", r.minH1PriceChangeRatio, "")
 	}
 	if r.maxH1PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_price_change_ratio", r.maxH1PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_price_change_ratio", r.maxH1PriceChangeRatio, "")
 	}
 	if r.minH1Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_buys", r.minH1Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_buys", r.minH1Buys, "")
 	}
 	if r.maxH1Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_buys", r.maxH1Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_buys", r.maxH1Buys, "")
 	}
 	if r.minH1Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_sells", r.minH1Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_sells", r.minH1Sells, "")
 	}
 	if r.maxH1Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_sells", r.maxH1Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_sells", r.maxH1Sells, "")
 	}
 	if r.minH1Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_trades", r.minH1Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_trades", r.minH1Trades, "")
 	}
 	if r.maxH1Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_trades", r.maxH1Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_trades", r.maxH1Trades, "")
 	}
 	if r.minH1Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_buyers", r.minH1Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_buyers", r.minH1Buyers, "")
 	}
 	if r.maxH1Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_buyers", r.maxH1Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_buyers", r.maxH1Buyers, "")
 	}
 	if r.minH1Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_sellers", r.minH1Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_sellers", r.minH1Sellers, "")
 	}
 	if r.maxH1Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_sellers", r.maxH1Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_sellers", r.maxH1Sellers, "")
 	}
 	if r.minH1BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_buy_volume_in_usd", r.minH1BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_buy_volume_in_usd", r.minH1BuyVolumeInUsd, "")
 	}
 	if r.maxH1BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_buy_volume_in_usd", r.maxH1BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_buy_volume_in_usd", r.maxH1BuyVolumeInUsd, "")
 	}
 	if r.minH1SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_sell_volume_in_usd", r.minH1SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_h1_sell_volume_in_usd", r.minH1SellVolumeInUsd, "")
 	}
 	if r.maxH1SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_sell_volume_in_usd", r.maxH1SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_h1_sell_volume_in_usd", r.maxH1SellVolumeInUsd, "")
 	}
 	if r.minM30VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_volume_in_usd", r.minM30VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_volume_in_usd", r.minM30VolumeInUsd, "")
 	}
 	if r.maxM30VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_volume_in_usd", r.maxM30VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_volume_in_usd", r.maxM30VolumeInUsd, "")
 	}
 	if r.minM30PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_price_change_ratio", r.minM30PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_price_change_ratio", r.minM30PriceChangeRatio, "")
 	}
 	if r.maxM30PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_price_change_ratio", r.maxM30PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_price_change_ratio", r.maxM30PriceChangeRatio, "")
 	}
 	if r.minM30Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_buys", r.minM30Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_buys", r.minM30Buys, "")
 	}
 	if r.maxM30Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_buys", r.maxM30Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_buys", r.maxM30Buys, "")
 	}
 	if r.minM30Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_sells", r.minM30Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_sells", r.minM30Sells, "")
 	}
 	if r.maxM30Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_sells", r.maxM30Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_sells", r.maxM30Sells, "")
 	}
 	if r.minM30Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_trades", r.minM30Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_trades", r.minM30Trades, "")
 	}
 	if r.maxM30Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_trades", r.maxM30Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_trades", r.maxM30Trades, "")
 	}
 	if r.minM30Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_buyers", r.minM30Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_buyers", r.minM30Buyers, "")
 	}
 	if r.maxM30Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_buyers", r.maxM30Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_buyers", r.maxM30Buyers, "")
 	}
 	if r.minM30Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_sellers", r.minM30Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_sellers", r.minM30Sellers, "")
 	}
 	if r.maxM30Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_sellers", r.maxM30Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_sellers", r.maxM30Sellers, "")
 	}
 	if r.minM30BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_buy_volume_in_usd", r.minM30BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_buy_volume_in_usd", r.minM30BuyVolumeInUsd, "")
 	}
 	if r.maxM30BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_buy_volume_in_usd", r.maxM30BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_buy_volume_in_usd", r.maxM30BuyVolumeInUsd, "")
 	}
 	if r.minM30SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_sell_volume_in_usd", r.minM30SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m30_sell_volume_in_usd", r.minM30SellVolumeInUsd, "")
 	}
 	if r.maxM30SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_sell_volume_in_usd", r.maxM30SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m30_sell_volume_in_usd", r.maxM30SellVolumeInUsd, "")
 	}
 	if r.minM15VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_volume_in_usd", r.minM15VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_volume_in_usd", r.minM15VolumeInUsd, "")
 	}
 	if r.maxM15VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_volume_in_usd", r.maxM15VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_volume_in_usd", r.maxM15VolumeInUsd, "")
 	}
 	if r.minM15PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_price_change_ratio", r.minM15PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_price_change_ratio", r.minM15PriceChangeRatio, "")
 	}
 	if r.maxM15PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_price_change_ratio", r.maxM15PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_price_change_ratio", r.maxM15PriceChangeRatio, "")
 	}
 	if r.minM15Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_buys", r.minM15Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_buys", r.minM15Buys, "")
 	}
 	if r.maxM15Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_buys", r.maxM15Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_buys", r.maxM15Buys, "")
 	}
 	if r.minM15Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_sells", r.minM15Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_sells", r.minM15Sells, "")
 	}
 	if r.maxM15Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_sells", r.maxM15Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_sells", r.maxM15Sells, "")
 	}
 	if r.minM15Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_trades", r.minM15Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_trades", r.minM15Trades, "")
 	}
 	if r.maxM15Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_trades", r.maxM15Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_trades", r.maxM15Trades, "")
 	}
 	if r.minM15Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_buyers", r.minM15Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_buyers", r.minM15Buyers, "")
 	}
 	if r.maxM15Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_buyers", r.maxM15Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_buyers", r.maxM15Buyers, "")
 	}
 	if r.minM15Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_sellers", r.minM15Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_sellers", r.minM15Sellers, "")
 	}
 	if r.maxM15Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_sellers", r.maxM15Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_sellers", r.maxM15Sellers, "")
 	}
 	if r.minM15BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_buy_volume_in_usd", r.minM15BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_buy_volume_in_usd", r.minM15BuyVolumeInUsd, "")
 	}
 	if r.maxM15BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_buy_volume_in_usd", r.maxM15BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_buy_volume_in_usd", r.maxM15BuyVolumeInUsd, "")
 	}
 	if r.minM15SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_sell_volume_in_usd", r.minM15SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m15_sell_volume_in_usd", r.minM15SellVolumeInUsd, "")
 	}
 	if r.maxM15SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_sell_volume_in_usd", r.maxM15SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m15_sell_volume_in_usd", r.maxM15SellVolumeInUsd, "")
 	}
 	if r.minM5VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_volume_in_usd", r.minM5VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_volume_in_usd", r.minM5VolumeInUsd, "")
 	}
 	if r.maxM5VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_volume_in_usd", r.maxM5VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_volume_in_usd", r.maxM5VolumeInUsd, "")
 	}
 	if r.minM5PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_price_change_ratio", r.minM5PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_price_change_ratio", r.minM5PriceChangeRatio, "")
 	}
 	if r.maxM5PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_price_change_ratio", r.maxM5PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_price_change_ratio", r.maxM5PriceChangeRatio, "")
 	}
 	if r.minM5Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_buys", r.minM5Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_buys", r.minM5Buys, "")
 	}
 	if r.maxM5Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_buys", r.maxM5Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_buys", r.maxM5Buys, "")
 	}
 	if r.minM5Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_sells", r.minM5Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_sells", r.minM5Sells, "")
 	}
 	if r.maxM5Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_sells", r.maxM5Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_sells", r.maxM5Sells, "")
 	}
 	if r.minM5Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_trades", r.minM5Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_trades", r.minM5Trades, "")
 	}
 	if r.maxM5Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_trades", r.maxM5Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_trades", r.maxM5Trades, "")
 	}
 	if r.minM5Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_buyers", r.minM5Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_buyers", r.minM5Buyers, "")
 	}
 	if r.maxM5Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_buyers", r.maxM5Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_buyers", r.maxM5Buyers, "")
 	}
 	if r.minM5Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_sellers", r.minM5Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_sellers", r.minM5Sellers, "")
 	}
 	if r.maxM5Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_sellers", r.maxM5Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_sellers", r.maxM5Sellers, "")
 	}
 	if r.minM5BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_buy_volume_in_usd", r.minM5BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_buy_volume_in_usd", r.minM5BuyVolumeInUsd, "")
 	}
 	if r.maxM5BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_buy_volume_in_usd", r.maxM5BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_buy_volume_in_usd", r.maxM5BuyVolumeInUsd, "")
 	}
 	if r.minM5SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_sell_volume_in_usd", r.minM5SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m5_sell_volume_in_usd", r.minM5SellVolumeInUsd, "")
 	}
 	if r.maxM5SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_sell_volume_in_usd", r.maxM5SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m5_sell_volume_in_usd", r.maxM5SellVolumeInUsd, "")
 	}
 	if r.minM1VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_volume_in_usd", r.minM1VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_volume_in_usd", r.minM1VolumeInUsd, "")
 	}
 	if r.maxM1VolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_volume_in_usd", r.maxM1VolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_volume_in_usd", r.maxM1VolumeInUsd, "")
 	}
 	if r.minM1PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_price_change_ratio", r.minM1PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_price_change_ratio", r.minM1PriceChangeRatio, "")
 	}
 	if r.maxM1PriceChangeRatio != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_price_change_ratio", r.maxM1PriceChangeRatio, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_price_change_ratio", r.maxM1PriceChangeRatio, "")
 	}
 	if r.minM1Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_buys", r.minM1Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_buys", r.minM1Buys, "")
 	}
 	if r.maxM1Buys != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_buys", r.maxM1Buys, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_buys", r.maxM1Buys, "")
 	}
 	if r.minM1Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_sells", r.minM1Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_sells", r.minM1Sells, "")
 	}
 	if r.maxM1Sells != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_sells", r.maxM1Sells, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_sells", r.maxM1Sells, "")
 	}
 	if r.minM1Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_trades", r.minM1Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_trades", r.minM1Trades, "")
 	}
 	if r.maxM1Trades != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_trades", r.maxM1Trades, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_trades", r.maxM1Trades, "")
 	}
 	if r.minM1Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_buyers", r.minM1Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_buyers", r.minM1Buyers, "")
 	}
 	if r.maxM1Buyers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_buyers", r.maxM1Buyers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_buyers", r.maxM1Buyers, "")
 	}
 	if r.minM1Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_sellers", r.minM1Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_sellers", r.minM1Sellers, "")
 	}
 	if r.maxM1Sellers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_sellers", r.maxM1Sellers, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_sellers", r.maxM1Sellers, "")
 	}
 	if r.minM1BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_buy_volume_in_usd", r.minM1BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_buy_volume_in_usd", r.minM1BuyVolumeInUsd, "")
 	}
 	if r.maxM1BuyVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_buy_volume_in_usd", r.maxM1BuyVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_buy_volume_in_usd", r.maxM1BuyVolumeInUsd, "")
 	}
 	if r.minM1SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_sell_volume_in_usd", r.minM1SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "min_m1_sell_volume_in_usd", r.minM1SellVolumeInUsd, "")
 	}
 	if r.maxM1SellVolumeInUsd != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_sell_volume_in_usd", r.maxM1SellVolumeInUsd, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_m1_sell_volume_in_usd", r.maxM1SellVolumeInUsd, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3954,27 +4006,25 @@ func (a *TokenAPIService) SearchExecute(r TokenAPISearchRequest) (*TokenPage, *h
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "chains", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "chains", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "chains", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "chains", t, "multi")
 		}
 	}
 	if r.q != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "q", r.q, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "q", r.q, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue float32 = 20
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.sort != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
 	} else {
 		var defaultValue string = "desc"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "")
 		r.sort = &defaultValue
 	}
 	if r.protocols != nil {
@@ -3982,17 +4032,17 @@ func (a *TokenAPIService) SearchExecute(r TokenAPISearchRequest) (*TokenPage, *h
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "protocols", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "protocols", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "protocols", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "protocols", t, "multi")
 		}
 	}
 	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

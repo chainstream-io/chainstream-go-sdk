@@ -350,4 +350,3 @@ func (v *NullableTopTradersPage) UnmarshalJSON(src []byte) error {
 	return json.Unmarshal(src, &v.value)
 }
 
-

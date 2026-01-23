@@ -131,13 +131,12 @@ func (a *RankingAPIService) GetFinalStretchTokensExecute(r RankingAPIGetFinalStr
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "")
 	} else {
 		var defaultValue string = "DESC"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", defaultValue, "form", "")
 		r.sortDirection = &defaultValue
 	}
 	if r.rangeFilters != nil {
@@ -145,24 +144,24 @@ func (a *RankingAPIService) GetFinalStretchTokensExecute(r RankingAPIGetFinalStr
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", t, "multi")
 		}
 	}
 	if r.tag != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "")
 	}
 	if r.filters != nil {
 		t := *r.filters
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "filters", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "filters", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "filters", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "filters", t, "multi")
 		}
 	}
 	if r.launchpadPlatform != nil {
@@ -170,10 +169,10 @@ func (a *RankingAPIService) GetFinalStretchTokensExecute(r RankingAPIGetFinalStr
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", t, "multi")
 		}
 	}
 	if r.searchKeywords != nil {
@@ -181,10 +180,10 @@ func (a *RankingAPIService) GetFinalStretchTokensExecute(r RankingAPIGetFinalStr
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", t, "multi")
 		}
 	}
 	if r.excludeKeywords != nil {
@@ -192,10 +191,10 @@ func (a *RankingAPIService) GetFinalStretchTokensExecute(r RankingAPIGetFinalStr
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -362,13 +361,12 @@ func (a *RankingAPIService) GetHotTokensExecute(r RankingAPIGetHotTokensRequest)
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "")
 	} else {
 		var defaultValue string = "DESC"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", defaultValue, "form", "")
 		r.sortDirection = &defaultValue
 	}
 	if r.rangeFilters != nil {
@@ -376,24 +374,24 @@ func (a *RankingAPIService) GetHotTokensExecute(r RankingAPIGetHotTokensRequest)
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", t, "multi")
 		}
 	}
 	if r.tag != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "")
 	}
 	if r.filters != nil {
 		t := *r.filters
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "filters", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "filters", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "filters", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "filters", t, "multi")
 		}
 	}
 	if r.launchpadPlatform != nil {
@@ -401,10 +399,10 @@ func (a *RankingAPIService) GetHotTokensExecute(r RankingAPIGetHotTokensRequest)
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", t, "multi")
 		}
 	}
 	if r.searchKeywords != nil {
@@ -412,10 +410,10 @@ func (a *RankingAPIService) GetHotTokensExecute(r RankingAPIGetHotTokensRequest)
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", t, "multi")
 		}
 	}
 	if r.excludeKeywords != nil {
@@ -423,10 +421,10 @@ func (a *RankingAPIService) GetHotTokensExecute(r RankingAPIGetHotTokensRequest)
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -589,13 +587,12 @@ func (a *RankingAPIService) GetMigratedTokensExecute(r RankingAPIGetMigratedToke
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "")
 	} else {
 		var defaultValue string = "DESC"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", defaultValue, "form", "")
 		r.sortDirection = &defaultValue
 	}
 	if r.rangeFilters != nil {
@@ -603,24 +600,24 @@ func (a *RankingAPIService) GetMigratedTokensExecute(r RankingAPIGetMigratedToke
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", t, "multi")
 		}
 	}
 	if r.tag != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "")
 	}
 	if r.filters != nil {
 		t := *r.filters
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "filters", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "filters", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "filters", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "filters", t, "multi")
 		}
 	}
 	if r.launchpadPlatform != nil {
@@ -628,10 +625,10 @@ func (a *RankingAPIService) GetMigratedTokensExecute(r RankingAPIGetMigratedToke
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", t, "multi")
 		}
 	}
 	if r.searchKeywords != nil {
@@ -639,10 +636,10 @@ func (a *RankingAPIService) GetMigratedTokensExecute(r RankingAPIGetMigratedToke
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", t, "multi")
 		}
 	}
 	if r.excludeKeywords != nil {
@@ -650,10 +647,10 @@ func (a *RankingAPIService) GetMigratedTokensExecute(r RankingAPIGetMigratedToke
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -816,13 +813,12 @@ func (a *RankingAPIService) GetNewTokensExecute(r RankingAPIGetNewTokensRequest)
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "")
 	} else {
 		var defaultValue string = "DESC"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", defaultValue, "form", "")
 		r.sortDirection = &defaultValue
 	}
 	if r.rangeFilters != nil {
@@ -830,24 +826,24 @@ func (a *RankingAPIService) GetNewTokensExecute(r RankingAPIGetNewTokensRequest)
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", t, "multi")
 		}
 	}
 	if r.tag != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "")
 	}
 	if r.filters != nil {
 		t := *r.filters
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "filters", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "filters", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "filters", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "filters", t, "multi")
 		}
 	}
 	if r.launchpadPlatform != nil {
@@ -855,10 +851,10 @@ func (a *RankingAPIService) GetNewTokensExecute(r RankingAPIGetNewTokensRequest)
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", t, "multi")
 		}
 	}
 	if r.searchKeywords != nil {
@@ -866,10 +862,10 @@ func (a *RankingAPIService) GetNewTokensExecute(r RankingAPIGetNewTokensRequest)
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", t, "multi")
 		}
 	}
 	if r.excludeKeywords != nil {
@@ -877,10 +873,10 @@ func (a *RankingAPIService) GetNewTokensExecute(r RankingAPIGetNewTokensRequest)
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -1043,13 +1039,12 @@ func (a *RankingAPIService) GetStocksTokensExecute(r RankingAPIGetStocksTokensRe
 	localVarFormParams := url.Values{}
 
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", r.sortDirection, "")
 	} else {
 		var defaultValue string = "DESC"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortDirection", defaultValue, "form", "")
 		r.sortDirection = &defaultValue
 	}
 	if r.rangeFilters != nil {
@@ -1057,24 +1052,24 @@ func (a *RankingAPIService) GetStocksTokensExecute(r RankingAPIGetStocksTokensRe
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "rangeFilters", t, "multi")
 		}
 	}
 	if r.tag != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "")
 	}
 	if r.filters != nil {
 		t := *r.filters
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "filters", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "filters", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "filters", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "filters", t, "multi")
 		}
 	}
 	if r.launchpadPlatform != nil {
@@ -1082,10 +1077,10 @@ func (a *RankingAPIService) GetStocksTokensExecute(r RankingAPIGetStocksTokensRe
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "launchpadPlatform", t, "multi")
 		}
 	}
 	if r.searchKeywords != nil {
@@ -1093,10 +1088,10 @@ func (a *RankingAPIService) GetStocksTokensExecute(r RankingAPIGetStocksTokensRe
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "searchKeywords", t, "multi")
 		}
 	}
 	if r.excludeKeywords != nil {
@@ -1104,10 +1099,10 @@ func (a *RankingAPIService) GetStocksTokensExecute(r RankingAPIGetStocksTokensRe
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "excludeKeywords", t, "multi")
 		}
 	}
 	// to determine the Content-Type header

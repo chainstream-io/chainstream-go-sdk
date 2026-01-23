@@ -350,4 +350,3 @@ func (v *NullableTokenHolderPage) UnmarshalJSON(src []byte) error {
 	return json.Unmarshal(src, &v.value)
 }
 
-

@@ -495,4 +495,3 @@ func (v *NullableEndpointResponse) UnmarshalJSON(src []byte) error {
 	return json.Unmarshal(src, &v.value)
 }
 
-

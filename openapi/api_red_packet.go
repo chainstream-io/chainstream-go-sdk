@@ -323,13 +323,13 @@ func (a *RedPacketAPIService) GetClaimsExecute(r RedPacketAPIGetClaimsRequest) (
 	localVarFormParams := url.Values{}
 
 	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -456,13 +456,13 @@ func (a *RedPacketAPIService) GetClaimsByAddressExecute(r RedPacketAPIGetClaimsB
 	localVarFormParams := url.Values{}
 
 	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -702,19 +702,19 @@ func (a *RedPacketAPIService) GetRedpacketsExecute(r RedPacketAPIGetRedpacketsRe
 	localVarFormParams := url.Values{}
 
 	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
 	}
 	if r.creator != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "creator", r.creator, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "creator", r.creator, "")
 	}
 	if r.chain != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "chain", r.chain, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "chain", r.chain, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -841,13 +841,13 @@ func (a *RedPacketAPIService) GetRedpacketsByAddressExecute(r RedPacketAPIGetRed
 	localVarFormParams := url.Values{}
 
 	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -297,4 +297,3 @@ func (v *NullableClaimRedPacketInput) UnmarshalJSON(src []byte) error {
 	return json.Unmarshal(src, &v.value)
 }
 
-

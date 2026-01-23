@@ -331,4 +331,3 @@ func (v *NullableAlertDetail) UnmarshalJSON(src []byte) error {
 	return json.Unmarshal(src, &v.value)
 }
 
-

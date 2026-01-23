@@ -510,20 +510,18 @@ func (a *EndpointAPIService) ListEndpointsExecute(r EndpointAPIListEndpointsRequ
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue float32 = 100
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.iterator != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "iterator", r.iterator, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "iterator", r.iterator, "")
 	}
 	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "")
 	} else {
 		var defaultValue string = "ascending"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", defaultValue, "form", "")
 		r.order = &defaultValue
 	}
 	// to determine the Content-Type header

@@ -157,4 +157,3 @@ func (v *NullableOnChainActivity) UnmarshalJSON(src []byte) error {
 	return json.Unmarshal(src, &v.value)
 }
 
-

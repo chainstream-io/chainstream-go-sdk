@@ -16,18 +16,19 @@ import (
 	"testing"
 	"time"
 
+	chainstream "github.com/chainstream-io/chainstream-go-sdk"
 	"github.com/chainstream-io/chainstream-go-sdk/api"
 )
 
 func TestStreamWebSocket(t *testing.T) {
 	// Token - replace with a valid token
-	token := "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImtleXN0b3JlLUNIQU5HRS1NRSJ9.eyJqdGkiOiJhQjFweXFXR0hYRkVYLUlmNm5jd18iLCJzdWIiOiJIR2hWbmpiSWlheDFIcDNUakdUd083WU9FUkJURXRwaSIsImlhdCI6MTc2ODg0MDY1NiwiZXhwIjoxNzY4OTI3MDU2LCJjbGllbnRfaWQiOiJIR2hWbmpiSWlheDFIcDNUakdUd083WU9FUkJURXRwaSIsImlzcyI6Imh0dHBzOi8vZGV4LmFzaWEuYXV0aC5jaGFpbnN0cmVhbS5pby8iLCJhdWQiOiJodHRwczovL2FwaS5kZXguY2hhaW5zdHJlYW0uaW8ifQ.GNiv_oRPmhnWmi6w6bHGr3-zyw9fy8sf2kCnFBNKVBoQb5iw_DZIDH20NpghpotDx9s_ZGgfAN_wUsP6Fffg-M5xufSVym4961QcAfRRsJ_YyR_rxqYhLMrGrfCANIRv7qpzhxKB2OteDuSrLNfjBNQI_n-TnHJHOp_Xra3r-gTaCMEpxpl7nRTViILQUIzoLyrNvilBbKgFCaldmt6mtBZKSd9gSB5A5EOn8nDrV6LUo-0n9b7nhgq5zl6pXOXm9LYO3gjlXw5KNAR0K11g8_seNt6oMRPK1To7nr7Fm0G_6Hte0yzLftJCaCBe5HjNV0S6HBc1mSGSry1NAXFCig"
+	token := "YOUR_TOKEN_HERE"
 
 	fmt.Println("Starting WebSocket subscription test...")
 
 	// Create DexClient (WebSocket will auto-connect on subscribe)
-	client, err := openapi.NewDexClient(token, &openapi.DexAggregatorOptions{
-		StreamUrl: "wss://realtime-dex.openapi.io/connection/websocket",
+	client, err := chainstream.NewDexClient(token, &chainstream.DexAggregatorOptions{
+		StreamUrl: "wss://realtime-dex.chainstream.io/connection/websocket",
 	})
 	if err != nil {
 		t.Fatalf("Failed to create client: %v", err)

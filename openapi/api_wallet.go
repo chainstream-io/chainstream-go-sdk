@@ -203,7 +203,7 @@ func (a *WalletAPIService) GetBalanceExecute(r WalletAPIGetBalanceRequest) (*Wal
 	localVarFormParams := url.Values{}
 
 	if r.tokenAddress != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddress", r.tokenAddress, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddress", r.tokenAddress, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -320,7 +320,7 @@ func (a *WalletAPIService) GetPnlExecute(r WalletAPIGetPnlRequest) ([]WalletPnlD
 	localVarFormParams := url.Values{}
 
 	if r.tokenAddress != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddress", r.tokenAddress, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddress", r.tokenAddress, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

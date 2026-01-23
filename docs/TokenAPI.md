@@ -53,8 +53,8 @@ func main() {
 	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
 	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
 	resolution := openapiclient.Resolution("1s") // Resolution | DTO.CANDLE.RESOLUTION
-	from := float32(1741647950000) // float32 | DTO.CANDLE.FROM (optional)
-	to := float32(1741700970000) // float32 | DTO.CANDLE.TO (optional)
+	from := "1741647950000" // string | DTO.CANDLE.FROM (optional)
+	to := "1741700970000" // string | DTO.CANDLE.TO (optional)
 	limit := float32(100) // float32 | DTO.CANDLE.LIMIT (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -88,8 +88,8 @@ Name | Type | Description  | Notes
 
 
  **resolution** | [**Resolution**](Resolution.md) | DTO.CANDLE.RESOLUTION | 
- **from** | **float32** | DTO.CANDLE.FROM | 
- **to** | **float32** | DTO.CANDLE.TO | 
+ **from** | **string** | DTO.CANDLE.FROM | 
+ **to** | **string** | DTO.CANDLE.TO | 
  **limit** | **float32** | DTO.CANDLE.LIMIT | 
 
 ### Return type
@@ -783,7 +783,7 @@ Name | Type | Description  | Notes
 
 ## GetPools
 
-> []DexPoolDTO GetPools(ctx, chain, tokenAddress).Execute()
+> []DexPoolDTO GetPools(ctx, chain, tokenAddress).SortBy(sortBy).SortDirection(sortDirection).MinTvlInSol(minTvlInSol).MaxTvlInSol(maxTvlInSol).MinTvlInUsd(minTvlInUsd).MaxTvlInUsd(maxTvlInUsd).Execute()
 
 CONTROLLER.TOKEN.GET_POOLS.SUMMARY
 
@@ -804,10 +804,16 @@ import (
 func main() {
 	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
 	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
+	sortBy := "tvlInUsd" // string | DTO.POOL.SORT_BY (optional)
+	sortDirection := "sortDirection_example" // string | DTO.POOL.SORT_DIRECTION (optional) (default to "desc")
+	minTvlInSol := float32(100) // float32 | DTO.POOL.MIN_TVL_IN_SOL (optional)
+	maxTvlInSol := float32(10000) // float32 | DTO.POOL.MAX_TVL_IN_SOL (optional)
+	minTvlInUsd := float32(1000) // float32 | DTO.POOL.MIN_TVL_IN_USD (optional)
+	maxTvlInUsd := float32(100000) // float32 | DTO.POOL.MAX_TVL_IN_USD (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TokenAPI.GetPools(context.Background(), chain, tokenAddress).Execute()
+	resp, r, err := apiClient.TokenAPI.GetPools(context.Background(), chain, tokenAddress).SortBy(sortBy).SortDirection(sortDirection).MinTvlInSol(minTvlInSol).MaxTvlInSol(maxTvlInSol).MinTvlInUsd(minTvlInUsd).MaxTvlInUsd(maxTvlInUsd).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TokenAPI.GetPools``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -835,6 +841,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **sortBy** | **string** | DTO.POOL.SORT_BY | 
+ **sortDirection** | **string** | DTO.POOL.SORT_DIRECTION | [default to &quot;desc&quot;]
+ **minTvlInSol** | **float32** | DTO.POOL.MIN_TVL_IN_SOL | 
+ **maxTvlInSol** | **float32** | DTO.POOL.MAX_TVL_IN_SOL | 
+ **minTvlInUsd** | **float32** | DTO.POOL.MIN_TVL_IN_USD | 
+ **maxTvlInUsd** | **float32** | DTO.POOL.MAX_TVL_IN_USD | 
 
 ### Return type
 

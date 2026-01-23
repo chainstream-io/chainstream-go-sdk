@@ -210,21 +210,20 @@ func (a *DexAPIService) ListDexExecute(r DexAPIListDexRequest) (*DexPage, *http.
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "chains", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "chains", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "chains", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "chains", t, "multi")
 		}
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue float32 = 20
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.dexProgram != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "dexProgram", r.dexProgram, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dexProgram", r.dexProgram, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -389,12 +388,12 @@ func (a *DexAPIService) QuoteExecute(r DexAPIQuoteRequest) (*QuoteResponse, *htt
 		return localVarReturnValue, nil, reportError("slippage is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "dex", r.dex, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "amount", r.amount, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "inputMint", r.inputMint, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "outputMint", r.outputMint, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "exactIn", r.exactIn, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "slippage", r.slippage, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "dex", r.dex, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "amount", r.amount, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "inputMint", r.inputMint, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "outputMint", r.outputMint, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "exactIn", r.exactIn, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "slippage", r.slippage, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

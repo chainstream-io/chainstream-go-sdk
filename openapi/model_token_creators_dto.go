@@ -199,4 +199,3 @@ func (v *NullableTokenCreatorsDTO) UnmarshalJSON(src []byte) error {
 	return json.Unmarshal(src, &v.value)
 }
 
-

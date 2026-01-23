@@ -158,48 +158,46 @@ func (a *TradeAPIService) GetActivitiesExecute(r TradeAPIGetActivitiesRequest) (
 	localVarFormParams := url.Values{}
 
 	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue float32 = 20
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
 	} else {
 		var defaultValue string = "next"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	if r.tokenAddress != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddress", r.tokenAddress, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddress", r.tokenAddress, "")
 	}
 	if r.walletAddress != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "walletAddress", r.walletAddress, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "walletAddress", r.walletAddress, "")
 	}
 	if r.poolAddress != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "poolAddress", r.poolAddress, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "poolAddress", r.poolAddress, "")
 	}
 	if r.beforeTimestamp != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "beforeTimestamp", r.beforeTimestamp, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "beforeTimestamp", r.beforeTimestamp, "")
 	}
 	if r.afterTimestamp != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "afterTimestamp", r.afterTimestamp, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "afterTimestamp", r.afterTimestamp, "")
 	}
 	if r.beforeBlockHeight != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "beforeBlockHeight", r.beforeBlockHeight, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "beforeBlockHeight", r.beforeBlockHeight, "")
 	}
 	if r.afterBlockHeight != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "afterBlockHeight", r.afterBlockHeight, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "afterBlockHeight", r.afterBlockHeight, "")
 	}
 	if r.transactionsSignature != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "transactionsSignature", r.transactionsSignature, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "transactionsSignature", r.transactionsSignature, "")
 	}
 	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -347,41 +345,36 @@ func (a *TradeAPIService) GetGainersLosersExecute(r TradeAPIGetGainersLosersRequ
 	localVarFormParams := url.Values{}
 
 	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue float32 = 10
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
 	} else {
 		var defaultValue string = "next"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "")
 	} else {
 		var defaultValue string = "1W"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", defaultValue, "form", "")
 		r.type_ = &defaultValue
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
 	} else {
 		var defaultValue string = "PnL"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", defaultValue, "form", "")
 		r.sortBy = &defaultValue
 	}
 	if r.sortType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortType", r.sortType, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortType", r.sortType, "")
 	} else {
 		var defaultValue string = "desc"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortType", defaultValue, "form", "")
 		r.sortType = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -540,42 +533,37 @@ func (a *TradeAPIService) GetTopTradersExecute(r TradeAPIGetTopTradersRequest) (
 	}
 
 	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue float32 = 10
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
 	} else {
 		var defaultValue string = "next"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddress", r.tokenAddress, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddress", r.tokenAddress, "")
 	if r.timeFrame != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "timeFrame", r.timeFrame, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "timeFrame", r.timeFrame, "")
 	} else {
 		var defaultValue string = "30m"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "timeFrame", defaultValue, "form", "")
 		r.timeFrame = &defaultValue
 	}
 	if r.sortType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortType", r.sortType, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortType", r.sortType, "")
 	} else {
 		var defaultValue string = "desc"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortType", defaultValue, "form", "")
 		r.sortType = &defaultValue
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
 	} else {
 		var defaultValue string = "volume"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", defaultValue, "form", "")
 		r.sortBy = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -766,48 +754,46 @@ func (a *TradeAPIService) GetTradesExecute(r TradeAPIGetTradesRequest) (*TradePa
 	localVarFormParams := url.Values{}
 
 	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue float32 = 20
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
 	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
 	} else {
 		var defaultValue string = "next"
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", defaultValue, "form", "")
 		r.direction = &defaultValue
 	}
 	if r.tokenAddress != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddress", r.tokenAddress, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddress", r.tokenAddress, "")
 	}
 	if r.walletAddress != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "walletAddress", r.walletAddress, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "walletAddress", r.walletAddress, "")
 	}
 	if r.poolAddress != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "poolAddress", r.poolAddress, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "poolAddress", r.poolAddress, "")
 	}
 	if r.beforeTimestamp != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "beforeTimestamp", r.beforeTimestamp, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "beforeTimestamp", r.beforeTimestamp, "")
 	}
 	if r.afterTimestamp != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "afterTimestamp", r.afterTimestamp, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "afterTimestamp", r.afterTimestamp, "")
 	}
 	if r.beforeBlockHeight != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "beforeBlockHeight", r.beforeBlockHeight, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "beforeBlockHeight", r.beforeBlockHeight, "")
 	}
 	if r.afterBlockHeight != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "afterBlockHeight", r.afterBlockHeight, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "afterBlockHeight", r.afterBlockHeight, "")
 	}
 	if r.transactionsSignature != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "transactionsSignature", r.transactionsSignature, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "transactionsSignature", r.transactionsSignature, "")
 	}
 	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

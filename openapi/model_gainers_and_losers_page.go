@@ -350,4 +350,3 @@ func (v *NullableGainersAndLosersPage) UnmarshalJSON(src []byte) error {
 	return json.Unmarshal(src, &v.value)
 }
 
-

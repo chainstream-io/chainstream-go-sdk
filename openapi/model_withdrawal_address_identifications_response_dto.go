@@ -186,4 +186,3 @@ func (v *NullableWithdrawalAddressIdentificationsResponseDTO) UnmarshalJSON(src 
 	return json.Unmarshal(src, &v.value)
 }
 
-

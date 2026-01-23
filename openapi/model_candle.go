@@ -35,7 +35,7 @@ type Candle struct {
 	// DTO.CANDLE.RESOLUTION
 	Resolution Resolution `json:"resolution"`
 	// DTO.CANDLE.TIME
-	Time float32 `json:"time"`
+	Time string `json:"time"`
 }
 
 type _Candle Candle
@@ -44,7 +44,7 @@ type _Candle Candle
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCandle(open string, close string, high string, low string, volume string, resolution Resolution, time float32) *Candle {
+func NewCandle(open string, close string, high string, low string, volume string, resolution Resolution, time string) *Candle {
 	this := Candle{}
 	this.Open = open
 	this.Close = close
@@ -209,9 +209,9 @@ func (o *Candle) SetResolution(v Resolution) {
 }
 
 // GetTime returns the Time field value
-func (o *Candle) GetTime() float32 {
+func (o *Candle) GetTime() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -220,7 +220,7 @@ func (o *Candle) GetTime() float32 {
 
 // GetTimeOk returns a tuple with the Time field value
 // and a boolean to check if the value has been set.
-func (o *Candle) GetTimeOk() (*float32, bool) {
+func (o *Candle) GetTimeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -228,7 +228,7 @@ func (o *Candle) GetTimeOk() (*float32, bool) {
 }
 
 // SetTime sets field value
-func (o *Candle) SetTime(v float32) {
+func (o *Candle) SetTime(v string) {
 	o.Time = v
 }
 
@@ -330,5 +330,4 @@ func (v *NullableCandle) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
 

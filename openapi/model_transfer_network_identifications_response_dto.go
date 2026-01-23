@@ -186,4 +186,3 @@ func (v *NullableTransferNetworkIdentificationsResponseDTO) UnmarshalJSON(src []
 	return json.Unmarshal(src, &v.value)
 }
 
-

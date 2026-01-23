@@ -1399,6 +1399,66 @@ paths:
           example: 6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN
           type: string
         style: simple
+      - description: DTO.POOL.SORT_BY
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          enum:
+          - tvlInSol
+          - tvlInUsd
+          example: tvlInUsd
+          type: string
+        style: form
+      - description: DTO.POOL.SORT_DIRECTION
+        explode: true
+        in: query
+        name: sortDirection
+        required: false
+        schema:
+          default: desc
+          enum:
+          - asc
+          - desc
+          type: string
+        style: form
+      - description: DTO.POOL.MIN_TVL_IN_SOL
+        explode: true
+        in: query
+        name: minTvlInSol
+        required: false
+        schema:
+          example: 100
+          type: number
+        style: form
+      - description: DTO.POOL.MAX_TVL_IN_SOL
+        explode: true
+        in: query
+        name: maxTvlInSol
+        required: false
+        schema:
+          example: 10000
+          type: number
+        style: form
+      - description: DTO.POOL.MIN_TVL_IN_USD
+        explode: true
+        in: query
+        name: minTvlInUsd
+        required: false
+        schema:
+          example: 1000
+          type: number
+        style: form
+      - description: DTO.POOL.MAX_TVL_IN_USD
+        explode: true
+        in: query
+        name: maxTvlInUsd
+        required: false
+        schema:
+          example: 100000
+          type: number
+        style: form
       responses:
         "200":
           content:
@@ -1757,8 +1817,8 @@ paths:
         name: from
         required: false
         schema:
-          example: 1741647950000
-          type: number
+          example: "1741647950000"
+          type: string
         style: form
       - description: DTO.CANDLE.TO
         explode: true
@@ -1766,8 +1826,8 @@ paths:
         name: to
         required: false
         schema:
-          example: 1741700970000
-          type: number
+          example: "1741700970000"
+          type: string
         style: form
       - description: DTO.CANDLE.LIMIT
         explode: true
@@ -7834,7 +7894,7 @@ components:
         devLastTokenCreatedAt: 2025-12-03T09:23:34.000Z
         market: USDC-SOL
         stats: ""
-        tokenCreatedAt: 2024-03-14T12:00:00Z
+        tokenCreatedAt: 1710417600000
         marketData: ""
         decimals: 9
         imageUrl: https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/logo.png
@@ -7897,7 +7957,7 @@ components:
           description: DTO.TOKEN.METADATA.SOCIAL_MEDIAS
         tokenCreatedAt:
           description: DTO.TOKEN.METADATA.TOKEN_CREATED_AT
-          example: 2024-03-14T12:00:00Z
+          example: 1710417600000
           type: number
         description:
           description: DTO.TOKEN.METADATA.DESCRIPTION
@@ -7978,7 +8038,7 @@ components:
           devLastTokenCreatedAt: 2025-12-03T09:23:34.000Z
           market: USDC-SOL
           stats: ""
-          tokenCreatedAt: 2024-03-14T12:00:00Z
+          tokenCreatedAt: 1710417600000
           marketData: ""
           decimals: 9
           imageUrl: https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/logo.png
@@ -8026,7 +8086,7 @@ components:
           devLastTokenCreatedAt: 2025-12-03T09:23:34.000Z
           market: USDC-SOL
           stats: ""
-          tokenCreatedAt: 2024-03-14T12:00:00Z
+          tokenCreatedAt: 1710417600000
           marketData: ""
           decimals: 9
           imageUrl: https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/logo.png
@@ -8148,7 +8208,7 @@ components:
         metadataAddress: metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s
         uri: https://...
         devLastTokenCreatedAt: 2025-12-03T09:23:34.000Z
-        tokenCreatedAt: 2024-03-14T12:00:00Z
+        tokenCreatedAt: 1710417600000
         decimals: 9
         imageUrl: https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/logo.png
         extra: ""
@@ -8210,7 +8270,7 @@ components:
           description: DTO.TOKEN.METADATA.SOCIAL_MEDIAS
         tokenCreatedAt:
           description: DTO.TOKEN.METADATA.TOKEN_CREATED_AT
-          example: 2024-03-14T12:00:00Z
+          example: 1710417600000
           type: number
         description:
           description: DTO.TOKEN.METADATA.DESCRIPTION
@@ -8317,7 +8377,7 @@ components:
         volume: "1000000"
         high: "51.8"
         low: "50.1"
-        time: 1709251200000
+        time: "1709251200000"
         close: "51.2"
         resolution: 1h
         open: "50.5"
@@ -8349,8 +8409,8 @@ components:
           example: 1h
         time:
           description: DTO.CANDLE.TIME
-          example: 1709251200000
-          type: number
+          example: "1709251200000"
+          type: string
       required:
       - close
       - high
@@ -8561,7 +8621,7 @@ components:
           devLastTokenCreatedAt: 2025-12-03T09:23:34.000Z
           market: USDC-SOL
           stats: ""
-          tokenCreatedAt: 2024-03-14T12:00:00Z
+          tokenCreatedAt: 1710417600000
           marketData: ""
           decimals: 9
           imageUrl: https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/logo.png
@@ -8609,7 +8669,7 @@ components:
           devLastTokenCreatedAt: 2025-12-03T09:23:34.000Z
           market: USDC-SOL
           stats: ""
-          tokenCreatedAt: 2024-03-14T12:00:00Z
+          tokenCreatedAt: 1710417600000
           marketData: ""
           decimals: 9
           imageUrl: https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/logo.png
