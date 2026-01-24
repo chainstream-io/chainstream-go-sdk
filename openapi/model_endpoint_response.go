@@ -35,7 +35,7 @@ type EndpointResponse struct {
 	// DTO.ENDPOINT.METADATA
 	Metadata map[string]interface{} `json:"metadata,omitempty"`
 	// DTO.ENDPOINT.RATE_LIMIT
-	RateLimit *float32 `json:"rateLimit,omitempty"`
+	RateLimit *int64 `json:"rateLimit,omitempty"`
 	// DTO.ENDPOINT.FILTER
 	Filter *string `json:"filter,omitempty"`
 	// DTO.ENDPOINT.CREATED_AT
@@ -286,9 +286,9 @@ func (o *EndpointResponse) SetMetadata(v map[string]interface{}) {
 }
 
 // GetRateLimit returns the RateLimit field value if set, zero value otherwise.
-func (o *EndpointResponse) GetRateLimit() float32 {
+func (o *EndpointResponse) GetRateLimit() int64 {
 	if o == nil || IsNil(o.RateLimit) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.RateLimit
@@ -296,7 +296,7 @@ func (o *EndpointResponse) GetRateLimit() float32 {
 
 // GetRateLimitOk returns a tuple with the RateLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EndpointResponse) GetRateLimitOk() (*float32, bool) {
+func (o *EndpointResponse) GetRateLimitOk() (*int64, bool) {
 	if o == nil || IsNil(o.RateLimit) {
 		return nil, false
 	}
@@ -312,8 +312,8 @@ func (o *EndpointResponse) HasRateLimit() bool {
 	return false
 }
 
-// SetRateLimit gets a reference to the given float32 and assigns it to the RateLimit field.
-func (o *EndpointResponse) SetRateLimit(v float32) {
+// SetRateLimit gets a reference to the given int64 and assigns it to the RateLimit field.
+func (o *EndpointResponse) SetRateLimit(v int64) {
 	o.RateLimit = &v
 }
 

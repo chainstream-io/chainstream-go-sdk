@@ -37,7 +37,7 @@ type AlteryaIdentification struct {
 	// DTO.KYT.ALTERYA_IDENTIFICATION.ON_CHAIN_ACTIVITY
 	OnChainActivity OnChainActivity `json:"on_chain_activity"`
 	// DTO.KYT.ALTERYA_IDENTIFICATION.RISK_SCORE
-	RiskScore float32 `json:"risk_score"`
+	RiskScore string `json:"risk_score"`
 }
 
 type _AlteryaIdentification AlteryaIdentification
@@ -46,7 +46,7 @@ type _AlteryaIdentification AlteryaIdentification
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlteryaIdentification(object string, address string, chain string, riskLevel string, reason string, labels []string, onChainActivity OnChainActivity, riskScore float32) *AlteryaIdentification {
+func NewAlteryaIdentification(object string, address string, chain string, riskLevel string, reason string, labels []string, onChainActivity OnChainActivity, riskScore string) *AlteryaIdentification {
 	this := AlteryaIdentification{}
 	this.Object = object
 	this.Address = address
@@ -236,9 +236,9 @@ func (o *AlteryaIdentification) SetOnChainActivity(v OnChainActivity) {
 }
 
 // GetRiskScore returns the RiskScore field value
-func (o *AlteryaIdentification) GetRiskScore() float32 {
+func (o *AlteryaIdentification) GetRiskScore() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -247,7 +247,7 @@ func (o *AlteryaIdentification) GetRiskScore() float32 {
 
 // GetRiskScoreOk returns a tuple with the RiskScore field value
 // and a boolean to check if the value has been set.
-func (o *AlteryaIdentification) GetRiskScoreOk() (*float32, bool) {
+func (o *AlteryaIdentification) GetRiskScoreOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -255,7 +255,7 @@ func (o *AlteryaIdentification) GetRiskScoreOk() (*float32, bool) {
 }
 
 // SetRiskScore sets field value
-func (o *AlteryaIdentification) SetRiskScore(v float32) {
+func (o *AlteryaIdentification) SetRiskScore(v string) {
 	o.RiskScore = v
 }
 

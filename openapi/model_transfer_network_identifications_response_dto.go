@@ -23,7 +23,7 @@ var _ MappedNullable = &TransferNetworkIdentificationsResponseDTO{}
 // TransferNetworkIdentificationsResponseDTO struct for TransferNetworkIdentificationsResponseDTO
 type TransferNetworkIdentificationsResponseDTO struct {
 	// DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.COUNT
-	Count float32 `json:"count"`
+	Count int64 `json:"count"`
 	// DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.NETWORK_IDENTIFICATION_ORGS
 	NetworkIdentificationOrgs []NetworkIdentificationOrg `json:"networkIdentificationOrgs"`
 }
@@ -34,7 +34,7 @@ type _TransferNetworkIdentificationsResponseDTO TransferNetworkIdentificationsRe
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferNetworkIdentificationsResponseDTO(count float32, networkIdentificationOrgs []NetworkIdentificationOrg) *TransferNetworkIdentificationsResponseDTO {
+func NewTransferNetworkIdentificationsResponseDTO(count int64, networkIdentificationOrgs []NetworkIdentificationOrg) *TransferNetworkIdentificationsResponseDTO {
 	this := TransferNetworkIdentificationsResponseDTO{}
 	this.Count = count
 	this.NetworkIdentificationOrgs = networkIdentificationOrgs
@@ -50,9 +50,9 @@ func NewTransferNetworkIdentificationsResponseDTOWithDefaults() *TransferNetwork
 }
 
 // GetCount returns the Count field value
-func (o *TransferNetworkIdentificationsResponseDTO) GetCount() float32 {
+func (o *TransferNetworkIdentificationsResponseDTO) GetCount() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -61,7 +61,7 @@ func (o *TransferNetworkIdentificationsResponseDTO) GetCount() float32 {
 
 // GetCountOk returns a tuple with the Count field value
 // and a boolean to check if the value has been set.
-func (o *TransferNetworkIdentificationsResponseDTO) GetCountOk() (*float32, bool) {
+func (o *TransferNetworkIdentificationsResponseDTO) GetCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,7 +69,7 @@ func (o *TransferNetworkIdentificationsResponseDTO) GetCountOk() (*float32, bool
 }
 
 // SetCount sets field value
-func (o *TransferNetworkIdentificationsResponseDTO) SetCount(v float32) {
+func (o *TransferNetworkIdentificationsResponseDTO) SetCount(v int64) {
 	o.Count = v
 }
 

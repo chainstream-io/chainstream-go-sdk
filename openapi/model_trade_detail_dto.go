@@ -25,9 +25,9 @@ type TradeDetailDTO struct {
 	// DTO.TRADE.DETAIL.CHAIN
 	Chain string `json:"chain"`
 	// DTO.TRADE.DETAIL.BLOCK_HEIGHT
-	BlockHeight float32 `json:"blockHeight"`
+	BlockHeight int64 `json:"blockHeight"`
 	// DTO.TRADE.DETAIL.BLOCK_TIMESTAMP
-	BlockTimestamp float32 `json:"blockTimestamp"`
+	BlockTimestamp int64 `json:"blockTimestamp"`
 	// DTO.TRADE.DETAIL.ACCOUNT_OWNER_ADDRESS
 	AccountOwnerAddress string `json:"accountOwnerAddress"`
 	// DTO.TRADE.DETAIL.TRANSACTION_SIGNATURE
@@ -80,7 +80,7 @@ type _TradeDetailDTO TradeDetailDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTradeDetailDTO(chain string, blockHeight float32, blockTimestamp float32, accountOwnerAddress string, transactionSignature string, tokenName string, tokenSymbol string, tokenImageUrl string, tokenAddress string, poolAddress string, dexProgramAddress string, dexProtocolFamily string, dexImage string, tokenAmount string, tokenPriceInUsd string, tokenAmountInUsd string, type_ string, sideTokenName string, sideTokenSymbol string, sideTokenImageUrl string, sideTokenAddress string, sideTokenPriceInUsd string, sideTokenAmount string, sideTokenAmountInUsd string, status string) *TradeDetailDTO {
+func NewTradeDetailDTO(chain string, blockHeight int64, blockTimestamp int64, accountOwnerAddress string, transactionSignature string, tokenName string, tokenSymbol string, tokenImageUrl string, tokenAddress string, poolAddress string, dexProgramAddress string, dexProtocolFamily string, dexImage string, tokenAmount string, tokenPriceInUsd string, tokenAmountInUsd string, type_ string, sideTokenName string, sideTokenSymbol string, sideTokenImageUrl string, sideTokenAddress string, sideTokenPriceInUsd string, sideTokenAmount string, sideTokenAmountInUsd string, status string) *TradeDetailDTO {
 	this := TradeDetailDTO{}
 	this.Chain = chain
 	this.BlockHeight = blockHeight
@@ -143,9 +143,9 @@ func (o *TradeDetailDTO) SetChain(v string) {
 }
 
 // GetBlockHeight returns the BlockHeight field value
-func (o *TradeDetailDTO) GetBlockHeight() float32 {
+func (o *TradeDetailDTO) GetBlockHeight() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -154,7 +154,7 @@ func (o *TradeDetailDTO) GetBlockHeight() float32 {
 
 // GetBlockHeightOk returns a tuple with the BlockHeight field value
 // and a boolean to check if the value has been set.
-func (o *TradeDetailDTO) GetBlockHeightOk() (*float32, bool) {
+func (o *TradeDetailDTO) GetBlockHeightOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -162,14 +162,14 @@ func (o *TradeDetailDTO) GetBlockHeightOk() (*float32, bool) {
 }
 
 // SetBlockHeight sets field value
-func (o *TradeDetailDTO) SetBlockHeight(v float32) {
+func (o *TradeDetailDTO) SetBlockHeight(v int64) {
 	o.BlockHeight = v
 }
 
 // GetBlockTimestamp returns the BlockTimestamp field value
-func (o *TradeDetailDTO) GetBlockTimestamp() float32 {
+func (o *TradeDetailDTO) GetBlockTimestamp() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -178,7 +178,7 @@ func (o *TradeDetailDTO) GetBlockTimestamp() float32 {
 
 // GetBlockTimestampOk returns a tuple with the BlockTimestamp field value
 // and a boolean to check if the value has been set.
-func (o *TradeDetailDTO) GetBlockTimestampOk() (*float32, bool) {
+func (o *TradeDetailDTO) GetBlockTimestampOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -186,7 +186,7 @@ func (o *TradeDetailDTO) GetBlockTimestampOk() (*float32, bool) {
 }
 
 // SetBlockTimestamp sets field value
-func (o *TradeDetailDTO) SetBlockTimestamp(v float32) {
+func (o *TradeDetailDTO) SetBlockTimestamp(v int64) {
 	o.BlockTimestamp = v
 }
 

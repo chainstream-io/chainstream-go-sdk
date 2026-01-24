@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Chain** | **string** | DTO.RED_PACKET.CHAIN | 
 **Creator** | **string** | DTO.RED_PACKET.CREATOR | 
 **Mint** | **string** | DTO.RED_PACKET.MINT | 
-**MaxClaims** | **float32** | DTO.RED_PACKET.MAX_CLAIMS | 
+**MaxClaims** | **int64** | DTO.RED_PACKET.MAX_CLAIMS | 
 **TotalAmount** | Pointer to **string** | DTO.RED_PACKET.TOTAL_AMOUNT | [optional] 
 **FixedAmount** | Pointer to **string** | DTO.RED_PACKET.FIXED_AMOUNT | [optional] 
 **Memo** | Pointer to **string** | DTO.RED_PACKET.MEMO | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewCreateRedPacketInput
 
-`func NewCreateRedPacketInput(chain string, creator string, mint string, maxClaims float32, ) *CreateRedPacketInput`
+`func NewCreateRedPacketInput(chain string, creator string, mint string, maxClaims int64, ) *CreateRedPacketInput`
 
 NewCreateRedPacketInput instantiates a new CreateRedPacketInput object
 This constructor will assign default values to properties that have it defined,
@@ -95,20 +95,20 @@ SetMint sets Mint field to given value.
 
 ### GetMaxClaims
 
-`func (o *CreateRedPacketInput) GetMaxClaims() float32`
+`func (o *CreateRedPacketInput) GetMaxClaims() int64`
 
 GetMaxClaims returns the MaxClaims field if non-nil, zero value otherwise.
 
 ### GetMaxClaimsOk
 
-`func (o *CreateRedPacketInput) GetMaxClaimsOk() (*float32, bool)`
+`func (o *CreateRedPacketInput) GetMaxClaimsOk() (*int64, bool)`
 
 GetMaxClaimsOk returns a tuple with the MaxClaims field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxClaims
 
-`func (o *CreateRedPacketInput) SetMaxClaims(v float32)`
+`func (o *CreateRedPacketInput) SetMaxClaims(v int64)`
 
 SetMaxClaims sets MaxClaims field to given value.
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Total** | **float32** | DTO.PAGE.TOTAL | 
+**Total** | **int64** | DTO.PAGE.TOTAL | 
 **HasNextPage** | **bool** | DTO.PAGE.HAS_NEXT | 
 **StartCursor** | **string** | DTO.PAGE.START_CURSOR | 
 **EndCursor** | **string** | DTO.PAGE.END_CURSOR | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewRedPacketClaimsPage
 
-`func NewRedPacketClaimsPage(total float32, hasNextPage bool, startCursor string, endCursor string, records []RedPacketClaimDTO, ) *RedPacketClaimsPage`
+`func NewRedPacketClaimsPage(total int64, hasNextPage bool, startCursor string, endCursor string, records []RedPacketClaimDTO, ) *RedPacketClaimsPage`
 
 NewRedPacketClaimsPage instantiates a new RedPacketClaimsPage object
 This constructor will assign default values to properties that have it defined,
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTotal
 
-`func (o *RedPacketClaimsPage) GetTotal() float32`
+`func (o *RedPacketClaimsPage) GetTotal() int64`
 
 GetTotal returns the Total field if non-nil, zero value otherwise.
 
 ### GetTotalOk
 
-`func (o *RedPacketClaimsPage) GetTotalOk() (*float32, bool)`
+`func (o *RedPacketClaimsPage) GetTotalOk() (*int64, bool)`
 
 GetTotalOk returns a tuple with the Total field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotal
 
-`func (o *RedPacketClaimsPage) SetTotal(v float32)`
+`func (o *RedPacketClaimsPage) SetTotal(v int64)`
 
 SetTotal sets Total field to given value.
 

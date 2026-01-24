@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **QuoteSymbol** | **string** | DTO.TRADE.QUOTE_SYMBOL | 
 **QuoteAddress** | **string** | DTO.TRADE.QUOTE_ADDRESS | 
 **AmountInUsd** | **string** | DTO.TRADE.AMOUNT_IN_USD | 
-**Timestamp** | **float32** | DTO.TRADE.TIMESTAMP | 
+**Timestamp** | **int64** | DTO.TRADE.TIMESTAMP | 
 **Event** | [**TradeType**](TradeType.md) | DTO.TRADE.EVENT | 
 **TxHash** | **string** | DTO.TRADE.TX_HASH | 
 **PriceInUsd** | **string** | DTO.TRADE.PRICE_IN_USD | 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewTradeEvent
 
-`func NewTradeEvent(maker string, baseAmount string, quoteAmount string, quoteSymbol string, quoteAddress string, amountInUsd string, timestamp float32, event TradeType, txHash string, priceInUsd string, id string, buyCostUsd string, tokenAddress string, ) *TradeEvent`
+`func NewTradeEvent(maker string, baseAmount string, quoteAmount string, quoteSymbol string, quoteAddress string, amountInUsd string, timestamp int64, event TradeType, txHash string, priceInUsd string, id string, buyCostUsd string, tokenAddress string, ) *TradeEvent`
 
 NewTradeEvent instantiates a new TradeEvent object
 This constructor will assign default values to properties that have it defined,
@@ -159,20 +159,20 @@ SetAmountInUsd sets AmountInUsd field to given value.
 
 ### GetTimestamp
 
-`func (o *TradeEvent) GetTimestamp() float32`
+`func (o *TradeEvent) GetTimestamp() int64`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *TradeEvent) GetTimestampOk() (*float32, bool)`
+`func (o *TradeEvent) GetTimestampOk() (*int64, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *TradeEvent) SetTimestamp(v float32)`
+`func (o *TradeEvent) SetTimestamp(v int64)`
 
 SetTimestamp sets Timestamp field to given value.
 

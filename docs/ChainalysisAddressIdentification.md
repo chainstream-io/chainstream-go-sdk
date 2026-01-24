@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddressName** | **string** | DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.ADDRESS_NAME | 
 **Description** | **string** | DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.DESCRIPTION | 
-**CategoryId** | **float32** | DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.CATEGORY_ID | 
+**CategoryId** | **int64** | DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.CATEGORY_ID | 
 
 ## Methods
 
 ### NewChainalysisAddressIdentification
 
-`func NewChainalysisAddressIdentification(addressName string, description string, categoryId float32, ) *ChainalysisAddressIdentification`
+`func NewChainalysisAddressIdentification(addressName string, description string, categoryId int64, ) *ChainalysisAddressIdentification`
 
 NewChainalysisAddressIdentification instantiates a new ChainalysisAddressIdentification object
 This constructor will assign default values to properties that have it defined,
@@ -69,20 +69,20 @@ SetDescription sets Description field to given value.
 
 ### GetCategoryId
 
-`func (o *ChainalysisAddressIdentification) GetCategoryId() float32`
+`func (o *ChainalysisAddressIdentification) GetCategoryId() int64`
 
 GetCategoryId returns the CategoryId field if non-nil, zero value otherwise.
 
 ### GetCategoryIdOk
 
-`func (o *ChainalysisAddressIdentification) GetCategoryIdOk() (*float32, bool)`
+`func (o *ChainalysisAddressIdentification) GetCategoryIdOk() (*int64, bool)`
 
 GetCategoryIdOk returns a tuple with the CategoryId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCategoryId
 
-`func (o *ChainalysisAddressIdentification) SetCategoryId(v float32)`
+`func (o *ChainalysisAddressIdentification) SetCategoryId(v int64)`
 
 SetCategoryId sets CategoryId field to given value.
 

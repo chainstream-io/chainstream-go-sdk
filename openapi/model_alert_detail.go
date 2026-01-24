@@ -29,11 +29,11 @@ type AlertDetail struct {
 	// DTO.KYT.ALERT_DETAIL.EXTERNAL_ID
 	ExternalId string `json:"externalId"`
 	// DTO.KYT.ALERT_DETAIL.ALERT_AMOUNT
-	AlertAmount float32 `json:"alertAmount"`
+	AlertAmount string `json:"alertAmount"`
 	// DTO.KYT.ALERT_DETAIL.EXPOSURE_TYPE
 	ExposureType string `json:"exposureType"`
 	// DTO.KYT.ALERT_DETAIL.CATEGORY_ID
-	CategoryId float32 `json:"categoryId"`
+	CategoryId int64 `json:"categoryId"`
 	// DTO.KYT.ALERT_DETAIL.MEMO
 	Memo string `json:"memo"`
 }
@@ -44,7 +44,7 @@ type _AlertDetail AlertDetail
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertDetail(alertLevel string, service string, externalId string, alertAmount float32, exposureType string, categoryId float32, memo string) *AlertDetail {
+func NewAlertDetail(alertLevel string, service string, externalId string, alertAmount string, exposureType string, categoryId int64, memo string) *AlertDetail {
 	this := AlertDetail{}
 	this.AlertLevel = alertLevel
 	this.Service = service
@@ -137,9 +137,9 @@ func (o *AlertDetail) SetExternalId(v string) {
 }
 
 // GetAlertAmount returns the AlertAmount field value
-func (o *AlertDetail) GetAlertAmount() float32 {
+func (o *AlertDetail) GetAlertAmount() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -148,7 +148,7 @@ func (o *AlertDetail) GetAlertAmount() float32 {
 
 // GetAlertAmountOk returns a tuple with the AlertAmount field value
 // and a boolean to check if the value has been set.
-func (o *AlertDetail) GetAlertAmountOk() (*float32, bool) {
+func (o *AlertDetail) GetAlertAmountOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -156,7 +156,7 @@ func (o *AlertDetail) GetAlertAmountOk() (*float32, bool) {
 }
 
 // SetAlertAmount sets field value
-func (o *AlertDetail) SetAlertAmount(v float32) {
+func (o *AlertDetail) SetAlertAmount(v string) {
 	o.AlertAmount = v
 }
 
@@ -185,9 +185,9 @@ func (o *AlertDetail) SetExposureType(v string) {
 }
 
 // GetCategoryId returns the CategoryId field value
-func (o *AlertDetail) GetCategoryId() float32 {
+func (o *AlertDetail) GetCategoryId() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -196,7 +196,7 @@ func (o *AlertDetail) GetCategoryId() float32 {
 
 // GetCategoryIdOk returns a tuple with the CategoryId field value
 // and a boolean to check if the value has been set.
-func (o *AlertDetail) GetCategoryIdOk() (*float32, bool) {
+func (o *AlertDetail) GetCategoryIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -204,7 +204,7 @@ func (o *AlertDetail) GetCategoryIdOk() (*float32, bool) {
 }
 
 // SetCategoryId sets field value
-func (o *AlertDetail) SetCategoryId(v float32) {
+func (o *AlertDetail) SetCategoryId(v int64) {
 	o.CategoryId = v
 }
 

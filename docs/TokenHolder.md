@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **WalletAddress** | **string** | DTO.TOKEN_HOLDER.WALLET_ADDRESS | 
-**Amount** | **float32** | DTO.TOKEN_HOLDER.AMOUNT | 
-**AmountInUsd** | **float32** | DTO.TOKEN_HOLDER.AMOUNT_USD | 
+**Amount** | **string** | DTO.TOKEN_HOLDER.AMOUNT | 
+**AmountInUsd** | **string** | DTO.TOKEN_HOLDER.AMOUNT_USD | 
 **Percentage** | **string** | DTO.TOKEN_HOLDER.PERCENTAGE | 
 
 ## Methods
 
 ### NewTokenHolder
 
-`func NewTokenHolder(walletAddress string, amount float32, amountInUsd float32, percentage string, ) *TokenHolder`
+`func NewTokenHolder(walletAddress string, amount string, amountInUsd string, percentage string, ) *TokenHolder`
 
 NewTokenHolder instantiates a new TokenHolder object
 This constructor will assign default values to properties that have it defined,
@@ -50,40 +50,40 @@ SetWalletAddress sets WalletAddress field to given value.
 
 ### GetAmount
 
-`func (o *TokenHolder) GetAmount() float32`
+`func (o *TokenHolder) GetAmount() string`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *TokenHolder) GetAmountOk() (*float32, bool)`
+`func (o *TokenHolder) GetAmountOk() (*string, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *TokenHolder) SetAmount(v float32)`
+`func (o *TokenHolder) SetAmount(v string)`
 
 SetAmount sets Amount field to given value.
 
 
 ### GetAmountInUsd
 
-`func (o *TokenHolder) GetAmountInUsd() float32`
+`func (o *TokenHolder) GetAmountInUsd() string`
 
 GetAmountInUsd returns the AmountInUsd field if non-nil, zero value otherwise.
 
 ### GetAmountInUsdOk
 
-`func (o *TokenHolder) GetAmountInUsdOk() (*float32, bool)`
+`func (o *TokenHolder) GetAmountInUsdOk() (*string, bool)`
 
 GetAmountInUsdOk returns a tuple with the AmountInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountInUsd
 
-`func (o *TokenHolder) SetAmountInUsd(v float32)`
+`func (o *TokenHolder) SetAmountInUsd(v string)`
 
 SetAmountInUsd sets AmountInUsd field to given value.
 

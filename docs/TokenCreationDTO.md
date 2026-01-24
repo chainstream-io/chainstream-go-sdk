@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TokenAddress** | **string** | DTO.TOKEN.CREATION.TOKEN_ADDRESS | 
-**BlockHeight** | **float32** | DTO.TOKEN.CREATION.BLOCK_HEIGHT | 
-**BlockSlot** | **float32** | DTO.TOKEN.CREATION.BLOCK_SLOT | 
+**BlockHeight** | **int64** | DTO.TOKEN.CREATION.BLOCK_HEIGHT | 
+**BlockSlot** | **int64** | DTO.TOKEN.CREATION.BLOCK_SLOT | 
 **BlockHash** | **string** | DTO.TOKEN.CREATION.BLOCK_HASH | 
-**BlockTimestamp** | Pointer to **float32** | DTO.TOKEN.CREATION.BLOCK_TIMESTAMP | [optional] 
+**BlockTimestamp** | Pointer to **int64** | DTO.TOKEN.CREATION.BLOCK_TIMESTAMP | [optional] 
 **TransactionSignature** | **string** | DTO.TOKEN.CREATION.TRANSACTION_SIGNATURE | 
 **Type** | **string** | DTO.TOKEN.CREATION.TYPE | 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewTokenCreationDTO
 
-`func NewTokenCreationDTO(tokenAddress string, blockHeight float32, blockSlot float32, blockHash string, transactionSignature string, type_ string, ) *TokenCreationDTO`
+`func NewTokenCreationDTO(tokenAddress string, blockHeight int64, blockSlot int64, blockHash string, transactionSignature string, type_ string, ) *TokenCreationDTO`
 
 NewTokenCreationDTO instantiates a new TokenCreationDTO object
 This constructor will assign default values to properties that have it defined,
@@ -53,40 +53,40 @@ SetTokenAddress sets TokenAddress field to given value.
 
 ### GetBlockHeight
 
-`func (o *TokenCreationDTO) GetBlockHeight() float32`
+`func (o *TokenCreationDTO) GetBlockHeight() int64`
 
 GetBlockHeight returns the BlockHeight field if non-nil, zero value otherwise.
 
 ### GetBlockHeightOk
 
-`func (o *TokenCreationDTO) GetBlockHeightOk() (*float32, bool)`
+`func (o *TokenCreationDTO) GetBlockHeightOk() (*int64, bool)`
 
 GetBlockHeightOk returns a tuple with the BlockHeight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlockHeight
 
-`func (o *TokenCreationDTO) SetBlockHeight(v float32)`
+`func (o *TokenCreationDTO) SetBlockHeight(v int64)`
 
 SetBlockHeight sets BlockHeight field to given value.
 
 
 ### GetBlockSlot
 
-`func (o *TokenCreationDTO) GetBlockSlot() float32`
+`func (o *TokenCreationDTO) GetBlockSlot() int64`
 
 GetBlockSlot returns the BlockSlot field if non-nil, zero value otherwise.
 
 ### GetBlockSlotOk
 
-`func (o *TokenCreationDTO) GetBlockSlotOk() (*float32, bool)`
+`func (o *TokenCreationDTO) GetBlockSlotOk() (*int64, bool)`
 
 GetBlockSlotOk returns a tuple with the BlockSlot field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlockSlot
 
-`func (o *TokenCreationDTO) SetBlockSlot(v float32)`
+`func (o *TokenCreationDTO) SetBlockSlot(v int64)`
 
 SetBlockSlot sets BlockSlot field to given value.
 
@@ -113,20 +113,20 @@ SetBlockHash sets BlockHash field to given value.
 
 ### GetBlockTimestamp
 
-`func (o *TokenCreationDTO) GetBlockTimestamp() float32`
+`func (o *TokenCreationDTO) GetBlockTimestamp() int64`
 
 GetBlockTimestamp returns the BlockTimestamp field if non-nil, zero value otherwise.
 
 ### GetBlockTimestampOk
 
-`func (o *TokenCreationDTO) GetBlockTimestampOk() (*float32, bool)`
+`func (o *TokenCreationDTO) GetBlockTimestampOk() (*int64, bool)`
 
 GetBlockTimestampOk returns a tuple with the BlockTimestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlockTimestamp
 
-`func (o *TokenCreationDTO) SetBlockTimestamp(v float32)`
+`func (o *TokenCreationDTO) SetBlockTimestamp(v int64)`
 
 SetBlockTimestamp sets BlockTimestamp field to given value.
 

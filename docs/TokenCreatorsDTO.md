@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to **string** | DTO.TOKEN.CREATORS.ADDRESS | [optional] 
-**Share** | Pointer to **float32** | DTO.TOKEN.CREATORS.SHARE | [optional] 
+**Share** | Pointer to **int64** | DTO.TOKEN.CREATORS.SHARE | [optional] 
 **IsVerified** | Pointer to **bool** | DTO.TOKEN.CREATORS.IS_VERIFIED | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasAddress returns a boolean if a field has been set.
 
 ### GetShare
 
-`func (o *TokenCreatorsDTO) GetShare() float32`
+`func (o *TokenCreatorsDTO) GetShare() int64`
 
 GetShare returns the Share field if non-nil, zero value otherwise.
 
 ### GetShareOk
 
-`func (o *TokenCreatorsDTO) GetShareOk() (*float32, bool)`
+`func (o *TokenCreatorsDTO) GetShareOk() (*int64, bool)`
 
 GetShareOk returns a tuple with the Share field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShare
 
-`func (o *TokenCreatorsDTO) SetShare(v float32)`
+`func (o *TokenCreatorsDTO) SetShare(v int64)`
 
 SetShare sets Share field to given value.
 

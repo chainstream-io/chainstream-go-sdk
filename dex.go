@@ -15,7 +15,7 @@ import (
 )
 
 const (
-	LIB_VERSION = "0.1.15"
+	LIB_VERSION = "0.1.16"
 )
 
 // TokenProvider represents a token provider interface

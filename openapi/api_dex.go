@@ -144,7 +144,7 @@ type DexAPIListDexRequest struct {
 	ctx context.Context
 	ApiService *DexAPIService
 	chains *[]string
-	limit *float32
+	limit *int64
 	dexProgram *string
 }
 
@@ -154,7 +154,7 @@ func (r DexAPIListDexRequest) Chains(chains []string) DexAPIListDexRequest {
 }
 
 // DTO.DEX.QUERY.LIMIT
-func (r DexAPIListDexRequest) Limit(limit float32) DexAPIListDexRequest {
+func (r DexAPIListDexRequest) Limit(limit int64) DexAPIListDexRequest {
 	r.limit = &limit
 	return r
 }
@@ -219,7 +219,7 @@ func (a *DexAPIService) ListDexExecute(r DexAPIListDexRequest) (*DexPage, *http.
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
-		var defaultValue float32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.dexProgram != nil {
@@ -288,7 +288,7 @@ type DexAPIQuoteRequest struct {
 	inputMint *string
 	outputMint *string
 	exactIn *bool
-	slippage *float32
+	slippage *int64
 }
 
 // DTO.DEX.QUOTE.DEX
@@ -322,7 +322,7 @@ func (r DexAPIQuoteRequest) ExactIn(exactIn bool) DexAPIQuoteRequest {
 }
 
 // DTO.DEX.QUOTE.SLIPPAGE
-func (r DexAPIQuoteRequest) Slippage(slippage float32) DexAPIQuoteRequest {
+func (r DexAPIQuoteRequest) Slippage(slippage int64) DexAPIQuoteRequest {
 	r.slippage = &slippage
 	return r
 }

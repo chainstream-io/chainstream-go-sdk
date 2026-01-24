@@ -7,16 +7,16 @@ Name | Type | Description | Notes
 **AlertLevel** | **string** | DTO.KYT.ALERT_DETAIL.ALERT_LEVEL | 
 **Service** | **string** | DTO.KYT.ALERT_DETAIL.SERVICE | 
 **ExternalId** | **string** | DTO.KYT.ALERT_DETAIL.EXTERNAL_ID | 
-**AlertAmount** | **float32** | DTO.KYT.ALERT_DETAIL.ALERT_AMOUNT | 
+**AlertAmount** | **string** | DTO.KYT.ALERT_DETAIL.ALERT_AMOUNT | 
 **ExposureType** | **string** | DTO.KYT.ALERT_DETAIL.EXPOSURE_TYPE | 
-**CategoryId** | **float32** | DTO.KYT.ALERT_DETAIL.CATEGORY_ID | 
+**CategoryId** | **int64** | DTO.KYT.ALERT_DETAIL.CATEGORY_ID | 
 **Memo** | **string** | DTO.KYT.ALERT_DETAIL.MEMO | 
 
 ## Methods
 
 ### NewAlertDetail
 
-`func NewAlertDetail(alertLevel string, service string, externalId string, alertAmount float32, exposureType string, categoryId float32, memo string, ) *AlertDetail`
+`func NewAlertDetail(alertLevel string, service string, externalId string, alertAmount string, exposureType string, categoryId int64, memo string, ) *AlertDetail`
 
 NewAlertDetail instantiates a new AlertDetail object
 This constructor will assign default values to properties that have it defined,
@@ -93,20 +93,20 @@ SetExternalId sets ExternalId field to given value.
 
 ### GetAlertAmount
 
-`func (o *AlertDetail) GetAlertAmount() float32`
+`func (o *AlertDetail) GetAlertAmount() string`
 
 GetAlertAmount returns the AlertAmount field if non-nil, zero value otherwise.
 
 ### GetAlertAmountOk
 
-`func (o *AlertDetail) GetAlertAmountOk() (*float32, bool)`
+`func (o *AlertDetail) GetAlertAmountOk() (*string, bool)`
 
 GetAlertAmountOk returns a tuple with the AlertAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAlertAmount
 
-`func (o *AlertDetail) SetAlertAmount(v float32)`
+`func (o *AlertDetail) SetAlertAmount(v string)`
 
 SetAlertAmount sets AlertAmount field to given value.
 
@@ -133,20 +133,20 @@ SetExposureType sets ExposureType field to given value.
 
 ### GetCategoryId
 
-`func (o *AlertDetail) GetCategoryId() float32`
+`func (o *AlertDetail) GetCategoryId() int64`
 
 GetCategoryId returns the CategoryId field if non-nil, zero value otherwise.
 
 ### GetCategoryIdOk
 
-`func (o *AlertDetail) GetCategoryIdOk() (*float32, bool)`
+`func (o *AlertDetail) GetCategoryIdOk() (*int64, bool)`
 
 GetCategoryIdOk returns a tuple with the CategoryId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCategoryId
 
-`func (o *AlertDetail) SetCategoryId(v float32)`
+`func (o *AlertDetail) SetCategoryId(v int64)`
 
 SetCategoryId sets CategoryId field to given value.
 

@@ -25,7 +25,7 @@ type SwapReply struct {
 	// DTO.DEX.SWAP.SERIALIZED_TX
 	SerializedTx string `json:"serializedTx"`
 	// DTO.DEX.SWAP.ELAPSED_TIME
-	ElapsedTime float32 `json:"elapsedTime"`
+	ElapsedTime int64 `json:"elapsedTime"`
 }
 
 type _SwapReply SwapReply
@@ -34,7 +34,7 @@ type _SwapReply SwapReply
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSwapReply(serializedTx string, elapsedTime float32) *SwapReply {
+func NewSwapReply(serializedTx string, elapsedTime int64) *SwapReply {
 	this := SwapReply{}
 	this.SerializedTx = serializedTx
 	this.ElapsedTime = elapsedTime
@@ -74,9 +74,9 @@ func (o *SwapReply) SetSerializedTx(v string) {
 }
 
 // GetElapsedTime returns the ElapsedTime field value
-func (o *SwapReply) GetElapsedTime() float32 {
+func (o *SwapReply) GetElapsedTime() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *SwapReply) GetElapsedTime() float32 {
 
 // GetElapsedTimeOk returns a tuple with the ElapsedTime field value
 // and a boolean to check if the value has been set.
-func (o *SwapReply) GetElapsedTimeOk() (*float32, bool) {
+func (o *SwapReply) GetElapsedTimeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *SwapReply) GetElapsedTimeOk() (*float32, bool) {
 }
 
 // SetElapsedTime sets field value
-func (o *SwapReply) SetElapsedTime(v float32) {
+func (o *SwapReply) SetElapsedTime(v int64) {
 	o.ElapsedTime = v
 }
 

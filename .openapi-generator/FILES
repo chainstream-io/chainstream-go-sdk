@@ -57,8 +57,6 @@ docs/EndpointSecretResponse.md
 docs/EstimateGasLimitInput.md
 docs/EstimateGasLimitResponse.md
 docs/FilterCondition.md
-docs/GainersAndLosersDTO.md
-docs/GainersAndLosersPage.md
 docs/GasPriceResponse.md
 docs/IpfsAPI.md
 docs/JobDTO.md
@@ -113,8 +111,6 @@ docs/TokenSocialMediasDTO.md
 docs/TokenStat.md
 docs/TokenTrader.md
 docs/TokenTraderTag.md
-docs/TopTradersDTO.md
-docs/TopTradersPage.md
 docs/TradeAPI.md
 docs/TradeDetailDTO.md
 docs/TradeEvent.md
@@ -167,8 +163,6 @@ model_endpoint_secret_response.go
 model_estimate_gas_limit_input.go
 model_estimate_gas_limit_response.go
 model_filter_condition.go
-model_gainers_and_losers_dto.go
-model_gainers_and_losers_page.go
 model_gas_price_response.go
 model_job_dto.go
 model_job_streaming_dto.go
@@ -217,8 +211,6 @@ model_token_social_medias_dto.go
 model_token_stat.go
 model_token_trader.go
 model_token_trader_tag.go
-model_top_traders_dto.go
-model_top_traders_page.go
 model_trade_detail_dto.go
 model_trade_event.go
 model_trade_page.go

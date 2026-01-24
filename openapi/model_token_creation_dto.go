@@ -25,13 +25,13 @@ type TokenCreationDTO struct {
 	// DTO.TOKEN.CREATION.TOKEN_ADDRESS
 	TokenAddress string `json:"tokenAddress"`
 	// DTO.TOKEN.CREATION.BLOCK_HEIGHT
-	BlockHeight float32 `json:"blockHeight"`
+	BlockHeight int64 `json:"blockHeight"`
 	// DTO.TOKEN.CREATION.BLOCK_SLOT
-	BlockSlot float32 `json:"blockSlot"`
+	BlockSlot int64 `json:"blockSlot"`
 	// DTO.TOKEN.CREATION.BLOCK_HASH
 	BlockHash string `json:"blockHash"`
 	// DTO.TOKEN.CREATION.BLOCK_TIMESTAMP
-	BlockTimestamp *float32 `json:"blockTimestamp,omitempty"`
+	BlockTimestamp *int64 `json:"blockTimestamp,omitempty"`
 	// DTO.TOKEN.CREATION.TRANSACTION_SIGNATURE
 	TransactionSignature string `json:"transactionSignature"`
 	// DTO.TOKEN.CREATION.TYPE
@@ -44,7 +44,7 @@ type _TokenCreationDTO TokenCreationDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenCreationDTO(tokenAddress string, blockHeight float32, blockSlot float32, blockHash string, transactionSignature string, type_ string) *TokenCreationDTO {
+func NewTokenCreationDTO(tokenAddress string, blockHeight int64, blockSlot int64, blockHash string, transactionSignature string, type_ string) *TokenCreationDTO {
 	this := TokenCreationDTO{}
 	this.TokenAddress = tokenAddress
 	this.BlockHeight = blockHeight
@@ -88,9 +88,9 @@ func (o *TokenCreationDTO) SetTokenAddress(v string) {
 }
 
 // GetBlockHeight returns the BlockHeight field value
-func (o *TokenCreationDTO) GetBlockHeight() float32 {
+func (o *TokenCreationDTO) GetBlockHeight() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -99,7 +99,7 @@ func (o *TokenCreationDTO) GetBlockHeight() float32 {
 
 // GetBlockHeightOk returns a tuple with the BlockHeight field value
 // and a boolean to check if the value has been set.
-func (o *TokenCreationDTO) GetBlockHeightOk() (*float32, bool) {
+func (o *TokenCreationDTO) GetBlockHeightOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -107,14 +107,14 @@ func (o *TokenCreationDTO) GetBlockHeightOk() (*float32, bool) {
 }
 
 // SetBlockHeight sets field value
-func (o *TokenCreationDTO) SetBlockHeight(v float32) {
+func (o *TokenCreationDTO) SetBlockHeight(v int64) {
 	o.BlockHeight = v
 }
 
 // GetBlockSlot returns the BlockSlot field value
-func (o *TokenCreationDTO) GetBlockSlot() float32 {
+func (o *TokenCreationDTO) GetBlockSlot() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -123,7 +123,7 @@ func (o *TokenCreationDTO) GetBlockSlot() float32 {
 
 // GetBlockSlotOk returns a tuple with the BlockSlot field value
 // and a boolean to check if the value has been set.
-func (o *TokenCreationDTO) GetBlockSlotOk() (*float32, bool) {
+func (o *TokenCreationDTO) GetBlockSlotOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -131,7 +131,7 @@ func (o *TokenCreationDTO) GetBlockSlotOk() (*float32, bool) {
 }
 
 // SetBlockSlot sets field value
-func (o *TokenCreationDTO) SetBlockSlot(v float32) {
+func (o *TokenCreationDTO) SetBlockSlot(v int64) {
 	o.BlockSlot = v
 }
 
@@ -160,9 +160,9 @@ func (o *TokenCreationDTO) SetBlockHash(v string) {
 }
 
 // GetBlockTimestamp returns the BlockTimestamp field value if set, zero value otherwise.
-func (o *TokenCreationDTO) GetBlockTimestamp() float32 {
+func (o *TokenCreationDTO) GetBlockTimestamp() int64 {
 	if o == nil || IsNil(o.BlockTimestamp) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.BlockTimestamp
@@ -170,7 +170,7 @@ func (o *TokenCreationDTO) GetBlockTimestamp() float32 {
 
 // GetBlockTimestampOk returns a tuple with the BlockTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenCreationDTO) GetBlockTimestampOk() (*float32, bool) {
+func (o *TokenCreationDTO) GetBlockTimestampOk() (*int64, bool) {
 	if o == nil || IsNil(o.BlockTimestamp) {
 		return nil, false
 	}
@@ -186,8 +186,8 @@ func (o *TokenCreationDTO) HasBlockTimestamp() bool {
 	return false
 }
 
-// SetBlockTimestamp gets a reference to the given float32 and assigns it to the BlockTimestamp field.
-func (o *TokenCreationDTO) SetBlockTimestamp(v float32) {
+// SetBlockTimestamp gets a reference to the given int64 and assigns it to the BlockTimestamp field.
+func (o *TokenCreationDTO) SetBlockTimestamp(v int64) {
 	o.BlockTimestamp = &v
 }
 

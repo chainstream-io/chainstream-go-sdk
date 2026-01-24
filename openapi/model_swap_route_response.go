@@ -29,7 +29,7 @@ type SwapRouteResponse struct {
 	// DTO.DEX.SWAP.ROUTE_INFO
 	RouteInfo map[string]interface{} `json:"routeInfo"`
 	// DTO.DEX.SWAP.ELAPSED_TIME
-	ElapsedTime float32 `json:"elapsedTime"`
+	ElapsedTime int64 `json:"elapsedTime"`
 }
 
 type _SwapRouteResponse SwapRouteResponse
@@ -38,7 +38,7 @@ type _SwapRouteResponse SwapRouteResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSwapRouteResponse(args SwapRouteInput, serializedTx string, routeInfo map[string]interface{}, elapsedTime float32) *SwapRouteResponse {
+func NewSwapRouteResponse(args SwapRouteInput, serializedTx string, routeInfo map[string]interface{}, elapsedTime int64) *SwapRouteResponse {
 	this := SwapRouteResponse{}
 	this.Args = args
 	this.SerializedTx = serializedTx
@@ -128,9 +128,9 @@ func (o *SwapRouteResponse) SetRouteInfo(v map[string]interface{}) {
 }
 
 // GetElapsedTime returns the ElapsedTime field value
-func (o *SwapRouteResponse) GetElapsedTime() float32 {
+func (o *SwapRouteResponse) GetElapsedTime() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *SwapRouteResponse) GetElapsedTime() float32 {
 
 // GetElapsedTimeOk returns a tuple with the ElapsedTime field value
 // and a boolean to check if the value has been set.
-func (o *SwapRouteResponse) GetElapsedTimeOk() (*float32, bool) {
+func (o *SwapRouteResponse) GetElapsedTimeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *SwapRouteResponse) GetElapsedTimeOk() (*float32, bool) {
 }
 
 // SetElapsedTime sets field value
-func (o *SwapRouteResponse) SetElapsedTime(v float32) {
+func (o *SwapRouteResponse) SetElapsedTime(v int64) {
 	o.ElapsedTime = v
 }
 

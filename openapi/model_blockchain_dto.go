@@ -29,7 +29,7 @@ type BlockchainDTO struct {
 	// DTO.BLOCKCHAIN.EXPLORER_URL
 	ExplorerUrl string `json:"explorerUrl"`
 	// DTO.BLOCKCHAIN.CHAIN_ID
-	ChainId float32 `json:"chainId"`
+	ChainId int64 `json:"chainId"`
 }
 
 type _BlockchainDTO BlockchainDTO
@@ -38,7 +38,7 @@ type _BlockchainDTO BlockchainDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlockchainDTO(symbol string, name string, explorerUrl string, chainId float32) *BlockchainDTO {
+func NewBlockchainDTO(symbol string, name string, explorerUrl string, chainId int64) *BlockchainDTO {
 	this := BlockchainDTO{}
 	this.Symbol = symbol
 	this.Name = name
@@ -128,9 +128,9 @@ func (o *BlockchainDTO) SetExplorerUrl(v string) {
 }
 
 // GetChainId returns the ChainId field value
-func (o *BlockchainDTO) GetChainId() float32 {
+func (o *BlockchainDTO) GetChainId() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *BlockchainDTO) GetChainId() float32 {
 
 // GetChainIdOk returns a tuple with the ChainId field value
 // and a boolean to check if the value has been set.
-func (o *BlockchainDTO) GetChainIdOk() (*float32, bool) {
+func (o *BlockchainDTO) GetChainIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *BlockchainDTO) GetChainIdOk() (*float32, bool) {
 }
 
 // SetChainId sets field value
-func (o *BlockchainDTO) SetChainId(v float32) {
+func (o *BlockchainDTO) SetChainId(v int64) {
 	o.ChainId = v
 }
 

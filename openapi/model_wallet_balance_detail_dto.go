@@ -45,9 +45,9 @@ type WalletBalanceDetailDTO struct {
 	// DTO.WALLET.BALANCE.UNREALIZED_PROFIT_RATIO
 	UnrealizedProfitRatio string `json:"unrealizedProfitRatio"`
 	// DTO.WALLET.BALANCE.OPEN_TIME
-	OpenTime float32 `json:"openTime"`
+	OpenTime int64 `json:"openTime"`
 	// DTO.WALLET.BALANCE.CLOSE_TIME
-	CloseTime float32 `json:"closeTime"`
+	CloseTime int64 `json:"closeTime"`
 	// DTO.WALLET.BALANCE.BUYS
 	Buys string `json:"buys"`
 	// DTO.WALLET.BALANCE.BUY_AMOUNT
@@ -80,7 +80,7 @@ type _WalletBalanceDetailDTO WalletBalanceDetailDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWalletBalanceDetailDTO(tokenAddress string, amount string, valueInUsd string, name string, symbol string, imageUrl string, priceInSol string, priceInUsd string, priceChangeRatioInUsd24h string, unrealizedProfitInUsd string, unrealizedProfitRatio string, openTime float32, closeTime float32, buys string, buyAmount string, buyAmountInUsd string, sells string, sellAmount string, sellAmountInUsd string, averageBuyPriceInUsd string, averageSellPriceInUsd string, realizedProfitInUsd string, realizedProfitRatio string, totalRealizedProfitInUsd string, totalRealizedProfitRatio string) *WalletBalanceDetailDTO {
+func NewWalletBalanceDetailDTO(tokenAddress string, amount string, valueInUsd string, name string, symbol string, imageUrl string, priceInSol string, priceInUsd string, priceChangeRatioInUsd24h string, unrealizedProfitInUsd string, unrealizedProfitRatio string, openTime int64, closeTime int64, buys string, buyAmount string, buyAmountInUsd string, sells string, sellAmount string, sellAmountInUsd string, averageBuyPriceInUsd string, averageSellPriceInUsd string, realizedProfitInUsd string, realizedProfitRatio string, totalRealizedProfitInUsd string, totalRealizedProfitRatio string) *WalletBalanceDetailDTO {
 	this := WalletBalanceDetailDTO{}
 	this.TokenAddress = tokenAddress
 	this.Amount = amount
@@ -383,9 +383,9 @@ func (o *WalletBalanceDetailDTO) SetUnrealizedProfitRatio(v string) {
 }
 
 // GetOpenTime returns the OpenTime field value
-func (o *WalletBalanceDetailDTO) GetOpenTime() float32 {
+func (o *WalletBalanceDetailDTO) GetOpenTime() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -394,7 +394,7 @@ func (o *WalletBalanceDetailDTO) GetOpenTime() float32 {
 
 // GetOpenTimeOk returns a tuple with the OpenTime field value
 // and a boolean to check if the value has been set.
-func (o *WalletBalanceDetailDTO) GetOpenTimeOk() (*float32, bool) {
+func (o *WalletBalanceDetailDTO) GetOpenTimeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -402,14 +402,14 @@ func (o *WalletBalanceDetailDTO) GetOpenTimeOk() (*float32, bool) {
 }
 
 // SetOpenTime sets field value
-func (o *WalletBalanceDetailDTO) SetOpenTime(v float32) {
+func (o *WalletBalanceDetailDTO) SetOpenTime(v int64) {
 	o.OpenTime = v
 }
 
 // GetCloseTime returns the CloseTime field value
-func (o *WalletBalanceDetailDTO) GetCloseTime() float32 {
+func (o *WalletBalanceDetailDTO) GetCloseTime() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -418,7 +418,7 @@ func (o *WalletBalanceDetailDTO) GetCloseTime() float32 {
 
 // GetCloseTimeOk returns a tuple with the CloseTime field value
 // and a boolean to check if the value has been set.
-func (o *WalletBalanceDetailDTO) GetCloseTimeOk() (*float32, bool) {
+func (o *WalletBalanceDetailDTO) GetCloseTimeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -426,7 +426,7 @@ func (o *WalletBalanceDetailDTO) GetCloseTimeOk() (*float32, bool) {
 }
 
 // SetCloseTime sets field value
-func (o *WalletBalanceDetailDTO) SetCloseTime(v float32) {
+func (o *WalletBalanceDetailDTO) SetCloseTime(v int64) {
 	o.CloseTime = v
 }
 

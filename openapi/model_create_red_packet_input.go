@@ -29,7 +29,7 @@ type CreateRedPacketInput struct {
 	// DTO.RED_PACKET.MINT
 	Mint string `json:"mint"`
 	// DTO.RED_PACKET.MAX_CLAIMS
-	MaxClaims float32 `json:"maxClaims"`
+	MaxClaims int64 `json:"maxClaims"`
 	// DTO.RED_PACKET.TOTAL_AMOUNT
 	TotalAmount *string `json:"totalAmount,omitempty"`
 	// DTO.RED_PACKET.FIXED_AMOUNT
@@ -48,7 +48,7 @@ type _CreateRedPacketInput CreateRedPacketInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateRedPacketInput(chain string, creator string, mint string, maxClaims float32) *CreateRedPacketInput {
+func NewCreateRedPacketInput(chain string, creator string, mint string, maxClaims int64) *CreateRedPacketInput {
 	this := CreateRedPacketInput{}
 	this.Chain = chain
 	this.Creator = creator
@@ -138,9 +138,9 @@ func (o *CreateRedPacketInput) SetMint(v string) {
 }
 
 // GetMaxClaims returns the MaxClaims field value
-func (o *CreateRedPacketInput) GetMaxClaims() float32 {
+func (o *CreateRedPacketInput) GetMaxClaims() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -149,7 +149,7 @@ func (o *CreateRedPacketInput) GetMaxClaims() float32 {
 
 // GetMaxClaimsOk returns a tuple with the MaxClaims field value
 // and a boolean to check if the value has been set.
-func (o *CreateRedPacketInput) GetMaxClaimsOk() (*float32, bool) {
+func (o *CreateRedPacketInput) GetMaxClaimsOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -157,7 +157,7 @@ func (o *CreateRedPacketInput) GetMaxClaimsOk() (*float32, bool) {
 }
 
 // SetMaxClaims sets field value
-func (o *CreateRedPacketInput) SetMaxClaims(v float32) {
+func (o *CreateRedPacketInput) SetMaxClaims(v int64) {
 	o.MaxClaims = v
 }
 

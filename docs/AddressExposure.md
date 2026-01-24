@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Category** | **string** | DTO.KYT.ADDRESS_EXPOSURE.CATEGORY | 
-**Value** | **float32** | DTO.KYT.ADDRESS_EXPOSURE.VALUE | 
+**Value** | **string** | DTO.KYT.ADDRESS_EXPOSURE.VALUE | 
 **ExposureType** | **string** | DTO.KYT.ADDRESS_EXPOSURE.EXPOSURE_TYPE | 
 **Direction** | **string** | DTO.KYT.ADDRESS_EXPOSURE.DIRECTION | 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewAddressExposure
 
-`func NewAddressExposure(category string, value float32, exposureType string, direction string, ) *AddressExposure`
+`func NewAddressExposure(category string, value string, exposureType string, direction string, ) *AddressExposure`
 
 NewAddressExposure instantiates a new AddressExposure object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetCategory sets Category field to given value.
 
 ### GetValue
 
-`func (o *AddressExposure) GetValue() float32`
+`func (o *AddressExposure) GetValue() string`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *AddressExposure) GetValueOk() (*float32, bool)`
+`func (o *AddressExposure) GetValueOk() (*string, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *AddressExposure) SetValue(v float32)`
+`func (o *AddressExposure) SetValue(v string)`
 
 SetValue sets Value field to given value.
 

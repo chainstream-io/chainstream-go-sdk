@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Chain** | **string** | DTO.TOKEN.METADATA.CHAIN | 
-**Decimals** | **float32** | DTO.TOKEN.METADATA.DECIMALS | 
+**Decimals** | **int64** | DTO.TOKEN.METADATA.DECIMALS | 
 **Name** | **string** | DTO.TOKEN.METADATA.NAME | 
 **Symbol** | **string** | DTO.TOKEN.METADATA.SYMBOL | 
 **MetadataAddress** | Pointer to **string** | DTO.TOKEN.METADATA.METADATA_ADDRESS | [optional] 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 **Uri** | Pointer to **string** | DTO.TOKEN.METADATA.URI | [optional] 
 **Extra** | Pointer to [**TokenExtraDTO**](TokenExtraDTO.md) | DTO.TOKEN.METADATA.EXTRA | [optional] 
 **SocialMedias** | Pointer to [**TokenSocialMediasDTO**](TokenSocialMediasDTO.md) | DTO.TOKEN.METADATA.SOCIAL_MEDIAS | [optional] 
-**TokenCreatedAt** | Pointer to **float32** | DTO.TOKEN.METADATA.TOKEN_CREATED_AT | [optional] 
+**TokenCreatedAt** | Pointer to **int64** | DTO.TOKEN.METADATA.TOKEN_CREATED_AT | [optional] 
 **Description** | Pointer to **string** | DTO.TOKEN.METADATA.DESCRIPTION | [optional] 
-**DevTotalTokens** | Pointer to **float32** | DTO.TOKEN.METADATA.DEV_TOTAL_TOKENS | [optional] 
+**DevTotalTokens** | Pointer to **string** | DTO.TOKEN.METADATA.DEV_TOTAL_TOKENS | [optional] 
 **DevLastTokenCreatedAt** | Pointer to **string** | DTO.TOKEN.METADATA.DEV_LAST_TOKEN_CREATED_AT | [optional] 
 **Market** | Pointer to **string** | DTO.TOKEN.MARKET_ID | [optional] 
 **Extension** | Pointer to **map[string]interface{}** | DTO.TOKEN.EXTENSION | [optional] 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewToken
 
-`func NewToken(chain string, decimals float32, name string, symbol string, address string, marketData TokenMarketData, ) *Token`
+`func NewToken(chain string, decimals int64, name string, symbol string, address string, marketData TokenMarketData, ) *Token`
 
 NewToken instantiates a new Token object
 This constructor will assign default values to properties that have it defined,
@@ -66,20 +66,20 @@ SetChain sets Chain field to given value.
 
 ### GetDecimals
 
-`func (o *Token) GetDecimals() float32`
+`func (o *Token) GetDecimals() int64`
 
 GetDecimals returns the Decimals field if non-nil, zero value otherwise.
 
 ### GetDecimalsOk
 
-`func (o *Token) GetDecimalsOk() (*float32, bool)`
+`func (o *Token) GetDecimalsOk() (*int64, bool)`
 
 GetDecimalsOk returns a tuple with the Decimals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDecimals
 
-`func (o *Token) SetDecimals(v float32)`
+`func (o *Token) SetDecimals(v int64)`
 
 SetDecimals sets Decimals field to given value.
 
@@ -296,20 +296,20 @@ HasSocialMedias returns a boolean if a field has been set.
 
 ### GetTokenCreatedAt
 
-`func (o *Token) GetTokenCreatedAt() float32`
+`func (o *Token) GetTokenCreatedAt() int64`
 
 GetTokenCreatedAt returns the TokenCreatedAt field if non-nil, zero value otherwise.
 
 ### GetTokenCreatedAtOk
 
-`func (o *Token) GetTokenCreatedAtOk() (*float32, bool)`
+`func (o *Token) GetTokenCreatedAtOk() (*int64, bool)`
 
 GetTokenCreatedAtOk returns a tuple with the TokenCreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenCreatedAt
 
-`func (o *Token) SetTokenCreatedAt(v float32)`
+`func (o *Token) SetTokenCreatedAt(v int64)`
 
 SetTokenCreatedAt sets TokenCreatedAt field to given value.
 
@@ -346,20 +346,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetDevTotalTokens
 
-`func (o *Token) GetDevTotalTokens() float32`
+`func (o *Token) GetDevTotalTokens() string`
 
 GetDevTotalTokens returns the DevTotalTokens field if non-nil, zero value otherwise.
 
 ### GetDevTotalTokensOk
 
-`func (o *Token) GetDevTotalTokensOk() (*float32, bool)`
+`func (o *Token) GetDevTotalTokensOk() (*string, bool)`
 
 GetDevTotalTokensOk returns a tuple with the DevTotalTokens field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDevTotalTokens
 
-`func (o *Token) SetDevTotalTokens(v float32)`
+`func (o *Token) SetDevTotalTokens(v string)`
 
 SetDevTotalTokens sets DevTotalTokens field to given value.
 

@@ -10,16 +10,16 @@ Name | Type | Description | Notes
 **Address** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ADDRESS | 
 **Memo** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.MEMO | 
 **AttemptIdentifier** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ATTEMPT_IDENTIFIER | 
-**AssetAmount** | **float32** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ASSET_AMOUNT | 
+**AssetAmount** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ASSET_AMOUNT | 
 **ExternalId** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.EXTERNAL_ID | 
-**UsdAmount** | **float32** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.USD_AMOUNT | 
+**UsdAmount** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.USD_AMOUNT | 
 **UpdatedAt** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.UPDATED_AT | 
 
 ## Methods
 
 ### NewWithdrawalBaseResponseDTO
 
-`func NewWithdrawalBaseResponseDTO(asset string, assetId string, network string, address string, memo string, attemptIdentifier string, assetAmount float32, externalId string, usdAmount float32, updatedAt string, ) *WithdrawalBaseResponseDTO`
+`func NewWithdrawalBaseResponseDTO(asset string, assetId string, network string, address string, memo string, attemptIdentifier string, assetAmount string, externalId string, usdAmount string, updatedAt string, ) *WithdrawalBaseResponseDTO`
 
 NewWithdrawalBaseResponseDTO instantiates a new WithdrawalBaseResponseDTO object
 This constructor will assign default values to properties that have it defined,
@@ -156,20 +156,20 @@ SetAttemptIdentifier sets AttemptIdentifier field to given value.
 
 ### GetAssetAmount
 
-`func (o *WithdrawalBaseResponseDTO) GetAssetAmount() float32`
+`func (o *WithdrawalBaseResponseDTO) GetAssetAmount() string`
 
 GetAssetAmount returns the AssetAmount field if non-nil, zero value otherwise.
 
 ### GetAssetAmountOk
 
-`func (o *WithdrawalBaseResponseDTO) GetAssetAmountOk() (*float32, bool)`
+`func (o *WithdrawalBaseResponseDTO) GetAssetAmountOk() (*string, bool)`
 
 GetAssetAmountOk returns a tuple with the AssetAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssetAmount
 
-`func (o *WithdrawalBaseResponseDTO) SetAssetAmount(v float32)`
+`func (o *WithdrawalBaseResponseDTO) SetAssetAmount(v string)`
 
 SetAssetAmount sets AssetAmount field to given value.
 
@@ -196,20 +196,20 @@ SetExternalId sets ExternalId field to given value.
 
 ### GetUsdAmount
 
-`func (o *WithdrawalBaseResponseDTO) GetUsdAmount() float32`
+`func (o *WithdrawalBaseResponseDTO) GetUsdAmount() string`
 
 GetUsdAmount returns the UsdAmount field if non-nil, zero value otherwise.
 
 ### GetUsdAmountOk
 
-`func (o *WithdrawalBaseResponseDTO) GetUsdAmountOk() (*float32, bool)`
+`func (o *WithdrawalBaseResponseDTO) GetUsdAmountOk() (*string, bool)`
 
 GetUsdAmountOk returns a tuple with the UsdAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsdAmount
 
-`func (o *WithdrawalBaseResponseDTO) SetUsdAmount(v float32)`
+`func (o *WithdrawalBaseResponseDTO) SetUsdAmount(v string)`
 
 SetUsdAmount sets UsdAmount field to given value.
 

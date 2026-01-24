@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **TokenAddress** | **string** | DTO.TOKEN.PRICE.TOKEN_ADDRESS | 
 **PriceInUsd** | **string** | DTO.TOKEN.PRICE.PRICE_IN_USD | 
 **PriceInNative** | **string** | DTO.TOKEN.PRICE.PRICE_IN_NATIVE | 
-**Timestamp** | **float32** | DTO.TOKEN.PRICE.TIMESTAMP | 
+**Timestamp** | **int64** | DTO.TOKEN.PRICE.TIMESTAMP | 
 
 ## Methods
 
 ### NewTokenPriceDTO
 
-`func NewTokenPriceDTO(tokenAddress string, priceInUsd string, priceInNative string, timestamp float32, ) *TokenPriceDTO`
+`func NewTokenPriceDTO(tokenAddress string, priceInUsd string, priceInNative string, timestamp int64, ) *TokenPriceDTO`
 
 NewTokenPriceDTO instantiates a new TokenPriceDTO object
 This constructor will assign default values to properties that have it defined,
@@ -90,20 +90,20 @@ SetPriceInNative sets PriceInNative field to given value.
 
 ### GetTimestamp
 
-`func (o *TokenPriceDTO) GetTimestamp() float32`
+`func (o *TokenPriceDTO) GetTimestamp() int64`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *TokenPriceDTO) GetTimestampOk() (*float32, bool)`
+`func (o *TokenPriceDTO) GetTimestampOk() (*int64, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *TokenPriceDTO) SetTimestamp(v float32)`
+`func (o *TokenPriceDTO) SetTimestamp(v int64)`
 
 SetTimestamp sets Timestamp field to given value.
 

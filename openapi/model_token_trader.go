@@ -30,25 +30,25 @@ type TokenTrader struct {
 	// DTO.TOKEN_TRADER.BLOCK_HASH
 	BlockHash *string `json:"blockHash,omitempty"`
 	// DTO.TOKEN_TRADER.BLOCK_HEIGHT
-	BlockHeight *float32 `json:"blockHeight,omitempty"`
+	BlockHeight *int64 `json:"blockHeight,omitempty"`
 	// DTO.TOKEN_TRADER.BLOCK_SLOT
-	BlockSlot *float32 `json:"blockSlot,omitempty"`
+	BlockSlot *int64 `json:"blockSlot,omitempty"`
 	// DTO.TOKEN_TRADER.BLOCK_TIMESTAMP
 	BlockTimestamp *time.Time `json:"blockTimestamp,omitempty"`
 	// DTO.TOKEN_TRADER.ONCHAIN_CREATED_AT
 	OnchainCreatedAt map[string]interface{} `json:"onchainCreatedAt,omitempty"`
 	// DTO.TOKEN_TRADER.TRADE_COUNT
-	TradeCount *float32 `json:"tradeCount,omitempty"`
+	TradeCount *int64 `json:"tradeCount,omitempty"`
 	// DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_NATIVE
-	TradeAmountInNative *float32 `json:"tradeAmountInNative,omitempty"`
+	TradeAmountInNative *string `json:"tradeAmountInNative,omitempty"`
 	// DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_USD
-	TradeAmountInUsd *float32 `json:"tradeAmountInUsd,omitempty"`
+	TradeAmountInUsd *string `json:"tradeAmountInUsd,omitempty"`
 	// DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_COUNT
-	PercentileRankTradeCount *float32 `json:"percentileRankTradeCount,omitempty"`
+	PercentileRankTradeCount *int64 `json:"percentileRankTradeCount,omitempty"`
 	// DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_AMOUNT_IN_USD
-	PercentileRankTradeAmountInUsd *float32 `json:"percentileRankTradeAmountInUsd,omitempty"`
+	PercentileRankTradeAmountInUsd *string `json:"percentileRankTradeAmountInUsd,omitempty"`
 	// DTO.TOKEN_TRADER.RANK_TRADE_AMOUNT_IN_USD
-	RankTradeAmountInUsd *float32 `json:"rankTradeAmountInUsd,omitempty"`
+	RankTradeAmountInUsd *string `json:"rankTradeAmountInUsd,omitempty"`
 }
 
 type _TokenTrader TokenTrader
@@ -160,9 +160,9 @@ func (o *TokenTrader) SetBlockHash(v string) {
 }
 
 // GetBlockHeight returns the BlockHeight field value if set, zero value otherwise.
-func (o *TokenTrader) GetBlockHeight() float32 {
+func (o *TokenTrader) GetBlockHeight() int64 {
 	if o == nil || IsNil(o.BlockHeight) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.BlockHeight
@@ -170,7 +170,7 @@ func (o *TokenTrader) GetBlockHeight() float32 {
 
 // GetBlockHeightOk returns a tuple with the BlockHeight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenTrader) GetBlockHeightOk() (*float32, bool) {
+func (o *TokenTrader) GetBlockHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.BlockHeight) {
 		return nil, false
 	}
@@ -186,15 +186,15 @@ func (o *TokenTrader) HasBlockHeight() bool {
 	return false
 }
 
-// SetBlockHeight gets a reference to the given float32 and assigns it to the BlockHeight field.
-func (o *TokenTrader) SetBlockHeight(v float32) {
+// SetBlockHeight gets a reference to the given int64 and assigns it to the BlockHeight field.
+func (o *TokenTrader) SetBlockHeight(v int64) {
 	o.BlockHeight = &v
 }
 
 // GetBlockSlot returns the BlockSlot field value if set, zero value otherwise.
-func (o *TokenTrader) GetBlockSlot() float32 {
+func (o *TokenTrader) GetBlockSlot() int64 {
 	if o == nil || IsNil(o.BlockSlot) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.BlockSlot
@@ -202,7 +202,7 @@ func (o *TokenTrader) GetBlockSlot() float32 {
 
 // GetBlockSlotOk returns a tuple with the BlockSlot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenTrader) GetBlockSlotOk() (*float32, bool) {
+func (o *TokenTrader) GetBlockSlotOk() (*int64, bool) {
 	if o == nil || IsNil(o.BlockSlot) {
 		return nil, false
 	}
@@ -218,8 +218,8 @@ func (o *TokenTrader) HasBlockSlot() bool {
 	return false
 }
 
-// SetBlockSlot gets a reference to the given float32 and assigns it to the BlockSlot field.
-func (o *TokenTrader) SetBlockSlot(v float32) {
+// SetBlockSlot gets a reference to the given int64 and assigns it to the BlockSlot field.
+func (o *TokenTrader) SetBlockSlot(v int64) {
 	o.BlockSlot = &v
 }
 
@@ -288,9 +288,9 @@ func (o *TokenTrader) SetOnchainCreatedAt(v map[string]interface{}) {
 }
 
 // GetTradeCount returns the TradeCount field value if set, zero value otherwise.
-func (o *TokenTrader) GetTradeCount() float32 {
+func (o *TokenTrader) GetTradeCount() int64 {
 	if o == nil || IsNil(o.TradeCount) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.TradeCount
@@ -298,7 +298,7 @@ func (o *TokenTrader) GetTradeCount() float32 {
 
 // GetTradeCountOk returns a tuple with the TradeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenTrader) GetTradeCountOk() (*float32, bool) {
+func (o *TokenTrader) GetTradeCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.TradeCount) {
 		return nil, false
 	}
@@ -314,15 +314,15 @@ func (o *TokenTrader) HasTradeCount() bool {
 	return false
 }
 
-// SetTradeCount gets a reference to the given float32 and assigns it to the TradeCount field.
-func (o *TokenTrader) SetTradeCount(v float32) {
+// SetTradeCount gets a reference to the given int64 and assigns it to the TradeCount field.
+func (o *TokenTrader) SetTradeCount(v int64) {
 	o.TradeCount = &v
 }
 
 // GetTradeAmountInNative returns the TradeAmountInNative field value if set, zero value otherwise.
-func (o *TokenTrader) GetTradeAmountInNative() float32 {
+func (o *TokenTrader) GetTradeAmountInNative() string {
 	if o == nil || IsNil(o.TradeAmountInNative) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.TradeAmountInNative
@@ -330,7 +330,7 @@ func (o *TokenTrader) GetTradeAmountInNative() float32 {
 
 // GetTradeAmountInNativeOk returns a tuple with the TradeAmountInNative field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenTrader) GetTradeAmountInNativeOk() (*float32, bool) {
+func (o *TokenTrader) GetTradeAmountInNativeOk() (*string, bool) {
 	if o == nil || IsNil(o.TradeAmountInNative) {
 		return nil, false
 	}
@@ -346,15 +346,15 @@ func (o *TokenTrader) HasTradeAmountInNative() bool {
 	return false
 }
 
-// SetTradeAmountInNative gets a reference to the given float32 and assigns it to the TradeAmountInNative field.
-func (o *TokenTrader) SetTradeAmountInNative(v float32) {
+// SetTradeAmountInNative gets a reference to the given string and assigns it to the TradeAmountInNative field.
+func (o *TokenTrader) SetTradeAmountInNative(v string) {
 	o.TradeAmountInNative = &v
 }
 
 // GetTradeAmountInUsd returns the TradeAmountInUsd field value if set, zero value otherwise.
-func (o *TokenTrader) GetTradeAmountInUsd() float32 {
+func (o *TokenTrader) GetTradeAmountInUsd() string {
 	if o == nil || IsNil(o.TradeAmountInUsd) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.TradeAmountInUsd
@@ -362,7 +362,7 @@ func (o *TokenTrader) GetTradeAmountInUsd() float32 {
 
 // GetTradeAmountInUsdOk returns a tuple with the TradeAmountInUsd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenTrader) GetTradeAmountInUsdOk() (*float32, bool) {
+func (o *TokenTrader) GetTradeAmountInUsdOk() (*string, bool) {
 	if o == nil || IsNil(o.TradeAmountInUsd) {
 		return nil, false
 	}
@@ -378,15 +378,15 @@ func (o *TokenTrader) HasTradeAmountInUsd() bool {
 	return false
 }
 
-// SetTradeAmountInUsd gets a reference to the given float32 and assigns it to the TradeAmountInUsd field.
-func (o *TokenTrader) SetTradeAmountInUsd(v float32) {
+// SetTradeAmountInUsd gets a reference to the given string and assigns it to the TradeAmountInUsd field.
+func (o *TokenTrader) SetTradeAmountInUsd(v string) {
 	o.TradeAmountInUsd = &v
 }
 
 // GetPercentileRankTradeCount returns the PercentileRankTradeCount field value if set, zero value otherwise.
-func (o *TokenTrader) GetPercentileRankTradeCount() float32 {
+func (o *TokenTrader) GetPercentileRankTradeCount() int64 {
 	if o == nil || IsNil(o.PercentileRankTradeCount) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.PercentileRankTradeCount
@@ -394,7 +394,7 @@ func (o *TokenTrader) GetPercentileRankTradeCount() float32 {
 
 // GetPercentileRankTradeCountOk returns a tuple with the PercentileRankTradeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenTrader) GetPercentileRankTradeCountOk() (*float32, bool) {
+func (o *TokenTrader) GetPercentileRankTradeCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.PercentileRankTradeCount) {
 		return nil, false
 	}
@@ -410,15 +410,15 @@ func (o *TokenTrader) HasPercentileRankTradeCount() bool {
 	return false
 }
 
-// SetPercentileRankTradeCount gets a reference to the given float32 and assigns it to the PercentileRankTradeCount field.
-func (o *TokenTrader) SetPercentileRankTradeCount(v float32) {
+// SetPercentileRankTradeCount gets a reference to the given int64 and assigns it to the PercentileRankTradeCount field.
+func (o *TokenTrader) SetPercentileRankTradeCount(v int64) {
 	o.PercentileRankTradeCount = &v
 }
 
 // GetPercentileRankTradeAmountInUsd returns the PercentileRankTradeAmountInUsd field value if set, zero value otherwise.
-func (o *TokenTrader) GetPercentileRankTradeAmountInUsd() float32 {
+func (o *TokenTrader) GetPercentileRankTradeAmountInUsd() string {
 	if o == nil || IsNil(o.PercentileRankTradeAmountInUsd) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.PercentileRankTradeAmountInUsd
@@ -426,7 +426,7 @@ func (o *TokenTrader) GetPercentileRankTradeAmountInUsd() float32 {
 
 // GetPercentileRankTradeAmountInUsdOk returns a tuple with the PercentileRankTradeAmountInUsd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenTrader) GetPercentileRankTradeAmountInUsdOk() (*float32, bool) {
+func (o *TokenTrader) GetPercentileRankTradeAmountInUsdOk() (*string, bool) {
 	if o == nil || IsNil(o.PercentileRankTradeAmountInUsd) {
 		return nil, false
 	}
@@ -442,15 +442,15 @@ func (o *TokenTrader) HasPercentileRankTradeAmountInUsd() bool {
 	return false
 }
 
-// SetPercentileRankTradeAmountInUsd gets a reference to the given float32 and assigns it to the PercentileRankTradeAmountInUsd field.
-func (o *TokenTrader) SetPercentileRankTradeAmountInUsd(v float32) {
+// SetPercentileRankTradeAmountInUsd gets a reference to the given string and assigns it to the PercentileRankTradeAmountInUsd field.
+func (o *TokenTrader) SetPercentileRankTradeAmountInUsd(v string) {
 	o.PercentileRankTradeAmountInUsd = &v
 }
 
 // GetRankTradeAmountInUsd returns the RankTradeAmountInUsd field value if set, zero value otherwise.
-func (o *TokenTrader) GetRankTradeAmountInUsd() float32 {
+func (o *TokenTrader) GetRankTradeAmountInUsd() string {
 	if o == nil || IsNil(o.RankTradeAmountInUsd) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.RankTradeAmountInUsd
@@ -458,7 +458,7 @@ func (o *TokenTrader) GetRankTradeAmountInUsd() float32 {
 
 // GetRankTradeAmountInUsdOk returns a tuple with the RankTradeAmountInUsd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenTrader) GetRankTradeAmountInUsdOk() (*float32, bool) {
+func (o *TokenTrader) GetRankTradeAmountInUsdOk() (*string, bool) {
 	if o == nil || IsNil(o.RankTradeAmountInUsd) {
 		return nil, false
 	}
@@ -474,8 +474,8 @@ func (o *TokenTrader) HasRankTradeAmountInUsd() bool {
 	return false
 }
 
-// SetRankTradeAmountInUsd gets a reference to the given float32 and assigns it to the RankTradeAmountInUsd field.
-func (o *TokenTrader) SetRankTradeAmountInUsd(v float32) {
+// SetRankTradeAmountInUsd gets a reference to the given string and assigns it to the RankTradeAmountInUsd field.
+func (o *TokenTrader) SetRankTradeAmountInUsd(v string) {
 	o.RankTradeAmountInUsd = &v
 }
 

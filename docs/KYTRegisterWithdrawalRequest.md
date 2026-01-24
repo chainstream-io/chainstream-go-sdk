@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **Network** | **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.NETWORK | 
 **Asset** | **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET | 
 **Address** | **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ADDRESS | 
-**AssetAmount** | **float32** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_AMOUNT | 
+**AssetAmount** | **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_AMOUNT | 
 **AttemptTimestamp** | **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ATTEMPT_TIMESTAMP | 
-**AssetPrice** | Pointer to **float32** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_PRICE | [optional] 
+**AssetPrice** | Pointer to **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_PRICE | [optional] 
 **AssetDenomination** | Pointer to **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_DENOMINATION | [optional] 
 **AssetId** | Pointer to **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_ID | [optional] 
 **Memo** | Pointer to **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.MEMO | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewKYTRegisterWithdrawalRequest
 
-`func NewKYTRegisterWithdrawalRequest(network string, asset string, address string, assetAmount float32, attemptTimestamp string, ) *KYTRegisterWithdrawalRequest`
+`func NewKYTRegisterWithdrawalRequest(network string, asset string, address string, assetAmount string, attemptTimestamp string, ) *KYTRegisterWithdrawalRequest`
 
 NewKYTRegisterWithdrawalRequest instantiates a new KYTRegisterWithdrawalRequest object
 This constructor will assign default values to properties that have it defined,
@@ -95,20 +95,20 @@ SetAddress sets Address field to given value.
 
 ### GetAssetAmount
 
-`func (o *KYTRegisterWithdrawalRequest) GetAssetAmount() float32`
+`func (o *KYTRegisterWithdrawalRequest) GetAssetAmount() string`
 
 GetAssetAmount returns the AssetAmount field if non-nil, zero value otherwise.
 
 ### GetAssetAmountOk
 
-`func (o *KYTRegisterWithdrawalRequest) GetAssetAmountOk() (*float32, bool)`
+`func (o *KYTRegisterWithdrawalRequest) GetAssetAmountOk() (*string, bool)`
 
 GetAssetAmountOk returns a tuple with the AssetAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssetAmount
 
-`func (o *KYTRegisterWithdrawalRequest) SetAssetAmount(v float32)`
+`func (o *KYTRegisterWithdrawalRequest) SetAssetAmount(v string)`
 
 SetAssetAmount sets AssetAmount field to given value.
 
@@ -135,20 +135,20 @@ SetAttemptTimestamp sets AttemptTimestamp field to given value.
 
 ### GetAssetPrice
 
-`func (o *KYTRegisterWithdrawalRequest) GetAssetPrice() float32`
+`func (o *KYTRegisterWithdrawalRequest) GetAssetPrice() string`
 
 GetAssetPrice returns the AssetPrice field if non-nil, zero value otherwise.
 
 ### GetAssetPriceOk
 
-`func (o *KYTRegisterWithdrawalRequest) GetAssetPriceOk() (*float32, bool)`
+`func (o *KYTRegisterWithdrawalRequest) GetAssetPriceOk() (*string, bool)`
 
 GetAssetPriceOk returns a tuple with the AssetPrice field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssetPrice
 
-`func (o *KYTRegisterWithdrawalRequest) SetAssetPrice(v float32)`
+`func (o *KYTRegisterWithdrawalRequest) SetAssetPrice(v string)`
 
 SetAssetPrice sets AssetPrice field to given value.
 

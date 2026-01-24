@@ -29,7 +29,7 @@ type TokenPriceDTO struct {
 	// DTO.TOKEN.PRICE.PRICE_IN_NATIVE
 	PriceInNative string `json:"priceInNative"`
 	// DTO.TOKEN.PRICE.TIMESTAMP
-	Timestamp float32 `json:"timestamp"`
+	Timestamp int64 `json:"timestamp"`
 }
 
 type _TokenPriceDTO TokenPriceDTO
@@ -38,7 +38,7 @@ type _TokenPriceDTO TokenPriceDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenPriceDTO(tokenAddress string, priceInUsd string, priceInNative string, timestamp float32) *TokenPriceDTO {
+func NewTokenPriceDTO(tokenAddress string, priceInUsd string, priceInNative string, timestamp int64) *TokenPriceDTO {
 	this := TokenPriceDTO{}
 	this.TokenAddress = tokenAddress
 	this.PriceInUsd = priceInUsd
@@ -128,9 +128,9 @@ func (o *TokenPriceDTO) SetPriceInNative(v string) {
 }
 
 // GetTimestamp returns the Timestamp field value
-func (o *TokenPriceDTO) GetTimestamp() float32 {
+func (o *TokenPriceDTO) GetTimestamp() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *TokenPriceDTO) GetTimestamp() float32 {
 
 // GetTimestampOk returns a tuple with the Timestamp field value
 // and a boolean to check if the value has been set.
-func (o *TokenPriceDTO) GetTimestampOk() (*float32, bool) {
+func (o *TokenPriceDTO) GetTimestampOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *TokenPriceDTO) GetTimestampOk() (*float32, bool) {
 }
 
 // SetTimestamp sets field value
-func (o *TokenPriceDTO) SetTimestamp(v float32) {
+func (o *TokenPriceDTO) SetTimestamp(v int64) {
 	o.Timestamp = v
 }
 

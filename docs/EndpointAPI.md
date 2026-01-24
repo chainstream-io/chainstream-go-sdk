@@ -311,7 +311,7 @@ import (
 )
 
 func main() {
-	limit := float32(8.14) // float32 | DTO.ENDPOINT.LIMIT (optional) (default to 100)
+	limit := int64(789) // int64 | DTO.ENDPOINT.LIMIT (optional) (default to 100)
 	iterator := "iterator_example" // string | DTO.ENDPOINT.ITERATOR (optional)
 	order := "order_example" // string | DTO.ENDPOINT.ORDER (optional) (default to "ascending")
 
@@ -338,7 +338,7 @@ Other parameters are passed through a pointer to a apiListEndpointsRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **float32** | DTO.ENDPOINT.LIMIT | [default to 100]
+ **limit** | **int64** | DTO.ENDPOINT.LIMIT | [default to 100]
  **iterator** | **string** | DTO.ENDPOINT.ITERATOR | 
  **order** | **string** | DTO.ENDPOINT.ORDER | [default to &quot;ascending&quot;]
 

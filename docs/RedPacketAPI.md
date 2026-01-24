@@ -109,7 +109,7 @@ import (
 
 func main() {
 	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	createRedPacketInput := *openapiclient.NewCreateRedPacketInput("sol", "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB", float32(10)) // CreateRedPacketInput | 
+	createRedPacketInput := *openapiclient.NewCreateRedPacketInput("sol", "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB", int64(10)) // CreateRedPacketInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -182,7 +182,7 @@ import (
 func main() {
 	id := "redpacket123" // string | DTO.RED_PACKET.ID
 	cursor := "cursor_123" // string | DTO.RED_PACKET.CURSOR (optional)
-	limit := float32(20) // float32 | DTO.RED_PACKET.LIMIT (optional)
+	limit := int64(20) // int64 | DTO.RED_PACKET.LIMIT (optional)
 	direction := "desc" // string | DTO.RED_PACKET.DIRECTION (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **cursor** | **string** | DTO.RED_PACKET.CURSOR | 
- **limit** | **float32** | DTO.RED_PACKET.LIMIT | 
+ **limit** | **int64** | DTO.RED_PACKET.LIMIT | 
  **direction** | **string** | DTO.RED_PACKET.DIRECTION | 
 
 ### Return type
@@ -258,7 +258,7 @@ import (
 func main() {
 	address := "address_example" // string | 
 	cursor := "cursor_123" // string | DTO.RED_PACKET.CURSOR (optional)
-	limit := float32(20) // float32 | DTO.RED_PACKET.LIMIT (optional)
+	limit := int64(20) // int64 | DTO.RED_PACKET.LIMIT (optional)
 	direction := "desc" // string | DTO.RED_PACKET.DIRECTION (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **cursor** | **string** | DTO.RED_PACKET.CURSOR | 
- **limit** | **float32** | DTO.RED_PACKET.LIMIT | 
+ **limit** | **int64** | DTO.RED_PACKET.LIMIT | 
  **direction** | **string** | DTO.RED_PACKET.DIRECTION | 
 
 ### Return type
@@ -403,7 +403,7 @@ import (
 
 func main() {
 	cursor := "cursor_123" // string | DTO.RED_PACKET.CURSOR (optional)
-	limit := float32(20) // float32 | DTO.RED_PACKET.LIMIT (optional)
+	limit := int64(20) // int64 | DTO.RED_PACKET.LIMIT (optional)
 	direction := "desc" // string | DTO.RED_PACKET.DIRECTION (optional)
 	creator := "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB" // string | DTO.RED_PACKET.CREATOR (optional)
 	chain := "sol" // string | DTO.RED_PACKET.CHAIN (optional)
@@ -432,7 +432,7 @@ Other parameters are passed through a pointer to a apiGetRedpacketsRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cursor** | **string** | DTO.RED_PACKET.CURSOR | 
- **limit** | **float32** | DTO.RED_PACKET.LIMIT | 
+ **limit** | **int64** | DTO.RED_PACKET.LIMIT | 
  **direction** | **string** | DTO.RED_PACKET.DIRECTION | 
  **creator** | **string** | DTO.RED_PACKET.CREATOR | 
  **chain** | **string** | DTO.RED_PACKET.CHAIN | 
@@ -478,7 +478,7 @@ import (
 func main() {
 	address := "address_example" // string | 
 	cursor := "cursor_123" // string | DTO.RED_PACKET.CURSOR (optional)
-	limit := float32(20) // float32 | DTO.RED_PACKET.LIMIT (optional)
+	limit := int64(20) // int64 | DTO.RED_PACKET.LIMIT (optional)
 	direction := "desc" // string | DTO.RED_PACKET.DIRECTION (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -510,7 +510,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **cursor** | **string** | DTO.RED_PACKET.CURSOR | 
- **limit** | **float32** | DTO.RED_PACKET.LIMIT | 
+ **limit** | **int64** | DTO.RED_PACKET.LIMIT | 
  **direction** | **string** | DTO.RED_PACKET.DIRECTION | 
 
 ### Return type

@@ -33,7 +33,7 @@ type RedPacketClaimDTO struct {
 	// DTO.RED_PACKET.AMOUNT
 	Amount string `json:"amount"`
 	// DTO.RED_PACKET.CLAIMED_AT
-	ClaimedAt float32 `json:"claimedAt"`
+	ClaimedAt int64 `json:"claimedAt"`
 	// DTO.RED_PACKET.CREATOR
 	Creator string `json:"creator"`
 	// DTO.RED_PACKET.TX_HASH
@@ -46,7 +46,7 @@ type _RedPacketClaimDTO RedPacketClaimDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRedPacketClaimDTO(packetId string, chain Chain, claimer string, mint string, amount string, claimedAt float32, creator string, txHash string) *RedPacketClaimDTO {
+func NewRedPacketClaimDTO(packetId string, chain Chain, claimer string, mint string, amount string, claimedAt int64, creator string, txHash string) *RedPacketClaimDTO {
 	this := RedPacketClaimDTO{}
 	this.PacketId = packetId
 	this.Chain = chain
@@ -188,9 +188,9 @@ func (o *RedPacketClaimDTO) SetAmount(v string) {
 }
 
 // GetClaimedAt returns the ClaimedAt field value
-func (o *RedPacketClaimDTO) GetClaimedAt() float32 {
+func (o *RedPacketClaimDTO) GetClaimedAt() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -199,7 +199,7 @@ func (o *RedPacketClaimDTO) GetClaimedAt() float32 {
 
 // GetClaimedAtOk returns a tuple with the ClaimedAt field value
 // and a boolean to check if the value has been set.
-func (o *RedPacketClaimDTO) GetClaimedAtOk() (*float32, bool) {
+func (o *RedPacketClaimDTO) GetClaimedAtOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -207,7 +207,7 @@ func (o *RedPacketClaimDTO) GetClaimedAtOk() (*float32, bool) {
 }
 
 // SetClaimedAt sets field value
-func (o *RedPacketClaimDTO) SetClaimedAt(v float32) {
+func (o *RedPacketClaimDTO) SetClaimedAt(v int64) {
 	o.ClaimedAt = v
 }
 

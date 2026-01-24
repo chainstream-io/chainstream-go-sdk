@@ -23,7 +23,7 @@ var _ MappedNullable = &OnChainActivity{}
 // OnChainActivity struct for OnChainActivity
 type OnChainActivity struct {
 	// DTO.KYT.ON_CHAIN_ACTIVITY.FIRST_TRANSACTION_AT
-	FirstTransactionAt float32 `json:"first_transaction_at"`
+	FirstTransactionAt int64 `json:"first_transaction_at"`
 }
 
 type _OnChainActivity OnChainActivity
@@ -32,7 +32,7 @@ type _OnChainActivity OnChainActivity
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOnChainActivity(firstTransactionAt float32) *OnChainActivity {
+func NewOnChainActivity(firstTransactionAt int64) *OnChainActivity {
 	this := OnChainActivity{}
 	this.FirstTransactionAt = firstTransactionAt
 	return &this
@@ -47,9 +47,9 @@ func NewOnChainActivityWithDefaults() *OnChainActivity {
 }
 
 // GetFirstTransactionAt returns the FirstTransactionAt field value
-func (o *OnChainActivity) GetFirstTransactionAt() float32 {
+func (o *OnChainActivity) GetFirstTransactionAt() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *OnChainActivity) GetFirstTransactionAt() float32 {
 
 // GetFirstTransactionAtOk returns a tuple with the FirstTransactionAt field value
 // and a boolean to check if the value has been set.
-func (o *OnChainActivity) GetFirstTransactionAtOk() (*float32, bool) {
+func (o *OnChainActivity) GetFirstTransactionAtOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *OnChainActivity) GetFirstTransactionAtOk() (*float32, bool) {
 }
 
 // SetFirstTransactionAt sets field value
-func (o *OnChainActivity) SetFirstTransactionAt(v float32) {
+func (o *OnChainActivity) SetFirstTransactionAt(v int64) {
 	o.FirstTransactionAt = v
 }
 

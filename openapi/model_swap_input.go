@@ -35,7 +35,7 @@ type SwapInput struct {
 	// DTO.DEX.SWAP.MODE
 	SwapMode string `json:"swapMode"`
 	// DTO.DEX.SWAP.SLIPPAGE
-	Slippage float32 `json:"slippage"`
+	Slippage int64 `json:"slippage"`
 	// DTO.DEX.SWAP.INPUT_MINT
 	InputMint *string `json:"inputMint,omitempty"`
 	// DTO.DEX.SWAP.OUTPUT_MINT
@@ -48,7 +48,7 @@ type _SwapInput SwapInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSwapInput(dex string, userAddress string, amount string, swapMode string, slippage float32) *SwapInput {
+func NewSwapInput(dex string, userAddress string, amount string, swapMode string, slippage int64) *SwapInput {
 	this := SwapInput{}
 	this.Dex = dex
 	this.UserAddress = userAddress
@@ -63,7 +63,7 @@ func NewSwapInput(dex string, userAddress string, amount string, swapMode string
 // but it doesn't guarantee that properties required by API are set
 func NewSwapInputWithDefaults() *SwapInput {
 	this := SwapInput{}
-	var slippage float32 = 10
+	var slippage int64 = 10
 	this.Slippage = slippage
 	return &this
 }
@@ -229,9 +229,9 @@ func (o *SwapInput) SetSwapMode(v string) {
 }
 
 // GetSlippage returns the Slippage field value
-func (o *SwapInput) GetSlippage() float32 {
+func (o *SwapInput) GetSlippage() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -240,7 +240,7 @@ func (o *SwapInput) GetSlippage() float32 {
 
 // GetSlippageOk returns a tuple with the Slippage field value
 // and a boolean to check if the value has been set.
-func (o *SwapInput) GetSlippageOk() (*float32, bool) {
+func (o *SwapInput) GetSlippageOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -248,7 +248,7 @@ func (o *SwapInput) GetSlippageOk() (*float32, bool) {
 }
 
 // SetSlippage sets field value
-func (o *SwapInput) SetSlippage(v float32) {
+func (o *SwapInput) SetSlippage(v int64) {
 	o.Slippage = v
 }
 

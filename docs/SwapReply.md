@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SerializedTx** | **string** | DTO.DEX.SWAP.SERIALIZED_TX | 
-**ElapsedTime** | **float32** | DTO.DEX.SWAP.ELAPSED_TIME | 
+**ElapsedTime** | **int64** | DTO.DEX.SWAP.ELAPSED_TIME | 
 
 ## Methods
 
 ### NewSwapReply
 
-`func NewSwapReply(serializedTx string, elapsedTime float32, ) *SwapReply`
+`func NewSwapReply(serializedTx string, elapsedTime int64, ) *SwapReply`
 
 NewSwapReply instantiates a new SwapReply object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetSerializedTx sets SerializedTx field to given value.
 
 ### GetElapsedTime
 
-`func (o *SwapReply) GetElapsedTime() float32`
+`func (o *SwapReply) GetElapsedTime() int64`
 
 GetElapsedTime returns the ElapsedTime field if non-nil, zero value otherwise.
 
 ### GetElapsedTimeOk
 
-`func (o *SwapReply) GetElapsedTimeOk() (*float32, bool)`
+`func (o *SwapReply) GetElapsedTimeOk() (*int64, bool)`
 
 GetElapsedTimeOk returns a tuple with the ElapsedTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetElapsedTime
 
-`func (o *SwapReply) SetElapsedTime(v float32)`
+`func (o *SwapReply) SetElapsedTime(v int64)`
 
 SetElapsedTime sets ElapsedTime field to given value.
 

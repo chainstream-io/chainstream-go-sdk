@@ -27,7 +27,7 @@ type ChainalysisAddressIdentification struct {
 	// DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.DESCRIPTION
 	Description string `json:"description"`
 	// DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.CATEGORY_ID
-	CategoryId float32 `json:"categoryId"`
+	CategoryId int64 `json:"categoryId"`
 }
 
 type _ChainalysisAddressIdentification ChainalysisAddressIdentification
@@ -36,7 +36,7 @@ type _ChainalysisAddressIdentification ChainalysisAddressIdentification
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChainalysisAddressIdentification(addressName string, description string, categoryId float32) *ChainalysisAddressIdentification {
+func NewChainalysisAddressIdentification(addressName string, description string, categoryId int64) *ChainalysisAddressIdentification {
 	this := ChainalysisAddressIdentification{}
 	this.AddressName = addressName
 	this.Description = description
@@ -101,9 +101,9 @@ func (o *ChainalysisAddressIdentification) SetDescription(v string) {
 }
 
 // GetCategoryId returns the CategoryId field value
-func (o *ChainalysisAddressIdentification) GetCategoryId() float32 {
+func (o *ChainalysisAddressIdentification) GetCategoryId() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -112,7 +112,7 @@ func (o *ChainalysisAddressIdentification) GetCategoryId() float32 {
 
 // GetCategoryIdOk returns a tuple with the CategoryId field value
 // and a boolean to check if the value has been set.
-func (o *ChainalysisAddressIdentification) GetCategoryIdOk() (*float32, bool) {
+func (o *ChainalysisAddressIdentification) GetCategoryIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -120,7 +120,7 @@ func (o *ChainalysisAddressIdentification) GetCategoryIdOk() (*float32, bool) {
 }
 
 // SetCategoryId sets field value
-func (o *ChainalysisAddressIdentification) SetCategoryId(v float32) {
+func (o *ChainalysisAddressIdentification) SetCategoryId(v int64) {
 	o.CategoryId = v
 }
 

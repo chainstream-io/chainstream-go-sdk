@@ -35,11 +35,11 @@ type WithdrawalBaseResponseDTO struct {
 	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ATTEMPT_IDENTIFIER
 	AttemptIdentifier string `json:"attemptIdentifier"`
 	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ASSET_AMOUNT
-	AssetAmount float32 `json:"assetAmount"`
+	AssetAmount string `json:"assetAmount"`
 	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.EXTERNAL_ID
 	ExternalId string `json:"externalId"`
 	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.USD_AMOUNT
-	UsdAmount float32 `json:"usdAmount"`
+	UsdAmount string `json:"usdAmount"`
 	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.UPDATED_AT
 	UpdatedAt string `json:"updatedAt"`
 }
@@ -50,7 +50,7 @@ type _WithdrawalBaseResponseDTO WithdrawalBaseResponseDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWithdrawalBaseResponseDTO(asset string, assetId string, network string, address string, memo string, attemptIdentifier string, assetAmount float32, externalId string, usdAmount float32, updatedAt string) *WithdrawalBaseResponseDTO {
+func NewWithdrawalBaseResponseDTO(asset string, assetId string, network string, address string, memo string, attemptIdentifier string, assetAmount string, externalId string, usdAmount string, updatedAt string) *WithdrawalBaseResponseDTO {
 	this := WithdrawalBaseResponseDTO{}
 	this.Asset = asset
 	this.AssetId = assetId
@@ -218,9 +218,9 @@ func (o *WithdrawalBaseResponseDTO) SetAttemptIdentifier(v string) {
 }
 
 // GetAssetAmount returns the AssetAmount field value
-func (o *WithdrawalBaseResponseDTO) GetAssetAmount() float32 {
+func (o *WithdrawalBaseResponseDTO) GetAssetAmount() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -229,7 +229,7 @@ func (o *WithdrawalBaseResponseDTO) GetAssetAmount() float32 {
 
 // GetAssetAmountOk returns a tuple with the AssetAmount field value
 // and a boolean to check if the value has been set.
-func (o *WithdrawalBaseResponseDTO) GetAssetAmountOk() (*float32, bool) {
+func (o *WithdrawalBaseResponseDTO) GetAssetAmountOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -237,7 +237,7 @@ func (o *WithdrawalBaseResponseDTO) GetAssetAmountOk() (*float32, bool) {
 }
 
 // SetAssetAmount sets field value
-func (o *WithdrawalBaseResponseDTO) SetAssetAmount(v float32) {
+func (o *WithdrawalBaseResponseDTO) SetAssetAmount(v string) {
 	o.AssetAmount = v
 }
 
@@ -266,9 +266,9 @@ func (o *WithdrawalBaseResponseDTO) SetExternalId(v string) {
 }
 
 // GetUsdAmount returns the UsdAmount field value
-func (o *WithdrawalBaseResponseDTO) GetUsdAmount() float32 {
+func (o *WithdrawalBaseResponseDTO) GetUsdAmount() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -277,7 +277,7 @@ func (o *WithdrawalBaseResponseDTO) GetUsdAmount() float32 {
 
 // GetUsdAmountOk returns a tuple with the UsdAmount field value
 // and a boolean to check if the value has been set.
-func (o *WithdrawalBaseResponseDTO) GetUsdAmountOk() (*float32, bool) {
+func (o *WithdrawalBaseResponseDTO) GetUsdAmountOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -285,7 +285,7 @@ func (o *WithdrawalBaseResponseDTO) GetUsdAmountOk() (*float32, bool) {
 }
 
 // SetUsdAmount sets field value
-func (o *WithdrawalBaseResponseDTO) SetUsdAmount(v float32) {
+func (o *WithdrawalBaseResponseDTO) SetUsdAmount(v string) {
 	o.UsdAmount = v
 }
 

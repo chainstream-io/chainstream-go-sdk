@@ -375,7 +375,8 @@ paths:
         required: true
         schema:
           example: 10
-          type: number
+          format: int64
+          type: integer
         style: form
       responses:
         "200":
@@ -442,9 +443,10 @@ paths:
         required: false
         schema:
           default: 20
+          format: int64
           maximum: 100
           minimum: 1
-          type: number
+          type: integer
         style: form
       - description: DTO.DEX.QUERY.DEX_PROGRAM
         explode: true
@@ -616,7 +618,8 @@ paths:
         required: false
         schema:
           example: 1717334400000
-          type: number
+          format: int64
+          type: integer
         style: form
       - description: DTO.TRADE.QUERY.AFTER_TIMESTAMP
         explode: true
@@ -625,7 +628,8 @@ paths:
         required: false
         schema:
           example: 1717334400000
-          type: number
+          format: int64
+          type: integer
         style: form
       - description: DTO.TRADE.QUERY.BEFORE_BLOCK_HEIGHT
         explode: true
@@ -634,7 +638,8 @@ paths:
         required: false
         schema:
           example: 332417228
-          type: number
+          format: int64
+          type: integer
         style: form
       - description: DTO.TRADE.QUERY.AFTER_BLOCK_HEIGHT
         explode: true
@@ -643,7 +648,8 @@ paths:
         required: false
         schema:
           example: 332417228
-          type: number
+          format: int64
+          type: integer
         style: form
       - description: DTO.TRADE.QUERY.TRANSACTIONS_SIGNATURE
         explode: true
@@ -756,7 +762,8 @@ paths:
         required: false
         schema:
           example: 1717334400000
-          type: number
+          format: int64
+          type: integer
         style: form
       - description: DTO.TRADE.QUERY.AFTER_TIMESTAMP
         explode: true
@@ -765,7 +772,8 @@ paths:
         required: false
         schema:
           example: 1717334400000
-          type: number
+          format: int64
+          type: integer
         style: form
       - description: DTO.TRADE.QUERY.BEFORE_BLOCK_HEIGHT
         explode: true
@@ -774,7 +782,8 @@ paths:
         required: false
         schema:
           example: 332417228
-          type: number
+          format: int64
+          type: integer
         style: form
       - description: DTO.TRADE.QUERY.AFTER_BLOCK_HEIGHT
         explode: true
@@ -783,7 +792,8 @@ paths:
         required: false
         schema:
           example: 332417228
-          type: number
+          format: int64
+          type: integer
         style: form
       - description: DTO.TRADE.QUERY.TRANSACTIONS_SIGNATURE
         explode: true
@@ -825,211 +835,6 @@ paths:
       summary: CONTROLLER.TRADE.GET.TOKEN_ACTIVITIES.SUMMARY
       tags:
       - Trade
-  /v1/trade/{chain}/top-traders:
-    get:
-      description: CONTROLLER.TRADE.GET.TOP_TRADERS.DESCRIPTION
-      operationId: get.top.traders
-      parameters:
-      - description: GLOBAL.CHAIN.DESCRIPTION
-        explode: false
-        in: path
-        name: chain
-        required: true
-        schema:
-          $ref: "#/components/schemas/ChainSymbol"
-        style: simple
-      - description: DTO.PAGE.CURSOR.DESCRIPTION
-        explode: true
-        in: query
-        name: cursor
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: DTO.TRADE.QUERY.LIMIT
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 10
-          maximum: 10
-          minimum: 1
-          type: number
-        style: form
-      - description: DTO.PAGE.DIRECTION
-        explode: true
-        in: query
-        name: direction
-        required: false
-        schema:
-          default: next
-          enum:
-          - next
-          - prev
-          type: string
-        style: form
-      - description: DTO.TRADE.QUERY.TOKEN_ADDRESS
-        explode: true
-        in: query
-        name: tokenAddress
-        required: true
-        schema:
-          example: 6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN
-          type: string
-        style: form
-      - description: DTO.TRADE.QUERY.TIME_FRAME
-        explode: true
-        in: query
-        name: timeFrame
-        required: false
-        schema:
-          default: 30m
-          enum:
-          - 30m
-          - 1h
-          - 2h
-          - 4h
-          - 6h
-          - 8h
-          - 12h
-          - 24h
-          example: 30m
-          type: string
-        style: form
-      - description: DTO.TRADE.QUERY.SORT_TYPE
-        explode: true
-        in: query
-        name: sortType
-        required: false
-        schema:
-          default: desc
-          enum:
-          - desc
-          - asc
-          example: desc
-          type: string
-        style: form
-      - description: DTO.TRADE.QUERY.SORT_BY
-        explode: true
-        in: query
-        name: sortBy
-        required: false
-        schema:
-          default: volume
-          enum:
-          - volume
-          - trade
-          example: volume
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TopTradersPage"
-          description: ""
-      security:
-      - bearer: []
-      summary: CONTROLLER.TRADE.GET.TOP_TRADERS.SUMMARY
-      tags:
-      - Trade
-  /v1/trade/{chain}/gainers-losers:
-    get:
-      description: CONTROLLER.TRADE.GET.GAINERS_LOSERS.DESCRIPTION
-      operationId: get.gainers.losers
-      parameters:
-      - description: GLOBAL.CHAIN.DESCRIPTION
-        explode: false
-        in: path
-        name: chain
-        required: true
-        schema:
-          $ref: "#/components/schemas/ChainSymbol"
-        style: simple
-      - description: DTO.PAGE.CURSOR.DESCRIPTION
-        explode: true
-        in: query
-        name: cursor
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: DTO.TRADE.QUERY.LIMIT
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 10
-          maximum: 10
-          minimum: 1
-          type: number
-        style: form
-      - description: DTO.PAGE.DIRECTION
-        explode: true
-        in: query
-        name: direction
-        required: false
-        schema:
-          default: next
-          enum:
-          - next
-          - prev
-          type: string
-        style: form
-      - description: DTO.TRADE.GAINERS_LOSERS.QUERY.TYPE
-        explode: true
-        in: query
-        name: type
-        required: false
-        schema:
-          default: 1W
-          enum:
-          - 1W
-          - today
-          - yesterday
-          example: 1W
-          type: string
-        style: form
-      - description: DTO.TRADE.GAINERS_LOSERS.QUERY.SORT_BY
-        explode: true
-        in: query
-        name: sortBy
-        required: false
-        schema:
-          default: PnL
-          enum:
-          - PnL
-          example: PnL
-          type: string
-        style: form
-      - description: DTO.TRADE.GAINERS_LOSERS.QUERY.SORT_TYPE
-        explode: true
-        in: query
-        name: sortType
-        required: false
-        schema:
-          default: desc
-          enum:
-          - desc
-          - asc
-          example: desc
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/GainersAndLosersPage"
-          description: ""
-      security:
-      - bearer: []
-      summary: CONTROLLER.TRADE.GET.GAINERS_LOSERS.SUMMARY
-      tags:
-      - Trade
   /v1/token/search:
     get:
       description: CONTROLLER.TOKEN.SEARCH.DESCRIPTION
@@ -1062,9 +867,10 @@ paths:
         required: false
         schema:
           default: 20
+          format: int64
           maximum: 100
           minimum: 1
-          type: number
+          type: integer
         style: form
       - description: DTO.TOKEN.SEARCH.SORT_DIRECTION
         explode: true
@@ -1429,8 +1235,8 @@ paths:
         name: minTvlInSol
         required: false
         schema:
-          example: 100
-          type: number
+          example: "100"
+          type: string
         style: form
       - description: DTO.POOL.MAX_TVL_IN_SOL
         explode: true
@@ -1438,8 +1244,8 @@ paths:
         name: maxTvlInSol
         required: false
         schema:
-          example: 10000
-          type: number
+          example: "10000"
+          type: string
         style: form
       - description: DTO.POOL.MIN_TVL_IN_USD
         explode: true
@@ -1447,8 +1253,8 @@ paths:
         name: minTvlInUsd
         required: false
         schema:
-          example: 1000
-          type: number
+          example: "1000"
+          type: string
         style: form
       - description: DTO.POOL.MAX_TVL_IN_USD
         explode: true
@@ -1456,8 +1262,8 @@ paths:
         name: maxTvlInUsd
         required: false
         schema:
-          example: 100000
-          type: number
+          example: "100000"
+          type: string
         style: form
       responses:
         "200":
@@ -1817,8 +1623,9 @@ paths:
         name: from
         required: false
         schema:
-          example: "1741647950000"
-          type: string
+          example: 1741647950000
+          format: int64
+          type: integer
         style: form
       - description: DTO.CANDLE.TO
         explode: true
@@ -1826,8 +1633,9 @@ paths:
         name: to
         required: false
         schema:
-          example: "1741700970000"
-          type: string
+          example: 1741700970000
+          format: int64
+          type: integer
         style: form
       - description: DTO.CANDLE.LIMIT
         explode: true
@@ -1836,7 +1644,8 @@ paths:
         required: false
         schema:
           example: 100
-          type: number
+          format: int64
+          type: integer
         style: form
       responses:
         "200":
@@ -2076,7 +1885,8 @@ paths:
         required: true
         schema:
           example: 1754055151
-          type: number
+          format: int64
+          type: integer
         style: form
       responses:
         "200":
@@ -4586,9 +4396,10 @@ paths:
         required: false
         schema:
           example: 20
+          format: int64
           maximum: 100
           minimum: 1
-          type: number
+          type: integer
         style: form
       - description: DTO.RED_PACKET.DIRECTION
         explode: true
@@ -4632,9 +4443,10 @@ paths:
         required: false
         schema:
           example: 20
+          format: int64
           maximum: 100
           minimum: 1
-          type: number
+          type: integer
         style: form
       - description: DTO.RED_PACKET.DIRECTION
         explode: true
@@ -4714,9 +4526,10 @@ paths:
         required: false
         schema:
           example: 20
+          format: int64
           maximum: 100
           minimum: 1
-          type: number
+          type: integer
         style: form
       - description: DTO.RED_PACKET.DIRECTION
         explode: true
@@ -4767,9 +4580,10 @@ paths:
         required: false
         schema:
           example: 20
+          format: int64
           maximum: 100
           minimum: 1
-          type: number
+          type: integer
         style: form
       - description: DTO.RED_PACKET.DIRECTION
         explode: true
@@ -5224,9 +5038,10 @@ paths:
         required: false
         schema:
           default: 100
+          format: int64
           maximum: 100
           minimum: 1
-          type: number
+          type: integer
         style: form
       - description: DTO.ENDPOINT.ITERATOR
         explode: true
@@ -5473,7 +5288,8 @@ components:
         chainId:
           description: DTO.BLOCKCHAIN.CHAIN_ID
           example: 1
-          type: number
+          format: int64
+          type: integer
       required:
       - chainId
       - explorerUrl
@@ -5504,7 +5320,8 @@ components:
         lastValidBlockHeight:
           description: DTO.BLOCKCHAIN.LATEST_BLOCK.LAST_VALID_BLOCK_HEIGHT
           example: 123
-          type: number
+          format: int64
+          type: integer
       required:
       - blockhash
       - lastValidBlockHeight
@@ -5546,7 +5363,8 @@ components:
         elapsedTime:
           description: DTO.TRANSACTION.SEND.ELAPSED_TIME
           example: 1500
-          type: number
+          format: int64
+          type: integer
         jobId:
           description: DTO.TRANSACTION.SEND.JOB_ID
           example: "1234567890"
@@ -5665,9 +5483,10 @@ components:
           default: 10
           description: DTO.DEX.SWAP.SLIPPAGE
           example: 10
+          format: int64
           maximum: 100
           minimum: 0
-          type: number
+          type: integer
         inputMint:
           description: DTO.DEX.SWAP.INPUT_MINT
           type: string
@@ -5692,7 +5511,8 @@ components:
         elapsedTime:
           description: DTO.DEX.SWAP.ELAPSED_TIME
           example: 245
-          type: number
+          format: int64
+          type: integer
       required:
       - elapsedTime
       - serializedTx
@@ -5744,9 +5564,10 @@ components:
           default: 5
           description: DTO.DEX.SWAP.SLIPPAGE
           example: 5
+          format: int64
           maximum: 100
           minimum: 0
-          type: number
+          type: integer
         inputMint:
           description: DTO.DEX.SWAP.INPUT_MINT
           example: EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
@@ -5766,7 +5587,8 @@ components:
         deadline:
           description: DTO.DEX.SWAP.DEADLINE
           example: 1716806400
-          type: number
+          format: int64
+          type: integer
         tipFee:
           description: DTO.DEX.BASE.TIP_FEE
           example: "1000000"
@@ -5816,7 +5638,8 @@ components:
         elapsedTime:
           description: DTO.DEX.SWAP.ELAPSED_TIME
           example: 245
-          type: number
+          format: int64
+          type: integer
       required:
       - args
       - elapsedTime
@@ -6298,7 +6121,7 @@ components:
         tokenImageUrl: tokenImageUrl
         sideTokenSymbol: sideTokenSymbol
         poolAddress: poolAddress
-        blockTimestamp: 1.4658129805029452
+        blockTimestamp: 1
         chain: chain
         sideTokenAddress: sideTokenAddress
         tokenSymbol: tokenSymbol
@@ -6309,7 +6132,7 @@ components:
         accountOwnerAddress: accountOwnerAddress
         transactionSignature: transactionSignature
         dexProtocolFamily: dexProtocolFamily
-        blockHeight: 6.027456183070403
+        blockHeight: 6
         sideTokenAmountInUsd: sideTokenAmountInUsd
         sideTokenAmount: sideTokenAmount
         status: status
@@ -6319,10 +6142,12 @@ components:
           type: string
         blockHeight:
           description: DTO.TRADE.DETAIL.BLOCK_HEIGHT
-          type: number
+          format: int64
+          type: integer
         blockTimestamp:
           description: DTO.TRADE.DETAIL.BLOCK_TIMESTAMP
-          type: number
+          format: int64
+          type: integer
         accountOwnerAddress:
           description: DTO.TRADE.DETAIL.ACCOUNT_OWNER_ADDRESS
           type: string
@@ -6429,7 +6254,7 @@ components:
           tokenImageUrl: tokenImageUrl
           sideTokenSymbol: sideTokenSymbol
           poolAddress: poolAddress
-          blockTimestamp: 1.4658129805029452
+          blockTimestamp: 1
           chain: chain
           sideTokenAddress: sideTokenAddress
           tokenSymbol: tokenSymbol
@@ -6440,7 +6265,7 @@ components:
           accountOwnerAddress: accountOwnerAddress
           transactionSignature: transactionSignature
           dexProtocolFamily: dexProtocolFamily
-          blockHeight: 6.027456183070403
+          blockHeight: 6
           sideTokenAmountInUsd: sideTokenAmountInUsd
           sideTokenAmount: sideTokenAmount
           status: status
@@ -6454,7 +6279,7 @@ components:
           tokenImageUrl: tokenImageUrl
           sideTokenSymbol: sideTokenSymbol
           poolAddress: poolAddress
-          blockTimestamp: 1.4658129805029452
+          blockTimestamp: 1
           chain: chain
           sideTokenAddress: sideTokenAddress
           tokenSymbol: tokenSymbol
@@ -6465,7 +6290,7 @@ components:
           accountOwnerAddress: accountOwnerAddress
           transactionSignature: transactionSignature
           dexProtocolFamily: dexProtocolFamily
-          blockHeight: 6.027456183070403
+          blockHeight: 6
           sideTokenAmountInUsd: sideTokenAmountInUsd
           sideTokenAmount: sideTokenAmount
           status: status
@@ -6498,214 +6323,6 @@ components:
           type: array
       required:
       - data
-    TopTradersDTO:
-      example:
-        tokenAddress: 6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN
-        owner: 3xd4LGVWtYXLBspR6X5JWbW49NXmEehfPtX6Kqx98b4w
-        volume: 1
-        trade: 1
-        tradeBuy: 1
-        multiplier: "1.234"
-        volumeBuy: 1
-        isScaledUiToken: true
-        tradeSell: 1
-        volumeSell: 1
-        type: whale
-        tags:
-        - tags
-        - tags
-      properties:
-        tokenAddress:
-          description: DTO.TRADE.TOP_TRADERS.TOKEN_ADDRESS
-          example: 6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN
-          type: string
-        owner:
-          description: DTO.TRADE.TOP_TRADERS.OWNER
-          example: 3xd4LGVWtYXLBspR6X5JWbW49NXmEehfPtX6Kqx98b4w
-          type: string
-        tags:
-          description: DTO.TRADE.TOP_TRADERS.TAGS
-          items:
-            type: string
-          type: array
-        type:
-          description: DTO.TRADE.TOP_TRADERS.TYPE
-          example: whale
-          type: string
-        volume:
-          description: DTO.TRADE.TOP_TRADERS.VOLUME
-          example: 1
-          type: number
-        trade:
-          description: DTO.TRADE.TOP_TRADERS.TRADE
-          example: 1
-          type: number
-        tradeBuy:
-          description: DTO.TRADE.TOP_TRADERS.TRADE_BUY
-          example: 1
-          type: number
-        tradeSell:
-          description: DTO.TRADE.TOP_TRADERS.TRADE_SELL
-          example: 1
-          type: number
-        volumeBuy:
-          description: DTO.TRADE.TOP_TRADERS.VOLUME_BUY
-          example: 1
-          type: number
-        volumeSell:
-          description: DTO.TRADE.TOP_TRADERS.VOLUME_SELL
-          example: 1
-          type: number
-        isScaledUiToken:
-          description: DTO.TRADE.TOP_TRADERS.IS_SCALED_UI_TOKEN
-          example: true
-          type: boolean
-        multiplier:
-          description: DTO.TRADE.TOP_TRADERS.MULTIPLIER
-          example: "1.234"
-          type: string
-      required:
-      - isScaledUiToken
-      - owner
-      - tags
-      - tokenAddress
-      - trade
-      - tradeBuy
-      - tradeSell
-      - type
-      - volume
-      - volumeBuy
-      - volumeSell
-    TopTradersPage:
-      example:
-        total: 0.8008281904610115
-        data:
-        - tokenAddress: 6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN
-          owner: 3xd4LGVWtYXLBspR6X5JWbW49NXmEehfPtX6Kqx98b4w
-          volume: 1
-          trade: 1
-          tradeBuy: 1
-          multiplier: "1.234"
-          volumeBuy: 1
-          isScaledUiToken: true
-          tradeSell: 1
-          volumeSell: 1
-          type: whale
-          tags:
-          - tags
-          - tags
-        - tokenAddress: 6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN
-          owner: 3xd4LGVWtYXLBspR6X5JWbW49NXmEehfPtX6Kqx98b4w
-          volume: 1
-          trade: 1
-          tradeBuy: 1
-          multiplier: "1.234"
-          volumeBuy: 1
-          isScaledUiToken: true
-          tradeSell: 1
-          volumeSell: 1
-          type: whale
-          tags:
-          - tags
-          - tags
-        hasPrev: false
-        hasNext: false
-        endCursor: endCursor
-        startCursor: startCursor
-      properties:
-        hasNext:
-          default: false
-          description: DTO.PAGE.HAS_NEXT
-          type: boolean
-        hasPrev:
-          default: false
-          description: DTO.PAGE.HAS_PREV
-          type: boolean
-        startCursor:
-          description: DTO.PAGE.START_CURSOR
-          type: string
-        endCursor:
-          description: DTO.PAGE.END_CURSOR
-          type: string
-        total:
-          description: DTO.PAGE.TOTAL
-          type: number
-        data:
-          description: DTO.TRADE.TOP_TRADERS.PAGE.DATA
-          items:
-            $ref: "#/components/schemas/TopTradersDTO"
-          type: array
-      required:
-      - data
-    GainersAndLosersDTO:
-      example:
-        volume: 1
-        address: FciNKwZAvSzepKH1nFEGeejzbP4k87dJiP9BAzGt2Sm3
-        tradeCount: 1
-        pnl: 1
-      properties:
-        address:
-          description: GLOBAL.WALLETADDRESS.DESCRIPTION
-          example: FciNKwZAvSzepKH1nFEGeejzbP4k87dJiP9BAzGt2Sm3
-          type: string
-        pnl:
-          description: DTO.TRADE.GAINERS_LOSERS.PNL
-          example: 1
-          type: number
-        tradeCount:
-          description: DTO.TRADE.GAINERS_LOSERS.TRADE_COUNT
-          example: 1
-          type: number
-        volume:
-          description: DTO.TRADE.GAINERS_LOSERS.VOLUME
-          example: 1
-          type: number
-      required:
-      - address
-      - pnl
-      - tradeCount
-      - volume
-    GainersAndLosersPage:
-      example:
-        total: 0.8008281904610115
-        data:
-        - volume: 1
-          address: FciNKwZAvSzepKH1nFEGeejzbP4k87dJiP9BAzGt2Sm3
-          tradeCount: 1
-          pnl: 1
-        - volume: 1
-          address: FciNKwZAvSzepKH1nFEGeejzbP4k87dJiP9BAzGt2Sm3
-          tradeCount: 1
-          pnl: 1
-        hasPrev: false
-        hasNext: false
-        endCursor: endCursor
-        startCursor: startCursor
-      properties:
-        hasNext:
-          default: false
-          description: DTO.PAGE.HAS_NEXT
-          type: boolean
-        hasPrev:
-          default: false
-          description: DTO.PAGE.HAS_PREV
-          type: boolean
-        startCursor:
-          description: DTO.PAGE.START_CURSOR
-          type: string
-        endCursor:
-          description: DTO.PAGE.END_CURSOR
-          type: string
-        total:
-          description: DTO.PAGE.TOTAL
-          type: number
-        data:
-          description: DTO.TRADE.GAINERS_LOSERS.PAGE.DATA
-          items:
-            $ref: "#/components/schemas/GainersAndLosersDTO"
-          type: array
-      required:
-      - data
     TokenCreatorsDTO:
       example:
         address: 5e2qRc1DNEXmyxP8qwPwJhRWjef7usLyi7v5xjqLr5G7
@@ -6719,7 +6336,8 @@ components:
         share:
           description: DTO.TOKEN.CREATORS.SHARE
           example: 100
-          type: number
+          format: int64
+          type: integer
         isVerified:
           description: DTO.TOKEN.CREATORS.IS_VERIFIED
           example: true
@@ -6733,7 +6351,8 @@ components:
         editionNonce:
           description: DTO.TOKEN.EXTRA.EDITION_NONCE
           example: 1
-          type: number
+          format: int64
+          type: integer
         fungible:
           description: DTO.TOKEN.EXTRA.FUNGIBLE
           example: true
@@ -6781,11 +6400,13 @@ components:
         migratedAt:
           description: DTO.TOKEN.EXTRA.MIGRATED_AT
           example: 1714857600
-          type: number
+          format: int64
+          type: integer
         sellerFeeBasisPoints:
           description: DTO.TOKEN.EXTRA.SELLER_FEE_BASIS_POINTS
           example: 100
-          type: number
+          format: int64
+          type: integer
         tokenStandard:
           description: DTO.TOKEN.EXTRA.TOKEN_STANDARD
           example: Fungible
@@ -6869,11 +6490,11 @@ components:
         sellsVolumes1m: "45000.32"
         closePriceInUsd15m: "1.265"
         openPriceInUsd1h: "1.255"
-        sells24h: 120
+        sells24h: "120"
         openPriceInUsd1m: "1.255"
         openPriceInUsd15m: "1.255"
         volumes15m: "95000.77"
-        sells5m: 120
+        sells5m: "120"
         volumes5m: "95000.77"
         priceChangeRatioInUsd5m: "0.01"
         closePriceInUsd30m: "1.265"
@@ -6881,116 +6502,116 @@ components:
         buyVolumes1m: "50000.45"
         buyVolumes1h: "50000.45"
         price30m: "1.265"
-        buys1h: 150
+        buys1h: "150"
         volumesInUsd30m: "95000.77"
         volumes4h: "95000.77"
-        trades30m: 270
-        buys1m: 150
-        traders1m: 270
+        trades30m: "270"
+        buys1m: "150"
+        traders1m: "270"
         lowInUsd4h: "1.235"
         sellsVolumes24h: "45000.32"
-        trades15m: 270
+        trades15m: "270"
         price15m: "1.255"
         buyVolumesInUsd4h: "50000.45"
         priceChangeRatioInUsd4h: "0.01"
-        traders30m: 270
-        buys24h: 150
-        sells4h: 120
-        buys30m: 150
+        traders30m: "270"
+        buys24h: "150"
+        sells4h: "120"
+        buys30m: "150"
         priceChangeRatioInUsd24h: "0.01"
-        trades4h: 270
+        trades4h: "270"
         volumesInUsd1m: "95000.77"
         sellVolumesInUsd1m: "45000.32"
         sellVolumesInUsd1h: "45000.32"
-        sellers4h: 45
+        sellers4h: "45"
         volumesInUsd15m: "95000.77"
         buyVolumesInUsd1m: "50000.45"
-        buyers30m: 50
-        traders1h: 270
-        buyers5m: 50
+        buyers30m: "50"
+        traders1h: "270"
+        buyers5m: "50"
         lowInUsd5m: "1.235"
         price1h: "1.275"
-        buys15m: 150
+        buys15m: "150"
         buyVolumes30m: "50000.45"
         price1m: "1.234"
         buyVolumesInUsd1h: "50000.45"
-        trades5m: 270
+        trades5m: "270"
         address: EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
         sellVolumesInUsd15m: "45000.32"
         highInUsd24h: "1.275"
         openPriceInUsd4h: "1.255"
         openPriceInUsd30m: "1.255"
-        sellers5m: 45
-        buyers15m: 50
+        sellers5m: "45"
+        buyers15m: "50"
         buyVolumes15m: "50000.45"
         highInUsd1m: "1.275"
         volumesInUsd1h: "95000.77"
         closePriceInUsd1m: "1.265"
         buyVolumesInUsd24h: "50000.45"
-        traders24h: 270
+        traders24h: "270"
         highInUsd1h: "1.275"
         closePriceInUsd1h: "1.265"
-        buyers4h: 50
-        buyers24h: 50
+        buyers4h: "50"
+        buyers24h: "50"
         sellsVolumes5m: "45000.32"
         price4h: "1.285"
-        sellers15m: 45
+        sellers15m: "45"
         openPriceInUsd5m: "1.255"
         sellsVolumes15m: "45000.32"
         volumes1m: "95000.77"
         volumesInUsd4h: "95000.77"
-        sells1h: 120
+        sells1h: "120"
         priceChangeRatioInUsd1m: "0.01"
         volumes1h: "95000.77"
         buyVolumes24h: "50000.45"
-        sells1m: 120
+        sells1m: "120"
         priceChangeRatioInUsd1h: "0.01"
         sellVolumesInUsd30m: "45000.32"
-        trades24h: 270
+        trades24h: "270"
         closePriceInUsd4h: "1.265"
         buyVolumes5m: "50000.45"
-        buys5m: 150
+        buys5m: "150"
         price24h: "1.295"
-        sells15m: 120
+        sells15m: "120"
         lowInUsd15m: "1.235"
         openPriceInUsd24h: "1.255"
-        sellers30m: 45
+        sellers30m: "45"
         closePriceInUsd24h: "1.265"
         volumes24h: "95000.77"
         sellVolumesInUsd4h: "45000.32"
         highInUsd30m: "1.275"
         lowInUsd30m: "1.235"
         sellVolumesInUsd24h: "45000.32"
-        sells30m: 120
-        buys4h: 150
+        sells30m: "120"
+        buys4h: "150"
         lowInUsd24h: "1.235"
         volumesInUsd5m: "95000.77"
         sellVolumesInUsd5m: "45000.32"
         highInUsd15m: "1.275"
         buyVolumesInUsd30m: "50000.45"
         volumesInUsd24h: "95000.77"
-        traders15m: 270
-        traders5m: 270
+        traders15m: "270"
+        traders5m: "270"
         buyVolumesInUsd15m: "50000.45"
-        buyers1m: 50
+        buyers1m: "50"
         lowInUsd1h: "1.235"
         price5m: "1.245"
         highInUsd4h: "1.275"
         lowInUsd1m: "1.235"
-        buyers1h: 50
+        buyers1h: "50"
         buyVolumesInUsd5m: "50000.45"
-        sellers24h: 45
+        sellers24h: "45"
         sellsVolumes30m: "45000.32"
-        trades1h: 270
+        trades1h: "270"
         priceChangeRatioInUsd15m: "0.01"
-        trades1m: 270
-        sellers1h: 45
+        trades1m: "270"
+        sellers1h: "45"
         closePriceInUsd5m: "1.265"
         priceChangeRatioInUsd30m: "0.01"
         buyVolumes4h: "50000.45"
-        sellers1m: 45
+        sellers1m: "45"
         volumes30m: "95000.77"
-        traders4h: 270
+        traders4h: "270"
         sellsVolumes4h: "45000.32"
         highInUsd5m: "1.275"
       properties:
@@ -7004,12 +6625,12 @@ components:
           type: string
         buys1m:
           description: DTO.TOKEN.STAT.BUYS_1M
-          example: 150
-          type: number
+          example: "150"
+          type: string
         sells1m:
           description: DTO.TOKEN.STAT.SELLS_1M
-          example: 120
-          type: number
+          example: "120"
+          type: string
         buyVolumes1m:
           description: DTO.TOKEN.STAT.BUY_VOLUMES_1M
           example: "50000.45"
@@ -7036,12 +6657,12 @@ components:
           type: string
         buyers1m:
           description: DTO.TOKEN.STAT.BUYERS_1M
-          example: 50
-          type: number
+          example: "50"
+          type: string
         sellers1m:
           description: DTO.TOKEN.STAT.SELLERS_1M
-          example: 45
-          type: number
+          example: "45"
+          type: string
         openPriceInUsd1m:
           description: DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_1M
           example: "1.255"
@@ -7056,12 +6677,12 @@ components:
           type: string
         trades1m:
           description: DTO.TOKEN.STAT.TRADES_1M
-          example: 270
-          type: number
+          example: "270"
+          type: string
         traders1m:
           description: DTO.TOKEN.STAT.TRADERS_1M
-          example: 270
-          type: number
+          example: "270"
+          type: string
         highInUsd1m:
           description: DTO.TOKEN.STAT.HIGH_IN_USD_1M
           example: "1.275"
@@ -7076,12 +6697,12 @@ components:
           type: string
         buys5m:
           description: DTO.TOKEN.STAT.BUYS_5M
-          example: 150
-          type: number
+          example: "150"
+          type: string
         sells5m:
           description: DTO.TOKEN.STAT.SELLS_5M
-          example: 120
-          type: number
+          example: "120"
+          type: string
         buyVolumes5m:
           description: DTO.TOKEN.STAT.BUY_VOLUMES_5M
           example: "50000.45"
@@ -7108,12 +6729,12 @@ components:
           type: string
         buyers5m:
           description: DTO.TOKEN.STAT.BUYERS_5M
-          example: 50
-          type: number
+          example: "50"
+          type: string
         sellers5m:
           description: DTO.TOKEN.STAT.SELLERS_5M
-          example: 45
-          type: number
+          example: "45"
+          type: string
         openPriceInUsd5m:
           description: DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_5M
           example: "1.255"
@@ -7128,12 +6749,12 @@ components:
           type: string
         trades5m:
           description: DTO.TOKEN.STAT.TRADES_5M
-          example: 270
-          type: number
+          example: "270"
+          type: string
         traders5m:
           description: DTO.TOKEN.STAT.TRADERS_5M
-          example: 270
-          type: number
+          example: "270"
+          type: string
         highInUsd5m:
           description: DTO.TOKEN.STAT.HIGH_IN_USD_5M
           example: "1.275"
@@ -7148,12 +6769,12 @@ components:
           type: string
         buys15m:
           description: DTO.TOKEN.STAT.BUYS_15M
-          example: 150
-          type: number
+          example: "150"
+          type: string
         sells15m:
           description: DTO.TOKEN.STAT.SELLS_15M
-          example: 120
-          type: number
+          example: "120"
+          type: string
         buyVolumes15m:
           description: DTO.TOKEN.STAT.BUY_VOLUMES_15M
           example: "50000.45"
@@ -7180,12 +6801,12 @@ components:
           type: string
         buyers15m:
           description: DTO.TOKEN.STAT.BUYERS_15M
-          example: 50
-          type: number
+          example: "50"
+          type: string
         sellers15m:
           description: DTO.TOKEN.STAT.SELLERS_15M
-          example: 45
-          type: number
+          example: "45"
+          type: string
         openPriceInUsd15m:
           description: DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_15M
           example: "1.255"
@@ -7200,12 +6821,12 @@ components:
           type: string
         trades15m:
           description: DTO.TOKEN.STAT.TRADES_15M
-          example: 270
-          type: number
+          example: "270"
+          type: string
         traders15m:
           description: DTO.TOKEN.STAT.TRADERS_15M
-          example: 270
-          type: number
+          example: "270"
+          type: string
         highInUsd15m:
           description: DTO.TOKEN.STAT.HIGH_IN_USD_15M
           example: "1.275"
@@ -7220,12 +6841,12 @@ components:
           type: string
         buys30m:
           description: DTO.TOKEN.STAT.BUYS_30M
-          example: 150
-          type: number
+          example: "150"
+          type: string
         sells30m:
           description: DTO.TOKEN.STAT.SELLS_30M
-          example: 120
-          type: number
+          example: "120"
+          type: string
         buyVolumes30m:
           description: DTO.TOKEN.STAT.BUY_VOLUMES_30M
           example: "50000.45"
@@ -7252,12 +6873,12 @@ components:
           type: string
         buyers30m:
           description: DTO.TOKEN.STAT.BUYERS_30M
-          example: 50
-          type: number
+          example: "50"
+          type: string
         sellers30m:
           description: DTO.TOKEN.STAT.SELLERS_30M
-          example: 45
-          type: number
+          example: "45"
+          type: string
         openPriceInUsd30m:
           description: DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_30M
           example: "1.255"
@@ -7272,12 +6893,12 @@ components:
           type: string
         trades30m:
           description: DTO.TOKEN.STAT.TRADES_30M
-          example: 270
-          type: number
+          example: "270"
+          type: string
         traders30m:
           description: DTO.TOKEN.STAT.TRADERS_30M
-          example: 270
-          type: number
+          example: "270"
+          type: string
         highInUsd30m:
           description: DTO.TOKEN.STAT.HIGH_IN_USD_30M
           example: "1.275"
@@ -7292,12 +6913,12 @@ components:
           type: string
         buys1h:
           description: DTO.TOKEN.STAT.BUYS_1H
-          example: 150
-          type: number
+          example: "150"
+          type: string
         sells1h:
           description: DTO.TOKEN.STAT.SELLS_1H
-          example: 120
-          type: number
+          example: "120"
+          type: string
         buyVolumes1h:
           description: DTO.TOKEN.STAT.BUY_VOLUMES_1H
           example: "50000.45"
@@ -7324,12 +6945,12 @@ components:
           type: string
         buyers1h:
           description: DTO.TOKEN.STAT.BUYERS_1H
-          example: 50
-          type: number
+          example: "50"
+          type: string
         sellers1h:
           description: DTO.TOKEN.STAT.SELLERS_1H
-          example: 45
-          type: number
+          example: "45"
+          type: string
         openPriceInUsd1h:
           description: DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_1H
           example: "1.255"
@@ -7344,12 +6965,12 @@ components:
           type: string
         trades1h:
           description: DTO.TOKEN.STAT.TRADES_1H
-          example: 270
-          type: number
+          example: "270"
+          type: string
         traders1h:
           description: DTO.TOKEN.STAT.TRADERS_1H
-          example: 270
-          type: number
+          example: "270"
+          type: string
         highInUsd1h:
           description: DTO.TOKEN.STAT.HIGH_IN_USD_1H
           example: "1.275"
@@ -7364,12 +6985,12 @@ components:
           type: string
         buys4h:
           description: DTO.TOKEN.STAT.BUYS_4H
-          example: 150
-          type: number
+          example: "150"
+          type: string
         sells4h:
           description: DTO.TOKEN.STAT.SELLS_4H
-          example: 120
-          type: number
+          example: "120"
+          type: string
         buyVolumes4h:
           description: DTO.TOKEN.STAT.BUY_VOLUMES_4H
           example: "50000.45"
@@ -7396,12 +7017,12 @@ components:
           type: string
         buyers4h:
           description: DTO.TOKEN.STAT.BUYERS_4H
-          example: 50
-          type: number
+          example: "50"
+          type: string
         sellers4h:
           description: DTO.TOKEN.STAT.SELLERS_4H
-          example: 45
-          type: number
+          example: "45"
+          type: string
         openPriceInUsd4h:
           description: DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_4H
           example: "1.255"
@@ -7416,12 +7037,12 @@ components:
           type: string
         trades4h:
           description: DTO.TOKEN.STAT.TRADES_4H
-          example: 270
-          type: number
+          example: "270"
+          type: string
         traders4h:
           description: DTO.TOKEN.STAT.TRADERS_4H
-          example: 270
-          type: number
+          example: "270"
+          type: string
         highInUsd4h:
           description: DTO.TOKEN.STAT.HIGH_IN_USD_4H
           example: "1.275"
@@ -7436,12 +7057,12 @@ components:
           type: string
         buys24h:
           description: DTO.TOKEN.STAT.BUYS_24H
-          example: 150
-          type: number
+          example: "150"
+          type: string
         sells24h:
           description: DTO.TOKEN.STAT.SELLS_24H
-          example: 120
-          type: number
+          example: "120"
+          type: string
         buyVolumes24h:
           description: DTO.TOKEN.STAT.BUY_VOLUMES_24H
           example: "50000.45"
@@ -7468,12 +7089,12 @@ components:
           type: string
         buyers24h:
           description: DTO.TOKEN.STAT.BUYERS_24H
-          example: 50
-          type: number
+          example: "50"
+          type: string
         sellers24h:
           description: DTO.TOKEN.STAT.SELLERS_24H
-          example: 45
-          type: number
+          example: "45"
+          type: string
         openPriceInUsd24h:
           description: DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_24H
           example: "1.255"
@@ -7488,12 +7109,12 @@ components:
           type: string
         trades24h:
           description: DTO.TOKEN.STAT.TRADES_24H
-          example: 270
-          type: number
+          example: "270"
+          type: string
         traders24h:
           description: DTO.TOKEN.STAT.TRADERS_24H
-          example: 270
-          type: number
+          example: "270"
+          type: string
         highInUsd24h:
           description: DTO.TOKEN.STAT.HIGH_IN_USD_24H
           example: "1.275"
@@ -7657,7 +7278,7 @@ components:
         marketCapInSol: "100000"
         kolTotalHolders: "20"
         bundleTotalHolders: "12"
-        holders: 1000
+        holders: "1000"
         sniperHoldingsRatio: "0.025"
         devTotalHolders: "3"
         bluechipTotalHoldings: "50000"
@@ -7715,8 +7336,8 @@ components:
           type: string
         holders:
           description: DTO.TOKEN.MARKET_CAP.HOLDERS
-          example: 1000
-          type: number
+          example: "1000"
+          type: string
         priceInSol:
           description: DTO.TOKEN.MARKET_CAP.PRICE_IN_SOL
           example: "0.00000261383847574915906643405542"
@@ -7908,7 +7529,7 @@ components:
           isVerified: true
           share: 100
         socialMedias: ""
-        devTotalTokens: 163
+        devTotalTokens: "163"
       properties:
         chain:
           description: DTO.TOKEN.METADATA.CHAIN
@@ -7917,7 +7538,8 @@ components:
         decimals:
           description: DTO.TOKEN.METADATA.DECIMALS
           example: 9
-          type: number
+          format: int64
+          type: integer
         name:
           description: DTO.TOKEN.METADATA.NAME
           example: USD Coin
@@ -7958,15 +7580,16 @@ components:
         tokenCreatedAt:
           description: DTO.TOKEN.METADATA.TOKEN_CREATED_AT
           example: 1710417600000
-          type: number
+          format: int64
+          type: integer
         description:
           description: DTO.TOKEN.METADATA.DESCRIPTION
           example: USDC is a stablecoin pegged to the US dollar
           type: string
         devTotalTokens:
           description: DTO.TOKEN.METADATA.DEV_TOTAL_TOKENS
-          example: 163
-          type: number
+          example: "163"
+          type: string
         devLastTokenCreatedAt:
           description: DTO.TOKEN.METADATA.DEV_LAST_TOKEN_CREATED_AT
           example: 2025-12-03T09:23:34.000Z
@@ -8052,7 +7675,7 @@ components:
             isVerified: true
             share: 100
           socialMedias: ""
-          devTotalTokens: 163
+          devTotalTokens: "163"
         - symbol: USDC
           chain: solana
           extension:
@@ -8100,7 +7723,7 @@ components:
             isVerified: true
             share: 100
           socialMedias: ""
-          devTotalTokens: 163
+          devTotalTokens: "163"
         hasPrev: false
         countsByProtocols:
           uniswap: 500
@@ -8221,7 +7844,7 @@ components:
           isVerified: true
           share: 100
         socialMedias: ""
-        devTotalTokens: 163
+        devTotalTokens: "163"
       properties:
         chain:
           description: DTO.TOKEN.METADATA.CHAIN
@@ -8230,7 +7853,8 @@ components:
         decimals:
           description: DTO.TOKEN.METADATA.DECIMALS
           example: 9
-          type: number
+          format: int64
+          type: integer
         name:
           description: DTO.TOKEN.METADATA.NAME
           example: USD Coin
@@ -8271,15 +7895,16 @@ components:
         tokenCreatedAt:
           description: DTO.TOKEN.METADATA.TOKEN_CREATED_AT
           example: 1710417600000
-          type: number
+          format: int64
+          type: integer
         description:
           description: DTO.TOKEN.METADATA.DESCRIPTION
           example: USDC is a stablecoin pegged to the US dollar
           type: string
         devTotalTokens:
           description: DTO.TOKEN.METADATA.DEV_TOTAL_TOKENS
-          example: 163
-          type: number
+          example: "163"
+          type: string
         devLastTokenCreatedAt:
           description: DTO.TOKEN.METADATA.DEV_LAST_TOKEN_CREATED_AT
           example: 2025-12-03T09:23:34.000Z
@@ -8292,8 +7917,8 @@ components:
       - symbol
     TokenHolder:
       example:
-        amount: 1000000000000000000
-        amountInUsd: 1000000000000000000
+        amount: "1000000000000000000"
+        amountInUsd: "1000000000000000000"
         percentage: "100"
         walletAddress: 0x1234567890abcdef
       properties:
@@ -8303,12 +7928,12 @@ components:
           type: string
         amount:
           description: DTO.TOKEN_HOLDER.AMOUNT
-          example: 1000000000000000000
-          type: number
+          example: "1000000000000000000"
+          type: string
         amountInUsd:
           description: DTO.TOKEN_HOLDER.AMOUNT_USD
-          example: 1000000000000000000
-          type: number
+          example: "1000000000000000000"
+          type: string
         percentage:
           description: DTO.TOKEN_HOLDER.PERCENTAGE
           example: "100"
@@ -8322,12 +7947,12 @@ components:
       example:
         total: 0.8008281904610115
         data:
-        - amount: 1000000000000000000
-          amountInUsd: 1000000000000000000
+        - amount: "1000000000000000000"
+          amountInUsd: "1000000000000000000"
           percentage: "100"
           walletAddress: 0x1234567890abcdef
-        - amount: 1000000000000000000
-          amountInUsd: 1000000000000000000
+        - amount: "1000000000000000000"
+          amountInUsd: "1000000000000000000"
           percentage: "100"
           walletAddress: 0x1234567890abcdef
         hasPrev: false
@@ -8377,7 +8002,7 @@ components:
         volume: "1000000"
         high: "51.8"
         low: "50.1"
-        time: "1709251200000"
+        time: 1709251200000
         close: "51.2"
         resolution: 1h
         open: "50.5"
@@ -8409,8 +8034,9 @@ components:
           example: 1h
         time:
           description: DTO.CANDLE.TIME
-          example: "1709251200000"
-          type: string
+          example: 1709251200000
+          format: int64
+          type: integer
       required:
       - close
       - high
@@ -8422,8 +8048,8 @@ components:
     TokenPriceDTO:
       example:
         tokenAddress: 6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN
-        priceInUsd: 1000
-        priceInNative: 1000
+        priceInUsd: "1000"
+        priceInNative: "1000"
         timestamp: 1754055151
       properties:
         tokenAddress:
@@ -8432,16 +8058,17 @@ components:
           type: string
         priceInUsd:
           description: DTO.TOKEN.PRICE.PRICE_IN_USD
-          example: 1000
+          example: "1000"
           type: string
         priceInNative:
           description: DTO.TOKEN.PRICE.PRICE_IN_NATIVE
-          example: 1000
+          example: "1000"
           type: string
         timestamp:
           description: DTO.TOKEN.PRICE.TIMESTAMP
           example: 1754055151
-          type: number
+          format: int64
+          type: integer
       required:
       - priceInNative
       - priceInUsd
@@ -8452,12 +8079,12 @@ components:
         total: 0.8008281904610115
         data:
         - tokenAddress: 6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN
-          priceInUsd: 1000
-          priceInNative: 1000
+          priceInUsd: "1000"
+          priceInNative: "1000"
           timestamp: 1754055151
         - tokenAddress: 6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN
-          priceInUsd: 1000
-          priceInNative: 1000
+          priceInUsd: "1000"
+          priceInNative: "1000"
           timestamp: 1754055151
         hasPrev: false
         hasNext: false
@@ -8505,11 +8132,13 @@ components:
         blockHeight:
           description: DTO.TOKEN.CREATION.BLOCK_HEIGHT
           example: 123456789
-          type: number
+          format: int64
+          type: integer
         blockSlot:
           description: DTO.TOKEN.CREATION.BLOCK_SLOT
           example: 123456789
-          type: number
+          format: int64
+          type: integer
         blockHash:
           description: DTO.TOKEN.CREATION.BLOCK_HASH
           example: 5J7X9K2M4N6P8Q
@@ -8517,7 +8146,8 @@ components:
         blockTimestamp:
           description: DTO.TOKEN.CREATION.BLOCK_TIMESTAMP
           example: 1754055151
-          type: number
+          format: int64
+          type: integer
         transactionSignature:
           description: DTO.TOKEN.CREATION.TRANSACTION_SIGNATURE
           example: 3A7B9C1D2E4F6G8
@@ -8635,7 +8265,7 @@ components:
             isVerified: true
             share: 100
           socialMedias: ""
-          devTotalTokens: 163
+          devTotalTokens: "163"
         - symbol: USDC
           chain: solana
           extension:
@@ -8683,7 +8313,7 @@ components:
             isVerified: true
             share: 100
           socialMedias: ""
-          devTotalTokens: 163
+          devTotalTokens: "163"
         hasPrev: false
         hasNext: false
         endCursor: endCursor
@@ -8755,18 +8385,18 @@ components:
     TokenTrader:
       example:
         blockHash: blockHash
-        rankTradeAmountInUsd: 9.301444243932576
+        rankTradeAmountInUsd: rankTradeAmountInUsd
         address: address
-        percentileRankTradeCount: 2.3021358869347655
-        percentileRankTradeAmountInUsd: 7.061401241503109
-        blockSlot: 6.027456183070403
-        tradeAmountInNative: 5.962133916683182
+        percentileRankTradeCount: 5
+        percentileRankTradeAmountInUsd: percentileRankTradeAmountInUsd
+        blockSlot: 6
+        tradeAmountInNative: tradeAmountInNative
         transactionSignature: transactionSignature
-        blockHeight: 0.8008281904610115
-        tradeCount: 1.4658129805029452
+        blockHeight: 0
+        tradeCount: 1
         onchainCreatedAt: "{}"
         blockTimestamp: 2000-01-23T04:56:07.000+00:00
-        tradeAmountInUsd: 5.637376656633329
+        tradeAmountInUsd: tradeAmountInUsd
       properties:
         address:
           description: DTO.TOKEN_TRADER.ADDRESS
@@ -8779,10 +8409,12 @@ components:
           type: string
         blockHeight:
           description: DTO.TOKEN_TRADER.BLOCK_HEIGHT
-          type: number
+          format: int64
+          type: integer
         blockSlot:
           description: DTO.TOKEN_TRADER.BLOCK_SLOT
-          type: number
+          format: int64
+          type: integer
         blockTimestamp:
           description: DTO.TOKEN_TRADER.BLOCK_TIMESTAMP
           format: date-time
@@ -8792,22 +8424,24 @@ components:
           type: object
         tradeCount:
           description: DTO.TOKEN_TRADER.TRADE_COUNT
-          type: number
+          format: int64
+          type: integer
         tradeAmountInNative:
           description: DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_NATIVE
-          type: number
+          type: string
         tradeAmountInUsd:
           description: DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_USD
-          type: number
+          type: string
         percentileRankTradeCount:
           description: DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_COUNT
-          type: number
+          format: int64
+          type: integer
         percentileRankTradeAmountInUsd:
           description: DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_AMOUNT_IN_USD
-          type: number
+          type: string
         rankTradeAmountInUsd:
           description: DTO.TOKEN_TRADER.RANK_TRADE_AMOUNT_IN_USD
-          type: number
+          type: string
       required:
       - address
     WalletPnlDTO:
@@ -8816,22 +8450,22 @@ components:
         unrealizedProfitInUsd: "123.45"
         chain: solana
         averageSellPriceInUsd: "1.23"
-        buys: 10
+        buys: "10"
         realizedProfitRatio: "4.56"
-        sells: 5
+        sells: "5"
         tokenPriceInUsd: "1.23"
-        buyAmountInUsd: 1845
+        buyAmountInUsd: "1845"
         totalRealizedProfitInUsd: "169.12"
         realizedProfitInUsd: "45.67"
         averageBuyPriceInUsd: "1.23"
         totalRealizedProfitRatio: "16.91"
         unrealizedProfitRatio: "12.34"
         tokenAddress: 6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN
-        buyAmount: 1500
-        balance: 1000
-        sellAmount: 500
+        buyAmount: "1500"
+        balance: "1000"
+        sellAmount: "500"
         closeTime: 1741780514000
-        sellAmountInUsd: 615
+        sellAmountInUsd: "615"
         id: 1
         walletAddress: oQPnhXAbLbMuKHESaGrbXT17CyvWCpLyERSJA9HCYd7
         openTime: 1741780514000
@@ -8839,7 +8473,8 @@ components:
         id:
           description: DTO.WALLET.PNL.ID
           example: 1
-          type: number
+          format: int64
+          type: integer
         chain:
           description: DTO.WALLET.PNL.CHAIN
           example: solana
@@ -8855,79 +8490,82 @@ components:
         tokenPriceInUsd:
           description: DTO.WALLET.PNL.TOKEN_PRICE
           example: "1.23"
-          type: number
+          type: string
         openTime:
           description: DTO.WALLET.PNL.OPEN_TIME
           example: 1741780514000
-          type: number
+          format: int64
+          type: integer
         closeTime:
           description: DTO.WALLET.PNL.CLOSE_TIME
           example: 1741780514000
-          type: number
+          format: int64
+          type: integer
         lastTime:
           description: DTO.WALLET.PNL.LAST_TIME
           example: 1741780514000
-          type: number
+          format: int64
+          type: integer
         balance:
           description: DTO.WALLET.PNL.BALANCE
-          example: 1000
-          type: number
+          example: "1000"
+          type: string
         buyAmount:
           description: DTO.WALLET.PNL.BUY_AMOUNT
-          example: 1500
-          type: number
+          example: "1500"
+          type: string
         buyAmountInUsd:
           description: DTO.WALLET.PNL.BUY_AMOUNT_USD
-          example: 1845
-          type: number
+          example: "1845"
+          type: string
         buys:
           description: DTO.WALLET.PNL.BUYS
-          example: 10
-          type: number
+          example: "10"
+          type: string
         sellAmount:
           description: DTO.WALLET.PNL.SELL_AMOUNT
-          example: 500
-          type: number
+          example: "500"
+          type: string
         sellAmountInUsd:
           description: DTO.WALLET.PNL.SELL_AMOUNT_USD
-          example: 615
-          type: number
+          example: "615"
+          type: string
         sells:
           description: DTO.WALLET.PNL.SELLS
-          example: 5
-          type: number
+          example: "5"
+          type: string
         averageBuyPriceInUsd:
           description: DTO.WALLET.PNL.AVERAGE_BUY_PRICE
           example: "1.23"
-          type: number
+          type: string
         averageSellPriceInUsd:
           description: DTO.WALLET.PNL.AVERAGE_SELL_PRICE
           example: "1.23"
-          type: number
+          type: string
         unrealizedProfitInUsd:
           description: DTO.WALLET.PNL.UNREALIZED_PROFIT
           example: "123.45"
-          type: number
+          type: string
         unrealizedProfitRatio:
           description: DTO.WALLET.PNL.UNREALIZED_PROFIT_RATIO
           example: "12.34"
-          type: number
+          type: string
         realizedProfitInUsd:
           description: DTO.WALLET.PNL.REALIZED_PROFIT
           example: "45.67"
-          type: number
+          type: string
         realizedProfitRatio:
           description: DTO.WALLET.PNL.REALIZED_PROFIT_RATIO
           example: "4.56"
-          type: number
+          type: string
         totalRealizedProfitInUsd:
           description: DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT
           example: "169.12"
-          type: number
+          type: string
         totalRealizedProfitRatio:
           description: DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT_RATIO
           example: "16.91"
-          type: number
+          type: string
       required:
       - averageBuyPriceInUsd
       - averageSellPriceInUsd
@@ -9027,11 +8665,13 @@ components:
         openTime:
           description: DTO.WALLET.BALANCE.OPEN_TIME
           example: 1741780466000
-          type: number
+          format: int64
+          type: integer
         closeTime:
           description: DTO.WALLET.BALANCE.CLOSE_TIME
           example: 1741780466000
-          type: number
+          format: int64
+          type: integer
         buys:
           description: DTO.WALLET.BALANCE.BUYS
           example: 10
@@ -9243,9 +8883,10 @@ components:
         maxClaims:
           description: DTO.RED_PACKET.MAX_CLAIMS
           example: 10
+          format: int64
           maximum: 100
           minimum: 1
-          type: number
+          type: integer
         totalAmount:
           description: DTO.RED_PACKET.TOTAL_AMOUNT
           example: "1000000000"
@@ -9408,7 +9049,8 @@ components:
         maxClaims:
           description: DTO.RED_PACKET.MAX_CLAIMS
           example: 100
-          type: number
+          format: int64
+          type: integer
         claimAuthority:
           description: DTO.RED_PACKET.CLAIM_AUTHORITY
           example: Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB
@@ -9420,19 +9062,23 @@ components:
         expiration:
           description: DTO.RED_PACKET.EXPIRATION
           example: 24
-          type: number
+          format: int64
+          type: integer
         createdAt:
           description: DTO.RED_PACKET.CREATED_AT
           example: 1717334400
-          type: number
+          format: int64
+          type: integer
         expiredAt:
           description: DTO.RED_PACKET.EXPIRES_AT
           example: 1717334400
-          type: number
+          format: int64
+          type: integer
         claimedCount:
           description: DTO.RED_PACKET.CLAIMED_COUNT
           example: 100
-          type: number
+          format: int64
+          type: integer
         claimedAmount:
           description: DTO.RED_PACKET.CLAIMED_AMOUNT
           example: "100000000"
@@ -9494,7 +9140,8 @@ components:
         claimedAt:
           description: DTO.RED_PACKET.CLAIMED_AT
           example: 1717334400
-          type: number
+          format: int64
+          type: integer
         creator:
           description: DTO.RED_PACKET.CREATOR
           example: Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB
@@ -9539,7 +9186,8 @@ components:
         total:
           description: DTO.PAGE.TOTAL
           example: 100
-          type: number
+          format: int64
+          type: integer
         hasNextPage:
           description: DTO.PAGE.HAS_NEXT
           example: true
@@ -9608,7 +9256,8 @@ components:
         total:
           description: DTO.PAGE.TOTAL
           example: 100
-          type: number
+          format: int64
+          type: integer
         hasNextPage:
           description: DTO.PAGE.HAS_NEXT
           example: true
@@ -9689,9 +9338,9 @@ components:
       - transferReference
     TransferBaseResponseDTO:
       example:
-        usdAmount: 722091.75
+        usdAmount: "722099.75"
         tx: 9f318afbad2a183f97750bc51a75b582ad8f9e9cbfb50401148857ca27cde10c
-        assetAmount: 11.35113454
+        assetAmount: "11.35113454"
         memo: memo
         externalId: 393905a7-bb96-394b-9e20-3645298c1079
         network: BITCOIN
@@ -9738,17 +9387,18 @@ components:
         idx:
           description: DTO.KYT.TRANSFER_BASE_RESPONSE.IDX
           example: 2
-          type: number
+          format: int64
+          type: integer
           nullable: true
         usdAmount:
           description: DTO.KYT.TRANSFER_BASE_RESPONSE.USD_AMOUNT
-          example: 722091.75
-          type: number
+          example: "722099.75"
+          type: string
           nullable: true
         assetAmount:
           description: DTO.KYT.TRANSFER_BASE_RESPONSE.ASSET_AMOUNT
-          example: 11.35113454
-          type: number
+          example: "11.35113454"
+          type: string
           nullable: true
         timestamp:
           description: DTO.KYT.TRANSFER_BASE_RESPONSE.TIMESTAMP
@@ -9787,7 +9437,8 @@ components:
         categoryId:
           description: DTO.KYT.DIRECT_EXPOSURE_DETAIL.CATEGORY_ID
           example: 17
-          type: number
+          format: int64
+          type: integer
       required:
       - categoryId
       - name
@@ -9809,7 +9460,7 @@ components:
         externalId: b7d17de0-f890-11ec-83bd-c37b1b9f5365
         memo: memo
         categoryId: 3
-        alertAmount: 8868.24
+        alertAmount: "8868.24"
       properties:
         alertLevel:
           description: DTO.KYT.ALERT_DETAIL.ALERT_LEVEL
@@ -9825,8 +9476,8 @@ components:
           type: string
         alertAmount:
           description: DTO.KYT.ALERT_DETAIL.ALERT_AMOUNT
-          example: 8868.24
-          type: number
+          example: "8868.24"
+          type: string
         exposureType:
           description: DTO.KYT.ALERT_DETAIL.EXPOSURE_TYPE
           example: DIRECT
@@ -9834,7 +9485,8 @@ components:
         categoryId:
           description: DTO.KYT.ALERT_DETAIL.CATEGORY_ID
           example: 3
-          type: number
+          format: int64
+          type: integer
         memo:
           description: DTO.KYT.ALERT_DETAIL.MEMO
           type: string
@@ -9857,14 +9509,14 @@ components:
           externalId: b7d17de0-f890-11ec-83bd-c37b1b9f5365
           memo: memo
           categoryId: 3
-          alertAmount: 8868.24
+          alertAmount: "8868.24"
         - service: OFAC SDN Blender.io 2022-05-06
           exposureType: DIRECT
           alertLevel: SEVERE
           externalId: b7d17de0-f890-11ec-83bd-c37b1b9f5365
           memo: memo
           categoryId: 3
-          alertAmount: 8868.24
+          alertAmount: "8868.24"
       properties:
         alerts:
           description: DTO.KYT.TRANSFER_ALERTS_RESPONSE.ALERTS
@@ -9893,7 +9545,8 @@ components:
         count:
           description: DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.COUNT
           example: 1
-          type: number
+          format: int64
+          type: integer
         networkIdentificationOrgs:
           description: DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.NETWORK_IDENTIFICATION_ORGS
           items:
@@ -9905,8 +9558,8 @@ components:
     KYTRegisterWithdrawalRequest:
       example:
         address: D1Mc6j9xQWgR1o1Z7yU5nVVXFQiAYx7FG9AW1aVfwrUM
-        assetAmount: 5
-        assetPrice: 1000
+        assetAmount: "5"
+        assetPrice: "1000"
         assetId: assetId
         memo: memo
         asset: SOL
@@ -9932,16 +9585,16 @@ components:
           type: string
         assetAmount:
           description: DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_AMOUNT
-          example: 5
-          type: number
+          example: "5"
+          type: string
         attemptTimestamp:
           description: DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ATTEMPT_TIMESTAMP
           example: 2026-01-04T17:25:40.008307
           type: string
         assetPrice:
           description: DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_PRICE
-          example: 1000
-          type: number
+          example: "1000"
+          type: string
           nullable: true
         assetDenomination:
           description: DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_DENOMINATION
@@ -9966,9 +9619,9 @@ components:
       - network
     WithdrawalBaseResponseDTO:
       example:
-        usdAmount: 1000
+        usdAmount: "1000"
         address: 1EM4e8eu2S2RQrbS8C6aYnunWpkAwQ8GtG
-        assetAmount: 5
+        assetAmount: "5"
         assetId: assetId
         memo: memo
         attemptIdentifier: attempt1
@@ -10005,16 +9658,16 @@ components:
           type: string
         assetAmount:
           description: DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ASSET_AMOUNT
-          example: 5
-          type: number
+          example: "5"
+          type: string
         externalId:
           description: DTO.KYT.WITHDRAWAL_BASE_RESPONSE.EXTERNAL_ID
           example: 9855b826-2bad-31f2-8a89-96f164293a83
           type: string
         usdAmount:
           description: DTO.KYT.WITHDRAWAL_BASE_RESPONSE.USD_AMOUNT
-          example: 1000
-          type: number
+          example: "1000"
+          type: string
         updatedAt:
           description: DTO.KYT.WITHDRAWAL_BASE_RESPONSE.UPDATED_AT
           example: 2020-12-09T17:25:40.008307
@@ -10049,7 +9702,8 @@ components:
         categoryId:
           description: DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.CATEGORY_ID
           example: 3
-          type: number
+          format: int64
+          type: integer
       required:
       - addressName
       - categoryId
@@ -10086,7 +9740,8 @@ components:
         first_transaction_at:
           description: DTO.KYT.ON_CHAIN_ACTIVITY.FIRST_TRANSACTION_AT
           example: 1724317680
-          type: number
+          format: int64
+          type: integer
       required:
       - first_transaction_at
     AlteryaIdentification:
@@ -10096,7 +9751,7 @@ components:
         reason: scam
         chain: eth
         address: 0x8878ebb38c617b48630dca8d4af5ab788a3f94c5
-        risk_score: 99.99
+        risk_score: "99.99"
         object: address_risk_response
         labels:
         - scam
@@ -10136,8 +9791,8 @@ components:
           description: DTO.KYT.ALTERYA_IDENTIFICATION.ON_CHAIN_ACTIVITY
         risk_score:
           description: DTO.KYT.ALTERYA_IDENTIFICATION.RISK_SCORE
-          example: 99.99
-          type: number
+          example: "99.99"
+          type: string
       required:
       - address
       - chain
@@ -10155,7 +9810,7 @@ components:
           reason: scam
           chain: eth
           address: 0x8878ebb38c617b48630dca8d4af5ab788a3f94c5
-          risk_score: 99.99
+          risk_score: "99.99"
           object: address_risk_response
           labels:
           - scam
@@ -10165,7 +9820,7 @@ components:
           reason: scam
           chain: eth
           address: 0x8878ebb38c617b48630dca8d4af5ab788a3f94c5
-          risk_score: 99.99
+          risk_score: "99.99"
           object: address_risk_response
           labels:
           - scam
@@ -10202,7 +9857,7 @@ components:
       example:
         exposureType: indirect
         category: exchange
-        value: 424895.68594
+        value: "424895.68594"
         direction: both_directions
       properties:
         category:
@@ -10211,8 +9866,8 @@ components:
           type: string
         value:
           description: DTO.KYT.ADDRESS_EXPOSURE.VALUE
-          example: 424895.68594
-          type: number
+          example: "424895.68594"
+          type: string
         exposureType:
           description: DTO.KYT.ADDRESS_EXPOSURE.EXPOSURE_TYPE
           example: indirect
@@ -10231,11 +9886,11 @@ components:
         exposures:
         - exposureType: indirect
           category: exchange
-          value: 424895.68594
+          value: "424895.68594"
           direction: both_directions
         - exposureType: indirect
           category: exchange
-          value: 424895.68594
+          value: "424895.68594"
           direction: both_directions
         riskReason: riskReason
         cluster: cluster
@@ -10352,7 +10007,8 @@ components:
         rateLimit:
           description: DTO.ENDPOINT.RATE_LIMIT
           example: 1000
-          type: number
+          format: int64
+          type: integer
         filter:
           description: DTO.ENDPOINT.FILTER
           type: string
@@ -10478,7 +10134,8 @@ components:
         rateLimit:
           description: DTO.ENDPOINT.RATE_LIMIT
           example: 1000
-          type: number
+          format: int64
+          type: integer
         url:
           description: DTO.ENDPOINT.URL
           example: https://example.com
@@ -10533,7 +10190,8 @@ components:
         rateLimit:
           description: DTO.ENDPOINT.RATE_LIMIT
           example: 1000
-          type: number
+          format: int64
+          type: integer
         url:
           description: DTO.ENDPOINT.URL
           example: https://example.com
@@ -10574,7 +10232,8 @@ components:
           type: string
         timestamp:
           description: DTO.TRADE.TIMESTAMP
-          type: number
+          format: int64
+          type: integer
         event:
           allOf:
           - $ref: "#/components/schemas/TradeType"

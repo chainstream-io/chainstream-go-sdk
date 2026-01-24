@@ -23,7 +23,7 @@ type TokenExtraDTO struct {
 	// DTO.TOKEN.EXTRA.COLLECTION_ADDRESS
 	CollectionAddress *string `json:"collectionAddress,omitempty"`
 	// DTO.TOKEN.EXTRA.EDITION_NONCE
-	EditionNonce *float32 `json:"editionNonce,omitempty"`
+	EditionNonce *int64 `json:"editionNonce,omitempty"`
 	// DTO.TOKEN.EXTRA.FUNGIBLE
 	Fungible *bool `json:"fungible,omitempty"`
 	// DTO.TOKEN.EXTRA.IS_MUTABLE
@@ -47,9 +47,9 @@ type TokenExtraDTO struct {
 	// DTO.TOKEN.EXTRA.MIGRATED_TO_POOL_ADDRESS
 	MigratedToPoolAddress *string `json:"migratedToPoolAddress,omitempty"`
 	// DTO.TOKEN.EXTRA.MIGRATED_AT
-	MigratedAt *float32 `json:"migratedAt,omitempty"`
+	MigratedAt *int64 `json:"migratedAt,omitempty"`
 	// DTO.TOKEN.EXTRA.SELLER_FEE_BASIS_POINTS
-	SellerFeeBasisPoints *float32 `json:"sellerFeeBasisPoints,omitempty"`
+	SellerFeeBasisPoints *int64 `json:"sellerFeeBasisPoints,omitempty"`
 	// DTO.TOKEN.EXTRA.TOKEN_STANDARD
 	TokenStandard *string `json:"tokenStandard,omitempty"`
 	// DTO.TOKEN.EXTRA.MINT_AUTHORITY
@@ -114,9 +114,9 @@ func (o *TokenExtraDTO) SetCollectionAddress(v string) {
 }
 
 // GetEditionNonce returns the EditionNonce field value if set, zero value otherwise.
-func (o *TokenExtraDTO) GetEditionNonce() float32 {
+func (o *TokenExtraDTO) GetEditionNonce() int64 {
 	if o == nil || IsNil(o.EditionNonce) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.EditionNonce
@@ -124,7 +124,7 @@ func (o *TokenExtraDTO) GetEditionNonce() float32 {
 
 // GetEditionNonceOk returns a tuple with the EditionNonce field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenExtraDTO) GetEditionNonceOk() (*float32, bool) {
+func (o *TokenExtraDTO) GetEditionNonceOk() (*int64, bool) {
 	if o == nil || IsNil(o.EditionNonce) {
 		return nil, false
 	}
@@ -140,8 +140,8 @@ func (o *TokenExtraDTO) HasEditionNonce() bool {
 	return false
 }
 
-// SetEditionNonce gets a reference to the given float32 and assigns it to the EditionNonce field.
-func (o *TokenExtraDTO) SetEditionNonce(v float32) {
+// SetEditionNonce gets a reference to the given int64 and assigns it to the EditionNonce field.
+func (o *TokenExtraDTO) SetEditionNonce(v int64) {
 	o.EditionNonce = &v
 }
 
@@ -498,9 +498,9 @@ func (o *TokenExtraDTO) SetMigratedToPoolAddress(v string) {
 }
 
 // GetMigratedAt returns the MigratedAt field value if set, zero value otherwise.
-func (o *TokenExtraDTO) GetMigratedAt() float32 {
+func (o *TokenExtraDTO) GetMigratedAt() int64 {
 	if o == nil || IsNil(o.MigratedAt) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.MigratedAt
@@ -508,7 +508,7 @@ func (o *TokenExtraDTO) GetMigratedAt() float32 {
 
 // GetMigratedAtOk returns a tuple with the MigratedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenExtraDTO) GetMigratedAtOk() (*float32, bool) {
+func (o *TokenExtraDTO) GetMigratedAtOk() (*int64, bool) {
 	if o == nil || IsNil(o.MigratedAt) {
 		return nil, false
 	}
@@ -524,15 +524,15 @@ func (o *TokenExtraDTO) HasMigratedAt() bool {
 	return false
 }
 
-// SetMigratedAt gets a reference to the given float32 and assigns it to the MigratedAt field.
-func (o *TokenExtraDTO) SetMigratedAt(v float32) {
+// SetMigratedAt gets a reference to the given int64 and assigns it to the MigratedAt field.
+func (o *TokenExtraDTO) SetMigratedAt(v int64) {
 	o.MigratedAt = &v
 }
 
 // GetSellerFeeBasisPoints returns the SellerFeeBasisPoints field value if set, zero value otherwise.
-func (o *TokenExtraDTO) GetSellerFeeBasisPoints() float32 {
+func (o *TokenExtraDTO) GetSellerFeeBasisPoints() int64 {
 	if o == nil || IsNil(o.SellerFeeBasisPoints) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.SellerFeeBasisPoints
@@ -540,7 +540,7 @@ func (o *TokenExtraDTO) GetSellerFeeBasisPoints() float32 {
 
 // GetSellerFeeBasisPointsOk returns a tuple with the SellerFeeBasisPoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenExtraDTO) GetSellerFeeBasisPointsOk() (*float32, bool) {
+func (o *TokenExtraDTO) GetSellerFeeBasisPointsOk() (*int64, bool) {
 	if o == nil || IsNil(o.SellerFeeBasisPoints) {
 		return nil, false
 	}
@@ -556,8 +556,8 @@ func (o *TokenExtraDTO) HasSellerFeeBasisPoints() bool {
 	return false
 }
 
-// SetSellerFeeBasisPoints gets a reference to the given float32 and assigns it to the SellerFeeBasisPoints field.
-func (o *TokenExtraDTO) SetSellerFeeBasisPoints(v float32) {
+// SetSellerFeeBasisPoints gets a reference to the given int64 and assigns it to the SellerFeeBasisPoints field.
+func (o *TokenExtraDTO) SetSellerFeeBasisPoints(v int64) {
 	o.SellerFeeBasisPoints = &v
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Total** | **float32** | DTO.PAGE.TOTAL | 
+**Total** | **int64** | DTO.PAGE.TOTAL | 
 **HasNextPage** | **bool** | DTO.PAGE.HAS_NEXT | 
 **StartCursor** | **string** | DTO.PAGE.START_CURSOR | 
 **EndCursor** | **string** | DTO.PAGE.END_CURSOR | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewRedPacketsPage
 
-`func NewRedPacketsPage(total float32, hasNextPage bool, startCursor string, endCursor string, records []RedPacketDTO, ) *RedPacketsPage`
+`func NewRedPacketsPage(total int64, hasNextPage bool, startCursor string, endCursor string, records []RedPacketDTO, ) *RedPacketsPage`
 
 NewRedPacketsPage instantiates a new RedPacketsPage object
 This constructor will assign default values to properties that have it defined,
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTotal
 
-`func (o *RedPacketsPage) GetTotal() float32`
+`func (o *RedPacketsPage) GetTotal() int64`
 
 GetTotal returns the Total field if non-nil, zero value otherwise.
 
 ### GetTotalOk
 
-`func (o *RedPacketsPage) GetTotalOk() (*float32, bool)`
+`func (o *RedPacketsPage) GetTotalOk() (*int64, bool)`
 
 GetTotalOk returns a tuple with the Total field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotal
 
-`func (o *RedPacketsPage) SetTotal(v float32)`
+`func (o *RedPacketsPage) SetTotal(v int64)`
 
 SetTotal sets Total field to given value.
 

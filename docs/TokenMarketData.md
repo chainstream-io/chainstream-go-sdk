@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Top10HoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.TOP10_HOLDINGS_RATIO | [optional] 
 **Top100TotalHoldings** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.TOP100_TOTAL_HOLDINGS | [optional] 
 **Top100HoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.TOP100_HOLDINGS_RATIO | [optional] 
-**Holders** | **float32** | DTO.TOKEN.MARKET_CAP.HOLDERS | 
+**Holders** | **string** | DTO.TOKEN.MARKET_CAP.HOLDERS | 
 **PriceInSol** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.PRICE_IN_SOL | [optional] 
 **PriceInUsd** | **string** | DTO.TOKEN.MARKET_CAP.PRICE_IN_USD | 
 **TvlInSol** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.LIQUIDITY_IN_SOL | [optional] 
@@ -51,7 +51,7 @@ Name | Type | Description | Notes
 
 ### NewTokenMarketData
 
-`func NewTokenMarketData(totalSupply string, marketCapInUsd string, holders float32, priceInUsd string, tvlInUsd string, ) *TokenMarketData`
+`func NewTokenMarketData(totalSupply string, marketCapInUsd string, holders string, priceInUsd string, tvlInUsd string, ) *TokenMarketData`
 
 NewTokenMarketData instantiates a new TokenMarketData object
 This constructor will assign default values to properties that have it defined,
@@ -233,20 +233,20 @@ HasTop100HoldingsRatio returns a boolean if a field has been set.
 
 ### GetHolders
 
-`func (o *TokenMarketData) GetHolders() float32`
+`func (o *TokenMarketData) GetHolders() string`
 
 GetHolders returns the Holders field if non-nil, zero value otherwise.
 
 ### GetHoldersOk
 
-`func (o *TokenMarketData) GetHoldersOk() (*float32, bool)`
+`func (o *TokenMarketData) GetHoldersOk() (*string, bool)`
 
 GetHoldersOk returns a tuple with the Holders field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHolders
 
-`func (o *TokenMarketData) SetHolders(v float32)`
+`func (o *TokenMarketData) SetHolders(v string)`
 
 SetHolders sets Holders field to given value.
 

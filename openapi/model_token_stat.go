@@ -27,9 +27,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_1M
 	Price1m string `json:"price1m"`
 	// DTO.TOKEN.STAT.BUYS_1M
-	Buys1m float32 `json:"buys1m"`
+	Buys1m string `json:"buys1m"`
 	// DTO.TOKEN.STAT.SELLS_1M
-	Sells1m float32 `json:"sells1m"`
+	Sells1m string `json:"sells1m"`
 	// DTO.TOKEN.STAT.BUY_VOLUMES_1M
 	BuyVolumes1m string `json:"buyVolumes1m"`
 	// DTO.TOKEN.STAT.SELL_VOLUMES_1M
@@ -43,9 +43,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.VOLUMES_IN_USD_1M
 	VolumesInUsd1m string `json:"volumesInUsd1m"`
 	// DTO.TOKEN.STAT.BUYERS_1M
-	Buyers1m *float32 `json:"buyers1m,omitempty"`
+	Buyers1m *string `json:"buyers1m,omitempty"`
 	// DTO.TOKEN.STAT.SELLERS_1M
-	Sellers1m *float32 `json:"sellers1m,omitempty"`
+	Sellers1m *string `json:"sellers1m,omitempty"`
 	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_1M
 	OpenPriceInUsd1m string `json:"openPriceInUsd1m"`
 	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_1M
@@ -53,9 +53,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_1M
 	PriceChangeRatioInUsd1m string `json:"priceChangeRatioInUsd1m"`
 	// DTO.TOKEN.STAT.TRADES_1M
-	Trades1m float32 `json:"trades1m"`
+	Trades1m string `json:"trades1m"`
 	// DTO.TOKEN.STAT.TRADERS_1M
-	Traders1m *float32 `json:"traders1m,omitempty"`
+	Traders1m *string `json:"traders1m,omitempty"`
 	// DTO.TOKEN.STAT.HIGH_IN_USD_1M
 	HighInUsd1m *string `json:"highInUsd1m,omitempty"`
 	// DTO.TOKEN.STAT.LOW_IN_USD_1M
@@ -63,9 +63,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_5M
 	Price5m string `json:"price5m"`
 	// DTO.TOKEN.STAT.BUYS_5M
-	Buys5m float32 `json:"buys5m"`
+	Buys5m string `json:"buys5m"`
 	// DTO.TOKEN.STAT.SELLS_5M
-	Sells5m float32 `json:"sells5m"`
+	Sells5m string `json:"sells5m"`
 	// DTO.TOKEN.STAT.BUY_VOLUMES_5M
 	BuyVolumes5m string `json:"buyVolumes5m"`
 	// DTO.TOKEN.STAT.SELL_VOLUMES_5M
@@ -79,9 +79,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.VOLUMES_IN_USD_5M
 	VolumesInUsd5m string `json:"volumesInUsd5m"`
 	// DTO.TOKEN.STAT.BUYERS_5M
-	Buyers5m *float32 `json:"buyers5m,omitempty"`
+	Buyers5m *string `json:"buyers5m,omitempty"`
 	// DTO.TOKEN.STAT.SELLERS_5M
-	Sellers5m *float32 `json:"sellers5m,omitempty"`
+	Sellers5m *string `json:"sellers5m,omitempty"`
 	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_5M
 	OpenPriceInUsd5m string `json:"openPriceInUsd5m"`
 	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_5M
@@ -89,9 +89,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_5M
 	PriceChangeRatioInUsd5m string `json:"priceChangeRatioInUsd5m"`
 	// DTO.TOKEN.STAT.TRADES_5M
-	Trades5m float32 `json:"trades5m"`
+	Trades5m string `json:"trades5m"`
 	// DTO.TOKEN.STAT.TRADERS_5M
-	Traders5m *float32 `json:"traders5m,omitempty"`
+	Traders5m *string `json:"traders5m,omitempty"`
 	// DTO.TOKEN.STAT.HIGH_IN_USD_5M
 	HighInUsd5m *string `json:"highInUsd5m,omitempty"`
 	// DTO.TOKEN.STAT.LOW_IN_USD_5M
@@ -99,9 +99,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_15M
 	Price15m *string `json:"price15m,omitempty"`
 	// DTO.TOKEN.STAT.BUYS_15M
-	Buys15m *float32 `json:"buys15m,omitempty"`
+	Buys15m *string `json:"buys15m,omitempty"`
 	// DTO.TOKEN.STAT.SELLS_15M
-	Sells15m *float32 `json:"sells15m,omitempty"`
+	Sells15m *string `json:"sells15m,omitempty"`
 	// DTO.TOKEN.STAT.BUY_VOLUMES_15M
 	BuyVolumes15m *string `json:"buyVolumes15m,omitempty"`
 	// DTO.TOKEN.STAT.SELL_VOLUMES_15M
@@ -115,9 +115,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.VOLUMES_IN_USD_15M
 	VolumesInUsd15m *string `json:"volumesInUsd15m,omitempty"`
 	// DTO.TOKEN.STAT.BUYERS_15M
-	Buyers15m *float32 `json:"buyers15m,omitempty"`
+	Buyers15m *string `json:"buyers15m,omitempty"`
 	// DTO.TOKEN.STAT.SELLERS_15M
-	Sellers15m *float32 `json:"sellers15m,omitempty"`
+	Sellers15m *string `json:"sellers15m,omitempty"`
 	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_15M
 	OpenPriceInUsd15m *string `json:"openPriceInUsd15m,omitempty"`
 	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_15M
@@ -125,9 +125,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_15M
 	PriceChangeRatioInUsd15m *string `json:"priceChangeRatioInUsd15m,omitempty"`
 	// DTO.TOKEN.STAT.TRADES_15M
-	Trades15m *float32 `json:"trades15m,omitempty"`
+	Trades15m *string `json:"trades15m,omitempty"`
 	// DTO.TOKEN.STAT.TRADERS_15M
-	Traders15m *float32 `json:"traders15m,omitempty"`
+	Traders15m *string `json:"traders15m,omitempty"`
 	// DTO.TOKEN.STAT.HIGH_IN_USD_15M
 	HighInUsd15m *string `json:"highInUsd15m,omitempty"`
 	// DTO.TOKEN.STAT.LOW_IN_USD_15M
@@ -135,9 +135,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_30M
 	Price30m string `json:"price30m"`
 	// DTO.TOKEN.STAT.BUYS_30M
-	Buys30m float32 `json:"buys30m"`
+	Buys30m string `json:"buys30m"`
 	// DTO.TOKEN.STAT.SELLS_30M
-	Sells30m float32 `json:"sells30m"`
+	Sells30m string `json:"sells30m"`
 	// DTO.TOKEN.STAT.BUY_VOLUMES_30M
 	BuyVolumes30m string `json:"buyVolumes30m"`
 	// DTO.TOKEN.STAT.SELL_VOLUMES_30M
@@ -151,9 +151,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.VOLUMES_IN_USD_30M
 	VolumesInUsd30m string `json:"volumesInUsd30m"`
 	// DTO.TOKEN.STAT.BUYERS_30M
-	Buyers30m *float32 `json:"buyers30m,omitempty"`
+	Buyers30m *string `json:"buyers30m,omitempty"`
 	// DTO.TOKEN.STAT.SELLERS_30M
-	Sellers30m *float32 `json:"sellers30m,omitempty"`
+	Sellers30m *string `json:"sellers30m,omitempty"`
 	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_30M
 	OpenPriceInUsd30m string `json:"openPriceInUsd30m"`
 	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_30M
@@ -161,9 +161,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_30M
 	PriceChangeRatioInUsd30m string `json:"priceChangeRatioInUsd30m"`
 	// DTO.TOKEN.STAT.TRADES_30M
-	Trades30m float32 `json:"trades30m"`
+	Trades30m string `json:"trades30m"`
 	// DTO.TOKEN.STAT.TRADERS_30M
-	Traders30m *float32 `json:"traders30m,omitempty"`
+	Traders30m *string `json:"traders30m,omitempty"`
 	// DTO.TOKEN.STAT.HIGH_IN_USD_30M
 	HighInUsd30m *string `json:"highInUsd30m,omitempty"`
 	// DTO.TOKEN.STAT.LOW_IN_USD_30M
@@ -171,9 +171,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_1H
 	Price1h string `json:"price1h"`
 	// DTO.TOKEN.STAT.BUYS_1H
-	Buys1h float32 `json:"buys1h"`
+	Buys1h string `json:"buys1h"`
 	// DTO.TOKEN.STAT.SELLS_1H
-	Sells1h float32 `json:"sells1h"`
+	Sells1h string `json:"sells1h"`
 	// DTO.TOKEN.STAT.BUY_VOLUMES_1H
 	BuyVolumes1h string `json:"buyVolumes1h"`
 	// DTO.TOKEN.STAT.SELL_VOLUMES_1H
@@ -187,9 +187,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.VOLUMES_IN_USD_1H
 	VolumesInUsd1h string `json:"volumesInUsd1h"`
 	// DTO.TOKEN.STAT.BUYERS_1H
-	Buyers1h *float32 `json:"buyers1h,omitempty"`
+	Buyers1h *string `json:"buyers1h,omitempty"`
 	// DTO.TOKEN.STAT.SELLERS_1H
-	Sellers1h *float32 `json:"sellers1h,omitempty"`
+	Sellers1h *string `json:"sellers1h,omitempty"`
 	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_1H
 	OpenPriceInUsd1h string `json:"openPriceInUsd1h"`
 	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_1H
@@ -197,9 +197,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_1H
 	PriceChangeRatioInUsd1h string `json:"priceChangeRatioInUsd1h"`
 	// DTO.TOKEN.STAT.TRADES_1H
-	Trades1h float32 `json:"trades1h"`
+	Trades1h string `json:"trades1h"`
 	// DTO.TOKEN.STAT.TRADERS_1H
-	Traders1h *float32 `json:"traders1h,omitempty"`
+	Traders1h *string `json:"traders1h,omitempty"`
 	// DTO.TOKEN.STAT.HIGH_IN_USD_1H
 	HighInUsd1h *string `json:"highInUsd1h,omitempty"`
 	// DTO.TOKEN.STAT.LOW_IN_USD_1H
@@ -207,9 +207,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_4H
 	Price4h string `json:"price4h"`
 	// DTO.TOKEN.STAT.BUYS_4H
-	Buys4h float32 `json:"buys4h"`
+	Buys4h string `json:"buys4h"`
 	// DTO.TOKEN.STAT.SELLS_4H
-	Sells4h float32 `json:"sells4h"`
+	Sells4h string `json:"sells4h"`
 	// DTO.TOKEN.STAT.BUY_VOLUMES_4H
 	BuyVolumes4h string `json:"buyVolumes4h"`
 	// DTO.TOKEN.STAT.SELL_VOLUMES_4H
@@ -223,9 +223,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.VOLUMES_IN_USD_4H
 	VolumesInUsd4h string `json:"volumesInUsd4h"`
 	// DTO.TOKEN.STAT.BUYERS_4H
-	Buyers4h *float32 `json:"buyers4h,omitempty"`
+	Buyers4h *string `json:"buyers4h,omitempty"`
 	// DTO.TOKEN.STAT.SELLERS_4H
-	Sellers4h *float32 `json:"sellers4h,omitempty"`
+	Sellers4h *string `json:"sellers4h,omitempty"`
 	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_4H
 	OpenPriceInUsd4h string `json:"openPriceInUsd4h"`
 	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_4H
@@ -233,9 +233,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_4H
 	PriceChangeRatioInUsd4h string `json:"priceChangeRatioInUsd4h"`
 	// DTO.TOKEN.STAT.TRADES_4H
-	Trades4h float32 `json:"trades4h"`
+	Trades4h string `json:"trades4h"`
 	// DTO.TOKEN.STAT.TRADERS_4H
-	Traders4h *float32 `json:"traders4h,omitempty"`
+	Traders4h *string `json:"traders4h,omitempty"`
 	// DTO.TOKEN.STAT.HIGH_IN_USD_4H
 	HighInUsd4h *string `json:"highInUsd4h,omitempty"`
 	// DTO.TOKEN.STAT.LOW_IN_USD_4H
@@ -243,9 +243,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_24H
 	Price24h string `json:"price24h"`
 	// DTO.TOKEN.STAT.BUYS_24H
-	Buys24h float32 `json:"buys24h"`
+	Buys24h string `json:"buys24h"`
 	// DTO.TOKEN.STAT.SELLS_24H
-	Sells24h float32 `json:"sells24h"`
+	Sells24h string `json:"sells24h"`
 	// DTO.TOKEN.STAT.BUY_VOLUMES_24H
 	BuyVolumes24h string `json:"buyVolumes24h"`
 	// DTO.TOKEN.STAT.SELL_VOLUMES_24H
@@ -259,9 +259,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.VOLUMES_IN_USD_24H
 	VolumesInUsd24h string `json:"volumesInUsd24h"`
 	// DTO.TOKEN.STAT.BUYERS_24H
-	Buyers24h *float32 `json:"buyers24h,omitempty"`
+	Buyers24h *string `json:"buyers24h,omitempty"`
 	// DTO.TOKEN.STAT.SELLERS_24H
-	Sellers24h *float32 `json:"sellers24h,omitempty"`
+	Sellers24h *string `json:"sellers24h,omitempty"`
 	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_24H
 	OpenPriceInUsd24h string `json:"openPriceInUsd24h"`
 	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_24H
@@ -269,9 +269,9 @@ type TokenStat struct {
 	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_24H
 	PriceChangeRatioInUsd24h string `json:"priceChangeRatioInUsd24h"`
 	// DTO.TOKEN.STAT.TRADES_24H
-	Trades24h float32 `json:"trades24h"`
+	Trades24h string `json:"trades24h"`
 	// DTO.TOKEN.STAT.TRADERS_24H
-	Traders24h *float32 `json:"traders24h,omitempty"`
+	Traders24h *string `json:"traders24h,omitempty"`
 	// DTO.TOKEN.STAT.HIGH_IN_USD_24H
 	HighInUsd24h *string `json:"highInUsd24h,omitempty"`
 	// DTO.TOKEN.STAT.LOW_IN_USD_24H
@@ -284,7 +284,7 @@ type _TokenStat TokenStat
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenStat(address string, price1m string, buys1m float32, sells1m float32, buyVolumes1m string, sellsVolumes1m string, volumes1m string, buyVolumesInUsd1m string, sellVolumesInUsd1m string, volumesInUsd1m string, openPriceInUsd1m string, closePriceInUsd1m string, priceChangeRatioInUsd1m string, trades1m float32, price5m string, buys5m float32, sells5m float32, buyVolumes5m string, sellsVolumes5m string, volumes5m string, buyVolumesInUsd5m string, sellVolumesInUsd5m string, volumesInUsd5m string, openPriceInUsd5m string, closePriceInUsd5m string, priceChangeRatioInUsd5m string, trades5m float32, price30m string, buys30m float32, sells30m float32, buyVolumes30m string, sellsVolumes30m string, volumes30m string, buyVolumesInUsd30m string, sellVolumesInUsd30m string, volumesInUsd30m string, openPriceInUsd30m string, closePriceInUsd30m string, priceChangeRatioInUsd30m string, trades30m float32, price1h string, buys1h float32, sells1h float32, buyVolumes1h string, sellsVolumes1h string, volumes1h string, buyVolumesInUsd1h string, sellVolumesInUsd1h string, volumesInUsd1h string, openPriceInUsd1h string, closePriceInUsd1h string, priceChangeRatioInUsd1h string, trades1h float32, price4h string, buys4h float32, sells4h float32, buyVolumes4h string, sellsVolumes4h string, volumes4h string, buyVolumesInUsd4h string, sellVolumesInUsd4h string, volumesInUsd4h string, openPriceInUsd4h string, closePriceInUsd4h string, priceChangeRatioInUsd4h string, trades4h float32, price24h string, buys24h float32, sells24h float32, buyVolumes24h string, sellsVolumes24h string, volumes24h string, buyVolumesInUsd24h string, sellVolumesInUsd24h string, volumesInUsd24h string, openPriceInUsd24h string, closePriceInUsd24h string, priceChangeRatioInUsd24h string, trades24h float32) *TokenStat {
+func NewTokenStat(address string, price1m string, buys1m string, sells1m string, buyVolumes1m string, sellsVolumes1m string, volumes1m string, buyVolumesInUsd1m string, sellVolumesInUsd1m string, volumesInUsd1m string, openPriceInUsd1m string, closePriceInUsd1m string, priceChangeRatioInUsd1m string, trades1m string, price5m string, buys5m string, sells5m string, buyVolumes5m string, sellsVolumes5m string, volumes5m string, buyVolumesInUsd5m string, sellVolumesInUsd5m string, volumesInUsd5m string, openPriceInUsd5m string, closePriceInUsd5m string, priceChangeRatioInUsd5m string, trades5m string, price30m string, buys30m string, sells30m string, buyVolumes30m string, sellsVolumes30m string, volumes30m string, buyVolumesInUsd30m string, sellVolumesInUsd30m string, volumesInUsd30m string, openPriceInUsd30m string, closePriceInUsd30m string, priceChangeRatioInUsd30m string, trades30m string, price1h string, buys1h string, sells1h string, buyVolumes1h string, sellsVolumes1h string, volumes1h string, buyVolumesInUsd1h string, sellVolumesInUsd1h string, volumesInUsd1h string, openPriceInUsd1h string, closePriceInUsd1h string, priceChangeRatioInUsd1h string, trades1h string, price4h string, buys4h string, sells4h string, buyVolumes4h string, sellsVolumes4h string, volumes4h string, buyVolumesInUsd4h string, sellVolumesInUsd4h string, volumesInUsd4h string, openPriceInUsd4h string, closePriceInUsd4h string, priceChangeRatioInUsd4h string, trades4h string, price24h string, buys24h string, sells24h string, buyVolumes24h string, sellsVolumes24h string, volumes24h string, buyVolumesInUsd24h string, sellVolumesInUsd24h string, volumesInUsd24h string, openPriceInUsd24h string, closePriceInUsd24h string, priceChangeRatioInUsd24h string, trades24h string) *TokenStat {
 	this := TokenStat{}
 	this.Address = address
 	this.Price1m = price1m
@@ -425,9 +425,9 @@ func (o *TokenStat) SetPrice1m(v string) {
 }
 
 // GetBuys1m returns the Buys1m field value
-func (o *TokenStat) GetBuys1m() float32 {
+func (o *TokenStat) GetBuys1m() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -436,7 +436,7 @@ func (o *TokenStat) GetBuys1m() float32 {
 
 // GetBuys1mOk returns a tuple with the Buys1m field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuys1mOk() (*float32, bool) {
+func (o *TokenStat) GetBuys1mOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -444,14 +444,14 @@ func (o *TokenStat) GetBuys1mOk() (*float32, bool) {
 }
 
 // SetBuys1m sets field value
-func (o *TokenStat) SetBuys1m(v float32) {
+func (o *TokenStat) SetBuys1m(v string) {
 	o.Buys1m = v
 }
 
 // GetSells1m returns the Sells1m field value
-func (o *TokenStat) GetSells1m() float32 {
+func (o *TokenStat) GetSells1m() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -460,7 +460,7 @@ func (o *TokenStat) GetSells1m() float32 {
 
 // GetSells1mOk returns a tuple with the Sells1m field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSells1mOk() (*float32, bool) {
+func (o *TokenStat) GetSells1mOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -468,7 +468,7 @@ func (o *TokenStat) GetSells1mOk() (*float32, bool) {
 }
 
 // SetSells1m sets field value
-func (o *TokenStat) SetSells1m(v float32) {
+func (o *TokenStat) SetSells1m(v string) {
 	o.Sells1m = v
 }
 
@@ -617,9 +617,9 @@ func (o *TokenStat) SetVolumesInUsd1m(v string) {
 }
 
 // GetBuyers1m returns the Buyers1m field value if set, zero value otherwise.
-func (o *TokenStat) GetBuyers1m() float32 {
+func (o *TokenStat) GetBuyers1m() string {
 	if o == nil || IsNil(o.Buyers1m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Buyers1m
@@ -627,7 +627,7 @@ func (o *TokenStat) GetBuyers1m() float32 {
 
 // GetBuyers1mOk returns a tuple with the Buyers1m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuyers1mOk() (*float32, bool) {
+func (o *TokenStat) GetBuyers1mOk() (*string, bool) {
 	if o == nil || IsNil(o.Buyers1m) {
 		return nil, false
 	}
@@ -643,15 +643,15 @@ func (o *TokenStat) HasBuyers1m() bool {
 	return false
 }
 
-// SetBuyers1m gets a reference to the given float32 and assigns it to the Buyers1m field.
-func (o *TokenStat) SetBuyers1m(v float32) {
+// SetBuyers1m gets a reference to the given string and assigns it to the Buyers1m field.
+func (o *TokenStat) SetBuyers1m(v string) {
 	o.Buyers1m = &v
 }
 
 // GetSellers1m returns the Sellers1m field value if set, zero value otherwise.
-func (o *TokenStat) GetSellers1m() float32 {
+func (o *TokenStat) GetSellers1m() string {
 	if o == nil || IsNil(o.Sellers1m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Sellers1m
@@ -659,7 +659,7 @@ func (o *TokenStat) GetSellers1m() float32 {
 
 // GetSellers1mOk returns a tuple with the Sellers1m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSellers1mOk() (*float32, bool) {
+func (o *TokenStat) GetSellers1mOk() (*string, bool) {
 	if o == nil || IsNil(o.Sellers1m) {
 		return nil, false
 	}
@@ -675,8 +675,8 @@ func (o *TokenStat) HasSellers1m() bool {
 	return false
 }
 
-// SetSellers1m gets a reference to the given float32 and assigns it to the Sellers1m field.
-func (o *TokenStat) SetSellers1m(v float32) {
+// SetSellers1m gets a reference to the given string and assigns it to the Sellers1m field.
+func (o *TokenStat) SetSellers1m(v string) {
 	o.Sellers1m = &v
 }
 
@@ -753,9 +753,9 @@ func (o *TokenStat) SetPriceChangeRatioInUsd1m(v string) {
 }
 
 // GetTrades1m returns the Trades1m field value
-func (o *TokenStat) GetTrades1m() float32 {
+func (o *TokenStat) GetTrades1m() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -764,7 +764,7 @@ func (o *TokenStat) GetTrades1m() float32 {
 
 // GetTrades1mOk returns a tuple with the Trades1m field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTrades1mOk() (*float32, bool) {
+func (o *TokenStat) GetTrades1mOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -772,14 +772,14 @@ func (o *TokenStat) GetTrades1mOk() (*float32, bool) {
 }
 
 // SetTrades1m sets field value
-func (o *TokenStat) SetTrades1m(v float32) {
+func (o *TokenStat) SetTrades1m(v string) {
 	o.Trades1m = v
 }
 
 // GetTraders1m returns the Traders1m field value if set, zero value otherwise.
-func (o *TokenStat) GetTraders1m() float32 {
+func (o *TokenStat) GetTraders1m() string {
 	if o == nil || IsNil(o.Traders1m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Traders1m
@@ -787,7 +787,7 @@ func (o *TokenStat) GetTraders1m() float32 {
 
 // GetTraders1mOk returns a tuple with the Traders1m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTraders1mOk() (*float32, bool) {
+func (o *TokenStat) GetTraders1mOk() (*string, bool) {
 	if o == nil || IsNil(o.Traders1m) {
 		return nil, false
 	}
@@ -803,8 +803,8 @@ func (o *TokenStat) HasTraders1m() bool {
 	return false
 }
 
-// SetTraders1m gets a reference to the given float32 and assigns it to the Traders1m field.
-func (o *TokenStat) SetTraders1m(v float32) {
+// SetTraders1m gets a reference to the given string and assigns it to the Traders1m field.
+func (o *TokenStat) SetTraders1m(v string) {
 	o.Traders1m = &v
 }
 
@@ -897,9 +897,9 @@ func (o *TokenStat) SetPrice5m(v string) {
 }
 
 // GetBuys5m returns the Buys5m field value
-func (o *TokenStat) GetBuys5m() float32 {
+func (o *TokenStat) GetBuys5m() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -908,7 +908,7 @@ func (o *TokenStat) GetBuys5m() float32 {
 
 // GetBuys5mOk returns a tuple with the Buys5m field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuys5mOk() (*float32, bool) {
+func (o *TokenStat) GetBuys5mOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -916,14 +916,14 @@ func (o *TokenStat) GetBuys5mOk() (*float32, bool) {
 }
 
 // SetBuys5m sets field value
-func (o *TokenStat) SetBuys5m(v float32) {
+func (o *TokenStat) SetBuys5m(v string) {
 	o.Buys5m = v
 }
 
 // GetSells5m returns the Sells5m field value
-func (o *TokenStat) GetSells5m() float32 {
+func (o *TokenStat) GetSells5m() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -932,7 +932,7 @@ func (o *TokenStat) GetSells5m() float32 {
 
 // GetSells5mOk returns a tuple with the Sells5m field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSells5mOk() (*float32, bool) {
+func (o *TokenStat) GetSells5mOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -940,7 +940,7 @@ func (o *TokenStat) GetSells5mOk() (*float32, bool) {
 }
 
 // SetSells5m sets field value
-func (o *TokenStat) SetSells5m(v float32) {
+func (o *TokenStat) SetSells5m(v string) {
 	o.Sells5m = v
 }
 
@@ -1089,9 +1089,9 @@ func (o *TokenStat) SetVolumesInUsd5m(v string) {
 }
 
 // GetBuyers5m returns the Buyers5m field value if set, zero value otherwise.
-func (o *TokenStat) GetBuyers5m() float32 {
+func (o *TokenStat) GetBuyers5m() string {
 	if o == nil || IsNil(o.Buyers5m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Buyers5m
@@ -1099,7 +1099,7 @@ func (o *TokenStat) GetBuyers5m() float32 {
 
 // GetBuyers5mOk returns a tuple with the Buyers5m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuyers5mOk() (*float32, bool) {
+func (o *TokenStat) GetBuyers5mOk() (*string, bool) {
 	if o == nil || IsNil(o.Buyers5m) {
 		return nil, false
 	}
@@ -1115,15 +1115,15 @@ func (o *TokenStat) HasBuyers5m() bool {
 	return false
 }
 
-// SetBuyers5m gets a reference to the given float32 and assigns it to the Buyers5m field.
-func (o *TokenStat) SetBuyers5m(v float32) {
+// SetBuyers5m gets a reference to the given string and assigns it to the Buyers5m field.
+func (o *TokenStat) SetBuyers5m(v string) {
 	o.Buyers5m = &v
 }
 
 // GetSellers5m returns the Sellers5m field value if set, zero value otherwise.
-func (o *TokenStat) GetSellers5m() float32 {
+func (o *TokenStat) GetSellers5m() string {
 	if o == nil || IsNil(o.Sellers5m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Sellers5m
@@ -1131,7 +1131,7 @@ func (o *TokenStat) GetSellers5m() float32 {
 
 // GetSellers5mOk returns a tuple with the Sellers5m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSellers5mOk() (*float32, bool) {
+func (o *TokenStat) GetSellers5mOk() (*string, bool) {
 	if o == nil || IsNil(o.Sellers5m) {
 		return nil, false
 	}
@@ -1147,8 +1147,8 @@ func (o *TokenStat) HasSellers5m() bool {
 	return false
 }
 
-// SetSellers5m gets a reference to the given float32 and assigns it to the Sellers5m field.
-func (o *TokenStat) SetSellers5m(v float32) {
+// SetSellers5m gets a reference to the given string and assigns it to the Sellers5m field.
+func (o *TokenStat) SetSellers5m(v string) {
 	o.Sellers5m = &v
 }
 
@@ -1225,9 +1225,9 @@ func (o *TokenStat) SetPriceChangeRatioInUsd5m(v string) {
 }
 
 // GetTrades5m returns the Trades5m field value
-func (o *TokenStat) GetTrades5m() float32 {
+func (o *TokenStat) GetTrades5m() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -1236,7 +1236,7 @@ func (o *TokenStat) GetTrades5m() float32 {
 
 // GetTrades5mOk returns a tuple with the Trades5m field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTrades5mOk() (*float32, bool) {
+func (o *TokenStat) GetTrades5mOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -1244,14 +1244,14 @@ func (o *TokenStat) GetTrades5mOk() (*float32, bool) {
 }
 
 // SetTrades5m sets field value
-func (o *TokenStat) SetTrades5m(v float32) {
+func (o *TokenStat) SetTrades5m(v string) {
 	o.Trades5m = v
 }
 
 // GetTraders5m returns the Traders5m field value if set, zero value otherwise.
-func (o *TokenStat) GetTraders5m() float32 {
+func (o *TokenStat) GetTraders5m() string {
 	if o == nil || IsNil(o.Traders5m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Traders5m
@@ -1259,7 +1259,7 @@ func (o *TokenStat) GetTraders5m() float32 {
 
 // GetTraders5mOk returns a tuple with the Traders5m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTraders5mOk() (*float32, bool) {
+func (o *TokenStat) GetTraders5mOk() (*string, bool) {
 	if o == nil || IsNil(o.Traders5m) {
 		return nil, false
 	}
@@ -1275,8 +1275,8 @@ func (o *TokenStat) HasTraders5m() bool {
 	return false
 }
 
-// SetTraders5m gets a reference to the given float32 and assigns it to the Traders5m field.
-func (o *TokenStat) SetTraders5m(v float32) {
+// SetTraders5m gets a reference to the given string and assigns it to the Traders5m field.
+func (o *TokenStat) SetTraders5m(v string) {
 	o.Traders5m = &v
 }
 
@@ -1377,9 +1377,9 @@ func (o *TokenStat) SetPrice15m(v string) {
 }
 
 // GetBuys15m returns the Buys15m field value if set, zero value otherwise.
-func (o *TokenStat) GetBuys15m() float32 {
+func (o *TokenStat) GetBuys15m() string {
 	if o == nil || IsNil(o.Buys15m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Buys15m
@@ -1387,7 +1387,7 @@ func (o *TokenStat) GetBuys15m() float32 {
 
 // GetBuys15mOk returns a tuple with the Buys15m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuys15mOk() (*float32, bool) {
+func (o *TokenStat) GetBuys15mOk() (*string, bool) {
 	if o == nil || IsNil(o.Buys15m) {
 		return nil, false
 	}
@@ -1403,15 +1403,15 @@ func (o *TokenStat) HasBuys15m() bool {
 	return false
 }
 
-// SetBuys15m gets a reference to the given float32 and assigns it to the Buys15m field.
-func (o *TokenStat) SetBuys15m(v float32) {
+// SetBuys15m gets a reference to the given string and assigns it to the Buys15m field.
+func (o *TokenStat) SetBuys15m(v string) {
 	o.Buys15m = &v
 }
 
 // GetSells15m returns the Sells15m field value if set, zero value otherwise.
-func (o *TokenStat) GetSells15m() float32 {
+func (o *TokenStat) GetSells15m() string {
 	if o == nil || IsNil(o.Sells15m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Sells15m
@@ -1419,7 +1419,7 @@ func (o *TokenStat) GetSells15m() float32 {
 
 // GetSells15mOk returns a tuple with the Sells15m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSells15mOk() (*float32, bool) {
+func (o *TokenStat) GetSells15mOk() (*string, bool) {
 	if o == nil || IsNil(o.Sells15m) {
 		return nil, false
 	}
@@ -1435,8 +1435,8 @@ func (o *TokenStat) HasSells15m() bool {
 	return false
 }
 
-// SetSells15m gets a reference to the given float32 and assigns it to the Sells15m field.
-func (o *TokenStat) SetSells15m(v float32) {
+// SetSells15m gets a reference to the given string and assigns it to the Sells15m field.
+func (o *TokenStat) SetSells15m(v string) {
 	o.Sells15m = &v
 }
 
@@ -1633,9 +1633,9 @@ func (o *TokenStat) SetVolumesInUsd15m(v string) {
 }
 
 // GetBuyers15m returns the Buyers15m field value if set, zero value otherwise.
-func (o *TokenStat) GetBuyers15m() float32 {
+func (o *TokenStat) GetBuyers15m() string {
 	if o == nil || IsNil(o.Buyers15m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Buyers15m
@@ -1643,7 +1643,7 @@ func (o *TokenStat) GetBuyers15m() float32 {
 
 // GetBuyers15mOk returns a tuple with the Buyers15m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuyers15mOk() (*float32, bool) {
+func (o *TokenStat) GetBuyers15mOk() (*string, bool) {
 	if o == nil || IsNil(o.Buyers15m) {
 		return nil, false
 	}
@@ -1659,15 +1659,15 @@ func (o *TokenStat) HasBuyers15m() bool {
 	return false
 }
 
-// SetBuyers15m gets a reference to the given float32 and assigns it to the Buyers15m field.
-func (o *TokenStat) SetBuyers15m(v float32) {
+// SetBuyers15m gets a reference to the given string and assigns it to the Buyers15m field.
+func (o *TokenStat) SetBuyers15m(v string) {
 	o.Buyers15m = &v
 }
 
 // GetSellers15m returns the Sellers15m field value if set, zero value otherwise.
-func (o *TokenStat) GetSellers15m() float32 {
+func (o *TokenStat) GetSellers15m() string {
 	if o == nil || IsNil(o.Sellers15m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Sellers15m
@@ -1675,7 +1675,7 @@ func (o *TokenStat) GetSellers15m() float32 {
 
 // GetSellers15mOk returns a tuple with the Sellers15m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSellers15mOk() (*float32, bool) {
+func (o *TokenStat) GetSellers15mOk() (*string, bool) {
 	if o == nil || IsNil(o.Sellers15m) {
 		return nil, false
 	}
@@ -1691,8 +1691,8 @@ func (o *TokenStat) HasSellers15m() bool {
 	return false
 }
 
-// SetSellers15m gets a reference to the given float32 and assigns it to the Sellers15m field.
-func (o *TokenStat) SetSellers15m(v float32) {
+// SetSellers15m gets a reference to the given string and assigns it to the Sellers15m field.
+func (o *TokenStat) SetSellers15m(v string) {
 	o.Sellers15m = &v
 }
 
@@ -1793,9 +1793,9 @@ func (o *TokenStat) SetPriceChangeRatioInUsd15m(v string) {
 }
 
 // GetTrades15m returns the Trades15m field value if set, zero value otherwise.
-func (o *TokenStat) GetTrades15m() float32 {
+func (o *TokenStat) GetTrades15m() string {
 	if o == nil || IsNil(o.Trades15m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Trades15m
@@ -1803,7 +1803,7 @@ func (o *TokenStat) GetTrades15m() float32 {
 
 // GetTrades15mOk returns a tuple with the Trades15m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTrades15mOk() (*float32, bool) {
+func (o *TokenStat) GetTrades15mOk() (*string, bool) {
 	if o == nil || IsNil(o.Trades15m) {
 		return nil, false
 	}
@@ -1819,15 +1819,15 @@ func (o *TokenStat) HasTrades15m() bool {
 	return false
 }
 
-// SetTrades15m gets a reference to the given float32 and assigns it to the Trades15m field.
-func (o *TokenStat) SetTrades15m(v float32) {
+// SetTrades15m gets a reference to the given string and assigns it to the Trades15m field.
+func (o *TokenStat) SetTrades15m(v string) {
 	o.Trades15m = &v
 }
 
 // GetTraders15m returns the Traders15m field value if set, zero value otherwise.
-func (o *TokenStat) GetTraders15m() float32 {
+func (o *TokenStat) GetTraders15m() string {
 	if o == nil || IsNil(o.Traders15m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Traders15m
@@ -1835,7 +1835,7 @@ func (o *TokenStat) GetTraders15m() float32 {
 
 // GetTraders15mOk returns a tuple with the Traders15m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTraders15mOk() (*float32, bool) {
+func (o *TokenStat) GetTraders15mOk() (*string, bool) {
 	if o == nil || IsNil(o.Traders15m) {
 		return nil, false
 	}
@@ -1851,8 +1851,8 @@ func (o *TokenStat) HasTraders15m() bool {
 	return false
 }
 
-// SetTraders15m gets a reference to the given float32 and assigns it to the Traders15m field.
-func (o *TokenStat) SetTraders15m(v float32) {
+// SetTraders15m gets a reference to the given string and assigns it to the Traders15m field.
+func (o *TokenStat) SetTraders15m(v string) {
 	o.Traders15m = &v
 }
 
@@ -1945,9 +1945,9 @@ func (o *TokenStat) SetPrice30m(v string) {
 }
 
 // GetBuys30m returns the Buys30m field value
-func (o *TokenStat) GetBuys30m() float32 {
+func (o *TokenStat) GetBuys30m() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -1956,7 +1956,7 @@ func (o *TokenStat) GetBuys30m() float32 {
 
 // GetBuys30mOk returns a tuple with the Buys30m field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuys30mOk() (*float32, bool) {
+func (o *TokenStat) GetBuys30mOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -1964,14 +1964,14 @@ func (o *TokenStat) GetBuys30mOk() (*float32, bool) {
 }
 
 // SetBuys30m sets field value
-func (o *TokenStat) SetBuys30m(v float32) {
+func (o *TokenStat) SetBuys30m(v string) {
 	o.Buys30m = v
 }
 
 // GetSells30m returns the Sells30m field value
-func (o *TokenStat) GetSells30m() float32 {
+func (o *TokenStat) GetSells30m() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -1980,7 +1980,7 @@ func (o *TokenStat) GetSells30m() float32 {
 
 // GetSells30mOk returns a tuple with the Sells30m field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSells30mOk() (*float32, bool) {
+func (o *TokenStat) GetSells30mOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -1988,7 +1988,7 @@ func (o *TokenStat) GetSells30mOk() (*float32, bool) {
 }
 
 // SetSells30m sets field value
-func (o *TokenStat) SetSells30m(v float32) {
+func (o *TokenStat) SetSells30m(v string) {
 	o.Sells30m = v
 }
 
@@ -2137,9 +2137,9 @@ func (o *TokenStat) SetVolumesInUsd30m(v string) {
 }
 
 // GetBuyers30m returns the Buyers30m field value if set, zero value otherwise.
-func (o *TokenStat) GetBuyers30m() float32 {
+func (o *TokenStat) GetBuyers30m() string {
 	if o == nil || IsNil(o.Buyers30m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Buyers30m
@@ -2147,7 +2147,7 @@ func (o *TokenStat) GetBuyers30m() float32 {
 
 // GetBuyers30mOk returns a tuple with the Buyers30m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuyers30mOk() (*float32, bool) {
+func (o *TokenStat) GetBuyers30mOk() (*string, bool) {
 	if o == nil || IsNil(o.Buyers30m) {
 		return nil, false
 	}
@@ -2163,15 +2163,15 @@ func (o *TokenStat) HasBuyers30m() bool {
 	return false
 }
 
-// SetBuyers30m gets a reference to the given float32 and assigns it to the Buyers30m field.
-func (o *TokenStat) SetBuyers30m(v float32) {
+// SetBuyers30m gets a reference to the given string and assigns it to the Buyers30m field.
+func (o *TokenStat) SetBuyers30m(v string) {
 	o.Buyers30m = &v
 }
 
 // GetSellers30m returns the Sellers30m field value if set, zero value otherwise.
-func (o *TokenStat) GetSellers30m() float32 {
+func (o *TokenStat) GetSellers30m() string {
 	if o == nil || IsNil(o.Sellers30m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Sellers30m
@@ -2179,7 +2179,7 @@ func (o *TokenStat) GetSellers30m() float32 {
 
 // GetSellers30mOk returns a tuple with the Sellers30m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSellers30mOk() (*float32, bool) {
+func (o *TokenStat) GetSellers30mOk() (*string, bool) {
 	if o == nil || IsNil(o.Sellers30m) {
 		return nil, false
 	}
@@ -2195,8 +2195,8 @@ func (o *TokenStat) HasSellers30m() bool {
 	return false
 }
 
-// SetSellers30m gets a reference to the given float32 and assigns it to the Sellers30m field.
-func (o *TokenStat) SetSellers30m(v float32) {
+// SetSellers30m gets a reference to the given string and assigns it to the Sellers30m field.
+func (o *TokenStat) SetSellers30m(v string) {
 	o.Sellers30m = &v
 }
 
@@ -2273,9 +2273,9 @@ func (o *TokenStat) SetPriceChangeRatioInUsd30m(v string) {
 }
 
 // GetTrades30m returns the Trades30m field value
-func (o *TokenStat) GetTrades30m() float32 {
+func (o *TokenStat) GetTrades30m() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -2284,7 +2284,7 @@ func (o *TokenStat) GetTrades30m() float32 {
 
 // GetTrades30mOk returns a tuple with the Trades30m field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTrades30mOk() (*float32, bool) {
+func (o *TokenStat) GetTrades30mOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -2292,14 +2292,14 @@ func (o *TokenStat) GetTrades30mOk() (*float32, bool) {
 }
 
 // SetTrades30m sets field value
-func (o *TokenStat) SetTrades30m(v float32) {
+func (o *TokenStat) SetTrades30m(v string) {
 	o.Trades30m = v
 }
 
 // GetTraders30m returns the Traders30m field value if set, zero value otherwise.
-func (o *TokenStat) GetTraders30m() float32 {
+func (o *TokenStat) GetTraders30m() string {
 	if o == nil || IsNil(o.Traders30m) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Traders30m
@@ -2307,7 +2307,7 @@ func (o *TokenStat) GetTraders30m() float32 {
 
 // GetTraders30mOk returns a tuple with the Traders30m field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTraders30mOk() (*float32, bool) {
+func (o *TokenStat) GetTraders30mOk() (*string, bool) {
 	if o == nil || IsNil(o.Traders30m) {
 		return nil, false
 	}
@@ -2323,8 +2323,8 @@ func (o *TokenStat) HasTraders30m() bool {
 	return false
 }
 
-// SetTraders30m gets a reference to the given float32 and assigns it to the Traders30m field.
-func (o *TokenStat) SetTraders30m(v float32) {
+// SetTraders30m gets a reference to the given string and assigns it to the Traders30m field.
+func (o *TokenStat) SetTraders30m(v string) {
 	o.Traders30m = &v
 }
 
@@ -2417,9 +2417,9 @@ func (o *TokenStat) SetPrice1h(v string) {
 }
 
 // GetBuys1h returns the Buys1h field value
-func (o *TokenStat) GetBuys1h() float32 {
+func (o *TokenStat) GetBuys1h() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -2428,7 +2428,7 @@ func (o *TokenStat) GetBuys1h() float32 {
 
 // GetBuys1hOk returns a tuple with the Buys1h field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuys1hOk() (*float32, bool) {
+func (o *TokenStat) GetBuys1hOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -2436,14 +2436,14 @@ func (o *TokenStat) GetBuys1hOk() (*float32, bool) {
 }
 
 // SetBuys1h sets field value
-func (o *TokenStat) SetBuys1h(v float32) {
+func (o *TokenStat) SetBuys1h(v string) {
 	o.Buys1h = v
 }
 
 // GetSells1h returns the Sells1h field value
-func (o *TokenStat) GetSells1h() float32 {
+func (o *TokenStat) GetSells1h() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -2452,7 +2452,7 @@ func (o *TokenStat) GetSells1h() float32 {
 
 // GetSells1hOk returns a tuple with the Sells1h field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSells1hOk() (*float32, bool) {
+func (o *TokenStat) GetSells1hOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -2460,7 +2460,7 @@ func (o *TokenStat) GetSells1hOk() (*float32, bool) {
 }
 
 // SetSells1h sets field value
-func (o *TokenStat) SetSells1h(v float32) {
+func (o *TokenStat) SetSells1h(v string) {
 	o.Sells1h = v
 }
 
@@ -2609,9 +2609,9 @@ func (o *TokenStat) SetVolumesInUsd1h(v string) {
 }
 
 // GetBuyers1h returns the Buyers1h field value if set, zero value otherwise.
-func (o *TokenStat) GetBuyers1h() float32 {
+func (o *TokenStat) GetBuyers1h() string {
 	if o == nil || IsNil(o.Buyers1h) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Buyers1h
@@ -2619,7 +2619,7 @@ func (o *TokenStat) GetBuyers1h() float32 {
 
 // GetBuyers1hOk returns a tuple with the Buyers1h field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuyers1hOk() (*float32, bool) {
+func (o *TokenStat) GetBuyers1hOk() (*string, bool) {
 	if o == nil || IsNil(o.Buyers1h) {
 		return nil, false
 	}
@@ -2635,15 +2635,15 @@ func (o *TokenStat) HasBuyers1h() bool {
 	return false
 }
 
-// SetBuyers1h gets a reference to the given float32 and assigns it to the Buyers1h field.
-func (o *TokenStat) SetBuyers1h(v float32) {
+// SetBuyers1h gets a reference to the given string and assigns it to the Buyers1h field.
+func (o *TokenStat) SetBuyers1h(v string) {
 	o.Buyers1h = &v
 }
 
 // GetSellers1h returns the Sellers1h field value if set, zero value otherwise.
-func (o *TokenStat) GetSellers1h() float32 {
+func (o *TokenStat) GetSellers1h() string {
 	if o == nil || IsNil(o.Sellers1h) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Sellers1h
@@ -2651,7 +2651,7 @@ func (o *TokenStat) GetSellers1h() float32 {
 
 // GetSellers1hOk returns a tuple with the Sellers1h field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSellers1hOk() (*float32, bool) {
+func (o *TokenStat) GetSellers1hOk() (*string, bool) {
 	if o == nil || IsNil(o.Sellers1h) {
 		return nil, false
 	}
@@ -2667,8 +2667,8 @@ func (o *TokenStat) HasSellers1h() bool {
 	return false
 }
 
-// SetSellers1h gets a reference to the given float32 and assigns it to the Sellers1h field.
-func (o *TokenStat) SetSellers1h(v float32) {
+// SetSellers1h gets a reference to the given string and assigns it to the Sellers1h field.
+func (o *TokenStat) SetSellers1h(v string) {
 	o.Sellers1h = &v
 }
 
@@ -2745,9 +2745,9 @@ func (o *TokenStat) SetPriceChangeRatioInUsd1h(v string) {
 }
 
 // GetTrades1h returns the Trades1h field value
-func (o *TokenStat) GetTrades1h() float32 {
+func (o *TokenStat) GetTrades1h() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -2756,7 +2756,7 @@ func (o *TokenStat) GetTrades1h() float32 {
 
 // GetTrades1hOk returns a tuple with the Trades1h field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTrades1hOk() (*float32, bool) {
+func (o *TokenStat) GetTrades1hOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -2764,14 +2764,14 @@ func (o *TokenStat) GetTrades1hOk() (*float32, bool) {
 }
 
 // SetTrades1h sets field value
-func (o *TokenStat) SetTrades1h(v float32) {
+func (o *TokenStat) SetTrades1h(v string) {
 	o.Trades1h = v
 }
 
 // GetTraders1h returns the Traders1h field value if set, zero value otherwise.
-func (o *TokenStat) GetTraders1h() float32 {
+func (o *TokenStat) GetTraders1h() string {
 	if o == nil || IsNil(o.Traders1h) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Traders1h
@@ -2779,7 +2779,7 @@ func (o *TokenStat) GetTraders1h() float32 {
 
 // GetTraders1hOk returns a tuple with the Traders1h field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTraders1hOk() (*float32, bool) {
+func (o *TokenStat) GetTraders1hOk() (*string, bool) {
 	if o == nil || IsNil(o.Traders1h) {
 		return nil, false
 	}
@@ -2795,8 +2795,8 @@ func (o *TokenStat) HasTraders1h() bool {
 	return false
 }
 
-// SetTraders1h gets a reference to the given float32 and assigns it to the Traders1h field.
-func (o *TokenStat) SetTraders1h(v float32) {
+// SetTraders1h gets a reference to the given string and assigns it to the Traders1h field.
+func (o *TokenStat) SetTraders1h(v string) {
 	o.Traders1h = &v
 }
 
@@ -2889,9 +2889,9 @@ func (o *TokenStat) SetPrice4h(v string) {
 }
 
 // GetBuys4h returns the Buys4h field value
-func (o *TokenStat) GetBuys4h() float32 {
+func (o *TokenStat) GetBuys4h() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -2900,7 +2900,7 @@ func (o *TokenStat) GetBuys4h() float32 {
 
 // GetBuys4hOk returns a tuple with the Buys4h field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuys4hOk() (*float32, bool) {
+func (o *TokenStat) GetBuys4hOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -2908,14 +2908,14 @@ func (o *TokenStat) GetBuys4hOk() (*float32, bool) {
 }
 
 // SetBuys4h sets field value
-func (o *TokenStat) SetBuys4h(v float32) {
+func (o *TokenStat) SetBuys4h(v string) {
 	o.Buys4h = v
 }
 
 // GetSells4h returns the Sells4h field value
-func (o *TokenStat) GetSells4h() float32 {
+func (o *TokenStat) GetSells4h() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -2924,7 +2924,7 @@ func (o *TokenStat) GetSells4h() float32 {
 
 // GetSells4hOk returns a tuple with the Sells4h field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSells4hOk() (*float32, bool) {
+func (o *TokenStat) GetSells4hOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -2932,7 +2932,7 @@ func (o *TokenStat) GetSells4hOk() (*float32, bool) {
 }
 
 // SetSells4h sets field value
-func (o *TokenStat) SetSells4h(v float32) {
+func (o *TokenStat) SetSells4h(v string) {
 	o.Sells4h = v
 }
 
@@ -3081,9 +3081,9 @@ func (o *TokenStat) SetVolumesInUsd4h(v string) {
 }
 
 // GetBuyers4h returns the Buyers4h field value if set, zero value otherwise.
-func (o *TokenStat) GetBuyers4h() float32 {
+func (o *TokenStat) GetBuyers4h() string {
 	if o == nil || IsNil(o.Buyers4h) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Buyers4h
@@ -3091,7 +3091,7 @@ func (o *TokenStat) GetBuyers4h() float32 {
 
 // GetBuyers4hOk returns a tuple with the Buyers4h field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuyers4hOk() (*float32, bool) {
+func (o *TokenStat) GetBuyers4hOk() (*string, bool) {
 	if o == nil || IsNil(o.Buyers4h) {
 		return nil, false
 	}
@@ -3107,15 +3107,15 @@ func (o *TokenStat) HasBuyers4h() bool {
 	return false
 }
 
-// SetBuyers4h gets a reference to the given float32 and assigns it to the Buyers4h field.
-func (o *TokenStat) SetBuyers4h(v float32) {
+// SetBuyers4h gets a reference to the given string and assigns it to the Buyers4h field.
+func (o *TokenStat) SetBuyers4h(v string) {
 	o.Buyers4h = &v
 }
 
 // GetSellers4h returns the Sellers4h field value if set, zero value otherwise.
-func (o *TokenStat) GetSellers4h() float32 {
+func (o *TokenStat) GetSellers4h() string {
 	if o == nil || IsNil(o.Sellers4h) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Sellers4h
@@ -3123,7 +3123,7 @@ func (o *TokenStat) GetSellers4h() float32 {
 
 // GetSellers4hOk returns a tuple with the Sellers4h field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSellers4hOk() (*float32, bool) {
+func (o *TokenStat) GetSellers4hOk() (*string, bool) {
 	if o == nil || IsNil(o.Sellers4h) {
 		return nil, false
 	}
@@ -3139,8 +3139,8 @@ func (o *TokenStat) HasSellers4h() bool {
 	return false
 }
 
-// SetSellers4h gets a reference to the given float32 and assigns it to the Sellers4h field.
-func (o *TokenStat) SetSellers4h(v float32) {
+// SetSellers4h gets a reference to the given string and assigns it to the Sellers4h field.
+func (o *TokenStat) SetSellers4h(v string) {
 	o.Sellers4h = &v
 }
 
@@ -3217,9 +3217,9 @@ func (o *TokenStat) SetPriceChangeRatioInUsd4h(v string) {
 }
 
 // GetTrades4h returns the Trades4h field value
-func (o *TokenStat) GetTrades4h() float32 {
+func (o *TokenStat) GetTrades4h() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -3228,7 +3228,7 @@ func (o *TokenStat) GetTrades4h() float32 {
 
 // GetTrades4hOk returns a tuple with the Trades4h field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTrades4hOk() (*float32, bool) {
+func (o *TokenStat) GetTrades4hOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -3236,14 +3236,14 @@ func (o *TokenStat) GetTrades4hOk() (*float32, bool) {
 }
 
 // SetTrades4h sets field value
-func (o *TokenStat) SetTrades4h(v float32) {
+func (o *TokenStat) SetTrades4h(v string) {
 	o.Trades4h = v
 }
 
 // GetTraders4h returns the Traders4h field value if set, zero value otherwise.
-func (o *TokenStat) GetTraders4h() float32 {
+func (o *TokenStat) GetTraders4h() string {
 	if o == nil || IsNil(o.Traders4h) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Traders4h
@@ -3251,7 +3251,7 @@ func (o *TokenStat) GetTraders4h() float32 {
 
 // GetTraders4hOk returns a tuple with the Traders4h field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTraders4hOk() (*float32, bool) {
+func (o *TokenStat) GetTraders4hOk() (*string, bool) {
 	if o == nil || IsNil(o.Traders4h) {
 		return nil, false
 	}
@@ -3267,8 +3267,8 @@ func (o *TokenStat) HasTraders4h() bool {
 	return false
 }
 
-// SetTraders4h gets a reference to the given float32 and assigns it to the Traders4h field.
-func (o *TokenStat) SetTraders4h(v float32) {
+// SetTraders4h gets a reference to the given string and assigns it to the Traders4h field.
+func (o *TokenStat) SetTraders4h(v string) {
 	o.Traders4h = &v
 }
 
@@ -3361,9 +3361,9 @@ func (o *TokenStat) SetPrice24h(v string) {
 }
 
 // GetBuys24h returns the Buys24h field value
-func (o *TokenStat) GetBuys24h() float32 {
+func (o *TokenStat) GetBuys24h() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -3372,7 +3372,7 @@ func (o *TokenStat) GetBuys24h() float32 {
 
 // GetBuys24hOk returns a tuple with the Buys24h field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuys24hOk() (*float32, bool) {
+func (o *TokenStat) GetBuys24hOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -3380,14 +3380,14 @@ func (o *TokenStat) GetBuys24hOk() (*float32, bool) {
 }
 
 // SetBuys24h sets field value
-func (o *TokenStat) SetBuys24h(v float32) {
+func (o *TokenStat) SetBuys24h(v string) {
 	o.Buys24h = v
 }
 
 // GetSells24h returns the Sells24h field value
-func (o *TokenStat) GetSells24h() float32 {
+func (o *TokenStat) GetSells24h() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -3396,7 +3396,7 @@ func (o *TokenStat) GetSells24h() float32 {
 
 // GetSells24hOk returns a tuple with the Sells24h field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSells24hOk() (*float32, bool) {
+func (o *TokenStat) GetSells24hOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -3404,7 +3404,7 @@ func (o *TokenStat) GetSells24hOk() (*float32, bool) {
 }
 
 // SetSells24h sets field value
-func (o *TokenStat) SetSells24h(v float32) {
+func (o *TokenStat) SetSells24h(v string) {
 	o.Sells24h = v
 }
 
@@ -3553,9 +3553,9 @@ func (o *TokenStat) SetVolumesInUsd24h(v string) {
 }
 
 // GetBuyers24h returns the Buyers24h field value if set, zero value otherwise.
-func (o *TokenStat) GetBuyers24h() float32 {
+func (o *TokenStat) GetBuyers24h() string {
 	if o == nil || IsNil(o.Buyers24h) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Buyers24h
@@ -3563,7 +3563,7 @@ func (o *TokenStat) GetBuyers24h() float32 {
 
 // GetBuyers24hOk returns a tuple with the Buyers24h field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetBuyers24hOk() (*float32, bool) {
+func (o *TokenStat) GetBuyers24hOk() (*string, bool) {
 	if o == nil || IsNil(o.Buyers24h) {
 		return nil, false
 	}
@@ -3579,15 +3579,15 @@ func (o *TokenStat) HasBuyers24h() bool {
 	return false
 }
 
-// SetBuyers24h gets a reference to the given float32 and assigns it to the Buyers24h field.
-func (o *TokenStat) SetBuyers24h(v float32) {
+// SetBuyers24h gets a reference to the given string and assigns it to the Buyers24h field.
+func (o *TokenStat) SetBuyers24h(v string) {
 	o.Buyers24h = &v
 }
 
 // GetSellers24h returns the Sellers24h field value if set, zero value otherwise.
-func (o *TokenStat) GetSellers24h() float32 {
+func (o *TokenStat) GetSellers24h() string {
 	if o == nil || IsNil(o.Sellers24h) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Sellers24h
@@ -3595,7 +3595,7 @@ func (o *TokenStat) GetSellers24h() float32 {
 
 // GetSellers24hOk returns a tuple with the Sellers24h field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetSellers24hOk() (*float32, bool) {
+func (o *TokenStat) GetSellers24hOk() (*string, bool) {
 	if o == nil || IsNil(o.Sellers24h) {
 		return nil, false
 	}
@@ -3611,8 +3611,8 @@ func (o *TokenStat) HasSellers24h() bool {
 	return false
 }
 
-// SetSellers24h gets a reference to the given float32 and assigns it to the Sellers24h field.
-func (o *TokenStat) SetSellers24h(v float32) {
+// SetSellers24h gets a reference to the given string and assigns it to the Sellers24h field.
+func (o *TokenStat) SetSellers24h(v string) {
 	o.Sellers24h = &v
 }
 
@@ -3689,9 +3689,9 @@ func (o *TokenStat) SetPriceChangeRatioInUsd24h(v string) {
 }
 
 // GetTrades24h returns the Trades24h field value
-func (o *TokenStat) GetTrades24h() float32 {
+func (o *TokenStat) GetTrades24h() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -3700,7 +3700,7 @@ func (o *TokenStat) GetTrades24h() float32 {
 
 // GetTrades24hOk returns a tuple with the Trades24h field value
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTrades24hOk() (*float32, bool) {
+func (o *TokenStat) GetTrades24hOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -3708,14 +3708,14 @@ func (o *TokenStat) GetTrades24hOk() (*float32, bool) {
 }
 
 // SetTrades24h sets field value
-func (o *TokenStat) SetTrades24h(v float32) {
+func (o *TokenStat) SetTrades24h(v string) {
 	o.Trades24h = v
 }
 
 // GetTraders24h returns the Traders24h field value if set, zero value otherwise.
-func (o *TokenStat) GetTraders24h() float32 {
+func (o *TokenStat) GetTraders24h() string {
 	if o == nil || IsNil(o.Traders24h) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Traders24h
@@ -3723,7 +3723,7 @@ func (o *TokenStat) GetTraders24h() float32 {
 
 // GetTraders24hOk returns a tuple with the Traders24h field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenStat) GetTraders24hOk() (*float32, bool) {
+func (o *TokenStat) GetTraders24hOk() (*string, bool) {
 	if o == nil || IsNil(o.Traders24h) {
 		return nil, false
 	}
@@ -3739,8 +3739,8 @@ func (o *TokenStat) HasTraders24h() bool {
 	return false
 }
 
-// SetTraders24h gets a reference to the given float32 and assigns it to the Traders24h field.
-func (o *TokenStat) SetTraders24h(v float32) {
+// SetTraders24h gets a reference to the given string and assigns it to the Traders24h field.
+func (o *TokenStat) SetTraders24h(v string) {
 	o.Traders24h = &v
 }
 

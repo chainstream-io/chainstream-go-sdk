@@ -446,13 +446,13 @@ func (a *EndpointAPIService) GetEndpointSecretExecute(r EndpointAPIGetEndpointSe
 type EndpointAPIListEndpointsRequest struct {
 	ctx context.Context
 	ApiService *EndpointAPIService
-	limit *float32
+	limit *int64
 	iterator *string
 	order *string
 }
 
 // DTO.ENDPOINT.LIMIT
-func (r EndpointAPIListEndpointsRequest) Limit(limit float32) EndpointAPIListEndpointsRequest {
+func (r EndpointAPIListEndpointsRequest) Limit(limit int64) EndpointAPIListEndpointsRequest {
 	r.limit = &limit
 	return r
 }
@@ -512,7 +512,7 @@ func (a *EndpointAPIService) ListEndpointsExecute(r EndpointAPIListEndpointsRequ
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
-		var defaultValue float32 = 100
+		var defaultValue int64 = 100
 		r.limit = &defaultValue
 	}
 	if r.iterator != nil {

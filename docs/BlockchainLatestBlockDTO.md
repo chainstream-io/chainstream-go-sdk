@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Blockhash** | **string** | DTO.BLOCKCHAIN.LATEST_BLOCK.BLOCKHASH | 
-**LastValidBlockHeight** | **float32** | DTO.BLOCKCHAIN.LATEST_BLOCK.LAST_VALID_BLOCK_HEIGHT | 
+**LastValidBlockHeight** | **int64** | DTO.BLOCKCHAIN.LATEST_BLOCK.LAST_VALID_BLOCK_HEIGHT | 
 
 ## Methods
 
 ### NewBlockchainLatestBlockDTO
 
-`func NewBlockchainLatestBlockDTO(blockhash string, lastValidBlockHeight float32, ) *BlockchainLatestBlockDTO`
+`func NewBlockchainLatestBlockDTO(blockhash string, lastValidBlockHeight int64, ) *BlockchainLatestBlockDTO`
 
 NewBlockchainLatestBlockDTO instantiates a new BlockchainLatestBlockDTO object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetBlockhash sets Blockhash field to given value.
 
 ### GetLastValidBlockHeight
 
-`func (o *BlockchainLatestBlockDTO) GetLastValidBlockHeight() float32`
+`func (o *BlockchainLatestBlockDTO) GetLastValidBlockHeight() int64`
 
 GetLastValidBlockHeight returns the LastValidBlockHeight field if non-nil, zero value otherwise.
 
 ### GetLastValidBlockHeightOk
 
-`func (o *BlockchainLatestBlockDTO) GetLastValidBlockHeightOk() (*float32, bool)`
+`func (o *BlockchainLatestBlockDTO) GetLastValidBlockHeightOk() (*int64, bool)`
 
 GetLastValidBlockHeightOk returns a tuple with the LastValidBlockHeight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastValidBlockHeight
 
-`func (o *BlockchainLatestBlockDTO) SetLastValidBlockHeight(v float32)`
+`func (o *BlockchainLatestBlockDTO) SetLastValidBlockHeight(v int64)`
 
 SetLastValidBlockHeight sets LastValidBlockHeight field to given value.
 

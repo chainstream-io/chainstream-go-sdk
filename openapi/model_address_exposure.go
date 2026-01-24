@@ -25,7 +25,7 @@ type AddressExposure struct {
 	// DTO.KYT.ADDRESS_EXPOSURE.CATEGORY
 	Category string `json:"category"`
 	// DTO.KYT.ADDRESS_EXPOSURE.VALUE
-	Value float32 `json:"value"`
+	Value string `json:"value"`
 	// DTO.KYT.ADDRESS_EXPOSURE.EXPOSURE_TYPE
 	ExposureType string `json:"exposureType"`
 	// DTO.KYT.ADDRESS_EXPOSURE.DIRECTION
@@ -38,7 +38,7 @@ type _AddressExposure AddressExposure
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddressExposure(category string, value float32, exposureType string, direction string) *AddressExposure {
+func NewAddressExposure(category string, value string, exposureType string, direction string) *AddressExposure {
 	this := AddressExposure{}
 	this.Category = category
 	this.Value = value
@@ -80,9 +80,9 @@ func (o *AddressExposure) SetCategory(v string) {
 }
 
 // GetValue returns the Value field value
-func (o *AddressExposure) GetValue() float32 {
+func (o *AddressExposure) GetValue() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -91,7 +91,7 @@ func (o *AddressExposure) GetValue() float32 {
 
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-func (o *AddressExposure) GetValueOk() (*float32, bool) {
+func (o *AddressExposure) GetValueOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -99,7 +99,7 @@ func (o *AddressExposure) GetValueOk() (*float32, bool) {
 }
 
 // SetValue sets field value
-func (o *AddressExposure) SetValue(v float32) {
+func (o *AddressExposure) SetValue(v string) {
 	o.Value = v
 }
 

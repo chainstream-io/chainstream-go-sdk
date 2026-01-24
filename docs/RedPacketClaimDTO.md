@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Claimer** | **string** | DTO.RED_PACKET.CLAIMER | 
 **Mint** | **string** | DTO.RED_PACKET.MINT | 
 **Amount** | **string** | DTO.RED_PACKET.AMOUNT | 
-**ClaimedAt** | **float32** | DTO.RED_PACKET.CLAIMED_AT | 
+**ClaimedAt** | **int64** | DTO.RED_PACKET.CLAIMED_AT | 
 **Creator** | **string** | DTO.RED_PACKET.CREATOR | 
 **TxHash** | **string** | DTO.RED_PACKET.TX_HASH | 
 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewRedPacketClaimDTO
 
-`func NewRedPacketClaimDTO(packetId string, chain Chain, claimer string, mint string, amount string, claimedAt float32, creator string, txHash string, ) *RedPacketClaimDTO`
+`func NewRedPacketClaimDTO(packetId string, chain Chain, claimer string, mint string, amount string, claimedAt int64, creator string, txHash string, ) *RedPacketClaimDTO`
 
 NewRedPacketClaimDTO instantiates a new RedPacketClaimDTO object
 This constructor will assign default values to properties that have it defined,
@@ -134,20 +134,20 @@ SetAmount sets Amount field to given value.
 
 ### GetClaimedAt
 
-`func (o *RedPacketClaimDTO) GetClaimedAt() float32`
+`func (o *RedPacketClaimDTO) GetClaimedAt() int64`
 
 GetClaimedAt returns the ClaimedAt field if non-nil, zero value otherwise.
 
 ### GetClaimedAtOk
 
-`func (o *RedPacketClaimDTO) GetClaimedAtOk() (*float32, bool)`
+`func (o *RedPacketClaimDTO) GetClaimedAtOk() (*int64, bool)`
 
 GetClaimedAtOk returns a tuple with the ClaimedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClaimedAt
 
-`func (o *RedPacketClaimDTO) SetClaimedAt(v float32)`
+`func (o *RedPacketClaimDTO) SetClaimedAt(v int64)`
 
 SetClaimedAt sets ClaimedAt field to given value.
 

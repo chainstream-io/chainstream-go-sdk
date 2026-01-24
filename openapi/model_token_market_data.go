@@ -37,7 +37,7 @@ type TokenMarketData struct {
 	// DTO.TOKEN.MARKET_CAP.TOP100_HOLDINGS_RATIO
 	Top100HoldingsRatio *string `json:"top100HoldingsRatio,omitempty"`
 	// DTO.TOKEN.MARKET_CAP.HOLDERS
-	Holders float32 `json:"holders"`
+	Holders string `json:"holders"`
 	// DTO.TOKEN.MARKET_CAP.PRICE_IN_SOL
 	PriceInSol *string `json:"priceInSol,omitempty"`
 	// DTO.TOKEN.MARKET_CAP.PRICE_IN_USD
@@ -114,7 +114,7 @@ type _TokenMarketData TokenMarketData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenMarketData(totalSupply string, marketCapInUsd string, holders float32, priceInUsd string, tvlInUsd string) *TokenMarketData {
+func NewTokenMarketData(totalSupply string, marketCapInUsd string, holders string, priceInUsd string, tvlInUsd string) *TokenMarketData {
 	this := TokenMarketData{}
 	this.TotalSupply = totalSupply
 	this.MarketCapInUsd = marketCapInUsd
@@ -341,9 +341,9 @@ func (o *TokenMarketData) SetTop100HoldingsRatio(v string) {
 }
 
 // GetHolders returns the Holders field value
-func (o *TokenMarketData) GetHolders() float32 {
+func (o *TokenMarketData) GetHolders() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -352,7 +352,7 @@ func (o *TokenMarketData) GetHolders() float32 {
 
 // GetHoldersOk returns a tuple with the Holders field value
 // and a boolean to check if the value has been set.
-func (o *TokenMarketData) GetHoldersOk() (*float32, bool) {
+func (o *TokenMarketData) GetHoldersOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -360,7 +360,7 @@ func (o *TokenMarketData) GetHoldersOk() (*float32, bool) {
 }
 
 // SetHolders sets field value
-func (o *TokenMarketData) SetHolders(v float32) {
+func (o *TokenMarketData) SetHolders(v string) {
 	o.Holders = v
 }
 

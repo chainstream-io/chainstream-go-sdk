@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **Low** | **string** | DTO.CANDLE.LOW | 
 **Volume** | **string** | DTO.CANDLE.VOLUME | 
 **Resolution** | [**Resolution**](Resolution.md) | DTO.CANDLE.RESOLUTION | 
-**Time** | **string** | DTO.CANDLE.TIME | 
+**Time** | **int64** | DTO.CANDLE.TIME | 
 
 ## Methods
 
 ### NewCandle
 
-`func NewCandle(open string, close string, high string, low string, volume string, resolution Resolution, time string, ) *Candle`
+`func NewCandle(open string, close string, high string, low string, volume string, resolution Resolution, time int64, ) *Candle`
 
 NewCandle instantiates a new Candle object
 This constructor will assign default values to properties that have it defined,
@@ -153,20 +153,20 @@ SetResolution sets Resolution field to given value.
 
 ### GetTime
 
-`func (o *Candle) GetTime() string`
+`func (o *Candle) GetTime() int64`
 
 GetTime returns the Time field if non-nil, zero value otherwise.
 
 ### GetTimeOk
 
-`func (o *Candle) GetTimeOk() (*string, bool)`
+`func (o *Candle) GetTimeOk() (*int64, bool)`
 
 GetTimeOk returns a tuple with the Time field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTime
 
-`func (o *Candle) SetTime(v string)`
+`func (o *Candle) SetTime(v int64)`
 
 SetTime sets Time field to given value.
 

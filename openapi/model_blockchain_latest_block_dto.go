@@ -25,7 +25,7 @@ type BlockchainLatestBlockDTO struct {
 	// DTO.BLOCKCHAIN.LATEST_BLOCK.BLOCKHASH
 	Blockhash string `json:"blockhash"`
 	// DTO.BLOCKCHAIN.LATEST_BLOCK.LAST_VALID_BLOCK_HEIGHT
-	LastValidBlockHeight float32 `json:"lastValidBlockHeight"`
+	LastValidBlockHeight int64 `json:"lastValidBlockHeight"`
 }
 
 type _BlockchainLatestBlockDTO BlockchainLatestBlockDTO
@@ -34,7 +34,7 @@ type _BlockchainLatestBlockDTO BlockchainLatestBlockDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlockchainLatestBlockDTO(blockhash string, lastValidBlockHeight float32) *BlockchainLatestBlockDTO {
+func NewBlockchainLatestBlockDTO(blockhash string, lastValidBlockHeight int64) *BlockchainLatestBlockDTO {
 	this := BlockchainLatestBlockDTO{}
 	this.Blockhash = blockhash
 	this.LastValidBlockHeight = lastValidBlockHeight
@@ -74,9 +74,9 @@ func (o *BlockchainLatestBlockDTO) SetBlockhash(v string) {
 }
 
 // GetLastValidBlockHeight returns the LastValidBlockHeight field value
-func (o *BlockchainLatestBlockDTO) GetLastValidBlockHeight() float32 {
+func (o *BlockchainLatestBlockDTO) GetLastValidBlockHeight() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *BlockchainLatestBlockDTO) GetLastValidBlockHeight() float32 {
 
 // GetLastValidBlockHeightOk returns a tuple with the LastValidBlockHeight field value
 // and a boolean to check if the value has been set.
-func (o *BlockchainLatestBlockDTO) GetLastValidBlockHeightOk() (*float32, bool) {
+func (o *BlockchainLatestBlockDTO) GetLastValidBlockHeightOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *BlockchainLatestBlockDTO) GetLastValidBlockHeightOk() (*float32, bool) 
 }
 
 // SetLastValidBlockHeight sets field value
-func (o *BlockchainLatestBlockDTO) SetLastValidBlockHeight(v float32) {
+func (o *BlockchainLatestBlockDTO) SetLastValidBlockHeight(v int64) {
 	o.LastValidBlockHeight = v
 }
 

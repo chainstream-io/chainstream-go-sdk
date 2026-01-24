@@ -25,7 +25,7 @@ type SendTxResponse struct {
 	// DTO.TRANSACTION.SEND.SIGNATURE
 	Signature string `json:"signature"`
 	// DTO.TRANSACTION.SEND.ELAPSED_TIME
-	ElapsedTime float32 `json:"elapsedTime"`
+	ElapsedTime int64 `json:"elapsedTime"`
 	// DTO.TRANSACTION.SEND.JOB_ID
 	JobId string `json:"jobId"`
 }
@@ -36,7 +36,7 @@ type _SendTxResponse SendTxResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSendTxResponse(signature string, elapsedTime float32, jobId string) *SendTxResponse {
+func NewSendTxResponse(signature string, elapsedTime int64, jobId string) *SendTxResponse {
 	this := SendTxResponse{}
 	this.Signature = signature
 	this.ElapsedTime = elapsedTime
@@ -77,9 +77,9 @@ func (o *SendTxResponse) SetSignature(v string) {
 }
 
 // GetElapsedTime returns the ElapsedTime field value
-func (o *SendTxResponse) GetElapsedTime() float32 {
+func (o *SendTxResponse) GetElapsedTime() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -88,7 +88,7 @@ func (o *SendTxResponse) GetElapsedTime() float32 {
 
 // GetElapsedTimeOk returns a tuple with the ElapsedTime field value
 // and a boolean to check if the value has been set.
-func (o *SendTxResponse) GetElapsedTimeOk() (*float32, bool) {
+func (o *SendTxResponse) GetElapsedTimeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *SendTxResponse) GetElapsedTimeOk() (*float32, bool) {
 }
 
 // SetElapsedTime sets field value
-func (o *SendTxResponse) SetElapsedTime(v float32) {
+func (o *SendTxResponse) SetElapsedTime(v int64) {
 	o.ElapsedTime = v
 }
 

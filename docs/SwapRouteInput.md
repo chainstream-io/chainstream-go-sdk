@@ -9,12 +9,12 @@ Name | Type | Description | Notes
 **PriorityFee** | Pointer to **string** | DTO.DEX.BASE.PRIORITY_FEE | [optional] 
 **Amount** | **string** | DTO.DEX.SWAP.AMOUNT | 
 **SwapMode** | **string** | DTO.DEX.SWAP.MODE | 
-**Slippage** | **float32** | DTO.DEX.SWAP.SLIPPAGE | [default to 5]
+**Slippage** | **int64** | DTO.DEX.SWAP.SLIPPAGE | [default to 5]
 **InputMint** | Pointer to **string** | DTO.DEX.SWAP.INPUT_MINT | [optional] 
 **OutputMint** | Pointer to **string** | DTO.DEX.SWAP.OUTPUT_MINT | [optional] 
 **RecipientAddress** | Pointer to **string** | DTO.DEX.SWAP.RECIPIENT_ADDRESS | [optional] 
 **Permit** | Pointer to **string** | DTO.DEX.SWAP.PERMIT | [optional] 
-**Deadline** | Pointer to **float32** | DTO.DEX.SWAP.DEADLINE | [optional] 
+**Deadline** | Pointer to **int64** | DTO.DEX.SWAP.DEADLINE | [optional] 
 **TipFee** | Pointer to **string** | DTO.DEX.BASE.TIP_FEE | [optional] 
 **IsAntiMev** | Pointer to **bool** | DTO.DEX.BASE.IS_ANTI_MEV | [optional] [default to false]
 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewSwapRouteInput
 
-`func NewSwapRouteInput(dex string, userAddress string, amount string, swapMode string, slippage float32, ) *SwapRouteInput`
+`func NewSwapRouteInput(dex string, userAddress string, amount string, swapMode string, slippage int64, ) *SwapRouteInput`
 
 NewSwapRouteInput instantiates a new SwapRouteInput object
 This constructor will assign default values to properties that have it defined,
@@ -144,20 +144,20 @@ SetSwapMode sets SwapMode field to given value.
 
 ### GetSlippage
 
-`func (o *SwapRouteInput) GetSlippage() float32`
+`func (o *SwapRouteInput) GetSlippage() int64`
 
 GetSlippage returns the Slippage field if non-nil, zero value otherwise.
 
 ### GetSlippageOk
 
-`func (o *SwapRouteInput) GetSlippageOk() (*float32, bool)`
+`func (o *SwapRouteInput) GetSlippageOk() (*int64, bool)`
 
 GetSlippageOk returns a tuple with the Slippage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSlippage
 
-`func (o *SwapRouteInput) SetSlippage(v float32)`
+`func (o *SwapRouteInput) SetSlippage(v int64)`
 
 SetSlippage sets Slippage field to given value.
 
@@ -264,20 +264,20 @@ HasPermit returns a boolean if a field has been set.
 
 ### GetDeadline
 
-`func (o *SwapRouteInput) GetDeadline() float32`
+`func (o *SwapRouteInput) GetDeadline() int64`
 
 GetDeadline returns the Deadline field if non-nil, zero value otherwise.
 
 ### GetDeadlineOk
 
-`func (o *SwapRouteInput) GetDeadlineOk() (*float32, bool)`
+`func (o *SwapRouteInput) GetDeadlineOk() (*int64, bool)`
 
 GetDeadlineOk returns a tuple with the Deadline field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeadline
 
-`func (o *SwapRouteInput) SetDeadline(v float32)`
+`func (o *SwapRouteInput) SetDeadline(v int64)`
 
 SetDeadline sets Deadline field to given value.
 

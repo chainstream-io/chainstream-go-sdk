@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CollectionAddress** | Pointer to **string** | DTO.TOKEN.EXTRA.COLLECTION_ADDRESS | [optional] 
-**EditionNonce** | Pointer to **float32** | DTO.TOKEN.EXTRA.EDITION_NONCE | [optional] 
+**EditionNonce** | Pointer to **int64** | DTO.TOKEN.EXTRA.EDITION_NONCE | [optional] 
 **Fungible** | Pointer to **bool** | DTO.TOKEN.EXTRA.FUNGIBLE | [optional] 
 **IsMutable** | Pointer to **bool** | DTO.TOKEN.EXTRA.IS_MUTABLE | [optional] 
 **Key** | Pointer to **string** | DTO.TOKEN.EXTRA.KEY | [optional] 
@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 **MigratedToProgramAddress** | Pointer to **string** | DTO.TOKEN.EXTRA.MIGRATED_TO_PROGRAM_ADDRESS | [optional] 
 **MigratedToProtocolFamily** | Pointer to **string** | DTO.TOKEN.EXTRA.MIGRATED_TO_PROTOCOL_FAMILY | [optional] 
 **MigratedToPoolAddress** | Pointer to **string** | DTO.TOKEN.EXTRA.MIGRATED_TO_POOL_ADDRESS | [optional] 
-**MigratedAt** | Pointer to **float32** | DTO.TOKEN.EXTRA.MIGRATED_AT | [optional] 
-**SellerFeeBasisPoints** | Pointer to **float32** | DTO.TOKEN.EXTRA.SELLER_FEE_BASIS_POINTS | [optional] 
+**MigratedAt** | Pointer to **int64** | DTO.TOKEN.EXTRA.MIGRATED_AT | [optional] 
+**SellerFeeBasisPoints** | Pointer to **int64** | DTO.TOKEN.EXTRA.SELLER_FEE_BASIS_POINTS | [optional] 
 **TokenStandard** | Pointer to **string** | DTO.TOKEN.EXTRA.TOKEN_STANDARD | [optional] 
 **MintAuthority** | Pointer to **string** | DTO.TOKEN.EXTRA.MINT_AUTHORITY | [optional] 
 **FreezeAuthority** | Pointer to **string** | DTO.TOKEN.EXTRA.FREEZE_AUTHORITY | [optional] 
@@ -72,20 +72,20 @@ HasCollectionAddress returns a boolean if a field has been set.
 
 ### GetEditionNonce
 
-`func (o *TokenExtraDTO) GetEditionNonce() float32`
+`func (o *TokenExtraDTO) GetEditionNonce() int64`
 
 GetEditionNonce returns the EditionNonce field if non-nil, zero value otherwise.
 
 ### GetEditionNonceOk
 
-`func (o *TokenExtraDTO) GetEditionNonceOk() (*float32, bool)`
+`func (o *TokenExtraDTO) GetEditionNonceOk() (*int64, bool)`
 
 GetEditionNonceOk returns a tuple with the EditionNonce field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEditionNonce
 
-`func (o *TokenExtraDTO) SetEditionNonce(v float32)`
+`func (o *TokenExtraDTO) SetEditionNonce(v int64)`
 
 SetEditionNonce sets EditionNonce field to given value.
 
@@ -372,20 +372,20 @@ HasMigratedToPoolAddress returns a boolean if a field has been set.
 
 ### GetMigratedAt
 
-`func (o *TokenExtraDTO) GetMigratedAt() float32`
+`func (o *TokenExtraDTO) GetMigratedAt() int64`
 
 GetMigratedAt returns the MigratedAt field if non-nil, zero value otherwise.
 
 ### GetMigratedAtOk
 
-`func (o *TokenExtraDTO) GetMigratedAtOk() (*float32, bool)`
+`func (o *TokenExtraDTO) GetMigratedAtOk() (*int64, bool)`
 
 GetMigratedAtOk returns a tuple with the MigratedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMigratedAt
 
-`func (o *TokenExtraDTO) SetMigratedAt(v float32)`
+`func (o *TokenExtraDTO) SetMigratedAt(v int64)`
 
 SetMigratedAt sets MigratedAt field to given value.
 
@@ -397,20 +397,20 @@ HasMigratedAt returns a boolean if a field has been set.
 
 ### GetSellerFeeBasisPoints
 
-`func (o *TokenExtraDTO) GetSellerFeeBasisPoints() float32`
+`func (o *TokenExtraDTO) GetSellerFeeBasisPoints() int64`
 
 GetSellerFeeBasisPoints returns the SellerFeeBasisPoints field if non-nil, zero value otherwise.
 
 ### GetSellerFeeBasisPointsOk
 
-`func (o *TokenExtraDTO) GetSellerFeeBasisPointsOk() (*float32, bool)`
+`func (o *TokenExtraDTO) GetSellerFeeBasisPointsOk() (*int64, bool)`
 
 GetSellerFeeBasisPointsOk returns a tuple with the SellerFeeBasisPoints field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSellerFeeBasisPoints
 
-`func (o *TokenExtraDTO) SetSellerFeeBasisPoints(v float32)`
+`func (o *TokenExtraDTO) SetSellerFeeBasisPoints(v int64)`
 
 SetSellerFeeBasisPoints sets SellerFeeBasisPoints field to given value.
 

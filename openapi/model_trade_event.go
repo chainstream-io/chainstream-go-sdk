@@ -35,7 +35,7 @@ type TradeEvent struct {
 	// DTO.TRADE.AMOUNT_IN_USD
 	AmountInUsd string `json:"amountInUsd"`
 	// DTO.TRADE.TIMESTAMP
-	Timestamp float32 `json:"timestamp"`
+	Timestamp int64 `json:"timestamp"`
 	// DTO.TRADE.EVENT
 	Event TradeType `json:"event"`
 	// DTO.TRADE.TX_HASH
@@ -56,7 +56,7 @@ type _TradeEvent TradeEvent
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTradeEvent(maker string, baseAmount string, quoteAmount string, quoteSymbol string, quoteAddress string, amountInUsd string, timestamp float32, event TradeType, txHash string, priceInUsd string, id string, buyCostUsd string, tokenAddress string) *TradeEvent {
+func NewTradeEvent(maker string, baseAmount string, quoteAmount string, quoteSymbol string, quoteAddress string, amountInUsd string, timestamp int64, event TradeType, txHash string, priceInUsd string, id string, buyCostUsd string, tokenAddress string) *TradeEvent {
 	this := TradeEvent{}
 	this.Maker = maker
 	this.BaseAmount = baseAmount
@@ -227,9 +227,9 @@ func (o *TradeEvent) SetAmountInUsd(v string) {
 }
 
 // GetTimestamp returns the Timestamp field value
-func (o *TradeEvent) GetTimestamp() float32 {
+func (o *TradeEvent) GetTimestamp() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -238,7 +238,7 @@ func (o *TradeEvent) GetTimestamp() float32 {
 
 // GetTimestampOk returns a tuple with the Timestamp field value
 // and a boolean to check if the value has been set.
-func (o *TradeEvent) GetTimestampOk() (*float32, bool) {
+func (o *TradeEvent) GetTimestampOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -246,7 +246,7 @@ func (o *TradeEvent) GetTimestampOk() (*float32, bool) {
 }
 
 // SetTimestamp sets field value
-func (o *TradeEvent) SetTimestamp(v float32) {
+func (o *TradeEvent) SetTimestamp(v int64) {
 	o.Timestamp = v
 }
 

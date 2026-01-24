@@ -23,7 +23,7 @@ var _ MappedNullable = &RedPacketClaimsPage{}
 // RedPacketClaimsPage struct for RedPacketClaimsPage
 type RedPacketClaimsPage struct {
 	// DTO.PAGE.TOTAL
-	Total float32 `json:"total"`
+	Total int64 `json:"total"`
 	// DTO.PAGE.HAS_NEXT
 	HasNextPage bool `json:"hasNextPage"`
 	// DTO.PAGE.START_CURSOR
@@ -40,7 +40,7 @@ type _RedPacketClaimsPage RedPacketClaimsPage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRedPacketClaimsPage(total float32, hasNextPage bool, startCursor string, endCursor string, records []RedPacketClaimDTO) *RedPacketClaimsPage {
+func NewRedPacketClaimsPage(total int64, hasNextPage bool, startCursor string, endCursor string, records []RedPacketClaimDTO) *RedPacketClaimsPage {
 	this := RedPacketClaimsPage{}
 	this.Total = total
 	this.HasNextPage = hasNextPage
@@ -59,9 +59,9 @@ func NewRedPacketClaimsPageWithDefaults() *RedPacketClaimsPage {
 }
 
 // GetTotal returns the Total field value
-func (o *RedPacketClaimsPage) GetTotal() float32 {
+func (o *RedPacketClaimsPage) GetTotal() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -70,7 +70,7 @@ func (o *RedPacketClaimsPage) GetTotal() float32 {
 
 // GetTotalOk returns a tuple with the Total field value
 // and a boolean to check if the value has been set.
-func (o *RedPacketClaimsPage) GetTotalOk() (*float32, bool) {
+func (o *RedPacketClaimsPage) GetTotalOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -78,7 +78,7 @@ func (o *RedPacketClaimsPage) GetTotalOk() (*float32, bool) {
 }
 
 // SetTotal sets field value
-func (o *RedPacketClaimsPage) SetTotal(v float32) {
+func (o *RedPacketClaimsPage) SetTotal(v int64) {
 	o.Total = v
 }
 

@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Symbol** | **string** | DTO.BLOCKCHAIN.SYMBOL | 
 **Name** | **string** | DTO.BLOCKCHAIN.NAME | 
 **ExplorerUrl** | **string** | DTO.BLOCKCHAIN.EXPLORER_URL | 
-**ChainId** | **float32** | DTO.BLOCKCHAIN.CHAIN_ID | 
+**ChainId** | **int64** | DTO.BLOCKCHAIN.CHAIN_ID | 
 
 ## Methods
 
 ### NewBlockchainDTO
 
-`func NewBlockchainDTO(symbol string, name string, explorerUrl string, chainId float32, ) *BlockchainDTO`
+`func NewBlockchainDTO(symbol string, name string, explorerUrl string, chainId int64, ) *BlockchainDTO`
 
 NewBlockchainDTO instantiates a new BlockchainDTO object
 This constructor will assign default values to properties that have it defined,
@@ -90,20 +90,20 @@ SetExplorerUrl sets ExplorerUrl field to given value.
 
 ### GetChainId
 
-`func (o *BlockchainDTO) GetChainId() float32`
+`func (o *BlockchainDTO) GetChainId() int64`
 
 GetChainId returns the ChainId field if non-nil, zero value otherwise.
 
 ### GetChainIdOk
 
-`func (o *BlockchainDTO) GetChainIdOk() (*float32, bool)`
+`func (o *BlockchainDTO) GetChainIdOk() (*int64, bool)`
 
 GetChainIdOk returns a tuple with the ChainId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChainId
 
-`func (o *BlockchainDTO) SetChainId(v float32)`
+`func (o *BlockchainDTO) SetChainId(v int64)`
 
 SetChainId sets ChainId field to given value.
 

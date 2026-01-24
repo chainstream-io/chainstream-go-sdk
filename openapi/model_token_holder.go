@@ -25,9 +25,9 @@ type TokenHolder struct {
 	// DTO.TOKEN_HOLDER.WALLET_ADDRESS
 	WalletAddress string `json:"walletAddress"`
 	// DTO.TOKEN_HOLDER.AMOUNT
-	Amount float32 `json:"amount"`
+	Amount string `json:"amount"`
 	// DTO.TOKEN_HOLDER.AMOUNT_USD
-	AmountInUsd float32 `json:"amountInUsd"`
+	AmountInUsd string `json:"amountInUsd"`
 	// DTO.TOKEN_HOLDER.PERCENTAGE
 	Percentage string `json:"percentage"`
 }
@@ -38,7 +38,7 @@ type _TokenHolder TokenHolder
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenHolder(walletAddress string, amount float32, amountInUsd float32, percentage string) *TokenHolder {
+func NewTokenHolder(walletAddress string, amount string, amountInUsd string, percentage string) *TokenHolder {
 	this := TokenHolder{}
 	this.WalletAddress = walletAddress
 	this.Amount = amount
@@ -80,9 +80,9 @@ func (o *TokenHolder) SetWalletAddress(v string) {
 }
 
 // GetAmount returns the Amount field value
-func (o *TokenHolder) GetAmount() float32 {
+func (o *TokenHolder) GetAmount() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -91,7 +91,7 @@ func (o *TokenHolder) GetAmount() float32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *TokenHolder) GetAmountOk() (*float32, bool) {
+func (o *TokenHolder) GetAmountOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -99,14 +99,14 @@ func (o *TokenHolder) GetAmountOk() (*float32, bool) {
 }
 
 // SetAmount sets field value
-func (o *TokenHolder) SetAmount(v float32) {
+func (o *TokenHolder) SetAmount(v string) {
 	o.Amount = v
 }
 
 // GetAmountInUsd returns the AmountInUsd field value
-func (o *TokenHolder) GetAmountInUsd() float32 {
+func (o *TokenHolder) GetAmountInUsd() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -115,7 +115,7 @@ func (o *TokenHolder) GetAmountInUsd() float32 {
 
 // GetAmountInUsdOk returns a tuple with the AmountInUsd field value
 // and a boolean to check if the value has been set.
-func (o *TokenHolder) GetAmountInUsdOk() (*float32, bool) {
+func (o *TokenHolder) GetAmountInUsdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,7 +123,7 @@ func (o *TokenHolder) GetAmountInUsdOk() (*float32, bool) {
 }
 
 // SetAmountInUsd sets field value
-func (o *TokenHolder) SetAmountInUsd(v float32) {
+func (o *TokenHolder) SetAmountInUsd(v string) {
 	o.AmountInUsd = v
 }
 

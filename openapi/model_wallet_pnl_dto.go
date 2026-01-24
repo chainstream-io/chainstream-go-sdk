@@ -23,7 +23,7 @@ var _ MappedNullable = &WalletPnlDTO{}
 // WalletPnlDTO struct for WalletPnlDTO
 type WalletPnlDTO struct {
 	// DTO.WALLET.PNL.ID
-	Id float32 `json:"id"`
+	Id int64 `json:"id"`
 	// DTO.WALLET.PNL.CHAIN
 	Chain string `json:"chain"`
 	// DTO.WALLET.PNL.WALLET_ADDRESS
@@ -31,43 +31,43 @@ type WalletPnlDTO struct {
 	// DTO.WALLET.PNL.TOKEN_ADDRESS
 	TokenAddress string `json:"tokenAddress"`
 	// DTO.WALLET.PNL.TOKEN_PRICE
-	TokenPriceInUsd float32 `json:"tokenPriceInUsd"`
+	TokenPriceInUsd string `json:"tokenPriceInUsd"`
 	// DTO.WALLET.PNL.OPEN_TIME
-	OpenTime float32 `json:"openTime"`
+	OpenTime int64 `json:"openTime"`
 	// DTO.WALLET.PNL.CLOSE_TIME
-	CloseTime float32 `json:"closeTime"`
+	CloseTime int64 `json:"closeTime"`
 	// DTO.WALLET.PNL.LAST_TIME
-	LastTime float32 `json:"lastTime"`
+	LastTime int64 `json:"lastTime"`
 	// DTO.WALLET.PNL.BALANCE
-	Balance float32 `json:"balance"`
+	Balance string `json:"balance"`
 	// DTO.WALLET.PNL.BUY_AMOUNT
-	BuyAmount float32 `json:"buyAmount"`
+	BuyAmount string `json:"buyAmount"`
 	// DTO.WALLET.PNL.BUY_AMOUNT_USD
-	BuyAmountInUsd float32 `json:"buyAmountInUsd"`
+	BuyAmountInUsd string `json:"buyAmountInUsd"`
 	// DTO.WALLET.PNL.BUYS
-	Buys float32 `json:"buys"`
+	Buys string `json:"buys"`
 	// DTO.WALLET.PNL.SELL_AMOUNT
-	SellAmount float32 `json:"sellAmount"`
+	SellAmount string `json:"sellAmount"`
 	// DTO.WALLET.PNL.SELL_AMOUNT_USD
-	SellAmountInUsd float32 `json:"sellAmountInUsd"`
+	SellAmountInUsd string `json:"sellAmountInUsd"`
 	// DTO.WALLET.PNL.SELLS
-	Sells float32 `json:"sells"`
+	Sells string `json:"sells"`
 	// DTO.WALLET.PNL.AVERAGE_BUY_PRICE
-	AverageBuyPriceInUsd float32 `json:"averageBuyPriceInUsd"`
+	AverageBuyPriceInUsd string `json:"averageBuyPriceInUsd"`
 	// DTO.WALLET.PNL.AVERAGE_SELL_PRICE
-	AverageSellPriceInUsd float32 `json:"averageSellPriceInUsd"`
+	AverageSellPriceInUsd string `json:"averageSellPriceInUsd"`
 	// DTO.WALLET.PNL.UNREALIZED_PROFIT
-	UnrealizedProfitInUsd float32 `json:"unrealizedProfitInUsd"`
+	UnrealizedProfitInUsd string `json:"unrealizedProfitInUsd"`
 	// DTO.WALLET.PNL.UNREALIZED_PROFIT_RATIO
-	UnrealizedProfitRatio float32 `json:"unrealizedProfitRatio"`
+	UnrealizedProfitRatio string `json:"unrealizedProfitRatio"`
 	// DTO.WALLET.PNL.REALIZED_PROFIT
-	RealizedProfitInUsd float32 `json:"realizedProfitInUsd"`
+	RealizedProfitInUsd string `json:"realizedProfitInUsd"`
 	// DTO.WALLET.PNL.REALIZED_PROFIT_RATIO
-	RealizedProfitRatio float32 `json:"realizedProfitRatio"`
+	RealizedProfitRatio string `json:"realizedProfitRatio"`
 	// DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT
-	TotalRealizedProfitInUsd float32 `json:"totalRealizedProfitInUsd"`
+	TotalRealizedProfitInUsd string `json:"totalRealizedProfitInUsd"`
 	// DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT_RATIO
-	TotalRealizedProfitRatio float32 `json:"totalRealizedProfitRatio"`
+	TotalRealizedProfitRatio string `json:"totalRealizedProfitRatio"`
 }
 
 type _WalletPnlDTO WalletPnlDTO
@@ -76,7 +76,7 @@ type _WalletPnlDTO WalletPnlDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWalletPnlDTO(id float32, chain string, walletAddress string, tokenAddress string, tokenPriceInUsd float32, openTime float32, closeTime float32, lastTime float32, balance float32, buyAmount float32, buyAmountInUsd float32, buys float32, sellAmount float32, sellAmountInUsd float32, sells float32, averageBuyPriceInUsd float32, averageSellPriceInUsd float32, unrealizedProfitInUsd float32, unrealizedProfitRatio float32, realizedProfitInUsd float32, realizedProfitRatio float32, totalRealizedProfitInUsd float32, totalRealizedProfitRatio float32) *WalletPnlDTO {
+func NewWalletPnlDTO(id int64, chain string, walletAddress string, tokenAddress string, tokenPriceInUsd string, openTime int64, closeTime int64, lastTime int64, balance string, buyAmount string, buyAmountInUsd string, buys string, sellAmount string, sellAmountInUsd string, sells string, averageBuyPriceInUsd string, averageSellPriceInUsd string, unrealizedProfitInUsd string, unrealizedProfitRatio string, realizedProfitInUsd string, realizedProfitRatio string, totalRealizedProfitInUsd string, totalRealizedProfitRatio string) *WalletPnlDTO {
 	this := WalletPnlDTO{}
 	this.Id = id
 	this.Chain = chain
@@ -113,9 +113,9 @@ func NewWalletPnlDTOWithDefaults() *WalletPnlDTO {
 }
 
 // GetId returns the Id field value
-func (o *WalletPnlDTO) GetId() float32 {
+func (o *WalletPnlDTO) GetId() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -124,7 +124,7 @@ func (o *WalletPnlDTO) GetId() float32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetIdOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -132,7 +132,7 @@ func (o *WalletPnlDTO) GetIdOk() (*float32, bool) {
 }
 
 // SetId sets field value
-func (o *WalletPnlDTO) SetId(v float32) {
+func (o *WalletPnlDTO) SetId(v int64) {
 	o.Id = v
 }
 
@@ -209,9 +209,9 @@ func (o *WalletPnlDTO) SetTokenAddress(v string) {
 }
 
 // GetTokenPriceInUsd returns the TokenPriceInUsd field value
-func (o *WalletPnlDTO) GetTokenPriceInUsd() float32 {
+func (o *WalletPnlDTO) GetTokenPriceInUsd() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -220,7 +220,7 @@ func (o *WalletPnlDTO) GetTokenPriceInUsd() float32 {
 
 // GetTokenPriceInUsdOk returns a tuple with the TokenPriceInUsd field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetTokenPriceInUsdOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetTokenPriceInUsdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -228,14 +228,14 @@ func (o *WalletPnlDTO) GetTokenPriceInUsdOk() (*float32, bool) {
 }
 
 // SetTokenPriceInUsd sets field value
-func (o *WalletPnlDTO) SetTokenPriceInUsd(v float32) {
+func (o *WalletPnlDTO) SetTokenPriceInUsd(v string) {
 	o.TokenPriceInUsd = v
 }
 
 // GetOpenTime returns the OpenTime field value
-func (o *WalletPnlDTO) GetOpenTime() float32 {
+func (o *WalletPnlDTO) GetOpenTime() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -244,7 +244,7 @@ func (o *WalletPnlDTO) GetOpenTime() float32 {
 
 // GetOpenTimeOk returns a tuple with the OpenTime field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetOpenTimeOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetOpenTimeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -252,14 +252,14 @@ func (o *WalletPnlDTO) GetOpenTimeOk() (*float32, bool) {
 }
 
 // SetOpenTime sets field value
-func (o *WalletPnlDTO) SetOpenTime(v float32) {
+func (o *WalletPnlDTO) SetOpenTime(v int64) {
 	o.OpenTime = v
 }
 
 // GetCloseTime returns the CloseTime field value
-func (o *WalletPnlDTO) GetCloseTime() float32 {
+func (o *WalletPnlDTO) GetCloseTime() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -268,7 +268,7 @@ func (o *WalletPnlDTO) GetCloseTime() float32 {
 
 // GetCloseTimeOk returns a tuple with the CloseTime field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetCloseTimeOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetCloseTimeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -276,14 +276,14 @@ func (o *WalletPnlDTO) GetCloseTimeOk() (*float32, bool) {
 }
 
 // SetCloseTime sets field value
-func (o *WalletPnlDTO) SetCloseTime(v float32) {
+func (o *WalletPnlDTO) SetCloseTime(v int64) {
 	o.CloseTime = v
 }
 
 // GetLastTime returns the LastTime field value
-func (o *WalletPnlDTO) GetLastTime() float32 {
+func (o *WalletPnlDTO) GetLastTime() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -292,7 +292,7 @@ func (o *WalletPnlDTO) GetLastTime() float32 {
 
 // GetLastTimeOk returns a tuple with the LastTime field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetLastTimeOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetLastTimeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -300,14 +300,14 @@ func (o *WalletPnlDTO) GetLastTimeOk() (*float32, bool) {
 }
 
 // SetLastTime sets field value
-func (o *WalletPnlDTO) SetLastTime(v float32) {
+func (o *WalletPnlDTO) SetLastTime(v int64) {
 	o.LastTime = v
 }
 
 // GetBalance returns the Balance field value
-func (o *WalletPnlDTO) GetBalance() float32 {
+func (o *WalletPnlDTO) GetBalance() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -316,7 +316,7 @@ func (o *WalletPnlDTO) GetBalance() float32 {
 
 // GetBalanceOk returns a tuple with the Balance field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetBalanceOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetBalanceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -324,14 +324,14 @@ func (o *WalletPnlDTO) GetBalanceOk() (*float32, bool) {
 }
 
 // SetBalance sets field value
-func (o *WalletPnlDTO) SetBalance(v float32) {
+func (o *WalletPnlDTO) SetBalance(v string) {
 	o.Balance = v
 }
 
 // GetBuyAmount returns the BuyAmount field value
-func (o *WalletPnlDTO) GetBuyAmount() float32 {
+func (o *WalletPnlDTO) GetBuyAmount() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -340,7 +340,7 @@ func (o *WalletPnlDTO) GetBuyAmount() float32 {
 
 // GetBuyAmountOk returns a tuple with the BuyAmount field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetBuyAmountOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetBuyAmountOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -348,14 +348,14 @@ func (o *WalletPnlDTO) GetBuyAmountOk() (*float32, bool) {
 }
 
 // SetBuyAmount sets field value
-func (o *WalletPnlDTO) SetBuyAmount(v float32) {
+func (o *WalletPnlDTO) SetBuyAmount(v string) {
 	o.BuyAmount = v
 }
 
 // GetBuyAmountInUsd returns the BuyAmountInUsd field value
-func (o *WalletPnlDTO) GetBuyAmountInUsd() float32 {
+func (o *WalletPnlDTO) GetBuyAmountInUsd() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -364,7 +364,7 @@ func (o *WalletPnlDTO) GetBuyAmountInUsd() float32 {
 
 // GetBuyAmountInUsdOk returns a tuple with the BuyAmountInUsd field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetBuyAmountInUsdOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetBuyAmountInUsdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -372,14 +372,14 @@ func (o *WalletPnlDTO) GetBuyAmountInUsdOk() (*float32, bool) {
 }
 
 // SetBuyAmountInUsd sets field value
-func (o *WalletPnlDTO) SetBuyAmountInUsd(v float32) {
+func (o *WalletPnlDTO) SetBuyAmountInUsd(v string) {
 	o.BuyAmountInUsd = v
 }
 
 // GetBuys returns the Buys field value
-func (o *WalletPnlDTO) GetBuys() float32 {
+func (o *WalletPnlDTO) GetBuys() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -388,7 +388,7 @@ func (o *WalletPnlDTO) GetBuys() float32 {
 
 // GetBuysOk returns a tuple with the Buys field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetBuysOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetBuysOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -396,14 +396,14 @@ func (o *WalletPnlDTO) GetBuysOk() (*float32, bool) {
 }
 
 // SetBuys sets field value
-func (o *WalletPnlDTO) SetBuys(v float32) {
+func (o *WalletPnlDTO) SetBuys(v string) {
 	o.Buys = v
 }
 
 // GetSellAmount returns the SellAmount field value
-func (o *WalletPnlDTO) GetSellAmount() float32 {
+func (o *WalletPnlDTO) GetSellAmount() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -412,7 +412,7 @@ func (o *WalletPnlDTO) GetSellAmount() float32 {
 
 // GetSellAmountOk returns a tuple with the SellAmount field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetSellAmountOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetSellAmountOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -420,14 +420,14 @@ func (o *WalletPnlDTO) GetSellAmountOk() (*float32, bool) {
 }
 
 // SetSellAmount sets field value
-func (o *WalletPnlDTO) SetSellAmount(v float32) {
+func (o *WalletPnlDTO) SetSellAmount(v string) {
 	o.SellAmount = v
 }
 
 // GetSellAmountInUsd returns the SellAmountInUsd field value
-func (o *WalletPnlDTO) GetSellAmountInUsd() float32 {
+func (o *WalletPnlDTO) GetSellAmountInUsd() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -436,7 +436,7 @@ func (o *WalletPnlDTO) GetSellAmountInUsd() float32 {
 
 // GetSellAmountInUsdOk returns a tuple with the SellAmountInUsd field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetSellAmountInUsdOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetSellAmountInUsdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -444,14 +444,14 @@ func (o *WalletPnlDTO) GetSellAmountInUsdOk() (*float32, bool) {
 }
 
 // SetSellAmountInUsd sets field value
-func (o *WalletPnlDTO) SetSellAmountInUsd(v float32) {
+func (o *WalletPnlDTO) SetSellAmountInUsd(v string) {
 	o.SellAmountInUsd = v
 }
 
 // GetSells returns the Sells field value
-func (o *WalletPnlDTO) GetSells() float32 {
+func (o *WalletPnlDTO) GetSells() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -460,7 +460,7 @@ func (o *WalletPnlDTO) GetSells() float32 {
 
 // GetSellsOk returns a tuple with the Sells field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetSellsOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetSellsOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -468,14 +468,14 @@ func (o *WalletPnlDTO) GetSellsOk() (*float32, bool) {
 }
 
 // SetSells sets field value
-func (o *WalletPnlDTO) SetSells(v float32) {
+func (o *WalletPnlDTO) SetSells(v string) {
 	o.Sells = v
 }
 
 // GetAverageBuyPriceInUsd returns the AverageBuyPriceInUsd field value
-func (o *WalletPnlDTO) GetAverageBuyPriceInUsd() float32 {
+func (o *WalletPnlDTO) GetAverageBuyPriceInUsd() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -484,7 +484,7 @@ func (o *WalletPnlDTO) GetAverageBuyPriceInUsd() float32 {
 
 // GetAverageBuyPriceInUsdOk returns a tuple with the AverageBuyPriceInUsd field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetAverageBuyPriceInUsdOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetAverageBuyPriceInUsdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -492,14 +492,14 @@ func (o *WalletPnlDTO) GetAverageBuyPriceInUsdOk() (*float32, bool) {
 }
 
 // SetAverageBuyPriceInUsd sets field value
-func (o *WalletPnlDTO) SetAverageBuyPriceInUsd(v float32) {
+func (o *WalletPnlDTO) SetAverageBuyPriceInUsd(v string) {
 	o.AverageBuyPriceInUsd = v
 }
 
 // GetAverageSellPriceInUsd returns the AverageSellPriceInUsd field value
-func (o *WalletPnlDTO) GetAverageSellPriceInUsd() float32 {
+func (o *WalletPnlDTO) GetAverageSellPriceInUsd() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -508,7 +508,7 @@ func (o *WalletPnlDTO) GetAverageSellPriceInUsd() float32 {
 
 // GetAverageSellPriceInUsdOk returns a tuple with the AverageSellPriceInUsd field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetAverageSellPriceInUsdOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetAverageSellPriceInUsdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -516,14 +516,14 @@ func (o *WalletPnlDTO) GetAverageSellPriceInUsdOk() (*float32, bool) {
 }
 
 // SetAverageSellPriceInUsd sets field value
-func (o *WalletPnlDTO) SetAverageSellPriceInUsd(v float32) {
+func (o *WalletPnlDTO) SetAverageSellPriceInUsd(v string) {
 	o.AverageSellPriceInUsd = v
 }
 
 // GetUnrealizedProfitInUsd returns the UnrealizedProfitInUsd field value
-func (o *WalletPnlDTO) GetUnrealizedProfitInUsd() float32 {
+func (o *WalletPnlDTO) GetUnrealizedProfitInUsd() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -532,7 +532,7 @@ func (o *WalletPnlDTO) GetUnrealizedProfitInUsd() float32 {
 
 // GetUnrealizedProfitInUsdOk returns a tuple with the UnrealizedProfitInUsd field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetUnrealizedProfitInUsdOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetUnrealizedProfitInUsdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -540,14 +540,14 @@ func (o *WalletPnlDTO) GetUnrealizedProfitInUsdOk() (*float32, bool) {
 }
 
 // SetUnrealizedProfitInUsd sets field value
-func (o *WalletPnlDTO) SetUnrealizedProfitInUsd(v float32) {
+func (o *WalletPnlDTO) SetUnrealizedProfitInUsd(v string) {
 	o.UnrealizedProfitInUsd = v
 }
 
 // GetUnrealizedProfitRatio returns the UnrealizedProfitRatio field value
-func (o *WalletPnlDTO) GetUnrealizedProfitRatio() float32 {
+func (o *WalletPnlDTO) GetUnrealizedProfitRatio() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -556,7 +556,7 @@ func (o *WalletPnlDTO) GetUnrealizedProfitRatio() float32 {
 
 // GetUnrealizedProfitRatioOk returns a tuple with the UnrealizedProfitRatio field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetUnrealizedProfitRatioOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetUnrealizedProfitRatioOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -564,14 +564,14 @@ func (o *WalletPnlDTO) GetUnrealizedProfitRatioOk() (*float32, bool) {
 }
 
 // SetUnrealizedProfitRatio sets field value
-func (o *WalletPnlDTO) SetUnrealizedProfitRatio(v float32) {
+func (o *WalletPnlDTO) SetUnrealizedProfitRatio(v string) {
 	o.UnrealizedProfitRatio = v
 }
 
 // GetRealizedProfitInUsd returns the RealizedProfitInUsd field value
-func (o *WalletPnlDTO) GetRealizedProfitInUsd() float32 {
+func (o *WalletPnlDTO) GetRealizedProfitInUsd() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -580,7 +580,7 @@ func (o *WalletPnlDTO) GetRealizedProfitInUsd() float32 {
 
 // GetRealizedProfitInUsdOk returns a tuple with the RealizedProfitInUsd field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetRealizedProfitInUsdOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetRealizedProfitInUsdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -588,14 +588,14 @@ func (o *WalletPnlDTO) GetRealizedProfitInUsdOk() (*float32, bool) {
 }
 
 // SetRealizedProfitInUsd sets field value
-func (o *WalletPnlDTO) SetRealizedProfitInUsd(v float32) {
+func (o *WalletPnlDTO) SetRealizedProfitInUsd(v string) {
 	o.RealizedProfitInUsd = v
 }
 
 // GetRealizedProfitRatio returns the RealizedProfitRatio field value
-func (o *WalletPnlDTO) GetRealizedProfitRatio() float32 {
+func (o *WalletPnlDTO) GetRealizedProfitRatio() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -604,7 +604,7 @@ func (o *WalletPnlDTO) GetRealizedProfitRatio() float32 {
 
 // GetRealizedProfitRatioOk returns a tuple with the RealizedProfitRatio field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetRealizedProfitRatioOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetRealizedProfitRatioOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -612,14 +612,14 @@ func (o *WalletPnlDTO) GetRealizedProfitRatioOk() (*float32, bool) {
 }
 
 // SetRealizedProfitRatio sets field value
-func (o *WalletPnlDTO) SetRealizedProfitRatio(v float32) {
+func (o *WalletPnlDTO) SetRealizedProfitRatio(v string) {
 	o.RealizedProfitRatio = v
 }
 
 // GetTotalRealizedProfitInUsd returns the TotalRealizedProfitInUsd field value
-func (o *WalletPnlDTO) GetTotalRealizedProfitInUsd() float32 {
+func (o *WalletPnlDTO) GetTotalRealizedProfitInUsd() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -628,7 +628,7 @@ func (o *WalletPnlDTO) GetTotalRealizedProfitInUsd() float32 {
 
 // GetTotalRealizedProfitInUsdOk returns a tuple with the TotalRealizedProfitInUsd field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetTotalRealizedProfitInUsdOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetTotalRealizedProfitInUsdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -636,14 +636,14 @@ func (o *WalletPnlDTO) GetTotalRealizedProfitInUsdOk() (*float32, bool) {
 }
 
 // SetTotalRealizedProfitInUsd sets field value
-func (o *WalletPnlDTO) SetTotalRealizedProfitInUsd(v float32) {
+func (o *WalletPnlDTO) SetTotalRealizedProfitInUsd(v string) {
 	o.TotalRealizedProfitInUsd = v
 }
 
 // GetTotalRealizedProfitRatio returns the TotalRealizedProfitRatio field value
-func (o *WalletPnlDTO) GetTotalRealizedProfitRatio() float32 {
+func (o *WalletPnlDTO) GetTotalRealizedProfitRatio() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -652,7 +652,7 @@ func (o *WalletPnlDTO) GetTotalRealizedProfitRatio() float32 {
 
 // GetTotalRealizedProfitRatioOk returns a tuple with the TotalRealizedProfitRatio field value
 // and a boolean to check if the value has been set.
-func (o *WalletPnlDTO) GetTotalRealizedProfitRatioOk() (*float32, bool) {
+func (o *WalletPnlDTO) GetTotalRealizedProfitRatioOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -660,7 +660,7 @@ func (o *WalletPnlDTO) GetTotalRealizedProfitRatioOk() (*float32, bool) {
 }
 
 // SetTotalRealizedProfitRatio sets field value
-func (o *WalletPnlDTO) SetTotalRealizedProfitRatio(v float32) {
+func (o *WalletPnlDTO) SetTotalRealizedProfitRatio(v string) {
 	o.TotalRealizedProfitRatio = v
 }
 

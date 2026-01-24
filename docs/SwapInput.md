@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **PoolAddress** | Pointer to **string** | DTO.DEX.SWAP.POOL_ADDRESS | [optional] 
 **Amount** | **string** | DTO.DEX.SWAP.AMOUNT | 
 **SwapMode** | **string** | DTO.DEX.SWAP.MODE | 
-**Slippage** | **float32** | DTO.DEX.SWAP.SLIPPAGE | [default to 10]
+**Slippage** | **int64** | DTO.DEX.SWAP.SLIPPAGE | [default to 10]
 **InputMint** | Pointer to **string** | DTO.DEX.SWAP.INPUT_MINT | [optional] 
 **OutputMint** | Pointer to **string** | DTO.DEX.SWAP.OUTPUT_MINT | [optional] 
 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewSwapInput
 
-`func NewSwapInput(dex string, userAddress string, amount string, swapMode string, slippage float32, ) *SwapInput`
+`func NewSwapInput(dex string, userAddress string, amount string, swapMode string, slippage int64, ) *SwapInput`
 
 NewSwapInput instantiates a new SwapInput object
 This constructor will assign default values to properties that have it defined,
@@ -165,20 +165,20 @@ SetSwapMode sets SwapMode field to given value.
 
 ### GetSlippage
 
-`func (o *SwapInput) GetSlippage() float32`
+`func (o *SwapInput) GetSlippage() int64`
 
 GetSlippage returns the Slippage field if non-nil, zero value otherwise.
 
 ### GetSlippageOk
 
-`func (o *SwapInput) GetSlippageOk() (*float32, bool)`
+`func (o *SwapInput) GetSlippageOk() (*int64, bool)`
 
 GetSlippageOk returns a tuple with the Slippage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSlippage
 
-`func (o *SwapInput) SetSlippage(v float32)`
+`func (o *SwapInput) SetSlippage(v int64)`
 
 SetSlippage sets Slippage field to given value.
 

@@ -944,7 +944,7 @@ import (
 )
 
 func main() {
-	kYTRegisterWithdrawalRequest := *openapiclient.NewKYTRegisterWithdrawalRequest("Solana", "SOL", "D1Mc6j9xQWgR1o1Z7yU5nVVXFQiAYx7FG9AW1aVfwrUM", float32(5), "2026-01-04T17:25:40.008307") // KYTRegisterWithdrawalRequest | 
+	kYTRegisterWithdrawalRequest := *openapiclient.NewKYTRegisterWithdrawalRequest("Solana", "SOL", "D1Mc6j9xQWgR1o1Z7yU5nVVXFQiAYx7FG9AW1aVfwrUM", "5", "2026-01-04T17:25:40.008307") // KYTRegisterWithdrawalRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

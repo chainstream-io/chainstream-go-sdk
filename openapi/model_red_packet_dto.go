@@ -39,19 +39,19 @@ type RedPacketDTO struct {
 	// DTO.RED_PACKET.MEMO
 	Memo string `json:"memo"`
 	// DTO.RED_PACKET.MAX_CLAIMS
-	MaxClaims float32 `json:"maxClaims"`
+	MaxClaims int64 `json:"maxClaims"`
 	// DTO.RED_PACKET.CLAIM_AUTHORITY
 	ClaimAuthority string `json:"claimAuthority"`
 	// DTO.RED_PACKET.WITHDRAWED
 	Expired bool `json:"expired"`
 	// DTO.RED_PACKET.EXPIRATION
-	Expiration float32 `json:"expiration"`
+	Expiration int64 `json:"expiration"`
 	// DTO.RED_PACKET.CREATED_AT
-	CreatedAt float32 `json:"createdAt"`
+	CreatedAt int64 `json:"createdAt"`
 	// DTO.RED_PACKET.EXPIRES_AT
-	ExpiredAt float32 `json:"expiredAt"`
+	ExpiredAt int64 `json:"expiredAt"`
 	// DTO.RED_PACKET.CLAIMED_COUNT
-	ClaimedCount float32 `json:"claimedCount"`
+	ClaimedCount int64 `json:"claimedCount"`
 	// DTO.RED_PACKET.CLAIMED_AMOUNT
 	ClaimedAmount string `json:"claimedAmount"`
 	// DTO.RED_PACKET.REFUND_AMOUNT
@@ -64,7 +64,7 @@ type _RedPacketDTO RedPacketDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRedPacketDTO(chain Chain, id string, shareId string, txHash string, creator string, mint string, totalAmount string, memo string, maxClaims float32, claimAuthority string, expired bool, expiration float32, createdAt float32, expiredAt float32, claimedCount float32, claimedAmount string, refundedAmount string) *RedPacketDTO {
+func NewRedPacketDTO(chain Chain, id string, shareId string, txHash string, creator string, mint string, totalAmount string, memo string, maxClaims int64, claimAuthority string, expired bool, expiration int64, createdAt int64, expiredAt int64, claimedCount int64, claimedAmount string, refundedAmount string) *RedPacketDTO {
 	this := RedPacketDTO{}
 	this.Chain = chain
 	this.Id = id
@@ -287,9 +287,9 @@ func (o *RedPacketDTO) SetMemo(v string) {
 }
 
 // GetMaxClaims returns the MaxClaims field value
-func (o *RedPacketDTO) GetMaxClaims() float32 {
+func (o *RedPacketDTO) GetMaxClaims() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -298,7 +298,7 @@ func (o *RedPacketDTO) GetMaxClaims() float32 {
 
 // GetMaxClaimsOk returns a tuple with the MaxClaims field value
 // and a boolean to check if the value has been set.
-func (o *RedPacketDTO) GetMaxClaimsOk() (*float32, bool) {
+func (o *RedPacketDTO) GetMaxClaimsOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -306,7 +306,7 @@ func (o *RedPacketDTO) GetMaxClaimsOk() (*float32, bool) {
 }
 
 // SetMaxClaims sets field value
-func (o *RedPacketDTO) SetMaxClaims(v float32) {
+func (o *RedPacketDTO) SetMaxClaims(v int64) {
 	o.MaxClaims = v
 }
 
@@ -359,9 +359,9 @@ func (o *RedPacketDTO) SetExpired(v bool) {
 }
 
 // GetExpiration returns the Expiration field value
-func (o *RedPacketDTO) GetExpiration() float32 {
+func (o *RedPacketDTO) GetExpiration() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -370,7 +370,7 @@ func (o *RedPacketDTO) GetExpiration() float32 {
 
 // GetExpirationOk returns a tuple with the Expiration field value
 // and a boolean to check if the value has been set.
-func (o *RedPacketDTO) GetExpirationOk() (*float32, bool) {
+func (o *RedPacketDTO) GetExpirationOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -378,14 +378,14 @@ func (o *RedPacketDTO) GetExpirationOk() (*float32, bool) {
 }
 
 // SetExpiration sets field value
-func (o *RedPacketDTO) SetExpiration(v float32) {
+func (o *RedPacketDTO) SetExpiration(v int64) {
 	o.Expiration = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *RedPacketDTO) GetCreatedAt() float32 {
+func (o *RedPacketDTO) GetCreatedAt() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -394,7 +394,7 @@ func (o *RedPacketDTO) GetCreatedAt() float32 {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *RedPacketDTO) GetCreatedAtOk() (*float32, bool) {
+func (o *RedPacketDTO) GetCreatedAtOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -402,14 +402,14 @@ func (o *RedPacketDTO) GetCreatedAtOk() (*float32, bool) {
 }
 
 // SetCreatedAt sets field value
-func (o *RedPacketDTO) SetCreatedAt(v float32) {
+func (o *RedPacketDTO) SetCreatedAt(v int64) {
 	o.CreatedAt = v
 }
 
 // GetExpiredAt returns the ExpiredAt field value
-func (o *RedPacketDTO) GetExpiredAt() float32 {
+func (o *RedPacketDTO) GetExpiredAt() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -418,7 +418,7 @@ func (o *RedPacketDTO) GetExpiredAt() float32 {
 
 // GetExpiredAtOk returns a tuple with the ExpiredAt field value
 // and a boolean to check if the value has been set.
-func (o *RedPacketDTO) GetExpiredAtOk() (*float32, bool) {
+func (o *RedPacketDTO) GetExpiredAtOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -426,14 +426,14 @@ func (o *RedPacketDTO) GetExpiredAtOk() (*float32, bool) {
 }
 
 // SetExpiredAt sets field value
-func (o *RedPacketDTO) SetExpiredAt(v float32) {
+func (o *RedPacketDTO) SetExpiredAt(v int64) {
 	o.ExpiredAt = v
 }
 
 // GetClaimedCount returns the ClaimedCount field value
-func (o *RedPacketDTO) GetClaimedCount() float32 {
+func (o *RedPacketDTO) GetClaimedCount() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -442,7 +442,7 @@ func (o *RedPacketDTO) GetClaimedCount() float32 {
 
 // GetClaimedCountOk returns a tuple with the ClaimedCount field value
 // and a boolean to check if the value has been set.
-func (o *RedPacketDTO) GetClaimedCountOk() (*float32, bool) {
+func (o *RedPacketDTO) GetClaimedCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -450,7 +450,7 @@ func (o *RedPacketDTO) GetClaimedCountOk() (*float32, bool) {
 }
 
 // SetClaimedCount sets field value
-func (o *RedPacketDTO) SetClaimedCount(v float32) {
+func (o *RedPacketDTO) SetClaimedCount(v int64) {
 	o.ClaimedCount = v
 }
 

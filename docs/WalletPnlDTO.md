@@ -4,35 +4,35 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **float32** | DTO.WALLET.PNL.ID | 
+**Id** | **int64** | DTO.WALLET.PNL.ID | 
 **Chain** | **string** | DTO.WALLET.PNL.CHAIN | 
 **WalletAddress** | **string** | DTO.WALLET.PNL.WALLET_ADDRESS | 
 **TokenAddress** | **string** | DTO.WALLET.PNL.TOKEN_ADDRESS | 
-**TokenPriceInUsd** | **float32** | DTO.WALLET.PNL.TOKEN_PRICE | 
-**OpenTime** | **float32** | DTO.WALLET.PNL.OPEN_TIME | 
-**CloseTime** | **float32** | DTO.WALLET.PNL.CLOSE_TIME | 
-**LastTime** | **float32** | DTO.WALLET.PNL.LAST_TIME | 
-**Balance** | **float32** | DTO.WALLET.PNL.BALANCE | 
-**BuyAmount** | **float32** | DTO.WALLET.PNL.BUY_AMOUNT | 
-**BuyAmountInUsd** | **float32** | DTO.WALLET.PNL.BUY_AMOUNT_USD | 
-**Buys** | **float32** | DTO.WALLET.PNL.BUYS | 
-**SellAmount** | **float32** | DTO.WALLET.PNL.SELL_AMOUNT | 
-**SellAmountInUsd** | **float32** | DTO.WALLET.PNL.SELL_AMOUNT_USD | 
-**Sells** | **float32** | DTO.WALLET.PNL.SELLS | 
-**AverageBuyPriceInUsd** | **float32** | DTO.WALLET.PNL.AVERAGE_BUY_PRICE | 
-**AverageSellPriceInUsd** | **float32** | DTO.WALLET.PNL.AVERAGE_SELL_PRICE | 
-**UnrealizedProfitInUsd** | **float32** | DTO.WALLET.PNL.UNREALIZED_PROFIT | 
-**UnrealizedProfitRatio** | **float32** | DTO.WALLET.PNL.UNREALIZED_PROFIT_RATIO | 
-**RealizedProfitInUsd** | **float32** | DTO.WALLET.PNL.REALIZED_PROFIT | 
-**RealizedProfitRatio** | **float32** | DTO.WALLET.PNL.REALIZED_PROFIT_RATIO | 
-**TotalRealizedProfitInUsd** | **float32** | DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT | 
-**TotalRealizedProfitRatio** | **float32** | DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT_RATIO | 
+**TokenPriceInUsd** | **string** | DTO.WALLET.PNL.TOKEN_PRICE | 
+**OpenTime** | **int64** | DTO.WALLET.PNL.OPEN_TIME | 
+**CloseTime** | **int64** | DTO.WALLET.PNL.CLOSE_TIME | 
+**LastTime** | **int64** | DTO.WALLET.PNL.LAST_TIME | 
+**Balance** | **string** | DTO.WALLET.PNL.BALANCE | 
+**BuyAmount** | **string** | DTO.WALLET.PNL.BUY_AMOUNT | 
+**BuyAmountInUsd** | **string** | DTO.WALLET.PNL.BUY_AMOUNT_USD | 
+**Buys** | **string** | DTO.WALLET.PNL.BUYS | 
+**SellAmount** | **string** | DTO.WALLET.PNL.SELL_AMOUNT | 
+**SellAmountInUsd** | **string** | DTO.WALLET.PNL.SELL_AMOUNT_USD | 
+**Sells** | **string** | DTO.WALLET.PNL.SELLS | 
+**AverageBuyPriceInUsd** | **string** | DTO.WALLET.PNL.AVERAGE_BUY_PRICE | 
+**AverageSellPriceInUsd** | **string** | DTO.WALLET.PNL.AVERAGE_SELL_PRICE | 
+**UnrealizedProfitInUsd** | **string** | DTO.WALLET.PNL.UNREALIZED_PROFIT | 
+**UnrealizedProfitRatio** | **string** | DTO.WALLET.PNL.UNREALIZED_PROFIT_RATIO | 
+**RealizedProfitInUsd** | **string** | DTO.WALLET.PNL.REALIZED_PROFIT | 
+**RealizedProfitRatio** | **string** | DTO.WALLET.PNL.REALIZED_PROFIT_RATIO | 
+**TotalRealizedProfitInUsd** | **string** | DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT | 
+**TotalRealizedProfitRatio** | **string** | DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT_RATIO | 
 
 ## Methods
 
 ### NewWalletPnlDTO
 
-`func NewWalletPnlDTO(id float32, chain string, walletAddress string, tokenAddress string, tokenPriceInUsd float32, openTime float32, closeTime float32, lastTime float32, balance float32, buyAmount float32, buyAmountInUsd float32, buys float32, sellAmount float32, sellAmountInUsd float32, sells float32, averageBuyPriceInUsd float32, averageSellPriceInUsd float32, unrealizedProfitInUsd float32, unrealizedProfitRatio float32, realizedProfitInUsd float32, realizedProfitRatio float32, totalRealizedProfitInUsd float32, totalRealizedProfitRatio float32, ) *WalletPnlDTO`
+`func NewWalletPnlDTO(id int64, chain string, walletAddress string, tokenAddress string, tokenPriceInUsd string, openTime int64, closeTime int64, lastTime int64, balance string, buyAmount string, buyAmountInUsd string, buys string, sellAmount string, sellAmountInUsd string, sells string, averageBuyPriceInUsd string, averageSellPriceInUsd string, unrealizedProfitInUsd string, unrealizedProfitRatio string, realizedProfitInUsd string, realizedProfitRatio string, totalRealizedProfitInUsd string, totalRealizedProfitRatio string, ) *WalletPnlDTO`
 
 NewWalletPnlDTO instantiates a new WalletPnlDTO object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *WalletPnlDTO) GetId() float32`
+`func (o *WalletPnlDTO) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *WalletPnlDTO) GetIdOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *WalletPnlDTO) SetId(v float32)`
+`func (o *WalletPnlDTO) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -129,380 +129,380 @@ SetTokenAddress sets TokenAddress field to given value.
 
 ### GetTokenPriceInUsd
 
-`func (o *WalletPnlDTO) GetTokenPriceInUsd() float32`
+`func (o *WalletPnlDTO) GetTokenPriceInUsd() string`
 
 GetTokenPriceInUsd returns the TokenPriceInUsd field if non-nil, zero value otherwise.
 
 ### GetTokenPriceInUsdOk
 
-`func (o *WalletPnlDTO) GetTokenPriceInUsdOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetTokenPriceInUsdOk() (*string, bool)`
 
 GetTokenPriceInUsdOk returns a tuple with the TokenPriceInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenPriceInUsd
 
-`func (o *WalletPnlDTO) SetTokenPriceInUsd(v float32)`
+`func (o *WalletPnlDTO) SetTokenPriceInUsd(v string)`
 
 SetTokenPriceInUsd sets TokenPriceInUsd field to given value.
 
 
 ### GetOpenTime
 
-`func (o *WalletPnlDTO) GetOpenTime() float32`
+`func (o *WalletPnlDTO) GetOpenTime() int64`
 
 GetOpenTime returns the OpenTime field if non-nil, zero value otherwise.
 
 ### GetOpenTimeOk
 
-`func (o *WalletPnlDTO) GetOpenTimeOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetOpenTimeOk() (*int64, bool)`
 
 GetOpenTimeOk returns a tuple with the OpenTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOpenTime
 
-`func (o *WalletPnlDTO) SetOpenTime(v float32)`
+`func (o *WalletPnlDTO) SetOpenTime(v int64)`
 
 SetOpenTime sets OpenTime field to given value.
 
 
 ### GetCloseTime
 
-`func (o *WalletPnlDTO) GetCloseTime() float32`
+`func (o *WalletPnlDTO) GetCloseTime() int64`
 
 GetCloseTime returns the CloseTime field if non-nil, zero value otherwise.
 
 ### GetCloseTimeOk
 
-`func (o *WalletPnlDTO) GetCloseTimeOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetCloseTimeOk() (*int64, bool)`
 
 GetCloseTimeOk returns a tuple with the CloseTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCloseTime
 
-`func (o *WalletPnlDTO) SetCloseTime(v float32)`
+`func (o *WalletPnlDTO) SetCloseTime(v int64)`
 
 SetCloseTime sets CloseTime field to given value.
 
 
 ### GetLastTime
 
-`func (o *WalletPnlDTO) GetLastTime() float32`
+`func (o *WalletPnlDTO) GetLastTime() int64`
 
 GetLastTime returns the LastTime field if non-nil, zero value otherwise.
 
 ### GetLastTimeOk
 
-`func (o *WalletPnlDTO) GetLastTimeOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetLastTimeOk() (*int64, bool)`
 
 GetLastTimeOk returns a tuple with the LastTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastTime
 
-`func (o *WalletPnlDTO) SetLastTime(v float32)`
+`func (o *WalletPnlDTO) SetLastTime(v int64)`
 
 SetLastTime sets LastTime field to given value.
 
 
 ### GetBalance
 
-`func (o *WalletPnlDTO) GetBalance() float32`
+`func (o *WalletPnlDTO) GetBalance() string`
 
 GetBalance returns the Balance field if non-nil, zero value otherwise.
 
 ### GetBalanceOk
 
-`func (o *WalletPnlDTO) GetBalanceOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetBalanceOk() (*string, bool)`
 
 GetBalanceOk returns a tuple with the Balance field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBalance
 
-`func (o *WalletPnlDTO) SetBalance(v float32)`
+`func (o *WalletPnlDTO) SetBalance(v string)`
 
 SetBalance sets Balance field to given value.
 
 
 ### GetBuyAmount
 
-`func (o *WalletPnlDTO) GetBuyAmount() float32`
+`func (o *WalletPnlDTO) GetBuyAmount() string`
 
 GetBuyAmount returns the BuyAmount field if non-nil, zero value otherwise.
 
 ### GetBuyAmountOk
 
-`func (o *WalletPnlDTO) GetBuyAmountOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetBuyAmountOk() (*string, bool)`
 
 GetBuyAmountOk returns a tuple with the BuyAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuyAmount
 
-`func (o *WalletPnlDTO) SetBuyAmount(v float32)`
+`func (o *WalletPnlDTO) SetBuyAmount(v string)`
 
 SetBuyAmount sets BuyAmount field to given value.
 
 
 ### GetBuyAmountInUsd
 
-`func (o *WalletPnlDTO) GetBuyAmountInUsd() float32`
+`func (o *WalletPnlDTO) GetBuyAmountInUsd() string`
 
 GetBuyAmountInUsd returns the BuyAmountInUsd field if non-nil, zero value otherwise.
 
 ### GetBuyAmountInUsdOk
 
-`func (o *WalletPnlDTO) GetBuyAmountInUsdOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetBuyAmountInUsdOk() (*string, bool)`
 
 GetBuyAmountInUsdOk returns a tuple with the BuyAmountInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuyAmountInUsd
 
-`func (o *WalletPnlDTO) SetBuyAmountInUsd(v float32)`
+`func (o *WalletPnlDTO) SetBuyAmountInUsd(v string)`
 
 SetBuyAmountInUsd sets BuyAmountInUsd field to given value.
 
 
 ### GetBuys
 
-`func (o *WalletPnlDTO) GetBuys() float32`
+`func (o *WalletPnlDTO) GetBuys() string`
 
 GetBuys returns the Buys field if non-nil, zero value otherwise.
 
 ### GetBuysOk
 
-`func (o *WalletPnlDTO) GetBuysOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetBuysOk() (*string, bool)`
 
 GetBuysOk returns a tuple with the Buys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuys
 
-`func (o *WalletPnlDTO) SetBuys(v float32)`
+`func (o *WalletPnlDTO) SetBuys(v string)`
 
 SetBuys sets Buys field to given value.
 
 
 ### GetSellAmount
 
-`func (o *WalletPnlDTO) GetSellAmount() float32`
+`func (o *WalletPnlDTO) GetSellAmount() string`
 
 GetSellAmount returns the SellAmount field if non-nil, zero value otherwise.
 
 ### GetSellAmountOk
 
-`func (o *WalletPnlDTO) GetSellAmountOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetSellAmountOk() (*string, bool)`
 
 GetSellAmountOk returns a tuple with the SellAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSellAmount
 
-`func (o *WalletPnlDTO) SetSellAmount(v float32)`
+`func (o *WalletPnlDTO) SetSellAmount(v string)`
 
 SetSellAmount sets SellAmount field to given value.
 
 
 ### GetSellAmountInUsd
 
-`func (o *WalletPnlDTO) GetSellAmountInUsd() float32`
+`func (o *WalletPnlDTO) GetSellAmountInUsd() string`
 
 GetSellAmountInUsd returns the SellAmountInUsd field if non-nil, zero value otherwise.
 
 ### GetSellAmountInUsdOk
 
-`func (o *WalletPnlDTO) GetSellAmountInUsdOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetSellAmountInUsdOk() (*string, bool)`
 
 GetSellAmountInUsdOk returns a tuple with the SellAmountInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSellAmountInUsd
 
-`func (o *WalletPnlDTO) SetSellAmountInUsd(v float32)`
+`func (o *WalletPnlDTO) SetSellAmountInUsd(v string)`
 
 SetSellAmountInUsd sets SellAmountInUsd field to given value.
 
 
 ### GetSells
 
-`func (o *WalletPnlDTO) GetSells() float32`
+`func (o *WalletPnlDTO) GetSells() string`
 
 GetSells returns the Sells field if non-nil, zero value otherwise.
 
 ### GetSellsOk
 
-`func (o *WalletPnlDTO) GetSellsOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetSellsOk() (*string, bool)`
 
 GetSellsOk returns a tuple with the Sells field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSells
 
-`func (o *WalletPnlDTO) SetSells(v float32)`
+`func (o *WalletPnlDTO) SetSells(v string)`
 
 SetSells sets Sells field to given value.
 
 
 ### GetAverageBuyPriceInUsd
 
-`func (o *WalletPnlDTO) GetAverageBuyPriceInUsd() float32`
+`func (o *WalletPnlDTO) GetAverageBuyPriceInUsd() string`
 
 GetAverageBuyPriceInUsd returns the AverageBuyPriceInUsd field if non-nil, zero value otherwise.
 
 ### GetAverageBuyPriceInUsdOk
 
-`func (o *WalletPnlDTO) GetAverageBuyPriceInUsdOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetAverageBuyPriceInUsdOk() (*string, bool)`
 
 GetAverageBuyPriceInUsdOk returns a tuple with the AverageBuyPriceInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAverageBuyPriceInUsd
 
-`func (o *WalletPnlDTO) SetAverageBuyPriceInUsd(v float32)`
+`func (o *WalletPnlDTO) SetAverageBuyPriceInUsd(v string)`
 
 SetAverageBuyPriceInUsd sets AverageBuyPriceInUsd field to given value.
 
 
 ### GetAverageSellPriceInUsd
 
-`func (o *WalletPnlDTO) GetAverageSellPriceInUsd() float32`
+`func (o *WalletPnlDTO) GetAverageSellPriceInUsd() string`
 
 GetAverageSellPriceInUsd returns the AverageSellPriceInUsd field if non-nil, zero value otherwise.
 
 ### GetAverageSellPriceInUsdOk
 
-`func (o *WalletPnlDTO) GetAverageSellPriceInUsdOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetAverageSellPriceInUsdOk() (*string, bool)`
 
 GetAverageSellPriceInUsdOk returns a tuple with the AverageSellPriceInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAverageSellPriceInUsd
 
-`func (o *WalletPnlDTO) SetAverageSellPriceInUsd(v float32)`
+`func (o *WalletPnlDTO) SetAverageSellPriceInUsd(v string)`
 
 SetAverageSellPriceInUsd sets AverageSellPriceInUsd field to given value.
 
 
 ### GetUnrealizedProfitInUsd
 
-`func (o *WalletPnlDTO) GetUnrealizedProfitInUsd() float32`
+`func (o *WalletPnlDTO) GetUnrealizedProfitInUsd() string`
 
 GetUnrealizedProfitInUsd returns the UnrealizedProfitInUsd field if non-nil, zero value otherwise.
 
 ### GetUnrealizedProfitInUsdOk
 
-`func (o *WalletPnlDTO) GetUnrealizedProfitInUsdOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetUnrealizedProfitInUsdOk() (*string, bool)`
 
 GetUnrealizedProfitInUsdOk returns a tuple with the UnrealizedProfitInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnrealizedProfitInUsd
 
-`func (o *WalletPnlDTO) SetUnrealizedProfitInUsd(v float32)`
+`func (o *WalletPnlDTO) SetUnrealizedProfitInUsd(v string)`
 
 SetUnrealizedProfitInUsd sets UnrealizedProfitInUsd field to given value.
 
 
 ### GetUnrealizedProfitRatio
 
-`func (o *WalletPnlDTO) GetUnrealizedProfitRatio() float32`
+`func (o *WalletPnlDTO) GetUnrealizedProfitRatio() string`
 
 GetUnrealizedProfitRatio returns the UnrealizedProfitRatio field if non-nil, zero value otherwise.
 
 ### GetUnrealizedProfitRatioOk
 
-`func (o *WalletPnlDTO) GetUnrealizedProfitRatioOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetUnrealizedProfitRatioOk() (*string, bool)`
 
 GetUnrealizedProfitRatioOk returns a tuple with the UnrealizedProfitRatio field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnrealizedProfitRatio
 
-`func (o *WalletPnlDTO) SetUnrealizedProfitRatio(v float32)`
+`func (o *WalletPnlDTO) SetUnrealizedProfitRatio(v string)`
 
 SetUnrealizedProfitRatio sets UnrealizedProfitRatio field to given value.
 
 
 ### GetRealizedProfitInUsd
 
-`func (o *WalletPnlDTO) GetRealizedProfitInUsd() float32`
+`func (o *WalletPnlDTO) GetRealizedProfitInUsd() string`
 
 GetRealizedProfitInUsd returns the RealizedProfitInUsd field if non-nil, zero value otherwise.
 
 ### GetRealizedProfitInUsdOk
 
-`func (o *WalletPnlDTO) GetRealizedProfitInUsdOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetRealizedProfitInUsdOk() (*string, bool)`
 
 GetRealizedProfitInUsdOk returns a tuple with the RealizedProfitInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRealizedProfitInUsd
 
-`func (o *WalletPnlDTO) SetRealizedProfitInUsd(v float32)`
+`func (o *WalletPnlDTO) SetRealizedProfitInUsd(v string)`
 
 SetRealizedProfitInUsd sets RealizedProfitInUsd field to given value.
 
 
 ### GetRealizedProfitRatio
 
-`func (o *WalletPnlDTO) GetRealizedProfitRatio() float32`
+`func (o *WalletPnlDTO) GetRealizedProfitRatio() string`
 
 GetRealizedProfitRatio returns the RealizedProfitRatio field if non-nil, zero value otherwise.
 
 ### GetRealizedProfitRatioOk
 
-`func (o *WalletPnlDTO) GetRealizedProfitRatioOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetRealizedProfitRatioOk() (*string, bool)`
 
 GetRealizedProfitRatioOk returns a tuple with the RealizedProfitRatio field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRealizedProfitRatio
 
-`func (o *WalletPnlDTO) SetRealizedProfitRatio(v float32)`
+`func (o *WalletPnlDTO) SetRealizedProfitRatio(v string)`
 
 SetRealizedProfitRatio sets RealizedProfitRatio field to given value.
 
 
 ### GetTotalRealizedProfitInUsd
 
-`func (o *WalletPnlDTO) GetTotalRealizedProfitInUsd() float32`
+`func (o *WalletPnlDTO) GetTotalRealizedProfitInUsd() string`
 
 GetTotalRealizedProfitInUsd returns the TotalRealizedProfitInUsd field if non-nil, zero value otherwise.
 
 ### GetTotalRealizedProfitInUsdOk
 
-`func (o *WalletPnlDTO) GetTotalRealizedProfitInUsdOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetTotalRealizedProfitInUsdOk() (*string, bool)`
 
 GetTotalRealizedProfitInUsdOk returns a tuple with the TotalRealizedProfitInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalRealizedProfitInUsd
 
-`func (o *WalletPnlDTO) SetTotalRealizedProfitInUsd(v float32)`
+`func (o *WalletPnlDTO) SetTotalRealizedProfitInUsd(v string)`
 
 SetTotalRealizedProfitInUsd sets TotalRealizedProfitInUsd field to given value.
 
 
 ### GetTotalRealizedProfitRatio
 
-`func (o *WalletPnlDTO) GetTotalRealizedProfitRatio() float32`
+`func (o *WalletPnlDTO) GetTotalRealizedProfitRatio() string`
 
 GetTotalRealizedProfitRatio returns the TotalRealizedProfitRatio field if non-nil, zero value otherwise.
 
 ### GetTotalRealizedProfitRatioOk
 
-`func (o *WalletPnlDTO) GetTotalRealizedProfitRatioOk() (*float32, bool)`
+`func (o *WalletPnlDTO) GetTotalRealizedProfitRatioOk() (*string, bool)`
 
 GetTotalRealizedProfitRatioOk returns a tuple with the TotalRealizedProfitRatio field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalRealizedProfitRatio
 
-`func (o *WalletPnlDTO) SetTotalRealizedProfitRatio(v float32)`
+`func (o *WalletPnlDTO) SetTotalRealizedProfitRatio(v string)`
 
 SetTotalRealizedProfitRatio sets TotalRealizedProfitRatio field to given value.
 

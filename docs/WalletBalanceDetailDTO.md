@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **PriceChangeRatioInUsd24h** | **string** | DTO.WALLET.BALANCE.PRICE_CHANGE_24H | 
 **UnrealizedProfitInUsd** | **string** | DTO.WALLET.BALANCE.UNREALIZED_PROFIT | 
 **UnrealizedProfitRatio** | **string** | DTO.WALLET.BALANCE.UNREALIZED_PROFIT_RATIO | 
-**OpenTime** | **float32** | DTO.WALLET.BALANCE.OPEN_TIME | 
-**CloseTime** | **float32** | DTO.WALLET.BALANCE.CLOSE_TIME | 
+**OpenTime** | **int64** | DTO.WALLET.BALANCE.OPEN_TIME | 
+**CloseTime** | **int64** | DTO.WALLET.BALANCE.CLOSE_TIME | 
 **Buys** | **string** | DTO.WALLET.BALANCE.BUYS | 
 **BuyAmount** | **string** | DTO.WALLET.BALANCE.BUY_AMOUNT | 
 **BuyAmountInUsd** | **string** | DTO.WALLET.BALANCE.BUY_AMOUNT_USD | 
@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 
 ### NewWalletBalanceDetailDTO
 
-`func NewWalletBalanceDetailDTO(tokenAddress string, amount string, valueInUsd string, name string, symbol string, imageUrl string, priceInSol string, priceInUsd string, priceChangeRatioInUsd24h string, unrealizedProfitInUsd string, unrealizedProfitRatio string, openTime float32, closeTime float32, buys string, buyAmount string, buyAmountInUsd string, sells string, sellAmount string, sellAmountInUsd string, averageBuyPriceInUsd string, averageSellPriceInUsd string, realizedProfitInUsd string, realizedProfitRatio string, totalRealizedProfitInUsd string, totalRealizedProfitRatio string, ) *WalletBalanceDetailDTO`
+`func NewWalletBalanceDetailDTO(tokenAddress string, amount string, valueInUsd string, name string, symbol string, imageUrl string, priceInSol string, priceInUsd string, priceChangeRatioInUsd24h string, unrealizedProfitInUsd string, unrealizedProfitRatio string, openTime int64, closeTime int64, buys string, buyAmount string, buyAmountInUsd string, sells string, sellAmount string, sellAmountInUsd string, averageBuyPriceInUsd string, averageSellPriceInUsd string, realizedProfitInUsd string, realizedProfitRatio string, totalRealizedProfitInUsd string, totalRealizedProfitRatio string, ) *WalletBalanceDetailDTO`
 
 NewWalletBalanceDetailDTO instantiates a new WalletBalanceDetailDTO object
 This constructor will assign default values to properties that have it defined,
@@ -271,40 +271,40 @@ SetUnrealizedProfitRatio sets UnrealizedProfitRatio field to given value.
 
 ### GetOpenTime
 
-`func (o *WalletBalanceDetailDTO) GetOpenTime() float32`
+`func (o *WalletBalanceDetailDTO) GetOpenTime() int64`
 
 GetOpenTime returns the OpenTime field if non-nil, zero value otherwise.
 
 ### GetOpenTimeOk
 
-`func (o *WalletBalanceDetailDTO) GetOpenTimeOk() (*float32, bool)`
+`func (o *WalletBalanceDetailDTO) GetOpenTimeOk() (*int64, bool)`
 
 GetOpenTimeOk returns a tuple with the OpenTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOpenTime
 
-`func (o *WalletBalanceDetailDTO) SetOpenTime(v float32)`
+`func (o *WalletBalanceDetailDTO) SetOpenTime(v int64)`
 
 SetOpenTime sets OpenTime field to given value.
 
 
 ### GetCloseTime
 
-`func (o *WalletBalanceDetailDTO) GetCloseTime() float32`
+`func (o *WalletBalanceDetailDTO) GetCloseTime() int64`
 
 GetCloseTime returns the CloseTime field if non-nil, zero value otherwise.
 
 ### GetCloseTimeOk
 
-`func (o *WalletBalanceDetailDTO) GetCloseTimeOk() (*float32, bool)`
+`func (o *WalletBalanceDetailDTO) GetCloseTimeOk() (*int64, bool)`
 
 GetCloseTimeOk returns a tuple with the CloseTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCloseTime
 
-`func (o *WalletBalanceDetailDTO) SetCloseTime(v float32)`
+`func (o *WalletBalanceDetailDTO) SetCloseTime(v int64)`
 
 SetCloseTime sets CloseTime field to given value.
 

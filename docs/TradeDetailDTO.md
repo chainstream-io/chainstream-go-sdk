@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Chain** | **string** | DTO.TRADE.DETAIL.CHAIN | 
-**BlockHeight** | **float32** | DTO.TRADE.DETAIL.BLOCK_HEIGHT | 
-**BlockTimestamp** | **float32** | DTO.TRADE.DETAIL.BLOCK_TIMESTAMP | 
+**BlockHeight** | **int64** | DTO.TRADE.DETAIL.BLOCK_HEIGHT | 
+**BlockTimestamp** | **int64** | DTO.TRADE.DETAIL.BLOCK_TIMESTAMP | 
 **AccountOwnerAddress** | **string** | DTO.TRADE.DETAIL.ACCOUNT_OWNER_ADDRESS | 
 **TransactionSignature** | **string** | DTO.TRADE.DETAIL.TRANSACTION_SIGNATURE | 
 **TokenName** | **string** | DTO.TRADE.DETAIL.TOKEN_NAME | 
@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 
 ### NewTradeDetailDTO
 
-`func NewTradeDetailDTO(chain string, blockHeight float32, blockTimestamp float32, accountOwnerAddress string, transactionSignature string, tokenName string, tokenSymbol string, tokenImageUrl string, tokenAddress string, poolAddress string, dexProgramAddress string, dexProtocolFamily string, dexImage string, tokenAmount string, tokenPriceInUsd string, tokenAmountInUsd string, type_ string, sideTokenName string, sideTokenSymbol string, sideTokenImageUrl string, sideTokenAddress string, sideTokenPriceInUsd string, sideTokenAmount string, sideTokenAmountInUsd string, status string, ) *TradeDetailDTO`
+`func NewTradeDetailDTO(chain string, blockHeight int64, blockTimestamp int64, accountOwnerAddress string, transactionSignature string, tokenName string, tokenSymbol string, tokenImageUrl string, tokenAddress string, poolAddress string, dexProgramAddress string, dexProtocolFamily string, dexImage string, tokenAmount string, tokenPriceInUsd string, tokenAmountInUsd string, type_ string, sideTokenName string, sideTokenSymbol string, sideTokenImageUrl string, sideTokenAddress string, sideTokenPriceInUsd string, sideTokenAmount string, sideTokenAmountInUsd string, status string, ) *TradeDetailDTO`
 
 NewTradeDetailDTO instantiates a new TradeDetailDTO object
 This constructor will assign default values to properties that have it defined,
@@ -71,40 +71,40 @@ SetChain sets Chain field to given value.
 
 ### GetBlockHeight
 
-`func (o *TradeDetailDTO) GetBlockHeight() float32`
+`func (o *TradeDetailDTO) GetBlockHeight() int64`
 
 GetBlockHeight returns the BlockHeight field if non-nil, zero value otherwise.
 
 ### GetBlockHeightOk
 
-`func (o *TradeDetailDTO) GetBlockHeightOk() (*float32, bool)`
+`func (o *TradeDetailDTO) GetBlockHeightOk() (*int64, bool)`
 
 GetBlockHeightOk returns a tuple with the BlockHeight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlockHeight
 
-`func (o *TradeDetailDTO) SetBlockHeight(v float32)`
+`func (o *TradeDetailDTO) SetBlockHeight(v int64)`
 
 SetBlockHeight sets BlockHeight field to given value.
 
 
 ### GetBlockTimestamp
 
-`func (o *TradeDetailDTO) GetBlockTimestamp() float32`
+`func (o *TradeDetailDTO) GetBlockTimestamp() int64`
 
 GetBlockTimestamp returns the BlockTimestamp field if non-nil, zero value otherwise.
 
 ### GetBlockTimestampOk
 
-`func (o *TradeDetailDTO) GetBlockTimestampOk() (*float32, bool)`
+`func (o *TradeDetailDTO) GetBlockTimestampOk() (*int64, bool)`
 
 GetBlockTimestampOk returns a tuple with the BlockTimestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlockTimestamp
 
-`func (o *TradeDetailDTO) SetBlockTimestamp(v float32)`
+`func (o *TradeDetailDTO) SetBlockTimestamp(v int64)`
 
 SetBlockTimestamp sets BlockTimestamp field to given value.
 

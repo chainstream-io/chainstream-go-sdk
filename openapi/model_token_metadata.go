@@ -25,7 +25,7 @@ type TokenMetadata struct {
 	// DTO.TOKEN.METADATA.CHAIN
 	Chain string `json:"chain"`
 	// DTO.TOKEN.METADATA.DECIMALS
-	Decimals float32 `json:"decimals"`
+	Decimals int64 `json:"decimals"`
 	// DTO.TOKEN.METADATA.NAME
 	Name string `json:"name"`
 	// DTO.TOKEN.METADATA.SYMBOL
@@ -45,11 +45,11 @@ type TokenMetadata struct {
 	// DTO.TOKEN.METADATA.SOCIAL_MEDIAS
 	SocialMedias *TokenSocialMediasDTO `json:"socialMedias,omitempty"`
 	// DTO.TOKEN.METADATA.TOKEN_CREATED_AT
-	TokenCreatedAt *float32 `json:"tokenCreatedAt,omitempty"`
+	TokenCreatedAt *int64 `json:"tokenCreatedAt,omitempty"`
 	// DTO.TOKEN.METADATA.DESCRIPTION
 	Description *string `json:"description,omitempty"`
 	// DTO.TOKEN.METADATA.DEV_TOTAL_TOKENS
-	DevTotalTokens *float32 `json:"devTotalTokens,omitempty"`
+	DevTotalTokens *string `json:"devTotalTokens,omitempty"`
 	// DTO.TOKEN.METADATA.DEV_LAST_TOKEN_CREATED_AT
 	DevLastTokenCreatedAt *string `json:"devLastTokenCreatedAt,omitempty"`
 }
@@ -60,7 +60,7 @@ type _TokenMetadata TokenMetadata
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenMetadata(chain string, decimals float32, name string, symbol string, address string) *TokenMetadata {
+func NewTokenMetadata(chain string, decimals int64, name string, symbol string, address string) *TokenMetadata {
 	this := TokenMetadata{}
 	this.Chain = chain
 	this.Decimals = decimals
@@ -103,9 +103,9 @@ func (o *TokenMetadata) SetChain(v string) {
 }
 
 // GetDecimals returns the Decimals field value
-func (o *TokenMetadata) GetDecimals() float32 {
+func (o *TokenMetadata) GetDecimals() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -114,7 +114,7 @@ func (o *TokenMetadata) GetDecimals() float32 {
 
 // GetDecimalsOk returns a tuple with the Decimals field value
 // and a boolean to check if the value has been set.
-func (o *TokenMetadata) GetDecimalsOk() (*float32, bool) {
+func (o *TokenMetadata) GetDecimalsOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *TokenMetadata) GetDecimalsOk() (*float32, bool) {
 }
 
 // SetDecimals sets field value
-func (o *TokenMetadata) SetDecimals(v float32) {
+func (o *TokenMetadata) SetDecimals(v int64) {
 	o.Decimals = v
 }
 
@@ -391,9 +391,9 @@ func (o *TokenMetadata) SetSocialMedias(v TokenSocialMediasDTO) {
 }
 
 // GetTokenCreatedAt returns the TokenCreatedAt field value if set, zero value otherwise.
-func (o *TokenMetadata) GetTokenCreatedAt() float32 {
+func (o *TokenMetadata) GetTokenCreatedAt() int64 {
 	if o == nil || IsNil(o.TokenCreatedAt) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.TokenCreatedAt
@@ -401,7 +401,7 @@ func (o *TokenMetadata) GetTokenCreatedAt() float32 {
 
 // GetTokenCreatedAtOk returns a tuple with the TokenCreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenMetadata) GetTokenCreatedAtOk() (*float32, bool) {
+func (o *TokenMetadata) GetTokenCreatedAtOk() (*int64, bool) {
 	if o == nil || IsNil(o.TokenCreatedAt) {
 		return nil, false
 	}
@@ -417,8 +417,8 @@ func (o *TokenMetadata) HasTokenCreatedAt() bool {
 	return false
 }
 
-// SetTokenCreatedAt gets a reference to the given float32 and assigns it to the TokenCreatedAt field.
-func (o *TokenMetadata) SetTokenCreatedAt(v float32) {
+// SetTokenCreatedAt gets a reference to the given int64 and assigns it to the TokenCreatedAt field.
+func (o *TokenMetadata) SetTokenCreatedAt(v int64) {
 	o.TokenCreatedAt = &v
 }
 
@@ -455,9 +455,9 @@ func (o *TokenMetadata) SetDescription(v string) {
 }
 
 // GetDevTotalTokens returns the DevTotalTokens field value if set, zero value otherwise.
-func (o *TokenMetadata) GetDevTotalTokens() float32 {
+func (o *TokenMetadata) GetDevTotalTokens() string {
 	if o == nil || IsNil(o.DevTotalTokens) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.DevTotalTokens
@@ -465,7 +465,7 @@ func (o *TokenMetadata) GetDevTotalTokens() float32 {
 
 // GetDevTotalTokensOk returns a tuple with the DevTotalTokens field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenMetadata) GetDevTotalTokensOk() (*float32, bool) {
+func (o *TokenMetadata) GetDevTotalTokensOk() (*string, bool) {
 	if o == nil || IsNil(o.DevTotalTokens) {
 		return nil, false
 	}
@@ -481,8 +481,8 @@ func (o *TokenMetadata) HasDevTotalTokens() bool {
 	return false
 }
 
-// SetDevTotalTokens gets a reference to the given float32 and assigns it to the DevTotalTokens field.
-func (o *TokenMetadata) SetDevTotalTokens(v float32) {
+// SetDevTotalTokens gets a reference to the given string and assigns it to the DevTotalTokens field.
+func (o *TokenMetadata) SetDevTotalTokens(v string) {
 	o.DevTotalTokens = &v
 }
 

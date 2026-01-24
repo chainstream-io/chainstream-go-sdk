@@ -257,7 +257,7 @@ type RedPacketAPIGetClaimsRequest struct {
 	ApiService *RedPacketAPIService
 	id string
 	cursor *string
-	limit *float32
+	limit *int64
 	direction *string
 }
 
@@ -268,7 +268,7 @@ func (r RedPacketAPIGetClaimsRequest) Cursor(cursor string) RedPacketAPIGetClaim
 }
 
 // DTO.RED_PACKET.LIMIT
-func (r RedPacketAPIGetClaimsRequest) Limit(limit float32) RedPacketAPIGetClaimsRequest {
+func (r RedPacketAPIGetClaimsRequest) Limit(limit int64) RedPacketAPIGetClaimsRequest {
 	r.limit = &limit
 	return r
 }
@@ -390,7 +390,7 @@ type RedPacketAPIGetClaimsByAddressRequest struct {
 	ApiService *RedPacketAPIService
 	address string
 	cursor *string
-	limit *float32
+	limit *int64
 	direction *string
 }
 
@@ -401,7 +401,7 @@ func (r RedPacketAPIGetClaimsByAddressRequest) Cursor(cursor string) RedPacketAP
 }
 
 // DTO.RED_PACKET.LIMIT
-func (r RedPacketAPIGetClaimsByAddressRequest) Limit(limit float32) RedPacketAPIGetClaimsByAddressRequest {
+func (r RedPacketAPIGetClaimsByAddressRequest) Limit(limit int64) RedPacketAPIGetClaimsByAddressRequest {
 	r.limit = &limit
 	return r
 }
@@ -625,7 +625,7 @@ type RedPacketAPIGetRedpacketsRequest struct {
 	ctx context.Context
 	ApiService *RedPacketAPIService
 	cursor *string
-	limit *float32
+	limit *int64
 	direction *string
 	creator *string
 	chain *string
@@ -638,7 +638,7 @@ func (r RedPacketAPIGetRedpacketsRequest) Cursor(cursor string) RedPacketAPIGetR
 }
 
 // DTO.RED_PACKET.LIMIT
-func (r RedPacketAPIGetRedpacketsRequest) Limit(limit float32) RedPacketAPIGetRedpacketsRequest {
+func (r RedPacketAPIGetRedpacketsRequest) Limit(limit int64) RedPacketAPIGetRedpacketsRequest {
 	r.limit = &limit
 	return r
 }
@@ -775,7 +775,7 @@ type RedPacketAPIGetRedpacketsByAddressRequest struct {
 	ApiService *RedPacketAPIService
 	address string
 	cursor *string
-	limit *float32
+	limit *int64
 	direction *string
 }
 
@@ -786,7 +786,7 @@ func (r RedPacketAPIGetRedpacketsByAddressRequest) Cursor(cursor string) RedPack
 }
 
 // DTO.RED_PACKET.LIMIT
-func (r RedPacketAPIGetRedpacketsByAddressRequest) Limit(limit float32) RedPacketAPIGetRedpacketsByAddressRequest {
+func (r RedPacketAPIGetRedpacketsByAddressRequest) Limit(limit int64) RedPacketAPIGetRedpacketsByAddressRequest {
 	r.limit = &limit
 	return r
 }

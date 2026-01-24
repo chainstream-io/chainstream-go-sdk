@@ -31,9 +31,9 @@ type TokenAPIGetCandlesRequest struct {
 	chain ChainSymbol
 	tokenAddress string
 	resolution *Resolution
-	from *string
-	to *string
-	limit *float32
+	from *int64
+	to *int64
+	limit *int64
 }
 
 // DTO.CANDLE.RESOLUTION
@@ -43,19 +43,19 @@ func (r TokenAPIGetCandlesRequest) Resolution(resolution Resolution) TokenAPIGet
 }
 
 // DTO.CANDLE.FROM
-func (r TokenAPIGetCandlesRequest) From(from string) TokenAPIGetCandlesRequest {
+func (r TokenAPIGetCandlesRequest) From(from int64) TokenAPIGetCandlesRequest {
 	r.from = &from
 	return r
 }
 
 // DTO.CANDLE.TO
-func (r TokenAPIGetCandlesRequest) To(to string) TokenAPIGetCandlesRequest {
+func (r TokenAPIGetCandlesRequest) To(to int64) TokenAPIGetCandlesRequest {
 	r.to = &to
 	return r
 }
 
 // DTO.CANDLE.LIMIT
-func (r TokenAPIGetCandlesRequest) Limit(limit float32) TokenAPIGetCandlesRequest {
+func (r TokenAPIGetCandlesRequest) Limit(limit int64) TokenAPIGetCandlesRequest {
 	r.limit = &limit
 	return r
 }
@@ -1253,10 +1253,10 @@ type TokenAPIGetPoolsRequest struct {
 	tokenAddress string
 	sortBy *string
 	sortDirection *string
-	minTvlInSol *float32
-	maxTvlInSol *float32
-	minTvlInUsd *float32
-	maxTvlInUsd *float32
+	minTvlInSol *string
+	maxTvlInSol *string
+	minTvlInUsd *string
+	maxTvlInUsd *string
 }
 
 // DTO.POOL.SORT_BY
@@ -1272,25 +1272,25 @@ func (r TokenAPIGetPoolsRequest) SortDirection(sortDirection string) TokenAPIGet
 }
 
 // DTO.POOL.MIN_TVL_IN_SOL
-func (r TokenAPIGetPoolsRequest) MinTvlInSol(minTvlInSol float32) TokenAPIGetPoolsRequest {
+func (r TokenAPIGetPoolsRequest) MinTvlInSol(minTvlInSol string) TokenAPIGetPoolsRequest {
 	r.minTvlInSol = &minTvlInSol
 	return r
 }
 
 // DTO.POOL.MAX_TVL_IN_SOL
-func (r TokenAPIGetPoolsRequest) MaxTvlInSol(maxTvlInSol float32) TokenAPIGetPoolsRequest {
+func (r TokenAPIGetPoolsRequest) MaxTvlInSol(maxTvlInSol string) TokenAPIGetPoolsRequest {
 	r.maxTvlInSol = &maxTvlInSol
 	return r
 }
 
 // DTO.POOL.MIN_TVL_IN_USD
-func (r TokenAPIGetPoolsRequest) MinTvlInUsd(minTvlInUsd float32) TokenAPIGetPoolsRequest {
+func (r TokenAPIGetPoolsRequest) MinTvlInUsd(minTvlInUsd string) TokenAPIGetPoolsRequest {
 	r.minTvlInUsd = &minTvlInUsd
 	return r
 }
 
 // DTO.POOL.MAX_TVL_IN_USD
-func (r TokenAPIGetPoolsRequest) MaxTvlInUsd(maxTvlInUsd float32) TokenAPIGetPoolsRequest {
+func (r TokenAPIGetPoolsRequest) MaxTvlInUsd(maxTvlInUsd string) TokenAPIGetPoolsRequest {
 	r.maxTvlInUsd = &maxTvlInUsd
 	return r
 }
@@ -1421,11 +1421,11 @@ type TokenAPIGetPriceByTimeRequest struct {
 	ApiService *TokenAPIService
 	chain ChainSymbol
 	tokenAddress string
-	timestamp *float32
+	timestamp *int64
 }
 
 // DTO.TOKEN.PRICE.QUERY.TIMESTAMP
-func (r TokenAPIGetPriceByTimeRequest) Timestamp(timestamp float32) TokenAPIGetPriceByTimeRequest {
+func (r TokenAPIGetPriceByTimeRequest) Timestamp(timestamp int64) TokenAPIGetPriceByTimeRequest {
 	r.timestamp = &timestamp
 	return r
 }
@@ -3912,7 +3912,7 @@ type TokenAPISearchRequest struct {
 	ApiService *TokenAPIService
 	chains *[]string
 	q *string
-	limit *float32
+	limit *int64
 	sort *string
 	protocols *[]string
 	cursor *string
@@ -3932,7 +3932,7 @@ func (r TokenAPISearchRequest) Q(q string) TokenAPISearchRequest {
 }
 
 // DTO.TOKEN.SEARCH.LIMIT
-func (r TokenAPISearchRequest) Limit(limit float32) TokenAPISearchRequest {
+func (r TokenAPISearchRequest) Limit(limit int64) TokenAPISearchRequest {
 	r.limit = &limit
 	return r
 }
@@ -4018,7 +4018,7 @@ func (a *TokenAPIService) SearchExecute(r TokenAPISearchRequest) (*TokenPage, *h
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
-		var defaultValue float32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.sort != nil {

@@ -6,129 +6,129 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** | DTO.TOKEN.STAT.ADDRESS | 
 **Price1m** | **string** | DTO.TOKEN.STAT.PRICE_1M | 
-**Buys1m** | **float32** | DTO.TOKEN.STAT.BUYS_1M | 
-**Sells1m** | **float32** | DTO.TOKEN.STAT.SELLS_1M | 
+**Buys1m** | **string** | DTO.TOKEN.STAT.BUYS_1M | 
+**Sells1m** | **string** | DTO.TOKEN.STAT.SELLS_1M | 
 **BuyVolumes1m** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_1M | 
 **SellsVolumes1m** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_1M | 
 **Volumes1m** | **string** | DTO.TOKEN.STAT.VOLUMES_1M | 
 **BuyVolumesInUsd1m** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_1M | 
 **SellVolumesInUsd1m** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_1M | 
 **VolumesInUsd1m** | **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_1M | 
-**Buyers1m** | Pointer to **float32** | DTO.TOKEN.STAT.BUYERS_1M | [optional] 
-**Sellers1m** | Pointer to **float32** | DTO.TOKEN.STAT.SELLERS_1M | [optional] 
+**Buyers1m** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_1M | [optional] 
+**Sellers1m** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_1M | [optional] 
 **OpenPriceInUsd1m** | **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_1M | 
 **ClosePriceInUsd1m** | **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_1M | 
 **PriceChangeRatioInUsd1m** | **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_1M | 
-**Trades1m** | **float32** | DTO.TOKEN.STAT.TRADES_1M | 
-**Traders1m** | Pointer to **float32** | DTO.TOKEN.STAT.TRADERS_1M | [optional] 
+**Trades1m** | **string** | DTO.TOKEN.STAT.TRADES_1M | 
+**Traders1m** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_1M | [optional] 
 **HighInUsd1m** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_1M | [optional] 
 **LowInUsd1m** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_1M | [optional] 
 **Price5m** | **string** | DTO.TOKEN.STAT.PRICE_5M | 
-**Buys5m** | **float32** | DTO.TOKEN.STAT.BUYS_5M | 
-**Sells5m** | **float32** | DTO.TOKEN.STAT.SELLS_5M | 
+**Buys5m** | **string** | DTO.TOKEN.STAT.BUYS_5M | 
+**Sells5m** | **string** | DTO.TOKEN.STAT.SELLS_5M | 
 **BuyVolumes5m** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_5M | 
 **SellsVolumes5m** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_5M | 
 **Volumes5m** | **string** | DTO.TOKEN.STAT.VOLUMES_5M | 
 **BuyVolumesInUsd5m** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_5M | 
 **SellVolumesInUsd5m** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_5M | 
 **VolumesInUsd5m** | **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_5M | 
-**Buyers5m** | Pointer to **float32** | DTO.TOKEN.STAT.BUYERS_5M | [optional] 
-**Sellers5m** | Pointer to **float32** | DTO.TOKEN.STAT.SELLERS_5M | [optional] 
+**Buyers5m** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_5M | [optional] 
+**Sellers5m** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_5M | [optional] 
 **OpenPriceInUsd5m** | **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_5M | 
 **ClosePriceInUsd5m** | **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_5M | 
 **PriceChangeRatioInUsd5m** | **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_5M | 
-**Trades5m** | **float32** | DTO.TOKEN.STAT.TRADES_5M | 
-**Traders5m** | Pointer to **float32** | DTO.TOKEN.STAT.TRADERS_5M | [optional] 
+**Trades5m** | **string** | DTO.TOKEN.STAT.TRADES_5M | 
+**Traders5m** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_5M | [optional] 
 **HighInUsd5m** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_5M | [optional] 
 **LowInUsd5m** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_5M | [optional] 
 **Price15m** | Pointer to **string** | DTO.TOKEN.STAT.PRICE_15M | [optional] 
-**Buys15m** | Pointer to **float32** | DTO.TOKEN.STAT.BUYS_15M | [optional] 
-**Sells15m** | Pointer to **float32** | DTO.TOKEN.STAT.SELLS_15M | [optional] 
+**Buys15m** | Pointer to **string** | DTO.TOKEN.STAT.BUYS_15M | [optional] 
+**Sells15m** | Pointer to **string** | DTO.TOKEN.STAT.SELLS_15M | [optional] 
 **BuyVolumes15m** | Pointer to **string** | DTO.TOKEN.STAT.BUY_VOLUMES_15M | [optional] 
 **SellsVolumes15m** | Pointer to **string** | DTO.TOKEN.STAT.SELL_VOLUMES_15M | [optional] 
 **Volumes15m** | Pointer to **string** | DTO.TOKEN.STAT.VOLUMES_15M | [optional] 
 **BuyVolumesInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_15M | [optional] 
 **SellVolumesInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_15M | [optional] 
 **VolumesInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_15M | [optional] 
-**Buyers15m** | Pointer to **float32** | DTO.TOKEN.STAT.BUYERS_15M | [optional] 
-**Sellers15m** | Pointer to **float32** | DTO.TOKEN.STAT.SELLERS_15M | [optional] 
+**Buyers15m** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_15M | [optional] 
+**Sellers15m** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_15M | [optional] 
 **OpenPriceInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_15M | [optional] 
 **ClosePriceInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_15M | [optional] 
 **PriceChangeRatioInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_15M | [optional] 
-**Trades15m** | Pointer to **float32** | DTO.TOKEN.STAT.TRADES_15M | [optional] 
-**Traders15m** | Pointer to **float32** | DTO.TOKEN.STAT.TRADERS_15M | [optional] 
+**Trades15m** | Pointer to **string** | DTO.TOKEN.STAT.TRADES_15M | [optional] 
+**Traders15m** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_15M | [optional] 
 **HighInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_15M | [optional] 
 **LowInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_15M | [optional] 
 **Price30m** | **string** | DTO.TOKEN.STAT.PRICE_30M | 
-**Buys30m** | **float32** | DTO.TOKEN.STAT.BUYS_30M | 
-**Sells30m** | **float32** | DTO.TOKEN.STAT.SELLS_30M | 
+**Buys30m** | **string** | DTO.TOKEN.STAT.BUYS_30M | 
+**Sells30m** | **string** | DTO.TOKEN.STAT.SELLS_30M | 
 **BuyVolumes30m** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_30M | 
 **SellsVolumes30m** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_30M | 
 **Volumes30m** | **string** | DTO.TOKEN.STAT.VOLUMES_30M | 
 **BuyVolumesInUsd30m** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_30M | 
 **SellVolumesInUsd30m** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_30M | 
 **VolumesInUsd30m** | **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_30M | 
-**Buyers30m** | Pointer to **float32** | DTO.TOKEN.STAT.BUYERS_30M | [optional] 
-**Sellers30m** | Pointer to **float32** | DTO.TOKEN.STAT.SELLERS_30M | [optional] 
+**Buyers30m** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_30M | [optional] 
+**Sellers30m** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_30M | [optional] 
 **OpenPriceInUsd30m** | **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_30M | 
 **ClosePriceInUsd30m** | **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_30M | 
 **PriceChangeRatioInUsd30m** | **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_30M | 
-**Trades30m** | **float32** | DTO.TOKEN.STAT.TRADES_30M | 
-**Traders30m** | Pointer to **float32** | DTO.TOKEN.STAT.TRADERS_30M | [optional] 
+**Trades30m** | **string** | DTO.TOKEN.STAT.TRADES_30M | 
+**Traders30m** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_30M | [optional] 
 **HighInUsd30m** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_30M | [optional] 
 **LowInUsd30m** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_30M | [optional] 
 **Price1h** | **string** | DTO.TOKEN.STAT.PRICE_1H | 
-**Buys1h** | **float32** | DTO.TOKEN.STAT.BUYS_1H | 
-**Sells1h** | **float32** | DTO.TOKEN.STAT.SELLS_1H | 
+**Buys1h** | **string** | DTO.TOKEN.STAT.BUYS_1H | 
+**Sells1h** | **string** | DTO.TOKEN.STAT.SELLS_1H | 
 **BuyVolumes1h** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_1H | 
 **SellsVolumes1h** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_1H | 
 **Volumes1h** | **string** | DTO.TOKEN.STAT.VOLUMES_1H | 
 **BuyVolumesInUsd1h** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_1H | 
 **SellVolumesInUsd1h** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_1H | 
 **VolumesInUsd1h** | **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_1H | 
-**Buyers1h** | Pointer to **float32** | DTO.TOKEN.STAT.BUYERS_1H | [optional] 
-**Sellers1h** | Pointer to **float32** | DTO.TOKEN.STAT.SELLERS_1H | [optional] 
+**Buyers1h** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_1H | [optional] 
+**Sellers1h** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_1H | [optional] 
 **OpenPriceInUsd1h** | **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_1H | 
 **ClosePriceInUsd1h** | **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_1H | 
 **PriceChangeRatioInUsd1h** | **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_1H | 
-**Trades1h** | **float32** | DTO.TOKEN.STAT.TRADES_1H | 
-**Traders1h** | Pointer to **float32** | DTO.TOKEN.STAT.TRADERS_1H | [optional] 
+**Trades1h** | **string** | DTO.TOKEN.STAT.TRADES_1H | 
+**Traders1h** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_1H | [optional] 
 **HighInUsd1h** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_1H | [optional] 
 **LowInUsd1h** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_1H | [optional] 
 **Price4h** | **string** | DTO.TOKEN.STAT.PRICE_4H | 
-**Buys4h** | **float32** | DTO.TOKEN.STAT.BUYS_4H | 
-**Sells4h** | **float32** | DTO.TOKEN.STAT.SELLS_4H | 
+**Buys4h** | **string** | DTO.TOKEN.STAT.BUYS_4H | 
+**Sells4h** | **string** | DTO.TOKEN.STAT.SELLS_4H | 
 **BuyVolumes4h** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_4H | 
 **SellsVolumes4h** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_4H | 
 **Volumes4h** | **string** | DTO.TOKEN.STAT.VOLUMES_4H | 
 **BuyVolumesInUsd4h** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_4H | 
 **SellVolumesInUsd4h** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_4H | 
 **VolumesInUsd4h** | **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_4H | 
-**Buyers4h** | Pointer to **float32** | DTO.TOKEN.STAT.BUYERS_4H | [optional] 
-**Sellers4h** | Pointer to **float32** | DTO.TOKEN.STAT.SELLERS_4H | [optional] 
+**Buyers4h** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_4H | [optional] 
+**Sellers4h** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_4H | [optional] 
 **OpenPriceInUsd4h** | **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_4H | 
 **ClosePriceInUsd4h** | **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_4H | 
 **PriceChangeRatioInUsd4h** | **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_4H | 
-**Trades4h** | **float32** | DTO.TOKEN.STAT.TRADES_4H | 
-**Traders4h** | Pointer to **float32** | DTO.TOKEN.STAT.TRADERS_4H | [optional] 
+**Trades4h** | **string** | DTO.TOKEN.STAT.TRADES_4H | 
+**Traders4h** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_4H | [optional] 
 **HighInUsd4h** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_4H | [optional] 
 **LowInUsd4h** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_4H | [optional] 
 **Price24h** | **string** | DTO.TOKEN.STAT.PRICE_24H | 
-**Buys24h** | **float32** | DTO.TOKEN.STAT.BUYS_24H | 
-**Sells24h** | **float32** | DTO.TOKEN.STAT.SELLS_24H | 
+**Buys24h** | **string** | DTO.TOKEN.STAT.BUYS_24H | 
+**Sells24h** | **string** | DTO.TOKEN.STAT.SELLS_24H | 
 **BuyVolumes24h** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_24H | 
 **SellsVolumes24h** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_24H | 
 **Volumes24h** | **string** | DTO.TOKEN.STAT.VOLUMES_24H | 
 **BuyVolumesInUsd24h** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_24H | 
 **SellVolumesInUsd24h** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_24H | 
 **VolumesInUsd24h** | **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_24H | 
-**Buyers24h** | Pointer to **float32** | DTO.TOKEN.STAT.BUYERS_24H | [optional] 
-**Sellers24h** | Pointer to **float32** | DTO.TOKEN.STAT.SELLERS_24H | [optional] 
+**Buyers24h** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_24H | [optional] 
+**Sellers24h** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_24H | [optional] 
 **OpenPriceInUsd24h** | **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_24H | 
 **ClosePriceInUsd24h** | **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_24H | 
 **PriceChangeRatioInUsd24h** | **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_24H | 
-**Trades24h** | **float32** | DTO.TOKEN.STAT.TRADES_24H | 
-**Traders24h** | Pointer to **float32** | DTO.TOKEN.STAT.TRADERS_24H | [optional] 
+**Trades24h** | **string** | DTO.TOKEN.STAT.TRADES_24H | 
+**Traders24h** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_24H | [optional] 
 **HighInUsd24h** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_24H | [optional] 
 **LowInUsd24h** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_24H | [optional] 
 
@@ -136,7 +136,7 @@ Name | Type | Description | Notes
 
 ### NewTokenStat
 
-`func NewTokenStat(address string, price1m string, buys1m float32, sells1m float32, buyVolumes1m string, sellsVolumes1m string, volumes1m string, buyVolumesInUsd1m string, sellVolumesInUsd1m string, volumesInUsd1m string, openPriceInUsd1m string, closePriceInUsd1m string, priceChangeRatioInUsd1m string, trades1m float32, price5m string, buys5m float32, sells5m float32, buyVolumes5m string, sellsVolumes5m string, volumes5m string, buyVolumesInUsd5m string, sellVolumesInUsd5m string, volumesInUsd5m string, openPriceInUsd5m string, closePriceInUsd5m string, priceChangeRatioInUsd5m string, trades5m float32, price30m string, buys30m float32, sells30m float32, buyVolumes30m string, sellsVolumes30m string, volumes30m string, buyVolumesInUsd30m string, sellVolumesInUsd30m string, volumesInUsd30m string, openPriceInUsd30m string, closePriceInUsd30m string, priceChangeRatioInUsd30m string, trades30m float32, price1h string, buys1h float32, sells1h float32, buyVolumes1h string, sellsVolumes1h string, volumes1h string, buyVolumesInUsd1h string, sellVolumesInUsd1h string, volumesInUsd1h string, openPriceInUsd1h string, closePriceInUsd1h string, priceChangeRatioInUsd1h string, trades1h float32, price4h string, buys4h float32, sells4h float32, buyVolumes4h string, sellsVolumes4h string, volumes4h string, buyVolumesInUsd4h string, sellVolumesInUsd4h string, volumesInUsd4h string, openPriceInUsd4h string, closePriceInUsd4h string, priceChangeRatioInUsd4h string, trades4h float32, price24h string, buys24h float32, sells24h float32, buyVolumes24h string, sellsVolumes24h string, volumes24h string, buyVolumesInUsd24h string, sellVolumesInUsd24h string, volumesInUsd24h string, openPriceInUsd24h string, closePriceInUsd24h string, priceChangeRatioInUsd24h string, trades24h float32, ) *TokenStat`
+`func NewTokenStat(address string, price1m string, buys1m string, sells1m string, buyVolumes1m string, sellsVolumes1m string, volumes1m string, buyVolumesInUsd1m string, sellVolumesInUsd1m string, volumesInUsd1m string, openPriceInUsd1m string, closePriceInUsd1m string, priceChangeRatioInUsd1m string, trades1m string, price5m string, buys5m string, sells5m string, buyVolumes5m string, sellsVolumes5m string, volumes5m string, buyVolumesInUsd5m string, sellVolumesInUsd5m string, volumesInUsd5m string, openPriceInUsd5m string, closePriceInUsd5m string, priceChangeRatioInUsd5m string, trades5m string, price30m string, buys30m string, sells30m string, buyVolumes30m string, sellsVolumes30m string, volumes30m string, buyVolumesInUsd30m string, sellVolumesInUsd30m string, volumesInUsd30m string, openPriceInUsd30m string, closePriceInUsd30m string, priceChangeRatioInUsd30m string, trades30m string, price1h string, buys1h string, sells1h string, buyVolumes1h string, sellsVolumes1h string, volumes1h string, buyVolumesInUsd1h string, sellVolumesInUsd1h string, volumesInUsd1h string, openPriceInUsd1h string, closePriceInUsd1h string, priceChangeRatioInUsd1h string, trades1h string, price4h string, buys4h string, sells4h string, buyVolumes4h string, sellsVolumes4h string, volumes4h string, buyVolumesInUsd4h string, sellVolumesInUsd4h string, volumesInUsd4h string, openPriceInUsd4h string, closePriceInUsd4h string, priceChangeRatioInUsd4h string, trades4h string, price24h string, buys24h string, sells24h string, buyVolumes24h string, sellsVolumes24h string, volumes24h string, buyVolumesInUsd24h string, sellVolumesInUsd24h string, volumesInUsd24h string, openPriceInUsd24h string, closePriceInUsd24h string, priceChangeRatioInUsd24h string, trades24h string, ) *TokenStat`
 
 NewTokenStat instantiates a new TokenStat object
 This constructor will assign default values to properties that have it defined,
@@ -193,40 +193,40 @@ SetPrice1m sets Price1m field to given value.
 
 ### GetBuys1m
 
-`func (o *TokenStat) GetBuys1m() float32`
+`func (o *TokenStat) GetBuys1m() string`
 
 GetBuys1m returns the Buys1m field if non-nil, zero value otherwise.
 
 ### GetBuys1mOk
 
-`func (o *TokenStat) GetBuys1mOk() (*float32, bool)`
+`func (o *TokenStat) GetBuys1mOk() (*string, bool)`
 
 GetBuys1mOk returns a tuple with the Buys1m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuys1m
 
-`func (o *TokenStat) SetBuys1m(v float32)`
+`func (o *TokenStat) SetBuys1m(v string)`
 
 SetBuys1m sets Buys1m field to given value.
 
 
 ### GetSells1m
 
-`func (o *TokenStat) GetSells1m() float32`
+`func (o *TokenStat) GetSells1m() string`
 
 GetSells1m returns the Sells1m field if non-nil, zero value otherwise.
 
 ### GetSells1mOk
 
-`func (o *TokenStat) GetSells1mOk() (*float32, bool)`
+`func (o *TokenStat) GetSells1mOk() (*string, bool)`
 
 GetSells1mOk returns a tuple with the Sells1m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSells1m
 
-`func (o *TokenStat) SetSells1m(v float32)`
+`func (o *TokenStat) SetSells1m(v string)`
 
 SetSells1m sets Sells1m field to given value.
 
@@ -353,20 +353,20 @@ SetVolumesInUsd1m sets VolumesInUsd1m field to given value.
 
 ### GetBuyers1m
 
-`func (o *TokenStat) GetBuyers1m() float32`
+`func (o *TokenStat) GetBuyers1m() string`
 
 GetBuyers1m returns the Buyers1m field if non-nil, zero value otherwise.
 
 ### GetBuyers1mOk
 
-`func (o *TokenStat) GetBuyers1mOk() (*float32, bool)`
+`func (o *TokenStat) GetBuyers1mOk() (*string, bool)`
 
 GetBuyers1mOk returns a tuple with the Buyers1m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuyers1m
 
-`func (o *TokenStat) SetBuyers1m(v float32)`
+`func (o *TokenStat) SetBuyers1m(v string)`
 
 SetBuyers1m sets Buyers1m field to given value.
 
@@ -378,20 +378,20 @@ HasBuyers1m returns a boolean if a field has been set.
 
 ### GetSellers1m
 
-`func (o *TokenStat) GetSellers1m() float32`
+`func (o *TokenStat) GetSellers1m() string`
 
 GetSellers1m returns the Sellers1m field if non-nil, zero value otherwise.
 
 ### GetSellers1mOk
 
-`func (o *TokenStat) GetSellers1mOk() (*float32, bool)`
+`func (o *TokenStat) GetSellers1mOk() (*string, bool)`
 
 GetSellers1mOk returns a tuple with the Sellers1m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSellers1m
 
-`func (o *TokenStat) SetSellers1m(v float32)`
+`func (o *TokenStat) SetSellers1m(v string)`
 
 SetSellers1m sets Sellers1m field to given value.
 
@@ -463,40 +463,40 @@ SetPriceChangeRatioInUsd1m sets PriceChangeRatioInUsd1m field to given value.
 
 ### GetTrades1m
 
-`func (o *TokenStat) GetTrades1m() float32`
+`func (o *TokenStat) GetTrades1m() string`
 
 GetTrades1m returns the Trades1m field if non-nil, zero value otherwise.
 
 ### GetTrades1mOk
 
-`func (o *TokenStat) GetTrades1mOk() (*float32, bool)`
+`func (o *TokenStat) GetTrades1mOk() (*string, bool)`
 
 GetTrades1mOk returns a tuple with the Trades1m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrades1m
 
-`func (o *TokenStat) SetTrades1m(v float32)`
+`func (o *TokenStat) SetTrades1m(v string)`
 
 SetTrades1m sets Trades1m field to given value.
 
 
 ### GetTraders1m
 
-`func (o *TokenStat) GetTraders1m() float32`
+`func (o *TokenStat) GetTraders1m() string`
 
 GetTraders1m returns the Traders1m field if non-nil, zero value otherwise.
 
 ### GetTraders1mOk
 
-`func (o *TokenStat) GetTraders1mOk() (*float32, bool)`
+`func (o *TokenStat) GetTraders1mOk() (*string, bool)`
 
 GetTraders1mOk returns a tuple with the Traders1m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTraders1m
 
-`func (o *TokenStat) SetTraders1m(v float32)`
+`func (o *TokenStat) SetTraders1m(v string)`
 
 SetTraders1m sets Traders1m field to given value.
 
@@ -578,40 +578,40 @@ SetPrice5m sets Price5m field to given value.
 
 ### GetBuys5m
 
-`func (o *TokenStat) GetBuys5m() float32`
+`func (o *TokenStat) GetBuys5m() string`
 
 GetBuys5m returns the Buys5m field if non-nil, zero value otherwise.
 
 ### GetBuys5mOk
 
-`func (o *TokenStat) GetBuys5mOk() (*float32, bool)`
+`func (o *TokenStat) GetBuys5mOk() (*string, bool)`
 
 GetBuys5mOk returns a tuple with the Buys5m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuys5m
 
-`func (o *TokenStat) SetBuys5m(v float32)`
+`func (o *TokenStat) SetBuys5m(v string)`
 
 SetBuys5m sets Buys5m field to given value.
 
 
 ### GetSells5m
 
-`func (o *TokenStat) GetSells5m() float32`
+`func (o *TokenStat) GetSells5m() string`
 
 GetSells5m returns the Sells5m field if non-nil, zero value otherwise.
 
 ### GetSells5mOk
 
-`func (o *TokenStat) GetSells5mOk() (*float32, bool)`
+`func (o *TokenStat) GetSells5mOk() (*string, bool)`
 
 GetSells5mOk returns a tuple with the Sells5m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSells5m
 
-`func (o *TokenStat) SetSells5m(v float32)`
+`func (o *TokenStat) SetSells5m(v string)`
 
 SetSells5m sets Sells5m field to given value.
 
@@ -738,20 +738,20 @@ SetVolumesInUsd5m sets VolumesInUsd5m field to given value.
 
 ### GetBuyers5m
 
-`func (o *TokenStat) GetBuyers5m() float32`
+`func (o *TokenStat) GetBuyers5m() string`
 
 GetBuyers5m returns the Buyers5m field if non-nil, zero value otherwise.
 
 ### GetBuyers5mOk
 
-`func (o *TokenStat) GetBuyers5mOk() (*float32, bool)`
+`func (o *TokenStat) GetBuyers5mOk() (*string, bool)`
 
 GetBuyers5mOk returns a tuple with the Buyers5m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuyers5m
 
-`func (o *TokenStat) SetBuyers5m(v float32)`
+`func (o *TokenStat) SetBuyers5m(v string)`
 
 SetBuyers5m sets Buyers5m field to given value.
 
@@ -763,20 +763,20 @@ HasBuyers5m returns a boolean if a field has been set.
 
 ### GetSellers5m
 
-`func (o *TokenStat) GetSellers5m() float32`
+`func (o *TokenStat) GetSellers5m() string`
 
 GetSellers5m returns the Sellers5m field if non-nil, zero value otherwise.
 
 ### GetSellers5mOk
 
-`func (o *TokenStat) GetSellers5mOk() (*float32, bool)`
+`func (o *TokenStat) GetSellers5mOk() (*string, bool)`
 
 GetSellers5mOk returns a tuple with the Sellers5m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSellers5m
 
-`func (o *TokenStat) SetSellers5m(v float32)`
+`func (o *TokenStat) SetSellers5m(v string)`
 
 SetSellers5m sets Sellers5m field to given value.
 
@@ -848,40 +848,40 @@ SetPriceChangeRatioInUsd5m sets PriceChangeRatioInUsd5m field to given value.
 
 ### GetTrades5m
 
-`func (o *TokenStat) GetTrades5m() float32`
+`func (o *TokenStat) GetTrades5m() string`
 
 GetTrades5m returns the Trades5m field if non-nil, zero value otherwise.
 
 ### GetTrades5mOk
 
-`func (o *TokenStat) GetTrades5mOk() (*float32, bool)`
+`func (o *TokenStat) GetTrades5mOk() (*string, bool)`
 
 GetTrades5mOk returns a tuple with the Trades5m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrades5m
 
-`func (o *TokenStat) SetTrades5m(v float32)`
+`func (o *TokenStat) SetTrades5m(v string)`
 
 SetTrades5m sets Trades5m field to given value.
 
 
 ### GetTraders5m
 
-`func (o *TokenStat) GetTraders5m() float32`
+`func (o *TokenStat) GetTraders5m() string`
 
 GetTraders5m returns the Traders5m field if non-nil, zero value otherwise.
 
 ### GetTraders5mOk
 
-`func (o *TokenStat) GetTraders5mOk() (*float32, bool)`
+`func (o *TokenStat) GetTraders5mOk() (*string, bool)`
 
 GetTraders5mOk returns a tuple with the Traders5m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTraders5m
 
-`func (o *TokenStat) SetTraders5m(v float32)`
+`func (o *TokenStat) SetTraders5m(v string)`
 
 SetTraders5m sets Traders5m field to given value.
 
@@ -968,20 +968,20 @@ HasPrice15m returns a boolean if a field has been set.
 
 ### GetBuys15m
 
-`func (o *TokenStat) GetBuys15m() float32`
+`func (o *TokenStat) GetBuys15m() string`
 
 GetBuys15m returns the Buys15m field if non-nil, zero value otherwise.
 
 ### GetBuys15mOk
 
-`func (o *TokenStat) GetBuys15mOk() (*float32, bool)`
+`func (o *TokenStat) GetBuys15mOk() (*string, bool)`
 
 GetBuys15mOk returns a tuple with the Buys15m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuys15m
 
-`func (o *TokenStat) SetBuys15m(v float32)`
+`func (o *TokenStat) SetBuys15m(v string)`
 
 SetBuys15m sets Buys15m field to given value.
 
@@ -993,20 +993,20 @@ HasBuys15m returns a boolean if a field has been set.
 
 ### GetSells15m
 
-`func (o *TokenStat) GetSells15m() float32`
+`func (o *TokenStat) GetSells15m() string`
 
 GetSells15m returns the Sells15m field if non-nil, zero value otherwise.
 
 ### GetSells15mOk
 
-`func (o *TokenStat) GetSells15mOk() (*float32, bool)`
+`func (o *TokenStat) GetSells15mOk() (*string, bool)`
 
 GetSells15mOk returns a tuple with the Sells15m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSells15m
 
-`func (o *TokenStat) SetSells15m(v float32)`
+`func (o *TokenStat) SetSells15m(v string)`
 
 SetSells15m sets Sells15m field to given value.
 
@@ -1168,20 +1168,20 @@ HasVolumesInUsd15m returns a boolean if a field has been set.
 
 ### GetBuyers15m
 
-`func (o *TokenStat) GetBuyers15m() float32`
+`func (o *TokenStat) GetBuyers15m() string`
 
 GetBuyers15m returns the Buyers15m field if non-nil, zero value otherwise.
 
 ### GetBuyers15mOk
 
-`func (o *TokenStat) GetBuyers15mOk() (*float32, bool)`
+`func (o *TokenStat) GetBuyers15mOk() (*string, bool)`
 
 GetBuyers15mOk returns a tuple with the Buyers15m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuyers15m
 
-`func (o *TokenStat) SetBuyers15m(v float32)`
+`func (o *TokenStat) SetBuyers15m(v string)`
 
 SetBuyers15m sets Buyers15m field to given value.
 
@@ -1193,20 +1193,20 @@ HasBuyers15m returns a boolean if a field has been set.
 
 ### GetSellers15m
 
-`func (o *TokenStat) GetSellers15m() float32`
+`func (o *TokenStat) GetSellers15m() string`
 
 GetSellers15m returns the Sellers15m field if non-nil, zero value otherwise.
 
 ### GetSellers15mOk
 
-`func (o *TokenStat) GetSellers15mOk() (*float32, bool)`
+`func (o *TokenStat) GetSellers15mOk() (*string, bool)`
 
 GetSellers15mOk returns a tuple with the Sellers15m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSellers15m
 
-`func (o *TokenStat) SetSellers15m(v float32)`
+`func (o *TokenStat) SetSellers15m(v string)`
 
 SetSellers15m sets Sellers15m field to given value.
 
@@ -1293,20 +1293,20 @@ HasPriceChangeRatioInUsd15m returns a boolean if a field has been set.
 
 ### GetTrades15m
 
-`func (o *TokenStat) GetTrades15m() float32`
+`func (o *TokenStat) GetTrades15m() string`
 
 GetTrades15m returns the Trades15m field if non-nil, zero value otherwise.
 
 ### GetTrades15mOk
 
-`func (o *TokenStat) GetTrades15mOk() (*float32, bool)`
+`func (o *TokenStat) GetTrades15mOk() (*string, bool)`
 
 GetTrades15mOk returns a tuple with the Trades15m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrades15m
 
-`func (o *TokenStat) SetTrades15m(v float32)`
+`func (o *TokenStat) SetTrades15m(v string)`
 
 SetTrades15m sets Trades15m field to given value.
 
@@ -1318,20 +1318,20 @@ HasTrades15m returns a boolean if a field has been set.
 
 ### GetTraders15m
 
-`func (o *TokenStat) GetTraders15m() float32`
+`func (o *TokenStat) GetTraders15m() string`
 
 GetTraders15m returns the Traders15m field if non-nil, zero value otherwise.
 
 ### GetTraders15mOk
 
-`func (o *TokenStat) GetTraders15mOk() (*float32, bool)`
+`func (o *TokenStat) GetTraders15mOk() (*string, bool)`
 
 GetTraders15mOk returns a tuple with the Traders15m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTraders15m
 
-`func (o *TokenStat) SetTraders15m(v float32)`
+`func (o *TokenStat) SetTraders15m(v string)`
 
 SetTraders15m sets Traders15m field to given value.
 
@@ -1413,40 +1413,40 @@ SetPrice30m sets Price30m field to given value.
 
 ### GetBuys30m
 
-`func (o *TokenStat) GetBuys30m() float32`
+`func (o *TokenStat) GetBuys30m() string`
 
 GetBuys30m returns the Buys30m field if non-nil, zero value otherwise.
 
 ### GetBuys30mOk
 
-`func (o *TokenStat) GetBuys30mOk() (*float32, bool)`
+`func (o *TokenStat) GetBuys30mOk() (*string, bool)`
 
 GetBuys30mOk returns a tuple with the Buys30m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuys30m
 
-`func (o *TokenStat) SetBuys30m(v float32)`
+`func (o *TokenStat) SetBuys30m(v string)`
 
 SetBuys30m sets Buys30m field to given value.
 
 
 ### GetSells30m
 
-`func (o *TokenStat) GetSells30m() float32`
+`func (o *TokenStat) GetSells30m() string`
 
 GetSells30m returns the Sells30m field if non-nil, zero value otherwise.
 
 ### GetSells30mOk
 
-`func (o *TokenStat) GetSells30mOk() (*float32, bool)`
+`func (o *TokenStat) GetSells30mOk() (*string, bool)`
 
 GetSells30mOk returns a tuple with the Sells30m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSells30m
 
-`func (o *TokenStat) SetSells30m(v float32)`
+`func (o *TokenStat) SetSells30m(v string)`
 
 SetSells30m sets Sells30m field to given value.
 
@@ -1573,20 +1573,20 @@ SetVolumesInUsd30m sets VolumesInUsd30m field to given value.
 
 ### GetBuyers30m
 
-`func (o *TokenStat) GetBuyers30m() float32`
+`func (o *TokenStat) GetBuyers30m() string`
 
 GetBuyers30m returns the Buyers30m field if non-nil, zero value otherwise.
 
 ### GetBuyers30mOk
 
-`func (o *TokenStat) GetBuyers30mOk() (*float32, bool)`
+`func (o *TokenStat) GetBuyers30mOk() (*string, bool)`
 
 GetBuyers30mOk returns a tuple with the Buyers30m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuyers30m
 
-`func (o *TokenStat) SetBuyers30m(v float32)`
+`func (o *TokenStat) SetBuyers30m(v string)`
 
 SetBuyers30m sets Buyers30m field to given value.
 
@@ -1598,20 +1598,20 @@ HasBuyers30m returns a boolean if a field has been set.
 
 ### GetSellers30m
 
-`func (o *TokenStat) GetSellers30m() float32`
+`func (o *TokenStat) GetSellers30m() string`
 
 GetSellers30m returns the Sellers30m field if non-nil, zero value otherwise.
 
 ### GetSellers30mOk
 
-`func (o *TokenStat) GetSellers30mOk() (*float32, bool)`
+`func (o *TokenStat) GetSellers30mOk() (*string, bool)`
 
 GetSellers30mOk returns a tuple with the Sellers30m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSellers30m
 
-`func (o *TokenStat) SetSellers30m(v float32)`
+`func (o *TokenStat) SetSellers30m(v string)`
 
 SetSellers30m sets Sellers30m field to given value.
 
@@ -1683,40 +1683,40 @@ SetPriceChangeRatioInUsd30m sets PriceChangeRatioInUsd30m field to given value.
 
 ### GetTrades30m
 
-`func (o *TokenStat) GetTrades30m() float32`
+`func (o *TokenStat) GetTrades30m() string`
 
 GetTrades30m returns the Trades30m field if non-nil, zero value otherwise.
 
 ### GetTrades30mOk
 
-`func (o *TokenStat) GetTrades30mOk() (*float32, bool)`
+`func (o *TokenStat) GetTrades30mOk() (*string, bool)`
 
 GetTrades30mOk returns a tuple with the Trades30m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrades30m
 
-`func (o *TokenStat) SetTrades30m(v float32)`
+`func (o *TokenStat) SetTrades30m(v string)`
 
 SetTrades30m sets Trades30m field to given value.
 
 
 ### GetTraders30m
 
-`func (o *TokenStat) GetTraders30m() float32`
+`func (o *TokenStat) GetTraders30m() string`
 
 GetTraders30m returns the Traders30m field if non-nil, zero value otherwise.
 
 ### GetTraders30mOk
 
-`func (o *TokenStat) GetTraders30mOk() (*float32, bool)`
+`func (o *TokenStat) GetTraders30mOk() (*string, bool)`
 
 GetTraders30mOk returns a tuple with the Traders30m field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTraders30m
 
-`func (o *TokenStat) SetTraders30m(v float32)`
+`func (o *TokenStat) SetTraders30m(v string)`
 
 SetTraders30m sets Traders30m field to given value.
 
@@ -1798,40 +1798,40 @@ SetPrice1h sets Price1h field to given value.
 
 ### GetBuys1h
 
-`func (o *TokenStat) GetBuys1h() float32`
+`func (o *TokenStat) GetBuys1h() string`
 
 GetBuys1h returns the Buys1h field if non-nil, zero value otherwise.
 
 ### GetBuys1hOk
 
-`func (o *TokenStat) GetBuys1hOk() (*float32, bool)`
+`func (o *TokenStat) GetBuys1hOk() (*string, bool)`
 
 GetBuys1hOk returns a tuple with the Buys1h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuys1h
 
-`func (o *TokenStat) SetBuys1h(v float32)`
+`func (o *TokenStat) SetBuys1h(v string)`
 
 SetBuys1h sets Buys1h field to given value.
 
 
 ### GetSells1h
 
-`func (o *TokenStat) GetSells1h() float32`
+`func (o *TokenStat) GetSells1h() string`
 
 GetSells1h returns the Sells1h field if non-nil, zero value otherwise.
 
 ### GetSells1hOk
 
-`func (o *TokenStat) GetSells1hOk() (*float32, bool)`
+`func (o *TokenStat) GetSells1hOk() (*string, bool)`
 
 GetSells1hOk returns a tuple with the Sells1h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSells1h
 
-`func (o *TokenStat) SetSells1h(v float32)`
+`func (o *TokenStat) SetSells1h(v string)`
 
 SetSells1h sets Sells1h field to given value.
 
@@ -1958,20 +1958,20 @@ SetVolumesInUsd1h sets VolumesInUsd1h field to given value.
 
 ### GetBuyers1h
 
-`func (o *TokenStat) GetBuyers1h() float32`
+`func (o *TokenStat) GetBuyers1h() string`
 
 GetBuyers1h returns the Buyers1h field if non-nil, zero value otherwise.
 
 ### GetBuyers1hOk
 
-`func (o *TokenStat) GetBuyers1hOk() (*float32, bool)`
+`func (o *TokenStat) GetBuyers1hOk() (*string, bool)`
 
 GetBuyers1hOk returns a tuple with the Buyers1h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuyers1h
 
-`func (o *TokenStat) SetBuyers1h(v float32)`
+`func (o *TokenStat) SetBuyers1h(v string)`
 
 SetBuyers1h sets Buyers1h field to given value.
 
@@ -1983,20 +1983,20 @@ HasBuyers1h returns a boolean if a field has been set.
 
 ### GetSellers1h
 
-`func (o *TokenStat) GetSellers1h() float32`
+`func (o *TokenStat) GetSellers1h() string`
 
 GetSellers1h returns the Sellers1h field if non-nil, zero value otherwise.
 
 ### GetSellers1hOk
 
-`func (o *TokenStat) GetSellers1hOk() (*float32, bool)`
+`func (o *TokenStat) GetSellers1hOk() (*string, bool)`
 
 GetSellers1hOk returns a tuple with the Sellers1h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSellers1h
 
-`func (o *TokenStat) SetSellers1h(v float32)`
+`func (o *TokenStat) SetSellers1h(v string)`
 
 SetSellers1h sets Sellers1h field to given value.
 
@@ -2068,40 +2068,40 @@ SetPriceChangeRatioInUsd1h sets PriceChangeRatioInUsd1h field to given value.
 
 ### GetTrades1h
 
-`func (o *TokenStat) GetTrades1h() float32`
+`func (o *TokenStat) GetTrades1h() string`
 
 GetTrades1h returns the Trades1h field if non-nil, zero value otherwise.
 
 ### GetTrades1hOk
 
-`func (o *TokenStat) GetTrades1hOk() (*float32, bool)`
+`func (o *TokenStat) GetTrades1hOk() (*string, bool)`
 
 GetTrades1hOk returns a tuple with the Trades1h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrades1h
 
-`func (o *TokenStat) SetTrades1h(v float32)`
+`func (o *TokenStat) SetTrades1h(v string)`
 
 SetTrades1h sets Trades1h field to given value.
 
 
 ### GetTraders1h
 
-`func (o *TokenStat) GetTraders1h() float32`
+`func (o *TokenStat) GetTraders1h() string`
 
 GetTraders1h returns the Traders1h field if non-nil, zero value otherwise.
 
 ### GetTraders1hOk
 
-`func (o *TokenStat) GetTraders1hOk() (*float32, bool)`
+`func (o *TokenStat) GetTraders1hOk() (*string, bool)`
 
 GetTraders1hOk returns a tuple with the Traders1h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTraders1h
 
-`func (o *TokenStat) SetTraders1h(v float32)`
+`func (o *TokenStat) SetTraders1h(v string)`
 
 SetTraders1h sets Traders1h field to given value.
 
@@ -2183,40 +2183,40 @@ SetPrice4h sets Price4h field to given value.
 
 ### GetBuys4h
 
-`func (o *TokenStat) GetBuys4h() float32`
+`func (o *TokenStat) GetBuys4h() string`
 
 GetBuys4h returns the Buys4h field if non-nil, zero value otherwise.
 
 ### GetBuys4hOk
 
-`func (o *TokenStat) GetBuys4hOk() (*float32, bool)`
+`func (o *TokenStat) GetBuys4hOk() (*string, bool)`
 
 GetBuys4hOk returns a tuple with the Buys4h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuys4h
 
-`func (o *TokenStat) SetBuys4h(v float32)`
+`func (o *TokenStat) SetBuys4h(v string)`
 
 SetBuys4h sets Buys4h field to given value.
 
 
 ### GetSells4h
 
-`func (o *TokenStat) GetSells4h() float32`
+`func (o *TokenStat) GetSells4h() string`
 
 GetSells4h returns the Sells4h field if non-nil, zero value otherwise.
 
 ### GetSells4hOk
 
-`func (o *TokenStat) GetSells4hOk() (*float32, bool)`
+`func (o *TokenStat) GetSells4hOk() (*string, bool)`
 
 GetSells4hOk returns a tuple with the Sells4h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSells4h
 
-`func (o *TokenStat) SetSells4h(v float32)`
+`func (o *TokenStat) SetSells4h(v string)`
 
 SetSells4h sets Sells4h field to given value.
 
@@ -2343,20 +2343,20 @@ SetVolumesInUsd4h sets VolumesInUsd4h field to given value.
 
 ### GetBuyers4h
 
-`func (o *TokenStat) GetBuyers4h() float32`
+`func (o *TokenStat) GetBuyers4h() string`
 
 GetBuyers4h returns the Buyers4h field if non-nil, zero value otherwise.
 
 ### GetBuyers4hOk
 
-`func (o *TokenStat) GetBuyers4hOk() (*float32, bool)`
+`func (o *TokenStat) GetBuyers4hOk() (*string, bool)`
 
 GetBuyers4hOk returns a tuple with the Buyers4h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuyers4h
 
-`func (o *TokenStat) SetBuyers4h(v float32)`
+`func (o *TokenStat) SetBuyers4h(v string)`
 
 SetBuyers4h sets Buyers4h field to given value.
 
@@ -2368,20 +2368,20 @@ HasBuyers4h returns a boolean if a field has been set.
 
 ### GetSellers4h
 
-`func (o *TokenStat) GetSellers4h() float32`
+`func (o *TokenStat) GetSellers4h() string`
 
 GetSellers4h returns the Sellers4h field if non-nil, zero value otherwise.
 
 ### GetSellers4hOk
 
-`func (o *TokenStat) GetSellers4hOk() (*float32, bool)`
+`func (o *TokenStat) GetSellers4hOk() (*string, bool)`
 
 GetSellers4hOk returns a tuple with the Sellers4h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSellers4h
 
-`func (o *TokenStat) SetSellers4h(v float32)`
+`func (o *TokenStat) SetSellers4h(v string)`
 
 SetSellers4h sets Sellers4h field to given value.
 
@@ -2453,40 +2453,40 @@ SetPriceChangeRatioInUsd4h sets PriceChangeRatioInUsd4h field to given value.
 
 ### GetTrades4h
 
-`func (o *TokenStat) GetTrades4h() float32`
+`func (o *TokenStat) GetTrades4h() string`
 
 GetTrades4h returns the Trades4h field if non-nil, zero value otherwise.
 
 ### GetTrades4hOk
 
-`func (o *TokenStat) GetTrades4hOk() (*float32, bool)`
+`func (o *TokenStat) GetTrades4hOk() (*string, bool)`
 
 GetTrades4hOk returns a tuple with the Trades4h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrades4h
 
-`func (o *TokenStat) SetTrades4h(v float32)`
+`func (o *TokenStat) SetTrades4h(v string)`
 
 SetTrades4h sets Trades4h field to given value.
 
 
 ### GetTraders4h
 
-`func (o *TokenStat) GetTraders4h() float32`
+`func (o *TokenStat) GetTraders4h() string`
 
 GetTraders4h returns the Traders4h field if non-nil, zero value otherwise.
 
 ### GetTraders4hOk
 
-`func (o *TokenStat) GetTraders4hOk() (*float32, bool)`
+`func (o *TokenStat) GetTraders4hOk() (*string, bool)`
 
 GetTraders4hOk returns a tuple with the Traders4h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTraders4h
 
-`func (o *TokenStat) SetTraders4h(v float32)`
+`func (o *TokenStat) SetTraders4h(v string)`
 
 SetTraders4h sets Traders4h field to given value.
 
@@ -2568,40 +2568,40 @@ SetPrice24h sets Price24h field to given value.
 
 ### GetBuys24h
 
-`func (o *TokenStat) GetBuys24h() float32`
+`func (o *TokenStat) GetBuys24h() string`
 
 GetBuys24h returns the Buys24h field if non-nil, zero value otherwise.
 
 ### GetBuys24hOk
 
-`func (o *TokenStat) GetBuys24hOk() (*float32, bool)`
+`func (o *TokenStat) GetBuys24hOk() (*string, bool)`
 
 GetBuys24hOk returns a tuple with the Buys24h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuys24h
 
-`func (o *TokenStat) SetBuys24h(v float32)`
+`func (o *TokenStat) SetBuys24h(v string)`
 
 SetBuys24h sets Buys24h field to given value.
 
 
 ### GetSells24h
 
-`func (o *TokenStat) GetSells24h() float32`
+`func (o *TokenStat) GetSells24h() string`
 
 GetSells24h returns the Sells24h field if non-nil, zero value otherwise.
 
 ### GetSells24hOk
 
-`func (o *TokenStat) GetSells24hOk() (*float32, bool)`
+`func (o *TokenStat) GetSells24hOk() (*string, bool)`
 
 GetSells24hOk returns a tuple with the Sells24h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSells24h
 
-`func (o *TokenStat) SetSells24h(v float32)`
+`func (o *TokenStat) SetSells24h(v string)`
 
 SetSells24h sets Sells24h field to given value.
 
@@ -2728,20 +2728,20 @@ SetVolumesInUsd24h sets VolumesInUsd24h field to given value.
 
 ### GetBuyers24h
 
-`func (o *TokenStat) GetBuyers24h() float32`
+`func (o *TokenStat) GetBuyers24h() string`
 
 GetBuyers24h returns the Buyers24h field if non-nil, zero value otherwise.
 
 ### GetBuyers24hOk
 
-`func (o *TokenStat) GetBuyers24hOk() (*float32, bool)`
+`func (o *TokenStat) GetBuyers24hOk() (*string, bool)`
 
 GetBuyers24hOk returns a tuple with the Buyers24h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuyers24h
 
-`func (o *TokenStat) SetBuyers24h(v float32)`
+`func (o *TokenStat) SetBuyers24h(v string)`
 
 SetBuyers24h sets Buyers24h field to given value.
 
@@ -2753,20 +2753,20 @@ HasBuyers24h returns a boolean if a field has been set.
 
 ### GetSellers24h
 
-`func (o *TokenStat) GetSellers24h() float32`
+`func (o *TokenStat) GetSellers24h() string`
 
 GetSellers24h returns the Sellers24h field if non-nil, zero value otherwise.
 
 ### GetSellers24hOk
 
-`func (o *TokenStat) GetSellers24hOk() (*float32, bool)`
+`func (o *TokenStat) GetSellers24hOk() (*string, bool)`
 
 GetSellers24hOk returns a tuple with the Sellers24h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSellers24h
 
-`func (o *TokenStat) SetSellers24h(v float32)`
+`func (o *TokenStat) SetSellers24h(v string)`
 
 SetSellers24h sets Sellers24h field to given value.
 
@@ -2838,40 +2838,40 @@ SetPriceChangeRatioInUsd24h sets PriceChangeRatioInUsd24h field to given value.
 
 ### GetTrades24h
 
-`func (o *TokenStat) GetTrades24h() float32`
+`func (o *TokenStat) GetTrades24h() string`
 
 GetTrades24h returns the Trades24h field if non-nil, zero value otherwise.
 
 ### GetTrades24hOk
 
-`func (o *TokenStat) GetTrades24hOk() (*float32, bool)`
+`func (o *TokenStat) GetTrades24hOk() (*string, bool)`
 
 GetTrades24hOk returns a tuple with the Trades24h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrades24h
 
-`func (o *TokenStat) SetTrades24h(v float32)`
+`func (o *TokenStat) SetTrades24h(v string)`
 
 SetTrades24h sets Trades24h field to given value.
 
 
 ### GetTraders24h
 
-`func (o *TokenStat) GetTraders24h() float32`
+`func (o *TokenStat) GetTraders24h() string`
 
 GetTraders24h returns the Traders24h field if non-nil, zero value otherwise.
 
 ### GetTraders24hOk
 
-`func (o *TokenStat) GetTraders24hOk() (*float32, bool)`
+`func (o *TokenStat) GetTraders24hOk() (*string, bool)`
 
 GetTraders24hOk returns a tuple with the Traders24h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTraders24h
 
-`func (o *TokenStat) SetTraders24h(v float32)`
+`func (o *TokenStat) SetTraders24h(v string)`
 
 SetTraders24h sets Traders24h field to given value.
 

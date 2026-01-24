@@ -33,7 +33,7 @@ type SwapRouteInput struct {
 	// DTO.DEX.SWAP.MODE
 	SwapMode string `json:"swapMode"`
 	// DTO.DEX.SWAP.SLIPPAGE
-	Slippage float32 `json:"slippage"`
+	Slippage int64 `json:"slippage"`
 	// DTO.DEX.SWAP.INPUT_MINT
 	InputMint *string `json:"inputMint,omitempty"`
 	// DTO.DEX.SWAP.OUTPUT_MINT
@@ -43,7 +43,7 @@ type SwapRouteInput struct {
 	// DTO.DEX.SWAP.PERMIT
 	Permit *string `json:"permit,omitempty"`
 	// DTO.DEX.SWAP.DEADLINE
-	Deadline *float32 `json:"deadline,omitempty"`
+	Deadline *int64 `json:"deadline,omitempty"`
 	// DTO.DEX.BASE.TIP_FEE
 	TipFee *string `json:"tipFee,omitempty"`
 	// DTO.DEX.BASE.IS_ANTI_MEV
@@ -56,7 +56,7 @@ type _SwapRouteInput SwapRouteInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSwapRouteInput(dex string, userAddress string, amount string, swapMode string, slippage float32) *SwapRouteInput {
+func NewSwapRouteInput(dex string, userAddress string, amount string, swapMode string, slippage int64) *SwapRouteInput {
 	this := SwapRouteInput{}
 	this.Dex = dex
 	this.UserAddress = userAddress
@@ -73,7 +73,7 @@ func NewSwapRouteInput(dex string, userAddress string, amount string, swapMode s
 // but it doesn't guarantee that properties required by API are set
 func NewSwapRouteInputWithDefaults() *SwapRouteInput {
 	this := SwapRouteInput{}
-	var slippage float32 = 5
+	var slippage int64 = 5
 	this.Slippage = slippage
 	var isAntiMev bool = false
 	this.IsAntiMev = &isAntiMev
@@ -209,9 +209,9 @@ func (o *SwapRouteInput) SetSwapMode(v string) {
 }
 
 // GetSlippage returns the Slippage field value
-func (o *SwapRouteInput) GetSlippage() float32 {
+func (o *SwapRouteInput) GetSlippage() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
@@ -220,7 +220,7 @@ func (o *SwapRouteInput) GetSlippage() float32 {
 
 // GetSlippageOk returns a tuple with the Slippage field value
 // and a boolean to check if the value has been set.
-func (o *SwapRouteInput) GetSlippageOk() (*float32, bool) {
+func (o *SwapRouteInput) GetSlippageOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -228,7 +228,7 @@ func (o *SwapRouteInput) GetSlippageOk() (*float32, bool) {
 }
 
 // SetSlippage sets field value
-func (o *SwapRouteInput) SetSlippage(v float32) {
+func (o *SwapRouteInput) SetSlippage(v int64) {
 	o.Slippage = v
 }
 
@@ -361,9 +361,9 @@ func (o *SwapRouteInput) SetPermit(v string) {
 }
 
 // GetDeadline returns the Deadline field value if set, zero value otherwise.
-func (o *SwapRouteInput) GetDeadline() float32 {
+func (o *SwapRouteInput) GetDeadline() int64 {
 	if o == nil || IsNil(o.Deadline) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.Deadline
@@ -371,7 +371,7 @@ func (o *SwapRouteInput) GetDeadline() float32 {
 
 // GetDeadlineOk returns a tuple with the Deadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SwapRouteInput) GetDeadlineOk() (*float32, bool) {
+func (o *SwapRouteInput) GetDeadlineOk() (*int64, bool) {
 	if o == nil || IsNil(o.Deadline) {
 		return nil, false
 	}
@@ -387,8 +387,8 @@ func (o *SwapRouteInput) HasDeadline() bool {
 	return false
 }
 
-// SetDeadline gets a reference to the given float32 and assigns it to the Deadline field.
-func (o *SwapRouteInput) SetDeadline(v float32) {
+// SetDeadline gets a reference to the given int64 and assigns it to the Deadline field.
+func (o *SwapRouteInput) SetDeadline(v int64) {
 	o.Deadline = &v
 }
 

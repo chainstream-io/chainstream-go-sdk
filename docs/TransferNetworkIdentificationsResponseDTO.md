@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | **float32** | DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.COUNT | 
+**Count** | **int64** | DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.COUNT | 
 **NetworkIdentificationOrgs** | [**[]NetworkIdentificationOrg**](NetworkIdentificationOrg.md) | DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.NETWORK_IDENTIFICATION_ORGS | 
 
 ## Methods
 
 ### NewTransferNetworkIdentificationsResponseDTO
 
-`func NewTransferNetworkIdentificationsResponseDTO(count float32, networkIdentificationOrgs []NetworkIdentificationOrg, ) *TransferNetworkIdentificationsResponseDTO`
+`func NewTransferNetworkIdentificationsResponseDTO(count int64, networkIdentificationOrgs []NetworkIdentificationOrg, ) *TransferNetworkIdentificationsResponseDTO`
 
 NewTransferNetworkIdentificationsResponseDTO instantiates a new TransferNetworkIdentificationsResponseDTO object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCount
 
-`func (o *TransferNetworkIdentificationsResponseDTO) GetCount() float32`
+`func (o *TransferNetworkIdentificationsResponseDTO) GetCount() int64`
 
 GetCount returns the Count field if non-nil, zero value otherwise.
 
 ### GetCountOk
 
-`func (o *TransferNetworkIdentificationsResponseDTO) GetCountOk() (*float32, bool)`
+`func (o *TransferNetworkIdentificationsResponseDTO) GetCountOk() (*int64, bool)`
 
 GetCountOk returns a tuple with the Count field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCount
 
-`func (o *TransferNetworkIdentificationsResponseDTO) SetCount(v float32)`
+`func (o *TransferNetworkIdentificationsResponseDTO) SetCount(v int64)`
 
 SetCount sets Count field to given value.
 

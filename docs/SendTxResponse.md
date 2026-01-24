@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Signature** | **string** | DTO.TRANSACTION.SEND.SIGNATURE | 
-**ElapsedTime** | **float32** | DTO.TRANSACTION.SEND.ELAPSED_TIME | 
+**ElapsedTime** | **int64** | DTO.TRANSACTION.SEND.ELAPSED_TIME | 
 **JobId** | **string** | DTO.TRANSACTION.SEND.JOB_ID | 
 
 ## Methods
 
 ### NewSendTxResponse
 
-`func NewSendTxResponse(signature string, elapsedTime float32, jobId string, ) *SendTxResponse`
+`func NewSendTxResponse(signature string, elapsedTime int64, jobId string, ) *SendTxResponse`
 
 NewSendTxResponse instantiates a new SendTxResponse object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetSignature sets Signature field to given value.
 
 ### GetElapsedTime
 
-`func (o *SendTxResponse) GetElapsedTime() float32`
+`func (o *SendTxResponse) GetElapsedTime() int64`
 
 GetElapsedTime returns the ElapsedTime field if non-nil, zero value otherwise.
 
 ### GetElapsedTimeOk
 
-`func (o *SendTxResponse) GetElapsedTimeOk() (*float32, bool)`
+`func (o *SendTxResponse) GetElapsedTimeOk() (*int64, bool)`
 
 GetElapsedTimeOk returns a tuple with the ElapsedTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetElapsedTime
 
-`func (o *SendTxResponse) SetElapsedTime(v float32)`
+`func (o *SendTxResponse) SetElapsedTime(v int64)`
 
 SetElapsedTime sets ElapsedTime field to given value.
 

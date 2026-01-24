@@ -7,16 +7,16 @@ Name | Type | Description | Notes
 **Address** | **string** | DTO.TOKEN_TRADER.ADDRESS | 
 **TransactionSignature** | Pointer to **string** | DTO.TOKEN_TRADER.TRANSACTION_SIGNATURE | [optional] 
 **BlockHash** | Pointer to **string** | DTO.TOKEN_TRADER.BLOCK_HASH | [optional] 
-**BlockHeight** | Pointer to **float32** | DTO.TOKEN_TRADER.BLOCK_HEIGHT | [optional] 
-**BlockSlot** | Pointer to **float32** | DTO.TOKEN_TRADER.BLOCK_SLOT | [optional] 
+**BlockHeight** | Pointer to **int64** | DTO.TOKEN_TRADER.BLOCK_HEIGHT | [optional] 
+**BlockSlot** | Pointer to **int64** | DTO.TOKEN_TRADER.BLOCK_SLOT | [optional] 
 **BlockTimestamp** | Pointer to **time.Time** | DTO.TOKEN_TRADER.BLOCK_TIMESTAMP | [optional] 
 **OnchainCreatedAt** | Pointer to **map[string]interface{}** | DTO.TOKEN_TRADER.ONCHAIN_CREATED_AT | [optional] 
-**TradeCount** | Pointer to **float32** | DTO.TOKEN_TRADER.TRADE_COUNT | [optional] 
-**TradeAmountInNative** | Pointer to **float32** | DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_NATIVE | [optional] 
-**TradeAmountInUsd** | Pointer to **float32** | DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_USD | [optional] 
-**PercentileRankTradeCount** | Pointer to **float32** | DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_COUNT | [optional] 
-**PercentileRankTradeAmountInUsd** | Pointer to **float32** | DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_AMOUNT_IN_USD | [optional] 
-**RankTradeAmountInUsd** | Pointer to **float32** | DTO.TOKEN_TRADER.RANK_TRADE_AMOUNT_IN_USD | [optional] 
+**TradeCount** | Pointer to **int64** | DTO.TOKEN_TRADER.TRADE_COUNT | [optional] 
+**TradeAmountInNative** | Pointer to **string** | DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_NATIVE | [optional] 
+**TradeAmountInUsd** | Pointer to **string** | DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_USD | [optional] 
+**PercentileRankTradeCount** | Pointer to **int64** | DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_COUNT | [optional] 
+**PercentileRankTradeAmountInUsd** | Pointer to **string** | DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_AMOUNT_IN_USD | [optional] 
+**RankTradeAmountInUsd** | Pointer to **string** | DTO.TOKEN_TRADER.RANK_TRADE_AMOUNT_IN_USD | [optional] 
 
 ## Methods
 
@@ -109,20 +109,20 @@ HasBlockHash returns a boolean if a field has been set.
 
 ### GetBlockHeight
 
-`func (o *TokenTrader) GetBlockHeight() float32`
+`func (o *TokenTrader) GetBlockHeight() int64`
 
 GetBlockHeight returns the BlockHeight field if non-nil, zero value otherwise.
 
 ### GetBlockHeightOk
 
-`func (o *TokenTrader) GetBlockHeightOk() (*float32, bool)`
+`func (o *TokenTrader) GetBlockHeightOk() (*int64, bool)`
 
 GetBlockHeightOk returns a tuple with the BlockHeight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlockHeight
 
-`func (o *TokenTrader) SetBlockHeight(v float32)`
+`func (o *TokenTrader) SetBlockHeight(v int64)`
 
 SetBlockHeight sets BlockHeight field to given value.
 
@@ -134,20 +134,20 @@ HasBlockHeight returns a boolean if a field has been set.
 
 ### GetBlockSlot
 
-`func (o *TokenTrader) GetBlockSlot() float32`
+`func (o *TokenTrader) GetBlockSlot() int64`
 
 GetBlockSlot returns the BlockSlot field if non-nil, zero value otherwise.
 
 ### GetBlockSlotOk
 
-`func (o *TokenTrader) GetBlockSlotOk() (*float32, bool)`
+`func (o *TokenTrader) GetBlockSlotOk() (*int64, bool)`
 
 GetBlockSlotOk returns a tuple with the BlockSlot field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlockSlot
 
-`func (o *TokenTrader) SetBlockSlot(v float32)`
+`func (o *TokenTrader) SetBlockSlot(v int64)`
 
 SetBlockSlot sets BlockSlot field to given value.
 
@@ -209,20 +209,20 @@ HasOnchainCreatedAt returns a boolean if a field has been set.
 
 ### GetTradeCount
 
-`func (o *TokenTrader) GetTradeCount() float32`
+`func (o *TokenTrader) GetTradeCount() int64`
 
 GetTradeCount returns the TradeCount field if non-nil, zero value otherwise.
 
 ### GetTradeCountOk
 
-`func (o *TokenTrader) GetTradeCountOk() (*float32, bool)`
+`func (o *TokenTrader) GetTradeCountOk() (*int64, bool)`
 
 GetTradeCountOk returns a tuple with the TradeCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTradeCount
 
-`func (o *TokenTrader) SetTradeCount(v float32)`
+`func (o *TokenTrader) SetTradeCount(v int64)`
 
 SetTradeCount sets TradeCount field to given value.
 
@@ -234,20 +234,20 @@ HasTradeCount returns a boolean if a field has been set.
 
 ### GetTradeAmountInNative
 
-`func (o *TokenTrader) GetTradeAmountInNative() float32`
+`func (o *TokenTrader) GetTradeAmountInNative() string`
 
 GetTradeAmountInNative returns the TradeAmountInNative field if non-nil, zero value otherwise.
 
 ### GetTradeAmountInNativeOk
 
-`func (o *TokenTrader) GetTradeAmountInNativeOk() (*float32, bool)`
+`func (o *TokenTrader) GetTradeAmountInNativeOk() (*string, bool)`
 
 GetTradeAmountInNativeOk returns a tuple with the TradeAmountInNative field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTradeAmountInNative
 
-`func (o *TokenTrader) SetTradeAmountInNative(v float32)`
+`func (o *TokenTrader) SetTradeAmountInNative(v string)`
 
 SetTradeAmountInNative sets TradeAmountInNative field to given value.
 
@@ -259,20 +259,20 @@ HasTradeAmountInNative returns a boolean if a field has been set.
 
 ### GetTradeAmountInUsd
 
-`func (o *TokenTrader) GetTradeAmountInUsd() float32`
+`func (o *TokenTrader) GetTradeAmountInUsd() string`
 
 GetTradeAmountInUsd returns the TradeAmountInUsd field if non-nil, zero value otherwise.
 
 ### GetTradeAmountInUsdOk
 
-`func (o *TokenTrader) GetTradeAmountInUsdOk() (*float32, bool)`
+`func (o *TokenTrader) GetTradeAmountInUsdOk() (*string, bool)`
 
 GetTradeAmountInUsdOk returns a tuple with the TradeAmountInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTradeAmountInUsd
 
-`func (o *TokenTrader) SetTradeAmountInUsd(v float32)`
+`func (o *TokenTrader) SetTradeAmountInUsd(v string)`
 
 SetTradeAmountInUsd sets TradeAmountInUsd field to given value.
 
@@ -284,20 +284,20 @@ HasTradeAmountInUsd returns a boolean if a field has been set.
 
 ### GetPercentileRankTradeCount
 
-`func (o *TokenTrader) GetPercentileRankTradeCount() float32`
+`func (o *TokenTrader) GetPercentileRankTradeCount() int64`
 
 GetPercentileRankTradeCount returns the PercentileRankTradeCount field if non-nil, zero value otherwise.
 
 ### GetPercentileRankTradeCountOk
 
-`func (o *TokenTrader) GetPercentileRankTradeCountOk() (*float32, bool)`
+`func (o *TokenTrader) GetPercentileRankTradeCountOk() (*int64, bool)`
 
 GetPercentileRankTradeCountOk returns a tuple with the PercentileRankTradeCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPercentileRankTradeCount
 
-`func (o *TokenTrader) SetPercentileRankTradeCount(v float32)`
+`func (o *TokenTrader) SetPercentileRankTradeCount(v int64)`
 
 SetPercentileRankTradeCount sets PercentileRankTradeCount field to given value.
 
@@ -309,20 +309,20 @@ HasPercentileRankTradeCount returns a boolean if a field has been set.
 
 ### GetPercentileRankTradeAmountInUsd
 
-`func (o *TokenTrader) GetPercentileRankTradeAmountInUsd() float32`
+`func (o *TokenTrader) GetPercentileRankTradeAmountInUsd() string`
 
 GetPercentileRankTradeAmountInUsd returns the PercentileRankTradeAmountInUsd field if non-nil, zero value otherwise.
 
 ### GetPercentileRankTradeAmountInUsdOk
 
-`func (o *TokenTrader) GetPercentileRankTradeAmountInUsdOk() (*float32, bool)`
+`func (o *TokenTrader) GetPercentileRankTradeAmountInUsdOk() (*string, bool)`
 
 GetPercentileRankTradeAmountInUsdOk returns a tuple with the PercentileRankTradeAmountInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPercentileRankTradeAmountInUsd
 
-`func (o *TokenTrader) SetPercentileRankTradeAmountInUsd(v float32)`
+`func (o *TokenTrader) SetPercentileRankTradeAmountInUsd(v string)`
 
 SetPercentileRankTradeAmountInUsd sets PercentileRankTradeAmountInUsd field to given value.
 
@@ -334,20 +334,20 @@ HasPercentileRankTradeAmountInUsd returns a boolean if a field has been set.
 
 ### GetRankTradeAmountInUsd
 
-`func (o *TokenTrader) GetRankTradeAmountInUsd() float32`
+`func (o *TokenTrader) GetRankTradeAmountInUsd() string`
 
 GetRankTradeAmountInUsd returns the RankTradeAmountInUsd field if non-nil, zero value otherwise.
 
 ### GetRankTradeAmountInUsdOk
 
-`func (o *TokenTrader) GetRankTradeAmountInUsdOk() (*float32, bool)`
+`func (o *TokenTrader) GetRankTradeAmountInUsdOk() (*string, bool)`
 
 GetRankTradeAmountInUsdOk returns a tuple with the RankTradeAmountInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRankTradeAmountInUsd
 
-`func (o *TokenTrader) SetRankTradeAmountInUsd(v float32)`
+`func (o *TokenTrader) SetRankTradeAmountInUsd(v string)`
 
 SetRankTradeAmountInUsd sets RankTradeAmountInUsd field to given value.
 

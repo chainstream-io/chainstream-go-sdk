@@ -29,11 +29,11 @@ type KYTRegisterWithdrawalRequest struct {
 	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ADDRESS
 	Address string `json:"address"`
 	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_AMOUNT
-	AssetAmount float32 `json:"assetAmount"`
+	AssetAmount string `json:"assetAmount"`
 	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ATTEMPT_TIMESTAMP
 	AttemptTimestamp string `json:"attemptTimestamp"`
 	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_PRICE
-	AssetPrice *float32 `json:"assetPrice,omitempty"`
+	AssetPrice *string `json:"assetPrice,omitempty"`
 	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_DENOMINATION
 	AssetDenomination *string `json:"assetDenomination,omitempty"`
 	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_ID
@@ -48,7 +48,7 @@ type _KYTRegisterWithdrawalRequest KYTRegisterWithdrawalRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKYTRegisterWithdrawalRequest(network string, asset string, address string, assetAmount float32, attemptTimestamp string) *KYTRegisterWithdrawalRequest {
+func NewKYTRegisterWithdrawalRequest(network string, asset string, address string, assetAmount string, attemptTimestamp string) *KYTRegisterWithdrawalRequest {
 	this := KYTRegisterWithdrawalRequest{}
 	this.Network = network
 	this.Asset = asset
@@ -139,9 +139,9 @@ func (o *KYTRegisterWithdrawalRequest) SetAddress(v string) {
 }
 
 // GetAssetAmount returns the AssetAmount field value
-func (o *KYTRegisterWithdrawalRequest) GetAssetAmount() float32 {
+func (o *KYTRegisterWithdrawalRequest) GetAssetAmount() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -150,7 +150,7 @@ func (o *KYTRegisterWithdrawalRequest) GetAssetAmount() float32 {
 
 // GetAssetAmountOk returns a tuple with the AssetAmount field value
 // and a boolean to check if the value has been set.
-func (o *KYTRegisterWithdrawalRequest) GetAssetAmountOk() (*float32, bool) {
+func (o *KYTRegisterWithdrawalRequest) GetAssetAmountOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -158,7 +158,7 @@ func (o *KYTRegisterWithdrawalRequest) GetAssetAmountOk() (*float32, bool) {
 }
 
 // SetAssetAmount sets field value
-func (o *KYTRegisterWithdrawalRequest) SetAssetAmount(v float32) {
+func (o *KYTRegisterWithdrawalRequest) SetAssetAmount(v string) {
 	o.AssetAmount = v
 }
 
@@ -187,9 +187,9 @@ func (o *KYTRegisterWithdrawalRequest) SetAttemptTimestamp(v string) {
 }
 
 // GetAssetPrice returns the AssetPrice field value if set, zero value otherwise.
-func (o *KYTRegisterWithdrawalRequest) GetAssetPrice() float32 {
+func (o *KYTRegisterWithdrawalRequest) GetAssetPrice() string {
 	if o == nil || IsNil(o.AssetPrice) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.AssetPrice
@@ -197,7 +197,7 @@ func (o *KYTRegisterWithdrawalRequest) GetAssetPrice() float32 {
 
 // GetAssetPriceOk returns a tuple with the AssetPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KYTRegisterWithdrawalRequest) GetAssetPriceOk() (*float32, bool) {
+func (o *KYTRegisterWithdrawalRequest) GetAssetPriceOk() (*string, bool) {
 	if o == nil || IsNil(o.AssetPrice) {
 		return nil, false
 	}
@@ -213,8 +213,8 @@ func (o *KYTRegisterWithdrawalRequest) HasAssetPrice() bool {
 	return false
 }
 
-// SetAssetPrice gets a reference to the given float32 and assigns it to the AssetPrice field.
-func (o *KYTRegisterWithdrawalRequest) SetAssetPrice(v float32) {
+// SetAssetPrice gets a reference to the given string and assigns it to the AssetPrice field.
+func (o *KYTRegisterWithdrawalRequest) SetAssetPrice(v string) {
 	o.AssetPrice = &v
 }
 

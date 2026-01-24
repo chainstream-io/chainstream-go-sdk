@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Disabled** | Pointer to **bool** | DTO.ENDPOINT.DISABLED | [optional] [default to false]
 **FilterTypes** | Pointer to **[]string** | DTO.ENDPOINT.FILTER_TYPES | [optional] 
 **Metadata** | Pointer to **map[string]interface{}** | DTO.ENDPOINT.METADATA | [optional] 
-**RateLimit** | Pointer to **float32** | DTO.ENDPOINT.RATE_LIMIT | [optional] 
+**RateLimit** | Pointer to **int64** | DTO.ENDPOINT.RATE_LIMIT | [optional] 
 **Url** | Pointer to **string** | DTO.ENDPOINT.URL | [optional] 
 **Filter** | Pointer to **string** | DTO.ENDPOINT.FILTER | [optional] 
 
@@ -185,20 +185,20 @@ HasMetadata returns a boolean if a field has been set.
 
 ### GetRateLimit
 
-`func (o *UpdateEndpointInput) GetRateLimit() float32`
+`func (o *UpdateEndpointInput) GetRateLimit() int64`
 
 GetRateLimit returns the RateLimit field if non-nil, zero value otherwise.
 
 ### GetRateLimitOk
 
-`func (o *UpdateEndpointInput) GetRateLimitOk() (*float32, bool)`
+`func (o *UpdateEndpointInput) GetRateLimitOk() (*int64, bool)`
 
 GetRateLimitOk returns a tuple with the RateLimit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRateLimit
 
-`func (o *UpdateEndpointInput) SetRateLimit(v float32)`
+`func (o *UpdateEndpointInput) SetRateLimit(v int64)`
 
 SetRateLimit sets RateLimit field to given value.
 

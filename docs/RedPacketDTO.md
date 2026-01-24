@@ -12,13 +12,13 @@ Name | Type | Description | Notes
 **Mint** | **string** | DTO.RED_PACKET.MINT | 
 **TotalAmount** | **string** | DTO.RED_PACKET.TOTAL_AMOUNT | 
 **Memo** | **string** | DTO.RED_PACKET.MEMO | 
-**MaxClaims** | **float32** | DTO.RED_PACKET.MAX_CLAIMS | 
+**MaxClaims** | **int64** | DTO.RED_PACKET.MAX_CLAIMS | 
 **ClaimAuthority** | **string** | DTO.RED_PACKET.CLAIM_AUTHORITY | 
 **Expired** | **bool** | DTO.RED_PACKET.WITHDRAWED | 
-**Expiration** | **float32** | DTO.RED_PACKET.EXPIRATION | 
-**CreatedAt** | **float32** | DTO.RED_PACKET.CREATED_AT | 
-**ExpiredAt** | **float32** | DTO.RED_PACKET.EXPIRES_AT | 
-**ClaimedCount** | **float32** | DTO.RED_PACKET.CLAIMED_COUNT | 
+**Expiration** | **int64** | DTO.RED_PACKET.EXPIRATION | 
+**CreatedAt** | **int64** | DTO.RED_PACKET.CREATED_AT | 
+**ExpiredAt** | **int64** | DTO.RED_PACKET.EXPIRES_AT | 
+**ClaimedCount** | **int64** | DTO.RED_PACKET.CLAIMED_COUNT | 
 **ClaimedAmount** | **string** | DTO.RED_PACKET.CLAIMED_AMOUNT | 
 **RefundedAmount** | **string** | DTO.RED_PACKET.REFUND_AMOUNT | 
 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewRedPacketDTO
 
-`func NewRedPacketDTO(chain Chain, id string, shareId string, txHash string, creator string, mint string, totalAmount string, memo string, maxClaims float32, claimAuthority string, expired bool, expiration float32, createdAt float32, expiredAt float32, claimedCount float32, claimedAmount string, refundedAmount string, ) *RedPacketDTO`
+`func NewRedPacketDTO(chain Chain, id string, shareId string, txHash string, creator string, mint string, totalAmount string, memo string, maxClaims int64, claimAuthority string, expired bool, expiration int64, createdAt int64, expiredAt int64, claimedCount int64, claimedAmount string, refundedAmount string, ) *RedPacketDTO`
 
 NewRedPacketDTO instantiates a new RedPacketDTO object
 This constructor will assign default values to properties that have it defined,
@@ -203,20 +203,20 @@ SetMemo sets Memo field to given value.
 
 ### GetMaxClaims
 
-`func (o *RedPacketDTO) GetMaxClaims() float32`
+`func (o *RedPacketDTO) GetMaxClaims() int64`
 
 GetMaxClaims returns the MaxClaims field if non-nil, zero value otherwise.
 
 ### GetMaxClaimsOk
 
-`func (o *RedPacketDTO) GetMaxClaimsOk() (*float32, bool)`
+`func (o *RedPacketDTO) GetMaxClaimsOk() (*int64, bool)`
 
 GetMaxClaimsOk returns a tuple with the MaxClaims field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxClaims
 
-`func (o *RedPacketDTO) SetMaxClaims(v float32)`
+`func (o *RedPacketDTO) SetMaxClaims(v int64)`
 
 SetMaxClaims sets MaxClaims field to given value.
 
@@ -263,80 +263,80 @@ SetExpired sets Expired field to given value.
 
 ### GetExpiration
 
-`func (o *RedPacketDTO) GetExpiration() float32`
+`func (o *RedPacketDTO) GetExpiration() int64`
 
 GetExpiration returns the Expiration field if non-nil, zero value otherwise.
 
 ### GetExpirationOk
 
-`func (o *RedPacketDTO) GetExpirationOk() (*float32, bool)`
+`func (o *RedPacketDTO) GetExpirationOk() (*int64, bool)`
 
 GetExpirationOk returns a tuple with the Expiration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiration
 
-`func (o *RedPacketDTO) SetExpiration(v float32)`
+`func (o *RedPacketDTO) SetExpiration(v int64)`
 
 SetExpiration sets Expiration field to given value.
 
 
 ### GetCreatedAt
 
-`func (o *RedPacketDTO) GetCreatedAt() float32`
+`func (o *RedPacketDTO) GetCreatedAt() int64`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *RedPacketDTO) GetCreatedAtOk() (*float32, bool)`
+`func (o *RedPacketDTO) GetCreatedAtOk() (*int64, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *RedPacketDTO) SetCreatedAt(v float32)`
+`func (o *RedPacketDTO) SetCreatedAt(v int64)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetExpiredAt
 
-`func (o *RedPacketDTO) GetExpiredAt() float32`
+`func (o *RedPacketDTO) GetExpiredAt() int64`
 
 GetExpiredAt returns the ExpiredAt field if non-nil, zero value otherwise.
 
 ### GetExpiredAtOk
 
-`func (o *RedPacketDTO) GetExpiredAtOk() (*float32, bool)`
+`func (o *RedPacketDTO) GetExpiredAtOk() (*int64, bool)`
 
 GetExpiredAtOk returns a tuple with the ExpiredAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiredAt
 
-`func (o *RedPacketDTO) SetExpiredAt(v float32)`
+`func (o *RedPacketDTO) SetExpiredAt(v int64)`
 
 SetExpiredAt sets ExpiredAt field to given value.
 
 
 ### GetClaimedCount
 
-`func (o *RedPacketDTO) GetClaimedCount() float32`
+`func (o *RedPacketDTO) GetClaimedCount() int64`
 
 GetClaimedCount returns the ClaimedCount field if non-nil, zero value otherwise.
 
 ### GetClaimedCountOk
 
-`func (o *RedPacketDTO) GetClaimedCountOk() (*float32, bool)`
+`func (o *RedPacketDTO) GetClaimedCountOk() (*int64, bool)`
 
 GetClaimedCountOk returns a tuple with the ClaimedCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClaimedCount
 
-`func (o *RedPacketDTO) SetClaimedCount(v float32)`
+`func (o *RedPacketDTO) SetClaimedCount(v int64)`
 
 SetClaimedCount sets ClaimedCount field to given value.
 

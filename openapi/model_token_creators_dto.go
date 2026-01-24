@@ -23,7 +23,7 @@ type TokenCreatorsDTO struct {
 	// DTO.TOKEN.CREATORS.ADDRESS
 	Address *string `json:"address,omitempty"`
 	// DTO.TOKEN.CREATORS.SHARE
-	Share *float32 `json:"share,omitempty"`
+	Share *int64 `json:"share,omitempty"`
 	// DTO.TOKEN.CREATORS.IS_VERIFIED
 	IsVerified *bool `json:"isVerified,omitempty"`
 }
@@ -78,9 +78,9 @@ func (o *TokenCreatorsDTO) SetAddress(v string) {
 }
 
 // GetShare returns the Share field value if set, zero value otherwise.
-func (o *TokenCreatorsDTO) GetShare() float32 {
+func (o *TokenCreatorsDTO) GetShare() int64 {
 	if o == nil || IsNil(o.Share) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.Share
@@ -88,7 +88,7 @@ func (o *TokenCreatorsDTO) GetShare() float32 {
 
 // GetShareOk returns a tuple with the Share field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenCreatorsDTO) GetShareOk() (*float32, bool) {
+func (o *TokenCreatorsDTO) GetShareOk() (*int64, bool) {
 	if o == nil || IsNil(o.Share) {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *TokenCreatorsDTO) HasShare() bool {
 	return false
 }
 
-// SetShare gets a reference to the given float32 and assigns it to the Share field.
-func (o *TokenCreatorsDTO) SetShare(v float32) {
+// SetShare gets a reference to the given int64 and assigns it to the Share field.
+func (o *TokenCreatorsDTO) SetShare(v int64) {
 	o.Share = &v
 }
 

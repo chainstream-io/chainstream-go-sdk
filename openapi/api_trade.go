@@ -34,10 +34,10 @@ type TradeAPIGetActivitiesRequest struct {
 	tokenAddress *string
 	walletAddress *string
 	poolAddress *string
-	beforeTimestamp *float32
-	afterTimestamp *float32
-	beforeBlockHeight *float32
-	afterBlockHeight *float32
+	beforeTimestamp *int64
+	afterTimestamp *int64
+	beforeBlockHeight *int64
+	afterBlockHeight *int64
 	transactionsSignature *string
 	type_ *string
 }
@@ -79,25 +79,25 @@ func (r TradeAPIGetActivitiesRequest) PoolAddress(poolAddress string) TradeAPIGe
 }
 
 // DTO.TRADE.QUERY.BEFORE_TIMESTAMP
-func (r TradeAPIGetActivitiesRequest) BeforeTimestamp(beforeTimestamp float32) TradeAPIGetActivitiesRequest {
+func (r TradeAPIGetActivitiesRequest) BeforeTimestamp(beforeTimestamp int64) TradeAPIGetActivitiesRequest {
 	r.beforeTimestamp = &beforeTimestamp
 	return r
 }
 
 // DTO.TRADE.QUERY.AFTER_TIMESTAMP
-func (r TradeAPIGetActivitiesRequest) AfterTimestamp(afterTimestamp float32) TradeAPIGetActivitiesRequest {
+func (r TradeAPIGetActivitiesRequest) AfterTimestamp(afterTimestamp int64) TradeAPIGetActivitiesRequest {
 	r.afterTimestamp = &afterTimestamp
 	return r
 }
 
 // DTO.TRADE.QUERY.BEFORE_BLOCK_HEIGHT
-func (r TradeAPIGetActivitiesRequest) BeforeBlockHeight(beforeBlockHeight float32) TradeAPIGetActivitiesRequest {
+func (r TradeAPIGetActivitiesRequest) BeforeBlockHeight(beforeBlockHeight int64) TradeAPIGetActivitiesRequest {
 	r.beforeBlockHeight = &beforeBlockHeight
 	return r
 }
 
 // DTO.TRADE.QUERY.AFTER_BLOCK_HEIGHT
-func (r TradeAPIGetActivitiesRequest) AfterBlockHeight(afterBlockHeight float32) TradeAPIGetActivitiesRequest {
+func (r TradeAPIGetActivitiesRequest) AfterBlockHeight(afterBlockHeight int64) TradeAPIGetActivitiesRequest {
 	r.afterBlockHeight = &afterBlockHeight
 	return r
 }
@@ -253,373 +253,6 @@ func (a *TradeAPIService) GetActivitiesExecute(r TradeAPIGetActivitiesRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type TradeAPIGetGainersLosersRequest struct {
-	ctx context.Context
-	ApiService *TradeAPIService
-	chain ChainSymbol
-	cursor *string
-	limit *float32
-	direction *string
-	type_ *string
-	sortBy *string
-	sortType *string
-}
-
-// DTO.PAGE.CURSOR.DESCRIPTION
-func (r TradeAPIGetGainersLosersRequest) Cursor(cursor string) TradeAPIGetGainersLosersRequest {
-	r.cursor = &cursor
-	return r
-}
-
-// DTO.TRADE.QUERY.LIMIT
-func (r TradeAPIGetGainersLosersRequest) Limit(limit float32) TradeAPIGetGainersLosersRequest {
-	r.limit = &limit
-	return r
-}
-
-// DTO.PAGE.DIRECTION
-func (r TradeAPIGetGainersLosersRequest) Direction(direction string) TradeAPIGetGainersLosersRequest {
-	r.direction = &direction
-	return r
-}
-
-// DTO.TRADE.GAINERS_LOSERS.QUERY.TYPE
-func (r TradeAPIGetGainersLosersRequest) Type_(type_ string) TradeAPIGetGainersLosersRequest {
-	r.type_ = &type_
-	return r
-}
-
-// DTO.TRADE.GAINERS_LOSERS.QUERY.SORT_BY
-func (r TradeAPIGetGainersLosersRequest) SortBy(sortBy string) TradeAPIGetGainersLosersRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-// DTO.TRADE.GAINERS_LOSERS.QUERY.SORT_TYPE
-func (r TradeAPIGetGainersLosersRequest) SortType(sortType string) TradeAPIGetGainersLosersRequest {
-	r.sortType = &sortType
-	return r
-}
-
-func (r TradeAPIGetGainersLosersRequest) Execute() (*GainersAndLosersPage, *http.Response, error) {
-	return r.ApiService.GetGainersLosersExecute(r)
-}
-
-/*
-GetGainersLosers CONTROLLER.TRADE.GET.GAINERS_LOSERS.SUMMARY
-
-CONTROLLER.TRADE.GET.GAINERS_LOSERS.DESCRIPTION
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @return TradeAPIGetGainersLosersRequest
-*/
-func (a *TradeAPIService) GetGainersLosers(ctx context.Context, chain ChainSymbol) TradeAPIGetGainersLosersRequest {
-	return TradeAPIGetGainersLosersRequest{
-		ApiService: a,
-		ctx: ctx,
-		chain: chain,
-	}
-}
-
-// Execute executes the request
-//  @return GainersAndLosersPage
-func (a *TradeAPIService) GetGainersLosersExecute(r TradeAPIGetGainersLosersRequest) (*GainersAndLosersPage, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GainersAndLosersPage
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradeAPIService.GetGainersLosers")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/trade/{chain}/gainers-losers"
-	localVarPath = strings.Replace(localVarPath, "{"+"chain"+"}", url.PathEscape(parameterValueToString(r.chain, "chain")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
-	} else {
-		var defaultValue float32 = 10
-		r.limit = &defaultValue
-	}
-	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
-	} else {
-		var defaultValue string = "next"
-		r.direction = &defaultValue
-	}
-	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "")
-	} else {
-		var defaultValue string = "1W"
-		r.type_ = &defaultValue
-	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
-	} else {
-		var defaultValue string = "PnL"
-		r.sortBy = &defaultValue
-	}
-	if r.sortType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortType", r.sortType, "")
-	} else {
-		var defaultValue string = "desc"
-		r.sortType = &defaultValue
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type TradeAPIGetTopTradersRequest struct {
-	ctx context.Context
-	ApiService *TradeAPIService
-	chain ChainSymbol
-	tokenAddress *string
-	cursor *string
-	limit *float32
-	direction *string
-	timeFrame *string
-	sortType *string
-	sortBy *string
-}
-
-// DTO.TRADE.QUERY.TOKEN_ADDRESS
-func (r TradeAPIGetTopTradersRequest) TokenAddress(tokenAddress string) TradeAPIGetTopTradersRequest {
-	r.tokenAddress = &tokenAddress
-	return r
-}
-
-// DTO.PAGE.CURSOR.DESCRIPTION
-func (r TradeAPIGetTopTradersRequest) Cursor(cursor string) TradeAPIGetTopTradersRequest {
-	r.cursor = &cursor
-	return r
-}
-
-// DTO.TRADE.QUERY.LIMIT
-func (r TradeAPIGetTopTradersRequest) Limit(limit float32) TradeAPIGetTopTradersRequest {
-	r.limit = &limit
-	return r
-}
-
-// DTO.PAGE.DIRECTION
-func (r TradeAPIGetTopTradersRequest) Direction(direction string) TradeAPIGetTopTradersRequest {
-	r.direction = &direction
-	return r
-}
-
-// DTO.TRADE.QUERY.TIME_FRAME
-func (r TradeAPIGetTopTradersRequest) TimeFrame(timeFrame string) TradeAPIGetTopTradersRequest {
-	r.timeFrame = &timeFrame
-	return r
-}
-
-// DTO.TRADE.QUERY.SORT_TYPE
-func (r TradeAPIGetTopTradersRequest) SortType(sortType string) TradeAPIGetTopTradersRequest {
-	r.sortType = &sortType
-	return r
-}
-
-// DTO.TRADE.QUERY.SORT_BY
-func (r TradeAPIGetTopTradersRequest) SortBy(sortBy string) TradeAPIGetTopTradersRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r TradeAPIGetTopTradersRequest) Execute() (*TopTradersPage, *http.Response, error) {
-	return r.ApiService.GetTopTradersExecute(r)
-}
-
-/*
-GetTopTraders CONTROLLER.TRADE.GET.TOP_TRADERS.SUMMARY
-
-CONTROLLER.TRADE.GET.TOP_TRADERS.DESCRIPTION
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @return TradeAPIGetTopTradersRequest
-*/
-func (a *TradeAPIService) GetTopTraders(ctx context.Context, chain ChainSymbol) TradeAPIGetTopTradersRequest {
-	return TradeAPIGetTopTradersRequest{
-		ApiService: a,
-		ctx: ctx,
-		chain: chain,
-	}
-}
-
-// Execute executes the request
-//  @return TopTradersPage
-func (a *TradeAPIService) GetTopTradersExecute(r TradeAPIGetTopTradersRequest) (*TopTradersPage, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TopTradersPage
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradeAPIService.GetTopTraders")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/trade/{chain}/top-traders"
-	localVarPath = strings.Replace(localVarPath, "{"+"chain"+"}", url.PathEscape(parameterValueToString(r.chain, "chain")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.tokenAddress == nil {
-		return localVarReturnValue, nil, reportError("tokenAddress is required and must be specified")
-	}
-
-	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
-	} else {
-		var defaultValue float32 = 10
-		r.limit = &defaultValue
-	}
-	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
-	} else {
-		var defaultValue string = "next"
-		r.direction = &defaultValue
-	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddress", r.tokenAddress, "")
-	if r.timeFrame != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "timeFrame", r.timeFrame, "")
-	} else {
-		var defaultValue string = "30m"
-		r.timeFrame = &defaultValue
-	}
-	if r.sortType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortType", r.sortType, "")
-	} else {
-		var defaultValue string = "desc"
-		r.sortType = &defaultValue
-	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
-	} else {
-		var defaultValue string = "volume"
-		r.sortBy = &defaultValue
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type TradeAPIGetTradesRequest struct {
 	ctx context.Context
 	ApiService *TradeAPIService
@@ -630,10 +263,10 @@ type TradeAPIGetTradesRequest struct {
 	tokenAddress *string
 	walletAddress *string
 	poolAddress *string
-	beforeTimestamp *float32
-	afterTimestamp *float32
-	beforeBlockHeight *float32
-	afterBlockHeight *float32
+	beforeTimestamp *int64
+	afterTimestamp *int64
+	beforeBlockHeight *int64
+	afterBlockHeight *int64
 	transactionsSignature *string
 	type_ *string
 }
@@ -675,25 +308,25 @@ func (r TradeAPIGetTradesRequest) PoolAddress(poolAddress string) TradeAPIGetTra
 }
 
 // DTO.TRADE.QUERY.BEFORE_TIMESTAMP
-func (r TradeAPIGetTradesRequest) BeforeTimestamp(beforeTimestamp float32) TradeAPIGetTradesRequest {
+func (r TradeAPIGetTradesRequest) BeforeTimestamp(beforeTimestamp int64) TradeAPIGetTradesRequest {
 	r.beforeTimestamp = &beforeTimestamp
 	return r
 }
 
 // DTO.TRADE.QUERY.AFTER_TIMESTAMP
-func (r TradeAPIGetTradesRequest) AfterTimestamp(afterTimestamp float32) TradeAPIGetTradesRequest {
+func (r TradeAPIGetTradesRequest) AfterTimestamp(afterTimestamp int64) TradeAPIGetTradesRequest {
 	r.afterTimestamp = &afterTimestamp
 	return r
 }
 
 // DTO.TRADE.QUERY.BEFORE_BLOCK_HEIGHT
-func (r TradeAPIGetTradesRequest) BeforeBlockHeight(beforeBlockHeight float32) TradeAPIGetTradesRequest {
+func (r TradeAPIGetTradesRequest) BeforeBlockHeight(beforeBlockHeight int64) TradeAPIGetTradesRequest {
 	r.beforeBlockHeight = &beforeBlockHeight
 	return r
 }
 
 // DTO.TRADE.QUERY.AFTER_BLOCK_HEIGHT
-func (r TradeAPIGetTradesRequest) AfterBlockHeight(afterBlockHeight float32) TradeAPIGetTradesRequest {
+func (r TradeAPIGetTradesRequest) AfterBlockHeight(afterBlockHeight int64) TradeAPIGetTradesRequest {
 	r.afterBlockHeight = &afterBlockHeight
 	return r
 }

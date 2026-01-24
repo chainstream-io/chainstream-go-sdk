@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 **TransferReference** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.TRANSFER_REFERENCE | 
 **Memo** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.MEMO | 
 **Tx** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.TX | 
-**Idx** | **float32** | DTO.KYT.TRANSFER_BASE_RESPONSE.IDX | 
-**UsdAmount** | **float32** | DTO.KYT.TRANSFER_BASE_RESPONSE.USD_AMOUNT | 
-**AssetAmount** | **float32** | DTO.KYT.TRANSFER_BASE_RESPONSE.ASSET_AMOUNT | 
+**Idx** | **int64** | DTO.KYT.TRANSFER_BASE_RESPONSE.IDX | 
+**UsdAmount** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.USD_AMOUNT | 
+**AssetAmount** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.ASSET_AMOUNT | 
 **Timestamp** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.TIMESTAMP | 
 **OutputAddress** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.OUTPUT_ADDRESS | 
 **ExternalId** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.EXTERNAL_ID | 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewTransferBaseResponseDTO
 
-`func NewTransferBaseResponseDTO(updatedAt string, asset string, assetId string, network string, transferReference string, memo string, tx string, idx float32, usdAmount float32, assetAmount float32, timestamp string, outputAddress string, externalId string, ) *TransferBaseResponseDTO`
+`func NewTransferBaseResponseDTO(updatedAt string, asset string, assetId string, network string, transferReference string, memo string, tx string, idx int64, usdAmount string, assetAmount string, timestamp string, outputAddress string, externalId string, ) *TransferBaseResponseDTO`
 
 NewTransferBaseResponseDTO instantiates a new TransferBaseResponseDTO object
 This constructor will assign default values to properties that have it defined,
@@ -179,60 +179,60 @@ SetTx sets Tx field to given value.
 
 ### GetIdx
 
-`func (o *TransferBaseResponseDTO) GetIdx() float32`
+`func (o *TransferBaseResponseDTO) GetIdx() int64`
 
 GetIdx returns the Idx field if non-nil, zero value otherwise.
 
 ### GetIdxOk
 
-`func (o *TransferBaseResponseDTO) GetIdxOk() (*float32, bool)`
+`func (o *TransferBaseResponseDTO) GetIdxOk() (*int64, bool)`
 
 GetIdxOk returns a tuple with the Idx field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdx
 
-`func (o *TransferBaseResponseDTO) SetIdx(v float32)`
+`func (o *TransferBaseResponseDTO) SetIdx(v int64)`
 
 SetIdx sets Idx field to given value.
 
 
 ### GetUsdAmount
 
-`func (o *TransferBaseResponseDTO) GetUsdAmount() float32`
+`func (o *TransferBaseResponseDTO) GetUsdAmount() string`
 
 GetUsdAmount returns the UsdAmount field if non-nil, zero value otherwise.
 
 ### GetUsdAmountOk
 
-`func (o *TransferBaseResponseDTO) GetUsdAmountOk() (*float32, bool)`
+`func (o *TransferBaseResponseDTO) GetUsdAmountOk() (*string, bool)`
 
 GetUsdAmountOk returns a tuple with the UsdAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsdAmount
 
-`func (o *TransferBaseResponseDTO) SetUsdAmount(v float32)`
+`func (o *TransferBaseResponseDTO) SetUsdAmount(v string)`
 
 SetUsdAmount sets UsdAmount field to given value.
 
 
 ### GetAssetAmount
 
-`func (o *TransferBaseResponseDTO) GetAssetAmount() float32`
+`func (o *TransferBaseResponseDTO) GetAssetAmount() string`
 
 GetAssetAmount returns the AssetAmount field if non-nil, zero value otherwise.
 
 ### GetAssetAmountOk
 
-`func (o *TransferBaseResponseDTO) GetAssetAmountOk() (*float32, bool)`
+`func (o *TransferBaseResponseDTO) GetAssetAmountOk() (*string, bool)`
 
 GetAssetAmountOk returns a tuple with the AssetAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssetAmount
 
-`func (o *TransferBaseResponseDTO) SetAssetAmount(v float32)`
+`func (o *TransferBaseResponseDTO) SetAssetAmount(v string)`
 
 SetAssetAmount sets AssetAmount field to given value.
 

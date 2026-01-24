@@ -11,13 +11,13 @@ Name | Type | Description | Notes
 **Reason** | **string** | DTO.KYT.ALTERYA_IDENTIFICATION.REASON | 
 **Labels** | **[]string** | DTO.KYT.ALTERYA_IDENTIFICATION.LABELS | 
 **OnChainActivity** | [**OnChainActivity**](OnChainActivity.md) | DTO.KYT.ALTERYA_IDENTIFICATION.ON_CHAIN_ACTIVITY | 
-**RiskScore** | **float32** | DTO.KYT.ALTERYA_IDENTIFICATION.RISK_SCORE | 
+**RiskScore** | **string** | DTO.KYT.ALTERYA_IDENTIFICATION.RISK_SCORE | 
 
 ## Methods
 
 ### NewAlteryaIdentification
 
-`func NewAlteryaIdentification(object string, address string, chain string, riskLevel string, reason string, labels []string, onChainActivity OnChainActivity, riskScore float32, ) *AlteryaIdentification`
+`func NewAlteryaIdentification(object string, address string, chain string, riskLevel string, reason string, labels []string, onChainActivity OnChainActivity, riskScore string, ) *AlteryaIdentification`
 
 NewAlteryaIdentification instantiates a new AlteryaIdentification object
 This constructor will assign default values to properties that have it defined,
@@ -174,20 +174,20 @@ SetOnChainActivity sets OnChainActivity field to given value.
 
 ### GetRiskScore
 
-`func (o *AlteryaIdentification) GetRiskScore() float32`
+`func (o *AlteryaIdentification) GetRiskScore() string`
 
 GetRiskScore returns the RiskScore field if non-nil, zero value otherwise.
 
 ### GetRiskScoreOk
 
-`func (o *AlteryaIdentification) GetRiskScoreOk() (*float32, bool)`
+`func (o *AlteryaIdentification) GetRiskScoreOk() (*string, bool)`
 
 GetRiskScoreOk returns a tuple with the RiskScore field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRiskScore
 
-`func (o *AlteryaIdentification) SetRiskScore(v float32)`
+`func (o *AlteryaIdentification) SetRiskScore(v string)`
 
 SetRiskScore sets RiskScore field to given value.
 

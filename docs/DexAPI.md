@@ -106,7 +106,7 @@ import (
 
 func main() {
 	chains := []string{"Inner_example"} // []string |  (optional)
-	limit := float32(8.14) // float32 | DTO.DEX.QUERY.LIMIT (optional) (default to 20)
+	limit := int64(789) // int64 | DTO.DEX.QUERY.LIMIT (optional) (default to 20)
 	dexProgram := "dexProgram_example" // string | DTO.DEX.QUERY.DEX_PROGRAM (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -133,7 +133,7 @@ Other parameters are passed through a pointer to a apiListDexRequest struct via 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chains** | **[]string** |  | 
- **limit** | **float32** | DTO.DEX.QUERY.LIMIT | [default to 20]
+ **limit** | **int64** | DTO.DEX.QUERY.LIMIT | [default to 20]
  **dexProgram** | **string** | DTO.DEX.QUERY.DEX_PROGRAM | 
 
 ### Return type
@@ -181,7 +181,7 @@ func main() {
 	inputMint := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | DTO.DEX.QUOTE.INPUT_MINT
 	outputMint := "So11111111111111111111111111111111111111112" // string | DTO.DEX.QUOTE.OUTPUT_MINT
 	exactIn := true // bool | DTO.DEX.QUOTE.EXACT_IN (default to true)
-	slippage := float32(10) // float32 | DTO.DEX.QUOTE.SLIPPAGE
+	slippage := int64(10) // int64 | DTO.DEX.QUOTE.SLIPPAGE
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
  **inputMint** | **string** | DTO.DEX.QUOTE.INPUT_MINT | 
  **outputMint** | **string** | DTO.DEX.QUOTE.OUTPUT_MINT | 
  **exactIn** | **bool** | DTO.DEX.QUOTE.EXACT_IN | [default to true]
- **slippage** | **float32** | DTO.DEX.QUOTE.SLIPPAGE | 
+ **slippage** | **int64** | DTO.DEX.QUOTE.SLIPPAGE | 
 
 ### Return type
 
@@ -258,7 +258,7 @@ import (
 
 func main() {
 	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	swapRouteInput := *openapiclient.NewSwapRouteInput("jupiter", "oQPnhXAbLbMuKHESaGrbXT17CyvWCpLyERSJA9HCYd7", "1000000000", "ExactIn", float32(5)) // SwapRouteInput | 
+	swapRouteInput := *openapiclient.NewSwapRouteInput("jupiter", "oQPnhXAbLbMuKHESaGrbXT17CyvWCpLyERSJA9HCYd7", "1000000000", "ExactIn", int64(5)) // SwapRouteInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -330,7 +330,7 @@ import (
 
 func main() {
 	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	swapInput := *openapiclient.NewSwapInput("raydium", "oQPnhXAbLbMuKHESaGrbXT17CyvWCpLyERSJA9HCYd7", "1000000000", "ExactIn", float32(10)) // SwapInput | 
+	swapInput := *openapiclient.NewSwapInput("raydium", "oQPnhXAbLbMuKHESaGrbXT17CyvWCpLyERSJA9HCYd7", "1000000000", "ExactIn", int64(10)) // SwapInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

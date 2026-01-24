@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Args** | [**SwapRouteInput**](SwapRouteInput.md) | DTO.DEX.SWAP.ARGS | 
 **SerializedTx** | **string** | DTO.DEX.SWAP.SERIALIZED_TX | 
 **RouteInfo** | **map[string]interface{}** | DTO.DEX.SWAP.ROUTE_INFO | 
-**ElapsedTime** | **float32** | DTO.DEX.SWAP.ELAPSED_TIME | 
+**ElapsedTime** | **int64** | DTO.DEX.SWAP.ELAPSED_TIME | 
 
 ## Methods
 
 ### NewSwapRouteResponse
 
-`func NewSwapRouteResponse(args SwapRouteInput, serializedTx string, routeInfo map[string]interface{}, elapsedTime float32, ) *SwapRouteResponse`
+`func NewSwapRouteResponse(args SwapRouteInput, serializedTx string, routeInfo map[string]interface{}, elapsedTime int64, ) *SwapRouteResponse`
 
 NewSwapRouteResponse instantiates a new SwapRouteResponse object
 This constructor will assign default values to properties that have it defined,
@@ -90,20 +90,20 @@ SetRouteInfo sets RouteInfo field to given value.
 
 ### GetElapsedTime
 
-`func (o *SwapRouteResponse) GetElapsedTime() float32`
+`func (o *SwapRouteResponse) GetElapsedTime() int64`
 
 GetElapsedTime returns the ElapsedTime field if non-nil, zero value otherwise.
 
 ### GetElapsedTimeOk
 
-`func (o *SwapRouteResponse) GetElapsedTimeOk() (*float32, bool)`
+`func (o *SwapRouteResponse) GetElapsedTimeOk() (*int64, bool)`
 
 GetElapsedTimeOk returns a tuple with the ElapsedTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetElapsedTime
 
-`func (o *SwapRouteResponse) SetElapsedTime(v float32)`
+`func (o *SwapRouteResponse) SetElapsedTime(v int64)`
 
 SetElapsedTime sets ElapsedTime field to given value.
 

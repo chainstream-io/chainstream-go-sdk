@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FirstTransactionAt** | **float32** | DTO.KYT.ON_CHAIN_ACTIVITY.FIRST_TRANSACTION_AT | 
+**FirstTransactionAt** | **int64** | DTO.KYT.ON_CHAIN_ACTIVITY.FIRST_TRANSACTION_AT | 
 
 ## Methods
 
 ### NewOnChainActivity
 
-`func NewOnChainActivity(firstTransactionAt float32, ) *OnChainActivity`
+`func NewOnChainActivity(firstTransactionAt int64, ) *OnChainActivity`
 
 NewOnChainActivity instantiates a new OnChainActivity object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetFirstTransactionAt
 
-`func (o *OnChainActivity) GetFirstTransactionAt() float32`
+`func (o *OnChainActivity) GetFirstTransactionAt() int64`
 
 GetFirstTransactionAt returns the FirstTransactionAt field if non-nil, zero value otherwise.
 
 ### GetFirstTransactionAtOk
 
-`func (o *OnChainActivity) GetFirstTransactionAtOk() (*float32, bool)`
+`func (o *OnChainActivity) GetFirstTransactionAtOk() (*int64, bool)`
 
 GetFirstTransactionAtOk returns a tuple with the FirstTransactionAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFirstTransactionAt
 
-`func (o *OnChainActivity) SetFirstTransactionAt(v float32)`
+`func (o *OnChainActivity) SetFirstTransactionAt(v int64)`
 
 SetFirstTransactionAt sets FirstTransactionAt field to given value.
 
