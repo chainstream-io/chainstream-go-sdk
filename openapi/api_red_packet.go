@@ -41,12 +41,12 @@ func (r RedPacketAPIClaimRedpacketRequest) Execute() (*RedPacketReply, *http.Res
 }
 
 /*
-ClaimRedpacket CONTROLLER.RED_PACKET.CLAIM.SUMMARY
+ClaimRedpacket RedPacket - Claim
 
-CONTROLLER.RED_PACKET.CLAIM.DESCRIPTION
+Claim tokens from an existing red packet
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return RedPacketAPIClaimRedpacketRequest
 */
 func (a *RedPacketAPIService) ClaimRedpacket(ctx context.Context, chain ChainSymbol) RedPacketAPIClaimRedpacketRequest {
@@ -155,12 +155,12 @@ func (r RedPacketAPICreateRedpacketRequest) Execute() (*CreateRedPacketReply, *h
 }
 
 /*
-CreateRedpacket CONTROLLER.RED_PACKET.CREATE.SUMMARY
+CreateRedpacket RedPacket - Create
 
-CONTROLLER.RED_PACKET.CREATE.DESCRIPTION
+Create a new red packet with specified amount and quantity
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return RedPacketAPICreateRedpacketRequest
 */
 func (a *RedPacketAPIService) CreateRedpacket(ctx context.Context, chain ChainSymbol) RedPacketAPICreateRedpacketRequest {
@@ -261,19 +261,19 @@ type RedPacketAPIGetClaimsRequest struct {
 	direction *string
 }
 
-// DTO.RED_PACKET.CURSOR
+// Pagination cursor
 func (r RedPacketAPIGetClaimsRequest) Cursor(cursor string) RedPacketAPIGetClaimsRequest {
 	r.cursor = &cursor
 	return r
 }
 
-// DTO.RED_PACKET.LIMIT
+// Number of records per page
 func (r RedPacketAPIGetClaimsRequest) Limit(limit int64) RedPacketAPIGetClaimsRequest {
 	r.limit = &limit
 	return r
 }
 
-// DTO.RED_PACKET.DIRECTION
+// Sort direction
 func (r RedPacketAPIGetClaimsRequest) Direction(direction string) RedPacketAPIGetClaimsRequest {
 	r.direction = &direction
 	return r
@@ -284,12 +284,12 @@ func (r RedPacketAPIGetClaimsRequest) Execute() (*RedPacketClaimsPage, *http.Res
 }
 
 /*
-GetClaims CONTROLLER.RED_PACKET.GET_CLAIMS.SUMMARY
+GetClaims RedPacket - GetClaims
 
-CONTROLLER.RED_PACKET.GET_CLAIMS.DESCRIPTION
+Check the record of redpacket collection
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id DTO.RED_PACKET.ID
+ @param id Redpacket id
  @return RedPacketAPIGetClaimsRequest
 */
 func (a *RedPacketAPIService) GetClaims(ctx context.Context, id string) RedPacketAPIGetClaimsRequest {
@@ -394,19 +394,19 @@ type RedPacketAPIGetClaimsByAddressRequest struct {
 	direction *string
 }
 
-// DTO.RED_PACKET.CURSOR
+// Pagination cursor
 func (r RedPacketAPIGetClaimsByAddressRequest) Cursor(cursor string) RedPacketAPIGetClaimsByAddressRequest {
 	r.cursor = &cursor
 	return r
 }
 
-// DTO.RED_PACKET.LIMIT
+// Number of records per page
 func (r RedPacketAPIGetClaimsByAddressRequest) Limit(limit int64) RedPacketAPIGetClaimsByAddressRequest {
 	r.limit = &limit
 	return r
 }
 
-// DTO.RED_PACKET.DIRECTION
+// Sort direction
 func (r RedPacketAPIGetClaimsByAddressRequest) Direction(direction string) RedPacketAPIGetClaimsByAddressRequest {
 	r.direction = &direction
 	return r
@@ -417,9 +417,9 @@ func (r RedPacketAPIGetClaimsByAddressRequest) Execute() (*RedPacketClaimsPage, 
 }
 
 /*
-GetClaimsByAddress CONTROLLER.RED_PACKET.GET_CLAIMS_BY_ADDRESS.SUMMARY
+GetClaimsByAddress RedPacket - GetClaimsByAddress
 
-CONTROLLER.RED_PACKET.GET_CLAIMS_BY_ADDRESS.DESCRIPTION
+Check the record of redpacket collection by the claimer address
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param address
@@ -529,12 +529,12 @@ func (r RedPacketAPIGetRedpacketRequest) Execute() (*RedPacketDTO, *http.Respons
 }
 
 /*
-GetRedpacket CONTROLLER.RED_PACKET.GET.SUMMARY
+GetRedpacket RedPacket - Get
 
-CONTROLLER.RED_PACKET.GET.DESCRIPTION
+Query redpacket information
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id DTO.RED_PACKET.ID
+ @param id Redpacket id
  @return RedPacketAPIGetRedpacketRequest
 */
 func (a *RedPacketAPIService) GetRedpacket(ctx context.Context, id string) RedPacketAPIGetRedpacketRequest {
@@ -631,31 +631,31 @@ type RedPacketAPIGetRedpacketsRequest struct {
 	chain *string
 }
 
-// DTO.RED_PACKET.CURSOR
+// Pagination cursor
 func (r RedPacketAPIGetRedpacketsRequest) Cursor(cursor string) RedPacketAPIGetRedpacketsRequest {
 	r.cursor = &cursor
 	return r
 }
 
-// DTO.RED_PACKET.LIMIT
+// Number of records per page
 func (r RedPacketAPIGetRedpacketsRequest) Limit(limit int64) RedPacketAPIGetRedpacketsRequest {
 	r.limit = &limit
 	return r
 }
 
-// DTO.RED_PACKET.DIRECTION
+// Sort direction
 func (r RedPacketAPIGetRedpacketsRequest) Direction(direction string) RedPacketAPIGetRedpacketsRequest {
 	r.direction = &direction
 	return r
 }
 
-// DTO.RED_PACKET.CREATOR
+// Creator wallet address of the red packet
 func (r RedPacketAPIGetRedpacketsRequest) Creator(creator string) RedPacketAPIGetRedpacketsRequest {
 	r.creator = &creator
 	return r
 }
 
-// DTO.RED_PACKET.CHAIN
+// Blockchain network
 func (r RedPacketAPIGetRedpacketsRequest) Chain(chain string) RedPacketAPIGetRedpacketsRequest {
 	r.chain = &chain
 	return r
@@ -666,9 +666,9 @@ func (r RedPacketAPIGetRedpacketsRequest) Execute() (*RedPacketsPage, *http.Resp
 }
 
 /*
-GetRedpackets CONTROLLER.RED_PACKET.GET_REDPACKETS.SUMMARY
+GetRedpackets RedPacket - GetRedpackets
 
-CONTROLLER.RED_PACKET.GET_REDPACKETS.DESCRIPTION
+Get the redpackets list
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return RedPacketAPIGetRedpacketsRequest
@@ -779,19 +779,19 @@ type RedPacketAPIGetRedpacketsByAddressRequest struct {
 	direction *string
 }
 
-// DTO.RED_PACKET.CURSOR
+// Pagination cursor
 func (r RedPacketAPIGetRedpacketsByAddressRequest) Cursor(cursor string) RedPacketAPIGetRedpacketsByAddressRequest {
 	r.cursor = &cursor
 	return r
 }
 
-// DTO.RED_PACKET.LIMIT
+// Number of records per page
 func (r RedPacketAPIGetRedpacketsByAddressRequest) Limit(limit int64) RedPacketAPIGetRedpacketsByAddressRequest {
 	r.limit = &limit
 	return r
 }
 
-// DTO.RED_PACKET.DIRECTION
+// Sort direction
 func (r RedPacketAPIGetRedpacketsByAddressRequest) Direction(direction string) RedPacketAPIGetRedpacketsByAddressRequest {
 	r.direction = &direction
 	return r
@@ -802,9 +802,9 @@ func (r RedPacketAPIGetRedpacketsByAddressRequest) Execute() (*RedPacketsPage, *
 }
 
 /*
-GetRedpacketsByAddress CONTROLLER.RED_PACKET.GET_REDPACKETS_BY_ADDRESS.SUMMARY
+GetRedpacketsByAddress RedPacket - GetRedpacketsByAddress
 
-CONTROLLER.RED_PACKET.GET_REDPACKETS_BY_ADDRESS.DESCRIPTION
+Get the redpackets list by the creator address
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param address
@@ -920,12 +920,12 @@ func (r RedPacketAPIRedpacketSendRequest) Execute() (*RedPacketSendTxResponse, *
 }
 
 /*
-RedpacketSend CONTROLLER.RED_PACKET.SEND.SUMMARY
+RedpacketSend RedPacket - Send
 
-CONTROLLER.RED_PACKET.SEND.DESCRIPTION
+Transactions related to redpacket
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return RedPacketAPIRedpacketSendRequest
 */
 func (a *RedPacketAPIService) RedpacketSend(ctx context.Context, chain ChainSymbol) RedPacketAPIRedpacketSendRequest {

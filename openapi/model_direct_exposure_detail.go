@@ -22,9 +22,9 @@ var _ MappedNullable = &DirectExposureDetail{}
 
 // DirectExposureDetail struct for DirectExposureDetail
 type DirectExposureDetail struct {
-	// DTO.KYT.DIRECT_EXPOSURE_DETAIL.NAME
+	// Name
 	Name string `json:"name"`
-	// DTO.KYT.DIRECT_EXPOSURE_DETAIL.CATEGORY_ID
+	// Category ID
 	CategoryId int64 `json:"categoryId"`
 }
 

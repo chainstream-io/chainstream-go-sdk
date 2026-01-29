@@ -20,31 +20,31 @@ var _ MappedNullable = &TokenSocialMediasDTO{}
 
 // TokenSocialMediasDTO struct for TokenSocialMediasDTO
 type TokenSocialMediasDTO struct {
-	// DTO.TOKEN.SOCIAL_MEDIAS.TWITTER
+	// Twitter account or profile link
 	Twitter *string `json:"twitter,omitempty"`
-	// DTO.TOKEN.SOCIAL_MEDIAS.TELEGRAM
+	// Telegram group or channel link
 	Telegram *string `json:"telegram,omitempty"`
-	// DTO.TOKEN.SOCIAL_MEDIAS.WEBSITE
+	// Official website URL
 	Website *string `json:"website,omitempty"`
-	// DTO.TOKEN.SOCIAL_MEDIAS.TIKTOK
+	// TikTok account or profile link
 	Tiktok *string `json:"tiktok,omitempty"`
-	// DTO.TOKEN.SOCIAL_MEDIAS.DISCORD
+	// Discord server invite link
 	Discord *string `json:"discord,omitempty"`
-	// DTO.TOKEN.SOCIAL_MEDIAS.FACEBOOK
+	// Facebook page or profile link
 	Facebook *string `json:"facebook,omitempty"`
-	// DTO.TOKEN.SOCIAL_MEDIAS.GITHUB
+	// GitHub repository or profile link
 	Github *string `json:"github,omitempty"`
-	// DTO.TOKEN.SOCIAL_MEDIAS.INSTAGRAM
+	// Instagram account or profile link
 	Instagram *string `json:"instagram,omitempty"`
-	// DTO.TOKEN.SOCIAL_MEDIAS.LINKEDIN
+	// LinkedIn company or profile link
 	Linkedin *string `json:"linkedin,omitempty"`
-	// DTO.TOKEN.SOCIAL_MEDIAS.MEDIUM
+	// Medium blog or publication link
 	Medium *string `json:"medium,omitempty"`
-	// DTO.TOKEN.SOCIAL_MEDIAS.REDDIT
+	// Reddit community or profile link
 	Reddit *string `json:"reddit,omitempty"`
-	// DTO.TOKEN.SOCIAL_MEDIAS.YOUTUBE
+	// YouTube channel or video link
 	Youtube *string `json:"youtube,omitempty"`
-	// DTO.TOKEN.SOCIAL_MEDIAS.BITBUCKET
+	// Bitbucket repository or profile link
 	Bitbucket *string `json:"bitbucket,omitempty"`
 }
 

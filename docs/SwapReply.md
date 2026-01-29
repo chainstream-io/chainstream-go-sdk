@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SerializedTx** | **string** | DTO.DEX.SWAP.SERIALIZED_TX | 
-**ElapsedTime** | **int64** | DTO.DEX.SWAP.ELAPSED_TIME | 
+**SerializedTx** | **string** | Base64 encoded transaction | 
+**ElapsedTime** | **int64** | Time taken to process the request in milliseconds | 
 
 ## Methods
 

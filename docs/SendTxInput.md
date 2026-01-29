@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SignedTx** | **string** | DTO.TRANSACTION.SEND.SIGNED_TX | 
-**SubmitType** | Pointer to **string** | DTO.TRANSACTION.SEND.SUBMIT_TYPE | [optional] 
-**Options** | Pointer to **map[string]interface{}** | DTO.TRANSACTION.SEND.OPTIONS | [optional] 
+**SignedTx** | **string** | Base64 encoded signed transaction | 
+**SubmitType** | Pointer to **string** | Transaction submission method | [optional] 
+**Options** | Pointer to **map[string]interface{}** | jito | direct | [optional] 
 
 ## Methods
 

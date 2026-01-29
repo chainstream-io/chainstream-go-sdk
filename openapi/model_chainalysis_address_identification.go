@@ -22,11 +22,11 @@ var _ MappedNullable = &ChainalysisAddressIdentification{}
 
 // ChainalysisAddressIdentification struct for ChainalysisAddressIdentification
 type ChainalysisAddressIdentification struct {
-	// DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.ADDRESS_NAME
+	// Address name
 	AddressName string `json:"addressName"`
-	// DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.DESCRIPTION
+	// Description information
 	Description string `json:"description"`
-	// DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.CATEGORY_ID
+	// Category ID
 	CategoryId int64 `json:"categoryId"`
 }
 

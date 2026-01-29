@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Url** | **string** | DTO.DEX.MOONSHOT.LINK.URL | 
-**Label** | **string** | DTO.DEX.MOONSHOT.LINK.LABEL | 
+**Url** | **string** | URL of the resource | 
+**Label** | **string** | Label for the link | 
 
 ## Methods
 

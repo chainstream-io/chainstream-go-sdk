@@ -22,11 +22,11 @@ var _ MappedNullable = &SendTxResponse{}
 
 // SendTxResponse struct for SendTxResponse
 type SendTxResponse struct {
-	// DTO.TRANSACTION.SEND.SIGNATURE
+	// Transaction signature/hash
 	Signature string `json:"signature"`
-	// DTO.TRANSACTION.SEND.ELAPSED_TIME
+	// Transaction processing time in milliseconds
 	ElapsedTime int64 `json:"elapsedTime"`
-	// DTO.TRANSACTION.SEND.JOB_ID
+	// job id
 	JobId string `json:"jobId"`
 }
 

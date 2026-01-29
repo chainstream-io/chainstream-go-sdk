@@ -22,7 +22,7 @@ var _ MappedNullable = &OnChainActivity{}
 
 // OnChainActivity struct for OnChainActivity
 type OnChainActivity struct {
-	// DTO.KYT.ON_CHAIN_ACTIVITY.FIRST_TRANSACTION_AT
+	// First transaction timestamp
 	FirstTransactionAt int64 `json:"first_transaction_at"`
 }
 

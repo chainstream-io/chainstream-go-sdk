@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Signature** | **string** | DTO.TRANSACTION.SEND.SIGNATURE | 
-**ElapsedTime** | **int64** | DTO.TRANSACTION.SEND.ELAPSED_TIME | 
-**JobId** | **string** | DTO.TRANSACTION.SEND.JOB_ID | 
+**Signature** | **string** | Transaction signature/hash | 
+**ElapsedTime** | **int64** | Transaction processing time in milliseconds | 
+**JobId** | **string** | job id | 
 
 ## Methods
 

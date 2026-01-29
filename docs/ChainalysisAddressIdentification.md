@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AddressName** | **string** | DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.ADDRESS_NAME | 
-**Description** | **string** | DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.DESCRIPTION | 
-**CategoryId** | **int64** | DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.CATEGORY_ID | 
+**AddressName** | **string** | Address name | 
+**Description** | **string** | Description information | 
+**CategoryId** | **int64** | Category ID | 
 
 ## Methods
 

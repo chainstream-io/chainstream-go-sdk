@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TxSerialize** | **string** | DTO.RED_PACKET.SERIALIZED_TX | 
-**ShareId** | **string** | DTO.RED_PACKET.SHARE_ID | 
+**TxSerialize** | **string** | Base64 encoded transaction | 
+**ShareId** | **string** | redpacket share id | 
 
 ## Methods
 

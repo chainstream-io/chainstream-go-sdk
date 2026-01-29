@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Chain** | **string** | DTO.RED_PACKET.CHAIN | 
-**PacketId** | Pointer to **string** | DTO.RED_PACKET.PACKET_ID | [optional] 
-**ShareId** | Pointer to **string** | DTO.RED_PACKET.SHARE_ID | [optional] 
-**Password** | Pointer to **string** | DTO.RED_PACKET.PASSWORD | [optional] 
-**Claimer** | **string** | DTO.RED_PACKET.CLAIMER | 
+**Chain** | **string** | Blockchain network | 
+**PacketId** | Pointer to **string** | Unique identifier of the red packet | [optional] 
+**ShareId** | Pointer to **string** | redpacket share id | [optional] 
+**Password** | Pointer to **string** | Optional password to claim the red packet | [optional] 
+**Claimer** | **string** | Wallet address of the claimer | 
 
 ## Methods
 

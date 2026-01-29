@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SignedTx** | **string** | DTO.RED_PACKET.SIGNED_TX | 
+**SignedTx** | **string** | signed txhash | 
 
 ## Methods
 

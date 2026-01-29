@@ -22,13 +22,13 @@ var _ MappedNullable = &BlockchainDTO{}
 
 // BlockchainDTO struct for BlockchainDTO
 type BlockchainDTO struct {
-	// DTO.BLOCKCHAIN.SYMBOL
+	// Blockchain symbol
 	Symbol string `json:"symbol"`
-	// DTO.BLOCKCHAIN.NAME
+	// Blockchain name
 	Name string `json:"name"`
-	// DTO.BLOCKCHAIN.EXPLORER_URL
+	// Blockchain explorer URL
 	ExplorerUrl string `json:"explorerUrl"`
-	// DTO.BLOCKCHAIN.CHAIN_ID
+	// Blockchain chain ID
 	ChainId int64 `json:"chainId"`
 }
 

@@ -22,35 +22,35 @@ var _ MappedNullable = &TokenMetadata{}
 
 // TokenMetadata struct for TokenMetadata
 type TokenMetadata struct {
-	// DTO.TOKEN.METADATA.CHAIN
+	// Blockchain network identifier
 	Chain string `json:"chain"`
-	// DTO.TOKEN.METADATA.DECIMALS
+	// Token decimals
 	Decimals int64 `json:"decimals"`
-	// DTO.TOKEN.METADATA.NAME
+	// Token name
 	Name string `json:"name"`
-	// DTO.TOKEN.METADATA.SYMBOL
+	// Token symbol
 	Symbol string `json:"symbol"`
-	// DTO.TOKEN.METADATA.METADATA_ADDRESS
+	// Metadata program address
 	MetadataAddress *string `json:"metadataAddress,omitempty"`
-	// DTO.TOKEN.METADATA.ADDRESS
+	// Token mint address
 	Address string `json:"address"`
-	// DTO.TOKEN.METADATA.TOKEN_CREATORS
+	// Token creator addresses
 	TokenCreators []TokenCreatorsDTO `json:"tokenCreators,omitempty"`
-	// DTO.TOKEN.METADATA.IMAGE_URL
+	// Token image URL
 	ImageUrl *string `json:"imageUrl,omitempty"`
-	// DTO.TOKEN.METADATA.URI
+	// Metadata URI
 	Uri *string `json:"uri,omitempty"`
-	// DTO.TOKEN.METADATA.EXTRA
+	// Additional metadata
 	Extra *TokenExtraDTO `json:"extra,omitempty"`
-	// DTO.TOKEN.METADATA.SOCIAL_MEDIAS
+	// Social media links
 	SocialMedias *TokenSocialMediasDTO `json:"socialMedias,omitempty"`
-	// DTO.TOKEN.METADATA.TOKEN_CREATED_AT
+	// Token creation timestamp
 	TokenCreatedAt *int64 `json:"tokenCreatedAt,omitempty"`
-	// DTO.TOKEN.METADATA.DESCRIPTION
+	// Token description
 	Description *string `json:"description,omitempty"`
-	// DTO.TOKEN.METADATA.DEV_TOTAL_TOKENS
+	// Total number of tokens created by dev
 	DevTotalTokens *string `json:"devTotalTokens,omitempty"`
-	// DTO.TOKEN.METADATA.DEV_LAST_TOKEN_CREATED_AT
+	// Timestamp of the last token created by dev
 	DevLastTokenCreatedAt *string `json:"devLastTokenCreatedAt,omitempty"`
 }
 

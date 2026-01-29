@@ -22,13 +22,13 @@ var _ MappedNullable = &DevTokenDTO{}
 
 // DevTokenDTO struct for DevTokenDTO
 type DevTokenDTO struct {
-	// DTO.DEV_TOKEN.ADDRESS
+	// Token address
 	Address string `json:"address"`
-	// DTO.DEV_TOKEN.METADATA
+	// Token metadata
 	Metadata TokenMetadata `json:"metadata"`
-	// DTO.DEV_TOKEN.MARKET_DATA
+	// Token market data
 	MarketData TokenMarketData `json:"marketData"`
-	// DTO.DEV_TOKEN.STATS
+	// Token stats
 	Stats TokenStat `json:"stats"`
 }
 

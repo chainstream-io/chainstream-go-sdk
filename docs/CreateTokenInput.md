@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Dex** | **string** | DTO.DEX.IDENTIFIER | 
-**UserAddress** | **string** | DTO.DEX.WALLET | 
-**PriorityFee** | Pointer to **string** | DTO.DEX.BASE.PRIORITY_FEE | [optional] 
-**Name** | **string** | DTO.DEX.MINT.NAME | 
-**Symbol** | **string** | DTO.DEX.MINT.SYMBOL | 
-**Uri** | Pointer to **string** | DTO.DEX.MINT.URI | [optional] 
-**Image** | Pointer to **string** | DTO.DEX.MINT.IMAGE | [optional] 
-**Extra** | Pointer to **map[string]interface{}** | DTO.DEX.MINT.EXTRA | [optional] 
+**Dex** | **string** | DEX identifier for the trade | 
+**UserAddress** | **string** | Public key of the wallet initiating the transaction | 
+**PriorityFee** | Pointer to **string** | Priority fee in SOL to increase transaction processing speed | [optional] 
+**Name** | **string** | Name of the token to be created | 
+**Symbol** | **string** | Token symbol/ticker | 
+**Uri** | Pointer to **string** | URI for token metadata (usually points to image or JSON) | [optional] 
+**Image** | Pointer to **string** | Token image URL (Base64 or HTTPS) | [optional] 
+**Extra** | Pointer to **map[string]interface{}** | Additional metadata about the created token | [optional] 
 
 ## Methods
 

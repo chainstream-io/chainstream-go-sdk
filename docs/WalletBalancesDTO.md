@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalBalancesInUsd** | **string** | DTO.WALLET.BALANCES.TOTAL_BALANCES_IN_USD | 
-**TotalProfitInUsd** | **string** | DTO.WALLET.BALANCES.TOTAL_PROFIT_IN_USD | 
-**Balances** | [**[]WalletBalanceDetailDTO**](WalletBalanceDetailDTO.md) | DTO.WALLET.BALANCES.BALANCES.DETAIL | 
+**TotalBalancesInUsd** | **string** | Total wallet value | 
+**TotalProfitInUsd** | **string** | Total profit in USD | 
+**Balances** | [**[]WalletBalanceDetailDTO**](WalletBalanceDetailDTO.md) | Wallet balance details | 
 
 ## Methods
 

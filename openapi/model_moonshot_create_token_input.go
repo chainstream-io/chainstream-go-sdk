@@ -22,27 +22,27 @@ var _ MappedNullable = &MoonshotCreateTokenInput{}
 
 // MoonshotCreateTokenInput struct for MoonshotCreateTokenInput
 type MoonshotCreateTokenInput struct {
-	// DTO.DEX.IDENTIFIER
+	// DEX identifier for the trade
 	Dex string `json:"dex"`
-	// DTO.DEX.WALLET
+	// Public key of the wallet initiating the transaction
 	UserAddress string `json:"userAddress"`
-	// DTO.DEX.BASE.PRIORITY_FEE
+	// Priority fee in SOL to increase transaction processing speed
 	PriorityFee *string `json:"priorityFee,omitempty"`
-	// DTO.DEX.MOONSHOT.MINT.NAME
+	// Name of the token
 	Name string `json:"name"`
-	// DTO.DEX.MOONSHOT.MINT.SYMBOL
+	// Token symbol/ticker
 	Symbol string `json:"symbol"`
-	// DTO.DEX.MOONSHOT.MINT.MIGRATION_DEX
+	// Target DEX for token migration
 	MigrationDex string `json:"migrationDex"`
-	// DTO.DEX.MOONSHOT.MINT.ICON
+	// Token icon URL (Base64 or HTTPS)
 	Icon string `json:"icon" validate:"regexp=^(https?:\\/\\/|data:image\\/)"`
-	// DTO.DEX.MOONSHOT.MINT.DESCRIPTION
+	// Token description
 	Description string `json:"description"`
-	// DTO.DEX.MOONSHOT.MINT.LINKS
+	// Social and website links
 	Links []Link `json:"links"`
-	// DTO.DEX.MOONSHOT.MINT.BANNER
+	// Banner image URL (defaults to icon if not provided)
 	Banner *string `json:"banner,omitempty"`
-	// DTO.DEX.MOONSHOT.MINT.TOKEN_AMOUNT
+	// Total token supply amount (in base units)
 	TokenAmount string `json:"tokenAmount" validate:"regexp=^[0-9]+$"`
 }
 

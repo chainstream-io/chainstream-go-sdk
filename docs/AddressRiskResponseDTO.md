@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | **string** | DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS | 
-**Risk** | **string** | DTO.KYT.ADDRESS_RISK_RESPONSE.RISK | 
-**RiskReason** | **string** | DTO.KYT.ADDRESS_RISK_RESPONSE.RISK_REASON | 
-**AddressType** | **string** | DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS_TYPE | 
-**Cluster** | **string** | DTO.KYT.ADDRESS_RISK_RESPONSE.CLUSTER | 
-**AddressIdentifications** | **[]string** | DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS_IDENTIFICATIONS | 
-**Exposures** | [**[]AddressExposure**](AddressExposure.md) | DTO.KYT.ADDRESS_RISK_RESPONSE.EXPOSURES | 
-**Triggers** | **[]string** | DTO.KYT.ADDRESS_RISK_RESPONSE.TRIGGERS | 
-**Status** | **string** | DTO.KYT.ADDRESS_RISK_RESPONSE.STATUS | 
+**Address** | **string** | Address | 
+**Risk** | **string** | Risk level | 
+**RiskReason** | **string** | Risk reason | 
+**AddressType** | **string** | Address type | 
+**Cluster** | **string** | Cluster | 
+**AddressIdentifications** | **[]string** | Address identification list | 
+**Exposures** | [**[]AddressExposure**](AddressExposure.md) | Exposure list | 
+**Triggers** | **[]string** | Trigger list | 
+**Status** | **string** | Status | 
 
 ## Methods
 

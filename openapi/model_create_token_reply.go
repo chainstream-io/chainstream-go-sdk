@@ -22,9 +22,9 @@ var _ MappedNullable = &CreateTokenReply{}
 
 // CreateTokenReply struct for CreateTokenReply
 type CreateTokenReply struct {
-	// DTO.DEX.CREATE_TOKEN.SERIALIZED_TX
+	// Base64 encoded transaction for token creation
 	SerializedTx string `json:"serializedTx"`
-	// DTO.DEX.CREATE_TOKEN.MINT_ADDRESS
+	// Token mint address that requires signature for the transaction
 	MintAddress string `json:"mintAddress"`
 }
 

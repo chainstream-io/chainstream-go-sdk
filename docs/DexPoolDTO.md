@@ -4,16 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProgramAddress** | Pointer to **string** | DTO.DEX.PROGRAM_ADDRESS | [optional] 
-**ProtocolFamily** | Pointer to **string** | DTO.DEX.PROTOCOL_FAMILY | [optional] 
-**Image** | Pointer to **string** | DTO.DEX.IMAGE | [optional] 
-**Chain** | **string** | DTO.DEX.CHAIN | 
-**PoolAddress** | **string** | DTO.DEXPOOL.POOL_ADDRESS | 
-**ProtocolName** | Pointer to **string** | DTO.DEXPOOL.PROTOCOL_NAME | [optional] 
-**TokenAAddress** | **string** | DTO.DEXPOOL.TOKEN_A | 
-**TokenBAddress** | **string** | DTO.DEXPOOL.TOKEN_B | 
-**TvlInUsd** | Pointer to **string** | DTO.DEXPOOL.TVL_USD | [optional] 
-**TvlInSol** | Pointer to **string** | DTO.DEXPOOL.TVL_SOL | [optional] 
+**ProgramAddress** | Pointer to **string** | DEX program address | [optional] 
+**ProtocolFamily** | Pointer to **string** | DEX protocol family | [optional] 
+**Image** | Pointer to **string** | DEX logo image URL | [optional] 
+**Chain** | **string** | Blockchain | 
+**PoolAddress** | **string** | Pool address | 
+**ProtocolName** | Pointer to **string** | DEX protocol name | [optional] 
+**TokenAAddress** | **string** | First token in the pool | 
+**TokenBAddress** | **string** | Second token in the pool | 
+**TvlInUsd** | Pointer to **string** | Total value locked in USD | [optional] 
+**TvlInSol** | Pointer to **string** | TVL in SOL | [optional] 
+**Type** | Pointer to **float32** | Pool type (0&#x3D;unknown, 1&#x3D;standard, 2&#x3D;concentrated, 3&#x3D;weighted, 4&#x3D;stable) | [optional] 
+**Version** | Pointer to **float32** | Pool version (0&#x3D;unknown, 1&#x3D;V1, 2&#x3D;V2, 3&#x3D;V3/CLMM) | [optional] 
+**LiquidityModel** | Pointer to **float32** | Liquidity model (0&#x3D;unknown, 1&#x3D;reserve_based, 2&#x3D;position_based, 3&#x3D;virtual, 4&#x3D;shared) | [optional] 
+**FeeRate** | Pointer to **string** | Pool fee rate (e.g., 0.003 for 0.3%) | [optional] 
+**TickSpacing** | Pointer to **int32** | Tick spacing for concentrated liquidity pools | [optional] 
+**TokenCount** | Pointer to **int32** | Number of tokens in pool | [optional] 
+**CreatedBlockTimestamp** | Pointer to **string** | Block timestamp when pool was created | [optional] 
+**TokenALiquidity** | Pointer to [**DexPoolTokenLiquidity**](DexPoolTokenLiquidity.md) | First token liquidity details | [optional] 
+**TokenBLiquidity** | Pointer to [**DexPoolTokenLiquidity**](DexPoolTokenLiquidity.md) | Second token liquidity details | [optional] 
 
 ## Methods
 
@@ -263,6 +272,231 @@ SetTvlInSol sets TvlInSol field to given value.
 `func (o *DexPoolDTO) HasTvlInSol() bool`
 
 HasTvlInSol returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *DexPoolDTO) GetType() float32`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *DexPoolDTO) GetTypeOk() (*float32, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *DexPoolDTO) SetType(v float32)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *DexPoolDTO) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *DexPoolDTO) GetVersion() float32`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *DexPoolDTO) GetVersionOk() (*float32, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *DexPoolDTO) SetVersion(v float32)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *DexPoolDTO) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
+
+### GetLiquidityModel
+
+`func (o *DexPoolDTO) GetLiquidityModel() float32`
+
+GetLiquidityModel returns the LiquidityModel field if non-nil, zero value otherwise.
+
+### GetLiquidityModelOk
+
+`func (o *DexPoolDTO) GetLiquidityModelOk() (*float32, bool)`
+
+GetLiquidityModelOk returns a tuple with the LiquidityModel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLiquidityModel
+
+`func (o *DexPoolDTO) SetLiquidityModel(v float32)`
+
+SetLiquidityModel sets LiquidityModel field to given value.
+
+### HasLiquidityModel
+
+`func (o *DexPoolDTO) HasLiquidityModel() bool`
+
+HasLiquidityModel returns a boolean if a field has been set.
+
+### GetFeeRate
+
+`func (o *DexPoolDTO) GetFeeRate() string`
+
+GetFeeRate returns the FeeRate field if non-nil, zero value otherwise.
+
+### GetFeeRateOk
+
+`func (o *DexPoolDTO) GetFeeRateOk() (*string, bool)`
+
+GetFeeRateOk returns a tuple with the FeeRate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeeRate
+
+`func (o *DexPoolDTO) SetFeeRate(v string)`
+
+SetFeeRate sets FeeRate field to given value.
+
+### HasFeeRate
+
+`func (o *DexPoolDTO) HasFeeRate() bool`
+
+HasFeeRate returns a boolean if a field has been set.
+
+### GetTickSpacing
+
+`func (o *DexPoolDTO) GetTickSpacing() int32`
+
+GetTickSpacing returns the TickSpacing field if non-nil, zero value otherwise.
+
+### GetTickSpacingOk
+
+`func (o *DexPoolDTO) GetTickSpacingOk() (*int32, bool)`
+
+GetTickSpacingOk returns a tuple with the TickSpacing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTickSpacing
+
+`func (o *DexPoolDTO) SetTickSpacing(v int32)`
+
+SetTickSpacing sets TickSpacing field to given value.
+
+### HasTickSpacing
+
+`func (o *DexPoolDTO) HasTickSpacing() bool`
+
+HasTickSpacing returns a boolean if a field has been set.
+
+### GetTokenCount
+
+`func (o *DexPoolDTO) GetTokenCount() int32`
+
+GetTokenCount returns the TokenCount field if non-nil, zero value otherwise.
+
+### GetTokenCountOk
+
+`func (o *DexPoolDTO) GetTokenCountOk() (*int32, bool)`
+
+GetTokenCountOk returns a tuple with the TokenCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenCount
+
+`func (o *DexPoolDTO) SetTokenCount(v int32)`
+
+SetTokenCount sets TokenCount field to given value.
+
+### HasTokenCount
+
+`func (o *DexPoolDTO) HasTokenCount() bool`
+
+HasTokenCount returns a boolean if a field has been set.
+
+### GetCreatedBlockTimestamp
+
+`func (o *DexPoolDTO) GetCreatedBlockTimestamp() string`
+
+GetCreatedBlockTimestamp returns the CreatedBlockTimestamp field if non-nil, zero value otherwise.
+
+### GetCreatedBlockTimestampOk
+
+`func (o *DexPoolDTO) GetCreatedBlockTimestampOk() (*string, bool)`
+
+GetCreatedBlockTimestampOk returns a tuple with the CreatedBlockTimestamp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedBlockTimestamp
+
+`func (o *DexPoolDTO) SetCreatedBlockTimestamp(v string)`
+
+SetCreatedBlockTimestamp sets CreatedBlockTimestamp field to given value.
+
+### HasCreatedBlockTimestamp
+
+`func (o *DexPoolDTO) HasCreatedBlockTimestamp() bool`
+
+HasCreatedBlockTimestamp returns a boolean if a field has been set.
+
+### GetTokenALiquidity
+
+`func (o *DexPoolDTO) GetTokenALiquidity() DexPoolTokenLiquidity`
+
+GetTokenALiquidity returns the TokenALiquidity field if non-nil, zero value otherwise.
+
+### GetTokenALiquidityOk
+
+`func (o *DexPoolDTO) GetTokenALiquidityOk() (*DexPoolTokenLiquidity, bool)`
+
+GetTokenALiquidityOk returns a tuple with the TokenALiquidity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenALiquidity
+
+`func (o *DexPoolDTO) SetTokenALiquidity(v DexPoolTokenLiquidity)`
+
+SetTokenALiquidity sets TokenALiquidity field to given value.
+
+### HasTokenALiquidity
+
+`func (o *DexPoolDTO) HasTokenALiquidity() bool`
+
+HasTokenALiquidity returns a boolean if a field has been set.
+
+### GetTokenBLiquidity
+
+`func (o *DexPoolDTO) GetTokenBLiquidity() DexPoolTokenLiquidity`
+
+GetTokenBLiquidity returns the TokenBLiquidity field if non-nil, zero value otherwise.
+
+### GetTokenBLiquidityOk
+
+`func (o *DexPoolDTO) GetTokenBLiquidityOk() (*DexPoolTokenLiquidity, bool)`
+
+GetTokenBLiquidityOk returns a tuple with the TokenBLiquidity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenBLiquidity
+
+`func (o *DexPoolDTO) SetTokenBLiquidity(v DexPoolTokenLiquidity)`
+
+SetTokenBLiquidity sets TokenBLiquidity field to given value.
+
+### HasTokenBLiquidity
+
+`func (o *DexPoolDTO) HasTokenBLiquidity() bool`
+
+HasTokenBLiquidity returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -20,17 +20,17 @@ var _ MappedNullable = &QuoteResponse{}
 
 // QuoteResponse struct for QuoteResponse
 type QuoteResponse struct {
-	// DTO.DEX.QUOTE.AMOUNT_OUT
+	// Output amount
 	AmountOut *string `json:"amountOut,omitempty"`
-	// DTO.DEX.QUOTE.MIN_AMOUNT_OUT
+	// Minimum output amount
 	MinAmountOut *string `json:"minAmountOut,omitempty"`
-	// DTO.DEX.QUOTE.CURRENT_PRICE
+	// Current price
 	CurrentPrice *string `json:"currentPrice,omitempty"`
-	// DTO.DEX.QUOTE.EXECUTION_PRICE
+	// Execution price
 	ExecutionPrice *string `json:"executionPrice,omitempty"`
-	// DTO.DEX.QUOTE.PRICE_IMPACT
+	// Price impact
 	PriceImpact *string `json:"priceImpact,omitempty"`
-	// DTO.DEX.QUOTE.FEE
+	// Trading fee
 	Fee *string `json:"fee,omitempty"`
 }
 

@@ -22,13 +22,13 @@ var _ MappedNullable = &RedPacketsPage{}
 
 // RedPacketsPage struct for RedPacketsPage
 type RedPacketsPage struct {
-	// DTO.PAGE.TOTAL
+	// Total number of items
 	Total int64 `json:"total"`
-	// DTO.PAGE.HAS_NEXT
+	// Indicates if there are more results
 	HasNextPage bool `json:"hasNextPage"`
-	// DTO.PAGE.START_CURSOR
+	// Cursor for first item in current page
 	StartCursor string `json:"startCursor"`
-	// DTO.PAGE.END_CURSOR
+	// Cursor for last item in current page
 	EndCursor string `json:"endCursor"`
 	// Array of red packets
 	Records []RedPacketDTO `json:"records"`

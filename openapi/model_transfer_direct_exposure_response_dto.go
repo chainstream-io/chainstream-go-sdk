@@ -22,7 +22,7 @@ var _ MappedNullable = &TransferDirectExposureResponseDTO{}
 
 // TransferDirectExposureResponseDTO struct for TransferDirectExposureResponseDTO
 type TransferDirectExposureResponseDTO struct {
-	// DTO.KYT.TRANSFER_DIRECT_EXPOSURE_RESPONSE.DIRECT
+	// Direct exposure information
 	Direct DirectExposureDetail `json:"direct"`
 }
 

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProgramAddress** | Pointer to **string** | DTO.DEX.PROGRAM_ADDRESS | [optional] 
-**ProtocolFamily** | Pointer to **string** | DTO.DEX.PROTOCOL_FAMILY | [optional] 
-**Image** | Pointer to **string** | DTO.DEX.IMAGE | [optional] 
-**Chain** | **string** | DTO.DEX.CHAIN | 
+**ProgramAddress** | Pointer to **string** | DEX program address | [optional] 
+**ProtocolFamily** | Pointer to **string** | DEX protocol family | [optional] 
+**Image** | Pointer to **string** | DEX logo image URL | [optional] 
+**Chain** | **string** | Blockchain | 
 
 ## Methods
 

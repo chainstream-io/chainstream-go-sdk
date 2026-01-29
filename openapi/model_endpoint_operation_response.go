@@ -20,7 +20,7 @@ var _ MappedNullable = &EndpointOperationResponse{}
 
 // EndpointOperationResponse struct for EndpointOperationResponse
 type EndpointOperationResponse struct {
-	// DTO.ENDPOINT.SUCCESS
+	// Success status
 	Success *bool `json:"success,omitempty"`
 }
 

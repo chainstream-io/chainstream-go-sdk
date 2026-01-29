@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Maker** | **string** | DTO.TRADE.MAKER | 
-**BaseAmount** | **string** | DTO.TRADE.BASE_AMOUNT | 
-**QuoteAmount** | **string** | DTO.TRADE.QUOTE_AMOUNT | 
-**QuoteSymbol** | **string** | DTO.TRADE.QUOTE_SYMBOL | 
-**QuoteAddress** | **string** | DTO.TRADE.QUOTE_ADDRESS | 
-**AmountInUsd** | **string** | DTO.TRADE.AMOUNT_IN_USD | 
-**Timestamp** | **int64** | DTO.TRADE.TIMESTAMP | 
-**Event** | [**TradeType**](TradeType.md) | DTO.TRADE.EVENT | 
-**TxHash** | **string** | DTO.TRADE.TX_HASH | 
-**PriceInUsd** | **string** | DTO.TRADE.PRICE_IN_USD | 
-**Id** | **string** | DTO.TRADE.ID | 
-**BuyCostUsd** | **string** | DTO.TRADE.BUY_COST_USD | 
-**TokenAddress** | **string** | DTO.TRADE.TOKEN_ADDRESS | 
+**Maker** | **string** | Maker address | 
+**BaseAmount** | **string** | Base token amount | 
+**QuoteAmount** | **string** | Quote token amount | 
+**QuoteSymbol** | **string** | Quote token symbol | 
+**QuoteAddress** | **string** | Quote token address | 
+**AmountInUsd** | **string** | Amount in USD | 
+**Timestamp** | **int64** | Trade timestamp (Unix epoch in seconds) | 
+**Event** | [**TradeType**](TradeType.md) | Trade event type | 
+**TxHash** | **string** | Transaction hash | 
+**PriceInUsd** | **string** | Price in USD | 
+**Id** | **string** | Trade ID | 
+**BuyCostUsd** | **string** | Buy cost in USD | 
+**TokenAddress** | **string** | Token address | 
 
 ## Methods
 

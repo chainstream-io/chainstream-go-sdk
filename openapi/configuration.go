@@ -94,7 +94,7 @@ func NewConfiguration() *Configuration {
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: "",
+				URL: "https://api-dex.chainstream.io",
 				Description: "No description provided",
 			},
 		},

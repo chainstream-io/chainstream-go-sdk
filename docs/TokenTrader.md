@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | **string** | DTO.TOKEN_TRADER.ADDRESS | 
-**TransactionSignature** | Pointer to **string** | DTO.TOKEN_TRADER.TRANSACTION_SIGNATURE | [optional] 
-**BlockHash** | Pointer to **string** | DTO.TOKEN_TRADER.BLOCK_HASH | [optional] 
-**BlockHeight** | Pointer to **int64** | DTO.TOKEN_TRADER.BLOCK_HEIGHT | [optional] 
-**BlockSlot** | Pointer to **int64** | DTO.TOKEN_TRADER.BLOCK_SLOT | [optional] 
-**BlockTimestamp** | Pointer to **time.Time** | DTO.TOKEN_TRADER.BLOCK_TIMESTAMP | [optional] 
-**OnchainCreatedAt** | Pointer to **map[string]interface{}** | DTO.TOKEN_TRADER.ONCHAIN_CREATED_AT | [optional] 
-**TradeCount** | Pointer to **int64** | DTO.TOKEN_TRADER.TRADE_COUNT | [optional] 
-**TradeAmountInNative** | Pointer to **string** | DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_NATIVE | [optional] 
-**TradeAmountInUsd** | Pointer to **string** | DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_USD | [optional] 
-**PercentileRankTradeCount** | Pointer to **int64** | DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_COUNT | [optional] 
-**PercentileRankTradeAmountInUsd** | Pointer to **string** | DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_AMOUNT_IN_USD | [optional] 
-**RankTradeAmountInUsd** | Pointer to **string** | DTO.TOKEN_TRADER.RANK_TRADE_AMOUNT_IN_USD | [optional] 
+**Address** | **string** | Account address | 
+**TransactionSignature** | Pointer to **string** | Transaction signature (for trade tags) | [optional] 
+**BlockHash** | Pointer to **string** | Block hash | [optional] 
+**BlockHeight** | Pointer to **int64** | Block height | [optional] 
+**BlockSlot** | Pointer to **int64** | Block slot | [optional] 
+**BlockTimestamp** | Pointer to **time.Time** | Block timestamp | [optional] 
+**OnchainCreatedAt** | Pointer to **map[string]interface{}** | Onchain created at timestamp | [optional] 
+**TradeCount** | Pointer to **int64** | Trade count | [optional] 
+**TradeAmountInNative** | Pointer to **string** | Trade amount in native currency | [optional] 
+**TradeAmountInUsd** | Pointer to **string** | Trade amount in USD | [optional] 
+**PercentileRankTradeCount** | Pointer to **int64** | Percentile rank trade count | [optional] 
+**PercentileRankTradeAmountInUsd** | Pointer to **string** | Percentile rank trade amount in USD | [optional] 
+**RankTradeAmountInUsd** | Pointer to **string** | Rank trade amount in USD | [optional] 
 
 ## Methods
 

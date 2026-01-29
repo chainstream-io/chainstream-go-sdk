@@ -22,9 +22,9 @@ var _ MappedNullable = &MoonshotSubmitCreateTokenInput{}
 
 // MoonshotSubmitCreateTokenInput struct for MoonshotSubmitCreateTokenInput
 type MoonshotSubmitCreateTokenInput struct {
-	// DTO.DEX.MOONSHOT.SUBMIT.CREATE_TOKEN.SIGNED_TX
+	// Signed transaction in Base64 format for Moonshot token creation
 	SignedTx string `json:"signedTx"`
-	// DTO.DEX.MOONSHOT.SUBMIT.CREATE_TOKEN.EXTRA
+	// Additional data required for Moonshot token creation transaction submission
 	Extra map[string]interface{} `json:"extra,omitempty"`
 }
 

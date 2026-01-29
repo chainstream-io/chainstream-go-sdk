@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Asset** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ASSET | 
-**AssetId** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ASSET_ID | 
-**Network** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.NETWORK | 
-**Address** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ADDRESS | 
-**Memo** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.MEMO | 
-**AttemptIdentifier** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ATTEMPT_IDENTIFIER | 
-**AssetAmount** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ASSET_AMOUNT | 
-**ExternalId** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.EXTERNAL_ID | 
-**UsdAmount** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.USD_AMOUNT | 
-**UpdatedAt** | **string** | DTO.KYT.WITHDRAWAL_BASE_RESPONSE.UPDATED_AT | 
+**Asset** | **string** | Asset type | 
+**AssetId** | **string** | Asset ID | 
+**Network** | **string** | Blockchain network | 
+**Address** | **string** | Address | 
+**Memo** | **string** | Memo information | 
+**AttemptIdentifier** | **string** | Attempt identifier | 
+**AssetAmount** | **string** | Asset amount | 
+**ExternalId** | **string** | External ID (UUID) | 
+**UsdAmount** | **string** | USD amount | 
+**UpdatedAt** | **string** | Updated timestamp | 
 
 ## Methods
 

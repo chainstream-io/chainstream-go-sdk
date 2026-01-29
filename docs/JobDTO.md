@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | **string** | DTO.JOB.STATE | 
-**Result** | **map[string]interface{}** | DTO.JOB.RESULT | 
+**State** | **string** | Job state | 
+**Result** | **map[string]interface{}** | Job result | 
 
 ## Methods
 

@@ -4,133 +4,133 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | **string** | DTO.TOKEN.STAT.ADDRESS | 
-**Price1m** | **string** | DTO.TOKEN.STAT.PRICE_1M | 
-**Buys1m** | **string** | DTO.TOKEN.STAT.BUYS_1M | 
-**Sells1m** | **string** | DTO.TOKEN.STAT.SELLS_1M | 
-**BuyVolumes1m** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_1M | 
-**SellsVolumes1m** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_1M | 
-**Volumes1m** | **string** | DTO.TOKEN.STAT.VOLUMES_1M | 
-**BuyVolumesInUsd1m** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_1M | 
-**SellVolumesInUsd1m** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_1M | 
-**VolumesInUsd1m** | **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_1M | 
-**Buyers1m** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_1M | [optional] 
-**Sellers1m** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_1M | [optional] 
-**OpenPriceInUsd1m** | **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_1M | 
-**ClosePriceInUsd1m** | **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_1M | 
-**PriceChangeRatioInUsd1m** | **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_1M | 
-**Trades1m** | **string** | DTO.TOKEN.STAT.TRADES_1M | 
-**Traders1m** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_1M | [optional] 
-**HighInUsd1m** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_1M | [optional] 
-**LowInUsd1m** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_1M | [optional] 
-**Price5m** | **string** | DTO.TOKEN.STAT.PRICE_5M | 
-**Buys5m** | **string** | DTO.TOKEN.STAT.BUYS_5M | 
-**Sells5m** | **string** | DTO.TOKEN.STAT.SELLS_5M | 
-**BuyVolumes5m** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_5M | 
-**SellsVolumes5m** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_5M | 
-**Volumes5m** | **string** | DTO.TOKEN.STAT.VOLUMES_5M | 
-**BuyVolumesInUsd5m** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_5M | 
-**SellVolumesInUsd5m** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_5M | 
-**VolumesInUsd5m** | **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_5M | 
-**Buyers5m** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_5M | [optional] 
-**Sellers5m** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_5M | [optional] 
-**OpenPriceInUsd5m** | **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_5M | 
-**ClosePriceInUsd5m** | **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_5M | 
-**PriceChangeRatioInUsd5m** | **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_5M | 
-**Trades5m** | **string** | DTO.TOKEN.STAT.TRADES_5M | 
-**Traders5m** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_5M | [optional] 
-**HighInUsd5m** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_5M | [optional] 
-**LowInUsd5m** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_5M | [optional] 
-**Price15m** | Pointer to **string** | DTO.TOKEN.STAT.PRICE_15M | [optional] 
-**Buys15m** | Pointer to **string** | DTO.TOKEN.STAT.BUYS_15M | [optional] 
-**Sells15m** | Pointer to **string** | DTO.TOKEN.STAT.SELLS_15M | [optional] 
-**BuyVolumes15m** | Pointer to **string** | DTO.TOKEN.STAT.BUY_VOLUMES_15M | [optional] 
-**SellsVolumes15m** | Pointer to **string** | DTO.TOKEN.STAT.SELL_VOLUMES_15M | [optional] 
-**Volumes15m** | Pointer to **string** | DTO.TOKEN.STAT.VOLUMES_15M | [optional] 
-**BuyVolumesInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_15M | [optional] 
-**SellVolumesInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_15M | [optional] 
-**VolumesInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_15M | [optional] 
-**Buyers15m** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_15M | [optional] 
-**Sellers15m** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_15M | [optional] 
-**OpenPriceInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_15M | [optional] 
-**ClosePriceInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_15M | [optional] 
-**PriceChangeRatioInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_15M | [optional] 
-**Trades15m** | Pointer to **string** | DTO.TOKEN.STAT.TRADES_15M | [optional] 
-**Traders15m** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_15M | [optional] 
-**HighInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_15M | [optional] 
-**LowInUsd15m** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_15M | [optional] 
-**Price30m** | **string** | DTO.TOKEN.STAT.PRICE_30M | 
-**Buys30m** | **string** | DTO.TOKEN.STAT.BUYS_30M | 
-**Sells30m** | **string** | DTO.TOKEN.STAT.SELLS_30M | 
-**BuyVolumes30m** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_30M | 
-**SellsVolumes30m** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_30M | 
-**Volumes30m** | **string** | DTO.TOKEN.STAT.VOLUMES_30M | 
-**BuyVolumesInUsd30m** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_30M | 
-**SellVolumesInUsd30m** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_30M | 
-**VolumesInUsd30m** | **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_30M | 
-**Buyers30m** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_30M | [optional] 
-**Sellers30m** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_30M | [optional] 
-**OpenPriceInUsd30m** | **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_30M | 
-**ClosePriceInUsd30m** | **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_30M | 
-**PriceChangeRatioInUsd30m** | **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_30M | 
-**Trades30m** | **string** | DTO.TOKEN.STAT.TRADES_30M | 
-**Traders30m** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_30M | [optional] 
-**HighInUsd30m** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_30M | [optional] 
-**LowInUsd30m** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_30M | [optional] 
-**Price1h** | **string** | DTO.TOKEN.STAT.PRICE_1H | 
-**Buys1h** | **string** | DTO.TOKEN.STAT.BUYS_1H | 
-**Sells1h** | **string** | DTO.TOKEN.STAT.SELLS_1H | 
-**BuyVolumes1h** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_1H | 
-**SellsVolumes1h** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_1H | 
-**Volumes1h** | **string** | DTO.TOKEN.STAT.VOLUMES_1H | 
-**BuyVolumesInUsd1h** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_1H | 
-**SellVolumesInUsd1h** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_1H | 
-**VolumesInUsd1h** | **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_1H | 
-**Buyers1h** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_1H | [optional] 
-**Sellers1h** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_1H | [optional] 
-**OpenPriceInUsd1h** | **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_1H | 
-**ClosePriceInUsd1h** | **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_1H | 
-**PriceChangeRatioInUsd1h** | **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_1H | 
-**Trades1h** | **string** | DTO.TOKEN.STAT.TRADES_1H | 
-**Traders1h** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_1H | [optional] 
-**HighInUsd1h** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_1H | [optional] 
-**LowInUsd1h** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_1H | [optional] 
-**Price4h** | **string** | DTO.TOKEN.STAT.PRICE_4H | 
-**Buys4h** | **string** | DTO.TOKEN.STAT.BUYS_4H | 
-**Sells4h** | **string** | DTO.TOKEN.STAT.SELLS_4H | 
-**BuyVolumes4h** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_4H | 
-**SellsVolumes4h** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_4H | 
-**Volumes4h** | **string** | DTO.TOKEN.STAT.VOLUMES_4H | 
-**BuyVolumesInUsd4h** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_4H | 
-**SellVolumesInUsd4h** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_4H | 
-**VolumesInUsd4h** | **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_4H | 
-**Buyers4h** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_4H | [optional] 
-**Sellers4h** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_4H | [optional] 
-**OpenPriceInUsd4h** | **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_4H | 
-**ClosePriceInUsd4h** | **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_4H | 
-**PriceChangeRatioInUsd4h** | **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_4H | 
-**Trades4h** | **string** | DTO.TOKEN.STAT.TRADES_4H | 
-**Traders4h** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_4H | [optional] 
-**HighInUsd4h** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_4H | [optional] 
-**LowInUsd4h** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_4H | [optional] 
-**Price24h** | **string** | DTO.TOKEN.STAT.PRICE_24H | 
-**Buys24h** | **string** | DTO.TOKEN.STAT.BUYS_24H | 
-**Sells24h** | **string** | DTO.TOKEN.STAT.SELLS_24H | 
-**BuyVolumes24h** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_24H | 
-**SellsVolumes24h** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_24H | 
-**Volumes24h** | **string** | DTO.TOKEN.STAT.VOLUMES_24H | 
-**BuyVolumesInUsd24h** | **string** | DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_24H | 
-**SellVolumesInUsd24h** | **string** | DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_24H | 
-**VolumesInUsd24h** | **string** | DTO.TOKEN.STAT.VOLUMES_IN_USD_24H | 
-**Buyers24h** | Pointer to **string** | DTO.TOKEN.STAT.BUYERS_24H | [optional] 
-**Sellers24h** | Pointer to **string** | DTO.TOKEN.STAT.SELLERS_24H | [optional] 
-**OpenPriceInUsd24h** | **string** | DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_24H | 
-**ClosePriceInUsd24h** | **string** | DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_24H | 
-**PriceChangeRatioInUsd24h** | **string** | DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_24H | 
-**Trades24h** | **string** | DTO.TOKEN.STAT.TRADES_24H | 
-**Traders24h** | Pointer to **string** | DTO.TOKEN.STAT.TRADERS_24H | [optional] 
-**HighInUsd24h** | Pointer to **string** | DTO.TOKEN.STAT.HIGH_IN_USD_24H | [optional] 
-**LowInUsd24h** | Pointer to **string** | DTO.TOKEN.STAT.LOW_IN_USD_24H | [optional] 
+**Address** | **string** | Token contract address | 
+**Price1m** | **string** | Token price in the last 1 minute | 
+**Buys1m** | **string** | Number of buy orders in the last 1 minute | 
+**Sells1m** | **string** | Number of sell orders in the last 1 minute | 
+**BuyVolumes1m** | **string** | Total buy volume in the last 1 minute | 
+**SellsVolumes1m** | **string** | Total sell volume in the last 1 minute | 
+**Volumes1m** | **string** | Total trading volume in the last 1 minutes | 
+**BuyVolumesInUsd1m** | **string** | 1m buy volume in USD | 
+**SellVolumesInUsd1m** | **string** | 1m sell volume in USD | 
+**VolumesInUsd1m** | **string** | 1m volume in USD | 
+**Buyers1m** | Pointer to **string** | Number of unique buyers in the last 1 minute | [optional] 
+**Sellers1m** | Pointer to **string** | Number of unique sellers in the last 1 minute | [optional] 
+**OpenPriceInUsd1m** | **string** | Opening price in USD for the last 1 minute | 
+**ClosePriceInUsd1m** | **string** | Closing price in USD for the last 1 minute | 
+**PriceChangeRatioInUsd1m** | **string** | Price change ratio in USD for the last 1 minute | 
+**Trades1m** | **string** | Number of trades in the last 1 minute | 
+**Traders1m** | Pointer to **string** | Number of unique traders in the last 1 minute | [optional] 
+**HighInUsd1m** | Pointer to **string** | Highest price in USD for the last 1 minute | [optional] 
+**LowInUsd1m** | Pointer to **string** | Lowest price in USD for the last 1 minute | [optional] 
+**Price5m** | **string** | Token price in the last 5 minutes | 
+**Buys5m** | **string** | Number of buy orders in the last 5 minutes | 
+**Sells5m** | **string** | Number of sell orders in the last 5 minutes | 
+**BuyVolumes5m** | **string** | Total buy volume in the last 5 minutes | 
+**SellsVolumes5m** | **string** | Total sell volume in the last 5 minutes | 
+**Volumes5m** | **string** | Total trading volume in the last 5 minutes | 
+**BuyVolumesInUsd5m** | **string** | 5m buy volume in USD | 
+**SellVolumesInUsd5m** | **string** | 5m sell volume in USD | 
+**VolumesInUsd5m** | **string** | 5m volume in USD | 
+**Buyers5m** | Pointer to **string** | Number of unique buyers in the last 5 minutes | [optional] 
+**Sellers5m** | Pointer to **string** | Number of unique sellers in the last 5 minutes | [optional] 
+**OpenPriceInUsd5m** | **string** | Opening price in USD for the last 5 minutes | 
+**ClosePriceInUsd5m** | **string** | Closing price in USD for the last 5 minutes | 
+**PriceChangeRatioInUsd5m** | **string** | Price change ratio in USD for the last 5 minutes | 
+**Trades5m** | **string** | Number of trades in the last 5 minutes | 
+**Traders5m** | Pointer to **string** | Number of unique traders in the last 5 minutes | [optional] 
+**HighInUsd5m** | Pointer to **string** | Highest price in USD for the last 5 minutes | [optional] 
+**LowInUsd5m** | Pointer to **string** | Lowest price in USD for the last 5 minutes | [optional] 
+**Price15m** | Pointer to **string** | Token price in the last 15 minutes | [optional] 
+**Buys15m** | Pointer to **string** | Number of buy orders in the last 15 minutes | [optional] 
+**Sells15m** | Pointer to **string** | Number of sell orders in the last 15 minutes | [optional] 
+**BuyVolumes15m** | Pointer to **string** | Total buy volume in the last 15 minutes | [optional] 
+**SellsVolumes15m** | Pointer to **string** | Total sell volume in the last 15 minutes | [optional] 
+**Volumes15m** | Pointer to **string** | Total trading volume in the last 15 minutes | [optional] 
+**BuyVolumesInUsd15m** | Pointer to **string** | 15m buy volume in USD | [optional] 
+**SellVolumesInUsd15m** | Pointer to **string** | 15m sell volume in USD | [optional] 
+**VolumesInUsd15m** | Pointer to **string** | 15m volume in USD | [optional] 
+**Buyers15m** | Pointer to **string** | Number of unique buyers in the last 15 minutes | [optional] 
+**Sellers15m** | Pointer to **string** | Number of unique sellers in the last 15 minutes | [optional] 
+**OpenPriceInUsd15m** | Pointer to **string** | Opening price in USD for the last 15 minutes | [optional] 
+**ClosePriceInUsd15m** | Pointer to **string** | Closing price in USD for the last 15 minutes | [optional] 
+**PriceChangeRatioInUsd15m** | Pointer to **string** | Price change ratio in USD for the last 15 minutes | [optional] 
+**Trades15m** | Pointer to **string** | Number of trades in the last 15 minutes | [optional] 
+**Traders15m** | Pointer to **string** | Number of unique traders in the last 15 minutes | [optional] 
+**HighInUsd15m** | Pointer to **string** | Highest price in USD for the last 15 minutes | [optional] 
+**LowInUsd15m** | Pointer to **string** | Lowest price in USD for the last 15 minutes | [optional] 
+**Price30m** | **string** | Token price in the last 30 minutes | 
+**Buys30m** | **string** | Number of buy orders in the last 30 minutes | 
+**Sells30m** | **string** | Number of sell orders in the last 30 minutes | 
+**BuyVolumes30m** | **string** | Total buy volume in the last 30 minutes | 
+**SellsVolumes30m** | **string** | Total sell volume in the last 30 minutes | 
+**Volumes30m** | **string** | Total trading volume in the last 30 minutes | 
+**BuyVolumesInUsd30m** | **string** | 30m buy volume in USD | 
+**SellVolumesInUsd30m** | **string** | 30m sell volume in USD | 
+**VolumesInUsd30m** | **string** | 30m volume in USD | 
+**Buyers30m** | Pointer to **string** | Number of unique buyers in the last 30 minutes | [optional] 
+**Sellers30m** | Pointer to **string** | Number of unique sellers in the last 30 minutes | [optional] 
+**OpenPriceInUsd30m** | **string** | Opening price in USD for the last 30 minutes | 
+**ClosePriceInUsd30m** | **string** | Closing price in USD for the last 30 minutes | 
+**PriceChangeRatioInUsd30m** | **string** | Price change ratio in USD for the last 30 minutes | 
+**Trades30m** | **string** | Number of trades in the last 30 minutes | 
+**Traders30m** | Pointer to **string** | Number of unique traders in the last 30 minutes | [optional] 
+**HighInUsd30m** | Pointer to **string** | Highest price in USD for the last 30 minutes | [optional] 
+**LowInUsd30m** | Pointer to **string** | Lowest price in USD for the last 30 minutes | [optional] 
+**Price1h** | **string** | Token price in the last 1 hour | 
+**Buys1h** | **string** | Number of buy orders in the last 1 hour | 
+**Sells1h** | **string** | Number of sell orders in the last 1 hour | 
+**BuyVolumes1h** | **string** | Total buy volume in the last 1 hour | 
+**SellsVolumes1h** | **string** | Total sell volume in the last 1 hour | 
+**Volumes1h** | **string** | Total trading volume in the last 1 hour | 
+**BuyVolumesInUsd1h** | **string** | 1h buy volume in USD | 
+**SellVolumesInUsd1h** | **string** | 1h sell volume in USD | 
+**VolumesInUsd1h** | **string** | 1h volume in USD | 
+**Buyers1h** | Pointer to **string** | Number of unique buyers in the last 1 hour | [optional] 
+**Sellers1h** | Pointer to **string** | Number of unique sellers in the last 1 hour | [optional] 
+**OpenPriceInUsd1h** | **string** | Opening price in USD for the last 1 hour | 
+**ClosePriceInUsd1h** | **string** | Closing price in USD for the last 1 hour | 
+**PriceChangeRatioInUsd1h** | **string** | Price change ratio in USD for the last 1 hour | 
+**Trades1h** | **string** | Number of trades in the last 1 hour | 
+**Traders1h** | Pointer to **string** | Number of unique traders in the last 1 hour | [optional] 
+**HighInUsd1h** | Pointer to **string** | Highest price in USD for the last 1 hour | [optional] 
+**LowInUsd1h** | Pointer to **string** | Lowest price in USD for the last 1 hour | [optional] 
+**Price4h** | **string** | Token price in the last 4 hours | 
+**Buys4h** | **string** | Number of buy orders in the last 4 hours | 
+**Sells4h** | **string** | Number of sell orders in the last 4 hours | 
+**BuyVolumes4h** | **string** | Total buy volume in the last 4 hours | 
+**SellsVolumes4h** | **string** | Total sell volume in the last 4 hours | 
+**Volumes4h** | **string** | Total trading volume in the last 4 hour | 
+**BuyVolumesInUsd4h** | **string** | 4h buy volume in USD | 
+**SellVolumesInUsd4h** | **string** | 4h sell volume in USD | 
+**VolumesInUsd4h** | **string** | 4h volume in USD | 
+**Buyers4h** | Pointer to **string** | Number of unique buyers in the last 4 hours | [optional] 
+**Sellers4h** | Pointer to **string** | Number of unique sellers in the last 4 hours | [optional] 
+**OpenPriceInUsd4h** | **string** | Opening price in USD for the last 4 hours | 
+**ClosePriceInUsd4h** | **string** | Closing price in USD for the last 4 hours | 
+**PriceChangeRatioInUsd4h** | **string** | Price change ratio in USD for the last 4 hours | 
+**Trades4h** | **string** | Number of trades in the last 4 hours | 
+**Traders4h** | Pointer to **string** | Number of unique traders in the last 4 hours | [optional] 
+**HighInUsd4h** | Pointer to **string** | Highest price in USD for the last 4 hours | [optional] 
+**LowInUsd4h** | Pointer to **string** | Lowest price in USD for the last 4 hours | [optional] 
+**Price24h** | **string** | Token price in the last 24 hours | 
+**Buys24h** | **string** | Number of buy orders in the last 24 hours | 
+**Sells24h** | **string** | Number of sell orders in the last 24 hours | 
+**BuyVolumes24h** | **string** | Total buy volume in the last 24 hours | 
+**SellsVolumes24h** | **string** | Total sell volume in the last 24 hours | 
+**Volumes24h** | **string** | Total trading volume in the last 24 hour | 
+**BuyVolumesInUsd24h** | **string** | 24h buy volume in USD | 
+**SellVolumesInUsd24h** | **string** | 24h sell volume in USD | 
+**VolumesInUsd24h** | **string** | 24h volume in USD | 
+**Buyers24h** | Pointer to **string** | Number of unique buyers in the last 24 hours | [optional] 
+**Sellers24h** | Pointer to **string** | Number of unique sellers in the last 24 hours | [optional] 
+**OpenPriceInUsd24h** | **string** | Opening price in USD for the last 24 hours | 
+**ClosePriceInUsd24h** | **string** | Closing price in USD for the last 24 hours | 
+**PriceChangeRatioInUsd24h** | **string** | Price change ratio in USD for the last 24 hours | 
+**Trades24h** | **string** | Number of trades in the last 24 hours | 
+**Traders24h** | Pointer to **string** | Number of unique traders in the last 24 hours | [optional] 
+**HighInUsd24h** | Pointer to **string** | Highest price in USD for the last 24 hours | [optional] 
+**LowInUsd24h** | Pointer to **string** | Lowest price in USD for the last 24 hours | [optional] 
 
 ## Methods
 

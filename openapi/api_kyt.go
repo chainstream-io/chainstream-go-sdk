@@ -35,12 +35,12 @@ func (r KYTAPIGetAddressRiskRequest) Execute() (*AddressRiskResponseDTO, *http.R
 }
 
 /*
-GetAddressRisk CONTROLLER.KYT.GET_ADDRESS_RISK.SUMMARY
+GetAddressRisk KYT - Get Address Risk
 
-CONTROLLER.KYT.GET_ADDRESS_RISK.DESCRIPTION
+Retrieve risk assessment for a registered address
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param address CONTROLLER.KYT.PARAM.ADDRESS
+ @param address Address
  @return KYTAPIGetAddressRiskRequest
 */
 func (a *KYTAPIService) GetAddressRisk(ctx context.Context, address string) KYTAPIGetAddressRiskRequest {
@@ -138,12 +138,12 @@ func (r KYTAPIGetTransferAlertsRequest) Execute() (*TransferAlertsResponseDTO, *
 }
 
 /*
-GetTransferAlerts CONTROLLER.KYT.GET_TRANSFER_ALERTS.SUMMARY
+GetTransferAlerts KYT - Get Transfer Alerts
 
-CONTROLLER.KYT.GET_TRANSFER_ALERTS.DESCRIPTION
+Retrieve alerts associated with a transfer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param transferId CONTROLLER.KYT.PARAM.TRANSFER_ID
+ @param transferId Transfer ID
  @return KYTAPIGetTransferAlertsRequest
 */
 func (a *KYTAPIService) GetTransferAlerts(ctx context.Context, transferId string) KYTAPIGetTransferAlertsRequest {
@@ -241,12 +241,12 @@ func (r KYTAPIGetTransferDirectExposureRequest) Execute() (*TransferDirectExposu
 }
 
 /*
-GetTransferDirectExposure CONTROLLER.KYT.GET_TRANSFER_DIRECT_EXPOSURE.SUMMARY
+GetTransferDirectExposure KYT - Get Transfer Direct Exposure
 
-CONTROLLER.KYT.GET_TRANSFER_DIRECT_EXPOSURE.DESCRIPTION
+Get direct exposure information for a transfer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param transferId CONTROLLER.KYT.PARAM.TRANSFER_ID
+ @param transferId Transfer ID
  @return KYTAPIGetTransferDirectExposureRequest
 */
 func (a *KYTAPIService) GetTransferDirectExposure(ctx context.Context, transferId string) KYTAPIGetTransferDirectExposureRequest {
@@ -344,12 +344,12 @@ func (r KYTAPIGetTransferNetworkIdentificationsRequest) Execute() (*TransferNetw
 }
 
 /*
-GetTransferNetworkIdentifications CONTROLLER.KYT.GET_TRANSFER_NETWORK_IDENTIFICATIONS.SUMMARY
+GetTransferNetworkIdentifications KYT - Get Transfer Network Identifications
 
-CONTROLLER.KYT.GET_TRANSFER_NETWORK_IDENTIFICATIONS.DESCRIPTION
+Get network identifications for a transfer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param transferId CONTROLLER.KYT.PARAM.TRANSFER_ID
+ @param transferId Transfer ID
  @return KYTAPIGetTransferNetworkIdentificationsRequest
 */
 func (a *KYTAPIService) GetTransferNetworkIdentifications(ctx context.Context, transferId string) KYTAPIGetTransferNetworkIdentificationsRequest {
@@ -447,12 +447,12 @@ func (r KYTAPIGetTransferSummaryRequest) Execute() (*TransferBaseResponseDTO, *h
 }
 
 /*
-GetTransferSummary CONTROLLER.KYT.GET_TRANSFER_SUMMARY.SUMMARY
+GetTransferSummary KYT - Get Transfer Summary
 
-CONTROLLER.KYT.GET_TRANSFER_SUMMARY.DESCRIPTION
+Retrieve summary information for a registered transfer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param transferId CONTROLLER.KYT.PARAM.TRANSFER_ID
+ @param transferId Transfer ID
  @return KYTAPIGetTransferSummaryRequest
 */
 func (a *KYTAPIService) GetTransferSummary(ctx context.Context, transferId string) KYTAPIGetTransferSummaryRequest {
@@ -550,12 +550,12 @@ func (r KYTAPIGetWithdrawalAddressIdentificationsRequest) Execute() (*Withdrawal
 }
 
 /*
-GetWithdrawalAddressIdentifications CONTROLLER.KYT.GET_WITHDRAWAL_ADDRESS_IDENTIFICATIONS.SUMMARY
+GetWithdrawalAddressIdentifications KYT - Get Withdrawal Address Identifications
 
-CONTROLLER.KYT.GET_WITHDRAWAL_ADDRESS_IDENTIFICATIONS.DESCRIPTION
+Get address identifications for a withdrawal
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param withdrawalId CONTROLLER.KYT.PARAM.WITHDRAWAL_ID
+ @param withdrawalId Withdrawal ID
  @return KYTAPIGetWithdrawalAddressIdentificationsRequest
 */
 func (a *KYTAPIService) GetWithdrawalAddressIdentifications(ctx context.Context, withdrawalId string) KYTAPIGetWithdrawalAddressIdentificationsRequest {
@@ -653,12 +653,12 @@ func (r KYTAPIGetWithdrawalAlertsRequest) Execute() (*TransferAlertsResponseDTO,
 }
 
 /*
-GetWithdrawalAlerts CONTROLLER.KYT.GET_WITHDRAWAL_ALERTS.SUMMARY
+GetWithdrawalAlerts KYT - Get Withdrawal Alerts
 
-CONTROLLER.KYT.GET_WITHDRAWAL_ALERTS.DESCRIPTION
+Retrieve alerts associated with a withdrawal
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param withdrawalId CONTROLLER.KYT.PARAM.WITHDRAWAL_ID
+ @param withdrawalId Withdrawal ID
  @return KYTAPIGetWithdrawalAlertsRequest
 */
 func (a *KYTAPIService) GetWithdrawalAlerts(ctx context.Context, withdrawalId string) KYTAPIGetWithdrawalAlertsRequest {
@@ -756,12 +756,12 @@ func (r KYTAPIGetWithdrawalDirectExposureRequest) Execute() (*TransferDirectExpo
 }
 
 /*
-GetWithdrawalDirectExposure CONTROLLER.KYT.GET_WITHDRAWAL_DIRECT_EXPOSURE.SUMMARY
+GetWithdrawalDirectExposure KYT - Get Withdrawal Direct Exposure
 
-CONTROLLER.KYT.GET_WITHDRAWAL_DIRECT_EXPOSURE.DESCRIPTION
+Get direct exposure information for a withdrawal
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param withdrawalId CONTROLLER.KYT.PARAM.WITHDRAWAL_ID
+ @param withdrawalId Withdrawal ID
  @return KYTAPIGetWithdrawalDirectExposureRequest
 */
 func (a *KYTAPIService) GetWithdrawalDirectExposure(ctx context.Context, withdrawalId string) KYTAPIGetWithdrawalDirectExposureRequest {
@@ -859,12 +859,12 @@ func (r KYTAPIGetWithdrawalFraudAssessmentRequest) Execute() (*WithdrawalFraudAs
 }
 
 /*
-GetWithdrawalFraudAssessment CONTROLLER.KYT.GET_WITHDRAWAL_FRAUD_ASSESSMENT.SUMMARY
+GetWithdrawalFraudAssessment KYT - Get Withdrawal Fraud Assessment
 
-CONTROLLER.KYT.GET_WITHDRAWAL_FRAUD_ASSESSMENT.DESCRIPTION
+Get fraud assessment results for a withdrawal
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param withdrawalId CONTROLLER.KYT.PARAM.WITHDRAWAL_ID
+ @param withdrawalId Withdrawal ID
  @return KYTAPIGetWithdrawalFraudAssessmentRequest
 */
 func (a *KYTAPIService) GetWithdrawalFraudAssessment(ctx context.Context, withdrawalId string) KYTAPIGetWithdrawalFraudAssessmentRequest {
@@ -962,12 +962,12 @@ func (r KYTAPIGetWithdrawalNetworkIdentificationsRequest) Execute() (*TransferNe
 }
 
 /*
-GetWithdrawalNetworkIdentifications CONTROLLER.KYT.GET_WITHDRAWAL_NETWORK_IDENTIFICATIONS.SUMMARY
+GetWithdrawalNetworkIdentifications KYT - Get Withdrawal Network Identifications
 
-CONTROLLER.KYT.GET_WITHDRAWAL_NETWORK_IDENTIFICATIONS.DESCRIPTION
+Get network identifications for a withdrawal
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param withdrawalId CONTROLLER.KYT.PARAM.WITHDRAWAL_ID
+ @param withdrawalId Withdrawal ID
  @return KYTAPIGetWithdrawalNetworkIdentificationsRequest
 */
 func (a *KYTAPIService) GetWithdrawalNetworkIdentifications(ctx context.Context, withdrawalId string) KYTAPIGetWithdrawalNetworkIdentificationsRequest {
@@ -1065,12 +1065,12 @@ func (r KYTAPIGetWithdrawalSummaryRequest) Execute() (*WithdrawalBaseResponseDTO
 }
 
 /*
-GetWithdrawalSummary CONTROLLER.KYT.GET_WITHDRAWAL_SUMMARY.SUMMARY
+GetWithdrawalSummary KYT - Get Withdrawal Summary
 
-CONTROLLER.KYT.GET_WITHDRAWAL_SUMMARY.DESCRIPTION
+Retrieve summary information for a registered withdrawal
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param withdrawalId CONTROLLER.KYT.PARAM.WITHDRAWAL_ID
+ @param withdrawalId Withdrawal ID
  @return KYTAPIGetWithdrawalSummaryRequest
 */
 func (a *KYTAPIService) GetWithdrawalSummary(ctx context.Context, withdrawalId string) KYTAPIGetWithdrawalSummaryRequest {
@@ -1173,9 +1173,9 @@ func (r KYTAPIRegisterAddressRequest) Execute() (*RegisterAddressResponseDTO, *h
 }
 
 /*
-RegisterAddress CONTROLLER.KYT.REGISTER_ADDRESS.SUMMARY
+RegisterAddress KYT - Register Address
 
-CONTROLLER.KYT.REGISTER_ADDRESS.DESCRIPTION
+Register an address for KYT monitoring
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return KYTAPIRegisterAddressRequest
@@ -1283,9 +1283,9 @@ func (r KYTAPIRegisterTransferRequest) Execute() (*TransferBaseResponseDTO, *htt
 }
 
 /*
-RegisterTransfer CONTROLLER.KYT.REGISTER_TRANSFER.SUMMARY
+RegisterTransfer KYT - Register Transfer
 
-CONTROLLER.KYT.REGISTER_TRANSFER.DESCRIPTION
+Register a transfer for KYT (Know Your Transaction) analysis
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return KYTAPIRegisterTransferRequest
@@ -1393,9 +1393,9 @@ func (r KYTAPIRegisterWithdrawalRequest) Execute() (*WithdrawalBaseResponseDTO, 
 }
 
 /*
-RegisterWithdrawal CONTROLLER.KYT.REGISTER_WITHDRAWAL.SUMMARY
+RegisterWithdrawal KYT - Register Withdrawal
 
-CONTROLLER.KYT.REGISTER_WITHDRAWAL.DESCRIPTION
+Register a withdrawal for KYT (Know Your Transaction) analysis
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return KYTAPIRegisterWithdrawalRequest

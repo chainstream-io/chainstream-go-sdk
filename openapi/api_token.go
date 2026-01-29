@@ -36,25 +36,25 @@ type TokenAPIGetCandlesRequest struct {
 	limit *int64
 }
 
-// DTO.CANDLE.RESOLUTION
+// Time resolution for candle data. Note: 1s resolution data is only kept for the last 1 hour; 15s and 30s resolution data is kept for the last 6 hours; 1m resolution data is kept for the last 12 hours; data for other resolutions is stored permanently
 func (r TokenAPIGetCandlesRequest) Resolution(resolution Resolution) TokenAPIGetCandlesRequest {
 	r.resolution = &resolution
 	return r
 }
 
-// DTO.CANDLE.FROM
+// Start timestamp (Unix epoch in milliseconds)
 func (r TokenAPIGetCandlesRequest) From(from int64) TokenAPIGetCandlesRequest {
 	r.from = &from
 	return r
 }
 
-// DTO.CANDLE.TO
+// End timestamp (Unix epoch in milliseconds)
 func (r TokenAPIGetCandlesRequest) To(to int64) TokenAPIGetCandlesRequest {
 	r.to = &to
 	return r
 }
 
-// DTO.CANDLE.LIMIT
+// Number of results per page
 func (r TokenAPIGetCandlesRequest) Limit(limit int64) TokenAPIGetCandlesRequest {
 	r.limit = &limit
 	return r
@@ -65,13 +65,13 @@ func (r TokenAPIGetCandlesRequest) Execute() ([]Candle, *http.Response, error) {
 }
 
 /*
-GetCandles CONTROLLER.TOKEN.GET_CANDLES.SUMMARY
+GetCandles Token - Candles
 
-CONTROLLER.TOKEN.GET_CANDLES.DESCRIPTION
+Get token price candles
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetCandlesRequest
 */
 func (a *TokenAPIService) GetCandles(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetCandlesRequest {
@@ -185,13 +185,13 @@ func (r TokenAPIGetCreationRequest) Execute() (*TokenCreationDTO, *http.Response
 }
 
 /*
-GetCreation CONTROLLER.TOKEN.GET_CREATION.SUMMARY
+GetCreation Token - Creation
 
-CONTROLLER.TOKEN.GET_CREATION.DESCRIPTION
+Get token creation information
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetCreationRequest
 */
 func (a *TokenAPIService) GetCreation(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetCreationRequest {
@@ -292,12 +292,12 @@ func (r TokenAPIGetDevTokensRequest) Execute() ([]DevTokenDTO, *http.Response, e
 }
 
 /*
-GetDevTokens CONTROLLER.TOKEN.GET_DEV_TOKENS.SUMMARY
+GetDevTokens Token - Get Dev Tokens
 
-CONTROLLER.TOKEN.GET_DEV_TOKENS.DESCRIPTION
+Retrieve all tokens created by a specific developer address
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @param devAddress Developer address
  @return TokenAPIGetDevTokensRequest
 */
@@ -397,19 +397,19 @@ type TokenAPIGetHoldersRequest struct {
 	direction *string
 }
 
-// DTO.PAGE.CURSOR.DESCRIPTION
+// Pagination cursor
 func (r TokenAPIGetHoldersRequest) Cursor(cursor string) TokenAPIGetHoldersRequest {
 	r.cursor = &cursor
 	return r
 }
 
-// DTO.PAGE.LIMIT
+// Number of results per page
 func (r TokenAPIGetHoldersRequest) Limit(limit float32) TokenAPIGetHoldersRequest {
 	r.limit = &limit
 	return r
 }
 
-// DTO.PAGE.DIRECTION
+// Pagination direction (next or prev)
 func (r TokenAPIGetHoldersRequest) Direction(direction string) TokenAPIGetHoldersRequest {
 	r.direction = &direction
 	return r
@@ -420,13 +420,13 @@ func (r TokenAPIGetHoldersRequest) Execute() (*TokenHolderPage, *http.Response, 
 }
 
 /*
-GetHolders CONTROLLER.TOKEN.GET_HOLDERS.SUMMARY
+GetHolders Token - Holders
 
-CONTROLLER.TOKEN.GET_HOLDERS.DESCRIPTION
+Get holders of a token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetHoldersRequest
 */
 func (a *TokenAPIService) GetHolders(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetHoldersRequest {
@@ -538,7 +538,7 @@ type TokenAPIGetHoldersMultiRequest struct {
 	walletAddresses *string
 }
 
-// GLOBAL.WALLETADDRESSES.DESCRIPTION
+// A list of wallet addresses in string separated by commas (,)
 func (r TokenAPIGetHoldersMultiRequest) WalletAddresses(walletAddresses string) TokenAPIGetHoldersMultiRequest {
 	r.walletAddresses = &walletAddresses
 	return r
@@ -549,13 +549,13 @@ func (r TokenAPIGetHoldersMultiRequest) Execute() ([]TokenHolder, *http.Response
 }
 
 /*
-GetHoldersMulti CONTROLLER.TOKEN.GET_HOLDERS_MULTI.SUMMARY
+GetHoldersMulti Token - Holders (Multi)
 
-CONTROLLER.TOKEN.GET_HOLDERS_MULTI.DESCRIPTION
+Get holders information for multiple wallet addresses
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetHoldersMultiRequest
 */
 func (a *TokenAPIService) GetHoldersMulti(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetHoldersMultiRequest {
@@ -660,13 +660,13 @@ func (r TokenAPIGetMarketDataRequest) Execute() (*TokenMarketData, *http.Respons
 }
 
 /*
-GetMarketData CONTROLLER.TOKEN.GET_MARKET_CAP.SUMMARY
+GetMarketData Token - Market Data
 
-CONTROLLER.TOKEN.GET_MARKET_CAP.DESCRIPTION
+Get the market data of a token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetMarketDataRequest
 */
 func (a *TokenAPIService) GetMarketData(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetMarketDataRequest {
@@ -762,7 +762,7 @@ type TokenAPIGetMarketDataMultiRequest struct {
 	tokenAddresses *string
 }
 
-// GLOBAL.TOKENADDRESSES.DESCRIPTION
+// A list of token addresses in string separated by commas (,)
 func (r TokenAPIGetMarketDataMultiRequest) TokenAddresses(tokenAddresses string) TokenAPIGetMarketDataMultiRequest {
 	r.tokenAddresses = &tokenAddresses
 	return r
@@ -773,12 +773,12 @@ func (r TokenAPIGetMarketDataMultiRequest) Execute() (*map[string]TokenMarketDat
 }
 
 /*
-GetMarketDataMulti CONTROLLER.TOKEN.GET_MARKET_DATA_MULTI.SUMMARY
+GetMarketDataMulti Token - Market Data (Multi)
 
-CONTROLLER.TOKEN.GET_MARKET_DATA_MULTI.DESCRIPTION
+Get market data for multiple tokens
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return TokenAPIGetMarketDataMultiRequest
 */
 func (a *TokenAPIService) GetMarketDataMulti(ctx context.Context, chain ChainSymbol) TokenAPIGetMarketDataMultiRequest {
@@ -881,13 +881,13 @@ func (r TokenAPIGetMetadataRequest) Execute() (*TokenMetadata, *http.Response, e
 }
 
 /*
-GetMetadata CONTROLLER.TOKEN.GET_METADATA.SUMMARY
+GetMetadata Token - Metadata
 
-CONTROLLER.TOKEN.GET_METADATA.DESCRIPTION
+Get metadata of token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetMetadataRequest
 */
 func (a *TokenAPIService) GetMetadata(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetMetadataRequest {
@@ -983,7 +983,7 @@ type TokenAPIGetMetadataMultiRequest struct {
 	tokenAddresses *string
 }
 
-// GLOBAL.TOKENADDRESSES.DESCRIPTION
+// A list of token addresses in string separated by commas (,)
 func (r TokenAPIGetMetadataMultiRequest) TokenAddresses(tokenAddresses string) TokenAPIGetMetadataMultiRequest {
 	r.tokenAddresses = &tokenAddresses
 	return r
@@ -994,12 +994,12 @@ func (r TokenAPIGetMetadataMultiRequest) Execute() (*map[string]TokenMetadata, *
 }
 
 /*
-GetMetadataMulti CONTROLLER.TOKEN.GET_METADATA_MULTI.SUMMARY
+GetMetadataMulti Token - Metadata (Multi)
 
-CONTROLLER.TOKEN.GET_METADATA_MULTI.DESCRIPTION
+Get metadata for multiple tokens
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return TokenAPIGetMetadataMultiRequest
 */
 func (a *TokenAPIService) GetMetadataMulti(ctx context.Context, chain ChainSymbol) TokenAPIGetMetadataMultiRequest {
@@ -1101,25 +1101,25 @@ type TokenAPIGetMintAndBurnRequest struct {
 	type_ *string
 }
 
-// DTO.PAGE.CURSOR.DESCRIPTION
+// Pagination cursor
 func (r TokenAPIGetMintAndBurnRequest) Cursor(cursor string) TokenAPIGetMintAndBurnRequest {
 	r.cursor = &cursor
 	return r
 }
 
-// DTO.PAGE.LIMIT
+// Number of results per page
 func (r TokenAPIGetMintAndBurnRequest) Limit(limit float32) TokenAPIGetMintAndBurnRequest {
 	r.limit = &limit
 	return r
 }
 
-// DTO.PAGE.DIRECTION
+// Pagination direction (next or prev)
 func (r TokenAPIGetMintAndBurnRequest) Direction(direction string) TokenAPIGetMintAndBurnRequest {
 	r.direction = &direction
 	return r
 }
 
-// DTO.TOKEN.MINT_AND_BURN.TYPE
+// Type of operation to filter (all, mint, or burn)
 func (r TokenAPIGetMintAndBurnRequest) Type_(type_ string) TokenAPIGetMintAndBurnRequest {
 	r.type_ = &type_
 	return r
@@ -1130,13 +1130,13 @@ func (r TokenAPIGetMintAndBurnRequest) Execute() (*TokenCreationPage, *http.Resp
 }
 
 /*
-GetMintAndBurn CONTROLLER.TOKEN.GET_MINT_AND_BURN.SUMMARY
+GetMintAndBurn Token - Mint and Burn
 
-CONTROLLER.TOKEN.GET_MINT_AND_BURN.DESCRIPTION
+Get mint and burn information for a token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetMintAndBurnRequest
 */
 func (a *TokenAPIService) GetMintAndBurn(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetMintAndBurnRequest {
@@ -1259,37 +1259,37 @@ type TokenAPIGetPoolsRequest struct {
 	maxTvlInUsd *string
 }
 
-// DTO.POOL.SORT_BY
+// Sort field (tvlInSol or tvlInUsd)
 func (r TokenAPIGetPoolsRequest) SortBy(sortBy string) TokenAPIGetPoolsRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
-// DTO.POOL.SORT_DIRECTION
+// Sort direction (asc or desc)
 func (r TokenAPIGetPoolsRequest) SortDirection(sortDirection string) TokenAPIGetPoolsRequest {
 	r.sortDirection = &sortDirection
 	return r
 }
 
-// DTO.POOL.MIN_TVL_IN_SOL
+// Minimum TVL in SOL
 func (r TokenAPIGetPoolsRequest) MinTvlInSol(minTvlInSol string) TokenAPIGetPoolsRequest {
 	r.minTvlInSol = &minTvlInSol
 	return r
 }
 
-// DTO.POOL.MAX_TVL_IN_SOL
+// Maximum TVL in SOL
 func (r TokenAPIGetPoolsRequest) MaxTvlInSol(maxTvlInSol string) TokenAPIGetPoolsRequest {
 	r.maxTvlInSol = &maxTvlInSol
 	return r
 }
 
-// DTO.POOL.MIN_TVL_IN_USD
+// Minimum TVL in USD
 func (r TokenAPIGetPoolsRequest) MinTvlInUsd(minTvlInUsd string) TokenAPIGetPoolsRequest {
 	r.minTvlInUsd = &minTvlInUsd
 	return r
 }
 
-// DTO.POOL.MAX_TVL_IN_USD
+// Maximum TVL in USD
 func (r TokenAPIGetPoolsRequest) MaxTvlInUsd(maxTvlInUsd string) TokenAPIGetPoolsRequest {
 	r.maxTvlInUsd = &maxTvlInUsd
 	return r
@@ -1300,13 +1300,13 @@ func (r TokenAPIGetPoolsRequest) Execute() ([]DexPoolDTO, *http.Response, error)
 }
 
 /*
-GetPools CONTROLLER.TOKEN.GET_POOLS.SUMMARY
+GetPools Token - Liquidity
 
-CONTROLLER.TOKEN.GET_POOLS.DESCRIPTION
+Get all pools containing this token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetPoolsRequest
 */
 func (a *TokenAPIService) GetPools(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetPoolsRequest {
@@ -1424,7 +1424,7 @@ type TokenAPIGetPriceByTimeRequest struct {
 	timestamp *int64
 }
 
-// DTO.TOKEN.PRICE.QUERY.TIMESTAMP
+// Timestamp for price query (Unix epoch in seconds)
 func (r TokenAPIGetPriceByTimeRequest) Timestamp(timestamp int64) TokenAPIGetPriceByTimeRequest {
 	r.timestamp = &timestamp
 	return r
@@ -1435,13 +1435,13 @@ func (r TokenAPIGetPriceByTimeRequest) Execute() (*TokenPriceDTO, *http.Response
 }
 
 /*
-GetPriceByTime CONTROLLER.TOKEN.GET_PRICE_BY_TIME.SUMMARY
+GetPriceByTime Token - Price by Time
 
-CONTROLLER.TOKEN.GET_PRICE_BY_TIME.DESCRIPTION
+Get token price at a specific timestamp
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetPriceByTimeRequest
 */
 func (a *TokenAPIService) GetPriceByTime(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetPriceByTimeRequest {
@@ -1544,19 +1544,19 @@ type TokenAPIGetPricesRequest struct {
 	direction *string
 }
 
-// DTO.PAGE.CURSOR.DESCRIPTION
+// Pagination cursor
 func (r TokenAPIGetPricesRequest) Cursor(cursor string) TokenAPIGetPricesRequest {
 	r.cursor = &cursor
 	return r
 }
 
-// DTO.PAGE.LIMIT
+// Number of results per page
 func (r TokenAPIGetPricesRequest) Limit(limit float32) TokenAPIGetPricesRequest {
 	r.limit = &limit
 	return r
 }
 
-// DTO.PAGE.DIRECTION
+// Pagination direction (next or prev)
 func (r TokenAPIGetPricesRequest) Direction(direction string) TokenAPIGetPricesRequest {
 	r.direction = &direction
 	return r
@@ -1567,13 +1567,13 @@ func (r TokenAPIGetPricesRequest) Execute() (*TokenPricePage, *http.Response, er
 }
 
 /*
-GetPrices CONTROLLER.TOKEN.GET_PRICES.SUMMARY
+GetPrices Token - Prices
 
-CONTROLLER.TOKEN.GET_PRICES.DESCRIPTION
+Get historical price data for a token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetPricesRequest
 */
 func (a *TokenAPIService) GetPrices(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetPricesRequest {
@@ -1689,13 +1689,13 @@ func (r TokenAPIGetSecurityRequest) Execute() (map[string]interface{}, *http.Res
 }
 
 /*
-GetSecurity CONTROLLER.TOKEN.GET_SECURITY.SUMMARY
+GetSecurity Token - Security
 
-CONTROLLER.TOKEN.GET_SECURITY.DESCRIPTION
+Get token security information
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetSecurityRequest
 */
 func (a *TokenAPIService) GetSecurity(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetSecurityRequest {
@@ -1796,13 +1796,13 @@ func (r TokenAPIGetStatsRequest) Execute() (*TokenStat, *http.Response, error) {
 }
 
 /*
-GetStats CONTROLLER.TOKEN.GET_STATS.SUMMARY
+GetStats Token - Stats
 
-CONTROLLER.TOKEN.GET_STATS.DESCRIPTION
+Get token statistics
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetStatsRequest
 */
 func (a *TokenAPIService) GetStats(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetStatsRequest {
@@ -1898,7 +1898,7 @@ type TokenAPIGetStatsMultiRequest struct {
 	tokenAddresses *string
 }
 
-// GLOBAL.TOKENADDRESSES.DESCRIPTION
+// A list of token addresses in string separated by commas (,)
 func (r TokenAPIGetStatsMultiRequest) TokenAddresses(tokenAddresses string) TokenAPIGetStatsMultiRequest {
 	r.tokenAddresses = &tokenAddresses
 	return r
@@ -1909,12 +1909,12 @@ func (r TokenAPIGetStatsMultiRequest) Execute() (*map[string]TokenStat, *http.Re
 }
 
 /*
-GetStatsMulti CONTROLLER.TOKEN.GET_STATS_MULTI.SUMMARY
+GetStatsMulti Token - Stats (Multi)
 
-CONTROLLER.TOKEN.GET_STATS_MULTI.DESCRIPTION
+Get statistics for multiple tokens
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return TokenAPIGetStatsMultiRequest
 */
 func (a *TokenAPIService) GetStatsMulti(ctx context.Context, chain ChainSymbol) TokenAPIGetStatsMultiRequest {
@@ -2017,13 +2017,13 @@ func (r TokenAPIGetTokenRequest) Execute() (*Token, *http.Response, error) {
 }
 
 /*
-GetToken CONTROLLER.TOKEN.GET.SUMMARY
+GetToken Token - Detail
 
-CONTROLLER.TOKEN.GET.DESCRIPTION
+Get detail of token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetTokenRequest
 */
 func (a *TokenAPIService) GetToken(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetTokenRequest {
@@ -2112,6 +2112,146 @@ func (a *TokenAPIService) GetTokenExecute(r TokenAPIGetTokenRequest) (*Token, *h
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type TokenAPIGetTokenLiquiditySnapshotsRequest struct {
+	ctx context.Context
+	ApiService *TokenAPIService
+	chain ChainSymbol
+	tokenAddress string
+	time *int64
+	cursor *string
+	limit *int32
+}
+
+// Target Unix timestamp (seconds) for snapshot query. Returns the nearest snapshot before or at this time.
+func (r TokenAPIGetTokenLiquiditySnapshotsRequest) Time(time int64) TokenAPIGetTokenLiquiditySnapshotsRequest {
+	r.time = &time
+	return r
+}
+
+// Pagination cursor
+func (r TokenAPIGetTokenLiquiditySnapshotsRequest) Cursor(cursor string) TokenAPIGetTokenLiquiditySnapshotsRequest {
+	r.cursor = &cursor
+	return r
+}
+
+// Number of results per page
+func (r TokenAPIGetTokenLiquiditySnapshotsRequest) Limit(limit int32) TokenAPIGetTokenLiquiditySnapshotsRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r TokenAPIGetTokenLiquiditySnapshotsRequest) Execute() (*TokenLiquiditySnapshotPage, *http.Response, error) {
+	return r.ApiService.GetTokenLiquiditySnapshotsExecute(r)
+}
+
+/*
+GetTokenLiquiditySnapshots Token - Liquidity Snapshots
+
+Retrieve historical liquidity snapshots for a token. If a time parameter is provided, returns the nearest snapshot before or at that time.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
+ @return TokenAPIGetTokenLiquiditySnapshotsRequest
+*/
+func (a *TokenAPIService) GetTokenLiquiditySnapshots(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetTokenLiquiditySnapshotsRequest {
+	return TokenAPIGetTokenLiquiditySnapshotsRequest{
+		ApiService: a,
+		ctx: ctx,
+		chain: chain,
+		tokenAddress: tokenAddress,
+	}
+}
+
+// Execute executes the request
+//  @return TokenLiquiditySnapshotPage
+func (a *TokenAPIService) GetTokenLiquiditySnapshotsExecute(r TokenAPIGetTokenLiquiditySnapshotsRequest) (*TokenLiquiditySnapshotPage, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TokenLiquiditySnapshotPage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokenAPIService.GetTokenLiquiditySnapshots")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/token/{chain}/{tokenAddress}/liquiditySnapshots"
+	localVarPath = strings.Replace(localVarPath, "{"+"chain"+"}", url.PathEscape(parameterValueToString(r.chain, "chain")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tokenAddress"+"}", url.PathEscape(parameterValueToString(r.tokenAddress, "tokenAddress")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.time != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "time", r.time, "")
+	}
+	if r.cursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 20
+		r.limit = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type TokenAPIGetTokenTradersRequest struct {
 	ctx context.Context
 	ApiService *TokenAPIService
@@ -2125,13 +2265,13 @@ func (r TokenAPIGetTokenTradersRequest) Execute() ([]TokenTrader, *http.Response
 }
 
 /*
-GetTokenTraders CONTROLLER.TOKEN.GET_TOKEN_TRADERS.SUMMARY
+GetTokenTraders Token - Get Token Traders
 
-CONTROLLER.TOKEN.GET_TOKEN_TRADERS.DESCRIPTION
+Retrieve traders for a token by tag (fresh, sandwish, bundle, sniper, dev, pro, insider)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @param tag Token trader tag
  @return TokenAPIGetTokenTradersRequest
 */
@@ -2233,25 +2373,25 @@ type TokenAPIGetTokensRequest struct {
 	filterBy *[]FilterCondition
 }
 
-// GLOBAL.TOKENADDRESSES.DESCRIPTION
+// A list of token addresses in string separated by commas (,)
 func (r TokenAPIGetTokensRequest) TokenAddresses(tokenAddresses string) TokenAPIGetTokensRequest {
 	r.tokenAddresses = &tokenAddresses
 	return r
 }
 
-// DTO.TOKEN.REQUEST.SORT_BY
+// Sort field
 func (r TokenAPIGetTokensRequest) SortBy(sortBy string) TokenAPIGetTokensRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
-// DTO.TOKEN.REQUEST.SORT_DIRECTION
+// Sort Direction
 func (r TokenAPIGetTokensRequest) SortDirection(sortDirection string) TokenAPIGetTokensRequest {
 	r.sortDirection = &sortDirection
 	return r
 }
 
-// DTO.TOKEN.REQUEST.FILTER_BY
+// Filter field
 func (r TokenAPIGetTokensRequest) FilterBy(filterBy []FilterCondition) TokenAPIGetTokensRequest {
 	r.filterBy = &filterBy
 	return r
@@ -2262,12 +2402,12 @@ func (r TokenAPIGetTokensRequest) Execute() ([]Token, *http.Response, error) {
 }
 
 /*
-GetTokens CONTROLLER.TOKEN.GET_TOKENS.SUMMARY
+GetTokens Token - Detail (Multi)
 
-CONTROLLER.TOKEN.GET_TOKENS.DESCRIPTION
+Get detail of tokens
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return TokenAPIGetTokensRequest
 */
 func (a *TokenAPIService) GetTokens(ctx context.Context, chain ChainSymbol) TokenAPIGetTokensRequest {
@@ -2390,13 +2530,13 @@ func (r TokenAPIGetTopHoldersRequest) Execute() (*TokenHolderPage, *http.Respons
 }
 
 /*
-GetTopHolders CONTROLLER.TOKEN.GET_TOP_HOLDERS.SUMMARY
+GetTopHolders Token - Top Holders
 
-CONTROLLER.TOKEN.GET_TOP_HOLDERS.DESCRIPTION
+Get the top 20 holders for a token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param tokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param tokenAddress An address of a token
  @return TokenAPIGetTopHoldersRequest
 */
 func (a *TokenAPIService) GetTopHolders(ctx context.Context, chain ChainSymbol, tokenAddress string) TokenAPIGetTopHoldersRequest {
@@ -2622,787 +2762,787 @@ type TokenAPIListTokenRequest struct {
 	maxM1SellVolumeInUsd *string
 }
 
-// DTO.PAGE.CURSOR.DESCRIPTION
+// Pagination cursor
 func (r TokenAPIListTokenRequest) Cursor(cursor string) TokenAPIListTokenRequest {
 	r.cursor = &cursor
 	return r
 }
 
-// DTO.PAGE.LIMIT
+// Number of results per page
 func (r TokenAPIListTokenRequest) Limit(limit float32) TokenAPIListTokenRequest {
 	r.limit = &limit
 	return r
 }
 
-// DTO.PAGE.DIRECTION
+// Pagination direction (next or prev)
 func (r TokenAPIListTokenRequest) Direction(direction string) TokenAPIListTokenRequest {
 	r.direction = &direction
 	return r
 }
 
-// DTO.TOKEN.SEARCH.SORT_DIRECTION
+// Sort direction
 func (r TokenAPIListTokenRequest) Sort(sort string) TokenAPIListTokenRequest {
 	r.sort = &sort
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.SORT_BY
+// Sort by field
 func (r TokenAPIListTokenRequest) SortBy(sortBy string) TokenAPIListTokenRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H24_VOLUME_IN_USD
+// Minimum 24h volume in USD
 func (r TokenAPIListTokenRequest) MinH24VolumeInUsd(minH24VolumeInUsd string) TokenAPIListTokenRequest {
 	r.minH24VolumeInUsd = &minH24VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H24_VOLUME_IN_USD
+// Maximum 24h volume in USD
 func (r TokenAPIListTokenRequest) MaxH24VolumeInUsd(maxH24VolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxH24VolumeInUsd = &maxH24VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H24_PRICE_CHANGE_RATIO
+// Minimum 24h price change ratio
 func (r TokenAPIListTokenRequest) MinH24PriceChangeRatio(minH24PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.minH24PriceChangeRatio = &minH24PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H24_PRICE_CHANGE_RATIO
+// Maximum 24h price change ratio
 func (r TokenAPIListTokenRequest) MaxH24PriceChangeRatio(maxH24PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.maxH24PriceChangeRatio = &maxH24PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H24_BUYS
+// Minimum 24h buys
 func (r TokenAPIListTokenRequest) MinH24Buys(minH24Buys string) TokenAPIListTokenRequest {
 	r.minH24Buys = &minH24Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H24_BUYS
+// Maximum 24h buys
 func (r TokenAPIListTokenRequest) MaxH24Buys(maxH24Buys string) TokenAPIListTokenRequest {
 	r.maxH24Buys = &maxH24Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H24_SELLS
+// Minimum 24h sells
 func (r TokenAPIListTokenRequest) MinH24Sells(minH24Sells string) TokenAPIListTokenRequest {
 	r.minH24Sells = &minH24Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H24_SELLS
+// Maximum 24h sells
 func (r TokenAPIListTokenRequest) MaxH24Sells(maxH24Sells string) TokenAPIListTokenRequest {
 	r.maxH24Sells = &maxH24Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H24_TRADES
+// Minimum 24h trades
 func (r TokenAPIListTokenRequest) MinH24Trades(minH24Trades string) TokenAPIListTokenRequest {
 	r.minH24Trades = &minH24Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H24_TRADES
+// Maximum 24h trades
 func (r TokenAPIListTokenRequest) MaxH24Trades(maxH24Trades string) TokenAPIListTokenRequest {
 	r.maxH24Trades = &maxH24Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H24_BUYERS
+// Minimum 24h buyers
 func (r TokenAPIListTokenRequest) MinH24Buyers(minH24Buyers string) TokenAPIListTokenRequest {
 	r.minH24Buyers = &minH24Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H24_BUYERS
+// Maximum 24h buyers
 func (r TokenAPIListTokenRequest) MaxH24Buyers(maxH24Buyers string) TokenAPIListTokenRequest {
 	r.maxH24Buyers = &maxH24Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H24_SELLERS
+// Minimum 24h sellers
 func (r TokenAPIListTokenRequest) MinH24Sellers(minH24Sellers string) TokenAPIListTokenRequest {
 	r.minH24Sellers = &minH24Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H24_SELLERS
+// Maximum 24h sellers
 func (r TokenAPIListTokenRequest) MaxH24Sellers(maxH24Sellers string) TokenAPIListTokenRequest {
 	r.maxH24Sellers = &maxH24Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H24_BUY_VOLUME_IN_USD
+// Minimum 24h buy volume in USD
 func (r TokenAPIListTokenRequest) MinH24BuyVolumeInUsd(minH24BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minH24BuyVolumeInUsd = &minH24BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H24_BUY_VOLUME_IN_USD
+// Maximum 24h buy volume in USD
 func (r TokenAPIListTokenRequest) MaxH24BuyVolumeInUsd(maxH24BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxH24BuyVolumeInUsd = &maxH24BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H24_SELL_VOLUME_IN_USD
+// Minimum 24h sell volume in USD
 func (r TokenAPIListTokenRequest) MinH24SellVolumeInUsd(minH24SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minH24SellVolumeInUsd = &minH24SellVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H24_SELL_VOLUME_IN_USD
+// Maximum 24h sell volume in USD
 func (r TokenAPIListTokenRequest) MaxH24SellVolumeInUsd(maxH24SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxH24SellVolumeInUsd = &maxH24SellVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H4_VOLUME_IN_USD
+// Minimum 4h volume in USD
 func (r TokenAPIListTokenRequest) MinH4VolumeInUsd(minH4VolumeInUsd string) TokenAPIListTokenRequest {
 	r.minH4VolumeInUsd = &minH4VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H4_VOLUME_IN_USD
+// Maximum 4h volume in USD
 func (r TokenAPIListTokenRequest) MaxH4VolumeInUsd(maxH4VolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxH4VolumeInUsd = &maxH4VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H4_PRICE_CHANGE_RATIO
+// Minimum 4h price change ratio
 func (r TokenAPIListTokenRequest) MinH4PriceChangeRatio(minH4PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.minH4PriceChangeRatio = &minH4PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H4_PRICE_CHANGE_RATIO
+// Maximum 4h price change ratio
 func (r TokenAPIListTokenRequest) MaxH4PriceChangeRatio(maxH4PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.maxH4PriceChangeRatio = &maxH4PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H4_BUYS
+// Minimum 4h buys
 func (r TokenAPIListTokenRequest) MinH4Buys(minH4Buys string) TokenAPIListTokenRequest {
 	r.minH4Buys = &minH4Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H4_BUYS
+// Maximum 4h buys
 func (r TokenAPIListTokenRequest) MaxH4Buys(maxH4Buys string) TokenAPIListTokenRequest {
 	r.maxH4Buys = &maxH4Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H4_SELLS
+// Minimum 4h sells
 func (r TokenAPIListTokenRequest) MinH4Sells(minH4Sells string) TokenAPIListTokenRequest {
 	r.minH4Sells = &minH4Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H4_SELLS
+// Maximum 4h sells
 func (r TokenAPIListTokenRequest) MaxH4Sells(maxH4Sells string) TokenAPIListTokenRequest {
 	r.maxH4Sells = &maxH4Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H4_TRADES
+// Minimum 4h trades
 func (r TokenAPIListTokenRequest) MinH4Trades(minH4Trades string) TokenAPIListTokenRequest {
 	r.minH4Trades = &minH4Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H4_TRADES
+// Maximum 4h trades
 func (r TokenAPIListTokenRequest) MaxH4Trades(maxH4Trades string) TokenAPIListTokenRequest {
 	r.maxH4Trades = &maxH4Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H4_BUYERS
+// Minimum 4h buyers
 func (r TokenAPIListTokenRequest) MinH4Buyers(minH4Buyers string) TokenAPIListTokenRequest {
 	r.minH4Buyers = &minH4Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H4_BUYERS
+// Maximum 4h buyers
 func (r TokenAPIListTokenRequest) MaxH4Buyers(maxH4Buyers string) TokenAPIListTokenRequest {
 	r.maxH4Buyers = &maxH4Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H4_SELLERS
+// Minimum 4h sellers
 func (r TokenAPIListTokenRequest) MinH4Sellers(minH4Sellers string) TokenAPIListTokenRequest {
 	r.minH4Sellers = &minH4Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H4_SELLERS
+// Maximum 4h sellers
 func (r TokenAPIListTokenRequest) MaxH4Sellers(maxH4Sellers string) TokenAPIListTokenRequest {
 	r.maxH4Sellers = &maxH4Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H4_BUY_VOLUME_IN_USD
+// Minimum 4h buy volume in USD
 func (r TokenAPIListTokenRequest) MinH4BuyVolumeInUsd(minH4BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minH4BuyVolumeInUsd = &minH4BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H4_BUY_VOLUME_IN_USD
+// Maximum 4h buy volume in USD
 func (r TokenAPIListTokenRequest) MaxH4BuyVolumeInUsd(maxH4BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxH4BuyVolumeInUsd = &maxH4BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H4_SELL_VOLUME_IN_USD
+// Minimum 4h sell volume in USD
 func (r TokenAPIListTokenRequest) MinH4SellVolumeInUsd(minH4SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minH4SellVolumeInUsd = &minH4SellVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H4_SELL_VOLUME_IN_USD
+// Maximum 4h sell volume in USD
 func (r TokenAPIListTokenRequest) MaxH4SellVolumeInUsd(maxH4SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxH4SellVolumeInUsd = &maxH4SellVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H1_VOLUME_IN_USD
+// Minimum 1h volume in USD
 func (r TokenAPIListTokenRequest) MinH1VolumeInUsd(minH1VolumeInUsd string) TokenAPIListTokenRequest {
 	r.minH1VolumeInUsd = &minH1VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H1_VOLUME_IN_USD
+// Maximum 1h volume in USD
 func (r TokenAPIListTokenRequest) MaxH1VolumeInUsd(maxH1VolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxH1VolumeInUsd = &maxH1VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H1_PRICE_CHANGE_RATIO
+// Minimum 1h price change ratio
 func (r TokenAPIListTokenRequest) MinH1PriceChangeRatio(minH1PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.minH1PriceChangeRatio = &minH1PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H1_PRICE_CHANGE_RATIO
+// Maximum 1h price change ratio
 func (r TokenAPIListTokenRequest) MaxH1PriceChangeRatio(maxH1PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.maxH1PriceChangeRatio = &maxH1PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H1_BUYS
+// Minimum 1h buys
 func (r TokenAPIListTokenRequest) MinH1Buys(minH1Buys string) TokenAPIListTokenRequest {
 	r.minH1Buys = &minH1Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H1_BUYS
+// Maximum 1h buys
 func (r TokenAPIListTokenRequest) MaxH1Buys(maxH1Buys string) TokenAPIListTokenRequest {
 	r.maxH1Buys = &maxH1Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H1_SELLS
+// Minimum 1h sells
 func (r TokenAPIListTokenRequest) MinH1Sells(minH1Sells string) TokenAPIListTokenRequest {
 	r.minH1Sells = &minH1Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H1_SELLS
+// Maximum 1h sells
 func (r TokenAPIListTokenRequest) MaxH1Sells(maxH1Sells string) TokenAPIListTokenRequest {
 	r.maxH1Sells = &maxH1Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H1_TRADES
+// Minimum 1h trades
 func (r TokenAPIListTokenRequest) MinH1Trades(minH1Trades string) TokenAPIListTokenRequest {
 	r.minH1Trades = &minH1Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H1_TRADES
+// Maximum 1h trades
 func (r TokenAPIListTokenRequest) MaxH1Trades(maxH1Trades string) TokenAPIListTokenRequest {
 	r.maxH1Trades = &maxH1Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H1_BUYERS
+// Minimum 1h buyers
 func (r TokenAPIListTokenRequest) MinH1Buyers(minH1Buyers string) TokenAPIListTokenRequest {
 	r.minH1Buyers = &minH1Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H1_BUYERS
+// Maximum 1h buyers
 func (r TokenAPIListTokenRequest) MaxH1Buyers(maxH1Buyers string) TokenAPIListTokenRequest {
 	r.maxH1Buyers = &maxH1Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H1_SELLERS
+// Minimum 1h sellers
 func (r TokenAPIListTokenRequest) MinH1Sellers(minH1Sellers string) TokenAPIListTokenRequest {
 	r.minH1Sellers = &minH1Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H1_SELLERS
+// Maximum 1h sellers
 func (r TokenAPIListTokenRequest) MaxH1Sellers(maxH1Sellers string) TokenAPIListTokenRequest {
 	r.maxH1Sellers = &maxH1Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H1_BUY_VOLUME_IN_USD
+// Minimum 1h buy volume in USD
 func (r TokenAPIListTokenRequest) MinH1BuyVolumeInUsd(minH1BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minH1BuyVolumeInUsd = &minH1BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H1_BUY_VOLUME_IN_USD
+// Maximum 1h buy volume in USD
 func (r TokenAPIListTokenRequest) MaxH1BuyVolumeInUsd(maxH1BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxH1BuyVolumeInUsd = &maxH1BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_H1_SELL_VOLUME_IN_USD
+// Minimum 1h sell volume in USD
 func (r TokenAPIListTokenRequest) MinH1SellVolumeInUsd(minH1SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minH1SellVolumeInUsd = &minH1SellVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_H1_SELL_VOLUME_IN_USD
+// Maximum 1h sell volume in USD
 func (r TokenAPIListTokenRequest) MaxH1SellVolumeInUsd(maxH1SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxH1SellVolumeInUsd = &maxH1SellVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M30_VOLUME_IN_USD
+// Minimum 30m volume in USD
 func (r TokenAPIListTokenRequest) MinM30VolumeInUsd(minM30VolumeInUsd string) TokenAPIListTokenRequest {
 	r.minM30VolumeInUsd = &minM30VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M30_VOLUME_IN_USD
+// Maximum 30m volume in USD
 func (r TokenAPIListTokenRequest) MaxM30VolumeInUsd(maxM30VolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxM30VolumeInUsd = &maxM30VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M30_PRICE_CHANGE_RATIO
+// Minimum 30m price change ratio
 func (r TokenAPIListTokenRequest) MinM30PriceChangeRatio(minM30PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.minM30PriceChangeRatio = &minM30PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M30_PRICE_CHANGE_RATIO
+// Maximum 30m price change ratio
 func (r TokenAPIListTokenRequest) MaxM30PriceChangeRatio(maxM30PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.maxM30PriceChangeRatio = &maxM30PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M30_BUYS
+// Minimum 30m buys
 func (r TokenAPIListTokenRequest) MinM30Buys(minM30Buys string) TokenAPIListTokenRequest {
 	r.minM30Buys = &minM30Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M30_BUYS
+// Maximum 30m buys
 func (r TokenAPIListTokenRequest) MaxM30Buys(maxM30Buys string) TokenAPIListTokenRequest {
 	r.maxM30Buys = &maxM30Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M30_SELLS
+// Minimum 30m sells
 func (r TokenAPIListTokenRequest) MinM30Sells(minM30Sells string) TokenAPIListTokenRequest {
 	r.minM30Sells = &minM30Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M30_SELLS
+// Maximum 30m sells
 func (r TokenAPIListTokenRequest) MaxM30Sells(maxM30Sells string) TokenAPIListTokenRequest {
 	r.maxM30Sells = &maxM30Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M30_TRADES
+// Minimum 30m trades
 func (r TokenAPIListTokenRequest) MinM30Trades(minM30Trades string) TokenAPIListTokenRequest {
 	r.minM30Trades = &minM30Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M30_TRADES
+// Maximum 30m trades
 func (r TokenAPIListTokenRequest) MaxM30Trades(maxM30Trades string) TokenAPIListTokenRequest {
 	r.maxM30Trades = &maxM30Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M30_BUYERS
+// Minimum 30m buyers
 func (r TokenAPIListTokenRequest) MinM30Buyers(minM30Buyers string) TokenAPIListTokenRequest {
 	r.minM30Buyers = &minM30Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M30_BUYERS
+// Maximum 30m buyers
 func (r TokenAPIListTokenRequest) MaxM30Buyers(maxM30Buyers string) TokenAPIListTokenRequest {
 	r.maxM30Buyers = &maxM30Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M30_SELLERS
+// Minimum 30m sellers
 func (r TokenAPIListTokenRequest) MinM30Sellers(minM30Sellers string) TokenAPIListTokenRequest {
 	r.minM30Sellers = &minM30Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M30_SELLERS
+// Maximum 30m sellers
 func (r TokenAPIListTokenRequest) MaxM30Sellers(maxM30Sellers string) TokenAPIListTokenRequest {
 	r.maxM30Sellers = &maxM30Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M30_BUY_VOLUME_IN_USD
+// Minimum 30m buy volume in USD
 func (r TokenAPIListTokenRequest) MinM30BuyVolumeInUsd(minM30BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minM30BuyVolumeInUsd = &minM30BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M30_BUY_VOLUME_IN_USD
+// Maximum 30m buy volume in USD
 func (r TokenAPIListTokenRequest) MaxM30BuyVolumeInUsd(maxM30BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxM30BuyVolumeInUsd = &maxM30BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M30_SELL_VOLUME_IN_USD
+// Minimum 30m sell volume in USD
 func (r TokenAPIListTokenRequest) MinM30SellVolumeInUsd(minM30SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minM30SellVolumeInUsd = &minM30SellVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M30_SELL_VOLUME_IN_USD
+// Maximum 30m sell volume in USD
 func (r TokenAPIListTokenRequest) MaxM30SellVolumeInUsd(maxM30SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxM30SellVolumeInUsd = &maxM30SellVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M15_VOLUME_IN_USD
+// Minimum 15m volume in USD
 func (r TokenAPIListTokenRequest) MinM15VolumeInUsd(minM15VolumeInUsd string) TokenAPIListTokenRequest {
 	r.minM15VolumeInUsd = &minM15VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M15_VOLUME_IN_USD
+// Maximum 15m volume in USD
 func (r TokenAPIListTokenRequest) MaxM15VolumeInUsd(maxM15VolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxM15VolumeInUsd = &maxM15VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M15_PRICE_CHANGE_RATIO
+// Minimum 15m price change ratio
 func (r TokenAPIListTokenRequest) MinM15PriceChangeRatio(minM15PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.minM15PriceChangeRatio = &minM15PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M15_PRICE_CHANGE_RATIO
+// Maximum 15m price change ratio
 func (r TokenAPIListTokenRequest) MaxM15PriceChangeRatio(maxM15PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.maxM15PriceChangeRatio = &maxM15PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M15_BUYS
+// Minimum 15m buys
 func (r TokenAPIListTokenRequest) MinM15Buys(minM15Buys string) TokenAPIListTokenRequest {
 	r.minM15Buys = &minM15Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M15_BUYS
+// Maximum 15m buys
 func (r TokenAPIListTokenRequest) MaxM15Buys(maxM15Buys string) TokenAPIListTokenRequest {
 	r.maxM15Buys = &maxM15Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M15_SELLS
+// Minimum 15m sells
 func (r TokenAPIListTokenRequest) MinM15Sells(minM15Sells string) TokenAPIListTokenRequest {
 	r.minM15Sells = &minM15Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M15_SELLS
+// Maximum 15m sells
 func (r TokenAPIListTokenRequest) MaxM15Sells(maxM15Sells string) TokenAPIListTokenRequest {
 	r.maxM15Sells = &maxM15Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M15_TRADES
+// Minimum 15m trades
 func (r TokenAPIListTokenRequest) MinM15Trades(minM15Trades string) TokenAPIListTokenRequest {
 	r.minM15Trades = &minM15Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M15_TRADES
+// Maximum 15m trades
 func (r TokenAPIListTokenRequest) MaxM15Trades(maxM15Trades string) TokenAPIListTokenRequest {
 	r.maxM15Trades = &maxM15Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M15_BUYERS
+// Minimum 15m buyers
 func (r TokenAPIListTokenRequest) MinM15Buyers(minM15Buyers string) TokenAPIListTokenRequest {
 	r.minM15Buyers = &minM15Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M15_BUYERS
+// Maximum 15m buyers
 func (r TokenAPIListTokenRequest) MaxM15Buyers(maxM15Buyers string) TokenAPIListTokenRequest {
 	r.maxM15Buyers = &maxM15Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M15_SELLERS
+// Minimum 15m sellers
 func (r TokenAPIListTokenRequest) MinM15Sellers(minM15Sellers string) TokenAPIListTokenRequest {
 	r.minM15Sellers = &minM15Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M15_SELLERS
+// Maximum 15m sellers
 func (r TokenAPIListTokenRequest) MaxM15Sellers(maxM15Sellers string) TokenAPIListTokenRequest {
 	r.maxM15Sellers = &maxM15Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M15_BUY_VOLUME_IN_USD
+// Minimum 15m buy volume in USD
 func (r TokenAPIListTokenRequest) MinM15BuyVolumeInUsd(minM15BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minM15BuyVolumeInUsd = &minM15BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M15_BUY_VOLUME_IN_USD
+// Maximum 15m buy volume in USD
 func (r TokenAPIListTokenRequest) MaxM15BuyVolumeInUsd(maxM15BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxM15BuyVolumeInUsd = &maxM15BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M15_SELL_VOLUME_IN_USD
+// Minimum 15m sell volume in USD
 func (r TokenAPIListTokenRequest) MinM15SellVolumeInUsd(minM15SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minM15SellVolumeInUsd = &minM15SellVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M15_SELL_VOLUME_IN_USD
+// Maximum 15m sell volume in USD
 func (r TokenAPIListTokenRequest) MaxM15SellVolumeInUsd(maxM15SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxM15SellVolumeInUsd = &maxM15SellVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M5_VOLUME_IN_USD
+// Minimum 5m volume in USD
 func (r TokenAPIListTokenRequest) MinM5VolumeInUsd(minM5VolumeInUsd string) TokenAPIListTokenRequest {
 	r.minM5VolumeInUsd = &minM5VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M5_VOLUME_IN_USD
+// Maximum 5m volume in USD
 func (r TokenAPIListTokenRequest) MaxM5VolumeInUsd(maxM5VolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxM5VolumeInUsd = &maxM5VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M5_PRICE_CHANGE_RATIO
+// Minimum 5m price change ratio
 func (r TokenAPIListTokenRequest) MinM5PriceChangeRatio(minM5PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.minM5PriceChangeRatio = &minM5PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M5_PRICE_CHANGE_RATIO
+// Maximum 5m price change ratio
 func (r TokenAPIListTokenRequest) MaxM5PriceChangeRatio(maxM5PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.maxM5PriceChangeRatio = &maxM5PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M5_BUYS
+// Minimum 5m buys
 func (r TokenAPIListTokenRequest) MinM5Buys(minM5Buys string) TokenAPIListTokenRequest {
 	r.minM5Buys = &minM5Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M5_BUYS
+// Maximum 5m buys
 func (r TokenAPIListTokenRequest) MaxM5Buys(maxM5Buys string) TokenAPIListTokenRequest {
 	r.maxM5Buys = &maxM5Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M5_SELLS
+// Minimum 5m sells
 func (r TokenAPIListTokenRequest) MinM5Sells(minM5Sells string) TokenAPIListTokenRequest {
 	r.minM5Sells = &minM5Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M5_SELLS
+// Maximum 5m sells
 func (r TokenAPIListTokenRequest) MaxM5Sells(maxM5Sells string) TokenAPIListTokenRequest {
 	r.maxM5Sells = &maxM5Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M5_TRADES
+// Minimum 5m trades
 func (r TokenAPIListTokenRequest) MinM5Trades(minM5Trades string) TokenAPIListTokenRequest {
 	r.minM5Trades = &minM5Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M5_TRADES
+// Maximum 5m trades
 func (r TokenAPIListTokenRequest) MaxM5Trades(maxM5Trades string) TokenAPIListTokenRequest {
 	r.maxM5Trades = &maxM5Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M5_BUYERS
+// Minimum 5m buyers
 func (r TokenAPIListTokenRequest) MinM5Buyers(minM5Buyers string) TokenAPIListTokenRequest {
 	r.minM5Buyers = &minM5Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M5_BUYERS
+// Maximum 5m buyers
 func (r TokenAPIListTokenRequest) MaxM5Buyers(maxM5Buyers string) TokenAPIListTokenRequest {
 	r.maxM5Buyers = &maxM5Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M5_SELLERS
+// Minimum 5m sellers
 func (r TokenAPIListTokenRequest) MinM5Sellers(minM5Sellers string) TokenAPIListTokenRequest {
 	r.minM5Sellers = &minM5Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M5_SELLERS
+// Maximum 5m sellers
 func (r TokenAPIListTokenRequest) MaxM5Sellers(maxM5Sellers string) TokenAPIListTokenRequest {
 	r.maxM5Sellers = &maxM5Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M5_BUY_VOLUME_IN_USD
+// Minimum 5m buy volume in USD
 func (r TokenAPIListTokenRequest) MinM5BuyVolumeInUsd(minM5BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minM5BuyVolumeInUsd = &minM5BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M5_BUY_VOLUME_IN_USD
+// Maximum 5m buy volume in USD
 func (r TokenAPIListTokenRequest) MaxM5BuyVolumeInUsd(maxM5BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxM5BuyVolumeInUsd = &maxM5BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M5_SELL_VOLUME_IN_USD
+// Minimum 5m sell volume in USD
 func (r TokenAPIListTokenRequest) MinM5SellVolumeInUsd(minM5SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minM5SellVolumeInUsd = &minM5SellVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M5_SELL_VOLUME_IN_USD
+// Maximum 5m sell volume in USD
 func (r TokenAPIListTokenRequest) MaxM5SellVolumeInUsd(maxM5SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxM5SellVolumeInUsd = &maxM5SellVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M1_VOLUME_IN_USD
+// Minimum 1m volume in USD
 func (r TokenAPIListTokenRequest) MinM1VolumeInUsd(minM1VolumeInUsd string) TokenAPIListTokenRequest {
 	r.minM1VolumeInUsd = &minM1VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M1_VOLUME_IN_USD
+// Maximum 1m volume in USD
 func (r TokenAPIListTokenRequest) MaxM1VolumeInUsd(maxM1VolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxM1VolumeInUsd = &maxM1VolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M1_PRICE_CHANGE_RATIO
+// Minimum 1m price change ratio
 func (r TokenAPIListTokenRequest) MinM1PriceChangeRatio(minM1PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.minM1PriceChangeRatio = &minM1PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M1_PRICE_CHANGE_RATIO
+// Maximum 1m price change ratio
 func (r TokenAPIListTokenRequest) MaxM1PriceChangeRatio(maxM1PriceChangeRatio string) TokenAPIListTokenRequest {
 	r.maxM1PriceChangeRatio = &maxM1PriceChangeRatio
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M1_BUYS
+// Minimum 1m buys
 func (r TokenAPIListTokenRequest) MinM1Buys(minM1Buys string) TokenAPIListTokenRequest {
 	r.minM1Buys = &minM1Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M1_BUYS
+// Maximum 1m buys
 func (r TokenAPIListTokenRequest) MaxM1Buys(maxM1Buys string) TokenAPIListTokenRequest {
 	r.maxM1Buys = &maxM1Buys
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M1_SELLS
+// Minimum 1m sells
 func (r TokenAPIListTokenRequest) MinM1Sells(minM1Sells string) TokenAPIListTokenRequest {
 	r.minM1Sells = &minM1Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M1_SELLS
+// Maximum 1m sells
 func (r TokenAPIListTokenRequest) MaxM1Sells(maxM1Sells string) TokenAPIListTokenRequest {
 	r.maxM1Sells = &maxM1Sells
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M1_TRADES
+// Minimum 1m trades
 func (r TokenAPIListTokenRequest) MinM1Trades(minM1Trades string) TokenAPIListTokenRequest {
 	r.minM1Trades = &minM1Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M1_TRADES
+// Maximum 1m trades
 func (r TokenAPIListTokenRequest) MaxM1Trades(maxM1Trades string) TokenAPIListTokenRequest {
 	r.maxM1Trades = &maxM1Trades
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M1_BUYERS
+// Minimum 1m buyers
 func (r TokenAPIListTokenRequest) MinM1Buyers(minM1Buyers string) TokenAPIListTokenRequest {
 	r.minM1Buyers = &minM1Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M1_BUYERS
+// Maximum 1m buyers
 func (r TokenAPIListTokenRequest) MaxM1Buyers(maxM1Buyers string) TokenAPIListTokenRequest {
 	r.maxM1Buyers = &maxM1Buyers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M1_SELLERS
+// Minimum 1m sellers
 func (r TokenAPIListTokenRequest) MinM1Sellers(minM1Sellers string) TokenAPIListTokenRequest {
 	r.minM1Sellers = &minM1Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M1_SELLERS
+// Maximum 1m sellers
 func (r TokenAPIListTokenRequest) MaxM1Sellers(maxM1Sellers string) TokenAPIListTokenRequest {
 	r.maxM1Sellers = &maxM1Sellers
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M1_BUY_VOLUME_IN_USD
+// Minimum 1m buy volume in USD
 func (r TokenAPIListTokenRequest) MinM1BuyVolumeInUsd(minM1BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minM1BuyVolumeInUsd = &minM1BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M1_BUY_VOLUME_IN_USD
+// Maximum 1m buy volume in USD
 func (r TokenAPIListTokenRequest) MaxM1BuyVolumeInUsd(maxM1BuyVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxM1BuyVolumeInUsd = &maxM1BuyVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MIN_M1_SELL_VOLUME_IN_USD
+// Minimum 1m sell volume in USD
 func (r TokenAPIListTokenRequest) MinM1SellVolumeInUsd(minM1SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.minM1SellVolumeInUsd = &minM1SellVolumeInUsd
 	return r
 }
 
-// DTO.TOKEN.LIST.QUERY.MAX_M1_SELL_VOLUME_IN_USD
+// Maximum 1m sell volume in USD
 func (r TokenAPIListTokenRequest) MaxM1SellVolumeInUsd(maxM1SellVolumeInUsd string) TokenAPIListTokenRequest {
 	r.maxM1SellVolumeInUsd = &maxM1SellVolumeInUsd
 	return r
@@ -3413,12 +3553,12 @@ func (r TokenAPIListTokenRequest) Execute() (*TokenListPage, *http.Response, err
 }
 
 /*
-ListToken CONTROLLER.TOKEN.GET_TOKEN_LIST.SUMMARY
+ListToken Token - List (Filtered)
 
-CONTROLLER.TOKEN.GET_TOKEN_LIST.DESCRIPTION
+Get filtered token list with range conditions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return TokenAPIListTokenRequest
 */
 func (a *TokenAPIService) ListToken(ctx context.Context, chain ChainSymbol) TokenAPIListTokenRequest {
@@ -3919,43 +4059,43 @@ type TokenAPISearchRequest struct {
 	sortBy *string
 }
 
-// DTO.TOKEN.SEARCH.CHAINS
+// Chain filter
 func (r TokenAPISearchRequest) Chains(chains []string) TokenAPISearchRequest {
 	r.chains = &chains
 	return r
 }
 
-// DTO.TOKEN.SEARCH.QUERY
+// Search query string for token name, symbol or address
 func (r TokenAPISearchRequest) Q(q string) TokenAPISearchRequest {
 	r.q = &q
 	return r
 }
 
-// DTO.TOKEN.SEARCH.LIMIT
+// Number of results per page
 func (r TokenAPISearchRequest) Limit(limit int64) TokenAPISearchRequest {
 	r.limit = &limit
 	return r
 }
 
-// DTO.TOKEN.SEARCH.SORT_DIRECTION
+// Sort direction
 func (r TokenAPISearchRequest) Sort(sort string) TokenAPISearchRequest {
 	r.sort = &sort
 	return r
 }
 
-// DTO.TOKEN.SEARCH.PROTOCOLS
+// Protocol filter, for supported protocols please check the dexName values returned by DEX - List
 func (r TokenAPISearchRequest) Protocols(protocols []string) TokenAPISearchRequest {
 	r.protocols = &protocols
 	return r
 }
 
-// DTO.PAGE.CURSOR
+// Pagination cursor
 func (r TokenAPISearchRequest) Cursor(cursor string) TokenAPISearchRequest {
 	r.cursor = &cursor
 	return r
 }
 
-// DTO.TOKEN.SEARCH.SORT_BY
+// Field to sort by
 func (r TokenAPISearchRequest) SortBy(sortBy string) TokenAPISearchRequest {
 	r.sortBy = &sortBy
 	return r
@@ -3966,9 +4106,9 @@ func (r TokenAPISearchRequest) Execute() (*TokenPage, *http.Response, error) {
 }
 
 /*
-Search CONTROLLER.TOKEN.SEARCH.SUMMARY
+Search Token - Search
 
-CONTROLLER.TOKEN.SEARCH.DESCRIPTION
+Search token information by criteria
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return TokenAPISearchRequest

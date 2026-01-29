@@ -4,24 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TokenAddress** | **string** | DTO.TRADE.TOP_TRADERS.TOKEN_ADDRESS | 
-**Owner** | **string** | DTO.TRADE.TOP_TRADERS.OWNER | 
-**Tags** | **[]string** | DTO.TRADE.TOP_TRADERS.TAGS | 
-**Type** | **string** | DTO.TRADE.TOP_TRADERS.TYPE | 
-**Volume** | **float32** | DTO.TRADE.TOP_TRADERS.VOLUME | 
-**Trade** | **float32** | DTO.TRADE.TOP_TRADERS.TRADE | 
-**TradeBuy** | **float32** | DTO.TRADE.TOP_TRADERS.TRADE_BUY | 
-**TradeSell** | **float32** | DTO.TRADE.TOP_TRADERS.TRADE_SELL | 
-**VolumeBuy** | **float32** | DTO.TRADE.TOP_TRADERS.VOLUME_BUY | 
-**VolumeSell** | **float32** | DTO.TRADE.TOP_TRADERS.VOLUME_SELL | 
-**IsScaledUiToken** | **bool** | DTO.TRADE.TOP_TRADERS.IS_SCALED_UI_TOKEN | 
-**Multiplier** | Pointer to **string** | DTO.TRADE.TOP_TRADERS.MULTIPLIER | [optional] 
+**TokenAddress** | **string** | Token address for top traders query | 
+**WalletAddress** | **string** | Wallet address of the trader | 
+**TradeCount** | **int64** | Total number of trades | 
+**TradeAmount** | **string** | Total trade amount | 
+**BuyCount** | **int64** | Number of buy trades | 
+**BuyAmount** | **string** | Total buy amount | 
+**BuyAmountInUsd** | **string** | Total buy amount in USD | 
+**BuyAmountInNative** | **string** | Total buy amount in native token | 
+**SellCount** | **int64** | Number of sell trades | 
+**SellAmount** | **string** | Total sell amount | 
+**SellAmountInUsd** | **string** | Total sell amount in USD | 
+**SellAmountInNative** | **string** | Total sell amount in native token | 
 
 ## Methods
 
 ### NewTopTradersDTO
 
-`func NewTopTradersDTO(tokenAddress string, owner string, tags []string, type_ string, volume float32, trade float32, tradeBuy float32, tradeSell float32, volumeBuy float32, volumeSell float32, isScaledUiToken bool, ) *TopTradersDTO`
+`func NewTopTradersDTO(tokenAddress string, walletAddress string, tradeCount int64, tradeAmount string, buyCount int64, buyAmount string, buyAmountInUsd string, buyAmountInNative string, sellCount int64, sellAmount string, sellAmountInUsd string, sellAmountInNative string, ) *TopTradersDTO`
 
 NewTopTradersDTO instantiates a new TopTradersDTO object
 This constructor will assign default values to properties that have it defined,
@@ -56,230 +56,225 @@ and a boolean to check if the value has been set.
 SetTokenAddress sets TokenAddress field to given value.
 
 
-### GetOwner
+### GetWalletAddress
 
-`func (o *TopTradersDTO) GetOwner() string`
+`func (o *TopTradersDTO) GetWalletAddress() string`
 
-GetOwner returns the Owner field if non-nil, zero value otherwise.
+GetWalletAddress returns the WalletAddress field if non-nil, zero value otherwise.
 
-### GetOwnerOk
+### GetWalletAddressOk
 
-`func (o *TopTradersDTO) GetOwnerOk() (*string, bool)`
+`func (o *TopTradersDTO) GetWalletAddressOk() (*string, bool)`
 
-GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+GetWalletAddressOk returns a tuple with the WalletAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOwner
+### SetWalletAddress
 
-`func (o *TopTradersDTO) SetOwner(v string)`
+`func (o *TopTradersDTO) SetWalletAddress(v string)`
 
-SetOwner sets Owner field to given value.
+SetWalletAddress sets WalletAddress field to given value.
 
 
-### GetTags
+### GetTradeCount
 
-`func (o *TopTradersDTO) GetTags() []string`
+`func (o *TopTradersDTO) GetTradeCount() int64`
 
-GetTags returns the Tags field if non-nil, zero value otherwise.
+GetTradeCount returns the TradeCount field if non-nil, zero value otherwise.
 
-### GetTagsOk
+### GetTradeCountOk
 
-`func (o *TopTradersDTO) GetTagsOk() (*[]string, bool)`
+`func (o *TopTradersDTO) GetTradeCountOk() (*int64, bool)`
 
-GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+GetTradeCountOk returns a tuple with the TradeCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTags
+### SetTradeCount
 
-`func (o *TopTradersDTO) SetTags(v []string)`
+`func (o *TopTradersDTO) SetTradeCount(v int64)`
 
-SetTags sets Tags field to given value.
+SetTradeCount sets TradeCount field to given value.
 
 
-### GetType
+### GetTradeAmount
 
-`func (o *TopTradersDTO) GetType() string`
+`func (o *TopTradersDTO) GetTradeAmount() string`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetTradeAmount returns the TradeAmount field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetTradeAmountOk
 
-`func (o *TopTradersDTO) GetTypeOk() (*string, bool)`
+`func (o *TopTradersDTO) GetTradeAmountOk() (*string, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetTradeAmountOk returns a tuple with the TradeAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetTradeAmount
 
-`func (o *TopTradersDTO) SetType(v string)`
+`func (o *TopTradersDTO) SetTradeAmount(v string)`
 
-SetType sets Type field to given value.
+SetTradeAmount sets TradeAmount field to given value.
 
 
-### GetVolume
+### GetBuyCount
 
-`func (o *TopTradersDTO) GetVolume() float32`
+`func (o *TopTradersDTO) GetBuyCount() int64`
 
-GetVolume returns the Volume field if non-nil, zero value otherwise.
+GetBuyCount returns the BuyCount field if non-nil, zero value otherwise.
 
-### GetVolumeOk
+### GetBuyCountOk
 
-`func (o *TopTradersDTO) GetVolumeOk() (*float32, bool)`
+`func (o *TopTradersDTO) GetBuyCountOk() (*int64, bool)`
 
-GetVolumeOk returns a tuple with the Volume field if it's non-nil, zero value otherwise
+GetBuyCountOk returns a tuple with the BuyCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVolume
+### SetBuyCount
 
-`func (o *TopTradersDTO) SetVolume(v float32)`
+`func (o *TopTradersDTO) SetBuyCount(v int64)`
 
-SetVolume sets Volume field to given value.
+SetBuyCount sets BuyCount field to given value.
 
 
-### GetTrade
+### GetBuyAmount
 
-`func (o *TopTradersDTO) GetTrade() float32`
+`func (o *TopTradersDTO) GetBuyAmount() string`
 
-GetTrade returns the Trade field if non-nil, zero value otherwise.
+GetBuyAmount returns the BuyAmount field if non-nil, zero value otherwise.
 
-### GetTradeOk
+### GetBuyAmountOk
 
-`func (o *TopTradersDTO) GetTradeOk() (*float32, bool)`
+`func (o *TopTradersDTO) GetBuyAmountOk() (*string, bool)`
 
-GetTradeOk returns a tuple with the Trade field if it's non-nil, zero value otherwise
+GetBuyAmountOk returns a tuple with the BuyAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTrade
+### SetBuyAmount
 
-`func (o *TopTradersDTO) SetTrade(v float32)`
+`func (o *TopTradersDTO) SetBuyAmount(v string)`
 
-SetTrade sets Trade field to given value.
+SetBuyAmount sets BuyAmount field to given value.
 
 
-### GetTradeBuy
+### GetBuyAmountInUsd
 
-`func (o *TopTradersDTO) GetTradeBuy() float32`
+`func (o *TopTradersDTO) GetBuyAmountInUsd() string`
 
-GetTradeBuy returns the TradeBuy field if non-nil, zero value otherwise.
+GetBuyAmountInUsd returns the BuyAmountInUsd field if non-nil, zero value otherwise.
 
-### GetTradeBuyOk
+### GetBuyAmountInUsdOk
 
-`func (o *TopTradersDTO) GetTradeBuyOk() (*float32, bool)`
+`func (o *TopTradersDTO) GetBuyAmountInUsdOk() (*string, bool)`
 
-GetTradeBuyOk returns a tuple with the TradeBuy field if it's non-nil, zero value otherwise
+GetBuyAmountInUsdOk returns a tuple with the BuyAmountInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTradeBuy
+### SetBuyAmountInUsd
 
-`func (o *TopTradersDTO) SetTradeBuy(v float32)`
+`func (o *TopTradersDTO) SetBuyAmountInUsd(v string)`
 
-SetTradeBuy sets TradeBuy field to given value.
+SetBuyAmountInUsd sets BuyAmountInUsd field to given value.
 
 
-### GetTradeSell
+### GetBuyAmountInNative
 
-`func (o *TopTradersDTO) GetTradeSell() float32`
+`func (o *TopTradersDTO) GetBuyAmountInNative() string`
 
-GetTradeSell returns the TradeSell field if non-nil, zero value otherwise.
+GetBuyAmountInNative returns the BuyAmountInNative field if non-nil, zero value otherwise.
 
-### GetTradeSellOk
+### GetBuyAmountInNativeOk
 
-`func (o *TopTradersDTO) GetTradeSellOk() (*float32, bool)`
+`func (o *TopTradersDTO) GetBuyAmountInNativeOk() (*string, bool)`
 
-GetTradeSellOk returns a tuple with the TradeSell field if it's non-nil, zero value otherwise
+GetBuyAmountInNativeOk returns a tuple with the BuyAmountInNative field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTradeSell
+### SetBuyAmountInNative
 
-`func (o *TopTradersDTO) SetTradeSell(v float32)`
+`func (o *TopTradersDTO) SetBuyAmountInNative(v string)`
 
-SetTradeSell sets TradeSell field to given value.
+SetBuyAmountInNative sets BuyAmountInNative field to given value.
 
 
-### GetVolumeBuy
+### GetSellCount
 
-`func (o *TopTradersDTO) GetVolumeBuy() float32`
+`func (o *TopTradersDTO) GetSellCount() int64`
 
-GetVolumeBuy returns the VolumeBuy field if non-nil, zero value otherwise.
+GetSellCount returns the SellCount field if non-nil, zero value otherwise.
 
-### GetVolumeBuyOk
+### GetSellCountOk
 
-`func (o *TopTradersDTO) GetVolumeBuyOk() (*float32, bool)`
+`func (o *TopTradersDTO) GetSellCountOk() (*int64, bool)`
 
-GetVolumeBuyOk returns a tuple with the VolumeBuy field if it's non-nil, zero value otherwise
+GetSellCountOk returns a tuple with the SellCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVolumeBuy
+### SetSellCount
 
-`func (o *TopTradersDTO) SetVolumeBuy(v float32)`
+`func (o *TopTradersDTO) SetSellCount(v int64)`
 
-SetVolumeBuy sets VolumeBuy field to given value.
+SetSellCount sets SellCount field to given value.
 
 
-### GetVolumeSell
+### GetSellAmount
 
-`func (o *TopTradersDTO) GetVolumeSell() float32`
+`func (o *TopTradersDTO) GetSellAmount() string`
 
-GetVolumeSell returns the VolumeSell field if non-nil, zero value otherwise.
+GetSellAmount returns the SellAmount field if non-nil, zero value otherwise.
 
-### GetVolumeSellOk
+### GetSellAmountOk
 
-`func (o *TopTradersDTO) GetVolumeSellOk() (*float32, bool)`
+`func (o *TopTradersDTO) GetSellAmountOk() (*string, bool)`
 
-GetVolumeSellOk returns a tuple with the VolumeSell field if it's non-nil, zero value otherwise
+GetSellAmountOk returns a tuple with the SellAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVolumeSell
+### SetSellAmount
 
-`func (o *TopTradersDTO) SetVolumeSell(v float32)`
+`func (o *TopTradersDTO) SetSellAmount(v string)`
 
-SetVolumeSell sets VolumeSell field to given value.
+SetSellAmount sets SellAmount field to given value.
 
 
-### GetIsScaledUiToken
+### GetSellAmountInUsd
 
-`func (o *TopTradersDTO) GetIsScaledUiToken() bool`
+`func (o *TopTradersDTO) GetSellAmountInUsd() string`
 
-GetIsScaledUiToken returns the IsScaledUiToken field if non-nil, zero value otherwise.
+GetSellAmountInUsd returns the SellAmountInUsd field if non-nil, zero value otherwise.
 
-### GetIsScaledUiTokenOk
+### GetSellAmountInUsdOk
 
-`func (o *TopTradersDTO) GetIsScaledUiTokenOk() (*bool, bool)`
+`func (o *TopTradersDTO) GetSellAmountInUsdOk() (*string, bool)`
 
-GetIsScaledUiTokenOk returns a tuple with the IsScaledUiToken field if it's non-nil, zero value otherwise
+GetSellAmountInUsdOk returns a tuple with the SellAmountInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsScaledUiToken
+### SetSellAmountInUsd
 
-`func (o *TopTradersDTO) SetIsScaledUiToken(v bool)`
+`func (o *TopTradersDTO) SetSellAmountInUsd(v string)`
 
-SetIsScaledUiToken sets IsScaledUiToken field to given value.
+SetSellAmountInUsd sets SellAmountInUsd field to given value.
 
 
-### GetMultiplier
+### GetSellAmountInNative
 
-`func (o *TopTradersDTO) GetMultiplier() string`
+`func (o *TopTradersDTO) GetSellAmountInNative() string`
 
-GetMultiplier returns the Multiplier field if non-nil, zero value otherwise.
+GetSellAmountInNative returns the SellAmountInNative field if non-nil, zero value otherwise.
 
-### GetMultiplierOk
+### GetSellAmountInNativeOk
 
-`func (o *TopTradersDTO) GetMultiplierOk() (*string, bool)`
+`func (o *TopTradersDTO) GetSellAmountInNativeOk() (*string, bool)`
 
-GetMultiplierOk returns a tuple with the Multiplier field if it's non-nil, zero value otherwise
+GetSellAmountInNativeOk returns a tuple with the SellAmountInNative field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMultiplier
+### SetSellAmountInNative
 
-`func (o *TopTradersDTO) SetMultiplier(v string)`
+`func (o *TopTradersDTO) SetSellAmountInNative(v string)`
 
-SetMultiplier sets Multiplier field to given value.
+SetSellAmountInNative sets SellAmountInNative field to given value.
 
-### HasMultiplier
-
-`func (o *TopTradersDTO) HasMultiplier() bool`
-
-HasMultiplier returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

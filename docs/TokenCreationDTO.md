@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TokenAddress** | **string** | DTO.TOKEN.CREATION.TOKEN_ADDRESS | 
-**BlockHeight** | **int64** | DTO.TOKEN.CREATION.BLOCK_HEIGHT | 
-**BlockSlot** | **int64** | DTO.TOKEN.CREATION.BLOCK_SLOT | 
-**BlockHash** | **string** | DTO.TOKEN.CREATION.BLOCK_HASH | 
-**BlockTimestamp** | Pointer to **int64** | DTO.TOKEN.CREATION.BLOCK_TIMESTAMP | [optional] 
-**TransactionSignature** | **string** | DTO.TOKEN.CREATION.TRANSACTION_SIGNATURE | 
-**Type** | **string** | DTO.TOKEN.CREATION.TYPE | 
+**TokenAddress** | **string** | Token contract address | 
+**BlockHeight** | **int64** | Block height when token was created | 
+**BlockSlot** | **int64** | Block slot when token was created | 
+**BlockHash** | **string** | Block hash when token was created | 
+**BlockTimestamp** | Pointer to **int64** | Block timestamp when token was created | [optional] 
+**TransactionSignature** | **string** | Transaction signature for token creation | 
+**Type** | **string** | Type of token operation (create, mint, or burn) | 
 
 ## Methods
 

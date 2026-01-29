@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PacketId** | **string** | DTO.RED_PACKET.PACKET_ID | 
-**Chain** | [**Chain**](Chain.md) | DTO.RED_PACKET.CHAIN | 
-**Claimer** | **string** | DTO.RED_PACKET.CLAIMER | 
-**Mint** | **string** | DTO.RED_PACKET.MINT | 
-**Amount** | **string** | DTO.RED_PACKET.AMOUNT | 
-**ClaimedAt** | **int64** | DTO.RED_PACKET.CLAIMED_AT | 
-**Creator** | **string** | DTO.RED_PACKET.CREATOR | 
-**TxHash** | **string** | DTO.RED_PACKET.TX_HASH | 
+**PacketId** | **string** | Unique identifier of the red packet | 
+**Chain** | [**Chain**](Chain.md) | Blockchain network | 
+**Claimer** | **string** | Wallet address of the claimer | 
+**Mint** | **string** | Token mint address for the red packet | 
+**Amount** | **string** | Claimed amount | 
+**ClaimedAt** | **int64** | Claimed time | 
+**Creator** | **string** | Creator wallet address of the red packet | 
+**TxHash** | **string** | Transaction hash | 
 
 ## Methods
 

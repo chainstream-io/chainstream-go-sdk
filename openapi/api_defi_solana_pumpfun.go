@@ -40,9 +40,9 @@ func (r DefiSolanaPumpfunAPIPumpfunCreateTokenRequest) Execute() (*PumpCreateTok
 }
 
 /*
-PumpfunCreateToken CONTROLLER.PUMPFUN.CREATE_TOKEN.SUMMARY
+PumpfunCreateToken PumpFun - Create Token
 
-CONTROLLER.PUMPFUN.CREATE_TOKEN.DESCRIPTION
+Create a new token with PumpFun protocol
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return DefiSolanaPumpfunAPIPumpfunCreateTokenRequest

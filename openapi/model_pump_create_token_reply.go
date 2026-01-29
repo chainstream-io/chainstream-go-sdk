@@ -22,9 +22,9 @@ var _ MappedNullable = &PumpCreateTokenReply{}
 
 // PumpCreateTokenReply struct for PumpCreateTokenReply
 type PumpCreateTokenReply struct {
-	// DTO.DEX.PUMPFUN.MINT.SERIALIZED_TX
+	// Base64 encoded transaction
 	SerializedTx string `json:"serializedTx"`
-	// DTO.DEX.PUMPFUN.MINT.EXTRA
+	// Additional metadata about the created token
 	Extra map[string]interface{} `json:"extra,omitempty"`
 }
 

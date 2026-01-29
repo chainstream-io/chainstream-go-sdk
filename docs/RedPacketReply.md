@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TxSerialize** | **string** | DTO.RED_PACKET.SERIALIZED_TX | 
+**TxSerialize** | **string** | Base64 encoded transaction | 
 
 ## Methods
 

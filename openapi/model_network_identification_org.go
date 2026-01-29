@@ -22,7 +22,7 @@ var _ MappedNullable = &NetworkIdentificationOrg{}
 
 // NetworkIdentificationOrg struct for NetworkIdentificationOrg
 type NetworkIdentificationOrg struct {
-	// DTO.KYT.NETWORK_IDENTIFICATION_ORG.NAME
+	// Organization name
 	Name string `json:"name"`
 }
 

@@ -1,17 +1,17 @@
 # \RedPacketAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClaimRedpacket**](RedPacketAPI.md#ClaimRedpacket) | **Post** /v1/redpacket/{chain}/claim | CONTROLLER.RED_PACKET.CLAIM.SUMMARY
-[**CreateRedpacket**](RedPacketAPI.md#CreateRedpacket) | **Post** /v1/redpacket/{chain}/create | CONTROLLER.RED_PACKET.CREATE.SUMMARY
-[**GetClaims**](RedPacketAPI.md#GetClaims) | **Get** /v1/redpacket/{id}/claims | CONTROLLER.RED_PACKET.GET_CLAIMS.SUMMARY
-[**GetClaimsByAddress**](RedPacketAPI.md#GetClaimsByAddress) | **Get** /v1/redpacket/wallet/{address}/claims | CONTROLLER.RED_PACKET.GET_CLAIMS_BY_ADDRESS.SUMMARY
-[**GetRedpacket**](RedPacketAPI.md#GetRedpacket) | **Get** /v1/redpacket/{id} | CONTROLLER.RED_PACKET.GET.SUMMARY
-[**GetRedpackets**](RedPacketAPI.md#GetRedpackets) | **Get** /v1/redpacket | CONTROLLER.RED_PACKET.GET_REDPACKETS.SUMMARY
-[**GetRedpacketsByAddress**](RedPacketAPI.md#GetRedpacketsByAddress) | **Get** /v1/redpacket/wallet/{address}/redpackets | CONTROLLER.RED_PACKET.GET_REDPACKETS_BY_ADDRESS.SUMMARY
-[**RedpacketSend**](RedPacketAPI.md#RedpacketSend) | **Post** /v1/redpacket/{chain}/send | CONTROLLER.RED_PACKET.SEND.SUMMARY
+[**ClaimRedpacket**](RedPacketAPI.md#ClaimRedpacket) | **Post** /v1/redpacket/{chain}/claim | RedPacket - Claim
+[**CreateRedpacket**](RedPacketAPI.md#CreateRedpacket) | **Post** /v1/redpacket/{chain}/create | RedPacket - Create
+[**GetClaims**](RedPacketAPI.md#GetClaims) | **Get** /v1/redpacket/{id}/claims | RedPacket - GetClaims
+[**GetClaimsByAddress**](RedPacketAPI.md#GetClaimsByAddress) | **Get** /v1/redpacket/wallet/{address}/claims | RedPacket - GetClaimsByAddress
+[**GetRedpacket**](RedPacketAPI.md#GetRedpacket) | **Get** /v1/redpacket/{id} | RedPacket - Get
+[**GetRedpackets**](RedPacketAPI.md#GetRedpackets) | **Get** /v1/redpacket | RedPacket - GetRedpackets
+[**GetRedpacketsByAddress**](RedPacketAPI.md#GetRedpacketsByAddress) | **Get** /v1/redpacket/wallet/{address}/redpackets | RedPacket - GetRedpacketsByAddress
+[**RedpacketSend**](RedPacketAPI.md#RedpacketSend) | **Post** /v1/redpacket/{chain}/send | RedPacket - Send
 
 
 
@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 > RedPacketReply ClaimRedpacket(ctx, chain).ClaimRedPacketInput(claimRedPacketInput).Execute()
 
-CONTROLLER.RED_PACKET.CLAIM.SUMMARY
+RedPacket - Claim
 
 
 
@@ -36,7 +36,7 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
 	claimRedPacketInput := *openapiclient.NewClaimRedPacketInput("sol", "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB") // ClaimRedPacketInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -57,7 +57,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 > CreateRedPacketReply CreateRedpacket(ctx, chain).CreateRedPacketInput(createRedPacketInput).Execute()
 
-CONTROLLER.RED_PACKET.CREATE.SUMMARY
+RedPacket - Create
 
 
 
@@ -108,7 +108,7 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
 	createRedPacketInput := *openapiclient.NewCreateRedPacketInput("sol", "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB", int64(10)) // CreateRedPacketInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -129,7 +129,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 > RedPacketClaimsPage GetClaims(ctx, id).Cursor(cursor).Limit(limit).Direction(direction).Execute()
 
-CONTROLLER.RED_PACKET.GET_CLAIMS.SUMMARY
+RedPacket - GetClaims
 
 
 
@@ -180,10 +180,10 @@ import (
 )
 
 func main() {
-	id := "redpacket123" // string | DTO.RED_PACKET.ID
-	cursor := "cursor_123" // string | DTO.RED_PACKET.CURSOR (optional)
-	limit := int64(20) // int64 | DTO.RED_PACKET.LIMIT (optional)
-	direction := "desc" // string | DTO.RED_PACKET.DIRECTION (optional)
+	id := "redpacket123" // string | Redpacket id
+	cursor := "cursor_123" // string | Pagination cursor (optional)
+	limit := int64(20) // int64 | Number of records per page (optional)
+	direction := "desc" // string | Sort direction (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -203,7 +203,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | DTO.RED_PACKET.ID | 
+**id** | **string** | Redpacket id | 
 
 ### Other Parameters
 
@@ -213,9 +213,9 @@ Other parameters are passed through a pointer to a apiGetClaimsRequest struct vi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cursor** | **string** | DTO.RED_PACKET.CURSOR | 
- **limit** | **int64** | DTO.RED_PACKET.LIMIT | 
- **direction** | **string** | DTO.RED_PACKET.DIRECTION | 
+ **cursor** | **string** | Pagination cursor | 
+ **limit** | **int64** | Number of records per page | 
+ **direction** | **string** | Sort direction | 
 
 ### Return type
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 > RedPacketClaimsPage GetClaimsByAddress(ctx, address).Cursor(cursor).Limit(limit).Direction(direction).Execute()
 
-CONTROLLER.RED_PACKET.GET_CLAIMS_BY_ADDRESS.SUMMARY
+RedPacket - GetClaimsByAddress
 
 
 
@@ -257,9 +257,9 @@ import (
 
 func main() {
 	address := "address_example" // string | 
-	cursor := "cursor_123" // string | DTO.RED_PACKET.CURSOR (optional)
-	limit := int64(20) // int64 | DTO.RED_PACKET.LIMIT (optional)
-	direction := "desc" // string | DTO.RED_PACKET.DIRECTION (optional)
+	cursor := "cursor_123" // string | Pagination cursor (optional)
+	limit := int64(20) // int64 | Number of records per page (optional)
+	direction := "desc" // string | Sort direction (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -289,9 +289,9 @@ Other parameters are passed through a pointer to a apiGetClaimsByAddressRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cursor** | **string** | DTO.RED_PACKET.CURSOR | 
- **limit** | **int64** | DTO.RED_PACKET.LIMIT | 
- **direction** | **string** | DTO.RED_PACKET.DIRECTION | 
+ **cursor** | **string** | Pagination cursor | 
+ **limit** | **int64** | Number of records per page | 
+ **direction** | **string** | Sort direction | 
 
 ### Return type
 
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 
 > RedPacketDTO GetRedpacket(ctx, id).Execute()
 
-CONTROLLER.RED_PACKET.GET.SUMMARY
+RedPacket - Get
 
 
 
@@ -332,7 +332,7 @@ import (
 )
 
 func main() {
-	id := "redpacket123" // string | DTO.RED_PACKET.ID
+	id := "redpacket123" // string | Redpacket id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -352,7 +352,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | DTO.RED_PACKET.ID | 
+**id** | **string** | Redpacket id | 
 
 ### Other Parameters
 
@@ -385,7 +385,7 @@ Name | Type | Description  | Notes
 
 > RedPacketsPage GetRedpackets(ctx).Cursor(cursor).Limit(limit).Direction(direction).Creator(creator).Chain(chain).Execute()
 
-CONTROLLER.RED_PACKET.GET_REDPACKETS.SUMMARY
+RedPacket - GetRedpackets
 
 
 
@@ -402,11 +402,11 @@ import (
 )
 
 func main() {
-	cursor := "cursor_123" // string | DTO.RED_PACKET.CURSOR (optional)
-	limit := int64(20) // int64 | DTO.RED_PACKET.LIMIT (optional)
-	direction := "desc" // string | DTO.RED_PACKET.DIRECTION (optional)
-	creator := "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB" // string | DTO.RED_PACKET.CREATOR (optional)
-	chain := "sol" // string | DTO.RED_PACKET.CHAIN (optional)
+	cursor := "cursor_123" // string | Pagination cursor (optional)
+	limit := int64(20) // int64 | Number of records per page (optional)
+	direction := "desc" // string | Sort direction (optional)
+	creator := "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB" // string | Creator wallet address of the red packet (optional)
+	chain := "sol" // string | Blockchain network (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -431,11 +431,11 @@ Other parameters are passed through a pointer to a apiGetRedpacketsRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cursor** | **string** | DTO.RED_PACKET.CURSOR | 
- **limit** | **int64** | DTO.RED_PACKET.LIMIT | 
- **direction** | **string** | DTO.RED_PACKET.DIRECTION | 
- **creator** | **string** | DTO.RED_PACKET.CREATOR | 
- **chain** | **string** | DTO.RED_PACKET.CHAIN | 
+ **cursor** | **string** | Pagination cursor | 
+ **limit** | **int64** | Number of records per page | 
+ **direction** | **string** | Sort direction | 
+ **creator** | **string** | Creator wallet address of the red packet | 
+ **chain** | **string** | Blockchain network | 
 
 ### Return type
 
@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
 
 > RedPacketsPage GetRedpacketsByAddress(ctx, address).Cursor(cursor).Limit(limit).Direction(direction).Execute()
 
-CONTROLLER.RED_PACKET.GET_REDPACKETS_BY_ADDRESS.SUMMARY
+RedPacket - GetRedpacketsByAddress
 
 
 
@@ -477,9 +477,9 @@ import (
 
 func main() {
 	address := "address_example" // string | 
-	cursor := "cursor_123" // string | DTO.RED_PACKET.CURSOR (optional)
-	limit := int64(20) // int64 | DTO.RED_PACKET.LIMIT (optional)
-	direction := "desc" // string | DTO.RED_PACKET.DIRECTION (optional)
+	cursor := "cursor_123" // string | Pagination cursor (optional)
+	limit := int64(20) // int64 | Number of records per page (optional)
+	direction := "desc" // string | Sort direction (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -509,9 +509,9 @@ Other parameters are passed through a pointer to a apiGetRedpacketsByAddressRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cursor** | **string** | DTO.RED_PACKET.CURSOR | 
- **limit** | **int64** | DTO.RED_PACKET.LIMIT | 
- **direction** | **string** | DTO.RED_PACKET.DIRECTION | 
+ **cursor** | **string** | Pagination cursor | 
+ **limit** | **int64** | Number of records per page | 
+ **direction** | **string** | Sort direction | 
 
 ### Return type
 
@@ -535,7 +535,7 @@ Name | Type | Description  | Notes
 
 > RedPacketSendTxResponse RedpacketSend(ctx, chain).RedPacketSendTxInput(redPacketSendTxInput).Execute()
 
-CONTROLLER.RED_PACKET.SEND.SUMMARY
+RedPacket - Send
 
 
 
@@ -552,7 +552,7 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
 	redPacketSendTxInput := *openapiclient.NewRedPacketSendTxInput("AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEDRgYGpQEDAQIABQcICQoLDA0ODwAAAAAAAAAAAAAQERITFBUWFxgZGhscHR4fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=") // RedPacketSendTxInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -573,7 +573,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 

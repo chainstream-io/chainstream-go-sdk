@@ -22,17 +22,17 @@ var _ MappedNullable = &TradePage{}
 
 // TradePage struct for TradePage
 type TradePage struct {
-	// DTO.PAGE.HAS_NEXT
+	// Indicates if there are more results
 	HasNext *bool `json:"hasNext,omitempty"`
-	// DTO.PAGE.HAS_PREV
+	// Indicates if there are previous results
 	HasPrev *bool `json:"hasPrev,omitempty"`
-	// DTO.PAGE.START_CURSOR
+	// Cursor for first item in current page
 	StartCursor *string `json:"startCursor,omitempty"`
-	// DTO.PAGE.END_CURSOR
+	// Cursor for last item in current page
 	EndCursor *string `json:"endCursor,omitempty"`
-	// DTO.PAGE.TOTAL
+	// Total number of items
 	Total *float32 `json:"total,omitempty"`
-	// DTO.TRADE.PAGE.DATA
+	// Array of trade data
 	Data []TradeDetailDTO `json:"data"`
 }
 

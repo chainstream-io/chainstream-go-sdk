@@ -42,13 +42,13 @@ func (r WalletAPICalculatePnlRequest) Execute() (*BooleanResultDTO, *http.Respon
 }
 
 /*
-CalculatePnl CONTROLLER.WALLET.CALCULATE_PNL.SUMMARY
+CalculatePnl Wallet - Calculate PNL
 
-CONTROLLER.WALLET.CALCULATE_PNL.DESCRIPTION
+Calculate profit and loss for wallet tokens
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param walletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param walletAddress An address of a wallet
  @return WalletAPICalculatePnlRequest
 */
 func (a *WalletAPIService) CalculatePnl(ctx context.Context, chain ChainSymbol, walletAddress string) WalletAPICalculatePnlRequest {
@@ -150,7 +150,7 @@ type WalletAPIGetBalanceRequest struct {
 	tokenAddress *string
 }
 
-// DTO.WALLET.BALANCE.QUERY.TOKEN_ADDRESS
+// Specific token address to filter wallet balances
 func (r WalletAPIGetBalanceRequest) TokenAddress(tokenAddress string) WalletAPIGetBalanceRequest {
 	r.tokenAddress = &tokenAddress
 	return r
@@ -161,13 +161,13 @@ func (r WalletAPIGetBalanceRequest) Execute() (*WalletBalancesDTO, *http.Respons
 }
 
 /*
-GetBalance CONTROLLER.WALLET.GET_BALANCES.SUMMARY
+GetBalance Wallet - Balances
 
-CONTROLLER.WALLET.GET_BALANCES.DESCRIPTION
+Get wallet balance information
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param walletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param walletAddress An address of a wallet
  @return WalletAPIGetBalanceRequest
 */
 func (a *WalletAPIService) GetBalance(ctx context.Context, chain ChainSymbol, walletAddress string) WalletAPIGetBalanceRequest {
@@ -267,7 +267,7 @@ type WalletAPIGetPnlRequest struct {
 	tokenAddress *string
 }
 
-// GLOBAL.TOKENADDRESS.DESCRIPTION
+// An address of a token
 func (r WalletAPIGetPnlRequest) TokenAddress(tokenAddress string) WalletAPIGetPnlRequest {
 	r.tokenAddress = &tokenAddress
 	return r
@@ -278,13 +278,13 @@ func (r WalletAPIGetPnlRequest) Execute() ([]WalletPnlDTO, *http.Response, error
 }
 
 /*
-GetPnl CONTROLLER.WALLET.GET_PNL.SUMMARY
+GetPnl Wallet - PNL
 
-CONTROLLER.WALLET.GET_PNL.DESCRIPTION
+Get profit and loss information for wallet tokens
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param walletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param walletAddress An address of a wallet
  @return WalletAPIGetPnlRequest
 */
 func (a *WalletAPIService) GetPnl(ctx context.Context, chain ChainSymbol, walletAddress string) WalletAPIGetPnlRequest {
@@ -388,13 +388,13 @@ func (r WalletAPIGetPnlStatsRequest) Execute() ([]WalletPnlDTO, *http.Response, 
 }
 
 /*
-GetPnlStats CONTROLLER.WALLET.GET_PNL_STATS.SUMMARY
+GetPnlStats Wallet - PNL Stats
 
-CONTROLLER.WALLET.GET_PNL_STATS.DESCRIPTION
+Get profit and loss stats for wallet
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param walletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param walletAddress An address of a wallet
  @return WalletAPIGetPnlStatsRequest
 */
 func (a *WalletAPIService) GetPnlStats(ctx context.Context, chain ChainSymbol, walletAddress string) WalletAPIGetPnlStatsRequest {

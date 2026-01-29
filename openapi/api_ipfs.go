@@ -33,9 +33,9 @@ func (r IpfsAPIPresignRequest) Execute() (string, *http.Response, error) {
 }
 
 /*
-Presign CONTROLLER.IPFS.PRESIGN.SUMMARY
+Presign IPFS - Presign
 
-CONTROLLER.IPFS.PRESIGN.DESCRIPTION
+Create a Presign URL for IPFS content
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return IpfsAPIPresignRequest

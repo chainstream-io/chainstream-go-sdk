@@ -22,23 +22,23 @@ var _ MappedNullable = &KYTRegisterWithdrawalRequest{}
 
 // KYTRegisterWithdrawalRequest struct for KYTRegisterWithdrawalRequest
 type KYTRegisterWithdrawalRequest struct {
-	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.NETWORK
+	// Blockchain network
 	Network string `json:"network"`
-	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET
+	// Asset type
 	Asset string `json:"asset"`
-	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ADDRESS
+	// Withdrawal address
 	Address string `json:"address"`
-	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_AMOUNT
+	// Asset amount
 	AssetAmount string `json:"assetAmount"`
-	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ATTEMPT_TIMESTAMP
+	// Attempt timestamp
 	AttemptTimestamp string `json:"attemptTimestamp"`
-	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_PRICE
+	// Asset price
 	AssetPrice *string `json:"assetPrice,omitempty"`
-	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_DENOMINATION
+	// Asset denomination (e.g., USD)
 	AssetDenomination *string `json:"assetDenomination,omitempty"`
-	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_ID
+	// Asset ID (optional)
 	AssetId *string `json:"assetId,omitempty"`
-	// DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.MEMO
+	// Memo information (optional)
 	Memo *string `json:"memo,omitempty"`
 }
 

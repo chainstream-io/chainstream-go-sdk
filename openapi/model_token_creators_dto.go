@@ -20,11 +20,11 @@ var _ MappedNullable = &TokenCreatorsDTO{}
 
 // TokenCreatorsDTO struct for TokenCreatorsDTO
 type TokenCreatorsDTO struct {
-	// DTO.TOKEN.CREATORS.ADDRESS
+	// Creator wallet address
 	Address *string `json:"address,omitempty"`
-	// DTO.TOKEN.CREATORS.SHARE
+	// Creator share percentage (0-100)
 	Share *int64 `json:"share,omitempty"`
-	// DTO.TOKEN.CREATORS.IS_VERIFIED
+	// Whether the creator is verified
 	IsVerified *bool `json:"isVerified,omitempty"`
 }
 

@@ -22,7 +22,7 @@ var _ MappedNullable = &WithdrawalFraudAssessmentResponseDTO{}
 
 // WithdrawalFraudAssessmentResponseDTO struct for WithdrawalFraudAssessmentResponseDTO
 type WithdrawalFraudAssessmentResponseDTO struct {
-	// DTO.KYT.WITHDRAWAL_FRAUD_ASSESSMENT_RESPONSE.ALTERYA_IDENTIFICATIONS
+	// Alterya identification list
 	AlteryaIdentifications []AlteryaIdentification `json:"alteryaIdentifications"`
 }
 

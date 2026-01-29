@@ -22,259 +22,259 @@ var _ MappedNullable = &TokenStat{}
 
 // TokenStat struct for TokenStat
 type TokenStat struct {
-	// DTO.TOKEN.STAT.ADDRESS
+	// Token contract address
 	Address string `json:"address"`
-	// DTO.TOKEN.STAT.PRICE_1M
+	// Token price in the last 1 minute
 	Price1m string `json:"price1m"`
-	// DTO.TOKEN.STAT.BUYS_1M
+	// Number of buy orders in the last 1 minute
 	Buys1m string `json:"buys1m"`
-	// DTO.TOKEN.STAT.SELLS_1M
+	// Number of sell orders in the last 1 minute
 	Sells1m string `json:"sells1m"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_1M
+	// Total buy volume in the last 1 minute
 	BuyVolumes1m string `json:"buyVolumes1m"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_1M
+	// Total sell volume in the last 1 minute
 	SellsVolumes1m string `json:"sellsVolumes1m"`
-	// DTO.TOKEN.STAT.VOLUMES_1M
+	// Total trading volume in the last 1 minutes
 	Volumes1m string `json:"volumes1m"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_1M
+	// 1m buy volume in USD
 	BuyVolumesInUsd1m string `json:"buyVolumesInUsd1m"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_1M
+	// 1m sell volume in USD
 	SellVolumesInUsd1m string `json:"sellVolumesInUsd1m"`
-	// DTO.TOKEN.STAT.VOLUMES_IN_USD_1M
+	// 1m volume in USD
 	VolumesInUsd1m string `json:"volumesInUsd1m"`
-	// DTO.TOKEN.STAT.BUYERS_1M
+	// Number of unique buyers in the last 1 minute
 	Buyers1m *string `json:"buyers1m,omitempty"`
-	// DTO.TOKEN.STAT.SELLERS_1M
+	// Number of unique sellers in the last 1 minute
 	Sellers1m *string `json:"sellers1m,omitempty"`
-	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_1M
+	// Opening price in USD for the last 1 minute
 	OpenPriceInUsd1m string `json:"openPriceInUsd1m"`
-	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_1M
+	// Closing price in USD for the last 1 minute
 	ClosePriceInUsd1m string `json:"closePriceInUsd1m"`
-	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_1M
+	// Price change ratio in USD for the last 1 minute
 	PriceChangeRatioInUsd1m string `json:"priceChangeRatioInUsd1m"`
-	// DTO.TOKEN.STAT.TRADES_1M
+	// Number of trades in the last 1 minute
 	Trades1m string `json:"trades1m"`
-	// DTO.TOKEN.STAT.TRADERS_1M
+	// Number of unique traders in the last 1 minute
 	Traders1m *string `json:"traders1m,omitempty"`
-	// DTO.TOKEN.STAT.HIGH_IN_USD_1M
+	// Highest price in USD for the last 1 minute
 	HighInUsd1m *string `json:"highInUsd1m,omitempty"`
-	// DTO.TOKEN.STAT.LOW_IN_USD_1M
+	// Lowest price in USD for the last 1 minute
 	LowInUsd1m *string `json:"lowInUsd1m,omitempty"`
-	// DTO.TOKEN.STAT.PRICE_5M
+	// Token price in the last 5 minutes
 	Price5m string `json:"price5m"`
-	// DTO.TOKEN.STAT.BUYS_5M
+	// Number of buy orders in the last 5 minutes
 	Buys5m string `json:"buys5m"`
-	// DTO.TOKEN.STAT.SELLS_5M
+	// Number of sell orders in the last 5 minutes
 	Sells5m string `json:"sells5m"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_5M
+	// Total buy volume in the last 5 minutes
 	BuyVolumes5m string `json:"buyVolumes5m"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_5M
+	// Total sell volume in the last 5 minutes
 	SellsVolumes5m string `json:"sellsVolumes5m"`
-	// DTO.TOKEN.STAT.VOLUMES_5M
+	// Total trading volume in the last 5 minutes
 	Volumes5m string `json:"volumes5m"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_5M
+	// 5m buy volume in USD
 	BuyVolumesInUsd5m string `json:"buyVolumesInUsd5m"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_5M
+	// 5m sell volume in USD
 	SellVolumesInUsd5m string `json:"sellVolumesInUsd5m"`
-	// DTO.TOKEN.STAT.VOLUMES_IN_USD_5M
+	// 5m volume in USD
 	VolumesInUsd5m string `json:"volumesInUsd5m"`
-	// DTO.TOKEN.STAT.BUYERS_5M
+	// Number of unique buyers in the last 5 minutes
 	Buyers5m *string `json:"buyers5m,omitempty"`
-	// DTO.TOKEN.STAT.SELLERS_5M
+	// Number of unique sellers in the last 5 minutes
 	Sellers5m *string `json:"sellers5m,omitempty"`
-	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_5M
+	// Opening price in USD for the last 5 minutes
 	OpenPriceInUsd5m string `json:"openPriceInUsd5m"`
-	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_5M
+	// Closing price in USD for the last 5 minutes
 	ClosePriceInUsd5m string `json:"closePriceInUsd5m"`
-	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_5M
+	// Price change ratio in USD for the last 5 minutes
 	PriceChangeRatioInUsd5m string `json:"priceChangeRatioInUsd5m"`
-	// DTO.TOKEN.STAT.TRADES_5M
+	// Number of trades in the last 5 minutes
 	Trades5m string `json:"trades5m"`
-	// DTO.TOKEN.STAT.TRADERS_5M
+	// Number of unique traders in the last 5 minutes
 	Traders5m *string `json:"traders5m,omitempty"`
-	// DTO.TOKEN.STAT.HIGH_IN_USD_5M
+	// Highest price in USD for the last 5 minutes
 	HighInUsd5m *string `json:"highInUsd5m,omitempty"`
-	// DTO.TOKEN.STAT.LOW_IN_USD_5M
+	// Lowest price in USD for the last 5 minutes
 	LowInUsd5m *string `json:"lowInUsd5m,omitempty"`
-	// DTO.TOKEN.STAT.PRICE_15M
+	// Token price in the last 15 minutes
 	Price15m *string `json:"price15m,omitempty"`
-	// DTO.TOKEN.STAT.BUYS_15M
+	// Number of buy orders in the last 15 minutes
 	Buys15m *string `json:"buys15m,omitempty"`
-	// DTO.TOKEN.STAT.SELLS_15M
+	// Number of sell orders in the last 15 minutes
 	Sells15m *string `json:"sells15m,omitempty"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_15M
+	// Total buy volume in the last 15 minutes
 	BuyVolumes15m *string `json:"buyVolumes15m,omitempty"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_15M
+	// Total sell volume in the last 15 minutes
 	SellsVolumes15m *string `json:"sellsVolumes15m,omitempty"`
-	// DTO.TOKEN.STAT.VOLUMES_15M
+	// Total trading volume in the last 15 minutes
 	Volumes15m *string `json:"volumes15m,omitempty"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_15M
+	// 15m buy volume in USD
 	BuyVolumesInUsd15m *string `json:"buyVolumesInUsd15m,omitempty"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_15M
+	// 15m sell volume in USD
 	SellVolumesInUsd15m *string `json:"sellVolumesInUsd15m,omitempty"`
-	// DTO.TOKEN.STAT.VOLUMES_IN_USD_15M
+	// 15m volume in USD
 	VolumesInUsd15m *string `json:"volumesInUsd15m,omitempty"`
-	// DTO.TOKEN.STAT.BUYERS_15M
+	// Number of unique buyers in the last 15 minutes
 	Buyers15m *string `json:"buyers15m,omitempty"`
-	// DTO.TOKEN.STAT.SELLERS_15M
+	// Number of unique sellers in the last 15 minutes
 	Sellers15m *string `json:"sellers15m,omitempty"`
-	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_15M
+	// Opening price in USD for the last 15 minutes
 	OpenPriceInUsd15m *string `json:"openPriceInUsd15m,omitempty"`
-	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_15M
+	// Closing price in USD for the last 15 minutes
 	ClosePriceInUsd15m *string `json:"closePriceInUsd15m,omitempty"`
-	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_15M
+	// Price change ratio in USD for the last 15 minutes
 	PriceChangeRatioInUsd15m *string `json:"priceChangeRatioInUsd15m,omitempty"`
-	// DTO.TOKEN.STAT.TRADES_15M
+	// Number of trades in the last 15 minutes
 	Trades15m *string `json:"trades15m,omitempty"`
-	// DTO.TOKEN.STAT.TRADERS_15M
+	// Number of unique traders in the last 15 minutes
 	Traders15m *string `json:"traders15m,omitempty"`
-	// DTO.TOKEN.STAT.HIGH_IN_USD_15M
+	// Highest price in USD for the last 15 minutes
 	HighInUsd15m *string `json:"highInUsd15m,omitempty"`
-	// DTO.TOKEN.STAT.LOW_IN_USD_15M
+	// Lowest price in USD for the last 15 minutes
 	LowInUsd15m *string `json:"lowInUsd15m,omitempty"`
-	// DTO.TOKEN.STAT.PRICE_30M
+	// Token price in the last 30 minutes
 	Price30m string `json:"price30m"`
-	// DTO.TOKEN.STAT.BUYS_30M
+	// Number of buy orders in the last 30 minutes
 	Buys30m string `json:"buys30m"`
-	// DTO.TOKEN.STAT.SELLS_30M
+	// Number of sell orders in the last 30 minutes
 	Sells30m string `json:"sells30m"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_30M
+	// Total buy volume in the last 30 minutes
 	BuyVolumes30m string `json:"buyVolumes30m"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_30M
+	// Total sell volume in the last 30 minutes
 	SellsVolumes30m string `json:"sellsVolumes30m"`
-	// DTO.TOKEN.STAT.VOLUMES_30M
+	// Total trading volume in the last 30 minutes
 	Volumes30m string `json:"volumes30m"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_30M
+	// 30m buy volume in USD
 	BuyVolumesInUsd30m string `json:"buyVolumesInUsd30m"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_30M
+	// 30m sell volume in USD
 	SellVolumesInUsd30m string `json:"sellVolumesInUsd30m"`
-	// DTO.TOKEN.STAT.VOLUMES_IN_USD_30M
+	// 30m volume in USD
 	VolumesInUsd30m string `json:"volumesInUsd30m"`
-	// DTO.TOKEN.STAT.BUYERS_30M
+	// Number of unique buyers in the last 30 minutes
 	Buyers30m *string `json:"buyers30m,omitempty"`
-	// DTO.TOKEN.STAT.SELLERS_30M
+	// Number of unique sellers in the last 30 minutes
 	Sellers30m *string `json:"sellers30m,omitempty"`
-	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_30M
+	// Opening price in USD for the last 30 minutes
 	OpenPriceInUsd30m string `json:"openPriceInUsd30m"`
-	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_30M
+	// Closing price in USD for the last 30 minutes
 	ClosePriceInUsd30m string `json:"closePriceInUsd30m"`
-	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_30M
+	// Price change ratio in USD for the last 30 minutes
 	PriceChangeRatioInUsd30m string `json:"priceChangeRatioInUsd30m"`
-	// DTO.TOKEN.STAT.TRADES_30M
+	// Number of trades in the last 30 minutes
 	Trades30m string `json:"trades30m"`
-	// DTO.TOKEN.STAT.TRADERS_30M
+	// Number of unique traders in the last 30 minutes
 	Traders30m *string `json:"traders30m,omitempty"`
-	// DTO.TOKEN.STAT.HIGH_IN_USD_30M
+	// Highest price in USD for the last 30 minutes
 	HighInUsd30m *string `json:"highInUsd30m,omitempty"`
-	// DTO.TOKEN.STAT.LOW_IN_USD_30M
+	// Lowest price in USD for the last 30 minutes
 	LowInUsd30m *string `json:"lowInUsd30m,omitempty"`
-	// DTO.TOKEN.STAT.PRICE_1H
+	// Token price in the last 1 hour
 	Price1h string `json:"price1h"`
-	// DTO.TOKEN.STAT.BUYS_1H
+	// Number of buy orders in the last 1 hour
 	Buys1h string `json:"buys1h"`
-	// DTO.TOKEN.STAT.SELLS_1H
+	// Number of sell orders in the last 1 hour
 	Sells1h string `json:"sells1h"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_1H
+	// Total buy volume in the last 1 hour
 	BuyVolumes1h string `json:"buyVolumes1h"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_1H
+	// Total sell volume in the last 1 hour
 	SellsVolumes1h string `json:"sellsVolumes1h"`
-	// DTO.TOKEN.STAT.VOLUMES_1H
+	// Total trading volume in the last 1 hour
 	Volumes1h string `json:"volumes1h"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_1H
+	// 1h buy volume in USD
 	BuyVolumesInUsd1h string `json:"buyVolumesInUsd1h"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_1H
+	// 1h sell volume in USD
 	SellVolumesInUsd1h string `json:"sellVolumesInUsd1h"`
-	// DTO.TOKEN.STAT.VOLUMES_IN_USD_1H
+	// 1h volume in USD
 	VolumesInUsd1h string `json:"volumesInUsd1h"`
-	// DTO.TOKEN.STAT.BUYERS_1H
+	// Number of unique buyers in the last 1 hour
 	Buyers1h *string `json:"buyers1h,omitempty"`
-	// DTO.TOKEN.STAT.SELLERS_1H
+	// Number of unique sellers in the last 1 hour
 	Sellers1h *string `json:"sellers1h,omitempty"`
-	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_1H
+	// Opening price in USD for the last 1 hour
 	OpenPriceInUsd1h string `json:"openPriceInUsd1h"`
-	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_1H
+	// Closing price in USD for the last 1 hour
 	ClosePriceInUsd1h string `json:"closePriceInUsd1h"`
-	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_1H
+	// Price change ratio in USD for the last 1 hour
 	PriceChangeRatioInUsd1h string `json:"priceChangeRatioInUsd1h"`
-	// DTO.TOKEN.STAT.TRADES_1H
+	// Number of trades in the last 1 hour
 	Trades1h string `json:"trades1h"`
-	// DTO.TOKEN.STAT.TRADERS_1H
+	// Number of unique traders in the last 1 hour
 	Traders1h *string `json:"traders1h,omitempty"`
-	// DTO.TOKEN.STAT.HIGH_IN_USD_1H
+	// Highest price in USD for the last 1 hour
 	HighInUsd1h *string `json:"highInUsd1h,omitempty"`
-	// DTO.TOKEN.STAT.LOW_IN_USD_1H
+	// Lowest price in USD for the last 1 hour
 	LowInUsd1h *string `json:"lowInUsd1h,omitempty"`
-	// DTO.TOKEN.STAT.PRICE_4H
+	// Token price in the last 4 hours
 	Price4h string `json:"price4h"`
-	// DTO.TOKEN.STAT.BUYS_4H
+	// Number of buy orders in the last 4 hours
 	Buys4h string `json:"buys4h"`
-	// DTO.TOKEN.STAT.SELLS_4H
+	// Number of sell orders in the last 4 hours
 	Sells4h string `json:"sells4h"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_4H
+	// Total buy volume in the last 4 hours
 	BuyVolumes4h string `json:"buyVolumes4h"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_4H
+	// Total sell volume in the last 4 hours
 	SellsVolumes4h string `json:"sellsVolumes4h"`
-	// DTO.TOKEN.STAT.VOLUMES_4H
+	// Total trading volume in the last 4 hour
 	Volumes4h string `json:"volumes4h"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_4H
+	// 4h buy volume in USD
 	BuyVolumesInUsd4h string `json:"buyVolumesInUsd4h"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_4H
+	// 4h sell volume in USD
 	SellVolumesInUsd4h string `json:"sellVolumesInUsd4h"`
-	// DTO.TOKEN.STAT.VOLUMES_IN_USD_4H
+	// 4h volume in USD
 	VolumesInUsd4h string `json:"volumesInUsd4h"`
-	// DTO.TOKEN.STAT.BUYERS_4H
+	// Number of unique buyers in the last 4 hours
 	Buyers4h *string `json:"buyers4h,omitempty"`
-	// DTO.TOKEN.STAT.SELLERS_4H
+	// Number of unique sellers in the last 4 hours
 	Sellers4h *string `json:"sellers4h,omitempty"`
-	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_4H
+	// Opening price in USD for the last 4 hours
 	OpenPriceInUsd4h string `json:"openPriceInUsd4h"`
-	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_4H
+	// Closing price in USD for the last 4 hours
 	ClosePriceInUsd4h string `json:"closePriceInUsd4h"`
-	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_4H
+	// Price change ratio in USD for the last 4 hours
 	PriceChangeRatioInUsd4h string `json:"priceChangeRatioInUsd4h"`
-	// DTO.TOKEN.STAT.TRADES_4H
+	// Number of trades in the last 4 hours
 	Trades4h string `json:"trades4h"`
-	// DTO.TOKEN.STAT.TRADERS_4H
+	// Number of unique traders in the last 4 hours
 	Traders4h *string `json:"traders4h,omitempty"`
-	// DTO.TOKEN.STAT.HIGH_IN_USD_4H
+	// Highest price in USD for the last 4 hours
 	HighInUsd4h *string `json:"highInUsd4h,omitempty"`
-	// DTO.TOKEN.STAT.LOW_IN_USD_4H
+	// Lowest price in USD for the last 4 hours
 	LowInUsd4h *string `json:"lowInUsd4h,omitempty"`
-	// DTO.TOKEN.STAT.PRICE_24H
+	// Token price in the last 24 hours
 	Price24h string `json:"price24h"`
-	// DTO.TOKEN.STAT.BUYS_24H
+	// Number of buy orders in the last 24 hours
 	Buys24h string `json:"buys24h"`
-	// DTO.TOKEN.STAT.SELLS_24H
+	// Number of sell orders in the last 24 hours
 	Sells24h string `json:"sells24h"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_24H
+	// Total buy volume in the last 24 hours
 	BuyVolumes24h string `json:"buyVolumes24h"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_24H
+	// Total sell volume in the last 24 hours
 	SellsVolumes24h string `json:"sellsVolumes24h"`
-	// DTO.TOKEN.STAT.VOLUMES_24H
+	// Total trading volume in the last 24 hour
 	Volumes24h string `json:"volumes24h"`
-	// DTO.TOKEN.STAT.BUY_VOLUMES_IN_USD_24H
+	// 24h buy volume in USD
 	BuyVolumesInUsd24h string `json:"buyVolumesInUsd24h"`
-	// DTO.TOKEN.STAT.SELL_VOLUMES_IN_USD_24H
+	// 24h sell volume in USD
 	SellVolumesInUsd24h string `json:"sellVolumesInUsd24h"`
-	// DTO.TOKEN.STAT.VOLUMES_IN_USD_24H
+	// 24h volume in USD
 	VolumesInUsd24h string `json:"volumesInUsd24h"`
-	// DTO.TOKEN.STAT.BUYERS_24H
+	// Number of unique buyers in the last 24 hours
 	Buyers24h *string `json:"buyers24h,omitempty"`
-	// DTO.TOKEN.STAT.SELLERS_24H
+	// Number of unique sellers in the last 24 hours
 	Sellers24h *string `json:"sellers24h,omitempty"`
-	// DTO.TOKEN.STAT.OPEN_PRICE_IN_USD_24H
+	// Opening price in USD for the last 24 hours
 	OpenPriceInUsd24h string `json:"openPriceInUsd24h"`
-	// DTO.TOKEN.STAT.CLOSE_PRICE_IN_USD_24H
+	// Closing price in USD for the last 24 hours
 	ClosePriceInUsd24h string `json:"closePriceInUsd24h"`
-	// DTO.TOKEN.STAT.PRICE_CHANGE_RATIO_IN_USD_24H
+	// Price change ratio in USD for the last 24 hours
 	PriceChangeRatioInUsd24h string `json:"priceChangeRatioInUsd24h"`
-	// DTO.TOKEN.STAT.TRADES_24H
+	// Number of trades in the last 24 hours
 	Trades24h string `json:"trades24h"`
-	// DTO.TOKEN.STAT.TRADERS_24H
+	// Number of unique traders in the last 24 hours
 	Traders24h *string `json:"traders24h,omitempty"`
-	// DTO.TOKEN.STAT.HIGH_IN_USD_24H
+	// Highest price in USD for the last 24 hours
 	HighInUsd24h *string `json:"highInUsd24h,omitempty"`
-	// DTO.TOKEN.STAT.LOW_IN_USD_24H
+	// Lowest price in USD for the last 24 hours
 	LowInUsd24h *string `json:"lowInUsd24h,omitempty"`
 }
 

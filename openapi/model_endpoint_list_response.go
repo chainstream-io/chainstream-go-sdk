@@ -20,13 +20,13 @@ var _ MappedNullable = &EndpointListResponse{}
 
 // EndpointListResponse struct for EndpointListResponse
 type EndpointListResponse struct {
-	// DTO.ENDPOINT.PAGE.DATA
+	// Page data
 	Data []EndpointResponse `json:"data,omitempty"`
-	// DTO.ENDPOINT.PAGE.DONE
+	// Page done
 	Done *bool `json:"done,omitempty"`
-	// DTO.ENDPOINT.PAGE.ITERATOR
+	// Page iterator
 	Iterator *string `json:"iterator,omitempty"`
-	// DTO.ENDPOINT.PAGE.PREV_ITERATOR
+	// Previous page iterator
 	PrevIterator *string `json:"prevIterator,omitempty"`
 }
 

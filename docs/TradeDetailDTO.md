@@ -4,31 +4,31 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Chain** | **string** | DTO.TRADE.DETAIL.CHAIN | 
-**BlockHeight** | **int64** | DTO.TRADE.DETAIL.BLOCK_HEIGHT | 
-**BlockTimestamp** | **int64** | DTO.TRADE.DETAIL.BLOCK_TIMESTAMP | 
-**AccountOwnerAddress** | **string** | DTO.TRADE.DETAIL.ACCOUNT_OWNER_ADDRESS | 
-**TransactionSignature** | **string** | DTO.TRADE.DETAIL.TRANSACTION_SIGNATURE | 
-**TokenName** | **string** | DTO.TRADE.DETAIL.TOKEN_NAME | 
-**TokenSymbol** | **string** | DTO.TRADE.DETAIL.TOKEN_SYMBOL | 
-**TokenImageUrl** | **string** | DTO.TRADE.DETAIL.TOKEN_IMAGE_URL | 
-**TokenAddress** | **string** | DTO.TRADE.DETAIL.TOKEN_ADDRESS | 
-**PoolAddress** | **string** | DTO.TRADE.DETAIL.POOL_ADDRESS | 
-**DexProgramAddress** | **string** | DTO.TRADE.DETAIL.DEX_PROGRAM_ADDRESS | 
-**DexProtocolFamily** | **string** | DTO.TRADE.DETAIL.DEX_PROTOCOL_FAMILY | 
-**DexImage** | **string** | DTO.TRADE.DETAIL.DEX_IMAGE | 
-**TokenAmount** | **string** | DTO.TRADE.DETAIL.TOKEN_AMOUNT | 
-**TokenPriceInUsd** | **string** | DTO.TRADE.DETAIL.TOKEN_PRICE_IN_USD | 
-**TokenAmountInUsd** | **string** | DTO.TRADE.DETAIL.TOKEN_AMOUNT_IN_USD | 
-**Type** | **string** | DTO.TRADE.DETAIL.TYPE | 
-**SideTokenName** | **string** | DTO.TRADE.DETAIL.SIDE_TOKEN_NAME | 
-**SideTokenSymbol** | **string** | DTO.TRADE.DETAIL.SIDE_TOKEN_SYMBOL | 
-**SideTokenImageUrl** | **string** | DTO.TRADE.DETAIL.SIDE_TOKEN_IMAGE_URL | 
-**SideTokenAddress** | **string** | DTO.TRADE.DETAIL.SIDE_TOKEN_ADDRESS | 
-**SideTokenPriceInUsd** | **string** | DTO.TRADE.DETAIL.SIDE_TOKEN_PRICE_IN_USD | 
-**SideTokenAmount** | **string** | DTO.TRADE.DETAIL.SIDE_TOKEN_AMOUNT | 
-**SideTokenAmountInUsd** | **string** | DTO.TRADE.DETAIL.SIDE_TOKEN_AMOUNT_IN_USD | 
-**Status** | **string** | DTO.TRADE.DETAIL.STATUS | 
+**Chain** | **string** | Blockchain network | 
+**BlockHeight** | **int64** | Block height of the trade | 
+**BlockTimestamp** | **int64** | Block timestamp | 
+**AccountOwnerAddress** | **string** | wallet address | 
+**TransactionSignature** | **string** | Transaction signature | 
+**TokenName** | **string** | name | 
+**TokenSymbol** | **string** | symbol | 
+**TokenImageUrl** | **string** | token imageUrl | 
+**TokenAddress** | **string** | Token address | 
+**PoolAddress** | **string** | Pool address where the trade occurred | 
+**DexProgramAddress** | **string** | DEX program address | 
+**DexProtocolFamily** | **string** | DEX protocol family | 
+**DexImage** | **string** | DEX logo image URL | 
+**TokenAmount** | **string** | Token amount | 
+**TokenPriceInUsd** | **string** | price in USD | 
+**TokenAmountInUsd** | **string** | Token amount in USD | 
+**Type** | **string** | Trade type | 
+**SideTokenName** | **string** | name | 
+**SideTokenSymbol** | **string** | symbol | 
+**SideTokenImageUrl** | **string** | token imageUrl | 
+**SideTokenAddress** | **string** | Side token address | 
+**SideTokenPriceInUsd** | **string** | price in USD | 
+**SideTokenAmount** | **string** | Side token amount | 
+**SideTokenAmountInUsd** | **string** | Side token amount in USD | 
+**Status** | **string** | Trade status | 
 
 ## Methods
 

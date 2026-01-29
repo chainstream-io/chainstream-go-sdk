@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Chain** | **string** | DTO.RED_PACKET.CHAIN | 
-**Creator** | **string** | DTO.RED_PACKET.CREATOR | 
-**Mint** | **string** | DTO.RED_PACKET.MINT | 
-**MaxClaims** | **int64** | DTO.RED_PACKET.MAX_CLAIMS | 
-**TotalAmount** | Pointer to **string** | DTO.RED_PACKET.TOTAL_AMOUNT | [optional] 
-**FixedAmount** | Pointer to **string** | DTO.RED_PACKET.FIXED_AMOUNT | [optional] 
-**Memo** | Pointer to **string** | DTO.RED_PACKET.MEMO | [optional] 
-**Password** | Pointer to **string** | DTO.RED_PACKET.PASSWORD | [optional] 
-**ClaimAuthority** | Pointer to **string** | DTO.RED_PACKET.CLAIM_AUTHORITY | [optional] 
+**Chain** | **string** | Blockchain network | 
+**Creator** | **string** | Creator wallet address of the red packet | 
+**Mint** | **string** | Token mint address for the red packet | 
+**MaxClaims** | **int64** | Maximum number of recipients | 
+**TotalAmount** | Pointer to **string** | Total amount of tokens to be distributed | [optional] 
+**FixedAmount** | Pointer to **string** | Fixed amount per claim (for equal distribution) | [optional] 
+**Memo** | Pointer to **string** | Optional memo message for the red packet | [optional] 
+**Password** | Pointer to **string** | Optional password to claim the red packet | [optional] 
+**ClaimAuthority** | Pointer to **string** | Optional authority address that can claim the red packet | [optional] 
 
 ## Methods
 

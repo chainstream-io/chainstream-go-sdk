@@ -27,7 +27,7 @@ func TestStreamWebSocket(t *testing.T) {
 	fmt.Println("Starting WebSocket subscription test...")
 
 	// Create DexClient (WebSocket will auto-connect on subscribe)
-	client, err := chainstream.NewDexClient(token, &chainstream.DexAggregatorOptions{
+	client, err := chainstream.NewChainStreamClient(token, &chainstream.ChainStreamClientOptions{
 		StreamUrl: "wss://realtime-dex.chainstream.io/connection/websocket",
 	})
 	if err != nil {

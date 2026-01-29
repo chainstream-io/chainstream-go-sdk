@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Alerts** | [**[]AlertDetail**](AlertDetail.md) | DTO.KYT.TRANSFER_ALERTS_RESPONSE.ALERTS | 
+**Alerts** | [**[]AlertDetail**](AlertDetail.md) | Alert list | 
 
 ## Methods
 

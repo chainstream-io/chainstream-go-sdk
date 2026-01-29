@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Dex** | **string** | DTO.DEX.IDENTIFIER | 
-**UserAddress** | **string** | DTO.DEX.WALLET | 
-**PriorityFee** | Pointer to **string** | DTO.DEX.BASE.PRIORITY_FEE | [optional] 
-**Twitter** | Pointer to **string** | DTO.DEX.PUMPFUN.MINT.TWITTER | [optional] 
-**Telegram** | Pointer to **string** | DTO.DEX.PUMPFUN.MINT.TELEGRAM | [optional] 
-**Website** | Pointer to **string** | DTO.DEX.PUMPFUN.MINT.WEBSITE | [optional] 
-**Name** | **string** | DTO.DEX.PUMPFUN.MINT.NAME | 
-**Symbol** | **string** | DTO.DEX.PUMPFUN.MINT.SYMBOL | 
-**MigrationDex** | **string** | DTO.DEX.PUMPFUN.MINT.MIGRATION_DEX | 
-**Image** | **string** | DTO.DEX.PUMPFUN.MINT.IMAGE | 
-**MintAddress** | **string** | DTO.DEX.PUMPFUN.MINT.MINT_ADDRESS | 
-**Description** | **string** | DTO.DEX.PUMPFUN.MINT.DESCRIPTION | 
+**Dex** | **string** | DEX identifier for the trade | 
+**UserAddress** | **string** | Public key of the wallet initiating the transaction | 
+**PriorityFee** | Pointer to **string** | Priority fee in SOL to increase transaction processing speed | [optional] 
+**Twitter** | Pointer to **string** | Twitter profile URL or handle | [optional] 
+**Telegram** | Pointer to **string** | Telegram group or channel link | [optional] 
+**Website** | Pointer to **string** | Project website URL | [optional] 
+**Name** | **string** | Name of the token | 
+**Symbol** | **string** | Token symbol/ticker | 
+**MigrationDex** | **string** | Target DEX for token migration | 
+**Image** | **string** | Base64 encoded token image or image url | 
+**MintAddress** | **string** | Token mint address requiring signature | 
+**Description** | **string** | Token description | 
 
 ## Methods
 

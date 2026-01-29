@@ -22,19 +22,19 @@ var _ MappedNullable = &TokenCreationDTO{}
 
 // TokenCreationDTO struct for TokenCreationDTO
 type TokenCreationDTO struct {
-	// DTO.TOKEN.CREATION.TOKEN_ADDRESS
+	// Token contract address
 	TokenAddress string `json:"tokenAddress"`
-	// DTO.TOKEN.CREATION.BLOCK_HEIGHT
+	// Block height when token was created
 	BlockHeight int64 `json:"blockHeight"`
-	// DTO.TOKEN.CREATION.BLOCK_SLOT
+	// Block slot when token was created
 	BlockSlot int64 `json:"blockSlot"`
-	// DTO.TOKEN.CREATION.BLOCK_HASH
+	// Block hash when token was created
 	BlockHash string `json:"blockHash"`
-	// DTO.TOKEN.CREATION.BLOCK_TIMESTAMP
+	// Block timestamp when token was created
 	BlockTimestamp *int64 `json:"blockTimestamp,omitempty"`
-	// DTO.TOKEN.CREATION.TRANSACTION_SIGNATURE
+	// Transaction signature for token creation
 	TransactionSignature string `json:"transactionSignature"`
-	// DTO.TOKEN.CREATION.TYPE
+	// Type of token operation (create, mint, or burn)
 	Type string `json:"type"`
 }
 

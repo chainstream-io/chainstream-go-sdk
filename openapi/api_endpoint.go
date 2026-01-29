@@ -40,9 +40,9 @@ func (r EndpointAPICreateEndpointRequest) Execute() (*EndpointResponse, *http.Re
 }
 
 /*
-CreateEndpoint CONTROLLER.ENDPOINT.CREATE.SUMMARY
+CreateEndpoint Endpoint - Create
 
-CONTROLLER.ENDPOINT.CREATE.DESCRIPTION
+Create a new webhook endpoint
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return EndpointAPICreateEndpointRequest
@@ -145,9 +145,9 @@ func (r EndpointAPIDeleteEndpointRequest) Execute() (*EndpointOperationResponse,
 }
 
 /*
-DeleteEndpoint CONTROLLER.ENDPOINT.DELETE.SUMMARY
+DeleteEndpoint Endpoint - Delete
 
-CONTROLLER.ENDPOINT.DELETE.DESCRIPTION
+Delete a webhook endpoint
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
@@ -248,9 +248,9 @@ func (r EndpointAPIGetEndpointRequest) Execute() (*EndpointResponse, *http.Respo
 }
 
 /*
-GetEndpoint CONTROLLER.ENDPOINT.GET.SUMMARY
+GetEndpoint Endpoint - Get
 
-CONTROLLER.ENDPOINT.GET.DESCRIPTION
+Get webhook endpoint details
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
@@ -351,9 +351,9 @@ func (r EndpointAPIGetEndpointSecretRequest) Execute() (*EndpointSecretResponse,
 }
 
 /*
-GetEndpointSecret CONTROLLER.ENDPOINT.GET.SECRET.SUMMARY
+GetEndpointSecret Endpoint - Get Secret
 
-CONTROLLER.ENDPOINT.GET.SECRET.DESCRIPTION
+Get webhook endpoint secret
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
@@ -451,19 +451,19 @@ type EndpointAPIListEndpointsRequest struct {
 	order *string
 }
 
-// DTO.ENDPOINT.LIMIT
+// Limit
 func (r EndpointAPIListEndpointsRequest) Limit(limit int64) EndpointAPIListEndpointsRequest {
 	r.limit = &limit
 	return r
 }
 
-// DTO.ENDPOINT.ITERATOR
+// Iterator
 func (r EndpointAPIListEndpointsRequest) Iterator(iterator string) EndpointAPIListEndpointsRequest {
 	r.iterator = &iterator
 	return r
 }
 
-// DTO.ENDPOINT.ORDER
+// Order
 func (r EndpointAPIListEndpointsRequest) Order(order string) EndpointAPIListEndpointsRequest {
 	r.order = &order
 	return r
@@ -474,9 +474,9 @@ func (r EndpointAPIListEndpointsRequest) Execute() (*EndpointListResponse, *http
 }
 
 /*
-ListEndpoints CONTROLLER.ENDPOINT.LIST.SUMMARY
+ListEndpoints Endpoint - List
 
-CONTROLLER.ENDPOINT.LIST.DESCRIPTION
+Get list of webhook endpoints
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return EndpointAPIListEndpointsRequest
@@ -589,9 +589,9 @@ func (r EndpointAPIRotateEndpointSecretRequest) Execute() (*EndpointOperationRes
 }
 
 /*
-RotateEndpointSecret CONTROLLER.ENDPOINT.ROTATE.SUMMARY
+RotateEndpointSecret Endpoint - Rotate Secret
 
-CONTROLLER.ENDPOINT.ROTATE.DESCRIPTION
+Rotate the secret key for a webhook endpoint
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
@@ -697,9 +697,9 @@ func (r EndpointAPIUpdateEndpointRequest) Execute() (*EndpointResponse, *http.Re
 }
 
 /*
-UpdateEndpoint CONTROLLER.ENDPOINT.UPDATE.SUMMARY
+UpdateEndpoint Endpoint - Update
 
-CONTROLLER.ENDPOINT.UPDATE.DESCRIPTION
+Update webhook endpoint configuration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return EndpointAPIUpdateEndpointRequest

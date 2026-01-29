@@ -22,7 +22,7 @@ var _ MappedNullable = &BooleanResultDTO{}
 
 // BooleanResultDTO struct for BooleanResultDTO
 type BooleanResultDTO struct {
-	// DTO.BOOLEAN_RESULT.SUCCESS
+	// Success status
 	Success bool `json:"success"`
 }
 

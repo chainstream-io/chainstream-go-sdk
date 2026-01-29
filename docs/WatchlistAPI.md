@@ -1,10 +1,10 @@
 # \WatchlistAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**WatchlistAdd**](WatchlistAPI.md#WatchlistAdd) | **Post** /v1/watchlist/{chain}/{walletAddress} | CONTROLLER.WATCHLIST.ADD.SUMMARY
+[**WatchlistAdd**](WatchlistAPI.md#WatchlistAdd) | **Post** /v1/watchlist/{chain}/{walletAddress} | Watchlist - Add
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > BooleanResultDTO WatchlistAdd(ctx, chain, walletAddress).Execute()
 
-CONTROLLER.WATCHLIST.ADD.SUMMARY
+Watchlist - Add
 
 
 
@@ -29,8 +29,8 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	walletAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.WALLETADDRESS.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	walletAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a wallet
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -50,8 +50,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**walletAddress** | **string** | GLOBAL.WALLETADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**walletAddress** | **string** | An address of a wallet | 
 
 ### Other Parameters
 

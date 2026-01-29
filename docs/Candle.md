@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Open** | **string** | DTO.CANDLE.OPEN | 
-**Close** | **string** | DTO.CANDLE.CLOSE | 
-**High** | **string** | DTO.CANDLE.HIGH | 
-**Low** | **string** | DTO.CANDLE.LOW | 
-**Volume** | **string** | DTO.CANDLE.VOLUME | 
-**Resolution** | [**Resolution**](Resolution.md) | DTO.CANDLE.RESOLUTION | 
-**Time** | **int64** | DTO.CANDLE.TIME | 
+**Open** | **string** | Opening price | 
+**Close** | **string** | Closing price | 
+**High** | **string** | Highest price | 
+**Low** | **string** | Lowest price | 
+**Volume** | **string** | Trading volume | 
+**Resolution** | [**Resolution**](Resolution.md) | Time resolution for candle data. Note: 1s resolution data is only kept for the last 1 hour; 15s and 30s resolution data is kept for the last 6 hours; 1m resolution data is kept for the last 12 hours; data for other resolutions is stored permanently | 
+**Time** | **int64** | Candle timestamp (Unix epoch in milliseconds) | 
 
 ## Methods
 

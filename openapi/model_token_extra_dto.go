@@ -20,47 +20,47 @@ var _ MappedNullable = &TokenExtraDTO{}
 
 // TokenExtraDTO struct for TokenExtraDTO
 type TokenExtraDTO struct {
-	// DTO.TOKEN.EXTRA.COLLECTION_ADDRESS
+	// The unique identification address of an NFT Collection
 	CollectionAddress *string `json:"collectionAddress,omitempty"`
-	// DTO.TOKEN.EXTRA.EDITION_NONCE
+	// Version number, used to identify the version or serial number of an NFT
 	EditionNonce *int64 `json:"editionNonce,omitempty"`
-	// DTO.TOKEN.EXTRA.FUNGIBLE
+	// Whether it is a convertible token: If true, it indicates that the token is convertible (such as SPL tokens, like USDC or SOL).If false, it indicates that the token is non-interchangeable (such as NFTS, each token has unique metadata)
 	Fungible *bool `json:"fungible,omitempty"`
-	// DTO.TOKEN.EXTRA.IS_MUTABLE
+	// Indicates whether the metadata of the token can be changed
 	IsMutable *bool `json:"isMutable,omitempty"`
-	// DTO.TOKEN.EXTRA.KEY
+	// The key type of a token indicates the type or role of the token.Common values include:Mint: Indicates the minting account of the token;Metadata: Represents a Metaplex metadata account;MasterEdition: Indicates the main version of the NFT;Edition: Indicates a limited edition copy.
 	Key *string `json:"key,omitempty"`
-	// DTO.TOKEN.EXTRA.IS_NATIVE
+	// Indicates whether the token is native token
 	IsNative *bool `json:"isNative,omitempty"`
-	// DTO.TOKEN.EXTRA.PRIMARY_SALE_HAPPENED
+	// Indicates whether the NFT has completed its first sale
 	PrimarySaleHappened *bool `json:"primarySaleHappened,omitempty"`
-	// DTO.TOKEN.EXTRA.LAUNCH_FROM_PROGRAM_ADDRESS
+	// External program address (the address that drives program_address)
 	LaunchFromProgramAddress *string `json:"launchFromProgramAddress,omitempty"`
-	// DTO.TOKEN.EXTRA.LAUNCH_FROM_PROTOCOL_FAMILY
+	// Initialized Protocol family
 	LaunchFromProtocolFamily *string `json:"launchFromProtocolFamily,omitempty"`
-	// DTO.TOKEN.EXTRA.PROGRAM_ADDRESS
+	// Program address
 	ProgramAddress *string `json:"programAddress,omitempty"`
-	// DTO.TOKEN.EXTRA.MIGRATED_TO_PROGRAM_ADDRESS
+	// Address of the migrated program after token migration
 	MigratedToProgramAddress *string `json:"migratedToProgramAddress,omitempty"`
-	// DTO.TOKEN.EXTRA.MIGRATED_TO_PROTOCOL_FAMILY
+	// The Protocol family migrated
 	MigratedToProtocolFamily *string `json:"migratedToProtocolFamily,omitempty"`
-	// DTO.TOKEN.EXTRA.MIGRATED_TO_POOL_ADDRESS
+	// Address of the migrated liquidity pool after token migration
 	MigratedToPoolAddress *string `json:"migratedToPoolAddress,omitempty"`
-	// DTO.TOKEN.EXTRA.MIGRATED_AT
+	// Timestamp when the token migration occurred (in milliseconds)
 	MigratedAt *int64 `json:"migratedAt,omitempty"`
-	// DTO.TOKEN.EXTRA.SELLER_FEE_BASIS_POINTS
+	// The seller's fee basis point indicates the royalty ratio of the creator at the time of secondary sales (in basis points, 1% = 100 basis points)
 	SellerFeeBasisPoints *int64 `json:"sellerFeeBasisPoints,omitempty"`
-	// DTO.TOKEN.EXTRA.TOKEN_STANDARD
+	// The standard type of token describes the protocol or specification that the token follows
 	TokenStandard *string `json:"tokenStandard,omitempty"`
-	// DTO.TOKEN.EXTRA.MINT_AUTHORITY
+	// Mint authority address
 	MintAuthority *string `json:"mintAuthority,omitempty"`
-	// DTO.TOKEN.EXTRA.FREEZE_AUTHORITY
+	// Freeze authority address
 	FreezeAuthority *string `json:"freezeAuthority,omitempty"`
-	// DTO.TOKEN.EXTRA.UPDATE_AUTHORITY
+	// Update authority address
 	UpdateAuthority *string `json:"updateAuthority,omitempty"`
-	// DTO.TOKEN.EXTRA.IS_VERIFIED_COLLECTION
+	// Indicates whether the NFT belongs to a verified collection
 	IsVerifiedCollection *bool `json:"isVerifiedCollection,omitempty"`
-	// DTO.TOKEN.EXTRA.IS_WRAPPED
+	// Indicates whether the Token is a Wrapped token (Wrapped Token)
 	IsWrapped *bool `json:"isWrapped,omitempty"`
 }
 

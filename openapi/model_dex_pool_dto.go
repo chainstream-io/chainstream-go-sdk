@@ -22,26 +22,44 @@ var _ MappedNullable = &DexPoolDTO{}
 
 // DexPoolDTO struct for DexPoolDTO
 type DexPoolDTO struct {
-	// DTO.DEX.PROGRAM_ADDRESS
+	// DEX program address
 	ProgramAddress *string `json:"programAddress,omitempty"`
-	// DTO.DEX.PROTOCOL_FAMILY
+	// DEX protocol family
 	ProtocolFamily *string `json:"protocolFamily,omitempty"`
-	// DTO.DEX.IMAGE
+	// DEX logo image URL
 	Image *string `json:"image,omitempty"`
-	// DTO.DEX.CHAIN
+	// Blockchain
 	Chain string `json:"chain"`
-	// DTO.DEXPOOL.POOL_ADDRESS
+	// Pool address
 	PoolAddress string `json:"poolAddress"`
-	// DTO.DEXPOOL.PROTOCOL_NAME
+	// DEX protocol name
 	ProtocolName *string `json:"protocolName,omitempty"`
-	// DTO.DEXPOOL.TOKEN_A
+	// First token in the pool
 	TokenAAddress string `json:"tokenAAddress"`
-	// DTO.DEXPOOL.TOKEN_B
+	// Second token in the pool
 	TokenBAddress string `json:"tokenBAddress"`
-	// DTO.DEXPOOL.TVL_USD
+	// Total value locked in USD
 	TvlInUsd *string `json:"tvlInUsd,omitempty"`
-	// DTO.DEXPOOL.TVL_SOL
+	// TVL in SOL
 	TvlInSol *string `json:"tvlInSol,omitempty"`
+	// Pool type (0=unknown, 1=standard, 2=concentrated, 3=weighted, 4=stable)
+	Type *float32 `json:"type,omitempty"`
+	// Pool version (0=unknown, 1=V1, 2=V2, 3=V3/CLMM)
+	Version *float32 `json:"version,omitempty"`
+	// Liquidity model (0=unknown, 1=reserve_based, 2=position_based, 3=virtual, 4=shared)
+	LiquidityModel *float32 `json:"liquidityModel,omitempty"`
+	// Pool fee rate (e.g., 0.003 for 0.3%)
+	FeeRate *string `json:"feeRate,omitempty"`
+	// Tick spacing for concentrated liquidity pools
+	TickSpacing *int32 `json:"tickSpacing,omitempty"`
+	// Number of tokens in pool
+	TokenCount *int32 `json:"tokenCount,omitempty"`
+	// Block timestamp when pool was created
+	CreatedBlockTimestamp *string `json:"createdBlockTimestamp,omitempty"`
+	// First token liquidity details
+	TokenALiquidity *DexPoolTokenLiquidity `json:"tokenALiquidity,omitempty"`
+	// Second token liquidity details
+	TokenBLiquidity *DexPoolTokenLiquidity `json:"tokenBLiquidity,omitempty"`
 }
 
 type _DexPoolDTO DexPoolDTO
@@ -355,6 +373,294 @@ func (o *DexPoolDTO) SetTvlInSol(v string) {
 	o.TvlInSol = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *DexPoolDTO) GetType() float32 {
+	if o == nil || IsNil(o.Type) {
+		var ret float32
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DexPoolDTO) GetTypeOk() (*float32, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *DexPoolDTO) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given float32 and assigns it to the Type field.
+func (o *DexPoolDTO) SetType(v float32) {
+	o.Type = &v
+}
+
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *DexPoolDTO) GetVersion() float32 {
+	if o == nil || IsNil(o.Version) {
+		var ret float32
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DexPoolDTO) GetVersionOk() (*float32, bool) {
+	if o == nil || IsNil(o.Version) {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *DexPoolDTO) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given float32 and assigns it to the Version field.
+func (o *DexPoolDTO) SetVersion(v float32) {
+	o.Version = &v
+}
+
+// GetLiquidityModel returns the LiquidityModel field value if set, zero value otherwise.
+func (o *DexPoolDTO) GetLiquidityModel() float32 {
+	if o == nil || IsNil(o.LiquidityModel) {
+		var ret float32
+		return ret
+	}
+	return *o.LiquidityModel
+}
+
+// GetLiquidityModelOk returns a tuple with the LiquidityModel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DexPoolDTO) GetLiquidityModelOk() (*float32, bool) {
+	if o == nil || IsNil(o.LiquidityModel) {
+		return nil, false
+	}
+	return o.LiquidityModel, true
+}
+
+// HasLiquidityModel returns a boolean if a field has been set.
+func (o *DexPoolDTO) HasLiquidityModel() bool {
+	if o != nil && !IsNil(o.LiquidityModel) {
+		return true
+	}
+
+	return false
+}
+
+// SetLiquidityModel gets a reference to the given float32 and assigns it to the LiquidityModel field.
+func (o *DexPoolDTO) SetLiquidityModel(v float32) {
+	o.LiquidityModel = &v
+}
+
+// GetFeeRate returns the FeeRate field value if set, zero value otherwise.
+func (o *DexPoolDTO) GetFeeRate() string {
+	if o == nil || IsNil(o.FeeRate) {
+		var ret string
+		return ret
+	}
+	return *o.FeeRate
+}
+
+// GetFeeRateOk returns a tuple with the FeeRate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DexPoolDTO) GetFeeRateOk() (*string, bool) {
+	if o == nil || IsNil(o.FeeRate) {
+		return nil, false
+	}
+	return o.FeeRate, true
+}
+
+// HasFeeRate returns a boolean if a field has been set.
+func (o *DexPoolDTO) HasFeeRate() bool {
+	if o != nil && !IsNil(o.FeeRate) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeeRate gets a reference to the given string and assigns it to the FeeRate field.
+func (o *DexPoolDTO) SetFeeRate(v string) {
+	o.FeeRate = &v
+}
+
+// GetTickSpacing returns the TickSpacing field value if set, zero value otherwise.
+func (o *DexPoolDTO) GetTickSpacing() int32 {
+	if o == nil || IsNil(o.TickSpacing) {
+		var ret int32
+		return ret
+	}
+	return *o.TickSpacing
+}
+
+// GetTickSpacingOk returns a tuple with the TickSpacing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DexPoolDTO) GetTickSpacingOk() (*int32, bool) {
+	if o == nil || IsNil(o.TickSpacing) {
+		return nil, false
+	}
+	return o.TickSpacing, true
+}
+
+// HasTickSpacing returns a boolean if a field has been set.
+func (o *DexPoolDTO) HasTickSpacing() bool {
+	if o != nil && !IsNil(o.TickSpacing) {
+		return true
+	}
+
+	return false
+}
+
+// SetTickSpacing gets a reference to the given int32 and assigns it to the TickSpacing field.
+func (o *DexPoolDTO) SetTickSpacing(v int32) {
+	o.TickSpacing = &v
+}
+
+// GetTokenCount returns the TokenCount field value if set, zero value otherwise.
+func (o *DexPoolDTO) GetTokenCount() int32 {
+	if o == nil || IsNil(o.TokenCount) {
+		var ret int32
+		return ret
+	}
+	return *o.TokenCount
+}
+
+// GetTokenCountOk returns a tuple with the TokenCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DexPoolDTO) GetTokenCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.TokenCount) {
+		return nil, false
+	}
+	return o.TokenCount, true
+}
+
+// HasTokenCount returns a boolean if a field has been set.
+func (o *DexPoolDTO) HasTokenCount() bool {
+	if o != nil && !IsNil(o.TokenCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenCount gets a reference to the given int32 and assigns it to the TokenCount field.
+func (o *DexPoolDTO) SetTokenCount(v int32) {
+	o.TokenCount = &v
+}
+
+// GetCreatedBlockTimestamp returns the CreatedBlockTimestamp field value if set, zero value otherwise.
+func (o *DexPoolDTO) GetCreatedBlockTimestamp() string {
+	if o == nil || IsNil(o.CreatedBlockTimestamp) {
+		var ret string
+		return ret
+	}
+	return *o.CreatedBlockTimestamp
+}
+
+// GetCreatedBlockTimestampOk returns a tuple with the CreatedBlockTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DexPoolDTO) GetCreatedBlockTimestampOk() (*string, bool) {
+	if o == nil || IsNil(o.CreatedBlockTimestamp) {
+		return nil, false
+	}
+	return o.CreatedBlockTimestamp, true
+}
+
+// HasCreatedBlockTimestamp returns a boolean if a field has been set.
+func (o *DexPoolDTO) HasCreatedBlockTimestamp() bool {
+	if o != nil && !IsNil(o.CreatedBlockTimestamp) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBlockTimestamp gets a reference to the given string and assigns it to the CreatedBlockTimestamp field.
+func (o *DexPoolDTO) SetCreatedBlockTimestamp(v string) {
+	o.CreatedBlockTimestamp = &v
+}
+
+// GetTokenALiquidity returns the TokenALiquidity field value if set, zero value otherwise.
+func (o *DexPoolDTO) GetTokenALiquidity() DexPoolTokenLiquidity {
+	if o == nil || IsNil(o.TokenALiquidity) {
+		var ret DexPoolTokenLiquidity
+		return ret
+	}
+	return *o.TokenALiquidity
+}
+
+// GetTokenALiquidityOk returns a tuple with the TokenALiquidity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DexPoolDTO) GetTokenALiquidityOk() (*DexPoolTokenLiquidity, bool) {
+	if o == nil || IsNil(o.TokenALiquidity) {
+		return nil, false
+	}
+	return o.TokenALiquidity, true
+}
+
+// HasTokenALiquidity returns a boolean if a field has been set.
+func (o *DexPoolDTO) HasTokenALiquidity() bool {
+	if o != nil && !IsNil(o.TokenALiquidity) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenALiquidity gets a reference to the given DexPoolTokenLiquidity and assigns it to the TokenALiquidity field.
+func (o *DexPoolDTO) SetTokenALiquidity(v DexPoolTokenLiquidity) {
+	o.TokenALiquidity = &v
+}
+
+// GetTokenBLiquidity returns the TokenBLiquidity field value if set, zero value otherwise.
+func (o *DexPoolDTO) GetTokenBLiquidity() DexPoolTokenLiquidity {
+	if o == nil || IsNil(o.TokenBLiquidity) {
+		var ret DexPoolTokenLiquidity
+		return ret
+	}
+	return *o.TokenBLiquidity
+}
+
+// GetTokenBLiquidityOk returns a tuple with the TokenBLiquidity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DexPoolDTO) GetTokenBLiquidityOk() (*DexPoolTokenLiquidity, bool) {
+	if o == nil || IsNil(o.TokenBLiquidity) {
+		return nil, false
+	}
+	return o.TokenBLiquidity, true
+}
+
+// HasTokenBLiquidity returns a boolean if a field has been set.
+func (o *DexPoolDTO) HasTokenBLiquidity() bool {
+	if o != nil && !IsNil(o.TokenBLiquidity) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenBLiquidity gets a reference to the given DexPoolTokenLiquidity and assigns it to the TokenBLiquidity field.
+func (o *DexPoolDTO) SetTokenBLiquidity(v DexPoolTokenLiquidity) {
+	o.TokenBLiquidity = &v
+}
+
 func (o DexPoolDTO) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -386,6 +692,33 @@ func (o DexPoolDTO) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TvlInSol) {
 		toSerialize["tvlInSol"] = o.TvlInSol
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.LiquidityModel) {
+		toSerialize["liquidityModel"] = o.LiquidityModel
+	}
+	if !IsNil(o.FeeRate) {
+		toSerialize["feeRate"] = o.FeeRate
+	}
+	if !IsNil(o.TickSpacing) {
+		toSerialize["tickSpacing"] = o.TickSpacing
+	}
+	if !IsNil(o.TokenCount) {
+		toSerialize["tokenCount"] = o.TokenCount
+	}
+	if !IsNil(o.CreatedBlockTimestamp) {
+		toSerialize["createdBlockTimestamp"] = o.CreatedBlockTimestamp
+	}
+	if !IsNil(o.TokenALiquidity) {
+		toSerialize["tokenALiquidity"] = o.TokenALiquidity
+	}
+	if !IsNil(o.TokenBLiquidity) {
+		toSerialize["tokenBLiquidity"] = o.TokenBLiquidity
 	}
 	return toSerialize, nil
 }

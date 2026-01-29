@@ -22,21 +22,21 @@ var _ MappedNullable = &CreateTokenInput{}
 
 // CreateTokenInput struct for CreateTokenInput
 type CreateTokenInput struct {
-	// DTO.DEX.IDENTIFIER
+	// DEX identifier for the trade
 	Dex string `json:"dex"`
-	// DTO.DEX.WALLET
+	// Public key of the wallet initiating the transaction
 	UserAddress string `json:"userAddress"`
-	// DTO.DEX.BASE.PRIORITY_FEE
+	// Priority fee in SOL to increase transaction processing speed
 	PriorityFee *string `json:"priorityFee,omitempty"`
-	// DTO.DEX.MINT.NAME
+	// Name of the token to be created
 	Name string `json:"name"`
-	// DTO.DEX.MINT.SYMBOL
+	// Token symbol/ticker
 	Symbol string `json:"symbol"`
-	// DTO.DEX.MINT.URI
+	// URI for token metadata (usually points to image or JSON)
 	Uri *string `json:"uri,omitempty"`
-	// DTO.DEX.MINT.IMAGE
+	// Token image URL (Base64 or HTTPS)
 	Image *string `json:"image,omitempty"`
-	// DTO.DEX.MINT.EXTRA
+	// Additional metadata about the created token
 	Extra map[string]interface{} `json:"extra,omitempty"`
 }
 

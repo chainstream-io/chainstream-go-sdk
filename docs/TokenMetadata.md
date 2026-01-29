@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Chain** | **string** | DTO.TOKEN.METADATA.CHAIN | 
-**Decimals** | **int64** | DTO.TOKEN.METADATA.DECIMALS | 
-**Name** | **string** | DTO.TOKEN.METADATA.NAME | 
-**Symbol** | **string** | DTO.TOKEN.METADATA.SYMBOL | 
-**MetadataAddress** | Pointer to **string** | DTO.TOKEN.METADATA.METADATA_ADDRESS | [optional] 
-**Address** | **string** | DTO.TOKEN.METADATA.ADDRESS | 
-**TokenCreators** | Pointer to [**[]TokenCreatorsDTO**](TokenCreatorsDTO.md) | DTO.TOKEN.METADATA.TOKEN_CREATORS | [optional] 
-**ImageUrl** | Pointer to **string** | DTO.TOKEN.METADATA.IMAGE_URL | [optional] 
-**Uri** | Pointer to **string** | DTO.TOKEN.METADATA.URI | [optional] 
-**Extra** | Pointer to [**TokenExtraDTO**](TokenExtraDTO.md) | DTO.TOKEN.METADATA.EXTRA | [optional] 
-**SocialMedias** | Pointer to [**TokenSocialMediasDTO**](TokenSocialMediasDTO.md) | DTO.TOKEN.METADATA.SOCIAL_MEDIAS | [optional] 
-**TokenCreatedAt** | Pointer to **int64** | DTO.TOKEN.METADATA.TOKEN_CREATED_AT | [optional] 
-**Description** | Pointer to **string** | DTO.TOKEN.METADATA.DESCRIPTION | [optional] 
-**DevTotalTokens** | Pointer to **string** | DTO.TOKEN.METADATA.DEV_TOTAL_TOKENS | [optional] 
-**DevLastTokenCreatedAt** | Pointer to **string** | DTO.TOKEN.METADATA.DEV_LAST_TOKEN_CREATED_AT | [optional] 
+**Chain** | **string** | Blockchain network identifier | 
+**Decimals** | **int64** | Token decimals | 
+**Name** | **string** | Token name | 
+**Symbol** | **string** | Token symbol | 
+**MetadataAddress** | Pointer to **string** | Metadata program address | [optional] 
+**Address** | **string** | Token mint address | 
+**TokenCreators** | Pointer to [**[]TokenCreatorsDTO**](TokenCreatorsDTO.md) | Token creator addresses | [optional] 
+**ImageUrl** | Pointer to **string** | Token image URL | [optional] 
+**Uri** | Pointer to **string** | Metadata URI | [optional] 
+**Extra** | Pointer to [**TokenExtraDTO**](TokenExtraDTO.md) | Additional metadata | [optional] 
+**SocialMedias** | Pointer to [**TokenSocialMediasDTO**](TokenSocialMediasDTO.md) | Social media links | [optional] 
+**TokenCreatedAt** | Pointer to **int64** | Token creation timestamp | [optional] 
+**Description** | Pointer to **string** | Token description | [optional] 
+**DevTotalTokens** | Pointer to **string** | Total number of tokens created by dev | [optional] 
+**DevLastTokenCreatedAt** | Pointer to **string** | Timestamp of the last token created by dev | [optional] 
 
 ## Methods
 

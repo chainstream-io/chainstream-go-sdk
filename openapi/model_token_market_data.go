@@ -22,89 +22,93 @@ var _ MappedNullable = &TokenMarketData{}
 
 // TokenMarketData struct for TokenMarketData
 type TokenMarketData struct {
-	// DTO.TOKEN.MARKET_CAP.TOTAL_SUPPLY
+	// Total supply
 	TotalSupply string `json:"totalSupply"`
-	// DTO.TOKEN.MARKET_CAP.MARKET_CAP_IN_SOL
+	// MarketCap in SOL
 	MarketCapInSol *string `json:"marketCapInSol,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.MARKET_CAP_IN_USD
+	// MarketCap in USD
 	MarketCapInUsd string `json:"marketCapInUsd"`
-	// DTO.TOKEN.MARKET_CAP.TOP10_TOTAL_HOLDINGS
+	// Total holdings of top 10 holders
 	Top10TotalHoldings *string `json:"top10TotalHoldings,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.TOP10_HOLDINGS_RATIO
+	// Ratio of holdings by top 10 holders
 	Top10HoldingsRatio *string `json:"top10HoldingsRatio,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.TOP100_TOTAL_HOLDINGS
+	// Total holdings of top 100 holders
 	Top100TotalHoldings *string `json:"top100TotalHoldings,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.TOP100_HOLDINGS_RATIO
+	// Ratio of holdings by top 100 holders
 	Top100HoldingsRatio *string `json:"top100HoldingsRatio,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.HOLDERS
+	// Total number of token holders
 	Holders string `json:"holders"`
-	// DTO.TOKEN.MARKET_CAP.PRICE_IN_SOL
+	// Price in SOL
 	PriceInSol *string `json:"priceInSol,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.PRICE_IN_USD
+	// Price in USD
 	PriceInUsd string `json:"priceInUsd"`
-	// DTO.TOKEN.MARKET_CAP.LIQUIDITY_IN_SOL
-	TvlInSol *string `json:"tvlInSol,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.LIQUIDITY_IN_USD
-	TvlInUsd string `json:"tvlInUsd"`
-	// DTO.TOKEN.MARKET_CAP.COMPLETION_RATIO
+	// TVL of the largest pool in SOL
+	MaxPoolTvlInSol *string `json:"maxPoolTvlInSol,omitempty"`
+	// TVL of the largest pool in USD
+	MaxPoolTvlInUsd *string `json:"maxPoolTvlInUsd,omitempty"`
+	// Total TVL across all pools in SOL
+	TotalTvlInSol string `json:"totalTvlInSol"`
+	// Total TVL across all pools in USD
+	TotalTvlInUsd string `json:"totalTvlInUsd"`
+	// Graduation completion progress
 	CompletionRatio *string `json:"completionRatio,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.TOP50_TOTAL_HOLDINGS
+	// Total holdings of top 50 holders
 	Top50TotalHoldings *string `json:"top50TotalHoldings,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.TOP50_HOLDINGS_RATIO
+	// Ratio of holdings by top 50 holders
 	Top50HoldingsRatio *string `json:"top50HoldingsRatio,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.BLUECHIP_TOTAL_HOLDERS
+	// Total number of bluechip holders
 	BluechipTotalHolders *string `json:"bluechipTotalHolders,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.BLUECHIP_TOTAL_HOLDINGS
+	// Total holdings of bluechip holders
 	BluechipTotalHoldings *string `json:"bluechipTotalHoldings,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.BLUECHIP_HOLDINGS_RATIO
+	// Ratio of holdings by bluechip holders
 	BluechipHoldingsRatio *string `json:"bluechipHoldingsRatio,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.KOL_TOTAL_HOLDERS
+	// Total number of KOL holders
 	KolTotalHolders *string `json:"kolTotalHolders,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.KOL_TOTAL_HOLDINGS
+	// Total holdings of KOL holders
 	KolTotalHoldings *string `json:"kolTotalHoldings,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.KOL_HOLDINGS_RATIO
+	// Ratio of holdings by KOL holders
 	KolHoldingsRatio *string `json:"kolHoldingsRatio,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.SNIPER_TOTAL_HOLDERS
+	// Total number of sniper holders
 	SniperTotalHolders *string `json:"sniperTotalHolders,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.SNIPER_TOTAL_HOLDINGS
+	// Total holdings of sniper holders
 	SniperTotalHoldings *string `json:"sniperTotalHoldings,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.SNIPER_HOLDINGS_RATIO
+	// Ratio of holdings by sniper holders
 	SniperHoldingsRatio *string `json:"sniperHoldingsRatio,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.PRO_TOTAL_HOLDERS
+	// Total number of pro holders
 	ProTotalHolders *string `json:"proTotalHolders,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.PRO_TOTAL_HOLDINGS
+	// Total holdings of pro holders
 	ProTotalHoldings *string `json:"proTotalHoldings,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.PRO_HOLDINGS_RATIO
+	// Ratio of holdings by pro holders
 	ProHoldingsRatio *string `json:"proHoldingsRatio,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.INSIDER_TOTAL_HOLDERS
+	// Total number of insider holders
 	InsiderTotalHolders *string `json:"insiderTotalHolders,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.INSIDER_TOTAL_HOLDINGS
+	// Total holdings of insider holders
 	InsiderTotalHoldings *string `json:"insiderTotalHoldings,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.INSIDER_HOLDINGS_RATIO
+	// Ratio of holdings by insider holders
 	InsiderHoldingsRatio *string `json:"insiderHoldingsRatio,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.SANDWISH_TOTAL_HOLDERS
+	// Total number of sandwish holders
 	SandwishTotalHolders *string `json:"sandwishTotalHolders,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.SANDWISH_TOTAL_HOLDINGS
+	// Total holdings of sandwish holders
 	SandwishTotalHoldings *string `json:"sandwishTotalHoldings,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.SANDWISH_HOLDINGS_RATIO
+	// Ratio of holdings by sandwish holders
 	SandwishHoldingsRatio *string `json:"sandwishHoldingsRatio,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.FRESH_TOTAL_HOLDERS
+	// Total number of fresh holders
 	FreshTotalHolders *string `json:"freshTotalHolders,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.FRESH_TOTAL_HOLDINGS
+	// Total holdings of fresh holders
 	FreshTotalHoldings *string `json:"freshTotalHoldings,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.FRESH_HOLDINGS_RATIO
+	// Ratio of holdings by fresh holders
 	FreshHoldingsRatio *string `json:"freshHoldingsRatio,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.BUNDLE_TOTAL_HOLDERS
+	// Total number of bundle holders
 	BundleTotalHolders *string `json:"bundleTotalHolders,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.BUNDLE_TOTAL_HOLDINGS
+	// Total holdings of bundle holders
 	BundleTotalHoldings *string `json:"bundleTotalHoldings,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.BUNDLE_HOLDINGS_RATIO
+	// Ratio of holdings by bundle holders
 	BundleHoldingsRatio *string `json:"bundleHoldingsRatio,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.DEV_TOTAL_HOLDERS
+	// Total number of dev holders
 	DevTotalHolders *string `json:"devTotalHolders,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.DEV_TOTAL_HOLDINGS
+	// Total holdings of dev holders
 	DevTotalHoldings *string `json:"devTotalHoldings,omitempty"`
-	// DTO.TOKEN.MARKET_CAP.DEV_HOLDINGS_RATIO
+	// Ratio of holdings by dev holders
 	DevHoldingsRatio *string `json:"devHoldingsRatio,omitempty"`
 }
 
@@ -114,13 +118,14 @@ type _TokenMarketData TokenMarketData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenMarketData(totalSupply string, marketCapInUsd string, holders string, priceInUsd string, tvlInUsd string) *TokenMarketData {
+func NewTokenMarketData(totalSupply string, marketCapInUsd string, holders string, priceInUsd string, totalTvlInSol string, totalTvlInUsd string) *TokenMarketData {
 	this := TokenMarketData{}
 	this.TotalSupply = totalSupply
 	this.MarketCapInUsd = marketCapInUsd
 	this.Holders = holders
 	this.PriceInUsd = priceInUsd
-	this.TvlInUsd = tvlInUsd
+	this.TotalTvlInSol = totalTvlInSol
+	this.TotalTvlInUsd = totalTvlInUsd
 	return &this
 }
 
@@ -420,60 +425,116 @@ func (o *TokenMarketData) SetPriceInUsd(v string) {
 	o.PriceInUsd = v
 }
 
-// GetTvlInSol returns the TvlInSol field value if set, zero value otherwise.
-func (o *TokenMarketData) GetTvlInSol() string {
-	if o == nil || IsNil(o.TvlInSol) {
+// GetMaxPoolTvlInSol returns the MaxPoolTvlInSol field value if set, zero value otherwise.
+func (o *TokenMarketData) GetMaxPoolTvlInSol() string {
+	if o == nil || IsNil(o.MaxPoolTvlInSol) {
 		var ret string
 		return ret
 	}
-	return *o.TvlInSol
+	return *o.MaxPoolTvlInSol
 }
 
-// GetTvlInSolOk returns a tuple with the TvlInSol field value if set, nil otherwise
+// GetMaxPoolTvlInSolOk returns a tuple with the MaxPoolTvlInSol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenMarketData) GetTvlInSolOk() (*string, bool) {
-	if o == nil || IsNil(o.TvlInSol) {
+func (o *TokenMarketData) GetMaxPoolTvlInSolOk() (*string, bool) {
+	if o == nil || IsNil(o.MaxPoolTvlInSol) {
 		return nil, false
 	}
-	return o.TvlInSol, true
+	return o.MaxPoolTvlInSol, true
 }
 
-// HasTvlInSol returns a boolean if a field has been set.
-func (o *TokenMarketData) HasTvlInSol() bool {
-	if o != nil && !IsNil(o.TvlInSol) {
+// HasMaxPoolTvlInSol returns a boolean if a field has been set.
+func (o *TokenMarketData) HasMaxPoolTvlInSol() bool {
+	if o != nil && !IsNil(o.MaxPoolTvlInSol) {
 		return true
 	}
 
 	return false
 }
 
-// SetTvlInSol gets a reference to the given string and assigns it to the TvlInSol field.
-func (o *TokenMarketData) SetTvlInSol(v string) {
-	o.TvlInSol = &v
+// SetMaxPoolTvlInSol gets a reference to the given string and assigns it to the MaxPoolTvlInSol field.
+func (o *TokenMarketData) SetMaxPoolTvlInSol(v string) {
+	o.MaxPoolTvlInSol = &v
 }
 
-// GetTvlInUsd returns the TvlInUsd field value
-func (o *TokenMarketData) GetTvlInUsd() string {
+// GetMaxPoolTvlInUsd returns the MaxPoolTvlInUsd field value if set, zero value otherwise.
+func (o *TokenMarketData) GetMaxPoolTvlInUsd() string {
+	if o == nil || IsNil(o.MaxPoolTvlInUsd) {
+		var ret string
+		return ret
+	}
+	return *o.MaxPoolTvlInUsd
+}
+
+// GetMaxPoolTvlInUsdOk returns a tuple with the MaxPoolTvlInUsd field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetMaxPoolTvlInUsdOk() (*string, bool) {
+	if o == nil || IsNil(o.MaxPoolTvlInUsd) {
+		return nil, false
+	}
+	return o.MaxPoolTvlInUsd, true
+}
+
+// HasMaxPoolTvlInUsd returns a boolean if a field has been set.
+func (o *TokenMarketData) HasMaxPoolTvlInUsd() bool {
+	if o != nil && !IsNil(o.MaxPoolTvlInUsd) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxPoolTvlInUsd gets a reference to the given string and assigns it to the MaxPoolTvlInUsd field.
+func (o *TokenMarketData) SetMaxPoolTvlInUsd(v string) {
+	o.MaxPoolTvlInUsd = &v
+}
+
+// GetTotalTvlInSol returns the TotalTvlInSol field value
+func (o *TokenMarketData) GetTotalTvlInSol() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.TvlInUsd
+	return o.TotalTvlInSol
 }
 
-// GetTvlInUsdOk returns a tuple with the TvlInUsd field value
+// GetTotalTvlInSolOk returns a tuple with the TotalTvlInSol field value
 // and a boolean to check if the value has been set.
-func (o *TokenMarketData) GetTvlInUsdOk() (*string, bool) {
+func (o *TokenMarketData) GetTotalTvlInSolOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.TvlInUsd, true
+	return &o.TotalTvlInSol, true
 }
 
-// SetTvlInUsd sets field value
-func (o *TokenMarketData) SetTvlInUsd(v string) {
-	o.TvlInUsd = v
+// SetTotalTvlInSol sets field value
+func (o *TokenMarketData) SetTotalTvlInSol(v string) {
+	o.TotalTvlInSol = v
+}
+
+// GetTotalTvlInUsd returns the TotalTvlInUsd field value
+func (o *TokenMarketData) GetTotalTvlInUsd() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TotalTvlInUsd
+}
+
+// GetTotalTvlInUsdOk returns a tuple with the TotalTvlInUsd field value
+// and a boolean to check if the value has been set.
+func (o *TokenMarketData) GetTotalTvlInUsdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TotalTvlInUsd, true
+}
+
+// SetTotalTvlInUsd sets field value
+func (o *TokenMarketData) SetTotalTvlInUsd(v string) {
+	o.TotalTvlInUsd = v
 }
 
 // GetCompletionRatio returns the CompletionRatio field value if set, zero value otherwise.
@@ -1468,10 +1529,14 @@ func (o TokenMarketData) ToMap() (map[string]interface{}, error) {
 		toSerialize["priceInSol"] = o.PriceInSol
 	}
 	toSerialize["priceInUsd"] = o.PriceInUsd
-	if !IsNil(o.TvlInSol) {
-		toSerialize["tvlInSol"] = o.TvlInSol
+	if !IsNil(o.MaxPoolTvlInSol) {
+		toSerialize["maxPoolTvlInSol"] = o.MaxPoolTvlInSol
 	}
-	toSerialize["tvlInUsd"] = o.TvlInUsd
+	if !IsNil(o.MaxPoolTvlInUsd) {
+		toSerialize["maxPoolTvlInUsd"] = o.MaxPoolTvlInUsd
+	}
+	toSerialize["totalTvlInSol"] = o.TotalTvlInSol
+	toSerialize["totalTvlInUsd"] = o.TotalTvlInUsd
 	if !IsNil(o.CompletionRatio) {
 		toSerialize["completionRatio"] = o.CompletionRatio
 	}
@@ -1574,7 +1639,8 @@ func (o *TokenMarketData) UnmarshalJSON(data []byte) (err error) {
 		"marketCapInUsd",
 		"holders",
 		"priceInUsd",
-		"tvlInUsd",
+		"totalTvlInSol",
+		"totalTvlInUsd",
 	}
 
 	allProperties := make(map[string]interface{})

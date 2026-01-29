@@ -37,4 +37,19 @@ func Test_chainstream_DexPoolAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DexPoolAPIService GetDexpoolSnapshots", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var chain openapi.ChainSymbol
+		var poolAddress string
+
+		resp, httpRes, err := apiClient.DexPoolAPI.GetDexpoolSnapshots(context.Background(), chain, poolAddress).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

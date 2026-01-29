@@ -4,54 +4,56 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalSupply** | **string** | DTO.TOKEN.MARKET_CAP.TOTAL_SUPPLY | 
-**MarketCapInSol** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.MARKET_CAP_IN_SOL | [optional] 
-**MarketCapInUsd** | **string** | DTO.TOKEN.MARKET_CAP.MARKET_CAP_IN_USD | 
-**Top10TotalHoldings** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.TOP10_TOTAL_HOLDINGS | [optional] 
-**Top10HoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.TOP10_HOLDINGS_RATIO | [optional] 
-**Top100TotalHoldings** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.TOP100_TOTAL_HOLDINGS | [optional] 
-**Top100HoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.TOP100_HOLDINGS_RATIO | [optional] 
-**Holders** | **string** | DTO.TOKEN.MARKET_CAP.HOLDERS | 
-**PriceInSol** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.PRICE_IN_SOL | [optional] 
-**PriceInUsd** | **string** | DTO.TOKEN.MARKET_CAP.PRICE_IN_USD | 
-**TvlInSol** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.LIQUIDITY_IN_SOL | [optional] 
-**TvlInUsd** | **string** | DTO.TOKEN.MARKET_CAP.LIQUIDITY_IN_USD | 
-**CompletionRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.COMPLETION_RATIO | [optional] 
-**Top50TotalHoldings** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.TOP50_TOTAL_HOLDINGS | [optional] 
-**Top50HoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.TOP50_HOLDINGS_RATIO | [optional] 
-**BluechipTotalHolders** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.BLUECHIP_TOTAL_HOLDERS | [optional] 
-**BluechipTotalHoldings** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.BLUECHIP_TOTAL_HOLDINGS | [optional] 
-**BluechipHoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.BLUECHIP_HOLDINGS_RATIO | [optional] 
-**KolTotalHolders** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.KOL_TOTAL_HOLDERS | [optional] 
-**KolTotalHoldings** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.KOL_TOTAL_HOLDINGS | [optional] 
-**KolHoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.KOL_HOLDINGS_RATIO | [optional] 
-**SniperTotalHolders** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.SNIPER_TOTAL_HOLDERS | [optional] 
-**SniperTotalHoldings** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.SNIPER_TOTAL_HOLDINGS | [optional] 
-**SniperHoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.SNIPER_HOLDINGS_RATIO | [optional] 
-**ProTotalHolders** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.PRO_TOTAL_HOLDERS | [optional] 
-**ProTotalHoldings** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.PRO_TOTAL_HOLDINGS | [optional] 
-**ProHoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.PRO_HOLDINGS_RATIO | [optional] 
-**InsiderTotalHolders** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.INSIDER_TOTAL_HOLDERS | [optional] 
-**InsiderTotalHoldings** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.INSIDER_TOTAL_HOLDINGS | [optional] 
-**InsiderHoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.INSIDER_HOLDINGS_RATIO | [optional] 
-**SandwishTotalHolders** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.SANDWISH_TOTAL_HOLDERS | [optional] 
-**SandwishTotalHoldings** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.SANDWISH_TOTAL_HOLDINGS | [optional] 
-**SandwishHoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.SANDWISH_HOLDINGS_RATIO | [optional] 
-**FreshTotalHolders** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.FRESH_TOTAL_HOLDERS | [optional] 
-**FreshTotalHoldings** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.FRESH_TOTAL_HOLDINGS | [optional] 
-**FreshHoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.FRESH_HOLDINGS_RATIO | [optional] 
-**BundleTotalHolders** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.BUNDLE_TOTAL_HOLDERS | [optional] 
-**BundleTotalHoldings** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.BUNDLE_TOTAL_HOLDINGS | [optional] 
-**BundleHoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.BUNDLE_HOLDINGS_RATIO | [optional] 
-**DevTotalHolders** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.DEV_TOTAL_HOLDERS | [optional] 
-**DevTotalHoldings** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.DEV_TOTAL_HOLDINGS | [optional] 
-**DevHoldingsRatio** | Pointer to **string** | DTO.TOKEN.MARKET_CAP.DEV_HOLDINGS_RATIO | [optional] 
+**TotalSupply** | **string** | Total supply | 
+**MarketCapInSol** | Pointer to **string** | MarketCap in SOL | [optional] 
+**MarketCapInUsd** | **string** | MarketCap in USD | 
+**Top10TotalHoldings** | Pointer to **string** | Total holdings of top 10 holders | [optional] 
+**Top10HoldingsRatio** | Pointer to **string** | Ratio of holdings by top 10 holders | [optional] 
+**Top100TotalHoldings** | Pointer to **string** | Total holdings of top 100 holders | [optional] 
+**Top100HoldingsRatio** | Pointer to **string** | Ratio of holdings by top 100 holders | [optional] 
+**Holders** | **string** | Total number of token holders | 
+**PriceInSol** | Pointer to **string** | Price in SOL | [optional] 
+**PriceInUsd** | **string** | Price in USD | 
+**MaxPoolTvlInSol** | Pointer to **string** | TVL of the largest pool in SOL | [optional] 
+**MaxPoolTvlInUsd** | Pointer to **string** | TVL of the largest pool in USD | [optional] 
+**TotalTvlInSol** | **string** | Total TVL across all pools in SOL | 
+**TotalTvlInUsd** | **string** | Total TVL across all pools in USD | 
+**CompletionRatio** | Pointer to **string** | Graduation completion progress | [optional] 
+**Top50TotalHoldings** | Pointer to **string** | Total holdings of top 50 holders | [optional] 
+**Top50HoldingsRatio** | Pointer to **string** | Ratio of holdings by top 50 holders | [optional] 
+**BluechipTotalHolders** | Pointer to **string** | Total number of bluechip holders | [optional] 
+**BluechipTotalHoldings** | Pointer to **string** | Total holdings of bluechip holders | [optional] 
+**BluechipHoldingsRatio** | Pointer to **string** | Ratio of holdings by bluechip holders | [optional] 
+**KolTotalHolders** | Pointer to **string** | Total number of KOL holders | [optional] 
+**KolTotalHoldings** | Pointer to **string** | Total holdings of KOL holders | [optional] 
+**KolHoldingsRatio** | Pointer to **string** | Ratio of holdings by KOL holders | [optional] 
+**SniperTotalHolders** | Pointer to **string** | Total number of sniper holders | [optional] 
+**SniperTotalHoldings** | Pointer to **string** | Total holdings of sniper holders | [optional] 
+**SniperHoldingsRatio** | Pointer to **string** | Ratio of holdings by sniper holders | [optional] 
+**ProTotalHolders** | Pointer to **string** | Total number of pro holders | [optional] 
+**ProTotalHoldings** | Pointer to **string** | Total holdings of pro holders | [optional] 
+**ProHoldingsRatio** | Pointer to **string** | Ratio of holdings by pro holders | [optional] 
+**InsiderTotalHolders** | Pointer to **string** | Total number of insider holders | [optional] 
+**InsiderTotalHoldings** | Pointer to **string** | Total holdings of insider holders | [optional] 
+**InsiderHoldingsRatio** | Pointer to **string** | Ratio of holdings by insider holders | [optional] 
+**SandwishTotalHolders** | Pointer to **string** | Total number of sandwish holders | [optional] 
+**SandwishTotalHoldings** | Pointer to **string** | Total holdings of sandwish holders | [optional] 
+**SandwishHoldingsRatio** | Pointer to **string** | Ratio of holdings by sandwish holders | [optional] 
+**FreshTotalHolders** | Pointer to **string** | Total number of fresh holders | [optional] 
+**FreshTotalHoldings** | Pointer to **string** | Total holdings of fresh holders | [optional] 
+**FreshHoldingsRatio** | Pointer to **string** | Ratio of holdings by fresh holders | [optional] 
+**BundleTotalHolders** | Pointer to **string** | Total number of bundle holders | [optional] 
+**BundleTotalHoldings** | Pointer to **string** | Total holdings of bundle holders | [optional] 
+**BundleHoldingsRatio** | Pointer to **string** | Ratio of holdings by bundle holders | [optional] 
+**DevTotalHolders** | Pointer to **string** | Total number of dev holders | [optional] 
+**DevTotalHoldings** | Pointer to **string** | Total holdings of dev holders | [optional] 
+**DevHoldingsRatio** | Pointer to **string** | Ratio of holdings by dev holders | [optional] 
 
 ## Methods
 
 ### NewTokenMarketData
 
-`func NewTokenMarketData(totalSupply string, marketCapInUsd string, holders string, priceInUsd string, tvlInUsd string, ) *TokenMarketData`
+`func NewTokenMarketData(totalSupply string, marketCapInUsd string, holders string, priceInUsd string, totalTvlInSol string, totalTvlInUsd string, ) *TokenMarketData`
 
 NewTokenMarketData instantiates a new TokenMarketData object
 This constructor will assign default values to properties that have it defined,
@@ -296,49 +298,94 @@ and a boolean to check if the value has been set.
 SetPriceInUsd sets PriceInUsd field to given value.
 
 
-### GetTvlInSol
+### GetMaxPoolTvlInSol
 
-`func (o *TokenMarketData) GetTvlInSol() string`
+`func (o *TokenMarketData) GetMaxPoolTvlInSol() string`
 
-GetTvlInSol returns the TvlInSol field if non-nil, zero value otherwise.
+GetMaxPoolTvlInSol returns the MaxPoolTvlInSol field if non-nil, zero value otherwise.
 
-### GetTvlInSolOk
+### GetMaxPoolTvlInSolOk
 
-`func (o *TokenMarketData) GetTvlInSolOk() (*string, bool)`
+`func (o *TokenMarketData) GetMaxPoolTvlInSolOk() (*string, bool)`
 
-GetTvlInSolOk returns a tuple with the TvlInSol field if it's non-nil, zero value otherwise
+GetMaxPoolTvlInSolOk returns a tuple with the MaxPoolTvlInSol field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTvlInSol
+### SetMaxPoolTvlInSol
 
-`func (o *TokenMarketData) SetTvlInSol(v string)`
+`func (o *TokenMarketData) SetMaxPoolTvlInSol(v string)`
 
-SetTvlInSol sets TvlInSol field to given value.
+SetMaxPoolTvlInSol sets MaxPoolTvlInSol field to given value.
 
-### HasTvlInSol
+### HasMaxPoolTvlInSol
 
-`func (o *TokenMarketData) HasTvlInSol() bool`
+`func (o *TokenMarketData) HasMaxPoolTvlInSol() bool`
 
-HasTvlInSol returns a boolean if a field has been set.
+HasMaxPoolTvlInSol returns a boolean if a field has been set.
 
-### GetTvlInUsd
+### GetMaxPoolTvlInUsd
 
-`func (o *TokenMarketData) GetTvlInUsd() string`
+`func (o *TokenMarketData) GetMaxPoolTvlInUsd() string`
 
-GetTvlInUsd returns the TvlInUsd field if non-nil, zero value otherwise.
+GetMaxPoolTvlInUsd returns the MaxPoolTvlInUsd field if non-nil, zero value otherwise.
 
-### GetTvlInUsdOk
+### GetMaxPoolTvlInUsdOk
 
-`func (o *TokenMarketData) GetTvlInUsdOk() (*string, bool)`
+`func (o *TokenMarketData) GetMaxPoolTvlInUsdOk() (*string, bool)`
 
-GetTvlInUsdOk returns a tuple with the TvlInUsd field if it's non-nil, zero value otherwise
+GetMaxPoolTvlInUsdOk returns a tuple with the MaxPoolTvlInUsd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTvlInUsd
+### SetMaxPoolTvlInUsd
 
-`func (o *TokenMarketData) SetTvlInUsd(v string)`
+`func (o *TokenMarketData) SetMaxPoolTvlInUsd(v string)`
 
-SetTvlInUsd sets TvlInUsd field to given value.
+SetMaxPoolTvlInUsd sets MaxPoolTvlInUsd field to given value.
+
+### HasMaxPoolTvlInUsd
+
+`func (o *TokenMarketData) HasMaxPoolTvlInUsd() bool`
+
+HasMaxPoolTvlInUsd returns a boolean if a field has been set.
+
+### GetTotalTvlInSol
+
+`func (o *TokenMarketData) GetTotalTvlInSol() string`
+
+GetTotalTvlInSol returns the TotalTvlInSol field if non-nil, zero value otherwise.
+
+### GetTotalTvlInSolOk
+
+`func (o *TokenMarketData) GetTotalTvlInSolOk() (*string, bool)`
+
+GetTotalTvlInSolOk returns a tuple with the TotalTvlInSol field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalTvlInSol
+
+`func (o *TokenMarketData) SetTotalTvlInSol(v string)`
+
+SetTotalTvlInSol sets TotalTvlInSol field to given value.
+
+
+### GetTotalTvlInUsd
+
+`func (o *TokenMarketData) GetTotalTvlInUsd() string`
+
+GetTotalTvlInUsd returns the TotalTvlInUsd field if non-nil, zero value otherwise.
+
+### GetTotalTvlInUsdOk
+
+`func (o *TokenMarketData) GetTotalTvlInUsdOk() (*string, bool)`
+
+GetTotalTvlInUsdOk returns a tuple with the TotalTvlInUsd field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalTvlInUsd
+
+`func (o *TokenMarketData) SetTotalTvlInUsd(v string)`
+
+SetTotalTvlInUsd sets TotalTvlInUsd field to given value.
 
 
 ### GetCompletionRatio

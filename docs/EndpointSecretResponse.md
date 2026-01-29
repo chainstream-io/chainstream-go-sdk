@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Secret** | Pointer to **string** | DTO.ENDPOINT.SECRET | [optional] 
+**Secret** | Pointer to **string** | Endpoint secret | [optional] 
 
 ## Methods
 

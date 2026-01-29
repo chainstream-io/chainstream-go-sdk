@@ -20,11 +20,11 @@ var _ MappedNullable = &FilterCondition{}
 
 // FilterCondition struct for FilterCondition
 type FilterCondition struct {
-	// DTO.TOKEN.FILTER.FIELD
+	// Filter field name
 	Field *string `json:"field,omitempty"`
-	// DTO.TOKEN.FILTER.MIN
+	// Minimum value for filter
 	Min *string `json:"min,omitempty"`
-	// DTO.TOKEN.FILTER.MAX
+	// Maximum value for filter
 	Max *string `json:"max,omitempty"`
 }
 

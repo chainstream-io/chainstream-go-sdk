@@ -22,13 +22,13 @@ var _ MappedNullable = &KYTRegisterTransferRequest{}
 
 // KYTRegisterTransferRequest struct for KYTRegisterTransferRequest
 type KYTRegisterTransferRequest struct {
-	// DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.NETWORK
+	// Transfer network
 	Network string `json:"network"`
-	// DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.ASSET
+	// Asset type
 	Asset string `json:"asset"`
-	// DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.TRANSFER_REFERENCE
+	// Transfer hash/transaction ID
 	TransferReference string `json:"transferReference"`
-	// DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.DIRECTION
+	// Transfer direction
 	Direction string `json:"direction"`
 }
 

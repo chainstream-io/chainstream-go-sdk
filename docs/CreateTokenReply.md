@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SerializedTx** | **string** | DTO.DEX.CREATE_TOKEN.SERIALIZED_TX | 
-**MintAddress** | **string** | DTO.DEX.CREATE_TOKEN.MINT_ADDRESS | 
+**SerializedTx** | **string** | Base64 encoded transaction for token creation | 
+**MintAddress** | **string** | Token mint address that requires signature for the transaction | 
 
 ## Methods
 

@@ -22,9 +22,9 @@ var _ MappedNullable = &WithdrawalAddressIdentificationsResponseDTO{}
 
 // WithdrawalAddressIdentificationsResponseDTO struct for WithdrawalAddressIdentificationsResponseDTO
 type WithdrawalAddressIdentificationsResponseDTO struct {
-	// DTO.KYT.WITHDRAWAL_ADDRESS_IDENTIFICATIONS_RESPONSE.CHAINALYSIS_IDENTIFICATIONS
+	// Chainalysis address identification list
 	ChainalysisIdentifications []ChainalysisAddressIdentification `json:"chainalysisIdentifications"`
-	// DTO.KYT.WITHDRAWAL_ADDRESS_IDENTIFICATIONS_RESPONSE.CUSTOM_ADDRESSES
+	// Custom address list
 	CustomAddresses []string `json:"customAddresses"`
 }
 

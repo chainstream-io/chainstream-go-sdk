@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SerializedTx** | **string** | DTO.DEX.MOONSHOT.CREATE_TOKEN.SERIALIZED_TX | 
-**Extra** | **map[string]interface{}** | DTO.DEX.MOONSHOT.CREATE_TOKEN.EXTRA | 
+**SerializedTx** | **string** | Base64 encoded transaction for Moonshot token creation | 
+**Extra** | **map[string]interface{}** | Additional metadata about the created Moonshot token | 
 
 ## Methods
 

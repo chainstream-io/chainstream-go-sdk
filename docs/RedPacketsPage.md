@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Total** | **int64** | DTO.PAGE.TOTAL | 
-**HasNextPage** | **bool** | DTO.PAGE.HAS_NEXT | 
-**StartCursor** | **string** | DTO.PAGE.START_CURSOR | 
-**EndCursor** | **string** | DTO.PAGE.END_CURSOR | 
+**Total** | **int64** | Total number of items | 
+**HasNextPage** | **bool** | Indicates if there are more results | 
+**StartCursor** | **string** | Cursor for first item in current page | 
+**EndCursor** | **string** | Cursor for last item in current page | 
 **Records** | [**[]RedPacketDTO**](RedPacketDTO.md) | Array of red packets | 
 
 ## Methods

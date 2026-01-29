@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Blockhash** | **string** | DTO.BLOCKCHAIN.LATEST_BLOCK.BLOCKHASH | 
-**LastValidBlockHeight** | **int64** | DTO.BLOCKCHAIN.LATEST_BLOCK.LAST_VALID_BLOCK_HEIGHT | 
+**Blockhash** | **string** | Latest block hash | 
+**LastValidBlockHeight** | **int64** | Last valid block height | 
 
 ## Methods
 

@@ -1,10 +1,10 @@
 # \IpfsAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Presign**](IpfsAPI.md#Presign) | **Post** /v1/ipfs/presign | CONTROLLER.IPFS.PRESIGN.SUMMARY
+[**Presign**](IpfsAPI.md#Presign) | **Post** /v1/ipfs/presign | IPFS - Presign
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > string Presign(ctx).Execute()
 
-CONTROLLER.IPFS.PRESIGN.SUMMARY
+IPFS - Presign
 
 
 

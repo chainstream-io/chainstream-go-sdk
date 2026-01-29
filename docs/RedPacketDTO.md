@@ -4,23 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Chain** | [**Chain**](Chain.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**Id** | **string** | DTO.RED_PACKET.ID | 
-**ShareId** | **string** | DTO.RED_PACKET.SHARE_ID | 
-**TxHash** | **string** | DTO.RED_PACKET.TX_HASH | 
-**Creator** | **string** | DTO.RED_PACKET.CREATOR | 
-**Mint** | **string** | DTO.RED_PACKET.MINT | 
-**TotalAmount** | **string** | DTO.RED_PACKET.TOTAL_AMOUNT | 
-**Memo** | **string** | DTO.RED_PACKET.MEMO | 
-**MaxClaims** | **int64** | DTO.RED_PACKET.MAX_CLAIMS | 
-**ClaimAuthority** | **string** | DTO.RED_PACKET.CLAIM_AUTHORITY | 
-**Expired** | **bool** | DTO.RED_PACKET.WITHDRAWED | 
-**Expiration** | **int64** | DTO.RED_PACKET.EXPIRATION | 
-**CreatedAt** | **int64** | DTO.RED_PACKET.CREATED_AT | 
-**ExpiredAt** | **int64** | DTO.RED_PACKET.EXPIRES_AT | 
-**ClaimedCount** | **int64** | DTO.RED_PACKET.CLAIMED_COUNT | 
-**ClaimedAmount** | **string** | DTO.RED_PACKET.CLAIMED_AMOUNT | 
-**RefundedAmount** | **string** | DTO.RED_PACKET.REFUND_AMOUNT | 
+**Chain** | [**Chain**](Chain.md) | A chain name listed in supported networks | 
+**Id** | **string** | Redpacket id | 
+**ShareId** | **string** | redpacket share id | 
+**TxHash** | **string** | Transaction hash | 
+**Creator** | **string** | Creator wallet address of the red packet | 
+**Mint** | **string** | Token mint address for the red packet | 
+**TotalAmount** | **string** | Total amount of tokens to be distributed | 
+**Memo** | **string** | Optional memo message for the red packet | 
+**MaxClaims** | **int64** | Maximum number of recipients | 
+**ClaimAuthority** | **string** | Optional authority address that can claim the red packet | 
+**Expired** | **bool** | Whether it is completed or not | 
+**Expiration** | **int64** | redpacket expiration | 
+**CreatedAt** | **int64** | Creation time | 
+**ExpiredAt** | **int64** | Expiry date | 
+**ClaimedCount** | **int64** | claimed count | 
+**ClaimedAmount** | **string** | claimed amount | 
+**RefundedAmount** | **string** | refunded amount | 
 
 ## Methods
 

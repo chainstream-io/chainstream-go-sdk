@@ -1,11 +1,11 @@
 # \DefiSolanaMoonshotAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**MoonshotCreateToken**](DefiSolanaMoonshotAPI.md#MoonshotCreateToken) | **Post** /v1/solana/moonshot/create | CONTROLLER.MOONSHOT.CREATE_TOKEN.SUMMARY
-[**MoonshotSubmitCreateToken**](DefiSolanaMoonshotAPI.md#MoonshotSubmitCreateToken) | **Post** /v1/solana/moonshot/submitCreateToken | CONTROLLER.MOONSHOT.SUBMIT_CREATE_TOKEN.SUMMARY
+[**MoonshotCreateToken**](DefiSolanaMoonshotAPI.md#MoonshotCreateToken) | **Post** /v1/solana/moonshot/create | Moonshot - Create Token
+[**MoonshotSubmitCreateToken**](DefiSolanaMoonshotAPI.md#MoonshotSubmitCreateToken) | **Post** /v1/solana/moonshot/submitCreateToken | Moonshot - Submit Create Token
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > MoonshotCreateTokenReply MoonshotCreateToken(ctx).MoonshotCreateTokenInput(moonshotCreateTokenInput).Execute()
 
-CONTROLLER.MOONSHOT.CREATE_TOKEN.SUMMARY
+Moonshot - Create Token
 
 
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 > MoonshotSubmitCreateToken200Response MoonshotSubmitCreateToken(ctx).MoonshotSubmitCreateTokenInput(moonshotSubmitCreateTokenInput).Execute()
 
-CONTROLLER.MOONSHOT.SUBMIT_CREATE_TOKEN.SUMMARY
+Moonshot - Submit Create Token
 
 
 

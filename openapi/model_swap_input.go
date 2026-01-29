@@ -22,23 +22,23 @@ var _ MappedNullable = &SwapInput{}
 
 // SwapInput struct for SwapInput
 type SwapInput struct {
-	// DTO.DEX.IDENTIFIER
+	// DEX identifier for the trade
 	Dex string `json:"dex"`
-	// DTO.DEX.WALLET
+	// Public key of the wallet initiating the transaction
 	UserAddress string `json:"userAddress"`
-	// DTO.DEX.BASE.PRIORITY_FEE
+	// Priority fee in SOL to increase transaction processing speed
 	PriorityFee *string `json:"priorityFee,omitempty"`
-	// DTO.DEX.SWAP.POOL_ADDRESS
+	// DEX pool address
 	PoolAddress *string `json:"poolAddress,omitempty"`
-	// DTO.DEX.SWAP.AMOUNT
+	// Amount to swap. Use \"auto\" for full balance or percentage like \"50%\"
 	Amount string `json:"amount"`
-	// DTO.DEX.SWAP.MODE
+	// Swap direction mode
 	SwapMode string `json:"swapMode"`
-	// DTO.DEX.SWAP.SLIPPAGE
+	// Slippage tolerance percentage
 	Slippage int64 `json:"slippage"`
-	// DTO.DEX.SWAP.INPUT_MINT
+	// Input Mint, the base token address
 	InputMint *string `json:"inputMint,omitempty"`
-	// DTO.DEX.SWAP.OUTPUT_MINT
+	// Ouput Mint, the quote token address
 	OutputMint *string `json:"outputMint,omitempty"`
 }
 

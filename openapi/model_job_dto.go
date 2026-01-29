@@ -22,9 +22,9 @@ var _ MappedNullable = &JobDTO{}
 
 // JobDTO struct for JobDTO
 type JobDTO struct {
-	// DTO.JOB.STATE
+	// Job state
 	State string `json:"state"`
-	// DTO.JOB.RESULT
+	// Job result
 	Result map[string]interface{} `json:"result"`
 }
 

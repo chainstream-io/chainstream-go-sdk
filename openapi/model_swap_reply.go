@@ -22,9 +22,9 @@ var _ MappedNullable = &SwapReply{}
 
 // SwapReply struct for SwapReply
 type SwapReply struct {
-	// DTO.DEX.SWAP.SERIALIZED_TX
+	// Base64 encoded transaction
 	SerializedTx string `json:"serializedTx"`
-	// DTO.DEX.SWAP.ELAPSED_TIME
+	// Time taken to process the request in milliseconds
 	ElapsedTime int64 `json:"elapsedTime"`
 }
 

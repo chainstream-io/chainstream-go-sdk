@@ -22,55 +22,55 @@ var _ MappedNullable = &WalletBalanceDetailDTO{}
 
 // WalletBalanceDetailDTO struct for WalletBalanceDetailDTO
 type WalletBalanceDetailDTO struct {
-	// DTO.WALLET.BALANCE.TOKEN_ADDRESS
+	// Token contract address
 	TokenAddress string `json:"tokenAddress"`
-	// DTO.WALLET.BALANCE.AMOUNT
+	// Token amount
 	Amount string `json:"amount"`
-	// DTO.WALLET.BALANCE.AMOUNT_IN_USD
+	// Token amount in USD
 	ValueInUsd string `json:"valueInUsd"`
-	// DTO.WALLET.BALANCE.TOKEN_NAME
+	// Token name
 	Name string `json:"name"`
-	// DTO.WALLET.BALANCE.TOKEN_SYMBOL
+	// Token symbol
 	Symbol string `json:"symbol"`
-	// DTO.WALLET.BALANCE.TOKEN_IMAGE_URL
+	// Token logo iamgeUrl
 	ImageUrl string `json:"imageUrl"`
-	// DTO.WALLET.BALANCE.TOKEN_PRICE_IN_SOL
+	// Price in SOL
 	PriceInSol string `json:"priceInSol"`
-	// DTO.WALLET.BALANCE.TOKEN_PRICE_IN_USD
+	// Price in USD
 	PriceInUsd string `json:"priceInUsd"`
-	// DTO.WALLET.BALANCE.PRICE_CHANGE_24H
+	// 24h price change ratio
 	PriceChangeRatioInUsd24h string `json:"priceChangeRatioInUsd24h"`
-	// DTO.WALLET.BALANCE.UNREALIZED_PROFIT
+	// Unrealized profit in USD
 	UnrealizedProfitInUsd string `json:"unrealizedProfitInUsd"`
-	// DTO.WALLET.BALANCE.UNREALIZED_PROFIT_RATIO
+	// Unrealized profit ratio
 	UnrealizedProfitRatio string `json:"unrealizedProfitRatio"`
-	// DTO.WALLET.BALANCE.OPEN_TIME
+	// Position opening time
 	OpenTime int64 `json:"openTime"`
-	// DTO.WALLET.BALANCE.CLOSE_TIME
+	// Position closing time
 	CloseTime int64 `json:"closeTime"`
-	// DTO.WALLET.BALANCE.BUYS
+	// Number of buy transactions
 	Buys string `json:"buys"`
-	// DTO.WALLET.BALANCE.BUY_AMOUNT
+	// Total amount of tokens bought
 	BuyAmount string `json:"buyAmount"`
-	// DTO.WALLET.BALANCE.BUY_AMOUNT_USD
+	// Total value of tokens bought in USD
 	BuyAmountInUsd string `json:"buyAmountInUsd"`
-	// DTO.WALLET.BALANCE.SELLS
+	// Number of sell transactions
 	Sells string `json:"sells"`
-	// DTO.WALLET.BALANCE.SELL_AMOUNT
+	// Total amount of tokens sold
 	SellAmount string `json:"sellAmount"`
-	// DTO.WALLET.BALANCE.SELL_AMOUNT_USD
+	// Total value of tokens sold in USD
 	SellAmountInUsd string `json:"sellAmountInUsd"`
-	// DTO.WALLET.BALANCE.AVERAGE_BUY_PRICE
+	// Average buying price
 	AverageBuyPriceInUsd string `json:"averageBuyPriceInUsd"`
-	// DTO.WALLET.BALANCE.AVERAGE_SELL_PRICE
+	// Average selling price
 	AverageSellPriceInUsd string `json:"averageSellPriceInUsd"`
-	// DTO.WALLET.BALANCE.REALIZED_PROFIT_IN_USD
+	// Realized profit in USD
 	RealizedProfitInUsd string `json:"realizedProfitInUsd"`
-	// DTO.WALLET.BALANCE.REALIZED_PROFIT_RATIO
+	// Realized profit ratio
 	RealizedProfitRatio string `json:"realizedProfitRatio"`
-	// DTO.WALLET.BALANCE.TOTAL_REALIZED_PROFIT
+	// Total realized profit in USD
 	TotalRealizedProfitInUsd string `json:"totalRealizedProfitInUsd"`
-	// DTO.WALLET.BALANCE.TOTAL_REALIZED_PROFIT_RATIO
+	// Total realized profit ratio
 	TotalRealizedProfitRatio string `json:"totalRealizedProfitRatio"`
 }
 

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WalletAddress** | **string** | DTO.TOKEN_HOLDER.WALLET_ADDRESS | 
-**Amount** | **string** | DTO.TOKEN_HOLDER.AMOUNT | 
-**AmountInUsd** | **string** | DTO.TOKEN_HOLDER.AMOUNT_USD | 
-**Percentage** | **string** | DTO.TOKEN_HOLDER.PERCENTAGE | 
+**WalletAddress** | **string** | Wallet address | 
+**Amount** | **string** | Amount | 
+**AmountInUsd** | **string** | Amount in USD | 
+**Percentage** | **string** | Percentage | 
 
 ## Methods
 

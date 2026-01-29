@@ -35,12 +35,12 @@ func (r JobsAPIGetRequest) Execute() (*JobDTO, *http.Response, error) {
 }
 
 /*
-Get CONTROLLER.JOB.GET.SUMMARY
+Get Job - Get
 
-CONTROLLER.JOB.GET.DESCRIPTION
+Retrieve the current status and result of a job by its ID
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id CONTROLLER.JOB.GET.ID
+ @param id Job identifier
  @return JobsAPIGetRequest
 */
 func (a *JobsAPIService) Get(ctx context.Context, id string) JobsAPIGetRequest {
@@ -138,12 +138,12 @@ func (r JobsAPIStreamingRequest) Execute() (*JobStreamingDTO, *http.Response, er
 }
 
 /*
-Streaming CONTROLLER.JOB.STREAMING.SUMMARY
+Streaming Job - Streaming
 
-CONTROLLER.JOB.STREAMING.DESCRIPTION
+Subscribe to real-time job status updates via Server-Sent Events (SSE). The connection will remain open until the job completes or an error occurs
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id CONTROLLER.JOB.GET.ID
+ @param id Job identifier
  @return JobsAPIStreamingRequest
 */
 func (a *JobsAPIService) Streaming(ctx context.Context, id string) JobsAPIStreamingRequest {

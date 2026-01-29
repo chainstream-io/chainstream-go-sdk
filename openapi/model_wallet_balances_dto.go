@@ -22,11 +22,11 @@ var _ MappedNullable = &WalletBalancesDTO{}
 
 // WalletBalancesDTO struct for WalletBalancesDTO
 type WalletBalancesDTO struct {
-	// DTO.WALLET.BALANCES.TOTAL_BALANCES_IN_USD
+	// Total wallet value
 	TotalBalancesInUsd string `json:"totalBalancesInUsd"`
-	// DTO.WALLET.BALANCES.TOTAL_PROFIT_IN_USD
+	// Total profit in USD
 	TotalProfitInUsd string `json:"totalProfitInUsd"`
-	// DTO.WALLET.BALANCES.BALANCES.DETAIL
+	// Wallet balance details
 	Balances []WalletBalanceDetailDTO `json:"balances"`
 }
 

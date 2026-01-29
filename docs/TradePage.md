@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**HasNext** | Pointer to **bool** | DTO.PAGE.HAS_NEXT | [optional] [default to false]
-**HasPrev** | Pointer to **bool** | DTO.PAGE.HAS_PREV | [optional] [default to false]
-**StartCursor** | Pointer to **string** | DTO.PAGE.START_CURSOR | [optional] 
-**EndCursor** | Pointer to **string** | DTO.PAGE.END_CURSOR | [optional] 
-**Total** | Pointer to **float32** | DTO.PAGE.TOTAL | [optional] 
-**Data** | [**[]TradeDetailDTO**](TradeDetailDTO.md) | DTO.TRADE.PAGE.DATA | 
+**HasNext** | Pointer to **bool** | Indicates if there are more results | [optional] [default to false]
+**HasPrev** | Pointer to **bool** | Indicates if there are previous results | [optional] [default to false]
+**StartCursor** | Pointer to **string** | Cursor for first item in current page | [optional] 
+**EndCursor** | Pointer to **string** | Cursor for last item in current page | [optional] 
+**Total** | Pointer to **float32** | Total number of items | [optional] 
+**Data** | [**[]TradeDetailDTO**](TradeDetailDTO.md) | Array of trade data | 
 
 ## Methods
 

@@ -22,13 +22,13 @@ var _ MappedNullable = &AddressExposure{}
 
 // AddressExposure struct for AddressExposure
 type AddressExposure struct {
-	// DTO.KYT.ADDRESS_EXPOSURE.CATEGORY
+	// Category
 	Category string `json:"category"`
-	// DTO.KYT.ADDRESS_EXPOSURE.VALUE
+	// Value
 	Value string `json:"value"`
-	// DTO.KYT.ADDRESS_EXPOSURE.EXPOSURE_TYPE
+	// Exposure type
 	ExposureType string `json:"exposureType"`
-	// DTO.KYT.ADDRESS_EXPOSURE.DIRECTION
+	// Direction
 	Direction string `json:"direction"`
 }
 

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Category** | **string** | DTO.KYT.ADDRESS_EXPOSURE.CATEGORY | 
-**Value** | **string** | DTO.KYT.ADDRESS_EXPOSURE.VALUE | 
-**ExposureType** | **string** | DTO.KYT.ADDRESS_EXPOSURE.EXPOSURE_TYPE | 
-**Direction** | **string** | DTO.KYT.ADDRESS_EXPOSURE.DIRECTION | 
+**Category** | **string** | Category | 
+**Value** | **string** | Value | 
+**ExposureType** | **string** | Exposure type | 
+**Direction** | **string** | Direction | 
 
 ## Methods
 

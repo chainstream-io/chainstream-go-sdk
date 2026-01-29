@@ -42,73 +42,73 @@ type TradeAPIGetActivitiesRequest struct {
 	type_ *string
 }
 
-// DTO.PAGE.CURSOR.DESCRIPTION
+// Pagination cursor
 func (r TradeAPIGetActivitiesRequest) Cursor(cursor string) TradeAPIGetActivitiesRequest {
 	r.cursor = &cursor
 	return r
 }
 
-// DTO.PAGE.LIMIT
+// Number of results per page
 func (r TradeAPIGetActivitiesRequest) Limit(limit float32) TradeAPIGetActivitiesRequest {
 	r.limit = &limit
 	return r
 }
 
-// DTO.PAGE.DIRECTION
+// Pagination direction (next or prev)
 func (r TradeAPIGetActivitiesRequest) Direction(direction string) TradeAPIGetActivitiesRequest {
 	r.direction = &direction
 	return r
 }
 
-// DTO.TRADE.QUERY.TOKEN_ADDRESS
+// Token address to query trades
 func (r TradeAPIGetActivitiesRequest) TokenAddress(tokenAddress string) TradeAPIGetActivitiesRequest {
 	r.tokenAddress = &tokenAddress
 	return r
 }
 
-// DTO.TRADE.QUERY.WALLET_ADDRESS
+// Wallet address to query trades
 func (r TradeAPIGetActivitiesRequest) WalletAddress(walletAddress string) TradeAPIGetActivitiesRequest {
 	r.walletAddress = &walletAddress
 	return r
 }
 
-// DTO.TRADE.QUERY.POOL_ADDRESS
+// Pool address to filter trades
 func (r TradeAPIGetActivitiesRequest) PoolAddress(poolAddress string) TradeAPIGetActivitiesRequest {
 	r.poolAddress = &poolAddress
 	return r
 }
 
-// DTO.TRADE.QUERY.BEFORE_TIMESTAMP
+// Start timestamp for filtering trades (Unix epoch in seconds)
 func (r TradeAPIGetActivitiesRequest) BeforeTimestamp(beforeTimestamp int64) TradeAPIGetActivitiesRequest {
 	r.beforeTimestamp = &beforeTimestamp
 	return r
 }
 
-// DTO.TRADE.QUERY.AFTER_TIMESTAMP
+// End timestamp for filtering trades (Unix epoch in seconds)
 func (r TradeAPIGetActivitiesRequest) AfterTimestamp(afterTimestamp int64) TradeAPIGetActivitiesRequest {
 	r.afterTimestamp = &afterTimestamp
 	return r
 }
 
-// DTO.TRADE.QUERY.BEFORE_BLOCK_HEIGHT
+// Filter trades before this block height
 func (r TradeAPIGetActivitiesRequest) BeforeBlockHeight(beforeBlockHeight int64) TradeAPIGetActivitiesRequest {
 	r.beforeBlockHeight = &beforeBlockHeight
 	return r
 }
 
-// DTO.TRADE.QUERY.AFTER_BLOCK_HEIGHT
+// Filter trades after this block height
 func (r TradeAPIGetActivitiesRequest) AfterBlockHeight(afterBlockHeight int64) TradeAPIGetActivitiesRequest {
 	r.afterBlockHeight = &afterBlockHeight
 	return r
 }
 
-// DTO.TRADE.QUERY.TRANSACTIONS_SIGNATURE
+// Transaction signature/hash
 func (r TradeAPIGetActivitiesRequest) TransactionsSignature(transactionsSignature string) TradeAPIGetActivitiesRequest {
 	r.transactionsSignature = &transactionsSignature
 	return r
 }
 
-// DTO.TRADE.QUERY.ACTIVITIES_TYPE
+// Activity type
 func (r TradeAPIGetActivitiesRequest) Type_(type_ string) TradeAPIGetActivitiesRequest {
 	r.type_ = &type_
 	return r
@@ -119,12 +119,12 @@ func (r TradeAPIGetActivitiesRequest) Execute() (*TradePage, *http.Response, err
 }
 
 /*
-GetActivities CONTROLLER.TRADE.GET.TOKEN_ACTIVITIES.SUMMARY
+GetActivities Activity - List
 
-CONTROLLER.TRADE.GET.TOKEN_ACTIVITIES.DESCRIPTION
+Get token activities including trades, liquidity operations, and other token-related activities
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return TradeAPIGetActivitiesRequest
 */
 func (a *TradeAPIService) GetActivities(ctx context.Context, chain ChainSymbol) TradeAPIGetActivitiesRequest {
@@ -253,6 +253,195 @@ func (a *TradeAPIService) GetActivitiesExecute(r TradeAPIGetActivitiesRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type TradeAPIGetTopTradersRequest struct {
+	ctx context.Context
+	ApiService *TradeAPIService
+	chain ChainSymbol
+	tokenAddress *string
+	cursor *string
+	limit *int64
+	direction *string
+	timeFrame *string
+	sortType *string
+	sortBy *string
+}
+
+// Token address to query trades
+func (r TradeAPIGetTopTradersRequest) TokenAddress(tokenAddress string) TradeAPIGetTopTradersRequest {
+	r.tokenAddress = &tokenAddress
+	return r
+}
+
+// Pagination cursor
+func (r TradeAPIGetTopTradersRequest) Cursor(cursor string) TradeAPIGetTopTradersRequest {
+	r.cursor = &cursor
+	return r
+}
+
+// Maximum number of top traders to return (max 10)
+func (r TradeAPIGetTopTradersRequest) Limit(limit int64) TradeAPIGetTopTradersRequest {
+	r.limit = &limit
+	return r
+}
+
+// Pagination direction (next or prev)
+func (r TradeAPIGetTopTradersRequest) Direction(direction string) TradeAPIGetTopTradersRequest {
+	r.direction = &direction
+	return r
+}
+
+// Time frame for filtering trades
+func (r TradeAPIGetTopTradersRequest) TimeFrame(timeFrame string) TradeAPIGetTopTradersRequest {
+	r.timeFrame = &timeFrame
+	return r
+}
+
+// Sort type for trade results
+func (r TradeAPIGetTopTradersRequest) SortType(sortType string) TradeAPIGetTopTradersRequest {
+	r.sortType = &sortType
+	return r
+}
+
+// Field to sort trades by
+func (r TradeAPIGetTopTradersRequest) SortBy(sortBy string) TradeAPIGetTopTradersRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r TradeAPIGetTopTradersRequest) Execute() (*TopTradersPage, *http.Response, error) {
+	return r.ApiService.GetTopTradersExecute(r)
+}
+
+/*
+GetTopTraders Trade - Top Traders
+
+Get top traders for a specific token
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param chain A chain name listed in supported networks
+ @return TradeAPIGetTopTradersRequest
+*/
+func (a *TradeAPIService) GetTopTraders(ctx context.Context, chain ChainSymbol) TradeAPIGetTopTradersRequest {
+	return TradeAPIGetTopTradersRequest{
+		ApiService: a,
+		ctx: ctx,
+		chain: chain,
+	}
+}
+
+// Execute executes the request
+//  @return TopTradersPage
+func (a *TradeAPIService) GetTopTradersExecute(r TradeAPIGetTopTradersRequest) (*TopTradersPage, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TopTradersPage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradeAPIService.GetTopTraders")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/trade/{chain}/top-traders"
+	localVarPath = strings.Replace(localVarPath, "{"+"chain"+"}", url.PathEscape(parameterValueToString(r.chain, "chain")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.tokenAddress == nil {
+		return localVarReturnValue, nil, reportError("tokenAddress is required and must be specified")
+	}
+
+	if r.cursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int64 = 20
+		r.limit = &defaultValue
+	}
+	if r.direction != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
+	} else {
+		var defaultValue string = "next"
+		r.direction = &defaultValue
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "tokenAddress", r.tokenAddress, "")
+	if r.timeFrame != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "timeFrame", r.timeFrame, "")
+	} else {
+		var defaultValue string = "24h"
+		r.timeFrame = &defaultValue
+	}
+	if r.sortType != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortType", r.sortType, "")
+	} else {
+		var defaultValue string = "desc"
+		r.sortType = &defaultValue
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
+	} else {
+		var defaultValue string = "tradeAmount"
+		r.sortBy = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type TradeAPIGetTradesRequest struct {
 	ctx context.Context
 	ApiService *TradeAPIService
@@ -271,73 +460,73 @@ type TradeAPIGetTradesRequest struct {
 	type_ *string
 }
 
-// DTO.PAGE.CURSOR.DESCRIPTION
+// Pagination cursor
 func (r TradeAPIGetTradesRequest) Cursor(cursor string) TradeAPIGetTradesRequest {
 	r.cursor = &cursor
 	return r
 }
 
-// DTO.PAGE.LIMIT
+// Number of results per page
 func (r TradeAPIGetTradesRequest) Limit(limit float32) TradeAPIGetTradesRequest {
 	r.limit = &limit
 	return r
 }
 
-// DTO.PAGE.DIRECTION
+// Pagination direction (next or prev)
 func (r TradeAPIGetTradesRequest) Direction(direction string) TradeAPIGetTradesRequest {
 	r.direction = &direction
 	return r
 }
 
-// DTO.TRADE.QUERY.TOKEN_ADDRESS
+// Token address to query trades
 func (r TradeAPIGetTradesRequest) TokenAddress(tokenAddress string) TradeAPIGetTradesRequest {
 	r.tokenAddress = &tokenAddress
 	return r
 }
 
-// DTO.TRADE.QUERY.WALLET_ADDRESS
+// Wallet address to query trades
 func (r TradeAPIGetTradesRequest) WalletAddress(walletAddress string) TradeAPIGetTradesRequest {
 	r.walletAddress = &walletAddress
 	return r
 }
 
-// DTO.TRADE.QUERY.POOL_ADDRESS
+// Pool address to filter trades
 func (r TradeAPIGetTradesRequest) PoolAddress(poolAddress string) TradeAPIGetTradesRequest {
 	r.poolAddress = &poolAddress
 	return r
 }
 
-// DTO.TRADE.QUERY.BEFORE_TIMESTAMP
+// Start timestamp for filtering trades (Unix epoch in seconds)
 func (r TradeAPIGetTradesRequest) BeforeTimestamp(beforeTimestamp int64) TradeAPIGetTradesRequest {
 	r.beforeTimestamp = &beforeTimestamp
 	return r
 }
 
-// DTO.TRADE.QUERY.AFTER_TIMESTAMP
+// End timestamp for filtering trades (Unix epoch in seconds)
 func (r TradeAPIGetTradesRequest) AfterTimestamp(afterTimestamp int64) TradeAPIGetTradesRequest {
 	r.afterTimestamp = &afterTimestamp
 	return r
 }
 
-// DTO.TRADE.QUERY.BEFORE_BLOCK_HEIGHT
+// Filter trades before this block height
 func (r TradeAPIGetTradesRequest) BeforeBlockHeight(beforeBlockHeight int64) TradeAPIGetTradesRequest {
 	r.beforeBlockHeight = &beforeBlockHeight
 	return r
 }
 
-// DTO.TRADE.QUERY.AFTER_BLOCK_HEIGHT
+// Filter trades after this block height
 func (r TradeAPIGetTradesRequest) AfterBlockHeight(afterBlockHeight int64) TradeAPIGetTradesRequest {
 	r.afterBlockHeight = &afterBlockHeight
 	return r
 }
 
-// DTO.TRADE.QUERY.TRANSACTIONS_SIGNATURE
+// Transaction signature/hash
 func (r TradeAPIGetTradesRequest) TransactionsSignature(transactionsSignature string) TradeAPIGetTradesRequest {
 	r.transactionsSignature = &transactionsSignature
 	return r
 }
 
-// DTO.TRADE.QUERY.TRADES_TYPE
+// Trade type
 func (r TradeAPIGetTradesRequest) Type_(type_ string) TradeAPIGetTradesRequest {
 	r.type_ = &type_
 	return r
@@ -348,12 +537,12 @@ func (r TradeAPIGetTradesRequest) Execute() (*TradePage, *http.Response, error) 
 }
 
 /*
-GetTrades CONTROLLER.TRADE.GET.TOKEN.SUMMARY
+GetTrades Trade - List
 
-CONTROLLER.TRADE.GET.TOKEN.DESCRIPTION
+Retrieve a list of transactions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return TradeAPIGetTradesRequest
 */
 func (a *TradeAPIService) GetTrades(ctx context.Context, chain ChainSymbol) TradeAPIGetTradesRequest {

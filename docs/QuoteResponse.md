@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AmountOut** | Pointer to **string** | DTO.DEX.QUOTE.AMOUNT_OUT | [optional] 
-**MinAmountOut** | Pointer to **string** | DTO.DEX.QUOTE.MIN_AMOUNT_OUT | [optional] 
-**CurrentPrice** | Pointer to **string** | DTO.DEX.QUOTE.CURRENT_PRICE | [optional] 
-**ExecutionPrice** | Pointer to **string** | DTO.DEX.QUOTE.EXECUTION_PRICE | [optional] 
-**PriceImpact** | Pointer to **string** | DTO.DEX.QUOTE.PRICE_IMPACT | [optional] 
-**Fee** | Pointer to **string** | DTO.DEX.QUOTE.FEE | [optional] 
+**AmountOut** | Pointer to **string** | Output amount | [optional] 
+**MinAmountOut** | Pointer to **string** | Minimum output amount | [optional] 
+**CurrentPrice** | Pointer to **string** | Current price | [optional] 
+**ExecutionPrice** | Pointer to **string** | Execution price | [optional] 
+**PriceImpact** | Pointer to **string** | Price impact | [optional] 
+**Fee** | Pointer to **string** | Trading fee | [optional] 
 
 ## Methods
 

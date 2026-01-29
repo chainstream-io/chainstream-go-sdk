@@ -22,31 +22,31 @@ var _ MappedNullable = &SwapRouteInput{}
 
 // SwapRouteInput struct for SwapRouteInput
 type SwapRouteInput struct {
-	// DTO.DEX.IDENTIFIER
+	// DEX identifier for the trade
 	Dex string `json:"dex"`
-	// DTO.DEX.WALLET
+	// Public key of the wallet initiating the transaction
 	UserAddress string `json:"userAddress"`
-	// DTO.DEX.BASE.PRIORITY_FEE
+	// Priority fee in SOL to increase transaction processing speed
 	PriorityFee *string `json:"priorityFee,omitempty"`
-	// DTO.DEX.SWAP.AMOUNT
+	// Amount to swap. Use \"auto\" for full balance or percentage like \"50%\"
 	Amount string `json:"amount"`
-	// DTO.DEX.SWAP.MODE
+	// Swap direction mode
 	SwapMode string `json:"swapMode"`
-	// DTO.DEX.SWAP.SLIPPAGE
+	// Slippage tolerance percentage
 	Slippage int64 `json:"slippage"`
-	// DTO.DEX.SWAP.INPUT_MINT
+	// Input Mint, the base token address
 	InputMint *string `json:"inputMint,omitempty"`
-	// DTO.DEX.SWAP.OUTPUT_MINT
+	// Ouput Mint, the quote token address
 	OutputMint *string `json:"outputMint,omitempty"`
-	// DTO.DEX.SWAP.RECIPIENT_ADDRESS
+	// Recipient wallet address for the swap
 	RecipientAddress *string `json:"recipientAddress,omitempty"`
-	// DTO.DEX.SWAP.PERMIT
+	// Permit data for the swap
 	Permit *string `json:"permit,omitempty"`
-	// DTO.DEX.SWAP.DEADLINE
+	// Swap deadline timestamp
 	Deadline *int64 `json:"deadline,omitempty"`
-	// DTO.DEX.BASE.TIP_FEE
+	// Tip fee in SOL to increase transaction processing speed
 	TipFee *string `json:"tipFee,omitempty"`
-	// DTO.DEX.BASE.IS_ANTI_MEV
+	// Whether to enable anti-MEV protection
 	IsAntiMev *bool `json:"isAntiMev,omitempty"`
 }
 

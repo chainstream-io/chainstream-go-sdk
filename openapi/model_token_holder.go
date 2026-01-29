@@ -22,13 +22,13 @@ var _ MappedNullable = &TokenHolder{}
 
 // TokenHolder struct for TokenHolder
 type TokenHolder struct {
-	// DTO.TOKEN_HOLDER.WALLET_ADDRESS
+	// Wallet address
 	WalletAddress string `json:"walletAddress"`
-	// DTO.TOKEN_HOLDER.AMOUNT
+	// Amount
 	Amount string `json:"amount"`
-	// DTO.TOKEN_HOLDER.AMOUNT_USD
+	// Amount in USD
 	AmountInUsd string `json:"amountInUsd"`
-	// DTO.TOKEN_HOLDER.PERCENTAGE
+	// Percentage
 	Percentage string `json:"percentage"`
 }
 

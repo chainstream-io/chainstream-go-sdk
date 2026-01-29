@@ -36,6 +36,20 @@ func Test_chainstream_TradeAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test TradeAPIService GetTopTraders", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var chain openapi.ChainSymbol
+
+		resp, httpRes, err := apiClient.TradeAPI.GetTopTraders(context.Background(), chain).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test TradeAPIService GetTrades", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

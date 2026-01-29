@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Dex** | **string** | DTO.DEX.IDENTIFIER | 
-**UserAddress** | **string** | DTO.DEX.WALLET | 
-**PriorityFee** | Pointer to **string** | DTO.DEX.BASE.PRIORITY_FEE | [optional] 
-**Amount** | **string** | DTO.DEX.SWAP.AMOUNT | 
-**SwapMode** | **string** | DTO.DEX.SWAP.MODE | 
-**Slippage** | **int64** | DTO.DEX.SWAP.SLIPPAGE | [default to 5]
-**InputMint** | Pointer to **string** | DTO.DEX.SWAP.INPUT_MINT | [optional] 
-**OutputMint** | Pointer to **string** | DTO.DEX.SWAP.OUTPUT_MINT | [optional] 
-**RecipientAddress** | Pointer to **string** | DTO.DEX.SWAP.RECIPIENT_ADDRESS | [optional] 
-**Permit** | Pointer to **string** | DTO.DEX.SWAP.PERMIT | [optional] 
-**Deadline** | Pointer to **int64** | DTO.DEX.SWAP.DEADLINE | [optional] 
-**TipFee** | Pointer to **string** | DTO.DEX.BASE.TIP_FEE | [optional] 
-**IsAntiMev** | Pointer to **bool** | DTO.DEX.BASE.IS_ANTI_MEV | [optional] [default to false]
+**Dex** | **string** | DEX identifier for the trade | 
+**UserAddress** | **string** | Public key of the wallet initiating the transaction | 
+**PriorityFee** | Pointer to **string** | Priority fee in SOL to increase transaction processing speed | [optional] 
+**Amount** | **string** | Amount to swap. Use \&quot;auto\&quot; for full balance or percentage like \&quot;50%\&quot; | 
+**SwapMode** | **string** | Swap direction mode | 
+**Slippage** | **int64** | Slippage tolerance percentage | [default to 5]
+**InputMint** | Pointer to **string** | Input Mint, the base token address | [optional] 
+**OutputMint** | Pointer to **string** | Ouput Mint, the quote token address | [optional] 
+**RecipientAddress** | Pointer to **string** | Recipient wallet address for the swap | [optional] 
+**Permit** | Pointer to **string** | Permit data for the swap | [optional] 
+**Deadline** | Pointer to **int64** | Swap deadline timestamp | [optional] 
+**TipFee** | Pointer to **string** | Tip fee in SOL to increase transaction processing speed | [optional] 
+**IsAntiMev** | Pointer to **bool** | Whether to enable anti-MEV protection | [optional] [default to false]
 
 ## Methods
 

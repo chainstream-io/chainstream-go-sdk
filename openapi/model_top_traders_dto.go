@@ -22,30 +22,30 @@ var _ MappedNullable = &TopTradersDTO{}
 
 // TopTradersDTO struct for TopTradersDTO
 type TopTradersDTO struct {
-	// DTO.TRADE.TOP_TRADERS.TOKEN_ADDRESS
+	// Token address for top traders query
 	TokenAddress string `json:"tokenAddress"`
-	// DTO.TRADE.TOP_TRADERS.OWNER
-	Owner string `json:"owner"`
-	// DTO.TRADE.TOP_TRADERS.TAGS
-	Tags []string `json:"tags"`
-	// DTO.TRADE.TOP_TRADERS.TYPE
-	Type string `json:"type"`
-	// DTO.TRADE.TOP_TRADERS.VOLUME
-	Volume float32 `json:"volume"`
-	// DTO.TRADE.TOP_TRADERS.TRADE
-	Trade float32 `json:"trade"`
-	// DTO.TRADE.TOP_TRADERS.TRADE_BUY
-	TradeBuy float32 `json:"tradeBuy"`
-	// DTO.TRADE.TOP_TRADERS.TRADE_SELL
-	TradeSell float32 `json:"tradeSell"`
-	// DTO.TRADE.TOP_TRADERS.VOLUME_BUY
-	VolumeBuy float32 `json:"volumeBuy"`
-	// DTO.TRADE.TOP_TRADERS.VOLUME_SELL
-	VolumeSell float32 `json:"volumeSell"`
-	// DTO.TRADE.TOP_TRADERS.IS_SCALED_UI_TOKEN
-	IsScaledUiToken bool `json:"isScaledUiToken"`
-	// DTO.TRADE.TOP_TRADERS.MULTIPLIER
-	Multiplier *string `json:"multiplier,omitempty"`
+	// Wallet address of the trader
+	WalletAddress string `json:"walletAddress"`
+	// Total number of trades
+	TradeCount int64 `json:"tradeCount"`
+	// Total trade amount
+	TradeAmount string `json:"tradeAmount"`
+	// Number of buy trades
+	BuyCount int64 `json:"buyCount"`
+	// Total buy amount
+	BuyAmount string `json:"buyAmount"`
+	// Total buy amount in USD
+	BuyAmountInUsd string `json:"buyAmountInUsd"`
+	// Total buy amount in native token
+	BuyAmountInNative string `json:"buyAmountInNative"`
+	// Number of sell trades
+	SellCount int64 `json:"sellCount"`
+	// Total sell amount
+	SellAmount string `json:"sellAmount"`
+	// Total sell amount in USD
+	SellAmountInUsd string `json:"sellAmountInUsd"`
+	// Total sell amount in native token
+	SellAmountInNative string `json:"sellAmountInNative"`
 }
 
 type _TopTradersDTO TopTradersDTO
@@ -54,19 +54,20 @@ type _TopTradersDTO TopTradersDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTopTradersDTO(tokenAddress string, owner string, tags []string, type_ string, volume float32, trade float32, tradeBuy float32, tradeSell float32, volumeBuy float32, volumeSell float32, isScaledUiToken bool) *TopTradersDTO {
+func NewTopTradersDTO(tokenAddress string, walletAddress string, tradeCount int64, tradeAmount string, buyCount int64, buyAmount string, buyAmountInUsd string, buyAmountInNative string, sellCount int64, sellAmount string, sellAmountInUsd string, sellAmountInNative string) *TopTradersDTO {
 	this := TopTradersDTO{}
 	this.TokenAddress = tokenAddress
-	this.Owner = owner
-	this.Tags = tags
-	this.Type = type_
-	this.Volume = volume
-	this.Trade = trade
-	this.TradeBuy = tradeBuy
-	this.TradeSell = tradeSell
-	this.VolumeBuy = volumeBuy
-	this.VolumeSell = volumeSell
-	this.IsScaledUiToken = isScaledUiToken
+	this.WalletAddress = walletAddress
+	this.TradeCount = tradeCount
+	this.TradeAmount = tradeAmount
+	this.BuyCount = buyCount
+	this.BuyAmount = buyAmount
+	this.BuyAmountInUsd = buyAmountInUsd
+	this.BuyAmountInNative = buyAmountInNative
+	this.SellCount = sellCount
+	this.SellAmount = sellAmount
+	this.SellAmountInUsd = sellAmountInUsd
+	this.SellAmountInNative = sellAmountInNative
 	return &this
 }
 
@@ -102,276 +103,268 @@ func (o *TopTradersDTO) SetTokenAddress(v string) {
 	o.TokenAddress = v
 }
 
-// GetOwner returns the Owner field value
-func (o *TopTradersDTO) GetOwner() string {
+// GetWalletAddress returns the WalletAddress field value
+func (o *TopTradersDTO) GetWalletAddress() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Owner
+	return o.WalletAddress
 }
 
-// GetOwnerOk returns a tuple with the Owner field value
+// GetWalletAddressOk returns a tuple with the WalletAddress field value
 // and a boolean to check if the value has been set.
-func (o *TopTradersDTO) GetOwnerOk() (*string, bool) {
+func (o *TopTradersDTO) GetWalletAddressOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Owner, true
+	return &o.WalletAddress, true
 }
 
-// SetOwner sets field value
-func (o *TopTradersDTO) SetOwner(v string) {
-	o.Owner = v
+// SetWalletAddress sets field value
+func (o *TopTradersDTO) SetWalletAddress(v string) {
+	o.WalletAddress = v
 }
 
-// GetTags returns the Tags field value
-func (o *TopTradersDTO) GetTags() []string {
+// GetTradeCount returns the TradeCount field value
+func (o *TopTradersDTO) GetTradeCount() int64 {
 	if o == nil {
-		var ret []string
+		var ret int64
 		return ret
 	}
 
-	return o.Tags
+	return o.TradeCount
 }
 
-// GetTagsOk returns a tuple with the Tags field value
+// GetTradeCountOk returns a tuple with the TradeCount field value
 // and a boolean to check if the value has been set.
-func (o *TopTradersDTO) GetTagsOk() ([]string, bool) {
+func (o *TopTradersDTO) GetTradeCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Tags, true
+	return &o.TradeCount, true
 }
 
-// SetTags sets field value
-func (o *TopTradersDTO) SetTags(v []string) {
-	o.Tags = v
+// SetTradeCount sets field value
+func (o *TopTradersDTO) SetTradeCount(v int64) {
+	o.TradeCount = v
 }
 
-// GetType returns the Type field value
-func (o *TopTradersDTO) GetType() string {
+// GetTradeAmount returns the TradeAmount field value
+func (o *TopTradersDTO) GetTradeAmount() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Type
+	return o.TradeAmount
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTradeAmountOk returns a tuple with the TradeAmount field value
 // and a boolean to check if the value has been set.
-func (o *TopTradersDTO) GetTypeOk() (*string, bool) {
+func (o *TopTradersDTO) GetTradeAmountOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Type, true
+	return &o.TradeAmount, true
 }
 
-// SetType sets field value
-func (o *TopTradersDTO) SetType(v string) {
-	o.Type = v
+// SetTradeAmount sets field value
+func (o *TopTradersDTO) SetTradeAmount(v string) {
+	o.TradeAmount = v
 }
 
-// GetVolume returns the Volume field value
-func (o *TopTradersDTO) GetVolume() float32 {
+// GetBuyCount returns the BuyCount field value
+func (o *TopTradersDTO) GetBuyCount() int64 {
 	if o == nil {
-		var ret float32
+		var ret int64
 		return ret
 	}
 
-	return o.Volume
+	return o.BuyCount
 }
 
-// GetVolumeOk returns a tuple with the Volume field value
+// GetBuyCountOk returns a tuple with the BuyCount field value
 // and a boolean to check if the value has been set.
-func (o *TopTradersDTO) GetVolumeOk() (*float32, bool) {
+func (o *TopTradersDTO) GetBuyCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Volume, true
+	return &o.BuyCount, true
 }
 
-// SetVolume sets field value
-func (o *TopTradersDTO) SetVolume(v float32) {
-	o.Volume = v
+// SetBuyCount sets field value
+func (o *TopTradersDTO) SetBuyCount(v int64) {
+	o.BuyCount = v
 }
 
-// GetTrade returns the Trade field value
-func (o *TopTradersDTO) GetTrade() float32 {
+// GetBuyAmount returns the BuyAmount field value
+func (o *TopTradersDTO) GetBuyAmount() string {
 	if o == nil {
-		var ret float32
-		return ret
-	}
-
-	return o.Trade
-}
-
-// GetTradeOk returns a tuple with the Trade field value
-// and a boolean to check if the value has been set.
-func (o *TopTradersDTO) GetTradeOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Trade, true
-}
-
-// SetTrade sets field value
-func (o *TopTradersDTO) SetTrade(v float32) {
-	o.Trade = v
-}
-
-// GetTradeBuy returns the TradeBuy field value
-func (o *TopTradersDTO) GetTradeBuy() float32 {
-	if o == nil {
-		var ret float32
-		return ret
-	}
-
-	return o.TradeBuy
-}
-
-// GetTradeBuyOk returns a tuple with the TradeBuy field value
-// and a boolean to check if the value has been set.
-func (o *TopTradersDTO) GetTradeBuyOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TradeBuy, true
-}
-
-// SetTradeBuy sets field value
-func (o *TopTradersDTO) SetTradeBuy(v float32) {
-	o.TradeBuy = v
-}
-
-// GetTradeSell returns the TradeSell field value
-func (o *TopTradersDTO) GetTradeSell() float32 {
-	if o == nil {
-		var ret float32
-		return ret
-	}
-
-	return o.TradeSell
-}
-
-// GetTradeSellOk returns a tuple with the TradeSell field value
-// and a boolean to check if the value has been set.
-func (o *TopTradersDTO) GetTradeSellOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TradeSell, true
-}
-
-// SetTradeSell sets field value
-func (o *TopTradersDTO) SetTradeSell(v float32) {
-	o.TradeSell = v
-}
-
-// GetVolumeBuy returns the VolumeBuy field value
-func (o *TopTradersDTO) GetVolumeBuy() float32 {
-	if o == nil {
-		var ret float32
-		return ret
-	}
-
-	return o.VolumeBuy
-}
-
-// GetVolumeBuyOk returns a tuple with the VolumeBuy field value
-// and a boolean to check if the value has been set.
-func (o *TopTradersDTO) GetVolumeBuyOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.VolumeBuy, true
-}
-
-// SetVolumeBuy sets field value
-func (o *TopTradersDTO) SetVolumeBuy(v float32) {
-	o.VolumeBuy = v
-}
-
-// GetVolumeSell returns the VolumeSell field value
-func (o *TopTradersDTO) GetVolumeSell() float32 {
-	if o == nil {
-		var ret float32
-		return ret
-	}
-
-	return o.VolumeSell
-}
-
-// GetVolumeSellOk returns a tuple with the VolumeSell field value
-// and a boolean to check if the value has been set.
-func (o *TopTradersDTO) GetVolumeSellOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.VolumeSell, true
-}
-
-// SetVolumeSell sets field value
-func (o *TopTradersDTO) SetVolumeSell(v float32) {
-	o.VolumeSell = v
-}
-
-// GetIsScaledUiToken returns the IsScaledUiToken field value
-func (o *TopTradersDTO) GetIsScaledUiToken() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsScaledUiToken
-}
-
-// GetIsScaledUiTokenOk returns a tuple with the IsScaledUiToken field value
-// and a boolean to check if the value has been set.
-func (o *TopTradersDTO) GetIsScaledUiTokenOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IsScaledUiToken, true
-}
-
-// SetIsScaledUiToken sets field value
-func (o *TopTradersDTO) SetIsScaledUiToken(v bool) {
-	o.IsScaledUiToken = v
-}
-
-// GetMultiplier returns the Multiplier field value if set, zero value otherwise.
-func (o *TopTradersDTO) GetMultiplier() string {
-	if o == nil || IsNil(o.Multiplier) {
 		var ret string
 		return ret
 	}
-	return *o.Multiplier
+
+	return o.BuyAmount
 }
 
-// GetMultiplierOk returns a tuple with the Multiplier field value if set, nil otherwise
+// GetBuyAmountOk returns a tuple with the BuyAmount field value
 // and a boolean to check if the value has been set.
-func (o *TopTradersDTO) GetMultiplierOk() (*string, bool) {
-	if o == nil || IsNil(o.Multiplier) {
+func (o *TopTradersDTO) GetBuyAmountOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Multiplier, true
+	return &o.BuyAmount, true
 }
 
-// HasMultiplier returns a boolean if a field has been set.
-func (o *TopTradersDTO) HasMultiplier() bool {
-	if o != nil && !IsNil(o.Multiplier) {
-		return true
+// SetBuyAmount sets field value
+func (o *TopTradersDTO) SetBuyAmount(v string) {
+	o.BuyAmount = v
+}
+
+// GetBuyAmountInUsd returns the BuyAmountInUsd field value
+func (o *TopTradersDTO) GetBuyAmountInUsd() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
 
-	return false
+	return o.BuyAmountInUsd
 }
 
-// SetMultiplier gets a reference to the given string and assigns it to the Multiplier field.
-func (o *TopTradersDTO) SetMultiplier(v string) {
-	o.Multiplier = &v
+// GetBuyAmountInUsdOk returns a tuple with the BuyAmountInUsd field value
+// and a boolean to check if the value has been set.
+func (o *TopTradersDTO) GetBuyAmountInUsdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BuyAmountInUsd, true
+}
+
+// SetBuyAmountInUsd sets field value
+func (o *TopTradersDTO) SetBuyAmountInUsd(v string) {
+	o.BuyAmountInUsd = v
+}
+
+// GetBuyAmountInNative returns the BuyAmountInNative field value
+func (o *TopTradersDTO) GetBuyAmountInNative() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BuyAmountInNative
+}
+
+// GetBuyAmountInNativeOk returns a tuple with the BuyAmountInNative field value
+// and a boolean to check if the value has been set.
+func (o *TopTradersDTO) GetBuyAmountInNativeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BuyAmountInNative, true
+}
+
+// SetBuyAmountInNative sets field value
+func (o *TopTradersDTO) SetBuyAmountInNative(v string) {
+	o.BuyAmountInNative = v
+}
+
+// GetSellCount returns the SellCount field value
+func (o *TopTradersDTO) GetSellCount() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.SellCount
+}
+
+// GetSellCountOk returns a tuple with the SellCount field value
+// and a boolean to check if the value has been set.
+func (o *TopTradersDTO) GetSellCountOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SellCount, true
+}
+
+// SetSellCount sets field value
+func (o *TopTradersDTO) SetSellCount(v int64) {
+	o.SellCount = v
+}
+
+// GetSellAmount returns the SellAmount field value
+func (o *TopTradersDTO) GetSellAmount() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SellAmount
+}
+
+// GetSellAmountOk returns a tuple with the SellAmount field value
+// and a boolean to check if the value has been set.
+func (o *TopTradersDTO) GetSellAmountOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SellAmount, true
+}
+
+// SetSellAmount sets field value
+func (o *TopTradersDTO) SetSellAmount(v string) {
+	o.SellAmount = v
+}
+
+// GetSellAmountInUsd returns the SellAmountInUsd field value
+func (o *TopTradersDTO) GetSellAmountInUsd() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SellAmountInUsd
+}
+
+// GetSellAmountInUsdOk returns a tuple with the SellAmountInUsd field value
+// and a boolean to check if the value has been set.
+func (o *TopTradersDTO) GetSellAmountInUsdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SellAmountInUsd, true
+}
+
+// SetSellAmountInUsd sets field value
+func (o *TopTradersDTO) SetSellAmountInUsd(v string) {
+	o.SellAmountInUsd = v
+}
+
+// GetSellAmountInNative returns the SellAmountInNative field value
+func (o *TopTradersDTO) GetSellAmountInNative() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SellAmountInNative
+}
+
+// GetSellAmountInNativeOk returns a tuple with the SellAmountInNative field value
+// and a boolean to check if the value has been set.
+func (o *TopTradersDTO) GetSellAmountInNativeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SellAmountInNative, true
+}
+
+// SetSellAmountInNative sets field value
+func (o *TopTradersDTO) SetSellAmountInNative(v string) {
+	o.SellAmountInNative = v
 }
 
 func (o TopTradersDTO) MarshalJSON() ([]byte, error) {
@@ -385,19 +378,17 @@ func (o TopTradersDTO) MarshalJSON() ([]byte, error) {
 func (o TopTradersDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["tokenAddress"] = o.TokenAddress
-	toSerialize["owner"] = o.Owner
-	toSerialize["tags"] = o.Tags
-	toSerialize["type"] = o.Type
-	toSerialize["volume"] = o.Volume
-	toSerialize["trade"] = o.Trade
-	toSerialize["tradeBuy"] = o.TradeBuy
-	toSerialize["tradeSell"] = o.TradeSell
-	toSerialize["volumeBuy"] = o.VolumeBuy
-	toSerialize["volumeSell"] = o.VolumeSell
-	toSerialize["isScaledUiToken"] = o.IsScaledUiToken
-	if !IsNil(o.Multiplier) {
-		toSerialize["multiplier"] = o.Multiplier
-	}
+	toSerialize["walletAddress"] = o.WalletAddress
+	toSerialize["tradeCount"] = o.TradeCount
+	toSerialize["tradeAmount"] = o.TradeAmount
+	toSerialize["buyCount"] = o.BuyCount
+	toSerialize["buyAmount"] = o.BuyAmount
+	toSerialize["buyAmountInUsd"] = o.BuyAmountInUsd
+	toSerialize["buyAmountInNative"] = o.BuyAmountInNative
+	toSerialize["sellCount"] = o.SellCount
+	toSerialize["sellAmount"] = o.SellAmount
+	toSerialize["sellAmountInUsd"] = o.SellAmountInUsd
+	toSerialize["sellAmountInNative"] = o.SellAmountInNative
 	return toSerialize, nil
 }
 
@@ -407,16 +398,17 @@ func (o *TopTradersDTO) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"tokenAddress",
-		"owner",
-		"tags",
-		"type",
-		"volume",
-		"trade",
-		"tradeBuy",
-		"tradeSell",
-		"volumeBuy",
-		"volumeSell",
-		"isScaledUiToken",
+		"walletAddress",
+		"tradeCount",
+		"tradeAmount",
+		"buyCount",
+		"buyAmount",
+		"buyAmountInUsd",
+		"buyAmountInNative",
+		"sellCount",
+		"sellAmount",
+		"sellAmountInUsd",
+		"sellAmountInNative",
 	}
 
 	allProperties := make(map[string]interface{})

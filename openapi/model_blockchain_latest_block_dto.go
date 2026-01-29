@@ -22,9 +22,9 @@ var _ MappedNullable = &BlockchainLatestBlockDTO{}
 
 // BlockchainLatestBlockDTO struct for BlockchainLatestBlockDTO
 type BlockchainLatestBlockDTO struct {
-	// DTO.BLOCKCHAIN.LATEST_BLOCK.BLOCKHASH
+	// Latest block hash
 	Blockhash string `json:"blockhash"`
-	// DTO.BLOCKCHAIN.LATEST_BLOCK.LAST_VALID_BLOCK_HEIGHT
+	// Last valid block height
 	LastValidBlockHeight int64 `json:"lastValidBlockHeight"`
 }
 

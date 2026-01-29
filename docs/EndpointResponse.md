@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | DTO.ENDPOINT.ID | [optional] 
-**Url** | Pointer to **string** | DTO.ENDPOINT.URL | [optional] 
-**Description** | Pointer to **string** | DTO.ENDPOINT.DESCRIPTION | [optional] 
-**FilterTypes** | Pointer to **[]string** | DTO.ENDPOINT.FILTER_TYPES | [optional] 
-**Channels** | Pointer to **[]string** | DTO.ENDPOINT.CHANNELS | [optional] 
-**Disabled** | Pointer to **bool** | DTO.ENDPOINT.DISABLED | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | DTO.ENDPOINT.METADATA | [optional] 
-**RateLimit** | Pointer to **int64** | DTO.ENDPOINT.RATE_LIMIT | [optional] 
-**Filter** | Pointer to **string** | DTO.ENDPOINT.FILTER | [optional] 
-**CreatedAt** | Pointer to **string** | DTO.ENDPOINT.CREATED_AT | [optional] 
-**UpdatedAt** | Pointer to **string** | DTO.ENDPOINT.UPDATED_AT | [optional] 
+**Id** | Pointer to **string** | Endpoint ID | [optional] 
+**Url** | Pointer to **string** | Endpoint URL | [optional] 
+**Description** | Pointer to **string** | Endpoint description | [optional] 
+**FilterTypes** | Pointer to **[]string** | Filter types | [optional] 
+**Channels** | Pointer to **[]string** | Endpoint channels | [optional] 
+**Disabled** | Pointer to **bool** | Endpoint disabled status | [optional] 
+**Metadata** | Pointer to **map[string]interface{}** | Endpoint metadata | [optional] 
+**RateLimit** | Pointer to **int64** | Rate limit | [optional] 
+**Filter** | Pointer to **string** | Endpoint filter | [optional] 
+**CreatedAt** | Pointer to **string** | Created at | [optional] 
+**UpdatedAt** | Pointer to **string** | Updated at | [optional] 
 
 ## Methods
 

@@ -22,7 +22,7 @@ var _ MappedNullable = &TransferAlertsResponseDTO{}
 
 // TransferAlertsResponseDTO struct for TransferAlertsResponseDTO
 type TransferAlertsResponseDTO struct {
-	// DTO.KYT.TRANSFER_ALERTS_RESPONSE.ALERTS
+	// Alert list
 	Alerts []AlertDetail `json:"alerts"`
 }
 

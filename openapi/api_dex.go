@@ -43,12 +43,12 @@ func (r DexAPICreateTokenRequest) Execute() (*CreateTokenReply, *http.Response, 
 }
 
 /*
-CreateToken CONTROLLER.DEX.CREATE.SUMMARY
+CreateToken Dex - Create Token
 
-CONTROLLER.DEX.CREATE.DESCRIPTION
+Create a new token on the specified DEX
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return DexAPICreateTokenRequest
 */
 func (a *DexAPIService) CreateToken(ctx context.Context, chain ChainSymbol) DexAPICreateTokenRequest {
@@ -153,13 +153,13 @@ func (r DexAPIListDexRequest) Chains(chains []string) DexAPIListDexRequest {
 	return r
 }
 
-// DTO.DEX.QUERY.LIMIT
+// Number of results per page
 func (r DexAPIListDexRequest) Limit(limit int64) DexAPIListDexRequest {
 	r.limit = &limit
 	return r
 }
 
-// DTO.DEX.QUERY.DEX_PROGRAM
+// dex program address
 func (r DexAPIListDexRequest) DexProgram(dexProgram string) DexAPIListDexRequest {
 	r.dexProgram = &dexProgram
 	return r
@@ -170,9 +170,9 @@ func (r DexAPIListDexRequest) Execute() (*DexPage, *http.Response, error) {
 }
 
 /*
-ListDex CONTROLLER.DEX.LIST.SUMMARY
+ListDex Dex - List
 
-CONTROLLER.DEX.LIST.DESCRIPTION
+Obtain information about all DEXs on a specified blockchain.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return DexAPIListDexRequest
@@ -291,37 +291,37 @@ type DexAPIQuoteRequest struct {
 	slippage *int64
 }
 
-// DTO.DEX.QUOTE.DEX
+// DEX protocol type
 func (r DexAPIQuoteRequest) Dex(dex string) DexAPIQuoteRequest {
 	r.dex = &dex
 	return r
 }
 
-// DTO.DEX.QUOTE.AMOUNT
+// Trading amount
 func (r DexAPIQuoteRequest) Amount(amount string) DexAPIQuoteRequest {
 	r.amount = &amount
 	return r
 }
 
-// DTO.DEX.QUOTE.INPUT_MINT
+// Input token address
 func (r DexAPIQuoteRequest) InputMint(inputMint string) DexAPIQuoteRequest {
 	r.inputMint = &inputMint
 	return r
 }
 
-// DTO.DEX.QUOTE.OUTPUT_MINT
+// Output token address
 func (r DexAPIQuoteRequest) OutputMint(outputMint string) DexAPIQuoteRequest {
 	r.outputMint = &outputMint
 	return r
 }
 
-// DTO.DEX.QUOTE.EXACT_IN
+// Exact input mode
 func (r DexAPIQuoteRequest) ExactIn(exactIn bool) DexAPIQuoteRequest {
 	r.exactIn = &exactIn
 	return r
 }
 
-// DTO.DEX.QUOTE.SLIPPAGE
+// Slippage tolerance
 func (r DexAPIQuoteRequest) Slippage(slippage int64) DexAPIQuoteRequest {
 	r.slippage = &slippage
 	return r
@@ -332,12 +332,12 @@ func (r DexAPIQuoteRequest) Execute() (*QuoteResponse, *http.Response, error) {
 }
 
 /*
-Quote CONTROLLER.DEX.QUOTE.SUMMARY
+Quote Dex - Get Quote
 
-CONTROLLER.DEX.QUOTE.DESCRIPTION
+Get DEX trading quote information
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return DexAPIQuoteRequest
 */
 func (a *DexAPIService) Quote(ctx context.Context, chain ChainSymbol) DexAPIQuoteRequest {
@@ -465,12 +465,12 @@ func (r DexAPIRouteRequest) Execute() (*SwapRouteResponse, *http.Response, error
 }
 
 /*
-Route CONTROLLER.DEX.ROUTE.SUMMARY
+Route Dex - Route
 
-CONTROLLER.DEX.ROUTE.DESCRIPTION
+Calculate the best route for token swap considering price impact and fees. Returns the optimal path and a prepared transaction.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return DexAPIRouteRequest
 */
 func (a *DexAPIService) Route(ctx context.Context, chain ChainSymbol) DexAPIRouteRequest {
@@ -579,12 +579,12 @@ func (r DexAPISwapRequest) Execute() (*SwapReply, *http.Response, error) {
 }
 
 /*
-Swap CONTROLLER.DEX.SWAP.SUMMARY
+Swap Dex - Swap
 
-CONTROLLER.DEX.SWAP.DESCRIPTION
+Swap parameters including input token, output token, amount and slippage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return DexAPISwapRequest
 */
 func (a *DexAPIService) Swap(ctx context.Context, chain ChainSymbol) DexAPISwapRequest {

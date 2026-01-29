@@ -22,13 +22,13 @@ var _ MappedNullable = &SwapRouteResponse{}
 
 // SwapRouteResponse struct for SwapRouteResponse
 type SwapRouteResponse struct {
-	// DTO.DEX.SWAP.ARGS
+	// Original swap request parameters
 	Args SwapRouteInput `json:"args"`
-	// DTO.DEX.SWAP.SERIALIZED_TX
+	// Base64 encoded transaction
 	SerializedTx string `json:"serializedTx"`
-	// DTO.DEX.SWAP.ROUTE_INFO
+	// Detailed routing information
 	RouteInfo map[string]interface{} `json:"routeInfo"`
-	// DTO.DEX.SWAP.ELAPSED_TIME
+	// Time taken to process the request in milliseconds
 	ElapsedTime int64 `json:"elapsedTime"`
 }
 

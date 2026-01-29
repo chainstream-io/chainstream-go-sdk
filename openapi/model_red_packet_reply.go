@@ -22,7 +22,7 @@ var _ MappedNullable = &RedPacketReply{}
 
 // RedPacketReply struct for RedPacketReply
 type RedPacketReply struct {
-	// DTO.RED_PACKET.SERIALIZED_TX
+	// Base64 encoded transaction
 	TxSerialize string `json:"txSerialize"`
 }
 

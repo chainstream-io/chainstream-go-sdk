@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Channels** | Pointer to **[]string** | DTO.ENDPOINT.CHANNELS | [optional] 
-**Description** | Pointer to **string** | DTO.ENDPOINT.DESCRIPTION | [optional] 
-**Disabled** | Pointer to **bool** | DTO.ENDPOINT.DISABLED | [optional] [default to false]
-**FilterTypes** | Pointer to **[]string** | DTO.ENDPOINT.FILTER_TYPES | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | DTO.ENDPOINT.METADATA | [optional] 
-**RateLimit** | Pointer to **int64** | DTO.ENDPOINT.RATE_LIMIT | [optional] 
-**Url** | Pointer to **string** | DTO.ENDPOINT.URL | [optional] 
-**Filter** | Pointer to **string** | DTO.ENDPOINT.FILTER | [optional] 
+**Channels** | Pointer to **[]string** | Endpoint channels | [optional] 
+**Description** | Pointer to **string** | Endpoint description | [optional] 
+**Disabled** | Pointer to **bool** | Endpoint disabled status | [optional] [default to false]
+**FilterTypes** | Pointer to **[]string** | Filter types | [optional] 
+**Metadata** | Pointer to **map[string]interface{}** | Endpoint metadata | [optional] 
+**RateLimit** | Pointer to **int64** | Rate limit | [optional] 
+**Url** | Pointer to **string** | Endpoint URL | [optional] 
+**Filter** | Pointer to **string** | Endpoint filter | [optional] 
 
 ## Methods
 

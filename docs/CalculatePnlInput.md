@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TokenAddresses** | Pointer to **[]string** | DTO.WALLET.CALCULATE_PNL.INPUT.TOKEN_ADDRESSES | [optional] 
+**TokenAddresses** | Pointer to **[]string** | List of token addresses to calculate PNL for | [optional] 
 
 ## Methods
 

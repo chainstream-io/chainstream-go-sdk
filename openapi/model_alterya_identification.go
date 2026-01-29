@@ -22,21 +22,21 @@ var _ MappedNullable = &AlteryaIdentification{}
 
 // AlteryaIdentification struct for AlteryaIdentification
 type AlteryaIdentification struct {
-	// DTO.KYT.ALTERYA_IDENTIFICATION.OBJECT
+	// Object type
 	Object string `json:"object"`
-	// DTO.KYT.ALTERYA_IDENTIFICATION.ADDRESS
+	// Address
 	Address string `json:"address"`
-	// DTO.KYT.ALTERYA_IDENTIFICATION.CHAIN
+	// Blockchain network
 	Chain string `json:"chain"`
-	// DTO.KYT.ALTERYA_IDENTIFICATION.RISK_LEVEL
+	// Risk level
 	RiskLevel string `json:"risk_level"`
-	// DTO.KYT.ALTERYA_IDENTIFICATION.REASON
+	// Risk reason
 	Reason string `json:"reason"`
-	// DTO.KYT.ALTERYA_IDENTIFICATION.LABELS
+	// Label list
 	Labels []string `json:"labels"`
-	// DTO.KYT.ALTERYA_IDENTIFICATION.ON_CHAIN_ACTIVITY
+	// On-chain activity information
 	OnChainActivity OnChainActivity `json:"on_chain_activity"`
-	// DTO.KYT.ALTERYA_IDENTIFICATION.RISK_SCORE
+	// Risk score
 	RiskScore string `json:"risk_score"`
 }
 

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]EndpointResponse**](EndpointResponse.md) | DTO.ENDPOINT.PAGE.DATA | [optional] 
-**Done** | Pointer to **bool** | DTO.ENDPOINT.PAGE.DONE | [optional] 
-**Iterator** | Pointer to **string** | DTO.ENDPOINT.PAGE.ITERATOR | [optional] 
-**PrevIterator** | Pointer to **string** | DTO.ENDPOINT.PAGE.PREV_ITERATOR | [optional] 
+**Data** | Pointer to [**[]EndpointResponse**](EndpointResponse.md) | Page data | [optional] 
+**Done** | Pointer to **bool** | Page done | [optional] 
+**Iterator** | Pointer to **string** | Page iterator | [optional] 
+**PrevIterator** | Pointer to **string** | Previous page iterator | [optional] 
 
 ## Methods
 

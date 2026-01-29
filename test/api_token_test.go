@@ -274,6 +274,21 @@ func Test_chainstream_TokenAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test TokenAPIService GetTokenLiquiditySnapshots", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var chain openapi.ChainSymbol
+		var tokenAddress string
+
+		resp, httpRes, err := apiClient.TokenAPI.GetTokenLiquiditySnapshots(context.Background(), chain, tokenAddress).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test TokenAPIService GetTokenTraders", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

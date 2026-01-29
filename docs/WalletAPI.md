@@ -1,13 +1,13 @@
 # \WalletAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CalculatePnl**](WalletAPI.md#CalculatePnl) | **Post** /v1/wallet/{chain}/{walletAddress}/calculate-pnl | CONTROLLER.WALLET.CALCULATE_PNL.SUMMARY
-[**GetBalance**](WalletAPI.md#GetBalance) | **Get** /v1/wallet/{chain}/{walletAddress}/balance | CONTROLLER.WALLET.GET_BALANCES.SUMMARY
-[**GetPnl**](WalletAPI.md#GetPnl) | **Get** /v1/wallet/{chain}/{walletAddress} | CONTROLLER.WALLET.GET_PNL.SUMMARY
-[**GetPnlStats**](WalletAPI.md#GetPnlStats) | **Get** /v1/wallet/{chain}/{walletAddress}/stats | CONTROLLER.WALLET.GET_PNL_STATS.SUMMARY
+[**CalculatePnl**](WalletAPI.md#CalculatePnl) | **Post** /v1/wallet/{chain}/{walletAddress}/calculate-pnl | Wallet - Calculate PNL
+[**GetBalance**](WalletAPI.md#GetBalance) | **Get** /v1/wallet/{chain}/{walletAddress}/balance | Wallet - Balances
+[**GetPnl**](WalletAPI.md#GetPnl) | **Get** /v1/wallet/{chain}/{walletAddress} | Wallet - PNL
+[**GetPnlStats**](WalletAPI.md#GetPnlStats) | **Get** /v1/wallet/{chain}/{walletAddress}/stats | Wallet - PNL Stats
 
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > BooleanResultDTO CalculatePnl(ctx, chain, walletAddress).CalculatePnlInput(calculatePnlInput).Execute()
 
-CONTROLLER.WALLET.CALCULATE_PNL.SUMMARY
+Wallet - Calculate PNL
 
 
 
@@ -32,8 +32,8 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	walletAddress := "MJKqp326RZCHnAAbew9MDdui3iCKWco7fsK9sVuZTX2" // string | GLOBAL.WALLETADDRESS.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	walletAddress := "MJKqp326RZCHnAAbew9MDdui3iCKWco7fsK9sVuZTX2" // string | An address of a wallet
 	calculatePnlInput := *openapiclient.NewCalculatePnlInput() // CalculatePnlInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -54,8 +54,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**walletAddress** | **string** | GLOBAL.WALLETADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**walletAddress** | **string** | An address of a wallet | 
 
 ### Other Parameters
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 > WalletBalancesDTO GetBalance(ctx, chain, walletAddress).TokenAddress(tokenAddress).Execute()
 
-CONTROLLER.WALLET.GET_BALANCES.SUMMARY
+Wallet - Balances
 
 
 
@@ -107,9 +107,9 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	walletAddress := "MJKqp326RZCHnAAbew9MDdui3iCKWco7fsK9sVuZTX2" // string | GLOBAL.WALLETADDRESS.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | DTO.WALLET.BALANCE.QUERY.TOKEN_ADDRESS (optional)
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	walletAddress := "MJKqp326RZCHnAAbew9MDdui3iCKWco7fsK9sVuZTX2" // string | An address of a wallet
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | Specific token address to filter wallet balances (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -129,8 +129,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**walletAddress** | **string** | GLOBAL.WALLETADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**walletAddress** | **string** | An address of a wallet | 
 
 ### Other Parameters
 
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **tokenAddress** | **string** | DTO.WALLET.BALANCE.QUERY.TOKEN_ADDRESS | 
+ **tokenAddress** | **string** | Specific token address to filter wallet balances | 
 
 ### Return type
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 > []WalletPnlDTO GetPnl(ctx, chain, walletAddress).TokenAddress(tokenAddress).Execute()
 
-CONTROLLER.WALLET.GET_PNL.SUMMARY
+Wallet - PNL
 
 
 
@@ -182,9 +182,9 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	walletAddress := "MJKqp326RZCHnAAbew9MDdui3iCKWco7fsK9sVuZTX2" // string | GLOBAL.WALLETADDRESS.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION (optional)
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	walletAddress := "MJKqp326RZCHnAAbew9MDdui3iCKWco7fsK9sVuZTX2" // string | An address of a wallet
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -204,8 +204,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**walletAddress** | **string** | GLOBAL.WALLETADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**walletAddress** | **string** | An address of a wallet | 
 
 ### Other Parameters
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+ **tokenAddress** | **string** | An address of a token | 
 
 ### Return type
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 > []WalletPnlDTO GetPnlStats(ctx, chain, walletAddress).Execute()
 
-CONTROLLER.WALLET.GET_PNL_STATS.SUMMARY
+Wallet - PNL Stats
 
 
 
@@ -257,8 +257,8 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	walletAddress := "MJKqp326RZCHnAAbew9MDdui3iCKWco7fsK9sVuZTX2" // string | GLOBAL.WALLETADDRESS.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	walletAddress := "MJKqp326RZCHnAAbew9MDdui3iCKWco7fsK9sVuZTX2" // string | An address of a wallet
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -278,8 +278,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**walletAddress** | **string** | GLOBAL.WALLETADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**walletAddress** | **string** | An address of a wallet | 
 
 ### Other Parameters
 

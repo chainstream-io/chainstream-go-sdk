@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Symbol** | **string** | DTO.BLOCKCHAIN.SYMBOL | 
-**Name** | **string** | DTO.BLOCKCHAIN.NAME | 
-**ExplorerUrl** | **string** | DTO.BLOCKCHAIN.EXPLORER_URL | 
-**ChainId** | **int64** | DTO.BLOCKCHAIN.CHAIN_ID | 
+**Symbol** | **string** | Blockchain symbol | 
+**Name** | **string** | Blockchain name | 
+**ExplorerUrl** | **string** | Blockchain explorer URL | 
+**ChainId** | **int64** | Blockchain chain ID | 
 
 ## Methods
 

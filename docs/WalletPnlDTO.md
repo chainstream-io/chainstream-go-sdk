@@ -4,29 +4,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** | DTO.WALLET.PNL.ID | 
-**Chain** | **string** | DTO.WALLET.PNL.CHAIN | 
-**WalletAddress** | **string** | DTO.WALLET.PNL.WALLET_ADDRESS | 
-**TokenAddress** | **string** | DTO.WALLET.PNL.TOKEN_ADDRESS | 
-**TokenPriceInUsd** | **string** | DTO.WALLET.PNL.TOKEN_PRICE | 
-**OpenTime** | **int64** | DTO.WALLET.PNL.OPEN_TIME | 
-**CloseTime** | **int64** | DTO.WALLET.PNL.CLOSE_TIME | 
-**LastTime** | **int64** | DTO.WALLET.PNL.LAST_TIME | 
-**Balance** | **string** | DTO.WALLET.PNL.BALANCE | 
-**BuyAmount** | **string** | DTO.WALLET.PNL.BUY_AMOUNT | 
-**BuyAmountInUsd** | **string** | DTO.WALLET.PNL.BUY_AMOUNT_USD | 
-**Buys** | **string** | DTO.WALLET.PNL.BUYS | 
-**SellAmount** | **string** | DTO.WALLET.PNL.SELL_AMOUNT | 
-**SellAmountInUsd** | **string** | DTO.WALLET.PNL.SELL_AMOUNT_USD | 
-**Sells** | **string** | DTO.WALLET.PNL.SELLS | 
-**AverageBuyPriceInUsd** | **string** | DTO.WALLET.PNL.AVERAGE_BUY_PRICE | 
-**AverageSellPriceInUsd** | **string** | DTO.WALLET.PNL.AVERAGE_SELL_PRICE | 
-**UnrealizedProfitInUsd** | **string** | DTO.WALLET.PNL.UNREALIZED_PROFIT | 
-**UnrealizedProfitRatio** | **string** | DTO.WALLET.PNL.UNREALIZED_PROFIT_RATIO | 
-**RealizedProfitInUsd** | **string** | DTO.WALLET.PNL.REALIZED_PROFIT | 
-**RealizedProfitRatio** | **string** | DTO.WALLET.PNL.REALIZED_PROFIT_RATIO | 
-**TotalRealizedProfitInUsd** | **string** | DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT | 
-**TotalRealizedProfitRatio** | **string** | DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT_RATIO | 
+**Id** | **int64** | Record identifier | 
+**Chain** | **string** | Blockchain network | 
+**WalletAddress** | **string** | Wallet address | 
+**TokenAddress** | **string** | Token contract address | 
+**TokenPriceInUsd** | **string** | Current token price in USD | 
+**OpenTime** | **int64** | Position opening time | 
+**CloseTime** | **int64** | Position closing time | 
+**LastTime** | **int64** | Last update time | 
+**Balance** | **string** | Current token balance | 
+**BuyAmount** | **string** | Total amount of tokens bought | 
+**BuyAmountInUsd** | **string** | Total value of tokens bought in USD | 
+**Buys** | **string** | Number of buy transactions | 
+**SellAmount** | **string** | Total amount of tokens sold | 
+**SellAmountInUsd** | **string** | Total value of tokens sold in USD | 
+**Sells** | **string** | Number of sell transactions | 
+**AverageBuyPriceInUsd** | **string** | Average buying price | 
+**AverageSellPriceInUsd** | **string** | Average selling price | 
+**UnrealizedProfitInUsd** | **string** | Unrealized profit in USD | 
+**UnrealizedProfitRatio** | **string** | Unrealized profit ratio | 
+**RealizedProfitInUsd** | **string** | Realized profit in USD | 
+**RealizedProfitRatio** | **string** | Realized profit ratio | 
+**TotalRealizedProfitInUsd** | **string** | Total realized profit in USD | 
+**TotalRealizedProfitRatio** | **string** | Total realized profit ratio | 
 
 ## Methods
 

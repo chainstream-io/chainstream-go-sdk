@@ -22,9 +22,9 @@ var _ MappedNullable = &TransferNetworkIdentificationsResponseDTO{}
 
 // TransferNetworkIdentificationsResponseDTO struct for TransferNetworkIdentificationsResponseDTO
 type TransferNetworkIdentificationsResponseDTO struct {
-	// DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.COUNT
+	// Identification count
 	Count int64 `json:"count"`
-	// DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.NETWORK_IDENTIFICATION_ORGS
+	// Network identification organization list
 	NetworkIdentificationOrgs []NetworkIdentificationOrg `json:"networkIdentificationOrgs"`
 }
 

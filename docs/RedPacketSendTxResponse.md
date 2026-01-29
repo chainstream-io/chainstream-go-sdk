@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Signature** | **string** | DTO.RED_PACKET.SIGNATURE | 
+**Signature** | **string** | signature | 
 
 ## Methods
 

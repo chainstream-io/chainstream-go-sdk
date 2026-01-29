@@ -22,13 +22,13 @@ var _ MappedNullable = &TokenPriceDTO{}
 
 // TokenPriceDTO struct for TokenPriceDTO
 type TokenPriceDTO struct {
-	// DTO.TOKEN.PRICE.TOKEN_ADDRESS
+	// Token contract address
 	TokenAddress string `json:"tokenAddress"`
-	// DTO.TOKEN.PRICE.PRICE_IN_USD
+	// Token price in USD
 	PriceInUsd string `json:"priceInUsd"`
-	// DTO.TOKEN.PRICE.PRICE_IN_NATIVE
+	// Token price in native currency (e.g., SOL)
 	PriceInNative string `json:"priceInNative"`
-	// DTO.TOKEN.PRICE.TIMESTAMP
+	// Price timestamp (Unix epoch in seconds)
 	Timestamp int64 `json:"timestamp"`
 }
 

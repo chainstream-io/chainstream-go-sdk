@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | **string** | DTO.KYT.ALTERYA_IDENTIFICATION.OBJECT | 
-**Address** | **string** | DTO.KYT.ALTERYA_IDENTIFICATION.ADDRESS | 
-**Chain** | **string** | DTO.KYT.ALTERYA_IDENTIFICATION.CHAIN | 
-**RiskLevel** | **string** | DTO.KYT.ALTERYA_IDENTIFICATION.RISK_LEVEL | 
-**Reason** | **string** | DTO.KYT.ALTERYA_IDENTIFICATION.REASON | 
-**Labels** | **[]string** | DTO.KYT.ALTERYA_IDENTIFICATION.LABELS | 
-**OnChainActivity** | [**OnChainActivity**](OnChainActivity.md) | DTO.KYT.ALTERYA_IDENTIFICATION.ON_CHAIN_ACTIVITY | 
-**RiskScore** | **string** | DTO.KYT.ALTERYA_IDENTIFICATION.RISK_SCORE | 
+**Object** | **string** | Object type | 
+**Address** | **string** | Address | 
+**Chain** | **string** | Blockchain network | 
+**RiskLevel** | **string** | Risk level | 
+**Reason** | **string** | Risk reason | 
+**Labels** | **[]string** | Label list | 
+**OnChainActivity** | [**OnChainActivity**](OnChainActivity.md) | On-chain activity information | 
+**RiskScore** | **string** | Risk score | 
 
 ## Methods
 

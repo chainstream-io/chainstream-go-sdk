@@ -48,6 +48,10 @@ docs/DexDTO.md
 docs/DexPage.md
 docs/DexPoolAPI.md
 docs/DexPoolDTO.md
+docs/DexPoolSnapshotDTO.md
+docs/DexPoolSnapshotPage.md
+docs/DexPoolTokenLiquidity.md
+docs/DexPoolTokenSnapshotDTO.md
 docs/DirectExposureDetail.md
 docs/EndpointAPI.md
 docs/EndpointListResponse.md
@@ -101,6 +105,8 @@ docs/TokenCreatorsDTO.md
 docs/TokenExtraDTO.md
 docs/TokenHolder.md
 docs/TokenHolderPage.md
+docs/TokenLiquiditySnapshotDTO.md
+docs/TokenLiquiditySnapshotPage.md
 docs/TokenListPage.md
 docs/TokenMarketData.md
 docs/TokenMetadata.md
@@ -111,6 +117,8 @@ docs/TokenSocialMediasDTO.md
 docs/TokenStat.md
 docs/TokenTrader.md
 docs/TokenTraderTag.md
+docs/TopTradersDTO.md
+docs/TopTradersPage.md
 docs/TradeAPI.md
 docs/TradeDetailDTO.md
 docs/TradeEvent.md
@@ -155,6 +163,10 @@ model_dev_token_dto.go
 model_dex_dto.go
 model_dex_page.go
 model_dex_pool_dto.go
+model_dex_pool_snapshot_dto.go
+model_dex_pool_snapshot_page.go
+model_dex_pool_token_liquidity.go
+model_dex_pool_token_snapshot_dto.go
 model_direct_exposure_detail.go
 model_endpoint_list_response.go
 model_endpoint_operation_response.go
@@ -201,6 +213,8 @@ model_token_creators_dto.go
 model_token_extra_dto.go
 model_token_holder.go
 model_token_holder_page.go
+model_token_liquidity_snapshot_dto.go
+model_token_liquidity_snapshot_page.go
 model_token_list_page.go
 model_token_market_data.go
 model_token_metadata.go
@@ -211,6 +225,8 @@ model_token_social_medias_dto.go
 model_token_stat.go
 model_token_trader.go
 model_token_trader_tag.go
+model_top_traders_dto.go
+model_top_traders_page.go
 model_trade_detail_dto.go
 model_trade_event.go
 model_trade_page.go

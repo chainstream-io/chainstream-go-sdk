@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SignedTx** | **string** | DTO.DEX.MOONSHOT.SUBMIT.CREATE_TOKEN.SIGNED_TX | 
-**Extra** | Pointer to **map[string]interface{}** | DTO.DEX.MOONSHOT.SUBMIT.CREATE_TOKEN.EXTRA | [optional] 
+**SignedTx** | **string** | Signed transaction in Base64 format for Moonshot token creation | 
+**Extra** | Pointer to **map[string]interface{}** | Additional data required for Moonshot token creation transaction submission | [optional] 
 
 ## Methods
 

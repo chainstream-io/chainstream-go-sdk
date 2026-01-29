@@ -22,25 +22,25 @@ var _ MappedNullable = &WithdrawalBaseResponseDTO{}
 
 // WithdrawalBaseResponseDTO struct for WithdrawalBaseResponseDTO
 type WithdrawalBaseResponseDTO struct {
-	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ASSET
+	// Asset type
 	Asset string `json:"asset"`
-	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ASSET_ID
+	// Asset ID
 	AssetId string `json:"assetId"`
-	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.NETWORK
+	// Blockchain network
 	Network string `json:"network"`
-	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ADDRESS
+	// Address
 	Address string `json:"address"`
-	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.MEMO
+	// Memo information
 	Memo string `json:"memo"`
-	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ATTEMPT_IDENTIFIER
+	// Attempt identifier
 	AttemptIdentifier string `json:"attemptIdentifier"`
-	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ASSET_AMOUNT
+	// Asset amount
 	AssetAmount string `json:"assetAmount"`
-	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.EXTERNAL_ID
+	// External ID (UUID)
 	ExternalId string `json:"externalId"`
-	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.USD_AMOUNT
+	// USD amount
 	UsdAmount string `json:"usdAmount"`
-	// DTO.KYT.WITHDRAWAL_BASE_RESPONSE.UPDATED_AT
+	// Updated timestamp
 	UpdatedAt string `json:"updatedAt"`
 }
 

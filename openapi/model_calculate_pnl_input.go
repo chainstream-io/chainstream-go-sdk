@@ -20,7 +20,7 @@ var _ MappedNullable = &CalculatePnlInput{}
 
 // CalculatePnlInput struct for CalculatePnlInput
 type CalculatePnlInput struct {
-	// DTO.WALLET.CALCULATE_PNL.INPUT.TOKEN_ADDRESSES
+	// List of token addresses to calculate PNL for
 	TokenAddresses []string `json:"tokenAddresses,omitempty"`
 }
 

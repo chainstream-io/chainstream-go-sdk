@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **float32** | DTO.JOB.STREAMING.ID | 
-**Data** | **map[string]interface{}** | DTO.JOB.STREAMING.DATA | 
+**Id** | **float32** | Streaming job ID | 
+**Data** | **map[string]interface{}** | Streaming data | 
 
 ## Methods
 

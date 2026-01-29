@@ -1,14 +1,14 @@
 # \DexAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateToken**](DexAPI.md#CreateToken) | **Post** /v1/dex/{chain}/create | CONTROLLER.DEX.CREATE.SUMMARY
-[**ListDex**](DexAPI.md#ListDex) | **Get** /v1/dex | CONTROLLER.DEX.LIST.SUMMARY
-[**Quote**](DexAPI.md#Quote) | **Get** /v1/dex/{chain}/quote | CONTROLLER.DEX.QUOTE.SUMMARY
-[**Route**](DexAPI.md#Route) | **Post** /v1/dex/{chain}/route | CONTROLLER.DEX.ROUTE.SUMMARY
-[**Swap**](DexAPI.md#Swap) | **Post** /v1/dex/{chain}/swap | CONTROLLER.DEX.SWAP.SUMMARY
+[**CreateToken**](DexAPI.md#CreateToken) | **Post** /v1/dex/{chain}/create | Dex - Create Token
+[**ListDex**](DexAPI.md#ListDex) | **Get** /v1/dex | Dex - List
+[**Quote**](DexAPI.md#Quote) | **Get** /v1/dex/{chain}/quote | Dex - Get Quote
+[**Route**](DexAPI.md#Route) | **Post** /v1/dex/{chain}/route | Dex - Route
+[**Swap**](DexAPI.md#Swap) | **Post** /v1/dex/{chain}/swap | Dex - Swap
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > CreateTokenReply CreateToken(ctx, chain).CreateTokenInput(createTokenInput).Execute()
 
-CONTROLLER.DEX.CREATE.SUMMARY
+Dex - Create Token
 
 
 
@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
 	createTokenInput := *openapiclient.NewCreateTokenInput("raydium", "oQPnhXAbLbMuKHESaGrbXT17CyvWCpLyERSJA9HCYd7", "Candy Token", "CANDY") // CreateTokenInput | Token creation parameters
 
 	configuration := openapiclient.NewConfiguration()
@@ -54,7 +54,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 > DexPage ListDex(ctx).Chains(chains).Limit(limit).DexProgram(dexProgram).Execute()
 
-CONTROLLER.DEX.LIST.SUMMARY
+Dex - List
 
 
 
@@ -106,8 +106,8 @@ import (
 
 func main() {
 	chains := []string{"Inner_example"} // []string |  (optional)
-	limit := int64(789) // int64 | DTO.DEX.QUERY.LIMIT (optional) (default to 20)
-	dexProgram := "dexProgram_example" // string | DTO.DEX.QUERY.DEX_PROGRAM (optional)
+	limit := int64(789) // int64 | Number of results per page (optional) (default to 20)
+	dexProgram := "dexProgram_example" // string | dex program address (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -133,8 +133,8 @@ Other parameters are passed through a pointer to a apiListDexRequest struct via 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chains** | **[]string** |  | 
- **limit** | **int64** | DTO.DEX.QUERY.LIMIT | [default to 20]
- **dexProgram** | **string** | DTO.DEX.QUERY.DEX_PROGRAM | 
+ **limit** | **int64** | Number of results per page | [default to 20]
+ **dexProgram** | **string** | dex program address | 
 
 ### Return type
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 > QuoteResponse Quote(ctx, chain).Dex(dex).Amount(amount).InputMint(inputMint).OutputMint(outputMint).ExactIn(exactIn).Slippage(slippage).Execute()
 
-CONTROLLER.DEX.QUOTE.SUMMARY
+Dex - Get Quote
 
 
 
@@ -175,13 +175,13 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	dex := "raydium" // string | DTO.DEX.QUOTE.DEX
-	amount := "1000000000" // string | DTO.DEX.QUOTE.AMOUNT
-	inputMint := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | DTO.DEX.QUOTE.INPUT_MINT
-	outputMint := "So11111111111111111111111111111111111111112" // string | DTO.DEX.QUOTE.OUTPUT_MINT
-	exactIn := true // bool | DTO.DEX.QUOTE.EXACT_IN (default to true)
-	slippage := int64(10) // int64 | DTO.DEX.QUOTE.SLIPPAGE
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	dex := "raydium" // string | DEX protocol type
+	amount := "1000000000" // string | Trading amount
+	inputMint := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | Input token address
+	outputMint := "So11111111111111111111111111111111111111112" // string | Output token address
+	exactIn := true // bool | Exact input mode (default to true)
+	slippage := int64(10) // int64 | Slippage tolerance
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -201,7 +201,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -211,12 +211,12 @@ Other parameters are passed through a pointer to a apiQuoteRequest struct via th
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **dex** | **string** | DTO.DEX.QUOTE.DEX | 
- **amount** | **string** | DTO.DEX.QUOTE.AMOUNT | 
- **inputMint** | **string** | DTO.DEX.QUOTE.INPUT_MINT | 
- **outputMint** | **string** | DTO.DEX.QUOTE.OUTPUT_MINT | 
- **exactIn** | **bool** | DTO.DEX.QUOTE.EXACT_IN | [default to true]
- **slippage** | **int64** | DTO.DEX.QUOTE.SLIPPAGE | 
+ **dex** | **string** | DEX protocol type | 
+ **amount** | **string** | Trading amount | 
+ **inputMint** | **string** | Input token address | 
+ **outputMint** | **string** | Output token address | 
+ **exactIn** | **bool** | Exact input mode | [default to true]
+ **slippage** | **int64** | Slippage tolerance | 
 
 ### Return type
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 > SwapRouteResponse Route(ctx, chain).SwapRouteInput(swapRouteInput).Execute()
 
-CONTROLLER.DEX.ROUTE.SUMMARY
+Dex - Route
 
 
 
@@ -257,7 +257,7 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
 	swapRouteInput := *openapiclient.NewSwapRouteInput("jupiter", "oQPnhXAbLbMuKHESaGrbXT17CyvWCpLyERSJA9HCYd7", "1000000000", "ExactIn", int64(5)) // SwapRouteInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -278,7 +278,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 > SwapReply Swap(ctx, chain).SwapInput(swapInput).Execute()
 
-CONTROLLER.DEX.SWAP.SUMMARY
+Dex - Swap
 
 
 
@@ -329,7 +329,7 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
 	swapInput := *openapiclient.NewSwapInput("raydium", "oQPnhXAbLbMuKHESaGrbXT17CyvWCpLyERSJA9HCYd7", "1000000000", "ExactIn", int64(10)) // SwapInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -350,7 +350,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 

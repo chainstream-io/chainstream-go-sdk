@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Twitter** | Pointer to **string** | DTO.TOKEN.SOCIAL_MEDIAS.TWITTER | [optional] 
-**Telegram** | Pointer to **string** | DTO.TOKEN.SOCIAL_MEDIAS.TELEGRAM | [optional] 
-**Website** | Pointer to **string** | DTO.TOKEN.SOCIAL_MEDIAS.WEBSITE | [optional] 
-**Tiktok** | Pointer to **string** | DTO.TOKEN.SOCIAL_MEDIAS.TIKTOK | [optional] 
-**Discord** | Pointer to **string** | DTO.TOKEN.SOCIAL_MEDIAS.DISCORD | [optional] 
-**Facebook** | Pointer to **string** | DTO.TOKEN.SOCIAL_MEDIAS.FACEBOOK | [optional] 
-**Github** | Pointer to **string** | DTO.TOKEN.SOCIAL_MEDIAS.GITHUB | [optional] 
-**Instagram** | Pointer to **string** | DTO.TOKEN.SOCIAL_MEDIAS.INSTAGRAM | [optional] 
-**Linkedin** | Pointer to **string** | DTO.TOKEN.SOCIAL_MEDIAS.LINKEDIN | [optional] 
-**Medium** | Pointer to **string** | DTO.TOKEN.SOCIAL_MEDIAS.MEDIUM | [optional] 
-**Reddit** | Pointer to **string** | DTO.TOKEN.SOCIAL_MEDIAS.REDDIT | [optional] 
-**Youtube** | Pointer to **string** | DTO.TOKEN.SOCIAL_MEDIAS.YOUTUBE | [optional] 
-**Bitbucket** | Pointer to **string** | DTO.TOKEN.SOCIAL_MEDIAS.BITBUCKET | [optional] 
+**Twitter** | Pointer to **string** | Twitter account or profile link | [optional] 
+**Telegram** | Pointer to **string** | Telegram group or channel link | [optional] 
+**Website** | Pointer to **string** | Official website URL | [optional] 
+**Tiktok** | Pointer to **string** | TikTok account or profile link | [optional] 
+**Discord** | Pointer to **string** | Discord server invite link | [optional] 
+**Facebook** | Pointer to **string** | Facebook page or profile link | [optional] 
+**Github** | Pointer to **string** | GitHub repository or profile link | [optional] 
+**Instagram** | Pointer to **string** | Instagram account or profile link | [optional] 
+**Linkedin** | Pointer to **string** | LinkedIn company or profile link | [optional] 
+**Medium** | Pointer to **string** | Medium blog or publication link | [optional] 
+**Reddit** | Pointer to **string** | Reddit community or profile link | [optional] 
+**Youtube** | Pointer to **string** | YouTube channel or video link | [optional] 
+**Bitbucket** | Pointer to **string** | Bitbucket repository or profile link | [optional] 
 
 ## Methods
 

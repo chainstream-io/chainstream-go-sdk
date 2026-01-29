@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Direct** | [**DirectExposureDetail**](DirectExposureDetail.md) | DTO.KYT.TRANSFER_DIRECT_EXPOSURE_RESPONSE.DIRECT | 
+**Direct** | [**DirectExposureDetail**](DirectExposureDetail.md) | Direct exposure information | 
 
 ## Methods
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ChainalysisIdentifications** | [**[]ChainalysisAddressIdentification**](ChainalysisAddressIdentification.md) | DTO.KYT.WITHDRAWAL_ADDRESS_IDENTIFICATIONS_RESPONSE.CHAINALYSIS_IDENTIFICATIONS | 
-**CustomAddresses** | **[]string** | DTO.KYT.WITHDRAWAL_ADDRESS_IDENTIFICATIONS_RESPONSE.CUSTOM_ADDRESSES | 
+**ChainalysisIdentifications** | [**[]ChainalysisAddressIdentification**](ChainalysisAddressIdentification.md) | Chainalysis address identification list | 
+**CustomAddresses** | **[]string** | Custom address list | 
 
 ## Methods
 

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to **string** | DTO.TOKEN.CREATORS.ADDRESS | [optional] 
-**Share** | Pointer to **int64** | DTO.TOKEN.CREATORS.SHARE | [optional] 
-**IsVerified** | Pointer to **bool** | DTO.TOKEN.CREATORS.IS_VERIFIED | [optional] 
+**Address** | Pointer to **string** | Creator wallet address | [optional] 
+**Share** | Pointer to **int64** | Creator share percentage (0-100) | [optional] 
+**IsVerified** | Pointer to **bool** | Whether the creator is verified | [optional] 
 
 ## Methods
 

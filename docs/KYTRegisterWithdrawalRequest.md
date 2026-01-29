@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Network** | **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.NETWORK | 
-**Asset** | **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET | 
-**Address** | **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ADDRESS | 
-**AssetAmount** | **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_AMOUNT | 
-**AttemptTimestamp** | **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ATTEMPT_TIMESTAMP | 
-**AssetPrice** | Pointer to **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_PRICE | [optional] 
-**AssetDenomination** | Pointer to **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_DENOMINATION | [optional] 
-**AssetId** | Pointer to **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_ID | [optional] 
-**Memo** | Pointer to **string** | DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.MEMO | [optional] 
+**Network** | **string** | Blockchain network | 
+**Asset** | **string** | Asset type | 
+**Address** | **string** | Withdrawal address | 
+**AssetAmount** | **string** | Asset amount | 
+**AttemptTimestamp** | **string** | Attempt timestamp | 
+**AssetPrice** | Pointer to **string** | Asset price | [optional] 
+**AssetDenomination** | Pointer to **string** | Asset denomination (e.g., USD) | [optional] 
+**AssetId** | Pointer to **string** | Asset ID (optional) | [optional] 
+**Memo** | Pointer to **string** | Memo information (optional) | [optional] 
 
 ## Methods
 

@@ -1,12 +1,12 @@
 # \TransactionAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EstimateGasLimit**](TransactionAPI.md#EstimateGasLimit) | **Post** /v1/transaction/{chain}/estimate-gas-limit | CONTROLLER.TRANSACTION.ESTIMATE_GAS_LIMIT.SUMMARY
-[**GetGasPrice**](TransactionAPI.md#GetGasPrice) | **Get** /v1/transaction/{chain}/gas-price | CONTROLLER.TRANSACTION.GET_GAS_PRICE.SUMMARY
-[**Send**](TransactionAPI.md#Send) | **Post** /v1/transaction/{chain}/send | CONTROLLER.TRANSACTION.SEND.SUMMARY
+[**EstimateGasLimit**](TransactionAPI.md#EstimateGasLimit) | **Post** /v1/transaction/{chain}/estimate-gas-limit | Transaction - Estimate Gas Limit
+[**GetGasPrice**](TransactionAPI.md#GetGasPrice) | **Get** /v1/transaction/{chain}/gas-price | Transaction - Get Gas Price
+[**Send**](TransactionAPI.md#Send) | **Post** /v1/transaction/{chain}/send | Transaction - Send
 
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > EstimateGasLimitResponse EstimateGasLimit(ctx, chain).EstimateGasLimitInput(estimateGasLimitInput).Execute()
 
-CONTROLLER.TRANSACTION.ESTIMATE_GAS_LIMIT.SUMMARY
+Transaction - Estimate Gas Limit
 
 
 
@@ -31,8 +31,8 @@ import (
 )
 
 func main() {
-	chain := "chain_example" // string | GLOBAL.CHAIN.DESCRIPTION
-	estimateGasLimitInput := *openapiclient.NewEstimateGasLimitInput("0x742d35Cc6634C0532925a3b8D8C9C4b8a8d4C8b8", "0x742d35Cc6634C0532925a3b8D8C9C4b8a8d4C8b8", "0xa9059cbb000000000000000000000000742d35cc6634c0532925a3b8d8c9c4b8a8d4c8b80000000000000000000000000000000000000000000000000de0b6b3a7640000") // EstimateGasLimitInput | CONTROLLER.TRANSACTION.ESTIMATE_GAS_LIMIT.BODY
+	chain := "chain_example" // string | A chain name listed in supported networks
+	estimateGasLimitInput := *openapiclient.NewEstimateGasLimitInput("0x742d35Cc6634C0532925a3b8D8C9C4b8a8d4C8b8", "0x742d35Cc6634C0532925a3b8D8C9C4b8a8d4C8b8", "0xa9059cbb000000000000000000000000742d35cc6634c0532925a3b8d8c9c4b8a8d4c8b80000000000000000000000000000000000000000000000000de0b6b3a7640000") // EstimateGasLimitInput | Transaction parameters for gas estimation
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -52,7 +52,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | **string** | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | **string** | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -62,7 +62,7 @@ Other parameters are passed through a pointer to a apiEstimateGasLimitRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **estimateGasLimitInput** | [**EstimateGasLimitInput**](EstimateGasLimitInput.md) | CONTROLLER.TRANSACTION.ESTIMATE_GAS_LIMIT.BODY | 
+ **estimateGasLimitInput** | [**EstimateGasLimitInput**](EstimateGasLimitInput.md) | Transaction parameters for gas estimation | 
 
 ### Return type
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 > GasPriceResponse GetGasPrice(ctx, chain).Execute()
 
-CONTROLLER.TRANSACTION.GET_GAS_PRICE.SUMMARY
+Transaction - Get Gas Price
 
 
 
@@ -103,7 +103,7 @@ import (
 )
 
 func main() {
-	chain := "chain_example" // string | GLOBAL.CHAIN.DESCRIPTION
+	chain := "chain_example" // string | A chain name listed in supported networks
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -123,7 +123,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | **string** | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | **string** | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 > SendTxResponse Send(ctx, chain).SendTxInput(sendTxInput).Execute()
 
-CONTROLLER.TRANSACTION.SEND.SUMMARY
+Transaction - Send
 
 
 
@@ -173,8 +173,8 @@ import (
 )
 
 func main() {
-	chain := "{"SOLANA":"sol","BASE":"base","BSC":"bsc","POLYGON":"polygon","ARBITRUM":"arbitrum","OPTIMISM":"optimism","AVALANCHE":"avalanche","ETHEREUM":"eth","ZKSYNC":"zksync","SUI":"sui"}" // string | GLOBAL.CHAIN.DESCRIPTION
-	sendTxInput := *openapiclient.NewSendTxInput("AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEDRgYGpQEDAQIABQcICQoLDA0ODwAAAAAAAAAAAAAQERITFBUWFxgZGhscHR4fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=") // SendTxInput | CONTROLLER.TRANSACTION.SEND.BODY
+	chain := "{"SOLANA":"sol","BASE":"base","BSC":"bsc","POLYGON":"polygon","ARBITRUM":"arbitrum","OPTIMISM":"optimism","AVALANCHE":"avalanche","ETHEREUM":"eth","ZKSYNC":"zksync","SUI":"sui"}" // string | A chain name listed in supported networks
+	sendTxInput := *openapiclient.NewSendTxInput("AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEDRgYGpQEDAQIABQcICQoLDA0ODwAAAAAAAAAAAAAQERITFBUWFxgZGhscHR4fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=") // SendTxInput | Transaction parameters
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -194,7 +194,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | **string** | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | **string** | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -204,7 +204,7 @@ Other parameters are passed through a pointer to a apiSendRequest struct via the
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sendTxInput** | [**SendTxInput**](SendTxInput.md) | CONTROLLER.TRANSACTION.SEND.BODY | 
+ **sendTxInput** | [**SendTxInput**](SendTxInput.md) | Transaction parameters | 
 
 ### Return type
 

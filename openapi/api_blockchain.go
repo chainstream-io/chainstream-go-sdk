@@ -35,12 +35,12 @@ func (r BlockchainAPIGetLatestBlockRequest) Execute() (*BlockchainLatestBlockDTO
 }
 
 /*
-GetLatestBlock CONTROLLER.GET_LATEST_BLOCK.SUMMARY
+GetLatestBlock Blockchain - Latest Block
 
-CONTROLLER.GET_LATEST_BLOCK.DESCRIPTION
+Get the latest block information for a specific blockchain
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return BlockchainAPIGetLatestBlockRequest
 */
 func (a *BlockchainAPIService) GetLatestBlock(ctx context.Context, chain ChainSymbol) BlockchainAPIGetLatestBlockRequest {
@@ -137,9 +137,9 @@ func (r BlockchainAPIGetSupportedBlockchainsRequest) Execute() ([]BlockchainDTO,
 }
 
 /*
-GetSupportedBlockchains CONTROLLER.GET_SUPPORTED_BLOCKCHAINS.SUMMARY
+GetSupportedBlockchains Blockchain - List
 
-CONTROLLER.GET_SUPPORTED_BLOCKCHAINS.DESCRIPTION
+Get list of supported blockchains
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return BlockchainAPIGetSupportedBlockchainsRequest

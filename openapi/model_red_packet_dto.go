@@ -22,39 +22,39 @@ var _ MappedNullable = &RedPacketDTO{}
 
 // RedPacketDTO struct for RedPacketDTO
 type RedPacketDTO struct {
-	// GLOBAL.CHAIN.DESCRIPTION
+	// A chain name listed in supported networks
 	Chain Chain `json:"chain"`
-	// DTO.RED_PACKET.ID
+	// Redpacket id
 	Id string `json:"id"`
-	// DTO.RED_PACKET.SHARE_ID
+	// redpacket share id
 	ShareId string `json:"shareId"`
-	// DTO.RED_PACKET.TX_HASH
+	// Transaction hash
 	TxHash string `json:"txHash"`
-	// DTO.RED_PACKET.CREATOR
+	// Creator wallet address of the red packet
 	Creator string `json:"creator"`
-	// DTO.RED_PACKET.MINT
+	// Token mint address for the red packet
 	Mint string `json:"mint"`
-	// DTO.RED_PACKET.TOTAL_AMOUNT
+	// Total amount of tokens to be distributed
 	TotalAmount string `json:"totalAmount"`
-	// DTO.RED_PACKET.MEMO
+	// Optional memo message for the red packet
 	Memo string `json:"memo"`
-	// DTO.RED_PACKET.MAX_CLAIMS
+	// Maximum number of recipients
 	MaxClaims int64 `json:"maxClaims"`
-	// DTO.RED_PACKET.CLAIM_AUTHORITY
+	// Optional authority address that can claim the red packet
 	ClaimAuthority string `json:"claimAuthority"`
-	// DTO.RED_PACKET.WITHDRAWED
+	// Whether it is completed or not
 	Expired bool `json:"expired"`
-	// DTO.RED_PACKET.EXPIRATION
+	// redpacket expiration
 	Expiration int64 `json:"expiration"`
-	// DTO.RED_PACKET.CREATED_AT
+	// Creation time
 	CreatedAt int64 `json:"createdAt"`
-	// DTO.RED_PACKET.EXPIRES_AT
+	// Expiry date
 	ExpiredAt int64 `json:"expiredAt"`
-	// DTO.RED_PACKET.CLAIMED_COUNT
+	// claimed count
 	ClaimedCount int64 `json:"claimedCount"`
-	// DTO.RED_PACKET.CLAIMED_AMOUNT
+	// claimed amount
 	ClaimedAmount string `json:"claimedAmount"`
-	// DTO.RED_PACKET.REFUND_AMOUNT
+	// refunded amount
 	RefundedAmount string `json:"refundedAmount"`
 }
 

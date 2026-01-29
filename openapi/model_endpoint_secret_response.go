@@ -20,7 +20,7 @@ var _ MappedNullable = &EndpointSecretResponse{}
 
 // EndpointSecretResponse struct for EndpointSecretResponse
 type EndpointSecretResponse struct {
-	// DTO.ENDPOINT.SECRET
+	// Endpoint secret
 	Secret *string `json:"secret,omitempty"`
 }
 

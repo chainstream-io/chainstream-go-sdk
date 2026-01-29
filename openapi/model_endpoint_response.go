@@ -20,27 +20,27 @@ var _ MappedNullable = &EndpointResponse{}
 
 // EndpointResponse struct for EndpointResponse
 type EndpointResponse struct {
-	// DTO.ENDPOINT.ID
+	// Endpoint ID
 	Id *string `json:"id,omitempty"`
-	// DTO.ENDPOINT.URL
+	// Endpoint URL
 	Url *string `json:"url,omitempty"`
-	// DTO.ENDPOINT.DESCRIPTION
+	// Endpoint description
 	Description *string `json:"description,omitempty"`
-	// DTO.ENDPOINT.FILTER_TYPES
+	// Filter types
 	FilterTypes []string `json:"filterTypes,omitempty"`
-	// DTO.ENDPOINT.CHANNELS
+	// Endpoint channels
 	Channels []string `json:"channels,omitempty"`
-	// DTO.ENDPOINT.DISABLED
+	// Endpoint disabled status
 	Disabled *bool `json:"disabled,omitempty"`
-	// DTO.ENDPOINT.METADATA
+	// Endpoint metadata
 	Metadata map[string]interface{} `json:"metadata,omitempty"`
-	// DTO.ENDPOINT.RATE_LIMIT
+	// Rate limit
 	RateLimit *int64 `json:"rateLimit,omitempty"`
-	// DTO.ENDPOINT.FILTER
+	// Endpoint filter
 	Filter *string `json:"filter,omitempty"`
-	// DTO.ENDPOINT.CREATED_AT
+	// Created at
 	CreatedAt *string `json:"createdAt,omitempty"`
-	// DTO.ENDPOINT.UPDATED_AT
+	// Updated at
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
 

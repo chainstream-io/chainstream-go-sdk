@@ -22,11 +22,11 @@ var _ MappedNullable = &SendTxInput{}
 
 // SendTxInput struct for SendTxInput
 type SendTxInput struct {
-	// DTO.TRANSACTION.SEND.SIGNED_TX
+	// Base64 encoded signed transaction
 	SignedTx string `json:"signedTx"`
-	// DTO.TRANSACTION.SEND.SUBMIT_TYPE
+	// Transaction submission method
 	SubmitType *string `json:"submitType,omitempty"`
-	// DTO.TRANSACTION.SEND.OPTIONS
+	// jito | direct
 	Options map[string]interface{} `json:"options,omitempty"`
 }
 

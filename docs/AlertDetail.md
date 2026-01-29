@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AlertLevel** | **string** | DTO.KYT.ALERT_DETAIL.ALERT_LEVEL | 
-**Service** | **string** | DTO.KYT.ALERT_DETAIL.SERVICE | 
-**ExternalId** | **string** | DTO.KYT.ALERT_DETAIL.EXTERNAL_ID | 
-**AlertAmount** | **string** | DTO.KYT.ALERT_DETAIL.ALERT_AMOUNT | 
-**ExposureType** | **string** | DTO.KYT.ALERT_DETAIL.EXPOSURE_TYPE | 
-**CategoryId** | **int64** | DTO.KYT.ALERT_DETAIL.CATEGORY_ID | 
-**Memo** | **string** | DTO.KYT.ALERT_DETAIL.MEMO | 
+**AlertLevel** | **string** | Alert level | 
+**Service** | **string** | Service name | 
+**ExternalId** | **string** | External ID | 
+**AlertAmount** | **string** | Alert amount | 
+**ExposureType** | **string** | Exposure type | 
+**CategoryId** | **int64** | Category ID | 
+**Memo** | **string** | Memo | 
 
 ## Methods
 

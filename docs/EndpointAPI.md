@@ -1,16 +1,16 @@
 # \EndpointAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateEndpoint**](EndpointAPI.md#CreateEndpoint) | **Post** /v1/webhook/endpoint | CONTROLLER.ENDPOINT.CREATE.SUMMARY
-[**DeleteEndpoint**](EndpointAPI.md#DeleteEndpoint) | **Delete** /v1/webhook/endpoint/{id} | CONTROLLER.ENDPOINT.DELETE.SUMMARY
-[**GetEndpoint**](EndpointAPI.md#GetEndpoint) | **Get** /v1/webhook/endpoint/{id} | CONTROLLER.ENDPOINT.GET.SUMMARY
-[**GetEndpointSecret**](EndpointAPI.md#GetEndpointSecret) | **Get** /v1/webhook/endpoint/{id}/secret | CONTROLLER.ENDPOINT.GET.SECRET.SUMMARY
-[**ListEndpoints**](EndpointAPI.md#ListEndpoints) | **Get** /v1/webhook/endpoint | CONTROLLER.ENDPOINT.LIST.SUMMARY
-[**RotateEndpointSecret**](EndpointAPI.md#RotateEndpointSecret) | **Post** /v1/webhook/endpoint/{id}/secret/rotate | CONTROLLER.ENDPOINT.ROTATE.SUMMARY
-[**UpdateEndpoint**](EndpointAPI.md#UpdateEndpoint) | **Patch** /v1/webhook/endpoint | CONTROLLER.ENDPOINT.UPDATE.SUMMARY
+[**CreateEndpoint**](EndpointAPI.md#CreateEndpoint) | **Post** /v1/webhook/endpoint | Endpoint - Create
+[**DeleteEndpoint**](EndpointAPI.md#DeleteEndpoint) | **Delete** /v1/webhook/endpoint/{id} | Endpoint - Delete
+[**GetEndpoint**](EndpointAPI.md#GetEndpoint) | **Get** /v1/webhook/endpoint/{id} | Endpoint - Get
+[**GetEndpointSecret**](EndpointAPI.md#GetEndpointSecret) | **Get** /v1/webhook/endpoint/{id}/secret | Endpoint - Get Secret
+[**ListEndpoints**](EndpointAPI.md#ListEndpoints) | **Get** /v1/webhook/endpoint | Endpoint - List
+[**RotateEndpointSecret**](EndpointAPI.md#RotateEndpointSecret) | **Post** /v1/webhook/endpoint/{id}/secret/rotate | Endpoint - Rotate Secret
+[**UpdateEndpoint**](EndpointAPI.md#UpdateEndpoint) | **Patch** /v1/webhook/endpoint | Endpoint - Update
 
 
 
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 > EndpointResponse CreateEndpoint(ctx).CreateEndpointInput(createEndpointInput).Execute()
 
-CONTROLLER.ENDPOINT.CREATE.SUMMARY
+Endpoint - Create
 
 
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 > EndpointOperationResponse DeleteEndpoint(ctx, id).Execute()
 
-CONTROLLER.ENDPOINT.DELETE.SUMMARY
+Endpoint - Delete
 
 
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 > EndpointResponse GetEndpoint(ctx, id).Execute()
 
-CONTROLLER.ENDPOINT.GET.SUMMARY
+Endpoint - Get
 
 
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 > EndpointSecretResponse GetEndpointSecret(ctx, id).Execute()
 
-CONTROLLER.ENDPOINT.GET.SECRET.SUMMARY
+Endpoint - Get Secret
 
 
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 > EndpointListResponse ListEndpoints(ctx).Limit(limit).Iterator(iterator).Order(order).Execute()
 
-CONTROLLER.ENDPOINT.LIST.SUMMARY
+Endpoint - List
 
 
 
@@ -311,9 +311,9 @@ import (
 )
 
 func main() {
-	limit := int64(789) // int64 | DTO.ENDPOINT.LIMIT (optional) (default to 100)
-	iterator := "iterator_example" // string | DTO.ENDPOINT.ITERATOR (optional)
-	order := "order_example" // string | DTO.ENDPOINT.ORDER (optional) (default to "ascending")
+	limit := int64(789) // int64 | Limit (optional) (default to 100)
+	iterator := "iterator_example" // string | Iterator (optional)
+	order := "order_example" // string | Order (optional) (default to "ascending")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -338,9 +338,9 @@ Other parameters are passed through a pointer to a apiListEndpointsRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **int64** | DTO.ENDPOINT.LIMIT | [default to 100]
- **iterator** | **string** | DTO.ENDPOINT.ITERATOR | 
- **order** | **string** | DTO.ENDPOINT.ORDER | [default to &quot;ascending&quot;]
+ **limit** | **int64** | Limit | [default to 100]
+ **iterator** | **string** | Iterator | 
+ **order** | **string** | Order | [default to &quot;ascending&quot;]
 
 ### Return type
 
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 
 > EndpointOperationResponse RotateEndpointSecret(ctx, id).Execute()
 
-CONTROLLER.ENDPOINT.ROTATE.SUMMARY
+Endpoint - Rotate Secret
 
 
 
@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 
 > EndpointResponse UpdateEndpoint(ctx).UpdateEndpointInput(updateEndpointInput).Execute()
 
-CONTROLLER.ENDPOINT.UPDATE.SUMMARY
+Endpoint - Update
 
 
 

@@ -22,55 +22,55 @@ var _ MappedNullable = &TradeDetailDTO{}
 
 // TradeDetailDTO struct for TradeDetailDTO
 type TradeDetailDTO struct {
-	// DTO.TRADE.DETAIL.CHAIN
+	// Blockchain network
 	Chain string `json:"chain"`
-	// DTO.TRADE.DETAIL.BLOCK_HEIGHT
+	// Block height of the trade
 	BlockHeight int64 `json:"blockHeight"`
-	// DTO.TRADE.DETAIL.BLOCK_TIMESTAMP
+	// Block timestamp
 	BlockTimestamp int64 `json:"blockTimestamp"`
-	// DTO.TRADE.DETAIL.ACCOUNT_OWNER_ADDRESS
+	// wallet address
 	AccountOwnerAddress string `json:"accountOwnerAddress"`
-	// DTO.TRADE.DETAIL.TRANSACTION_SIGNATURE
+	// Transaction signature
 	TransactionSignature string `json:"transactionSignature"`
-	// DTO.TRADE.DETAIL.TOKEN_NAME
+	// name
 	TokenName string `json:"tokenName"`
-	// DTO.TRADE.DETAIL.TOKEN_SYMBOL
+	// symbol
 	TokenSymbol string `json:"tokenSymbol"`
-	// DTO.TRADE.DETAIL.TOKEN_IMAGE_URL
+	// token imageUrl
 	TokenImageUrl string `json:"tokenImageUrl"`
-	// DTO.TRADE.DETAIL.TOKEN_ADDRESS
+	// Token address
 	TokenAddress string `json:"tokenAddress"`
-	// DTO.TRADE.DETAIL.POOL_ADDRESS
+	// Pool address where the trade occurred
 	PoolAddress string `json:"poolAddress"`
-	// DTO.TRADE.DETAIL.DEX_PROGRAM_ADDRESS
+	// DEX program address
 	DexProgramAddress string `json:"dexProgramAddress"`
-	// DTO.TRADE.DETAIL.DEX_PROTOCOL_FAMILY
+	// DEX protocol family
 	DexProtocolFamily string `json:"dexProtocolFamily"`
-	// DTO.TRADE.DETAIL.DEX_IMAGE
+	// DEX logo image URL
 	DexImage string `json:"dexImage"`
-	// DTO.TRADE.DETAIL.TOKEN_AMOUNT
+	// Token amount
 	TokenAmount string `json:"tokenAmount"`
-	// DTO.TRADE.DETAIL.TOKEN_PRICE_IN_USD
+	// price in USD
 	TokenPriceInUsd string `json:"tokenPriceInUsd"`
-	// DTO.TRADE.DETAIL.TOKEN_AMOUNT_IN_USD
+	// Token amount in USD
 	TokenAmountInUsd string `json:"tokenAmountInUsd"`
-	// DTO.TRADE.DETAIL.TYPE
+	// Trade type
 	Type string `json:"type"`
-	// DTO.TRADE.DETAIL.SIDE_TOKEN_NAME
+	// name
 	SideTokenName string `json:"sideTokenName"`
-	// DTO.TRADE.DETAIL.SIDE_TOKEN_SYMBOL
+	// symbol
 	SideTokenSymbol string `json:"sideTokenSymbol"`
-	// DTO.TRADE.DETAIL.SIDE_TOKEN_IMAGE_URL
+	// token imageUrl
 	SideTokenImageUrl string `json:"sideTokenImageUrl"`
-	// DTO.TRADE.DETAIL.SIDE_TOKEN_ADDRESS
+	// Side token address
 	SideTokenAddress string `json:"sideTokenAddress"`
-	// DTO.TRADE.DETAIL.SIDE_TOKEN_PRICE_IN_USD
+	// price in USD
 	SideTokenPriceInUsd string `json:"sideTokenPriceInUsd"`
-	// DTO.TRADE.DETAIL.SIDE_TOKEN_AMOUNT
+	// Side token amount
 	SideTokenAmount string `json:"sideTokenAmount"`
-	// DTO.TRADE.DETAIL.SIDE_TOKEN_AMOUNT_IN_USD
+	// Side token amount in USD
 	SideTokenAmountInUsd string `json:"sideTokenAmountInUsd"`
-	// DTO.TRADE.DETAIL.STATUS
+	// Trade status
 	Status string `json:"status"`
 }
 

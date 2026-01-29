@@ -39,49 +39,49 @@ type RankingAPIGetFinalStretchTokensRequest struct {
 	excludeKeywords *[]string
 }
 
-// DTO.TOKEN.REQUEST.SORT_BY
+// Sort field
 func (r RankingAPIGetFinalStretchTokensRequest) SortBy(sortBy string) RankingAPIGetFinalStretchTokensRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
-// DTO.TOKEN.REQUEST.SORT_DIRECTION
+// Sort Direction
 func (r RankingAPIGetFinalStretchTokensRequest) SortDirection(sortDirection string) RankingAPIGetFinalStretchTokensRequest {
 	r.sortDirection = &sortDirection
 	return r
 }
 
-// DTO.TOKEN.REQUEST.FILTER_BY
+// Filter field
 func (r RankingAPIGetFinalStretchTokensRequest) RangeFilters(rangeFilters []FilterCondition) RankingAPIGetFinalStretchTokensRequest {
 	r.rangeFilters = &rangeFilters
 	return r
 }
 
-// DTO.TOKEN.REQUEST.TAG
+// Token tag filter for specific protocols or categories
 func (r RankingAPIGetFinalStretchTokensRequest) Tag(tag string) RankingAPIGetFinalStretchTokensRequest {
 	r.tag = &tag
 	return r
 }
 
-// DTO.TOKEN.FILTER.FILTERS
+// Filters
 func (r RankingAPIGetFinalStretchTokensRequest) Filters(filters []string) RankingAPIGetFinalStretchTokensRequest {
 	r.filters = &filters
 	return r
 }
 
-// DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM
+// Launchpad Platform
 func (r RankingAPIGetFinalStretchTokensRequest) LaunchpadPlatform(launchpadPlatform []string) RankingAPIGetFinalStretchTokensRequest {
 	r.launchpadPlatform = &launchpadPlatform
 	return r
 }
 
-// DTO.TOKEN.FILTER.SEARCH_KEYWORDS
+// Search Keywords
 func (r RankingAPIGetFinalStretchTokensRequest) SearchKeywords(searchKeywords []string) RankingAPIGetFinalStretchTokensRequest {
 	r.searchKeywords = &searchKeywords
 	return r
 }
 
-// DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS
+// Exclude Keywords
 func (r RankingAPIGetFinalStretchTokensRequest) ExcludeKeywords(excludeKeywords []string) RankingAPIGetFinalStretchTokensRequest {
 	r.excludeKeywords = &excludeKeywords
 	return r
@@ -92,12 +92,12 @@ func (r RankingAPIGetFinalStretchTokensRequest) Execute() ([]Token, *http.Respon
 }
 
 /*
-GetFinalStretchTokens CONTROLLER.RANKING.FINAL_STRETCH_TOKENS.SUMMARY
+GetFinalStretchTokens Ranking - FinalStretch Tokens
 
-CONTROLLER.RANKING.FINAL_STRETCH_TOKENS.DESCRIPTION
+Return the finalStretch tokens
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return RankingAPIGetFinalStretchTokensRequest
 */
 func (a *RankingAPIService) GetFinalStretchTokens(ctx context.Context, chain ChainSymbol) RankingAPIGetFinalStretchTokensRequest {
@@ -266,49 +266,49 @@ type RankingAPIGetHotTokensRequest struct {
 	excludeKeywords *[]string
 }
 
-// DTO.TOKEN.REQUEST.SORT_BY
+// Sort field
 func (r RankingAPIGetHotTokensRequest) SortBy(sortBy string) RankingAPIGetHotTokensRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
-// DTO.TOKEN.REQUEST.SORT_DIRECTION
+// Sort Direction
 func (r RankingAPIGetHotTokensRequest) SortDirection(sortDirection string) RankingAPIGetHotTokensRequest {
 	r.sortDirection = &sortDirection
 	return r
 }
 
-// DTO.TOKEN.REQUEST.FILTER_BY
+// Filter field
 func (r RankingAPIGetHotTokensRequest) RangeFilters(rangeFilters []FilterCondition) RankingAPIGetHotTokensRequest {
 	r.rangeFilters = &rangeFilters
 	return r
 }
 
-// DTO.TOKEN.REQUEST.TAG
+// Token tag filter for specific protocols or categories
 func (r RankingAPIGetHotTokensRequest) Tag(tag string) RankingAPIGetHotTokensRequest {
 	r.tag = &tag
 	return r
 }
 
-// DTO.TOKEN.FILTER.FILTERS
+// Filters
 func (r RankingAPIGetHotTokensRequest) Filters(filters []string) RankingAPIGetHotTokensRequest {
 	r.filters = &filters
 	return r
 }
 
-// DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM
+// Launchpad Platform
 func (r RankingAPIGetHotTokensRequest) LaunchpadPlatform(launchpadPlatform []string) RankingAPIGetHotTokensRequest {
 	r.launchpadPlatform = &launchpadPlatform
 	return r
 }
 
-// DTO.TOKEN.FILTER.SEARCH_KEYWORDS
+// Search Keywords
 func (r RankingAPIGetHotTokensRequest) SearchKeywords(searchKeywords []string) RankingAPIGetHotTokensRequest {
 	r.searchKeywords = &searchKeywords
 	return r
 }
 
-// DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS
+// Exclude Keywords
 func (r RankingAPIGetHotTokensRequest) ExcludeKeywords(excludeKeywords []string) RankingAPIGetHotTokensRequest {
 	r.excludeKeywords = &excludeKeywords
 	return r
@@ -319,13 +319,13 @@ func (r RankingAPIGetHotTokensRequest) Execute() ([]Token, *http.Response, error
 }
 
 /*
-GetHotTokens CONTROLLER.RANKING.HOT_TOKENS.SUMMARY
+GetHotTokens Ranking - Hot Tokens
 
-CONTROLLER.RANKING.HOT_TOKENS.DESCRIPTION
+Retrieve a list of trending tokens
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param duration CONTROLLER.RANKING.HOT_TOKENS.DURATION.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param duration Duration of the ranking
  @return RankingAPIGetHotTokensRequest
 */
 func (a *RankingAPIService) GetHotTokens(ctx context.Context, chain ChainSymbol, duration string) RankingAPIGetHotTokensRequest {
@@ -495,49 +495,49 @@ type RankingAPIGetMigratedTokensRequest struct {
 	excludeKeywords *[]string
 }
 
-// DTO.TOKEN.REQUEST.SORT_BY
+// Sort field
 func (r RankingAPIGetMigratedTokensRequest) SortBy(sortBy string) RankingAPIGetMigratedTokensRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
-// DTO.TOKEN.REQUEST.SORT_DIRECTION
+// Sort Direction
 func (r RankingAPIGetMigratedTokensRequest) SortDirection(sortDirection string) RankingAPIGetMigratedTokensRequest {
 	r.sortDirection = &sortDirection
 	return r
 }
 
-// DTO.TOKEN.REQUEST.FILTER_BY
+// Filter field
 func (r RankingAPIGetMigratedTokensRequest) RangeFilters(rangeFilters []FilterCondition) RankingAPIGetMigratedTokensRequest {
 	r.rangeFilters = &rangeFilters
 	return r
 }
 
-// DTO.TOKEN.REQUEST.TAG
+// Token tag filter for specific protocols or categories
 func (r RankingAPIGetMigratedTokensRequest) Tag(tag string) RankingAPIGetMigratedTokensRequest {
 	r.tag = &tag
 	return r
 }
 
-// DTO.TOKEN.FILTER.FILTERS
+// Filters
 func (r RankingAPIGetMigratedTokensRequest) Filters(filters []string) RankingAPIGetMigratedTokensRequest {
 	r.filters = &filters
 	return r
 }
 
-// DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM
+// Launchpad Platform
 func (r RankingAPIGetMigratedTokensRequest) LaunchpadPlatform(launchpadPlatform []string) RankingAPIGetMigratedTokensRequest {
 	r.launchpadPlatform = &launchpadPlatform
 	return r
 }
 
-// DTO.TOKEN.FILTER.SEARCH_KEYWORDS
+// Search Keywords
 func (r RankingAPIGetMigratedTokensRequest) SearchKeywords(searchKeywords []string) RankingAPIGetMigratedTokensRequest {
 	r.searchKeywords = &searchKeywords
 	return r
 }
 
-// DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS
+// Exclude Keywords
 func (r RankingAPIGetMigratedTokensRequest) ExcludeKeywords(excludeKeywords []string) RankingAPIGetMigratedTokensRequest {
 	r.excludeKeywords = &excludeKeywords
 	return r
@@ -548,12 +548,12 @@ func (r RankingAPIGetMigratedTokensRequest) Execute() ([]Token, *http.Response, 
 }
 
 /*
-GetMigratedTokens CONTROLLER.RANKING.MIGRATED_TOKENS.SUMMARY
+GetMigratedTokens Ranking - Migrated Tokens
 
-CONTROLLER.RANKING.MIGRATED_TOKENS.DESCRIPTION
+Return the migrated tokens
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return RankingAPIGetMigratedTokensRequest
 */
 func (a *RankingAPIService) GetMigratedTokens(ctx context.Context, chain ChainSymbol) RankingAPIGetMigratedTokensRequest {
@@ -721,49 +721,49 @@ type RankingAPIGetNewTokensRequest struct {
 	excludeKeywords *[]string
 }
 
-// DTO.TOKEN.REQUEST.SORT_BY
+// Sort field
 func (r RankingAPIGetNewTokensRequest) SortBy(sortBy string) RankingAPIGetNewTokensRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
-// DTO.TOKEN.REQUEST.SORT_DIRECTION
+// Sort Direction
 func (r RankingAPIGetNewTokensRequest) SortDirection(sortDirection string) RankingAPIGetNewTokensRequest {
 	r.sortDirection = &sortDirection
 	return r
 }
 
-// DTO.TOKEN.REQUEST.FILTER_BY
+// Filter field
 func (r RankingAPIGetNewTokensRequest) RangeFilters(rangeFilters []FilterCondition) RankingAPIGetNewTokensRequest {
 	r.rangeFilters = &rangeFilters
 	return r
 }
 
-// DTO.TOKEN.REQUEST.TAG
+// Token tag filter for specific protocols or categories
 func (r RankingAPIGetNewTokensRequest) Tag(tag string) RankingAPIGetNewTokensRequest {
 	r.tag = &tag
 	return r
 }
 
-// DTO.TOKEN.FILTER.FILTERS
+// Filters
 func (r RankingAPIGetNewTokensRequest) Filters(filters []string) RankingAPIGetNewTokensRequest {
 	r.filters = &filters
 	return r
 }
 
-// DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM
+// Launchpad Platform
 func (r RankingAPIGetNewTokensRequest) LaunchpadPlatform(launchpadPlatform []string) RankingAPIGetNewTokensRequest {
 	r.launchpadPlatform = &launchpadPlatform
 	return r
 }
 
-// DTO.TOKEN.FILTER.SEARCH_KEYWORDS
+// Search Keywords
 func (r RankingAPIGetNewTokensRequest) SearchKeywords(searchKeywords []string) RankingAPIGetNewTokensRequest {
 	r.searchKeywords = &searchKeywords
 	return r
 }
 
-// DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS
+// Exclude Keywords
 func (r RankingAPIGetNewTokensRequest) ExcludeKeywords(excludeKeywords []string) RankingAPIGetNewTokensRequest {
 	r.excludeKeywords = &excludeKeywords
 	return r
@@ -774,12 +774,12 @@ func (r RankingAPIGetNewTokensRequest) Execute() ([]Token, *http.Response, error
 }
 
 /*
-GetNewTokens CONTROLLER.RANKING.NEW_TOKENS.SUMMARY
+GetNewTokens Ranking - New Tokens
 
-CONTROLLER.RANKING.NEW_TOKENS.DESCRIPTION
+Return the latest 100 tokens
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return RankingAPIGetNewTokensRequest
 */
 func (a *RankingAPIService) GetNewTokens(ctx context.Context, chain ChainSymbol) RankingAPIGetNewTokensRequest {
@@ -947,49 +947,49 @@ type RankingAPIGetStocksTokensRequest struct {
 	excludeKeywords *[]string
 }
 
-// DTO.TOKEN.REQUEST.SORT_BY
+// Sort field
 func (r RankingAPIGetStocksTokensRequest) SortBy(sortBy string) RankingAPIGetStocksTokensRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
-// DTO.TOKEN.REQUEST.SORT_DIRECTION
+// Sort Direction
 func (r RankingAPIGetStocksTokensRequest) SortDirection(sortDirection string) RankingAPIGetStocksTokensRequest {
 	r.sortDirection = &sortDirection
 	return r
 }
 
-// DTO.TOKEN.REQUEST.FILTER_BY
+// Filter field
 func (r RankingAPIGetStocksTokensRequest) RangeFilters(rangeFilters []FilterCondition) RankingAPIGetStocksTokensRequest {
 	r.rangeFilters = &rangeFilters
 	return r
 }
 
-// DTO.TOKEN.REQUEST.TAG
+// Token tag filter for specific protocols or categories
 func (r RankingAPIGetStocksTokensRequest) Tag(tag string) RankingAPIGetStocksTokensRequest {
 	r.tag = &tag
 	return r
 }
 
-// DTO.TOKEN.FILTER.FILTERS
+// Filters
 func (r RankingAPIGetStocksTokensRequest) Filters(filters []string) RankingAPIGetStocksTokensRequest {
 	r.filters = &filters
 	return r
 }
 
-// DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM
+// Launchpad Platform
 func (r RankingAPIGetStocksTokensRequest) LaunchpadPlatform(launchpadPlatform []string) RankingAPIGetStocksTokensRequest {
 	r.launchpadPlatform = &launchpadPlatform
 	return r
 }
 
-// DTO.TOKEN.FILTER.SEARCH_KEYWORDS
+// Search Keywords
 func (r RankingAPIGetStocksTokensRequest) SearchKeywords(searchKeywords []string) RankingAPIGetStocksTokensRequest {
 	r.searchKeywords = &searchKeywords
 	return r
 }
 
-// DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS
+// Exclude Keywords
 func (r RankingAPIGetStocksTokensRequest) ExcludeKeywords(excludeKeywords []string) RankingAPIGetStocksTokensRequest {
 	r.excludeKeywords = &excludeKeywords
 	return r
@@ -1000,12 +1000,12 @@ func (r RankingAPIGetStocksTokensRequest) Execute() ([]Token, *http.Response, er
 }
 
 /*
-GetStocksTokens CONTROLLER.RANKING.STOCKS_TOKENS.SUMMARY
+GetStocksTokens Ranking - Stocks Tokens
 
-CONTROLLER.RANKING.STOCKS_TOKENS.DESCRIPTION
+Return the stocks tokens
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return RankingAPIGetStocksTokensRequest
 */
 func (a *RankingAPIService) GetStocksTokens(ctx context.Context, chain ChainSymbol) RankingAPIGetStocksTokensRequest {

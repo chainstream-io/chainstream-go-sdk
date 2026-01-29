@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TokenAddress** | **string** | DTO.TOKEN.PRICE.TOKEN_ADDRESS | 
-**PriceInUsd** | **string** | DTO.TOKEN.PRICE.PRICE_IN_USD | 
-**PriceInNative** | **string** | DTO.TOKEN.PRICE.PRICE_IN_NATIVE | 
-**Timestamp** | **int64** | DTO.TOKEN.PRICE.TIMESTAMP | 
+**TokenAddress** | **string** | Token contract address | 
+**PriceInUsd** | **string** | Token price in USD | 
+**PriceInNative** | **string** | Token price in native currency (e.g., SOL) | 
+**Timestamp** | **int64** | Price timestamp (Unix epoch in seconds) | 
 
 ## Methods
 

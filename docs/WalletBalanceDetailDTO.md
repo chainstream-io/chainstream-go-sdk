@@ -4,31 +4,31 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TokenAddress** | **string** | DTO.WALLET.BALANCE.TOKEN_ADDRESS | 
-**Amount** | **string** | DTO.WALLET.BALANCE.AMOUNT | 
-**ValueInUsd** | **string** | DTO.WALLET.BALANCE.AMOUNT_IN_USD | 
-**Name** | **string** | DTO.WALLET.BALANCE.TOKEN_NAME | 
-**Symbol** | **string** | DTO.WALLET.BALANCE.TOKEN_SYMBOL | 
-**ImageUrl** | **string** | DTO.WALLET.BALANCE.TOKEN_IMAGE_URL | 
-**PriceInSol** | **string** | DTO.WALLET.BALANCE.TOKEN_PRICE_IN_SOL | 
-**PriceInUsd** | **string** | DTO.WALLET.BALANCE.TOKEN_PRICE_IN_USD | 
-**PriceChangeRatioInUsd24h** | **string** | DTO.WALLET.BALANCE.PRICE_CHANGE_24H | 
-**UnrealizedProfitInUsd** | **string** | DTO.WALLET.BALANCE.UNREALIZED_PROFIT | 
-**UnrealizedProfitRatio** | **string** | DTO.WALLET.BALANCE.UNREALIZED_PROFIT_RATIO | 
-**OpenTime** | **int64** | DTO.WALLET.BALANCE.OPEN_TIME | 
-**CloseTime** | **int64** | DTO.WALLET.BALANCE.CLOSE_TIME | 
-**Buys** | **string** | DTO.WALLET.BALANCE.BUYS | 
-**BuyAmount** | **string** | DTO.WALLET.BALANCE.BUY_AMOUNT | 
-**BuyAmountInUsd** | **string** | DTO.WALLET.BALANCE.BUY_AMOUNT_USD | 
-**Sells** | **string** | DTO.WALLET.BALANCE.SELLS | 
-**SellAmount** | **string** | DTO.WALLET.BALANCE.SELL_AMOUNT | 
-**SellAmountInUsd** | **string** | DTO.WALLET.BALANCE.SELL_AMOUNT_USD | 
-**AverageBuyPriceInUsd** | **string** | DTO.WALLET.BALANCE.AVERAGE_BUY_PRICE | 
-**AverageSellPriceInUsd** | **string** | DTO.WALLET.BALANCE.AVERAGE_SELL_PRICE | 
-**RealizedProfitInUsd** | **string** | DTO.WALLET.BALANCE.REALIZED_PROFIT_IN_USD | 
-**RealizedProfitRatio** | **string** | DTO.WALLET.BALANCE.REALIZED_PROFIT_RATIO | 
-**TotalRealizedProfitInUsd** | **string** | DTO.WALLET.BALANCE.TOTAL_REALIZED_PROFIT | 
-**TotalRealizedProfitRatio** | **string** | DTO.WALLET.BALANCE.TOTAL_REALIZED_PROFIT_RATIO | 
+**TokenAddress** | **string** | Token contract address | 
+**Amount** | **string** | Token amount | 
+**ValueInUsd** | **string** | Token amount in USD | 
+**Name** | **string** | Token name | 
+**Symbol** | **string** | Token symbol | 
+**ImageUrl** | **string** | Token logo iamgeUrl | 
+**PriceInSol** | **string** | Price in SOL | 
+**PriceInUsd** | **string** | Price in USD | 
+**PriceChangeRatioInUsd24h** | **string** | 24h price change ratio | 
+**UnrealizedProfitInUsd** | **string** | Unrealized profit in USD | 
+**UnrealizedProfitRatio** | **string** | Unrealized profit ratio | 
+**OpenTime** | **int64** | Position opening time | 
+**CloseTime** | **int64** | Position closing time | 
+**Buys** | **string** | Number of buy transactions | 
+**BuyAmount** | **string** | Total amount of tokens bought | 
+**BuyAmountInUsd** | **string** | Total value of tokens bought in USD | 
+**Sells** | **string** | Number of sell transactions | 
+**SellAmount** | **string** | Total amount of tokens sold | 
+**SellAmountInUsd** | **string** | Total value of tokens sold in USD | 
+**AverageBuyPriceInUsd** | **string** | Average buying price | 
+**AverageSellPriceInUsd** | **string** | Average selling price | 
+**RealizedProfitInUsd** | **string** | Realized profit in USD | 
+**RealizedProfitRatio** | **string** | Realized profit ratio | 
+**TotalRealizedProfitInUsd** | **string** | Total realized profit in USD | 
+**TotalRealizedProfitRatio** | **string** | Total realized profit ratio | 
 
 ## Methods
 

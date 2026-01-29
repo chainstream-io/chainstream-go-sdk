@@ -36,13 +36,13 @@ func (r DexPoolAPIGetDexpoolRequest) Execute() (*DexPoolDTO, *http.Response, err
 }
 
 /*
-GetDexpool CONTROLLER.DEXPOOL.GET.SUMMARY
+GetDexpool DexPool - Detail
 
-CONTROLLER.DEXPOOL.GET.DESCRIPTION
+Retrieve detailed information about a specific DEX pool
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param poolAddress GLOBAL.POOLADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param poolAddress A pool address
  @return DexPoolAPIGetDexpoolRequest
 */
 func (a *DexPoolAPIService) GetDexpool(ctx context.Context, chain ChainSymbol, poolAddress string) DexPoolAPIGetDexpoolRequest {
@@ -77,6 +77,146 @@ func (a *DexPoolAPIService) GetDexpoolExecute(r DexPoolAPIGetDexpoolRequest) (*D
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DexPoolAPIGetDexpoolSnapshotsRequest struct {
+	ctx context.Context
+	ApiService *DexPoolAPIService
+	chain ChainSymbol
+	poolAddress string
+	time *int64
+	cursor *string
+	limit *int32
+}
+
+// Target Unix timestamp (seconds) for snapshot query. Returns the nearest snapshot before or at this time.
+func (r DexPoolAPIGetDexpoolSnapshotsRequest) Time(time int64) DexPoolAPIGetDexpoolSnapshotsRequest {
+	r.time = &time
+	return r
+}
+
+// Pagination cursor
+func (r DexPoolAPIGetDexpoolSnapshotsRequest) Cursor(cursor string) DexPoolAPIGetDexpoolSnapshotsRequest {
+	r.cursor = &cursor
+	return r
+}
+
+// Number of results per page
+func (r DexPoolAPIGetDexpoolSnapshotsRequest) Limit(limit int32) DexPoolAPIGetDexpoolSnapshotsRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r DexPoolAPIGetDexpoolSnapshotsRequest) Execute() (*DexPoolSnapshotPage, *http.Response, error) {
+	return r.ApiService.GetDexpoolSnapshotsExecute(r)
+}
+
+/*
+GetDexpoolSnapshots DexPool - Liquidity Snapshots
+
+Retrieve historical liquidity snapshots for a specific pool. If a time parameter is provided, returns the nearest snapshot before or at that time.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param chain A chain name listed in supported networks
+ @param poolAddress A pool address
+ @return DexPoolAPIGetDexpoolSnapshotsRequest
+*/
+func (a *DexPoolAPIService) GetDexpoolSnapshots(ctx context.Context, chain ChainSymbol, poolAddress string) DexPoolAPIGetDexpoolSnapshotsRequest {
+	return DexPoolAPIGetDexpoolSnapshotsRequest{
+		ApiService: a,
+		ctx: ctx,
+		chain: chain,
+		poolAddress: poolAddress,
+	}
+}
+
+// Execute executes the request
+//  @return DexPoolSnapshotPage
+func (a *DexPoolAPIService) GetDexpoolSnapshotsExecute(r DexPoolAPIGetDexpoolSnapshotsRequest) (*DexPoolSnapshotPage, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DexPoolSnapshotPage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DexPoolAPIService.GetDexpoolSnapshots")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/dexpools/{chain}/{poolAddress}/snapshots"
+	localVarPath = strings.Replace(localVarPath, "{"+"chain"+"}", url.PathEscape(parameterValueToString(r.chain, "chain")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"poolAddress"+"}", url.PathEscape(parameterValueToString(r.poolAddress, "poolAddress")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.time != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "time", r.time, "")
+	}
+	if r.cursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 20
+		r.limit = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

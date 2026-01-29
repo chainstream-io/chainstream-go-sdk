@@ -22,31 +22,31 @@ var _ MappedNullable = &TransferBaseResponseDTO{}
 
 // TransferBaseResponseDTO struct for TransferBaseResponseDTO
 type TransferBaseResponseDTO struct {
-	// DTO.KYT.TRANSFER_BASE_RESPONSE.UPDATED_AT
+	// Updated timestamp
 	UpdatedAt string `json:"updatedAt"`
-	// DTO.KYT.TRANSFER_BASE_RESPONSE.ASSET
+	// Asset type
 	Asset string `json:"asset"`
-	// DTO.KYT.TRANSFER_BASE_RESPONSE.ASSET_ID
+	// Asset ID
 	AssetId string `json:"assetId"`
-	// DTO.KYT.TRANSFER_BASE_RESPONSE.NETWORK
+	// Blockchain network
 	Network string `json:"network"`
-	// DTO.KYT.TRANSFER_BASE_RESPONSE.TRANSFER_REFERENCE
+	// Transfer reference (transaction hash and address)
 	TransferReference string `json:"transferReference"`
-	// DTO.KYT.TRANSFER_BASE_RESPONSE.MEMO
+	// Memo information
 	Memo string `json:"memo"`
-	// DTO.KYT.TRANSFER_BASE_RESPONSE.TX
+	// Transaction hash
 	Tx string `json:"tx"`
-	// DTO.KYT.TRANSFER_BASE_RESPONSE.IDX
+	// Index
 	Idx int64 `json:"idx"`
-	// DTO.KYT.TRANSFER_BASE_RESPONSE.USD_AMOUNT
+	// USD amount
 	UsdAmount string `json:"usdAmount"`
-	// DTO.KYT.TRANSFER_BASE_RESPONSE.ASSET_AMOUNT
+	// Asset amount
 	AssetAmount string `json:"assetAmount"`
-	// DTO.KYT.TRANSFER_BASE_RESPONSE.TIMESTAMP
+	// Timestamp
 	Timestamp string `json:"timestamp"`
-	// DTO.KYT.TRANSFER_BASE_RESPONSE.OUTPUT_ADDRESS
+	// Output address
 	OutputAddress string `json:"outputAddress"`
-	// DTO.KYT.TRANSFER_BASE_RESPONSE.EXTERNAL_ID
+	// External ID (UUID)
 	ExternalId string `json:"externalId"`
 }
 

@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Dex** | **string** | DTO.DEX.IDENTIFIER | 
-**UserAddress** | **string** | DTO.DEX.WALLET | 
-**PriorityFee** | Pointer to **string** | DTO.DEX.BASE.PRIORITY_FEE | [optional] 
-**PoolAddress** | Pointer to **string** | DTO.DEX.SWAP.POOL_ADDRESS | [optional] 
-**Amount** | **string** | DTO.DEX.SWAP.AMOUNT | 
-**SwapMode** | **string** | DTO.DEX.SWAP.MODE | 
-**Slippage** | **int64** | DTO.DEX.SWAP.SLIPPAGE | [default to 10]
-**InputMint** | Pointer to **string** | DTO.DEX.SWAP.INPUT_MINT | [optional] 
-**OutputMint** | Pointer to **string** | DTO.DEX.SWAP.OUTPUT_MINT | [optional] 
+**Dex** | **string** | DEX identifier for the trade | 
+**UserAddress** | **string** | Public key of the wallet initiating the transaction | 
+**PriorityFee** | Pointer to **string** | Priority fee in SOL to increase transaction processing speed | [optional] 
+**PoolAddress** | Pointer to **string** | DEX pool address | [optional] 
+**Amount** | **string** | Amount to swap. Use \&quot;auto\&quot; for full balance or percentage like \&quot;50%\&quot; | 
+**SwapMode** | **string** | Swap direction mode | 
+**Slippage** | **int64** | Slippage tolerance percentage | [default to 10]
+**InputMint** | Pointer to **string** | Input Mint, the base token address | [optional] 
+**OutputMint** | Pointer to **string** | Ouput Mint, the quote token address | [optional] 
 
 ## Methods
 

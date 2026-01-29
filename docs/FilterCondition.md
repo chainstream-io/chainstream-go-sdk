@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Field** | Pointer to **string** | DTO.TOKEN.FILTER.FIELD | [optional] 
-**Min** | Pointer to **string** | DTO.TOKEN.FILTER.MIN | [optional] 
-**Max** | Pointer to **string** | DTO.TOKEN.FILTER.MAX | [optional] 
+**Field** | Pointer to **string** | Filter field name | [optional] 
+**Min** | Pointer to **string** | Minimum value for filter | [optional] 
+**Max** | Pointer to **string** | Maximum value for filter | [optional] 
 
 ## Methods
 

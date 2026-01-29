@@ -31,7 +31,7 @@ type TransactionAPIEstimateGasLimitRequest struct {
 	estimateGasLimitInput *EstimateGasLimitInput
 }
 
-// CONTROLLER.TRANSACTION.ESTIMATE_GAS_LIMIT.BODY
+// Transaction parameters for gas estimation
 func (r TransactionAPIEstimateGasLimitRequest) EstimateGasLimitInput(estimateGasLimitInput EstimateGasLimitInput) TransactionAPIEstimateGasLimitRequest {
 	r.estimateGasLimitInput = &estimateGasLimitInput
 	return r
@@ -42,12 +42,12 @@ func (r TransactionAPIEstimateGasLimitRequest) Execute() (*EstimateGasLimitRespo
 }
 
 /*
-EstimateGasLimit CONTROLLER.TRANSACTION.ESTIMATE_GAS_LIMIT.SUMMARY
+EstimateGasLimit Transaction - Estimate Gas Limit
 
-CONTROLLER.TRANSACTION.ESTIMATE_GAS_LIMIT.DESCRIPTION
+Estimate the gas limit required for a transaction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return TransactionAPIEstimateGasLimitRequest
 */
 func (a *TransactionAPIService) EstimateGasLimit(ctx context.Context, chain string) TransactionAPIEstimateGasLimitRequest {
@@ -150,12 +150,12 @@ func (r TransactionAPIGetGasPriceRequest) Execute() (*GasPriceResponse, *http.Re
 }
 
 /*
-GetGasPrice CONTROLLER.TRANSACTION.GET_GAS_PRICE.SUMMARY
+GetGasPrice Transaction - Get Gas Price
 
-CONTROLLER.TRANSACTION.GET_GAS_PRICE.DESCRIPTION
+Get the current gas price for the specified chain
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return TransactionAPIGetGasPriceRequest
 */
 func (a *TransactionAPIService) GetGasPrice(ctx context.Context, chain string) TransactionAPIGetGasPriceRequest {
@@ -249,7 +249,7 @@ type TransactionAPISendRequest struct {
 	sendTxInput *SendTxInput
 }
 
-// CONTROLLER.TRANSACTION.SEND.BODY
+// Transaction parameters
 func (r TransactionAPISendRequest) SendTxInput(sendTxInput SendTxInput) TransactionAPISendRequest {
 	r.sendTxInput = &sendTxInput
 	return r
@@ -260,12 +260,12 @@ func (r TransactionAPISendRequest) Execute() (*SendTxResponse, *http.Response, e
 }
 
 /*
-Send CONTROLLER.TRANSACTION.SEND.SUMMARY
+Send Transaction - Send
 
-CONTROLLER.TRANSACTION.SEND.DESCRIPTION
+Submit a signed transaction to the blockchain
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
+ @param chain A chain name listed in supported networks
  @return TransactionAPISendRequest
 */
 func (a *TransactionAPIService) Send(ctx context.Context, chain string) TransactionAPISendRequest {

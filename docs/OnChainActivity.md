@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FirstTransactionAt** | **int64** | DTO.KYT.ON_CHAIN_ACTIVITY.FIRST_TRANSACTION_AT | 
+**FirstTransactionAt** | **int64** | First transaction timestamp | 
 
 ## Methods
 

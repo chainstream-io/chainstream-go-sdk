@@ -22,13 +22,13 @@ var _ MappedNullable = &DexDTO{}
 
 // DexDTO struct for DexDTO
 type DexDTO struct {
-	// DTO.DEX.PROGRAM_ADDRESS
+	// DEX program address
 	ProgramAddress *string `json:"programAddress,omitempty"`
-	// DTO.DEX.PROTOCOL_FAMILY
+	// DEX protocol family
 	ProtocolFamily *string `json:"protocolFamily,omitempty"`
-	// DTO.DEX.IMAGE
+	// DEX logo image URL
 	Image *string `json:"image,omitempty"`
-	// DTO.DEX.CHAIN
+	// Blockchain
 	Chain string `json:"chain"`
 }
 

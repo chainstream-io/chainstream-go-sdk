@@ -23,31 +23,31 @@ var _ MappedNullable = &TokenTrader{}
 
 // TokenTrader struct for TokenTrader
 type TokenTrader struct {
-	// DTO.TOKEN_TRADER.ADDRESS
+	// Account address
 	Address string `json:"address"`
-	// DTO.TOKEN_TRADER.TRANSACTION_SIGNATURE
+	// Transaction signature (for trade tags)
 	TransactionSignature *string `json:"transactionSignature,omitempty"`
-	// DTO.TOKEN_TRADER.BLOCK_HASH
+	// Block hash
 	BlockHash *string `json:"blockHash,omitempty"`
-	// DTO.TOKEN_TRADER.BLOCK_HEIGHT
+	// Block height
 	BlockHeight *int64 `json:"blockHeight,omitempty"`
-	// DTO.TOKEN_TRADER.BLOCK_SLOT
+	// Block slot
 	BlockSlot *int64 `json:"blockSlot,omitempty"`
-	// DTO.TOKEN_TRADER.BLOCK_TIMESTAMP
+	// Block timestamp
 	BlockTimestamp *time.Time `json:"blockTimestamp,omitempty"`
-	// DTO.TOKEN_TRADER.ONCHAIN_CREATED_AT
+	// Onchain created at timestamp
 	OnchainCreatedAt map[string]interface{} `json:"onchainCreatedAt,omitempty"`
-	// DTO.TOKEN_TRADER.TRADE_COUNT
+	// Trade count
 	TradeCount *int64 `json:"tradeCount,omitempty"`
-	// DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_NATIVE
+	// Trade amount in native currency
 	TradeAmountInNative *string `json:"tradeAmountInNative,omitempty"`
-	// DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_USD
+	// Trade amount in USD
 	TradeAmountInUsd *string `json:"tradeAmountInUsd,omitempty"`
-	// DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_COUNT
+	// Percentile rank trade count
 	PercentileRankTradeCount *int64 `json:"percentileRankTradeCount,omitempty"`
-	// DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_AMOUNT_IN_USD
+	// Percentile rank trade amount in USD
 	PercentileRankTradeAmountInUsd *string `json:"percentileRankTradeAmountInUsd,omitempty"`
-	// DTO.TOKEN_TRADER.RANK_TRADE_AMOUNT_IN_USD
+	// Rank trade amount in USD
 	RankTradeAmountInUsd *string `json:"rankTradeAmountInUsd,omitempty"`
 }
 

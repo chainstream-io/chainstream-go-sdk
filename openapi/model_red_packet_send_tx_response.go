@@ -22,7 +22,7 @@ var _ MappedNullable = &RedPacketSendTxResponse{}
 
 // RedPacketSendTxResponse struct for RedPacketSendTxResponse
 type RedPacketSendTxResponse struct {
-	// DTO.RED_PACKET.SIGNATURE
+	// signature
 	Signature string `json:"signature"`
 }
 

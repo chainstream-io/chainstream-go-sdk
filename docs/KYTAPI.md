@@ -1,23 +1,23 @@
 # \KYTAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAddressRisk**](KYTAPI.md#GetAddressRisk) | **Get** /v1/kyt/addresses/{address}/risk | CONTROLLER.KYT.GET_ADDRESS_RISK.SUMMARY
-[**GetTransferAlerts**](KYTAPI.md#GetTransferAlerts) | **Get** /v1/kyt/transfers/{transferId}/alerts | CONTROLLER.KYT.GET_TRANSFER_ALERTS.SUMMARY
-[**GetTransferDirectExposure**](KYTAPI.md#GetTransferDirectExposure) | **Get** /v1/kyt/transfers/{transferId}/exposures/direct | CONTROLLER.KYT.GET_TRANSFER_DIRECT_EXPOSURE.SUMMARY
-[**GetTransferNetworkIdentifications**](KYTAPI.md#GetTransferNetworkIdentifications) | **Get** /v1/kyt/transfers/{transferId}/network-identifications | CONTROLLER.KYT.GET_TRANSFER_NETWORK_IDENTIFICATIONS.SUMMARY
-[**GetTransferSummary**](KYTAPI.md#GetTransferSummary) | **Get** /v1/kyt/transfers/{transferId}/summary | CONTROLLER.KYT.GET_TRANSFER_SUMMARY.SUMMARY
-[**GetWithdrawalAddressIdentifications**](KYTAPI.md#GetWithdrawalAddressIdentifications) | **Get** /v1/kyt/withdrawal/{withdrawalId}/address-identifications | CONTROLLER.KYT.GET_WITHDRAWAL_ADDRESS_IDENTIFICATIONS.SUMMARY
-[**GetWithdrawalAlerts**](KYTAPI.md#GetWithdrawalAlerts) | **Get** /v1/kyt/withdrawal/{withdrawalId}/alerts | CONTROLLER.KYT.GET_WITHDRAWAL_ALERTS.SUMMARY
-[**GetWithdrawalDirectExposure**](KYTAPI.md#GetWithdrawalDirectExposure) | **Get** /v1/kyt/withdrawal/{withdrawalId}/exposures/direct | CONTROLLER.KYT.GET_WITHDRAWAL_DIRECT_EXPOSURE.SUMMARY
-[**GetWithdrawalFraudAssessment**](KYTAPI.md#GetWithdrawalFraudAssessment) | **Get** /v1/kyt/withdrawal/{withdrawalId}/fraud-assessment | CONTROLLER.KYT.GET_WITHDRAWAL_FRAUD_ASSESSMENT.SUMMARY
-[**GetWithdrawalNetworkIdentifications**](KYTAPI.md#GetWithdrawalNetworkIdentifications) | **Get** /v1/kyt/withdrawal/{withdrawalId}/network-identifications | CONTROLLER.KYT.GET_WITHDRAWAL_NETWORK_IDENTIFICATIONS.SUMMARY
-[**GetWithdrawalSummary**](KYTAPI.md#GetWithdrawalSummary) | **Get** /v1/kyt/withdrawal/{withdrawalId}/summary | CONTROLLER.KYT.GET_WITHDRAWAL_SUMMARY.SUMMARY
-[**RegisterAddress**](KYTAPI.md#RegisterAddress) | **Post** /v1/kyt/address | CONTROLLER.KYT.REGISTER_ADDRESS.SUMMARY
-[**RegisterTransfer**](KYTAPI.md#RegisterTransfer) | **Post** /v1/kyt/transfer | CONTROLLER.KYT.REGISTER_TRANSFER.SUMMARY
-[**RegisterWithdrawal**](KYTAPI.md#RegisterWithdrawal) | **Post** /v1/kyt/withdrawal | CONTROLLER.KYT.REGISTER_WITHDRAWAL.SUMMARY
+[**GetAddressRisk**](KYTAPI.md#GetAddressRisk) | **Get** /v1/kyt/addresses/{address}/risk | KYT - Get Address Risk
+[**GetTransferAlerts**](KYTAPI.md#GetTransferAlerts) | **Get** /v1/kyt/transfers/{transferId}/alerts | KYT - Get Transfer Alerts
+[**GetTransferDirectExposure**](KYTAPI.md#GetTransferDirectExposure) | **Get** /v1/kyt/transfers/{transferId}/exposures/direct | KYT - Get Transfer Direct Exposure
+[**GetTransferNetworkIdentifications**](KYTAPI.md#GetTransferNetworkIdentifications) | **Get** /v1/kyt/transfers/{transferId}/network-identifications | KYT - Get Transfer Network Identifications
+[**GetTransferSummary**](KYTAPI.md#GetTransferSummary) | **Get** /v1/kyt/transfers/{transferId}/summary | KYT - Get Transfer Summary
+[**GetWithdrawalAddressIdentifications**](KYTAPI.md#GetWithdrawalAddressIdentifications) | **Get** /v1/kyt/withdrawal/{withdrawalId}/address-identifications | KYT - Get Withdrawal Address Identifications
+[**GetWithdrawalAlerts**](KYTAPI.md#GetWithdrawalAlerts) | **Get** /v1/kyt/withdrawal/{withdrawalId}/alerts | KYT - Get Withdrawal Alerts
+[**GetWithdrawalDirectExposure**](KYTAPI.md#GetWithdrawalDirectExposure) | **Get** /v1/kyt/withdrawal/{withdrawalId}/exposures/direct | KYT - Get Withdrawal Direct Exposure
+[**GetWithdrawalFraudAssessment**](KYTAPI.md#GetWithdrawalFraudAssessment) | **Get** /v1/kyt/withdrawal/{withdrawalId}/fraud-assessment | KYT - Get Withdrawal Fraud Assessment
+[**GetWithdrawalNetworkIdentifications**](KYTAPI.md#GetWithdrawalNetworkIdentifications) | **Get** /v1/kyt/withdrawal/{withdrawalId}/network-identifications | KYT - Get Withdrawal Network Identifications
+[**GetWithdrawalSummary**](KYTAPI.md#GetWithdrawalSummary) | **Get** /v1/kyt/withdrawal/{withdrawalId}/summary | KYT - Get Withdrawal Summary
+[**RegisterAddress**](KYTAPI.md#RegisterAddress) | **Post** /v1/kyt/address | KYT - Register Address
+[**RegisterTransfer**](KYTAPI.md#RegisterTransfer) | **Post** /v1/kyt/transfer | KYT - Register Transfer
+[**RegisterWithdrawal**](KYTAPI.md#RegisterWithdrawal) | **Post** /v1/kyt/withdrawal | KYT - Register Withdrawal
 
 
 
@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 > AddressRiskResponseDTO GetAddressRisk(ctx, address).Execute()
 
-CONTROLLER.KYT.GET_ADDRESS_RISK.SUMMARY
+KYT - Get Address Risk
 
 
 
@@ -42,7 +42,7 @@ import (
 )
 
 func main() {
-	address := "0x0038AC785dfB6C82b2c9A7B3B6854e08a10cb9f1" // string | CONTROLLER.KYT.PARAM.ADDRESS
+	address := "0x0038AC785dfB6C82b2c9A7B3B6854e08a10cb9f1" // string | Address
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -62,7 +62,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**address** | **string** | CONTROLLER.KYT.PARAM.ADDRESS | 
+**address** | **string** | Address | 
 
 ### Other Parameters
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 > TransferAlertsResponseDTO GetTransferAlerts(ctx, transferId).Execute()
 
-CONTROLLER.KYT.GET_TRANSFER_ALERTS.SUMMARY
+KYT - Get Transfer Alerts
 
 
 
@@ -112,7 +112,7 @@ import (
 )
 
 func main() {
-	transferId := "123e4567-e89b-12d3-a456-426614174000" // string | CONTROLLER.KYT.PARAM.TRANSFER_ID
+	transferId := "123e4567-e89b-12d3-a456-426614174000" // string | Transfer ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -132,7 +132,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**transferId** | **string** | CONTROLLER.KYT.PARAM.TRANSFER_ID | 
+**transferId** | **string** | Transfer ID | 
 
 ### Other Parameters
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 > TransferDirectExposureResponseDTO GetTransferDirectExposure(ctx, transferId).Execute()
 
-CONTROLLER.KYT.GET_TRANSFER_DIRECT_EXPOSURE.SUMMARY
+KYT - Get Transfer Direct Exposure
 
 
 
@@ -182,7 +182,7 @@ import (
 )
 
 func main() {
-	transferId := "123e4567-e89b-12d3-a456-426614174000" // string | CONTROLLER.KYT.PARAM.TRANSFER_ID
+	transferId := "123e4567-e89b-12d3-a456-426614174000" // string | Transfer ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -202,7 +202,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**transferId** | **string** | CONTROLLER.KYT.PARAM.TRANSFER_ID | 
+**transferId** | **string** | Transfer ID | 
 
 ### Other Parameters
 
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 > TransferNetworkIdentificationsResponseDTO GetTransferNetworkIdentifications(ctx, transferId).Execute()
 
-CONTROLLER.KYT.GET_TRANSFER_NETWORK_IDENTIFICATIONS.SUMMARY
+KYT - Get Transfer Network Identifications
 
 
 
@@ -252,7 +252,7 @@ import (
 )
 
 func main() {
-	transferId := "123e4567-e89b-12d3-a456-426614174000" // string | CONTROLLER.KYT.PARAM.TRANSFER_ID
+	transferId := "123e4567-e89b-12d3-a456-426614174000" // string | Transfer ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -272,7 +272,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**transferId** | **string** | CONTROLLER.KYT.PARAM.TRANSFER_ID | 
+**transferId** | **string** | Transfer ID | 
 
 ### Other Parameters
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 > TransferBaseResponseDTO GetTransferSummary(ctx, transferId).Execute()
 
-CONTROLLER.KYT.GET_TRANSFER_SUMMARY.SUMMARY
+KYT - Get Transfer Summary
 
 
 
@@ -322,7 +322,7 @@ import (
 )
 
 func main() {
-	transferId := "123e4567-e89b-12d3-a456-426614174000" // string | CONTROLLER.KYT.PARAM.TRANSFER_ID
+	transferId := "123e4567-e89b-12d3-a456-426614174000" // string | Transfer ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -342,7 +342,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**transferId** | **string** | CONTROLLER.KYT.PARAM.TRANSFER_ID | 
+**transferId** | **string** | Transfer ID | 
 
 ### Other Parameters
 
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 
 > WithdrawalAddressIdentificationsResponseDTO GetWithdrawalAddressIdentifications(ctx, withdrawalId).Execute()
 
-CONTROLLER.KYT.GET_WITHDRAWAL_ADDRESS_IDENTIFICATIONS.SUMMARY
+KYT - Get Withdrawal Address Identifications
 
 
 
@@ -392,7 +392,7 @@ import (
 )
 
 func main() {
-	withdrawalId := "123e4567-e89b-12d3-a456-426614174000" // string | CONTROLLER.KYT.PARAM.WITHDRAWAL_ID
+	withdrawalId := "123e4567-e89b-12d3-a456-426614174000" // string | Withdrawal ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -412,7 +412,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**withdrawalId** | **string** | CONTROLLER.KYT.PARAM.WITHDRAWAL_ID | 
+**withdrawalId** | **string** | Withdrawal ID | 
 
 ### Other Parameters
 
@@ -445,7 +445,7 @@ Name | Type | Description  | Notes
 
 > TransferAlertsResponseDTO GetWithdrawalAlerts(ctx, withdrawalId).Execute()
 
-CONTROLLER.KYT.GET_WITHDRAWAL_ALERTS.SUMMARY
+KYT - Get Withdrawal Alerts
 
 
 
@@ -462,7 +462,7 @@ import (
 )
 
 func main() {
-	withdrawalId := "123e4567-e89b-12d3-a456-426614174000" // string | CONTROLLER.KYT.PARAM.WITHDRAWAL_ID
+	withdrawalId := "123e4567-e89b-12d3-a456-426614174000" // string | Withdrawal ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -482,7 +482,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**withdrawalId** | **string** | CONTROLLER.KYT.PARAM.WITHDRAWAL_ID | 
+**withdrawalId** | **string** | Withdrawal ID | 
 
 ### Other Parameters
 
@@ -515,7 +515,7 @@ Name | Type | Description  | Notes
 
 > TransferDirectExposureResponseDTO GetWithdrawalDirectExposure(ctx, withdrawalId).Execute()
 
-CONTROLLER.KYT.GET_WITHDRAWAL_DIRECT_EXPOSURE.SUMMARY
+KYT - Get Withdrawal Direct Exposure
 
 
 
@@ -532,7 +532,7 @@ import (
 )
 
 func main() {
-	withdrawalId := "123e4567-e89b-12d3-a456-426614174000" // string | CONTROLLER.KYT.PARAM.WITHDRAWAL_ID
+	withdrawalId := "123e4567-e89b-12d3-a456-426614174000" // string | Withdrawal ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -552,7 +552,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**withdrawalId** | **string** | CONTROLLER.KYT.PARAM.WITHDRAWAL_ID | 
+**withdrawalId** | **string** | Withdrawal ID | 
 
 ### Other Parameters
 
@@ -585,7 +585,7 @@ Name | Type | Description  | Notes
 
 > WithdrawalFraudAssessmentResponseDTO GetWithdrawalFraudAssessment(ctx, withdrawalId).Execute()
 
-CONTROLLER.KYT.GET_WITHDRAWAL_FRAUD_ASSESSMENT.SUMMARY
+KYT - Get Withdrawal Fraud Assessment
 
 
 
@@ -602,7 +602,7 @@ import (
 )
 
 func main() {
-	withdrawalId := "123e4567-e89b-12d3-a456-426614174000" // string | CONTROLLER.KYT.PARAM.WITHDRAWAL_ID
+	withdrawalId := "123e4567-e89b-12d3-a456-426614174000" // string | Withdrawal ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -622,7 +622,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**withdrawalId** | **string** | CONTROLLER.KYT.PARAM.WITHDRAWAL_ID | 
+**withdrawalId** | **string** | Withdrawal ID | 
 
 ### Other Parameters
 
@@ -655,7 +655,7 @@ Name | Type | Description  | Notes
 
 > TransferNetworkIdentificationsResponseDTO GetWithdrawalNetworkIdentifications(ctx, withdrawalId).Execute()
 
-CONTROLLER.KYT.GET_WITHDRAWAL_NETWORK_IDENTIFICATIONS.SUMMARY
+KYT - Get Withdrawal Network Identifications
 
 
 
@@ -672,7 +672,7 @@ import (
 )
 
 func main() {
-	withdrawalId := "123e4567-e89b-12d3-a456-426614174000" // string | CONTROLLER.KYT.PARAM.WITHDRAWAL_ID
+	withdrawalId := "123e4567-e89b-12d3-a456-426614174000" // string | Withdrawal ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -692,7 +692,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**withdrawalId** | **string** | CONTROLLER.KYT.PARAM.WITHDRAWAL_ID | 
+**withdrawalId** | **string** | Withdrawal ID | 
 
 ### Other Parameters
 
@@ -725,7 +725,7 @@ Name | Type | Description  | Notes
 
 > WithdrawalBaseResponseDTO GetWithdrawalSummary(ctx, withdrawalId).Execute()
 
-CONTROLLER.KYT.GET_WITHDRAWAL_SUMMARY.SUMMARY
+KYT - Get Withdrawal Summary
 
 
 
@@ -742,7 +742,7 @@ import (
 )
 
 func main() {
-	withdrawalId := "123e4567-e89b-12d3-a456-426614174000" // string | CONTROLLER.KYT.PARAM.WITHDRAWAL_ID
+	withdrawalId := "123e4567-e89b-12d3-a456-426614174000" // string | Withdrawal ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -762,7 +762,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**withdrawalId** | **string** | CONTROLLER.KYT.PARAM.WITHDRAWAL_ID | 
+**withdrawalId** | **string** | Withdrawal ID | 
 
 ### Other Parameters
 
@@ -795,7 +795,7 @@ Name | Type | Description  | Notes
 
 > RegisterAddressResponseDTO RegisterAddress(ctx).RegisterAddressRequest(registerAddressRequest).Execute()
 
-CONTROLLER.KYT.REGISTER_ADDRESS.SUMMARY
+KYT - Register Address
 
 
 
@@ -861,7 +861,7 @@ Name | Type | Description  | Notes
 
 > TransferBaseResponseDTO RegisterTransfer(ctx).KYTRegisterTransferRequest(kYTRegisterTransferRequest).Execute()
 
-CONTROLLER.KYT.REGISTER_TRANSFER.SUMMARY
+KYT - Register Transfer
 
 
 
@@ -927,7 +927,7 @@ Name | Type | Description  | Notes
 
 > WithdrawalBaseResponseDTO RegisterWithdrawal(ctx).KYTRegisterWithdrawalRequest(kYTRegisterWithdrawalRequest).Execute()
 
-CONTROLLER.KYT.REGISTER_WITHDRAWAL.SUMMARY
+KYT - Register Withdrawal
 
 
 

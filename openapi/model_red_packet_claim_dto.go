@@ -22,21 +22,21 @@ var _ MappedNullable = &RedPacketClaimDTO{}
 
 // RedPacketClaimDTO struct for RedPacketClaimDTO
 type RedPacketClaimDTO struct {
-	// DTO.RED_PACKET.PACKET_ID
+	// Unique identifier of the red packet
 	PacketId string `json:"packetId"`
-	// DTO.RED_PACKET.CHAIN
+	// Blockchain network
 	Chain Chain `json:"chain"`
-	// DTO.RED_PACKET.CLAIMER
+	// Wallet address of the claimer
 	Claimer string `json:"claimer"`
-	// DTO.RED_PACKET.MINT
+	// Token mint address for the red packet
 	Mint string `json:"mint"`
-	// DTO.RED_PACKET.AMOUNT
+	// Claimed amount
 	Amount string `json:"amount"`
-	// DTO.RED_PACKET.CLAIMED_AT
+	// Claimed time
 	ClaimedAt int64 `json:"claimedAt"`
-	// DTO.RED_PACKET.CREATOR
+	// Creator wallet address of the red packet
 	Creator string `json:"creator"`
-	// DTO.RED_PACKET.TX_HASH
+	// Transaction hash
 	TxHash string `json:"txHash"`
 }
 

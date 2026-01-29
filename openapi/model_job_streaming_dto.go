@@ -22,9 +22,9 @@ var _ MappedNullable = &JobStreamingDTO{}
 
 // JobStreamingDTO struct for JobStreamingDTO
 type JobStreamingDTO struct {
-	// DTO.JOB.STREAMING.ID
+	// Streaming job ID
 	Id float32 `json:"id"`
-	// DTO.JOB.STREAMING.DATA
+	// Streaming data
 	Data map[string]interface{} `json:"data"`
 }
 

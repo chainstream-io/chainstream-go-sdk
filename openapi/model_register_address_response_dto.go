@@ -22,7 +22,7 @@ var _ MappedNullable = &RegisterAddressResponseDTO{}
 
 // RegisterAddressResponseDTO struct for RegisterAddressResponseDTO
 type RegisterAddressResponseDTO struct {
-	// DTO.KYT.REGISTER_ADDRESS_RESPONSE.ADDRESS
+	// Address
 	Address string `json:"address"`
 }
 

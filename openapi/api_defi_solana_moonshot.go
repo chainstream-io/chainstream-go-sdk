@@ -40,9 +40,9 @@ func (r DefiSolanaMoonshotAPIMoonshotCreateTokenRequest) Execute() (*MoonshotCre
 }
 
 /*
-MoonshotCreateToken CONTROLLER.MOONSHOT.CREATE_TOKEN.SUMMARY
+MoonshotCreateToken Moonshot - Create Token
 
-CONTROLLER.MOONSHOT.CREATE_TOKEN.DESCRIPTION
+Create a new token with Moonshot protocol on Solana
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return DefiSolanaMoonshotAPIMoonshotCreateTokenRequest
@@ -151,9 +151,9 @@ func (r DefiSolanaMoonshotAPIMoonshotSubmitCreateTokenRequest) Execute() (*Moons
 }
 
 /*
-MoonshotSubmitCreateToken CONTROLLER.MOONSHOT.SUBMIT_CREATE_TOKEN.SUMMARY
+MoonshotSubmitCreateToken Moonshot - Submit Create Token
 
-CONTROLLER.MOONSHOT.SUBMIT_CREATE_TOKEN.DESCRIPTION
+Submit a signed token creation transaction to finalize token creation with Moonshot
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return DefiSolanaMoonshotAPIMoonshotSubmitCreateTokenRequest

@@ -1,11 +1,11 @@
 # \BlockchainAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetLatestBlock**](BlockchainAPI.md#GetLatestBlock) | **Get** /v1/blockchain/{chain}/latest_block | CONTROLLER.GET_LATEST_BLOCK.SUMMARY
-[**GetSupportedBlockchains**](BlockchainAPI.md#GetSupportedBlockchains) | **Get** /v1/blockchain | CONTROLLER.GET_SUPPORTED_BLOCKCHAINS.SUMMARY
+[**GetLatestBlock**](BlockchainAPI.md#GetLatestBlock) | **Get** /v1/blockchain/{chain}/latest_block | Blockchain - Latest Block
+[**GetSupportedBlockchains**](BlockchainAPI.md#GetSupportedBlockchains) | **Get** /v1/blockchain | Blockchain - List
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > BlockchainLatestBlockDTO GetLatestBlock(ctx, chain).Execute()
 
-CONTROLLER.GET_LATEST_BLOCK.SUMMARY
+Blockchain - Latest Block
 
 
 
@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -50,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 > []BlockchainDTO GetSupportedBlockchains(ctx).Execute()
 
-CONTROLLER.GET_SUPPORTED_BLOCKCHAINS.SUMMARY
+Blockchain - List
 
 
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | DTO.KYT.DIRECT_EXPOSURE_DETAIL.NAME | 
-**CategoryId** | **int64** | DTO.KYT.DIRECT_EXPOSURE_DETAIL.CATEGORY_ID | 
+**Name** | **string** | Name | 
+**CategoryId** | **int64** | Category ID | 
 
 ## Methods
 

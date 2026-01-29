@@ -1,14 +1,14 @@
 # \RankingAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetFinalStretchTokens**](RankingAPI.md#GetFinalStretchTokens) | **Get** /v1/ranking/{chain}/finalStretch | CONTROLLER.RANKING.FINAL_STRETCH_TOKENS.SUMMARY
-[**GetHotTokens**](RankingAPI.md#GetHotTokens) | **Get** /v1/ranking/{chain}/hotTokens/{duration} | CONTROLLER.RANKING.HOT_TOKENS.SUMMARY
-[**GetMigratedTokens**](RankingAPI.md#GetMigratedTokens) | **Get** /v1/ranking/{chain}/migrated | CONTROLLER.RANKING.MIGRATED_TOKENS.SUMMARY
-[**GetNewTokens**](RankingAPI.md#GetNewTokens) | **Get** /v1/ranking/{chain}/newTokens | CONTROLLER.RANKING.NEW_TOKENS.SUMMARY
-[**GetStocksTokens**](RankingAPI.md#GetStocksTokens) | **Get** /v1/ranking/{chain}/stocks | CONTROLLER.RANKING.STOCKS_TOKENS.SUMMARY
+[**GetFinalStretchTokens**](RankingAPI.md#GetFinalStretchTokens) | **Get** /v1/ranking/{chain}/finalStretch | Ranking - FinalStretch Tokens
+[**GetHotTokens**](RankingAPI.md#GetHotTokens) | **Get** /v1/ranking/{chain}/hotTokens/{duration} | Ranking - Hot Tokens
+[**GetMigratedTokens**](RankingAPI.md#GetMigratedTokens) | **Get** /v1/ranking/{chain}/migrated | Ranking - Migrated Tokens
+[**GetNewTokens**](RankingAPI.md#GetNewTokens) | **Get** /v1/ranking/{chain}/newTokens | Ranking - New Tokens
+[**GetStocksTokens**](RankingAPI.md#GetStocksTokens) | **Get** /v1/ranking/{chain}/stocks | Ranking - Stocks Tokens
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > []Token GetFinalStretchTokens(ctx, chain).SortBy(sortBy).SortDirection(sortDirection).RangeFilters(rangeFilters).Tag(tag).Filters(filters).LaunchpadPlatform(launchpadPlatform).SearchKeywords(searchKeywords).ExcludeKeywords(excludeKeywords).Execute()
 
-CONTROLLER.RANKING.FINAL_STRETCH_TOKENS.SUMMARY
+Ranking - FinalStretch Tokens
 
 
 
@@ -33,15 +33,15 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	sortBy := "marketData.marketCapInUsd" // string | DTO.TOKEN.REQUEST.SORT_BY (optional)
-	sortDirection := "sortDirection_example" // string | DTO.TOKEN.REQUEST.SORT_DIRECTION (optional) (default to "DESC")
-	rangeFilters := []openapiclient.FilterCondition{*openapiclient.NewFilterCondition()} // []FilterCondition | DTO.TOKEN.REQUEST.FILTER_BY (optional)
-	tag := "tag_example" // string | DTO.TOKEN.REQUEST.TAG (optional)
-	filters := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.FILTERS (optional)
-	launchpadPlatform := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM (optional)
-	searchKeywords := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.SEARCH_KEYWORDS (optional)
-	excludeKeywords := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS (optional)
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	sortBy := "marketData.marketCapInUsd" // string | Sort field (optional)
+	sortDirection := "sortDirection_example" // string | Sort Direction (optional) (default to "DESC")
+	rangeFilters := []openapiclient.FilterCondition{*openapiclient.NewFilterCondition()} // []FilterCondition | Filter field (optional)
+	tag := "tag_example" // string | Token tag filter for specific protocols or categories (optional)
+	filters := []string{"Inner_example"} // []string | Filters (optional)
+	launchpadPlatform := []string{"Inner_example"} // []string | Launchpad Platform (optional)
+	searchKeywords := []string{"Inner_example"} // []string | Search Keywords (optional)
+	excludeKeywords := []string{"Inner_example"} // []string | Exclude Keywords (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -61,7 +61,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -71,14 +71,14 @@ Other parameters are passed through a pointer to a apiGetFinalStretchTokensReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sortBy** | **string** | DTO.TOKEN.REQUEST.SORT_BY | 
- **sortDirection** | **string** | DTO.TOKEN.REQUEST.SORT_DIRECTION | [default to &quot;DESC&quot;]
- **rangeFilters** | [**[]FilterCondition**](FilterCondition.md) | DTO.TOKEN.REQUEST.FILTER_BY | 
- **tag** | **string** | DTO.TOKEN.REQUEST.TAG | 
- **filters** | **[]string** | DTO.TOKEN.FILTER.FILTERS | 
- **launchpadPlatform** | **[]string** | DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM | 
- **searchKeywords** | **[]string** | DTO.TOKEN.FILTER.SEARCH_KEYWORDS | 
- **excludeKeywords** | **[]string** | DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS | 
+ **sortBy** | **string** | Sort field | 
+ **sortDirection** | **string** | Sort Direction | [default to &quot;DESC&quot;]
+ **rangeFilters** | [**[]FilterCondition**](FilterCondition.md) | Filter field | 
+ **tag** | **string** | Token tag filter for specific protocols or categories | 
+ **filters** | **[]string** | Filters | 
+ **launchpadPlatform** | **[]string** | Launchpad Platform | 
+ **searchKeywords** | **[]string** | Search Keywords | 
+ **excludeKeywords** | **[]string** | Exclude Keywords | 
 
 ### Return type
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 > []Token GetHotTokens(ctx, chain, duration).SortBy(sortBy).SortDirection(sortDirection).RangeFilters(rangeFilters).Tag(tag).Filters(filters).LaunchpadPlatform(launchpadPlatform).SearchKeywords(searchKeywords).ExcludeKeywords(excludeKeywords).Execute()
 
-CONTROLLER.RANKING.HOT_TOKENS.SUMMARY
+Ranking - Hot Tokens
 
 
 
@@ -119,16 +119,16 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	duration := "duration_example" // string | CONTROLLER.RANKING.HOT_TOKENS.DURATION.DESCRIPTION
-	sortBy := "marketData.marketCapInUsd" // string | DTO.TOKEN.REQUEST.SORT_BY (optional)
-	sortDirection := "sortDirection_example" // string | DTO.TOKEN.REQUEST.SORT_DIRECTION (optional) (default to "DESC")
-	rangeFilters := []openapiclient.FilterCondition{*openapiclient.NewFilterCondition()} // []FilterCondition | DTO.TOKEN.REQUEST.FILTER_BY (optional)
-	tag := "tag_example" // string | DTO.TOKEN.REQUEST.TAG (optional)
-	filters := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.FILTERS (optional)
-	launchpadPlatform := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM (optional)
-	searchKeywords := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.SEARCH_KEYWORDS (optional)
-	excludeKeywords := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS (optional)
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	duration := "duration_example" // string | Duration of the ranking
+	sortBy := "marketData.marketCapInUsd" // string | Sort field (optional)
+	sortDirection := "sortDirection_example" // string | Sort Direction (optional) (default to "DESC")
+	rangeFilters := []openapiclient.FilterCondition{*openapiclient.NewFilterCondition()} // []FilterCondition | Filter field (optional)
+	tag := "tag_example" // string | Token tag filter for specific protocols or categories (optional)
+	filters := []string{"Inner_example"} // []string | Filters (optional)
+	launchpadPlatform := []string{"Inner_example"} // []string | Launchpad Platform (optional)
+	searchKeywords := []string{"Inner_example"} // []string | Search Keywords (optional)
+	excludeKeywords := []string{"Inner_example"} // []string | Exclude Keywords (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -148,8 +148,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**duration** | **string** | CONTROLLER.RANKING.HOT_TOKENS.DURATION.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**duration** | **string** | Duration of the ranking | 
 
 ### Other Parameters
 
@@ -160,14 +160,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **sortBy** | **string** | DTO.TOKEN.REQUEST.SORT_BY | 
- **sortDirection** | **string** | DTO.TOKEN.REQUEST.SORT_DIRECTION | [default to &quot;DESC&quot;]
- **rangeFilters** | [**[]FilterCondition**](FilterCondition.md) | DTO.TOKEN.REQUEST.FILTER_BY | 
- **tag** | **string** | DTO.TOKEN.REQUEST.TAG | 
- **filters** | **[]string** | DTO.TOKEN.FILTER.FILTERS | 
- **launchpadPlatform** | **[]string** | DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM | 
- **searchKeywords** | **[]string** | DTO.TOKEN.FILTER.SEARCH_KEYWORDS | 
- **excludeKeywords** | **[]string** | DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS | 
+ **sortBy** | **string** | Sort field | 
+ **sortDirection** | **string** | Sort Direction | [default to &quot;DESC&quot;]
+ **rangeFilters** | [**[]FilterCondition**](FilterCondition.md) | Filter field | 
+ **tag** | **string** | Token tag filter for specific protocols or categories | 
+ **filters** | **[]string** | Filters | 
+ **launchpadPlatform** | **[]string** | Launchpad Platform | 
+ **searchKeywords** | **[]string** | Search Keywords | 
+ **excludeKeywords** | **[]string** | Exclude Keywords | 
 
 ### Return type
 
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 
 > []Token GetMigratedTokens(ctx, chain).SortBy(sortBy).SortDirection(sortDirection).RangeFilters(rangeFilters).Tag(tag).Filters(filters).LaunchpadPlatform(launchpadPlatform).SearchKeywords(searchKeywords).ExcludeKeywords(excludeKeywords).Execute()
 
-CONTROLLER.RANKING.MIGRATED_TOKENS.SUMMARY
+Ranking - Migrated Tokens
 
 
 
@@ -208,15 +208,15 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	sortBy := "marketData.marketCapInUsd" // string | DTO.TOKEN.REQUEST.SORT_BY (optional)
-	sortDirection := "sortDirection_example" // string | DTO.TOKEN.REQUEST.SORT_DIRECTION (optional) (default to "DESC")
-	rangeFilters := []openapiclient.FilterCondition{*openapiclient.NewFilterCondition()} // []FilterCondition | DTO.TOKEN.REQUEST.FILTER_BY (optional)
-	tag := "tag_example" // string | DTO.TOKEN.REQUEST.TAG (optional)
-	filters := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.FILTERS (optional)
-	launchpadPlatform := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM (optional)
-	searchKeywords := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.SEARCH_KEYWORDS (optional)
-	excludeKeywords := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS (optional)
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	sortBy := "marketData.marketCapInUsd" // string | Sort field (optional)
+	sortDirection := "sortDirection_example" // string | Sort Direction (optional) (default to "DESC")
+	rangeFilters := []openapiclient.FilterCondition{*openapiclient.NewFilterCondition()} // []FilterCondition | Filter field (optional)
+	tag := "tag_example" // string | Token tag filter for specific protocols or categories (optional)
+	filters := []string{"Inner_example"} // []string | Filters (optional)
+	launchpadPlatform := []string{"Inner_example"} // []string | Launchpad Platform (optional)
+	searchKeywords := []string{"Inner_example"} // []string | Search Keywords (optional)
+	excludeKeywords := []string{"Inner_example"} // []string | Exclude Keywords (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -236,7 +236,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -246,14 +246,14 @@ Other parameters are passed through a pointer to a apiGetMigratedTokensRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sortBy** | **string** | DTO.TOKEN.REQUEST.SORT_BY | 
- **sortDirection** | **string** | DTO.TOKEN.REQUEST.SORT_DIRECTION | [default to &quot;DESC&quot;]
- **rangeFilters** | [**[]FilterCondition**](FilterCondition.md) | DTO.TOKEN.REQUEST.FILTER_BY | 
- **tag** | **string** | DTO.TOKEN.REQUEST.TAG | 
- **filters** | **[]string** | DTO.TOKEN.FILTER.FILTERS | 
- **launchpadPlatform** | **[]string** | DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM | 
- **searchKeywords** | **[]string** | DTO.TOKEN.FILTER.SEARCH_KEYWORDS | 
- **excludeKeywords** | **[]string** | DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS | 
+ **sortBy** | **string** | Sort field | 
+ **sortDirection** | **string** | Sort Direction | [default to &quot;DESC&quot;]
+ **rangeFilters** | [**[]FilterCondition**](FilterCondition.md) | Filter field | 
+ **tag** | **string** | Token tag filter for specific protocols or categories | 
+ **filters** | **[]string** | Filters | 
+ **launchpadPlatform** | **[]string** | Launchpad Platform | 
+ **searchKeywords** | **[]string** | Search Keywords | 
+ **excludeKeywords** | **[]string** | Exclude Keywords | 
 
 ### Return type
 
@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 
 > []Token GetNewTokens(ctx, chain).SortBy(sortBy).SortDirection(sortDirection).RangeFilters(rangeFilters).Tag(tag).Filters(filters).LaunchpadPlatform(launchpadPlatform).SearchKeywords(searchKeywords).ExcludeKeywords(excludeKeywords).Execute()
 
-CONTROLLER.RANKING.NEW_TOKENS.SUMMARY
+Ranking - New Tokens
 
 
 
@@ -294,15 +294,15 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	sortBy := "marketData.marketCapInUsd" // string | DTO.TOKEN.REQUEST.SORT_BY (optional)
-	sortDirection := "sortDirection_example" // string | DTO.TOKEN.REQUEST.SORT_DIRECTION (optional) (default to "DESC")
-	rangeFilters := []openapiclient.FilterCondition{*openapiclient.NewFilterCondition()} // []FilterCondition | DTO.TOKEN.REQUEST.FILTER_BY (optional)
-	tag := "tag_example" // string | DTO.TOKEN.REQUEST.TAG (optional)
-	filters := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.FILTERS (optional)
-	launchpadPlatform := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM (optional)
-	searchKeywords := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.SEARCH_KEYWORDS (optional)
-	excludeKeywords := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS (optional)
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	sortBy := "marketData.marketCapInUsd" // string | Sort field (optional)
+	sortDirection := "sortDirection_example" // string | Sort Direction (optional) (default to "DESC")
+	rangeFilters := []openapiclient.FilterCondition{*openapiclient.NewFilterCondition()} // []FilterCondition | Filter field (optional)
+	tag := "tag_example" // string | Token tag filter for specific protocols or categories (optional)
+	filters := []string{"Inner_example"} // []string | Filters (optional)
+	launchpadPlatform := []string{"Inner_example"} // []string | Launchpad Platform (optional)
+	searchKeywords := []string{"Inner_example"} // []string | Search Keywords (optional)
+	excludeKeywords := []string{"Inner_example"} // []string | Exclude Keywords (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -322,7 +322,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -332,14 +332,14 @@ Other parameters are passed through a pointer to a apiGetNewTokensRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sortBy** | **string** | DTO.TOKEN.REQUEST.SORT_BY | 
- **sortDirection** | **string** | DTO.TOKEN.REQUEST.SORT_DIRECTION | [default to &quot;DESC&quot;]
- **rangeFilters** | [**[]FilterCondition**](FilterCondition.md) | DTO.TOKEN.REQUEST.FILTER_BY | 
- **tag** | **string** | DTO.TOKEN.REQUEST.TAG | 
- **filters** | **[]string** | DTO.TOKEN.FILTER.FILTERS | 
- **launchpadPlatform** | **[]string** | DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM | 
- **searchKeywords** | **[]string** | DTO.TOKEN.FILTER.SEARCH_KEYWORDS | 
- **excludeKeywords** | **[]string** | DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS | 
+ **sortBy** | **string** | Sort field | 
+ **sortDirection** | **string** | Sort Direction | [default to &quot;DESC&quot;]
+ **rangeFilters** | [**[]FilterCondition**](FilterCondition.md) | Filter field | 
+ **tag** | **string** | Token tag filter for specific protocols or categories | 
+ **filters** | **[]string** | Filters | 
+ **launchpadPlatform** | **[]string** | Launchpad Platform | 
+ **searchKeywords** | **[]string** | Search Keywords | 
+ **excludeKeywords** | **[]string** | Exclude Keywords | 
 
 ### Return type
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 > []Token GetStocksTokens(ctx, chain).SortBy(sortBy).SortDirection(sortDirection).RangeFilters(rangeFilters).Tag(tag).Filters(filters).LaunchpadPlatform(launchpadPlatform).SearchKeywords(searchKeywords).ExcludeKeywords(excludeKeywords).Execute()
 
-CONTROLLER.RANKING.STOCKS_TOKENS.SUMMARY
+Ranking - Stocks Tokens
 
 
 
@@ -380,15 +380,15 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	sortBy := "marketData.marketCapInUsd" // string | DTO.TOKEN.REQUEST.SORT_BY (optional)
-	sortDirection := "sortDirection_example" // string | DTO.TOKEN.REQUEST.SORT_DIRECTION (optional) (default to "DESC")
-	rangeFilters := []openapiclient.FilterCondition{*openapiclient.NewFilterCondition()} // []FilterCondition | DTO.TOKEN.REQUEST.FILTER_BY (optional)
-	tag := "tag_example" // string | DTO.TOKEN.REQUEST.TAG (optional)
-	filters := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.FILTERS (optional)
-	launchpadPlatform := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM (optional)
-	searchKeywords := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.SEARCH_KEYWORDS (optional)
-	excludeKeywords := []string{"Inner_example"} // []string | DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS (optional)
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	sortBy := "marketData.marketCapInUsd" // string | Sort field (optional)
+	sortDirection := "sortDirection_example" // string | Sort Direction (optional) (default to "DESC")
+	rangeFilters := []openapiclient.FilterCondition{*openapiclient.NewFilterCondition()} // []FilterCondition | Filter field (optional)
+	tag := "tag_example" // string | Token tag filter for specific protocols or categories (optional)
+	filters := []string{"Inner_example"} // []string | Filters (optional)
+	launchpadPlatform := []string{"Inner_example"} // []string | Launchpad Platform (optional)
+	searchKeywords := []string{"Inner_example"} // []string | Search Keywords (optional)
+	excludeKeywords := []string{"Inner_example"} // []string | Exclude Keywords (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -408,7 +408,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -418,14 +418,14 @@ Other parameters are passed through a pointer to a apiGetStocksTokensRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sortBy** | **string** | DTO.TOKEN.REQUEST.SORT_BY | 
- **sortDirection** | **string** | DTO.TOKEN.REQUEST.SORT_DIRECTION | [default to &quot;DESC&quot;]
- **rangeFilters** | [**[]FilterCondition**](FilterCondition.md) | DTO.TOKEN.REQUEST.FILTER_BY | 
- **tag** | **string** | DTO.TOKEN.REQUEST.TAG | 
- **filters** | **[]string** | DTO.TOKEN.FILTER.FILTERS | 
- **launchpadPlatform** | **[]string** | DTO.TOKEN.FILTER.LAUNCHPAD_PLATFORM | 
- **searchKeywords** | **[]string** | DTO.TOKEN.FILTER.SEARCH_KEYWORDS | 
- **excludeKeywords** | **[]string** | DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS | 
+ **sortBy** | **string** | Sort field | 
+ **sortDirection** | **string** | Sort Direction | [default to &quot;DESC&quot;]
+ **rangeFilters** | [**[]FilterCondition**](FilterCondition.md) | Filter field | 
+ **tag** | **string** | Token tag filter for specific protocols or categories | 
+ **filters** | **[]string** | Filters | 
+ **launchpadPlatform** | **[]string** | Launchpad Platform | 
+ **searchKeywords** | **[]string** | Search Keywords | 
+ **excludeKeywords** | **[]string** | Exclude Keywords | 
 
 ### Return type
 

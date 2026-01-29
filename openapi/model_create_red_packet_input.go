@@ -22,23 +22,23 @@ var _ MappedNullable = &CreateRedPacketInput{}
 
 // CreateRedPacketInput struct for CreateRedPacketInput
 type CreateRedPacketInput struct {
-	// DTO.RED_PACKET.CHAIN
+	// Blockchain network
 	Chain string `json:"chain"`
-	// DTO.RED_PACKET.CREATOR
+	// Creator wallet address of the red packet
 	Creator string `json:"creator"`
-	// DTO.RED_PACKET.MINT
+	// Token mint address for the red packet
 	Mint string `json:"mint"`
-	// DTO.RED_PACKET.MAX_CLAIMS
+	// Maximum number of recipients
 	MaxClaims int64 `json:"maxClaims"`
-	// DTO.RED_PACKET.TOTAL_AMOUNT
+	// Total amount of tokens to be distributed
 	TotalAmount *string `json:"totalAmount,omitempty"`
-	// DTO.RED_PACKET.FIXED_AMOUNT
+	// Fixed amount per claim (for equal distribution)
 	FixedAmount *string `json:"fixedAmount,omitempty"`
-	// DTO.RED_PACKET.MEMO
+	// Optional memo message for the red packet
 	Memo *string `json:"memo,omitempty"`
-	// DTO.RED_PACKET.PASSWORD
+	// Optional password to claim the red packet
 	Password *string `json:"password,omitempty"`
-	// DTO.RED_PACKET.CLAIM_AUTHORITY
+	// Optional authority address that can claim the red packet
 	ClaimAuthority *string `json:"claimAuthority,omitempty"`
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | Pointer to **bool** | DTO.ENDPOINT.SUCCESS | [optional] 
+**Success** | Pointer to **bool** | Success status | [optional] 
 
 ## Methods
 

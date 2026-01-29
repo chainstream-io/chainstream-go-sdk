@@ -1,10 +1,10 @@
 # \DefiSolanaPumpfunAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PumpfunCreateToken**](DefiSolanaPumpfunAPI.md#PumpfunCreateToken) | **Post** /v1/solana/pumpfun/create | CONTROLLER.PUMPFUN.CREATE_TOKEN.SUMMARY
+[**PumpfunCreateToken**](DefiSolanaPumpfunAPI.md#PumpfunCreateToken) | **Post** /v1/solana/pumpfun/create | PumpFun - Create Token
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > PumpCreateTokenReply PumpfunCreateToken(ctx).PumpCreateTokenInput(pumpCreateTokenInput).Execute()
 
-CONTROLLER.PUMPFUN.CREATE_TOKEN.SUMMARY
+PumpFun - Create Token
 
 
 

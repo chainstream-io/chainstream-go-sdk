@@ -36,13 +36,13 @@ func (r WatchlistAPIWatchlistAddRequest) Execute() (*BooleanResultDTO, *http.Res
 }
 
 /*
-WatchlistAdd CONTROLLER.WATCHLIST.ADD.SUMMARY
+WatchlistAdd Watchlist - Add
 
-CONTROLLER.WATCHLIST.ADD.DESCRIPTION
+Add the wallet address to the watchlist. Only the addresses in the watchlist have PNL data
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param chain GLOBAL.CHAIN.DESCRIPTION
- @param walletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
+ @param chain A chain name listed in supported networks
+ @param walletAddress An address of a wallet
  @return WatchlistAPIWatchlistAddRequest
 */
 func (a *WatchlistAPIService) WatchlistAdd(ctx context.Context, chain ChainSymbol, walletAddress string) WatchlistAPIWatchlistAddRequest {

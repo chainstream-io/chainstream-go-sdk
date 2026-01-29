@@ -22,19 +22,19 @@ var _ MappedNullable = &Candle{}
 
 // Candle struct for Candle
 type Candle struct {
-	// DTO.CANDLE.OPEN
+	// Opening price
 	Open string `json:"open"`
-	// DTO.CANDLE.CLOSE
+	// Closing price
 	Close string `json:"close"`
-	// DTO.CANDLE.HIGH
+	// Highest price
 	High string `json:"high"`
-	// DTO.CANDLE.LOW
+	// Lowest price
 	Low string `json:"low"`
-	// DTO.CANDLE.VOLUME
+	// Trading volume
 	Volume string `json:"volume"`
-	// DTO.CANDLE.RESOLUTION
+	// Time resolution for candle data. Note: 1s resolution data is only kept for the last 1 hour; 15s and 30s resolution data is kept for the last 6 hours; 1m resolution data is kept for the last 12 hours; data for other resolutions is stored permanently
 	Resolution Resolution `json:"resolution"`
-	// DTO.CANDLE.TIME
+	// Candle timestamp (Unix epoch in milliseconds)
 	Time int64 `json:"time"`
 }
 

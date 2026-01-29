@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | **string** | DTO.KYT.REGISTER_ADDRESS_RESPONSE.ADDRESS | 
+**Address** | **string** | Address | 
 
 ## Methods
 

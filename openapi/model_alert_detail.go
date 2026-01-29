@@ -22,19 +22,19 @@ var _ MappedNullable = &AlertDetail{}
 
 // AlertDetail struct for AlertDetail
 type AlertDetail struct {
-	// DTO.KYT.ALERT_DETAIL.ALERT_LEVEL
+	// Alert level
 	AlertLevel string `json:"alertLevel"`
-	// DTO.KYT.ALERT_DETAIL.SERVICE
+	// Service name
 	Service string `json:"service"`
-	// DTO.KYT.ALERT_DETAIL.EXTERNAL_ID
+	// External ID
 	ExternalId string `json:"externalId"`
-	// DTO.KYT.ALERT_DETAIL.ALERT_AMOUNT
+	// Alert amount
 	AlertAmount string `json:"alertAmount"`
-	// DTO.KYT.ALERT_DETAIL.EXPOSURE_TYPE
+	// Exposure type
 	ExposureType string `json:"exposureType"`
-	// DTO.KYT.ALERT_DETAIL.CATEGORY_ID
+	// Category ID
 	CategoryId int64 `json:"categoryId"`
-	// DTO.KYT.ALERT_DETAIL.MEMO
+	// Memo
 	Memo string `json:"memo"`
 }
 

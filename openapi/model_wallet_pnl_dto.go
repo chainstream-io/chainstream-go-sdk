@@ -22,51 +22,51 @@ var _ MappedNullable = &WalletPnlDTO{}
 
 // WalletPnlDTO struct for WalletPnlDTO
 type WalletPnlDTO struct {
-	// DTO.WALLET.PNL.ID
+	// Record identifier
 	Id int64 `json:"id"`
-	// DTO.WALLET.PNL.CHAIN
+	// Blockchain network
 	Chain string `json:"chain"`
-	// DTO.WALLET.PNL.WALLET_ADDRESS
+	// Wallet address
 	WalletAddress string `json:"walletAddress"`
-	// DTO.WALLET.PNL.TOKEN_ADDRESS
+	// Token contract address
 	TokenAddress string `json:"tokenAddress"`
-	// DTO.WALLET.PNL.TOKEN_PRICE
+	// Current token price in USD
 	TokenPriceInUsd string `json:"tokenPriceInUsd"`
-	// DTO.WALLET.PNL.OPEN_TIME
+	// Position opening time
 	OpenTime int64 `json:"openTime"`
-	// DTO.WALLET.PNL.CLOSE_TIME
+	// Position closing time
 	CloseTime int64 `json:"closeTime"`
-	// DTO.WALLET.PNL.LAST_TIME
+	// Last update time
 	LastTime int64 `json:"lastTime"`
-	// DTO.WALLET.PNL.BALANCE
+	// Current token balance
 	Balance string `json:"balance"`
-	// DTO.WALLET.PNL.BUY_AMOUNT
+	// Total amount of tokens bought
 	BuyAmount string `json:"buyAmount"`
-	// DTO.WALLET.PNL.BUY_AMOUNT_USD
+	// Total value of tokens bought in USD
 	BuyAmountInUsd string `json:"buyAmountInUsd"`
-	// DTO.WALLET.PNL.BUYS
+	// Number of buy transactions
 	Buys string `json:"buys"`
-	// DTO.WALLET.PNL.SELL_AMOUNT
+	// Total amount of tokens sold
 	SellAmount string `json:"sellAmount"`
-	// DTO.WALLET.PNL.SELL_AMOUNT_USD
+	// Total value of tokens sold in USD
 	SellAmountInUsd string `json:"sellAmountInUsd"`
-	// DTO.WALLET.PNL.SELLS
+	// Number of sell transactions
 	Sells string `json:"sells"`
-	// DTO.WALLET.PNL.AVERAGE_BUY_PRICE
+	// Average buying price
 	AverageBuyPriceInUsd string `json:"averageBuyPriceInUsd"`
-	// DTO.WALLET.PNL.AVERAGE_SELL_PRICE
+	// Average selling price
 	AverageSellPriceInUsd string `json:"averageSellPriceInUsd"`
-	// DTO.WALLET.PNL.UNREALIZED_PROFIT
+	// Unrealized profit in USD
 	UnrealizedProfitInUsd string `json:"unrealizedProfitInUsd"`
-	// DTO.WALLET.PNL.UNREALIZED_PROFIT_RATIO
+	// Unrealized profit ratio
 	UnrealizedProfitRatio string `json:"unrealizedProfitRatio"`
-	// DTO.WALLET.PNL.REALIZED_PROFIT
+	// Realized profit in USD
 	RealizedProfitInUsd string `json:"realizedProfitInUsd"`
-	// DTO.WALLET.PNL.REALIZED_PROFIT_RATIO
+	// Realized profit ratio
 	RealizedProfitRatio string `json:"realizedProfitRatio"`
-	// DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT
+	// Total realized profit in USD
 	TotalRealizedProfitInUsd string `json:"totalRealizedProfitInUsd"`
-	// DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT_RATIO
+	// Total realized profit ratio
 	TotalRealizedProfitRatio string `json:"totalRealizedProfitRatio"`
 }
 

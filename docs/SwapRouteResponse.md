@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Args** | [**SwapRouteInput**](SwapRouteInput.md) | DTO.DEX.SWAP.ARGS | 
-**SerializedTx** | **string** | DTO.DEX.SWAP.SERIALIZED_TX | 
-**RouteInfo** | **map[string]interface{}** | DTO.DEX.SWAP.ROUTE_INFO | 
-**ElapsedTime** | **int64** | DTO.DEX.SWAP.ELAPSED_TIME | 
+**Args** | [**SwapRouteInput**](SwapRouteInput.md) | Original swap request parameters | 
+**SerializedTx** | **string** | Base64 encoded transaction | 
+**RouteInfo** | **map[string]interface{}** | Detailed routing information | 
+**ElapsedTime** | **int64** | Time taken to process the request in milliseconds | 
 
 ## Methods
 

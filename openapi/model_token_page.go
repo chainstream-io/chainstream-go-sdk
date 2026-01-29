@@ -22,19 +22,19 @@ var _ MappedNullable = &TokenPage{}
 
 // TokenPage struct for TokenPage
 type TokenPage struct {
-	// DTO.PAGE.HAS_NEXT
+	// Indicates if there are more results
 	HasNext *bool `json:"hasNext,omitempty"`
-	// DTO.PAGE.HAS_PREV
+	// Indicates if there are previous results
 	HasPrev *bool `json:"hasPrev,omitempty"`
-	// DTO.PAGE.START_CURSOR
+	// Cursor for first item in current page
 	StartCursor *string `json:"startCursor,omitempty"`
-	// DTO.PAGE.END_CURSOR
+	// Cursor for last item in current page
 	EndCursor *string `json:"endCursor,omitempty"`
-	// DTO.PAGE.TOTAL
+	// Total number of items
 	Total *float32 `json:"total,omitempty"`
-	// DTO.TOKEN.PAGE.COUNTS_BY_PROTOCOLS
+	// Token count by protocol
 	CountsByProtocols map[string]interface{} `json:"countsByProtocols,omitempty"`
-	// DTO.TOKEN.PAGE.DATA
+	// Array of token data
 	Data []Token `json:"data"`
 }
 

@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Dex** | **string** | DTO.DEX.IDENTIFIER | 
-**UserAddress** | **string** | DTO.DEX.WALLET | 
-**PriorityFee** | Pointer to **string** | DTO.DEX.BASE.PRIORITY_FEE | [optional] 
-**Name** | **string** | DTO.DEX.MOONSHOT.MINT.NAME | 
-**Symbol** | **string** | DTO.DEX.MOONSHOT.MINT.SYMBOL | 
-**MigrationDex** | **string** | DTO.DEX.MOONSHOT.MINT.MIGRATION_DEX | 
-**Icon** | **string** | DTO.DEX.MOONSHOT.MINT.ICON | 
-**Description** | **string** | DTO.DEX.MOONSHOT.MINT.DESCRIPTION | 
-**Links** | [**[]Link**](Link.md) | DTO.DEX.MOONSHOT.MINT.LINKS | 
-**Banner** | Pointer to **string** | DTO.DEX.MOONSHOT.MINT.BANNER | [optional] 
-**TokenAmount** | **string** | DTO.DEX.MOONSHOT.MINT.TOKEN_AMOUNT | 
+**Dex** | **string** | DEX identifier for the trade | 
+**UserAddress** | **string** | Public key of the wallet initiating the transaction | 
+**PriorityFee** | Pointer to **string** | Priority fee in SOL to increase transaction processing speed | [optional] 
+**Name** | **string** | Name of the token | 
+**Symbol** | **string** | Token symbol/ticker | 
+**MigrationDex** | **string** | Target DEX for token migration | 
+**Icon** | **string** | Token icon URL (Base64 or HTTPS) | 
+**Description** | **string** | Token description | 
+**Links** | [**[]Link**](Link.md) | Social and website links | 
+**Banner** | Pointer to **string** | Banner image URL (defaults to icon if not provided) | [optional] 
+**TokenAmount** | **string** | Total token supply amount (in base units) | 
 
 ## Methods
 

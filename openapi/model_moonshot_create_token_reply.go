@@ -22,9 +22,9 @@ var _ MappedNullable = &MoonshotCreateTokenReply{}
 
 // MoonshotCreateTokenReply struct for MoonshotCreateTokenReply
 type MoonshotCreateTokenReply struct {
-	// DTO.DEX.MOONSHOT.CREATE_TOKEN.SERIALIZED_TX
+	// Base64 encoded transaction for Moonshot token creation
 	SerializedTx string `json:"serializedTx"`
-	// DTO.DEX.MOONSHOT.CREATE_TOKEN.EXTRA
+	// Additional metadata about the created Moonshot token
 	Extra map[string]interface{} `json:"extra"`
 }
 

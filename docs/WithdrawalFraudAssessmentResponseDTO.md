@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AlteryaIdentifications** | [**[]AlteryaIdentification**](AlteryaIdentification.md) | DTO.KYT.WITHDRAWAL_FRAUD_ASSESSMENT_RESPONSE.ALTERYA_IDENTIFICATIONS | 
+**AlteryaIdentifications** | [**[]AlteryaIdentification**](AlteryaIdentification.md) | Alterya identification list | 
 
 ## Methods
 

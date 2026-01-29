@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UpdatedAt** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.UPDATED_AT | 
-**Asset** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.ASSET | 
-**AssetId** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.ASSET_ID | 
-**Network** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.NETWORK | 
-**TransferReference** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.TRANSFER_REFERENCE | 
-**Memo** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.MEMO | 
-**Tx** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.TX | 
-**Idx** | **int64** | DTO.KYT.TRANSFER_BASE_RESPONSE.IDX | 
-**UsdAmount** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.USD_AMOUNT | 
-**AssetAmount** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.ASSET_AMOUNT | 
-**Timestamp** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.TIMESTAMP | 
-**OutputAddress** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.OUTPUT_ADDRESS | 
-**ExternalId** | **string** | DTO.KYT.TRANSFER_BASE_RESPONSE.EXTERNAL_ID | 
+**UpdatedAt** | **string** | Updated timestamp | 
+**Asset** | **string** | Asset type | 
+**AssetId** | **string** | Asset ID | 
+**Network** | **string** | Blockchain network | 
+**TransferReference** | **string** | Transfer reference (transaction hash and address) | 
+**Memo** | **string** | Memo information | 
+**Tx** | **string** | Transaction hash | 
+**Idx** | **int64** | Index | 
+**UsdAmount** | **string** | USD amount | 
+**AssetAmount** | **string** | Asset amount | 
+**Timestamp** | **string** | Timestamp | 
+**OutputAddress** | **string** | Output address | 
+**ExternalId** | **string** | External ID (UUID) | 
 
 ## Methods
 

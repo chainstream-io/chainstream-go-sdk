@@ -1,11 +1,11 @@
 # \JobsAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](JobsAPI.md#Get) | **Get** /jobs/{id} | CONTROLLER.JOB.GET.SUMMARY
-[**Streaming**](JobsAPI.md#Streaming) | **Get** /jobs/{id}/streaming | CONTROLLER.JOB.STREAMING.SUMMARY
+[**Get**](JobsAPI.md#Get) | **Get** /jobs/{id} | Job - Get
+[**Streaming**](JobsAPI.md#Streaming) | **Get** /jobs/{id}/streaming | Job - Streaming
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > JobDTO Get(ctx, id).Execute()
 
-CONTROLLER.JOB.GET.SUMMARY
+Job - Get
 
 
 
@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	id := "12345" // string | CONTROLLER.JOB.GET.ID
+	id := "12345" // string | Job identifier
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -50,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | CONTROLLER.JOB.GET.ID | 
+**id** | **string** | Job identifier | 
 
 ### Other Parameters
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 > JobStreamingDTO Streaming(ctx, id).Execute()
 
-CONTROLLER.JOB.STREAMING.SUMMARY
+Job - Streaming
 
 
 
@@ -100,7 +100,7 @@ import (
 )
 
 func main() {
-	id := "12345" // string | CONTROLLER.JOB.GET.ID
+	id := "12345" // string | Job identifier
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -120,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | CONTROLLER.JOB.GET.ID | 
+**id** | **string** | Job identifier | 
 
 ### Other Parameters
 

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | **string** | DTO.DEV_TOKEN.ADDRESS | 
-**Metadata** | [**TokenMetadata**](TokenMetadata.md) | DTO.DEV_TOKEN.METADATA | 
-**MarketData** | [**TokenMarketData**](TokenMarketData.md) | DTO.DEV_TOKEN.MARKET_DATA | 
-**Stats** | [**TokenStat**](TokenStat.md) | DTO.DEV_TOKEN.STATS | 
+**Address** | **string** | Token address | 
+**Metadata** | [**TokenMetadata**](TokenMetadata.md) | Token metadata | 
+**MarketData** | [**TokenMarketData**](TokenMarketData.md) | Token market data | 
+**Stats** | [**TokenStat**](TokenStat.md) | Token stats | 
 
 ## Methods
 

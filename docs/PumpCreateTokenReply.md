@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SerializedTx** | **string** | DTO.DEX.PUMPFUN.MINT.SERIALIZED_TX | 
-**Extra** | Pointer to **map[string]interface{}** | DTO.DEX.PUMPFUN.MINT.EXTRA | [optional] 
+**SerializedTx** | **string** | Base64 encoded transaction | 
+**Extra** | Pointer to **map[string]interface{}** | Additional metadata about the created token | [optional] 
 
 ## Methods
 

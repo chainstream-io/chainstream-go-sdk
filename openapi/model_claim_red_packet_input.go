@@ -22,15 +22,15 @@ var _ MappedNullable = &ClaimRedPacketInput{}
 
 // ClaimRedPacketInput struct for ClaimRedPacketInput
 type ClaimRedPacketInput struct {
-	// DTO.RED_PACKET.CHAIN
+	// Blockchain network
 	Chain string `json:"chain"`
-	// DTO.RED_PACKET.PACKET_ID
+	// Unique identifier of the red packet
 	PacketId *string `json:"packetId,omitempty"`
-	// DTO.RED_PACKET.SHARE_ID
+	// redpacket share id
 	ShareId *string `json:"shareId,omitempty"`
-	// DTO.RED_PACKET.PASSWORD
+	// Optional password to claim the red packet
 	Password *string `json:"password,omitempty"`
-	// DTO.RED_PACKET.CLAIMER
+	// Wallet address of the claimer
 	Claimer string `json:"claimer"`
 }
 

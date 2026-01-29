@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | **int64** | DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.COUNT | 
-**NetworkIdentificationOrgs** | [**[]NetworkIdentificationOrg**](NetworkIdentificationOrg.md) | DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.NETWORK_IDENTIFICATION_ORGS | 
+**Count** | **int64** | Identification count | 
+**NetworkIdentificationOrgs** | [**[]NetworkIdentificationOrg**](NetworkIdentificationOrg.md) | Network identification organization list | 
 
 ## Methods
 

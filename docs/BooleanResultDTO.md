@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | **bool** | DTO.BOOLEAN_RESULT.SUCCESS | 
+**Success** | **bool** | Success status | 
 
 ## Methods
 

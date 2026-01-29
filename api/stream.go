@@ -707,6 +707,52 @@ func (s *StreamApi) SubscribeTokenLiquidity(chain, tokenAddress string, callback
 	}, filter, "subscribeTokenLiquidity")
 }
 
+// SubscribeTokenMaxLiquidity subscribes to token max liquidity data
+// Pushes the max liquidity info of a token in a single pool
+// Channel: dex-token-liquidity:{chain}_{token_address}
+func (s *StreamApi) SubscribeTokenMaxLiquidity(chain, tokenAddress string, callback StreamCallback[TokenMaxLiquidity], filter string) Unsubscribe {
+	channel := fmt.Sprintf("dex-token-liquidity:%s_%s", chain, tokenAddress)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataMap, ok := data.(map[string]interface{})
+		if !ok {
+			return
+		}
+
+		liquidity := TokenMaxLiquidity{
+			TokenAddress:      dataMap["a"].(string),
+			PoolAddress:       dataMap["p"].(string),
+			LiquidityInUsd:    s.formatScientificNotation(dataMap["liu"]),
+			LiquidityInNative: s.formatScientificNotation(dataMap["lin"]),
+			Timestamp:         int64(dataMap["ts"].(float64)),
+		}
+
+		callback(liquidity)
+	}, filter, "subscribeTokenMaxLiquidity")
+}
+
+// SubscribeTokenTotalLiquidity subscribes to token total liquidity data
+// Pushes the total liquidity info of a token across all pools
+// Channel: dex-token-total-liquidity:{chain}_{token_address}
+func (s *StreamApi) SubscribeTokenTotalLiquidity(chain, tokenAddress string, callback StreamCallback[TokenTotalLiquidity], filter string) Unsubscribe {
+	channel := fmt.Sprintf("dex-token-total-liquidity:%s_%s", chain, tokenAddress)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataMap, ok := data.(map[string]interface{})
+		if !ok {
+			return
+		}
+
+		liquidity := TokenTotalLiquidity{
+			TokenAddress:      dataMap["a"].(string),
+			LiquidityInUsd:    s.formatScientificNotation(dataMap["liu"]),
+			LiquidityInNative: s.formatScientificNotation(dataMap["lin"]),
+			PoolCount:         int(dataMap["pc"].(float64)),
+			Timestamp:         int64(dataMap["ts"].(float64)),
+		}
+
+		callback(liquidity)
+	}, filter, "subscribeTokenTotalLiquidity")
+}
+
 // SubscribeRankingTokensLiquidity subscribes to ranking tokens liquidity data
 func (s *StreamApi) SubscribeRankingTokensLiquidity(chain string, channelType ChannelType, callback StreamCallback[[]TokenLiquidity]) Unsubscribe {
 	channel := fmt.Sprintf("dex-ranking-token-general_stat_num-list:%s_%s", chain, channelType)

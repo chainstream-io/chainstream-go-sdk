@@ -22,7 +22,7 @@ var _ MappedNullable = &RedPacketSendTxInput{}
 
 // RedPacketSendTxInput struct for RedPacketSendTxInput
 type RedPacketSendTxInput struct {
-	// DTO.RED_PACKET.SIGNED_TX
+	// signed txhash
 	SignedTx string `json:"signedTx"`
 }
 

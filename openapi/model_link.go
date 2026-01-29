@@ -22,9 +22,9 @@ var _ MappedNullable = &Link{}
 
 // Link struct for Link
 type Link struct {
-	// DTO.DEX.MOONSHOT.LINK.URL
+	// URL of the resource
 	Url string `json:"url"`
-	// DTO.DEX.MOONSHOT.LINK.LABEL
+	// Label for the link
 	Label string `json:"label"`
 }
 

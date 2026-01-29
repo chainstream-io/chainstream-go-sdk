@@ -1,31 +1,32 @@
 # \TokenAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api-dex.chainstream.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetCandles**](TokenAPI.md#GetCandles) | **Get** /v1/token/{chain}/{tokenAddress}/candles | CONTROLLER.TOKEN.GET_CANDLES.SUMMARY
-[**GetCreation**](TokenAPI.md#GetCreation) | **Get** /v1/token/{chain}/{tokenAddress}/creation | CONTROLLER.TOKEN.GET_CREATION.SUMMARY
-[**GetDevTokens**](TokenAPI.md#GetDevTokens) | **Get** /v1/token/{chain}/dev/{devAddress}/tokens | CONTROLLER.TOKEN.GET_DEV_TOKENS.SUMMARY
-[**GetHolders**](TokenAPI.md#GetHolders) | **Get** /v1/token/{chain}/{tokenAddress}/holders | CONTROLLER.TOKEN.GET_HOLDERS.SUMMARY
-[**GetHoldersMulti**](TokenAPI.md#GetHoldersMulti) | **Get** /v1/token/{chain}/{tokenAddress}/holders/multi | CONTROLLER.TOKEN.GET_HOLDERS_MULTI.SUMMARY
-[**GetMarketData**](TokenAPI.md#GetMarketData) | **Get** /v1/token/{chain}/{tokenAddress}/marketData | CONTROLLER.TOKEN.GET_MARKET_CAP.SUMMARY
-[**GetMarketDataMulti**](TokenAPI.md#GetMarketDataMulti) | **Get** /v1/token/{chain}/marketData/multi | CONTROLLER.TOKEN.GET_MARKET_DATA_MULTI.SUMMARY
-[**GetMetadata**](TokenAPI.md#GetMetadata) | **Get** /v1/token/{chain}/{tokenAddress}/metadata | CONTROLLER.TOKEN.GET_METADATA.SUMMARY
-[**GetMetadataMulti**](TokenAPI.md#GetMetadataMulti) | **Get** /v1/token/{chain}/metadata/multi | CONTROLLER.TOKEN.GET_METADATA_MULTI.SUMMARY
-[**GetMintAndBurn**](TokenAPI.md#GetMintAndBurn) | **Get** /v1/token/{chain}/{tokenAddress}/mintAndBurn | CONTROLLER.TOKEN.GET_MINT_AND_BURN.SUMMARY
-[**GetPools**](TokenAPI.md#GetPools) | **Get** /v1/token/{chain}/{tokenAddress}/pools | CONTROLLER.TOKEN.GET_POOLS.SUMMARY
-[**GetPriceByTime**](TokenAPI.md#GetPriceByTime) | **Get** /v1/token/{chain}/{tokenAddress}/price | CONTROLLER.TOKEN.GET_PRICE_BY_TIME.SUMMARY
-[**GetPrices**](TokenAPI.md#GetPrices) | **Get** /v1/token/{chain}/{tokenAddress}/prices | CONTROLLER.TOKEN.GET_PRICES.SUMMARY
-[**GetSecurity**](TokenAPI.md#GetSecurity) | **Get** /v1/token/{chain}/{tokenAddress}/security | CONTROLLER.TOKEN.GET_SECURITY.SUMMARY
-[**GetStats**](TokenAPI.md#GetStats) | **Get** /v1/token/{chain}/{tokenAddress}/stats | CONTROLLER.TOKEN.GET_STATS.SUMMARY
-[**GetStatsMulti**](TokenAPI.md#GetStatsMulti) | **Get** /v1/token/{chain}/stats/multi | CONTROLLER.TOKEN.GET_STATS_MULTI.SUMMARY
-[**GetToken**](TokenAPI.md#GetToken) | **Get** /v1/token/{chain}/{tokenAddress} | CONTROLLER.TOKEN.GET.SUMMARY
-[**GetTokenTraders**](TokenAPI.md#GetTokenTraders) | **Get** /v1/token/{chain}/{tokenAddress}/traders/{tag} | CONTROLLER.TOKEN.GET_TOKEN_TRADERS.SUMMARY
-[**GetTokens**](TokenAPI.md#GetTokens) | **Get** /v1/token/{chain}/multi | CONTROLLER.TOKEN.GET_TOKENS.SUMMARY
-[**GetTopHolders**](TokenAPI.md#GetTopHolders) | **Get** /v1/token/{chain}/{tokenAddress}/topHolders | CONTROLLER.TOKEN.GET_TOP_HOLDERS.SUMMARY
-[**ListToken**](TokenAPI.md#ListToken) | **Get** /v1/token/{chain}/list | CONTROLLER.TOKEN.GET_TOKEN_LIST.SUMMARY
-[**Search**](TokenAPI.md#Search) | **Get** /v1/token/search | CONTROLLER.TOKEN.SEARCH.SUMMARY
+[**GetCandles**](TokenAPI.md#GetCandles) | **Get** /v1/token/{chain}/{tokenAddress}/candles | Token - Candles
+[**GetCreation**](TokenAPI.md#GetCreation) | **Get** /v1/token/{chain}/{tokenAddress}/creation | Token - Creation
+[**GetDevTokens**](TokenAPI.md#GetDevTokens) | **Get** /v1/token/{chain}/dev/{devAddress}/tokens | Token - Get Dev Tokens
+[**GetHolders**](TokenAPI.md#GetHolders) | **Get** /v1/token/{chain}/{tokenAddress}/holders | Token - Holders
+[**GetHoldersMulti**](TokenAPI.md#GetHoldersMulti) | **Get** /v1/token/{chain}/{tokenAddress}/holders/multi | Token - Holders (Multi)
+[**GetMarketData**](TokenAPI.md#GetMarketData) | **Get** /v1/token/{chain}/{tokenAddress}/marketData | Token - Market Data
+[**GetMarketDataMulti**](TokenAPI.md#GetMarketDataMulti) | **Get** /v1/token/{chain}/marketData/multi | Token - Market Data (Multi)
+[**GetMetadata**](TokenAPI.md#GetMetadata) | **Get** /v1/token/{chain}/{tokenAddress}/metadata | Token - Metadata
+[**GetMetadataMulti**](TokenAPI.md#GetMetadataMulti) | **Get** /v1/token/{chain}/metadata/multi | Token - Metadata (Multi)
+[**GetMintAndBurn**](TokenAPI.md#GetMintAndBurn) | **Get** /v1/token/{chain}/{tokenAddress}/mintAndBurn | Token - Mint and Burn
+[**GetPools**](TokenAPI.md#GetPools) | **Get** /v1/token/{chain}/{tokenAddress}/pools | Token - Liquidity
+[**GetPriceByTime**](TokenAPI.md#GetPriceByTime) | **Get** /v1/token/{chain}/{tokenAddress}/price | Token - Price by Time
+[**GetPrices**](TokenAPI.md#GetPrices) | **Get** /v1/token/{chain}/{tokenAddress}/prices | Token - Prices
+[**GetSecurity**](TokenAPI.md#GetSecurity) | **Get** /v1/token/{chain}/{tokenAddress}/security | Token - Security
+[**GetStats**](TokenAPI.md#GetStats) | **Get** /v1/token/{chain}/{tokenAddress}/stats | Token - Stats
+[**GetStatsMulti**](TokenAPI.md#GetStatsMulti) | **Get** /v1/token/{chain}/stats/multi | Token - Stats (Multi)
+[**GetToken**](TokenAPI.md#GetToken) | **Get** /v1/token/{chain}/{tokenAddress} | Token - Detail
+[**GetTokenLiquiditySnapshots**](TokenAPI.md#GetTokenLiquiditySnapshots) | **Get** /v1/token/{chain}/{tokenAddress}/liquiditySnapshots | Token - Liquidity Snapshots
+[**GetTokenTraders**](TokenAPI.md#GetTokenTraders) | **Get** /v1/token/{chain}/{tokenAddress}/traders/{tag} | Token - Get Token Traders
+[**GetTokens**](TokenAPI.md#GetTokens) | **Get** /v1/token/{chain}/multi | Token - Detail (Multi)
+[**GetTopHolders**](TokenAPI.md#GetTopHolders) | **Get** /v1/token/{chain}/{tokenAddress}/topHolders | Token - Top Holders
+[**ListToken**](TokenAPI.md#ListToken) | **Get** /v1/token/{chain}/list | Token - List (Filtered)
+[**Search**](TokenAPI.md#Search) | **Get** /v1/token/search | Token - Search
 
 
 
@@ -33,7 +34,7 @@ Method | HTTP request | Description
 
 > []Candle GetCandles(ctx, chain, tokenAddress).Resolution(resolution).From(from).To(to).Limit(limit).Execute()
 
-CONTROLLER.TOKEN.GET_CANDLES.SUMMARY
+Token - Candles
 
 
 
@@ -50,12 +51,12 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
-	resolution := openapiclient.Resolution("1s") // Resolution | DTO.CANDLE.RESOLUTION
-	from := int64(1741647950000) // int64 | DTO.CANDLE.FROM (optional)
-	to := int64(1741700970000) // int64 | DTO.CANDLE.TO (optional)
-	limit := int64(100) // int64 | DTO.CANDLE.LIMIT (optional)
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
+	resolution := openapiclient.Resolution("1s") // Resolution | Time resolution for candle data. Note: 1s resolution data is only kept for the last 1 hour; 15s and 30s resolution data is kept for the last 6 hours; 1m resolution data is kept for the last 12 hours; data for other resolutions is stored permanently
+	from := int64(1741647950000) // int64 | Start timestamp (Unix epoch in milliseconds) (optional)
+	to := int64(1741700970000) // int64 | End timestamp (Unix epoch in milliseconds) (optional)
+	limit := int64(100) // int64 | Number of results per page (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -75,8 +76,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -87,10 +88,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **resolution** | [**Resolution**](Resolution.md) | DTO.CANDLE.RESOLUTION | 
- **from** | **int64** | DTO.CANDLE.FROM | 
- **to** | **int64** | DTO.CANDLE.TO | 
- **limit** | **int64** | DTO.CANDLE.LIMIT | 
+ **resolution** | [**Resolution**](Resolution.md) | Time resolution for candle data. Note: 1s resolution data is only kept for the last 1 hour; 15s and 30s resolution data is kept for the last 6 hours; 1m resolution data is kept for the last 12 hours; data for other resolutions is stored permanently | 
+ **from** | **int64** | Start timestamp (Unix epoch in milliseconds) | 
+ **to** | **int64** | End timestamp (Unix epoch in milliseconds) | 
+ **limit** | **int64** | Number of results per page | 
 
 ### Return type
 
@@ -114,7 +115,7 @@ Name | Type | Description  | Notes
 
 > TokenCreationDTO GetCreation(ctx, chain, tokenAddress).Execute()
 
-CONTROLLER.TOKEN.GET_CREATION.SUMMARY
+Token - Creation
 
 
 
@@ -131,8 +132,8 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -152,8 +153,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -187,7 +188,7 @@ Name | Type | Description  | Notes
 
 > []DevTokenDTO GetDevTokens(ctx, chain, devAddress).Execute()
 
-CONTROLLER.TOKEN.GET_DEV_TOKENS.SUMMARY
+Token - Get Dev Tokens
 
 
 
@@ -204,7 +205,7 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
 	devAddress := "3NUHqNG2Big2WxbYnaBzSNmxwE4NrxgckJuoiyGxu3Am" // string | Developer address
 
 	configuration := openapiclient.NewConfiguration()
@@ -225,7 +226,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 **devAddress** | **string** | Developer address | 
 
 ### Other Parameters
@@ -260,7 +261,7 @@ Name | Type | Description  | Notes
 
 > TokenHolderPage GetHolders(ctx, chain, tokenAddress).Cursor(cursor).Limit(limit).Direction(direction).Execute()
 
-CONTROLLER.TOKEN.GET_HOLDERS.SUMMARY
+Token - Holders
 
 
 
@@ -277,11 +278,11 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
-	cursor := "cursor_example" // string | DTO.PAGE.CURSOR.DESCRIPTION (optional)
-	limit := float32(8.14) // float32 | DTO.PAGE.LIMIT (optional) (default to 20)
-	direction := "direction_example" // string | DTO.PAGE.DIRECTION (optional) (default to "next")
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
+	cursor := "cursor_example" // string | Pagination cursor (optional)
+	limit := float32(8.14) // float32 | Number of results per page (optional) (default to 20)
+	direction := "direction_example" // string | Pagination direction (next or prev) (optional) (default to "next")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -301,8 +302,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -313,9 +314,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **cursor** | **string** | DTO.PAGE.CURSOR.DESCRIPTION | 
- **limit** | **float32** | DTO.PAGE.LIMIT | [default to 20]
- **direction** | **string** | DTO.PAGE.DIRECTION | [default to &quot;next&quot;]
+ **cursor** | **string** | Pagination cursor | 
+ **limit** | **float32** | Number of results per page | [default to 20]
+ **direction** | **string** | Pagination direction (next or prev) | [default to &quot;next&quot;]
 
 ### Return type
 
@@ -339,7 +340,7 @@ Name | Type | Description  | Notes
 
 > []TokenHolder GetHoldersMulti(ctx, chain, tokenAddress).WalletAddresses(walletAddresses).Execute()
 
-CONTROLLER.TOKEN.GET_HOLDERS_MULTI.SUMMARY
+Token - Holders (Multi)
 
 
 
@@ -356,9 +357,9 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
-	walletAddresses := "MJKqp326RZCHnAAbew9MDdui3iCKWco7fsK9sVuZTX2,2RH6rUTPBJ9rUDPpuV9b8z1YL56k1tYU6Uk5ZoaEFFSK" // string | GLOBAL.WALLETADDRESSES.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
+	walletAddresses := "MJKqp326RZCHnAAbew9MDdui3iCKWco7fsK9sVuZTX2,2RH6rUTPBJ9rUDPpuV9b8z1YL56k1tYU6Uk5ZoaEFFSK" // string | A list of wallet addresses in string separated by commas (,)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -378,8 +379,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -390,7 +391,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **walletAddresses** | **string** | GLOBAL.WALLETADDRESSES.DESCRIPTION | 
+ **walletAddresses** | **string** | A list of wallet addresses in string separated by commas (,) | 
 
 ### Return type
 
@@ -414,7 +415,7 @@ Name | Type | Description  | Notes
 
 > TokenMarketData GetMarketData(ctx, chain, tokenAddress).Execute()
 
-CONTROLLER.TOKEN.GET_MARKET_CAP.SUMMARY
+Token - Market Data
 
 
 
@@ -431,8 +432,8 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -452,8 +453,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -487,7 +488,7 @@ Name | Type | Description  | Notes
 
 > map[string]TokenMarketData GetMarketDataMulti(ctx, chain).TokenAddresses(tokenAddresses).Execute()
 
-CONTROLLER.TOKEN.GET_MARKET_DATA_MULTI.SUMMARY
+Token - Market Data (Multi)
 
 
 
@@ -504,8 +505,8 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddresses := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN,EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // string | GLOBAL.TOKENADDRESSES.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddresses := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN,EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // string | A list of token addresses in string separated by commas (,)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -525,7 +526,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -535,7 +536,7 @@ Other parameters are passed through a pointer to a apiGetMarketDataMultiRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **tokenAddresses** | **string** | GLOBAL.TOKENADDRESSES.DESCRIPTION | 
+ **tokenAddresses** | **string** | A list of token addresses in string separated by commas (,) | 
 
 ### Return type
 
@@ -559,7 +560,7 @@ Name | Type | Description  | Notes
 
 > TokenMetadata GetMetadata(ctx, chain, tokenAddress).Execute()
 
-CONTROLLER.TOKEN.GET_METADATA.SUMMARY
+Token - Metadata
 
 
 
@@ -576,8 +577,8 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -597,8 +598,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -632,7 +633,7 @@ Name | Type | Description  | Notes
 
 > map[string]TokenMetadata GetMetadataMulti(ctx, chain).TokenAddresses(tokenAddresses).Execute()
 
-CONTROLLER.TOKEN.GET_METADATA_MULTI.SUMMARY
+Token - Metadata (Multi)
 
 
 
@@ -649,8 +650,8 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddresses := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN,EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // string | GLOBAL.TOKENADDRESSES.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddresses := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN,EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // string | A list of token addresses in string separated by commas (,)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -670,7 +671,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -680,7 +681,7 @@ Other parameters are passed through a pointer to a apiGetMetadataMultiRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **tokenAddresses** | **string** | GLOBAL.TOKENADDRESSES.DESCRIPTION | 
+ **tokenAddresses** | **string** | A list of token addresses in string separated by commas (,) | 
 
 ### Return type
 
@@ -704,7 +705,7 @@ Name | Type | Description  | Notes
 
 > TokenCreationPage GetMintAndBurn(ctx, chain, tokenAddress).Cursor(cursor).Limit(limit).Direction(direction).Type_(type_).Execute()
 
-CONTROLLER.TOKEN.GET_MINT_AND_BURN.SUMMARY
+Token - Mint and Burn
 
 
 
@@ -721,12 +722,12 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
-	cursor := "cursor_example" // string | DTO.PAGE.CURSOR.DESCRIPTION (optional)
-	limit := float32(8.14) // float32 | DTO.PAGE.LIMIT (optional) (default to 20)
-	direction := "direction_example" // string | DTO.PAGE.DIRECTION (optional) (default to "next")
-	type_ := "all" // string | DTO.TOKEN.MINT_AND_BURN.TYPE (optional) (default to "all")
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
+	cursor := "cursor_example" // string | Pagination cursor (optional)
+	limit := float32(8.14) // float32 | Number of results per page (optional) (default to 20)
+	direction := "direction_example" // string | Pagination direction (next or prev) (optional) (default to "next")
+	type_ := "all" // string | Type of operation to filter (all, mint, or burn) (optional) (default to "all")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -746,8 +747,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -758,10 +759,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **cursor** | **string** | DTO.PAGE.CURSOR.DESCRIPTION | 
- **limit** | **float32** | DTO.PAGE.LIMIT | [default to 20]
- **direction** | **string** | DTO.PAGE.DIRECTION | [default to &quot;next&quot;]
- **type_** | **string** | DTO.TOKEN.MINT_AND_BURN.TYPE | [default to &quot;all&quot;]
+ **cursor** | **string** | Pagination cursor | 
+ **limit** | **float32** | Number of results per page | [default to 20]
+ **direction** | **string** | Pagination direction (next or prev) | [default to &quot;next&quot;]
+ **type_** | **string** | Type of operation to filter (all, mint, or burn) | [default to &quot;all&quot;]
 
 ### Return type
 
@@ -785,7 +786,7 @@ Name | Type | Description  | Notes
 
 > []DexPoolDTO GetPools(ctx, chain, tokenAddress).SortBy(sortBy).SortDirection(sortDirection).MinTvlInSol(minTvlInSol).MaxTvlInSol(maxTvlInSol).MinTvlInUsd(minTvlInUsd).MaxTvlInUsd(maxTvlInUsd).Execute()
 
-CONTROLLER.TOKEN.GET_POOLS.SUMMARY
+Token - Liquidity
 
 
 
@@ -802,14 +803,14 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
-	sortBy := "tvlInUsd" // string | DTO.POOL.SORT_BY (optional)
-	sortDirection := "sortDirection_example" // string | DTO.POOL.SORT_DIRECTION (optional) (default to "desc")
-	minTvlInSol := "100" // string | DTO.POOL.MIN_TVL_IN_SOL (optional)
-	maxTvlInSol := "10000" // string | DTO.POOL.MAX_TVL_IN_SOL (optional)
-	minTvlInUsd := "1000" // string | DTO.POOL.MIN_TVL_IN_USD (optional)
-	maxTvlInUsd := "100000" // string | DTO.POOL.MAX_TVL_IN_USD (optional)
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
+	sortBy := "tvlInUsd" // string | Sort field (tvlInSol or tvlInUsd) (optional)
+	sortDirection := "sortDirection_example" // string | Sort direction (asc or desc) (optional) (default to "desc")
+	minTvlInSol := "100" // string | Minimum TVL in SOL (optional)
+	maxTvlInSol := "10000" // string | Maximum TVL in SOL (optional)
+	minTvlInUsd := "1000" // string | Minimum TVL in USD (optional)
+	maxTvlInUsd := "100000" // string | Maximum TVL in USD (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -829,8 +830,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -841,12 +842,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **sortBy** | **string** | DTO.POOL.SORT_BY | 
- **sortDirection** | **string** | DTO.POOL.SORT_DIRECTION | [default to &quot;desc&quot;]
- **minTvlInSol** | **string** | DTO.POOL.MIN_TVL_IN_SOL | 
- **maxTvlInSol** | **string** | DTO.POOL.MAX_TVL_IN_SOL | 
- **minTvlInUsd** | **string** | DTO.POOL.MIN_TVL_IN_USD | 
- **maxTvlInUsd** | **string** | DTO.POOL.MAX_TVL_IN_USD | 
+ **sortBy** | **string** | Sort field (tvlInSol or tvlInUsd) | 
+ **sortDirection** | **string** | Sort direction (asc or desc) | [default to &quot;desc&quot;]
+ **minTvlInSol** | **string** | Minimum TVL in SOL | 
+ **maxTvlInSol** | **string** | Maximum TVL in SOL | 
+ **minTvlInUsd** | **string** | Minimum TVL in USD | 
+ **maxTvlInUsd** | **string** | Maximum TVL in USD | 
 
 ### Return type
 
@@ -870,7 +871,7 @@ Name | Type | Description  | Notes
 
 > TokenPriceDTO GetPriceByTime(ctx, chain, tokenAddress).Timestamp(timestamp).Execute()
 
-CONTROLLER.TOKEN.GET_PRICE_BY_TIME.SUMMARY
+Token - Price by Time
 
 
 
@@ -887,9 +888,9 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
-	timestamp := int64(1754055151) // int64 | DTO.TOKEN.PRICE.QUERY.TIMESTAMP
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
+	timestamp := int64(1754055151) // int64 | Timestamp for price query (Unix epoch in seconds)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -909,8 +910,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -921,7 +922,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **timestamp** | **int64** | DTO.TOKEN.PRICE.QUERY.TIMESTAMP | 
+ **timestamp** | **int64** | Timestamp for price query (Unix epoch in seconds) | 
 
 ### Return type
 
@@ -945,7 +946,7 @@ Name | Type | Description  | Notes
 
 > TokenPricePage GetPrices(ctx, chain, tokenAddress).Cursor(cursor).Limit(limit).Direction(direction).Execute()
 
-CONTROLLER.TOKEN.GET_PRICES.SUMMARY
+Token - Prices
 
 
 
@@ -962,11 +963,11 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
-	cursor := "cursor_example" // string | DTO.PAGE.CURSOR.DESCRIPTION (optional)
-	limit := float32(8.14) // float32 | DTO.PAGE.LIMIT (optional) (default to 20)
-	direction := "direction_example" // string | DTO.PAGE.DIRECTION (optional) (default to "next")
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
+	cursor := "cursor_example" // string | Pagination cursor (optional)
+	limit := float32(8.14) // float32 | Number of results per page (optional) (default to 20)
+	direction := "direction_example" // string | Pagination direction (next or prev) (optional) (default to "next")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -986,8 +987,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -998,9 +999,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **cursor** | **string** | DTO.PAGE.CURSOR.DESCRIPTION | 
- **limit** | **float32** | DTO.PAGE.LIMIT | [default to 20]
- **direction** | **string** | DTO.PAGE.DIRECTION | [default to &quot;next&quot;]
+ **cursor** | **string** | Pagination cursor | 
+ **limit** | **float32** | Number of results per page | [default to 20]
+ **direction** | **string** | Pagination direction (next or prev) | [default to &quot;next&quot;]
 
 ### Return type
 
@@ -1024,7 +1025,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} GetSecurity(ctx, chain, tokenAddress).Execute()
 
-CONTROLLER.TOKEN.GET_SECURITY.SUMMARY
+Token - Security
 
 
 
@@ -1041,8 +1042,8 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1062,8 +1063,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -1097,7 +1098,7 @@ Name | Type | Description  | Notes
 
 > TokenStat GetStats(ctx, chain, tokenAddress).Execute()
 
-CONTROLLER.TOKEN.GET_STATS.SUMMARY
+Token - Stats
 
 
 
@@ -1114,8 +1115,8 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1135,8 +1136,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -1170,7 +1171,7 @@ Name | Type | Description  | Notes
 
 > map[string]TokenStat GetStatsMulti(ctx, chain).TokenAddresses(tokenAddresses).Execute()
 
-CONTROLLER.TOKEN.GET_STATS_MULTI.SUMMARY
+Token - Stats (Multi)
 
 
 
@@ -1187,8 +1188,8 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddresses := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN,EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // string | GLOBAL.TOKENADDRESSES.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddresses := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN,EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // string | A list of token addresses in string separated by commas (,)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1208,7 +1209,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -1218,7 +1219,7 @@ Other parameters are passed through a pointer to a apiGetStatsMultiRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **tokenAddresses** | **string** | GLOBAL.TOKENADDRESSES.DESCRIPTION | 
+ **tokenAddresses** | **string** | A list of token addresses in string separated by commas (,) | 
 
 ### Return type
 
@@ -1242,7 +1243,7 @@ Name | Type | Description  | Notes
 
 > Token GetToken(ctx, chain, tokenAddress).Execute()
 
-CONTROLLER.TOKEN.GET.SUMMARY
+Token - Detail
 
 
 
@@ -1259,8 +1260,8 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1280,8 +1281,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -1311,11 +1312,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetTokenTraders
+## GetTokenLiquiditySnapshots
 
-> []TokenTrader GetTokenTraders(ctx, chain, tokenAddress, tag).Execute()
+> TokenLiquiditySnapshotPage GetTokenLiquiditySnapshots(ctx, chain, tokenAddress).Time(time).Cursor(cursor).Limit(limit).Execute()
 
-CONTROLLER.TOKEN.GET_TOKEN_TRADERS.SUMMARY
+Token - Liquidity Snapshots
 
 
 
@@ -1332,8 +1333,87 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
+	time := int64(1705312800) // int64 | Target Unix timestamp (seconds) for snapshot query. Returns the nearest snapshot before or at this time. (optional)
+	cursor := "eyJpZCI6MTAwfQ==" // string | Pagination cursor (optional)
+	limit := int32(20) // int32 | Number of results per page (optional) (default to 20)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TokenAPI.GetTokenLiquiditySnapshots(context.Background(), chain, tokenAddress).Time(time).Cursor(cursor).Limit(limit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TokenAPI.GetTokenLiquiditySnapshots``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetTokenLiquiditySnapshots`: TokenLiquiditySnapshotPage
+	fmt.Fprintf(os.Stdout, "Response from `TokenAPI.GetTokenLiquiditySnapshots`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTokenLiquiditySnapshotsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **time** | **int64** | Target Unix timestamp (seconds) for snapshot query. Returns the nearest snapshot before or at this time. | 
+ **cursor** | **string** | Pagination cursor | 
+ **limit** | **int32** | Number of results per page | [default to 20]
+
+### Return type
+
+[**TokenLiquiditySnapshotPage**](TokenLiquiditySnapshotPage.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTokenTraders
+
+> []TokenTrader GetTokenTraders(ctx, chain, tokenAddress, tag).Execute()
+
+Token - Get Token Traders
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/chainstream-io/chainstream-go-sdk"
+)
+
+func main() {
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // string | An address of a token
 	tag := openapiclient.TokenTraderTag("fresh") // TokenTraderTag | Token trader tag
 
 	configuration := openapiclient.NewConfiguration()
@@ -1354,8 +1434,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 **tag** | [**TokenTraderTag**](.md) | Token trader tag | 
 
 ### Other Parameters
@@ -1391,7 +1471,7 @@ Name | Type | Description  | Notes
 
 > []Token GetTokens(ctx, chain).TokenAddresses(tokenAddresses).SortBy(sortBy).SortDirection(sortDirection).FilterBy(filterBy).Execute()
 
-CONTROLLER.TOKEN.GET_TOKENS.SUMMARY
+Token - Detail (Multi)
 
 
 
@@ -1408,11 +1488,11 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddresses := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN,EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // string | GLOBAL.TOKENADDRESSES.DESCRIPTION
-	sortBy := "marketData.marketCapInUsd" // string | DTO.TOKEN.REQUEST.SORT_BY (optional)
-	sortDirection := "sortDirection_example" // string | DTO.TOKEN.REQUEST.SORT_DIRECTION (optional) (default to "DESC")
-	filterBy := []openapiclient.FilterCondition{*openapiclient.NewFilterCondition()} // []FilterCondition | DTO.TOKEN.REQUEST.FILTER_BY (optional)
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddresses := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN,EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // string | A list of token addresses in string separated by commas (,)
+	sortBy := "marketData.marketCapInUsd" // string | Sort field (optional)
+	sortDirection := "sortDirection_example" // string | Sort Direction (optional) (default to "DESC")
+	filterBy := []openapiclient.FilterCondition{*openapiclient.NewFilterCondition()} // []FilterCondition | Filter field (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1432,7 +1512,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -1442,10 +1522,10 @@ Other parameters are passed through a pointer to a apiGetTokensRequest struct vi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **tokenAddresses** | **string** | GLOBAL.TOKENADDRESSES.DESCRIPTION | 
- **sortBy** | **string** | DTO.TOKEN.REQUEST.SORT_BY | 
- **sortDirection** | **string** | DTO.TOKEN.REQUEST.SORT_DIRECTION | [default to &quot;DESC&quot;]
- **filterBy** | [**[]FilterCondition**](FilterCondition.md) | DTO.TOKEN.REQUEST.FILTER_BY | 
+ **tokenAddresses** | **string** | A list of token addresses in string separated by commas (,) | 
+ **sortBy** | **string** | Sort field | 
+ **sortDirection** | **string** | Sort Direction | [default to &quot;DESC&quot;]
+ **filterBy** | [**[]FilterCondition**](FilterCondition.md) | Filter field | 
 
 ### Return type
 
@@ -1469,7 +1549,7 @@ Name | Type | Description  | Notes
 
 > TokenHolderPage GetTopHolders(ctx, chain, tokenAddress).Execute()
 
-CONTROLLER.TOKEN.GET_TOP_HOLDERS.SUMMARY
+Token - Top Holders
 
 
 
@@ -1486,8 +1566,8 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | GLOBAL.TOKENADDRESS.DESCRIPTION
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	tokenAddress := "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" // string | An address of a token
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1507,8 +1587,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
-**tokenAddress** | **string** | GLOBAL.TOKENADDRESS.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
+**tokenAddress** | **string** | An address of a token | 
 
 ### Other Parameters
 
@@ -1542,7 +1622,7 @@ Name | Type | Description  | Notes
 
 > TokenListPage ListToken(ctx, chain).Cursor(cursor).Limit(limit).Direction(direction).Sort(sort).SortBy(sortBy).MinH24VolumeInUsd(minH24VolumeInUsd).MaxH24VolumeInUsd(maxH24VolumeInUsd).MinH24PriceChangeRatio(minH24PriceChangeRatio).MaxH24PriceChangeRatio(maxH24PriceChangeRatio).MinH24Buys(minH24Buys).MaxH24Buys(maxH24Buys).MinH24Sells(minH24Sells).MaxH24Sells(maxH24Sells).MinH24Trades(minH24Trades).MaxH24Trades(maxH24Trades).MinH24Buyers(minH24Buyers).MaxH24Buyers(maxH24Buyers).MinH24Sellers(minH24Sellers).MaxH24Sellers(maxH24Sellers).MinH24BuyVolumeInUsd(minH24BuyVolumeInUsd).MaxH24BuyVolumeInUsd(maxH24BuyVolumeInUsd).MinH24SellVolumeInUsd(minH24SellVolumeInUsd).MaxH24SellVolumeInUsd(maxH24SellVolumeInUsd).MinH4VolumeInUsd(minH4VolumeInUsd).MaxH4VolumeInUsd(maxH4VolumeInUsd).MinH4PriceChangeRatio(minH4PriceChangeRatio).MaxH4PriceChangeRatio(maxH4PriceChangeRatio).MinH4Buys(minH4Buys).MaxH4Buys(maxH4Buys).MinH4Sells(minH4Sells).MaxH4Sells(maxH4Sells).MinH4Trades(minH4Trades).MaxH4Trades(maxH4Trades).MinH4Buyers(minH4Buyers).MaxH4Buyers(maxH4Buyers).MinH4Sellers(minH4Sellers).MaxH4Sellers(maxH4Sellers).MinH4BuyVolumeInUsd(minH4BuyVolumeInUsd).MaxH4BuyVolumeInUsd(maxH4BuyVolumeInUsd).MinH4SellVolumeInUsd(minH4SellVolumeInUsd).MaxH4SellVolumeInUsd(maxH4SellVolumeInUsd).MinH1VolumeInUsd(minH1VolumeInUsd).MaxH1VolumeInUsd(maxH1VolumeInUsd).MinH1PriceChangeRatio(minH1PriceChangeRatio).MaxH1PriceChangeRatio(maxH1PriceChangeRatio).MinH1Buys(minH1Buys).MaxH1Buys(maxH1Buys).MinH1Sells(minH1Sells).MaxH1Sells(maxH1Sells).MinH1Trades(minH1Trades).MaxH1Trades(maxH1Trades).MinH1Buyers(minH1Buyers).MaxH1Buyers(maxH1Buyers).MinH1Sellers(minH1Sellers).MaxH1Sellers(maxH1Sellers).MinH1BuyVolumeInUsd(minH1BuyVolumeInUsd).MaxH1BuyVolumeInUsd(maxH1BuyVolumeInUsd).MinH1SellVolumeInUsd(minH1SellVolumeInUsd).MaxH1SellVolumeInUsd(maxH1SellVolumeInUsd).MinM30VolumeInUsd(minM30VolumeInUsd).MaxM30VolumeInUsd(maxM30VolumeInUsd).MinM30PriceChangeRatio(minM30PriceChangeRatio).MaxM30PriceChangeRatio(maxM30PriceChangeRatio).MinM30Buys(minM30Buys).MaxM30Buys(maxM30Buys).MinM30Sells(minM30Sells).MaxM30Sells(maxM30Sells).MinM30Trades(minM30Trades).MaxM30Trades(maxM30Trades).MinM30Buyers(minM30Buyers).MaxM30Buyers(maxM30Buyers).MinM30Sellers(minM30Sellers).MaxM30Sellers(maxM30Sellers).MinM30BuyVolumeInUsd(minM30BuyVolumeInUsd).MaxM30BuyVolumeInUsd(maxM30BuyVolumeInUsd).MinM30SellVolumeInUsd(minM30SellVolumeInUsd).MaxM30SellVolumeInUsd(maxM30SellVolumeInUsd).MinM15VolumeInUsd(minM15VolumeInUsd).MaxM15VolumeInUsd(maxM15VolumeInUsd).MinM15PriceChangeRatio(minM15PriceChangeRatio).MaxM15PriceChangeRatio(maxM15PriceChangeRatio).MinM15Buys(minM15Buys).MaxM15Buys(maxM15Buys).MinM15Sells(minM15Sells).MaxM15Sells(maxM15Sells).MinM15Trades(minM15Trades).MaxM15Trades(maxM15Trades).MinM15Buyers(minM15Buyers).MaxM15Buyers(maxM15Buyers).MinM15Sellers(minM15Sellers).MaxM15Sellers(maxM15Sellers).MinM15BuyVolumeInUsd(minM15BuyVolumeInUsd).MaxM15BuyVolumeInUsd(maxM15BuyVolumeInUsd).MinM15SellVolumeInUsd(minM15SellVolumeInUsd).MaxM15SellVolumeInUsd(maxM15SellVolumeInUsd).MinM5VolumeInUsd(minM5VolumeInUsd).MaxM5VolumeInUsd(maxM5VolumeInUsd).MinM5PriceChangeRatio(minM5PriceChangeRatio).MaxM5PriceChangeRatio(maxM5PriceChangeRatio).MinM5Buys(minM5Buys).MaxM5Buys(maxM5Buys).MinM5Sells(minM5Sells).MaxM5Sells(maxM5Sells).MinM5Trades(minM5Trades).MaxM5Trades(maxM5Trades).MinM5Buyers(minM5Buyers).MaxM5Buyers(maxM5Buyers).MinM5Sellers(minM5Sellers).MaxM5Sellers(maxM5Sellers).MinM5BuyVolumeInUsd(minM5BuyVolumeInUsd).MaxM5BuyVolumeInUsd(maxM5BuyVolumeInUsd).MinM5SellVolumeInUsd(minM5SellVolumeInUsd).MaxM5SellVolumeInUsd(maxM5SellVolumeInUsd).MinM1VolumeInUsd(minM1VolumeInUsd).MaxM1VolumeInUsd(maxM1VolumeInUsd).MinM1PriceChangeRatio(minM1PriceChangeRatio).MaxM1PriceChangeRatio(maxM1PriceChangeRatio).MinM1Buys(minM1Buys).MaxM1Buys(maxM1Buys).MinM1Sells(minM1Sells).MaxM1Sells(maxM1Sells).MinM1Trades(minM1Trades).MaxM1Trades(maxM1Trades).MinM1Buyers(minM1Buyers).MaxM1Buyers(maxM1Buyers).MinM1Sellers(minM1Sellers).MaxM1Sellers(maxM1Sellers).MinM1BuyVolumeInUsd(minM1BuyVolumeInUsd).MaxM1BuyVolumeInUsd(maxM1BuyVolumeInUsd).MinM1SellVolumeInUsd(minM1SellVolumeInUsd).MaxM1SellVolumeInUsd(maxM1SellVolumeInUsd).Execute()
 
-CONTROLLER.TOKEN.GET_TOKEN_LIST.SUMMARY
+Token - List (Filtered)
 
 
 
@@ -1559,138 +1639,138 @@ import (
 )
 
 func main() {
-	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | GLOBAL.CHAIN.DESCRIPTION
-	cursor := "cursor_example" // string | DTO.PAGE.CURSOR.DESCRIPTION (optional)
-	limit := float32(8.14) // float32 | DTO.PAGE.LIMIT (optional) (default to 20)
-	direction := "direction_example" // string | DTO.PAGE.DIRECTION (optional) (default to "next")
-	sort := "sort_example" // string | DTO.TOKEN.SEARCH.SORT_DIRECTION (optional) (default to "desc")
-	sortBy := "h24VolumeInUsd" // string | DTO.TOKEN.LIST.QUERY.SORT_BY (optional)
-	minH24VolumeInUsd := "minH24VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H24_VOLUME_IN_USD (optional)
-	maxH24VolumeInUsd := "maxH24VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H24_VOLUME_IN_USD (optional)
-	minH24PriceChangeRatio := "minH24PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H24_PRICE_CHANGE_RATIO (optional)
-	maxH24PriceChangeRatio := "maxH24PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H24_PRICE_CHANGE_RATIO (optional)
-	minH24Buys := "minH24Buys_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H24_BUYS (optional)
-	maxH24Buys := "maxH24Buys_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H24_BUYS (optional)
-	minH24Sells := "minH24Sells_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H24_SELLS (optional)
-	maxH24Sells := "maxH24Sells_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H24_SELLS (optional)
-	minH24Trades := "minH24Trades_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H24_TRADES (optional)
-	maxH24Trades := "maxH24Trades_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H24_TRADES (optional)
-	minH24Buyers := "minH24Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H24_BUYERS (optional)
-	maxH24Buyers := "maxH24Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H24_BUYERS (optional)
-	minH24Sellers := "minH24Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H24_SELLERS (optional)
-	maxH24Sellers := "maxH24Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H24_SELLERS (optional)
-	minH24BuyVolumeInUsd := "minH24BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H24_BUY_VOLUME_IN_USD (optional)
-	maxH24BuyVolumeInUsd := "maxH24BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H24_BUY_VOLUME_IN_USD (optional)
-	minH24SellVolumeInUsd := "minH24SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H24_SELL_VOLUME_IN_USD (optional)
-	maxH24SellVolumeInUsd := "maxH24SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H24_SELL_VOLUME_IN_USD (optional)
-	minH4VolumeInUsd := "minH4VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H4_VOLUME_IN_USD (optional)
-	maxH4VolumeInUsd := "maxH4VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H4_VOLUME_IN_USD (optional)
-	minH4PriceChangeRatio := "minH4PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H4_PRICE_CHANGE_RATIO (optional)
-	maxH4PriceChangeRatio := "maxH4PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H4_PRICE_CHANGE_RATIO (optional)
-	minH4Buys := "minH4Buys_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H4_BUYS (optional)
-	maxH4Buys := "maxH4Buys_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H4_BUYS (optional)
-	minH4Sells := "minH4Sells_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H4_SELLS (optional)
-	maxH4Sells := "maxH4Sells_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H4_SELLS (optional)
-	minH4Trades := "minH4Trades_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H4_TRADES (optional)
-	maxH4Trades := "maxH4Trades_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H4_TRADES (optional)
-	minH4Buyers := "minH4Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H4_BUYERS (optional)
-	maxH4Buyers := "maxH4Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H4_BUYERS (optional)
-	minH4Sellers := "minH4Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H4_SELLERS (optional)
-	maxH4Sellers := "maxH4Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H4_SELLERS (optional)
-	minH4BuyVolumeInUsd := "minH4BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H4_BUY_VOLUME_IN_USD (optional)
-	maxH4BuyVolumeInUsd := "maxH4BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H4_BUY_VOLUME_IN_USD (optional)
-	minH4SellVolumeInUsd := "minH4SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H4_SELL_VOLUME_IN_USD (optional)
-	maxH4SellVolumeInUsd := "maxH4SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H4_SELL_VOLUME_IN_USD (optional)
-	minH1VolumeInUsd := "minH1VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H1_VOLUME_IN_USD (optional)
-	maxH1VolumeInUsd := "maxH1VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H1_VOLUME_IN_USD (optional)
-	minH1PriceChangeRatio := "minH1PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H1_PRICE_CHANGE_RATIO (optional)
-	maxH1PriceChangeRatio := "maxH1PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H1_PRICE_CHANGE_RATIO (optional)
-	minH1Buys := "minH1Buys_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H1_BUYS (optional)
-	maxH1Buys := "maxH1Buys_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H1_BUYS (optional)
-	minH1Sells := "minH1Sells_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H1_SELLS (optional)
-	maxH1Sells := "maxH1Sells_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H1_SELLS (optional)
-	minH1Trades := "minH1Trades_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H1_TRADES (optional)
-	maxH1Trades := "maxH1Trades_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H1_TRADES (optional)
-	minH1Buyers := "minH1Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H1_BUYERS (optional)
-	maxH1Buyers := "maxH1Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H1_BUYERS (optional)
-	minH1Sellers := "minH1Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H1_SELLERS (optional)
-	maxH1Sellers := "maxH1Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H1_SELLERS (optional)
-	minH1BuyVolumeInUsd := "minH1BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H1_BUY_VOLUME_IN_USD (optional)
-	maxH1BuyVolumeInUsd := "maxH1BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H1_BUY_VOLUME_IN_USD (optional)
-	minH1SellVolumeInUsd := "minH1SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_H1_SELL_VOLUME_IN_USD (optional)
-	maxH1SellVolumeInUsd := "maxH1SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_H1_SELL_VOLUME_IN_USD (optional)
-	minM30VolumeInUsd := "minM30VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M30_VOLUME_IN_USD (optional)
-	maxM30VolumeInUsd := "maxM30VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M30_VOLUME_IN_USD (optional)
-	minM30PriceChangeRatio := "minM30PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M30_PRICE_CHANGE_RATIO (optional)
-	maxM30PriceChangeRatio := "maxM30PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M30_PRICE_CHANGE_RATIO (optional)
-	minM30Buys := "minM30Buys_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M30_BUYS (optional)
-	maxM30Buys := "maxM30Buys_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M30_BUYS (optional)
-	minM30Sells := "minM30Sells_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M30_SELLS (optional)
-	maxM30Sells := "maxM30Sells_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M30_SELLS (optional)
-	minM30Trades := "minM30Trades_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M30_TRADES (optional)
-	maxM30Trades := "maxM30Trades_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M30_TRADES (optional)
-	minM30Buyers := "minM30Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M30_BUYERS (optional)
-	maxM30Buyers := "maxM30Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M30_BUYERS (optional)
-	minM30Sellers := "minM30Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M30_SELLERS (optional)
-	maxM30Sellers := "maxM30Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M30_SELLERS (optional)
-	minM30BuyVolumeInUsd := "minM30BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M30_BUY_VOLUME_IN_USD (optional)
-	maxM30BuyVolumeInUsd := "maxM30BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M30_BUY_VOLUME_IN_USD (optional)
-	minM30SellVolumeInUsd := "minM30SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M30_SELL_VOLUME_IN_USD (optional)
-	maxM30SellVolumeInUsd := "maxM30SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M30_SELL_VOLUME_IN_USD (optional)
-	minM15VolumeInUsd := "minM15VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M15_VOLUME_IN_USD (optional)
-	maxM15VolumeInUsd := "maxM15VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M15_VOLUME_IN_USD (optional)
-	minM15PriceChangeRatio := "minM15PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M15_PRICE_CHANGE_RATIO (optional)
-	maxM15PriceChangeRatio := "maxM15PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M15_PRICE_CHANGE_RATIO (optional)
-	minM15Buys := "minM15Buys_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M15_BUYS (optional)
-	maxM15Buys := "maxM15Buys_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M15_BUYS (optional)
-	minM15Sells := "minM15Sells_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M15_SELLS (optional)
-	maxM15Sells := "maxM15Sells_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M15_SELLS (optional)
-	minM15Trades := "minM15Trades_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M15_TRADES (optional)
-	maxM15Trades := "maxM15Trades_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M15_TRADES (optional)
-	minM15Buyers := "minM15Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M15_BUYERS (optional)
-	maxM15Buyers := "maxM15Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M15_BUYERS (optional)
-	minM15Sellers := "minM15Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M15_SELLERS (optional)
-	maxM15Sellers := "maxM15Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M15_SELLERS (optional)
-	minM15BuyVolumeInUsd := "minM15BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M15_BUY_VOLUME_IN_USD (optional)
-	maxM15BuyVolumeInUsd := "maxM15BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M15_BUY_VOLUME_IN_USD (optional)
-	minM15SellVolumeInUsd := "minM15SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M15_SELL_VOLUME_IN_USD (optional)
-	maxM15SellVolumeInUsd := "maxM15SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M15_SELL_VOLUME_IN_USD (optional)
-	minM5VolumeInUsd := "minM5VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M5_VOLUME_IN_USD (optional)
-	maxM5VolumeInUsd := "maxM5VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M5_VOLUME_IN_USD (optional)
-	minM5PriceChangeRatio := "minM5PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M5_PRICE_CHANGE_RATIO (optional)
-	maxM5PriceChangeRatio := "maxM5PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M5_PRICE_CHANGE_RATIO (optional)
-	minM5Buys := "minM5Buys_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M5_BUYS (optional)
-	maxM5Buys := "maxM5Buys_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M5_BUYS (optional)
-	minM5Sells := "minM5Sells_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M5_SELLS (optional)
-	maxM5Sells := "maxM5Sells_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M5_SELLS (optional)
-	minM5Trades := "minM5Trades_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M5_TRADES (optional)
-	maxM5Trades := "maxM5Trades_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M5_TRADES (optional)
-	minM5Buyers := "minM5Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M5_BUYERS (optional)
-	maxM5Buyers := "maxM5Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M5_BUYERS (optional)
-	minM5Sellers := "minM5Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M5_SELLERS (optional)
-	maxM5Sellers := "maxM5Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M5_SELLERS (optional)
-	minM5BuyVolumeInUsd := "minM5BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M5_BUY_VOLUME_IN_USD (optional)
-	maxM5BuyVolumeInUsd := "maxM5BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M5_BUY_VOLUME_IN_USD (optional)
-	minM5SellVolumeInUsd := "minM5SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M5_SELL_VOLUME_IN_USD (optional)
-	maxM5SellVolumeInUsd := "maxM5SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M5_SELL_VOLUME_IN_USD (optional)
-	minM1VolumeInUsd := "minM1VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M1_VOLUME_IN_USD (optional)
-	maxM1VolumeInUsd := "maxM1VolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M1_VOLUME_IN_USD (optional)
-	minM1PriceChangeRatio := "minM1PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M1_PRICE_CHANGE_RATIO (optional)
-	maxM1PriceChangeRatio := "maxM1PriceChangeRatio_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M1_PRICE_CHANGE_RATIO (optional)
-	minM1Buys := "minM1Buys_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M1_BUYS (optional)
-	maxM1Buys := "maxM1Buys_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M1_BUYS (optional)
-	minM1Sells := "minM1Sells_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M1_SELLS (optional)
-	maxM1Sells := "maxM1Sells_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M1_SELLS (optional)
-	minM1Trades := "minM1Trades_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M1_TRADES (optional)
-	maxM1Trades := "maxM1Trades_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M1_TRADES (optional)
-	minM1Buyers := "minM1Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M1_BUYERS (optional)
-	maxM1Buyers := "maxM1Buyers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M1_BUYERS (optional)
-	minM1Sellers := "minM1Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M1_SELLERS (optional)
-	maxM1Sellers := "maxM1Sellers_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M1_SELLERS (optional)
-	minM1BuyVolumeInUsd := "minM1BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M1_BUY_VOLUME_IN_USD (optional)
-	maxM1BuyVolumeInUsd := "maxM1BuyVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M1_BUY_VOLUME_IN_USD (optional)
-	minM1SellVolumeInUsd := "minM1SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MIN_M1_SELL_VOLUME_IN_USD (optional)
-	maxM1SellVolumeInUsd := "maxM1SellVolumeInUsd_example" // string | DTO.TOKEN.LIST.QUERY.MAX_M1_SELL_VOLUME_IN_USD (optional)
+	chain := openapiclient.ChainSymbol("sol") // ChainSymbol | A chain name listed in supported networks
+	cursor := "cursor_example" // string | Pagination cursor (optional)
+	limit := float32(8.14) // float32 | Number of results per page (optional) (default to 20)
+	direction := "direction_example" // string | Pagination direction (next or prev) (optional) (default to "next")
+	sort := "sort_example" // string | Sort direction (optional) (default to "desc")
+	sortBy := "h24VolumeInUsd" // string | Sort by field (optional)
+	minH24VolumeInUsd := "minH24VolumeInUsd_example" // string | Minimum 24h volume in USD (optional)
+	maxH24VolumeInUsd := "maxH24VolumeInUsd_example" // string | Maximum 24h volume in USD (optional)
+	minH24PriceChangeRatio := "minH24PriceChangeRatio_example" // string | Minimum 24h price change ratio (optional)
+	maxH24PriceChangeRatio := "maxH24PriceChangeRatio_example" // string | Maximum 24h price change ratio (optional)
+	minH24Buys := "minH24Buys_example" // string | Minimum 24h buys (optional)
+	maxH24Buys := "maxH24Buys_example" // string | Maximum 24h buys (optional)
+	minH24Sells := "minH24Sells_example" // string | Minimum 24h sells (optional)
+	maxH24Sells := "maxH24Sells_example" // string | Maximum 24h sells (optional)
+	minH24Trades := "minH24Trades_example" // string | Minimum 24h trades (optional)
+	maxH24Trades := "maxH24Trades_example" // string | Maximum 24h trades (optional)
+	minH24Buyers := "minH24Buyers_example" // string | Minimum 24h buyers (optional)
+	maxH24Buyers := "maxH24Buyers_example" // string | Maximum 24h buyers (optional)
+	minH24Sellers := "minH24Sellers_example" // string | Minimum 24h sellers (optional)
+	maxH24Sellers := "maxH24Sellers_example" // string | Maximum 24h sellers (optional)
+	minH24BuyVolumeInUsd := "minH24BuyVolumeInUsd_example" // string | Minimum 24h buy volume in USD (optional)
+	maxH24BuyVolumeInUsd := "maxH24BuyVolumeInUsd_example" // string | Maximum 24h buy volume in USD (optional)
+	minH24SellVolumeInUsd := "minH24SellVolumeInUsd_example" // string | Minimum 24h sell volume in USD (optional)
+	maxH24SellVolumeInUsd := "maxH24SellVolumeInUsd_example" // string | Maximum 24h sell volume in USD (optional)
+	minH4VolumeInUsd := "minH4VolumeInUsd_example" // string | Minimum 4h volume in USD (optional)
+	maxH4VolumeInUsd := "maxH4VolumeInUsd_example" // string | Maximum 4h volume in USD (optional)
+	minH4PriceChangeRatio := "minH4PriceChangeRatio_example" // string | Minimum 4h price change ratio (optional)
+	maxH4PriceChangeRatio := "maxH4PriceChangeRatio_example" // string | Maximum 4h price change ratio (optional)
+	minH4Buys := "minH4Buys_example" // string | Minimum 4h buys (optional)
+	maxH4Buys := "maxH4Buys_example" // string | Maximum 4h buys (optional)
+	minH4Sells := "minH4Sells_example" // string | Minimum 4h sells (optional)
+	maxH4Sells := "maxH4Sells_example" // string | Maximum 4h sells (optional)
+	minH4Trades := "minH4Trades_example" // string | Minimum 4h trades (optional)
+	maxH4Trades := "maxH4Trades_example" // string | Maximum 4h trades (optional)
+	minH4Buyers := "minH4Buyers_example" // string | Minimum 4h buyers (optional)
+	maxH4Buyers := "maxH4Buyers_example" // string | Maximum 4h buyers (optional)
+	minH4Sellers := "minH4Sellers_example" // string | Minimum 4h sellers (optional)
+	maxH4Sellers := "maxH4Sellers_example" // string | Maximum 4h sellers (optional)
+	minH4BuyVolumeInUsd := "minH4BuyVolumeInUsd_example" // string | Minimum 4h buy volume in USD (optional)
+	maxH4BuyVolumeInUsd := "maxH4BuyVolumeInUsd_example" // string | Maximum 4h buy volume in USD (optional)
+	minH4SellVolumeInUsd := "minH4SellVolumeInUsd_example" // string | Minimum 4h sell volume in USD (optional)
+	maxH4SellVolumeInUsd := "maxH4SellVolumeInUsd_example" // string | Maximum 4h sell volume in USD (optional)
+	minH1VolumeInUsd := "minH1VolumeInUsd_example" // string | Minimum 1h volume in USD (optional)
+	maxH1VolumeInUsd := "maxH1VolumeInUsd_example" // string | Maximum 1h volume in USD (optional)
+	minH1PriceChangeRatio := "minH1PriceChangeRatio_example" // string | Minimum 1h price change ratio (optional)
+	maxH1PriceChangeRatio := "maxH1PriceChangeRatio_example" // string | Maximum 1h price change ratio (optional)
+	minH1Buys := "minH1Buys_example" // string | Minimum 1h buys (optional)
+	maxH1Buys := "maxH1Buys_example" // string | Maximum 1h buys (optional)
+	minH1Sells := "minH1Sells_example" // string | Minimum 1h sells (optional)
+	maxH1Sells := "maxH1Sells_example" // string | Maximum 1h sells (optional)
+	minH1Trades := "minH1Trades_example" // string | Minimum 1h trades (optional)
+	maxH1Trades := "maxH1Trades_example" // string | Maximum 1h trades (optional)
+	minH1Buyers := "minH1Buyers_example" // string | Minimum 1h buyers (optional)
+	maxH1Buyers := "maxH1Buyers_example" // string | Maximum 1h buyers (optional)
+	minH1Sellers := "minH1Sellers_example" // string | Minimum 1h sellers (optional)
+	maxH1Sellers := "maxH1Sellers_example" // string | Maximum 1h sellers (optional)
+	minH1BuyVolumeInUsd := "minH1BuyVolumeInUsd_example" // string | Minimum 1h buy volume in USD (optional)
+	maxH1BuyVolumeInUsd := "maxH1BuyVolumeInUsd_example" // string | Maximum 1h buy volume in USD (optional)
+	minH1SellVolumeInUsd := "minH1SellVolumeInUsd_example" // string | Minimum 1h sell volume in USD (optional)
+	maxH1SellVolumeInUsd := "maxH1SellVolumeInUsd_example" // string | Maximum 1h sell volume in USD (optional)
+	minM30VolumeInUsd := "minM30VolumeInUsd_example" // string | Minimum 30m volume in USD (optional)
+	maxM30VolumeInUsd := "maxM30VolumeInUsd_example" // string | Maximum 30m volume in USD (optional)
+	minM30PriceChangeRatio := "minM30PriceChangeRatio_example" // string | Minimum 30m price change ratio (optional)
+	maxM30PriceChangeRatio := "maxM30PriceChangeRatio_example" // string | Maximum 30m price change ratio (optional)
+	minM30Buys := "minM30Buys_example" // string | Minimum 30m buys (optional)
+	maxM30Buys := "maxM30Buys_example" // string | Maximum 30m buys (optional)
+	minM30Sells := "minM30Sells_example" // string | Minimum 30m sells (optional)
+	maxM30Sells := "maxM30Sells_example" // string | Maximum 30m sells (optional)
+	minM30Trades := "minM30Trades_example" // string | Minimum 30m trades (optional)
+	maxM30Trades := "maxM30Trades_example" // string | Maximum 30m trades (optional)
+	minM30Buyers := "minM30Buyers_example" // string | Minimum 30m buyers (optional)
+	maxM30Buyers := "maxM30Buyers_example" // string | Maximum 30m buyers (optional)
+	minM30Sellers := "minM30Sellers_example" // string | Minimum 30m sellers (optional)
+	maxM30Sellers := "maxM30Sellers_example" // string | Maximum 30m sellers (optional)
+	minM30BuyVolumeInUsd := "minM30BuyVolumeInUsd_example" // string | Minimum 30m buy volume in USD (optional)
+	maxM30BuyVolumeInUsd := "maxM30BuyVolumeInUsd_example" // string | Maximum 30m buy volume in USD (optional)
+	minM30SellVolumeInUsd := "minM30SellVolumeInUsd_example" // string | Minimum 30m sell volume in USD (optional)
+	maxM30SellVolumeInUsd := "maxM30SellVolumeInUsd_example" // string | Maximum 30m sell volume in USD (optional)
+	minM15VolumeInUsd := "minM15VolumeInUsd_example" // string | Minimum 15m volume in USD (optional)
+	maxM15VolumeInUsd := "maxM15VolumeInUsd_example" // string | Maximum 15m volume in USD (optional)
+	minM15PriceChangeRatio := "minM15PriceChangeRatio_example" // string | Minimum 15m price change ratio (optional)
+	maxM15PriceChangeRatio := "maxM15PriceChangeRatio_example" // string | Maximum 15m price change ratio (optional)
+	minM15Buys := "minM15Buys_example" // string | Minimum 15m buys (optional)
+	maxM15Buys := "maxM15Buys_example" // string | Maximum 15m buys (optional)
+	minM15Sells := "minM15Sells_example" // string | Minimum 15m sells (optional)
+	maxM15Sells := "maxM15Sells_example" // string | Maximum 15m sells (optional)
+	minM15Trades := "minM15Trades_example" // string | Minimum 15m trades (optional)
+	maxM15Trades := "maxM15Trades_example" // string | Maximum 15m trades (optional)
+	minM15Buyers := "minM15Buyers_example" // string | Minimum 15m buyers (optional)
+	maxM15Buyers := "maxM15Buyers_example" // string | Maximum 15m buyers (optional)
+	minM15Sellers := "minM15Sellers_example" // string | Minimum 15m sellers (optional)
+	maxM15Sellers := "maxM15Sellers_example" // string | Maximum 15m sellers (optional)
+	minM15BuyVolumeInUsd := "minM15BuyVolumeInUsd_example" // string | Minimum 15m buy volume in USD (optional)
+	maxM15BuyVolumeInUsd := "maxM15BuyVolumeInUsd_example" // string | Maximum 15m buy volume in USD (optional)
+	minM15SellVolumeInUsd := "minM15SellVolumeInUsd_example" // string | Minimum 15m sell volume in USD (optional)
+	maxM15SellVolumeInUsd := "maxM15SellVolumeInUsd_example" // string | Maximum 15m sell volume in USD (optional)
+	minM5VolumeInUsd := "minM5VolumeInUsd_example" // string | Minimum 5m volume in USD (optional)
+	maxM5VolumeInUsd := "maxM5VolumeInUsd_example" // string | Maximum 5m volume in USD (optional)
+	minM5PriceChangeRatio := "minM5PriceChangeRatio_example" // string | Minimum 5m price change ratio (optional)
+	maxM5PriceChangeRatio := "maxM5PriceChangeRatio_example" // string | Maximum 5m price change ratio (optional)
+	minM5Buys := "minM5Buys_example" // string | Minimum 5m buys (optional)
+	maxM5Buys := "maxM5Buys_example" // string | Maximum 5m buys (optional)
+	minM5Sells := "minM5Sells_example" // string | Minimum 5m sells (optional)
+	maxM5Sells := "maxM5Sells_example" // string | Maximum 5m sells (optional)
+	minM5Trades := "minM5Trades_example" // string | Minimum 5m trades (optional)
+	maxM5Trades := "maxM5Trades_example" // string | Maximum 5m trades (optional)
+	minM5Buyers := "minM5Buyers_example" // string | Minimum 5m buyers (optional)
+	maxM5Buyers := "maxM5Buyers_example" // string | Maximum 5m buyers (optional)
+	minM5Sellers := "minM5Sellers_example" // string | Minimum 5m sellers (optional)
+	maxM5Sellers := "maxM5Sellers_example" // string | Maximum 5m sellers (optional)
+	minM5BuyVolumeInUsd := "minM5BuyVolumeInUsd_example" // string | Minimum 5m buy volume in USD (optional)
+	maxM5BuyVolumeInUsd := "maxM5BuyVolumeInUsd_example" // string | Maximum 5m buy volume in USD (optional)
+	minM5SellVolumeInUsd := "minM5SellVolumeInUsd_example" // string | Minimum 5m sell volume in USD (optional)
+	maxM5SellVolumeInUsd := "maxM5SellVolumeInUsd_example" // string | Maximum 5m sell volume in USD (optional)
+	minM1VolumeInUsd := "minM1VolumeInUsd_example" // string | Minimum 1m volume in USD (optional)
+	maxM1VolumeInUsd := "maxM1VolumeInUsd_example" // string | Maximum 1m volume in USD (optional)
+	minM1PriceChangeRatio := "minM1PriceChangeRatio_example" // string | Minimum 1m price change ratio (optional)
+	maxM1PriceChangeRatio := "maxM1PriceChangeRatio_example" // string | Maximum 1m price change ratio (optional)
+	minM1Buys := "minM1Buys_example" // string | Minimum 1m buys (optional)
+	maxM1Buys := "maxM1Buys_example" // string | Maximum 1m buys (optional)
+	minM1Sells := "minM1Sells_example" // string | Minimum 1m sells (optional)
+	maxM1Sells := "maxM1Sells_example" // string | Maximum 1m sells (optional)
+	minM1Trades := "minM1Trades_example" // string | Minimum 1m trades (optional)
+	maxM1Trades := "maxM1Trades_example" // string | Maximum 1m trades (optional)
+	minM1Buyers := "minM1Buyers_example" // string | Minimum 1m buyers (optional)
+	maxM1Buyers := "maxM1Buyers_example" // string | Maximum 1m buyers (optional)
+	minM1Sellers := "minM1Sellers_example" // string | Minimum 1m sellers (optional)
+	maxM1Sellers := "maxM1Sellers_example" // string | Maximum 1m sellers (optional)
+	minM1BuyVolumeInUsd := "minM1BuyVolumeInUsd_example" // string | Minimum 1m buy volume in USD (optional)
+	maxM1BuyVolumeInUsd := "maxM1BuyVolumeInUsd_example" // string | Maximum 1m buy volume in USD (optional)
+	minM1SellVolumeInUsd := "minM1SellVolumeInUsd_example" // string | Minimum 1m sell volume in USD (optional)
+	maxM1SellVolumeInUsd := "maxM1SellVolumeInUsd_example" // string | Maximum 1m sell volume in USD (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1710,7 +1790,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**chain** | [**ChainSymbol**](.md) | GLOBAL.CHAIN.DESCRIPTION | 
+**chain** | [**ChainSymbol**](.md) | A chain name listed in supported networks | 
 
 ### Other Parameters
 
@@ -1720,137 +1800,137 @@ Other parameters are passed through a pointer to a apiListTokenRequest struct vi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cursor** | **string** | DTO.PAGE.CURSOR.DESCRIPTION | 
- **limit** | **float32** | DTO.PAGE.LIMIT | [default to 20]
- **direction** | **string** | DTO.PAGE.DIRECTION | [default to &quot;next&quot;]
- **sort** | **string** | DTO.TOKEN.SEARCH.SORT_DIRECTION | [default to &quot;desc&quot;]
- **sortBy** | **string** | DTO.TOKEN.LIST.QUERY.SORT_BY | 
- **minH24VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H24_VOLUME_IN_USD | 
- **maxH24VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H24_VOLUME_IN_USD | 
- **minH24PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H24_PRICE_CHANGE_RATIO | 
- **maxH24PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H24_PRICE_CHANGE_RATIO | 
- **minH24Buys** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H24_BUYS | 
- **maxH24Buys** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H24_BUYS | 
- **minH24Sells** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H24_SELLS | 
- **maxH24Sells** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H24_SELLS | 
- **minH24Trades** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H24_TRADES | 
- **maxH24Trades** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H24_TRADES | 
- **minH24Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H24_BUYERS | 
- **maxH24Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H24_BUYERS | 
- **minH24Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H24_SELLERS | 
- **maxH24Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H24_SELLERS | 
- **minH24BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H24_BUY_VOLUME_IN_USD | 
- **maxH24BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H24_BUY_VOLUME_IN_USD | 
- **minH24SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H24_SELL_VOLUME_IN_USD | 
- **maxH24SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H24_SELL_VOLUME_IN_USD | 
- **minH4VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H4_VOLUME_IN_USD | 
- **maxH4VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H4_VOLUME_IN_USD | 
- **minH4PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H4_PRICE_CHANGE_RATIO | 
- **maxH4PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H4_PRICE_CHANGE_RATIO | 
- **minH4Buys** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H4_BUYS | 
- **maxH4Buys** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H4_BUYS | 
- **minH4Sells** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H4_SELLS | 
- **maxH4Sells** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H4_SELLS | 
- **minH4Trades** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H4_TRADES | 
- **maxH4Trades** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H4_TRADES | 
- **minH4Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H4_BUYERS | 
- **maxH4Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H4_BUYERS | 
- **minH4Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H4_SELLERS | 
- **maxH4Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H4_SELLERS | 
- **minH4BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H4_BUY_VOLUME_IN_USD | 
- **maxH4BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H4_BUY_VOLUME_IN_USD | 
- **minH4SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H4_SELL_VOLUME_IN_USD | 
- **maxH4SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H4_SELL_VOLUME_IN_USD | 
- **minH1VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H1_VOLUME_IN_USD | 
- **maxH1VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H1_VOLUME_IN_USD | 
- **minH1PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H1_PRICE_CHANGE_RATIO | 
- **maxH1PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H1_PRICE_CHANGE_RATIO | 
- **minH1Buys** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H1_BUYS | 
- **maxH1Buys** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H1_BUYS | 
- **minH1Sells** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H1_SELLS | 
- **maxH1Sells** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H1_SELLS | 
- **minH1Trades** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H1_TRADES | 
- **maxH1Trades** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H1_TRADES | 
- **minH1Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H1_BUYERS | 
- **maxH1Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H1_BUYERS | 
- **minH1Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H1_SELLERS | 
- **maxH1Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H1_SELLERS | 
- **minH1BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H1_BUY_VOLUME_IN_USD | 
- **maxH1BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H1_BUY_VOLUME_IN_USD | 
- **minH1SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_H1_SELL_VOLUME_IN_USD | 
- **maxH1SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_H1_SELL_VOLUME_IN_USD | 
- **minM30VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M30_VOLUME_IN_USD | 
- **maxM30VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M30_VOLUME_IN_USD | 
- **minM30PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M30_PRICE_CHANGE_RATIO | 
- **maxM30PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M30_PRICE_CHANGE_RATIO | 
- **minM30Buys** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M30_BUYS | 
- **maxM30Buys** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M30_BUYS | 
- **minM30Sells** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M30_SELLS | 
- **maxM30Sells** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M30_SELLS | 
- **minM30Trades** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M30_TRADES | 
- **maxM30Trades** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M30_TRADES | 
- **minM30Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M30_BUYERS | 
- **maxM30Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M30_BUYERS | 
- **minM30Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M30_SELLERS | 
- **maxM30Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M30_SELLERS | 
- **minM30BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M30_BUY_VOLUME_IN_USD | 
- **maxM30BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M30_BUY_VOLUME_IN_USD | 
- **minM30SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M30_SELL_VOLUME_IN_USD | 
- **maxM30SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M30_SELL_VOLUME_IN_USD | 
- **minM15VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M15_VOLUME_IN_USD | 
- **maxM15VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M15_VOLUME_IN_USD | 
- **minM15PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M15_PRICE_CHANGE_RATIO | 
- **maxM15PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M15_PRICE_CHANGE_RATIO | 
- **minM15Buys** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M15_BUYS | 
- **maxM15Buys** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M15_BUYS | 
- **minM15Sells** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M15_SELLS | 
- **maxM15Sells** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M15_SELLS | 
- **minM15Trades** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M15_TRADES | 
- **maxM15Trades** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M15_TRADES | 
- **minM15Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M15_BUYERS | 
- **maxM15Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M15_BUYERS | 
- **minM15Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M15_SELLERS | 
- **maxM15Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M15_SELLERS | 
- **minM15BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M15_BUY_VOLUME_IN_USD | 
- **maxM15BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M15_BUY_VOLUME_IN_USD | 
- **minM15SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M15_SELL_VOLUME_IN_USD | 
- **maxM15SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M15_SELL_VOLUME_IN_USD | 
- **minM5VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M5_VOLUME_IN_USD | 
- **maxM5VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M5_VOLUME_IN_USD | 
- **minM5PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M5_PRICE_CHANGE_RATIO | 
- **maxM5PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M5_PRICE_CHANGE_RATIO | 
- **minM5Buys** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M5_BUYS | 
- **maxM5Buys** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M5_BUYS | 
- **minM5Sells** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M5_SELLS | 
- **maxM5Sells** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M5_SELLS | 
- **minM5Trades** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M5_TRADES | 
- **maxM5Trades** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M5_TRADES | 
- **minM5Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M5_BUYERS | 
- **maxM5Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M5_BUYERS | 
- **minM5Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M5_SELLERS | 
- **maxM5Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M5_SELLERS | 
- **minM5BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M5_BUY_VOLUME_IN_USD | 
- **maxM5BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M5_BUY_VOLUME_IN_USD | 
- **minM5SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M5_SELL_VOLUME_IN_USD | 
- **maxM5SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M5_SELL_VOLUME_IN_USD | 
- **minM1VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M1_VOLUME_IN_USD | 
- **maxM1VolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M1_VOLUME_IN_USD | 
- **minM1PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M1_PRICE_CHANGE_RATIO | 
- **maxM1PriceChangeRatio** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M1_PRICE_CHANGE_RATIO | 
- **minM1Buys** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M1_BUYS | 
- **maxM1Buys** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M1_BUYS | 
- **minM1Sells** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M1_SELLS | 
- **maxM1Sells** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M1_SELLS | 
- **minM1Trades** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M1_TRADES | 
- **maxM1Trades** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M1_TRADES | 
- **minM1Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M1_BUYERS | 
- **maxM1Buyers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M1_BUYERS | 
- **minM1Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M1_SELLERS | 
- **maxM1Sellers** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M1_SELLERS | 
- **minM1BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M1_BUY_VOLUME_IN_USD | 
- **maxM1BuyVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M1_BUY_VOLUME_IN_USD | 
- **minM1SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MIN_M1_SELL_VOLUME_IN_USD | 
- **maxM1SellVolumeInUsd** | **string** | DTO.TOKEN.LIST.QUERY.MAX_M1_SELL_VOLUME_IN_USD | 
+ **cursor** | **string** | Pagination cursor | 
+ **limit** | **float32** | Number of results per page | [default to 20]
+ **direction** | **string** | Pagination direction (next or prev) | [default to &quot;next&quot;]
+ **sort** | **string** | Sort direction | [default to &quot;desc&quot;]
+ **sortBy** | **string** | Sort by field | 
+ **minH24VolumeInUsd** | **string** | Minimum 24h volume in USD | 
+ **maxH24VolumeInUsd** | **string** | Maximum 24h volume in USD | 
+ **minH24PriceChangeRatio** | **string** | Minimum 24h price change ratio | 
+ **maxH24PriceChangeRatio** | **string** | Maximum 24h price change ratio | 
+ **minH24Buys** | **string** | Minimum 24h buys | 
+ **maxH24Buys** | **string** | Maximum 24h buys | 
+ **minH24Sells** | **string** | Minimum 24h sells | 
+ **maxH24Sells** | **string** | Maximum 24h sells | 
+ **minH24Trades** | **string** | Minimum 24h trades | 
+ **maxH24Trades** | **string** | Maximum 24h trades | 
+ **minH24Buyers** | **string** | Minimum 24h buyers | 
+ **maxH24Buyers** | **string** | Maximum 24h buyers | 
+ **minH24Sellers** | **string** | Minimum 24h sellers | 
+ **maxH24Sellers** | **string** | Maximum 24h sellers | 
+ **minH24BuyVolumeInUsd** | **string** | Minimum 24h buy volume in USD | 
+ **maxH24BuyVolumeInUsd** | **string** | Maximum 24h buy volume in USD | 
+ **minH24SellVolumeInUsd** | **string** | Minimum 24h sell volume in USD | 
+ **maxH24SellVolumeInUsd** | **string** | Maximum 24h sell volume in USD | 
+ **minH4VolumeInUsd** | **string** | Minimum 4h volume in USD | 
+ **maxH4VolumeInUsd** | **string** | Maximum 4h volume in USD | 
+ **minH4PriceChangeRatio** | **string** | Minimum 4h price change ratio | 
+ **maxH4PriceChangeRatio** | **string** | Maximum 4h price change ratio | 
+ **minH4Buys** | **string** | Minimum 4h buys | 
+ **maxH4Buys** | **string** | Maximum 4h buys | 
+ **minH4Sells** | **string** | Minimum 4h sells | 
+ **maxH4Sells** | **string** | Maximum 4h sells | 
+ **minH4Trades** | **string** | Minimum 4h trades | 
+ **maxH4Trades** | **string** | Maximum 4h trades | 
+ **minH4Buyers** | **string** | Minimum 4h buyers | 
+ **maxH4Buyers** | **string** | Maximum 4h buyers | 
+ **minH4Sellers** | **string** | Minimum 4h sellers | 
+ **maxH4Sellers** | **string** | Maximum 4h sellers | 
+ **minH4BuyVolumeInUsd** | **string** | Minimum 4h buy volume in USD | 
+ **maxH4BuyVolumeInUsd** | **string** | Maximum 4h buy volume in USD | 
+ **minH4SellVolumeInUsd** | **string** | Minimum 4h sell volume in USD | 
+ **maxH4SellVolumeInUsd** | **string** | Maximum 4h sell volume in USD | 
+ **minH1VolumeInUsd** | **string** | Minimum 1h volume in USD | 
+ **maxH1VolumeInUsd** | **string** | Maximum 1h volume in USD | 
+ **minH1PriceChangeRatio** | **string** | Minimum 1h price change ratio | 
+ **maxH1PriceChangeRatio** | **string** | Maximum 1h price change ratio | 
+ **minH1Buys** | **string** | Minimum 1h buys | 
+ **maxH1Buys** | **string** | Maximum 1h buys | 
+ **minH1Sells** | **string** | Minimum 1h sells | 
+ **maxH1Sells** | **string** | Maximum 1h sells | 
+ **minH1Trades** | **string** | Minimum 1h trades | 
+ **maxH1Trades** | **string** | Maximum 1h trades | 
+ **minH1Buyers** | **string** | Minimum 1h buyers | 
+ **maxH1Buyers** | **string** | Maximum 1h buyers | 
+ **minH1Sellers** | **string** | Minimum 1h sellers | 
+ **maxH1Sellers** | **string** | Maximum 1h sellers | 
+ **minH1BuyVolumeInUsd** | **string** | Minimum 1h buy volume in USD | 
+ **maxH1BuyVolumeInUsd** | **string** | Maximum 1h buy volume in USD | 
+ **minH1SellVolumeInUsd** | **string** | Minimum 1h sell volume in USD | 
+ **maxH1SellVolumeInUsd** | **string** | Maximum 1h sell volume in USD | 
+ **minM30VolumeInUsd** | **string** | Minimum 30m volume in USD | 
+ **maxM30VolumeInUsd** | **string** | Maximum 30m volume in USD | 
+ **minM30PriceChangeRatio** | **string** | Minimum 30m price change ratio | 
+ **maxM30PriceChangeRatio** | **string** | Maximum 30m price change ratio | 
+ **minM30Buys** | **string** | Minimum 30m buys | 
+ **maxM30Buys** | **string** | Maximum 30m buys | 
+ **minM30Sells** | **string** | Minimum 30m sells | 
+ **maxM30Sells** | **string** | Maximum 30m sells | 
+ **minM30Trades** | **string** | Minimum 30m trades | 
+ **maxM30Trades** | **string** | Maximum 30m trades | 
+ **minM30Buyers** | **string** | Minimum 30m buyers | 
+ **maxM30Buyers** | **string** | Maximum 30m buyers | 
+ **minM30Sellers** | **string** | Minimum 30m sellers | 
+ **maxM30Sellers** | **string** | Maximum 30m sellers | 
+ **minM30BuyVolumeInUsd** | **string** | Minimum 30m buy volume in USD | 
+ **maxM30BuyVolumeInUsd** | **string** | Maximum 30m buy volume in USD | 
+ **minM30SellVolumeInUsd** | **string** | Minimum 30m sell volume in USD | 
+ **maxM30SellVolumeInUsd** | **string** | Maximum 30m sell volume in USD | 
+ **minM15VolumeInUsd** | **string** | Minimum 15m volume in USD | 
+ **maxM15VolumeInUsd** | **string** | Maximum 15m volume in USD | 
+ **minM15PriceChangeRatio** | **string** | Minimum 15m price change ratio | 
+ **maxM15PriceChangeRatio** | **string** | Maximum 15m price change ratio | 
+ **minM15Buys** | **string** | Minimum 15m buys | 
+ **maxM15Buys** | **string** | Maximum 15m buys | 
+ **minM15Sells** | **string** | Minimum 15m sells | 
+ **maxM15Sells** | **string** | Maximum 15m sells | 
+ **minM15Trades** | **string** | Minimum 15m trades | 
+ **maxM15Trades** | **string** | Maximum 15m trades | 
+ **minM15Buyers** | **string** | Minimum 15m buyers | 
+ **maxM15Buyers** | **string** | Maximum 15m buyers | 
+ **minM15Sellers** | **string** | Minimum 15m sellers | 
+ **maxM15Sellers** | **string** | Maximum 15m sellers | 
+ **minM15BuyVolumeInUsd** | **string** | Minimum 15m buy volume in USD | 
+ **maxM15BuyVolumeInUsd** | **string** | Maximum 15m buy volume in USD | 
+ **minM15SellVolumeInUsd** | **string** | Minimum 15m sell volume in USD | 
+ **maxM15SellVolumeInUsd** | **string** | Maximum 15m sell volume in USD | 
+ **minM5VolumeInUsd** | **string** | Minimum 5m volume in USD | 
+ **maxM5VolumeInUsd** | **string** | Maximum 5m volume in USD | 
+ **minM5PriceChangeRatio** | **string** | Minimum 5m price change ratio | 
+ **maxM5PriceChangeRatio** | **string** | Maximum 5m price change ratio | 
+ **minM5Buys** | **string** | Minimum 5m buys | 
+ **maxM5Buys** | **string** | Maximum 5m buys | 
+ **minM5Sells** | **string** | Minimum 5m sells | 
+ **maxM5Sells** | **string** | Maximum 5m sells | 
+ **minM5Trades** | **string** | Minimum 5m trades | 
+ **maxM5Trades** | **string** | Maximum 5m trades | 
+ **minM5Buyers** | **string** | Minimum 5m buyers | 
+ **maxM5Buyers** | **string** | Maximum 5m buyers | 
+ **minM5Sellers** | **string** | Minimum 5m sellers | 
+ **maxM5Sellers** | **string** | Maximum 5m sellers | 
+ **minM5BuyVolumeInUsd** | **string** | Minimum 5m buy volume in USD | 
+ **maxM5BuyVolumeInUsd** | **string** | Maximum 5m buy volume in USD | 
+ **minM5SellVolumeInUsd** | **string** | Minimum 5m sell volume in USD | 
+ **maxM5SellVolumeInUsd** | **string** | Maximum 5m sell volume in USD | 
+ **minM1VolumeInUsd** | **string** | Minimum 1m volume in USD | 
+ **maxM1VolumeInUsd** | **string** | Maximum 1m volume in USD | 
+ **minM1PriceChangeRatio** | **string** | Minimum 1m price change ratio | 
+ **maxM1PriceChangeRatio** | **string** | Maximum 1m price change ratio | 
+ **minM1Buys** | **string** | Minimum 1m buys | 
+ **maxM1Buys** | **string** | Maximum 1m buys | 
+ **minM1Sells** | **string** | Minimum 1m sells | 
+ **maxM1Sells** | **string** | Maximum 1m sells | 
+ **minM1Trades** | **string** | Minimum 1m trades | 
+ **maxM1Trades** | **string** | Maximum 1m trades | 
+ **minM1Buyers** | **string** | Minimum 1m buyers | 
+ **maxM1Buyers** | **string** | Maximum 1m buyers | 
+ **minM1Sellers** | **string** | Minimum 1m sellers | 
+ **maxM1Sellers** | **string** | Maximum 1m sellers | 
+ **minM1BuyVolumeInUsd** | **string** | Minimum 1m buy volume in USD | 
+ **maxM1BuyVolumeInUsd** | **string** | Maximum 1m buy volume in USD | 
+ **minM1SellVolumeInUsd** | **string** | Minimum 1m sell volume in USD | 
+ **maxM1SellVolumeInUsd** | **string** | Maximum 1m sell volume in USD | 
 
 ### Return type
 
@@ -1874,7 +1954,7 @@ Name | Type | Description  | Notes
 
 > TokenPage Search(ctx).Chains(chains).Q(q).Limit(limit).Sort(sort).Protocols(protocols).Cursor(cursor).SortBy(sortBy).Execute()
 
-CONTROLLER.TOKEN.SEARCH.SUMMARY
+Token - Search
 
 
 
@@ -1891,13 +1971,13 @@ import (
 )
 
 func main() {
-	chains := []string{"Inner_example"} // []string | DTO.TOKEN.SEARCH.CHAINS (optional)
-	q := "USDC" // string | DTO.TOKEN.SEARCH.QUERY (optional)
-	limit := int64(789) // int64 | DTO.TOKEN.SEARCH.LIMIT (optional) (default to 20)
-	sort := "sort_example" // string | DTO.TOKEN.SEARCH.SORT_DIRECTION (optional) (default to "desc")
-	protocols := []string{"Inner_example"} // []string | DTO.TOKEN.SEARCH.PROTOCOLS (optional)
-	cursor := "cursor_example" // string | DTO.PAGE.CURSOR (optional)
-	sortBy := "priceInUsd" // string | DTO.TOKEN.SEARCH.SORT_BY (optional)
+	chains := []string{"Inner_example"} // []string | Chain filter (optional)
+	q := "USDC" // string | Search query string for token name, symbol or address (optional)
+	limit := int64(789) // int64 | Number of results per page (optional) (default to 20)
+	sort := "sort_example" // string | Sort direction (optional) (default to "desc")
+	protocols := []string{"Inner_example"} // []string | Protocol filter, for supported protocols please check the dexName values returned by DEX - List (optional)
+	cursor := "cursor_example" // string | Pagination cursor (optional)
+	sortBy := "priceInUsd" // string | Field to sort by (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1922,13 +2002,13 @@ Other parameters are passed through a pointer to a apiSearchRequest struct via t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chains** | **[]string** | DTO.TOKEN.SEARCH.CHAINS | 
- **q** | **string** | DTO.TOKEN.SEARCH.QUERY | 
- **limit** | **int64** | DTO.TOKEN.SEARCH.LIMIT | [default to 20]
- **sort** | **string** | DTO.TOKEN.SEARCH.SORT_DIRECTION | [default to &quot;desc&quot;]
- **protocols** | **[]string** | DTO.TOKEN.SEARCH.PROTOCOLS | 
- **cursor** | **string** | DTO.PAGE.CURSOR | 
- **sortBy** | **string** | DTO.TOKEN.SEARCH.SORT_BY | 
+ **chains** | **[]string** | Chain filter | 
+ **q** | **string** | Search query string for token name, symbol or address | 
+ **limit** | **int64** | Number of results per page | [default to 20]
+ **sort** | **string** | Sort direction | [default to &quot;desc&quot;]
+ **protocols** | **[]string** | Protocol filter, for supported protocols please check the dexName values returned by DEX - List | 
+ **cursor** | **string** | Pagination cursor | 
+ **sortBy** | **string** | Field to sort by | 
 
 ### Return type
 

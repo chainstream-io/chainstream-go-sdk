@@ -22,29 +22,29 @@ var _ MappedNullable = &PumpCreateTokenInput{}
 
 // PumpCreateTokenInput struct for PumpCreateTokenInput
 type PumpCreateTokenInput struct {
-	// DTO.DEX.IDENTIFIER
+	// DEX identifier for the trade
 	Dex string `json:"dex"`
-	// DTO.DEX.WALLET
+	// Public key of the wallet initiating the transaction
 	UserAddress string `json:"userAddress"`
-	// DTO.DEX.BASE.PRIORITY_FEE
+	// Priority fee in SOL to increase transaction processing speed
 	PriorityFee *string `json:"priorityFee,omitempty"`
-	// DTO.DEX.PUMPFUN.MINT.TWITTER
+	// Twitter profile URL or handle
 	Twitter *string `json:"twitter,omitempty" validate:"regexp=^(@[a-zA-Z0-9_]{1,15}|https:\\/\\/twitter.com\\/[a-zA-Z0-9_]{1,15})$"`
-	// DTO.DEX.PUMPFUN.MINT.TELEGRAM
+	// Telegram group or channel link
 	Telegram *string `json:"telegram,omitempty" validate:"regexp=^https:\\/\\/t.me\\/"`
-	// DTO.DEX.PUMPFUN.MINT.WEBSITE
+	// Project website URL
 	Website *string `json:"website,omitempty" validate:"regexp=^https?:\\/\\/"`
-	// DTO.DEX.PUMPFUN.MINT.NAME
+	// Name of the token
 	Name string `json:"name"`
-	// DTO.DEX.PUMPFUN.MINT.SYMBOL
+	// Token symbol/ticker
 	Symbol string `json:"symbol"`
-	// DTO.DEX.PUMPFUN.MINT.MIGRATION_DEX
+	// Target DEX for token migration
 	MigrationDex string `json:"migrationDex"`
-	// DTO.DEX.PUMPFUN.MINT.IMAGE
+	// Base64 encoded token image or image url
 	Image string `json:"image"`
-	// DTO.DEX.PUMPFUN.MINT.MINT_ADDRESS
+	// Token mint address requiring signature
 	MintAddress string `json:"mintAddress"`
-	// DTO.DEX.PUMPFUN.MINT.DESCRIPTION
+	// Token description
 	Description string `json:"description"`
 }
 

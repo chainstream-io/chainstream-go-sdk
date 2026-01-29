@@ -22,31 +22,31 @@ var _ MappedNullable = &TradeEvent{}
 
 // TradeEvent struct for TradeEvent
 type TradeEvent struct {
-	// DTO.TRADE.MAKER
+	// Maker address
 	Maker string `json:"maker"`
-	// DTO.TRADE.BASE_AMOUNT
+	// Base token amount
 	BaseAmount string `json:"baseAmount"`
-	// DTO.TRADE.QUOTE_AMOUNT
+	// Quote token amount
 	QuoteAmount string `json:"quoteAmount"`
-	// DTO.TRADE.QUOTE_SYMBOL
+	// Quote token symbol
 	QuoteSymbol string `json:"quoteSymbol"`
-	// DTO.TRADE.QUOTE_ADDRESS
+	// Quote token address
 	QuoteAddress string `json:"quoteAddress"`
-	// DTO.TRADE.AMOUNT_IN_USD
+	// Amount in USD
 	AmountInUsd string `json:"amountInUsd"`
-	// DTO.TRADE.TIMESTAMP
+	// Trade timestamp (Unix epoch in seconds)
 	Timestamp int64 `json:"timestamp"`
-	// DTO.TRADE.EVENT
+	// Trade event type
 	Event TradeType `json:"event"`
-	// DTO.TRADE.TX_HASH
+	// Transaction hash
 	TxHash string `json:"txHash"`
-	// DTO.TRADE.PRICE_IN_USD
+	// Price in USD
 	PriceInUsd string `json:"priceInUsd"`
-	// DTO.TRADE.ID
+	// Trade ID
 	Id string `json:"id"`
-	// DTO.TRADE.BUY_COST_USD
+	// Buy cost in USD
 	BuyCostUsd string `json:"buyCostUsd"`
-	// DTO.TRADE.TOKEN_ADDRESS
+	// Token address
 	TokenAddress string `json:"tokenAddress"`
 }
 

@@ -15,7 +15,7 @@ import (
 )
 
 const (
-	LIB_VERSION = "0.1.16"
+	LIB_VERSION = "0.1.17"
 )
 
 // TokenProvider represents a token provider interface
@@ -23,8 +23,8 @@ type TokenProvider interface {
 	GetToken() (string, error)
 }
 
-// DexAggregatorOptions represents DEX aggregator options
-type DexAggregatorOptions struct {
+// ChainStreamClientOptions represents ChainStream client options
+type ChainStreamClientOptions struct {
 	Debug     bool   `json:"debug,omitempty"`
 	ServerUrl string `json:"serverUrl,omitempty"`
 	StreamUrl string `json:"streamUrl,omitempty"`
@@ -35,14 +35,14 @@ type DexAggregatorOptions struct {
 	AutoConnectWebSocket bool `json:"autoConnectWebSocket,omitempty"`
 }
 
-// DexClient represents the main DEX client - similar to JavaScript's DexClient class
-type DexClient struct {
+// ChainStreamClient represents the main ChainStream client
+type ChainStreamClient struct {
 	requestCtx    *api.DexRequestContext
 	configuration *openapi.Configuration
 	client        *openapi.APIClient
 	stream        *api.StreamApi
 
-	// API services - similar to JavaScript's public readonly fields
+	// API services
 	Dex         *openapi.DexAPIService
 	DexPool     *openapi.DexPoolAPIService
 	Token       *openapi.TokenAPIService
@@ -62,11 +62,11 @@ type DexClient struct {
 	Jobs        *openapi.JobsAPIService
 }
 
-// NewDexClient creates a new DEX client - similar to JavaScript's constructor
-// createDexClient is a helper function to create a DEX client with common setup
-func createDexClient(accessToken string, tokenProvider TokenProvider, options *DexAggregatorOptions) (*DexClient, error) {
+// NewChainStreamClient creates a new ChainStream client
+// createChainStreamClient is a helper function to create a ChainStream client with common setup
+func createChainStreamClient(accessToken string, tokenProvider TokenProvider, options *ChainStreamClientOptions) (*ChainStreamClient, error) {
 	if options == nil {
-		options = &DexAggregatorOptions{}
+		options = &ChainStreamClientOptions{}
 	}
 
 	// Set default values
@@ -125,8 +125,8 @@ func createDexClient(accessToken string, tokenProvider TokenProvider, options *D
 	// Create stream API
 	stream := api.NewStreamApi(requestCtx)
 
-	// Create DEX client
-	dexClient := &DexClient{
+	// Create ChainStream client
+	csClient := &ChainStreamClient{
 		requestCtx:    requestCtx,
 		configuration: config,
 		client:        client,
@@ -159,34 +159,34 @@ func createDexClient(accessToken string, tokenProvider TokenProvider, options *D
 		}
 	}
 
-	return dexClient, nil
+	return csClient, nil
 }
 
-func NewDexClient(accessToken string, options *DexAggregatorOptions) (*DexClient, error) {
-	return createDexClient(accessToken, nil, options)
+func NewChainStreamClient(accessToken string, options *ChainStreamClientOptions) (*ChainStreamClient, error) {
+	return createChainStreamClient(accessToken, nil, options)
 }
 
-// NewDexClientWithTokenProvider creates a DEX client with token provider
-func NewDexClientWithTokenProvider(tokenProvider TokenProvider, options *DexAggregatorOptions) (*DexClient, error) {
-	return createDexClient("", tokenProvider, options)
+// NewChainStreamClientWithTokenProvider creates a ChainStream client with token provider
+func NewChainStreamClientWithTokenProvider(tokenProvider TokenProvider, options *ChainStreamClientOptions) (*ChainStreamClient, error) {
+	return createChainStreamClient("", tokenProvider, options)
 }
 
-// WaitForJob waits for job completion - similar to JavaScript's waitForJob method
-func (d *DexClient) WaitForJob(jobId string, timeout time.Duration) (map[string]interface{}, error) {
+// WaitForJob waits for job completion
+func (c *ChainStreamClient) WaitForJob(jobId string, timeout time.Duration) (map[string]interface{}, error) {
 	// Get access token
 	var token string
 	var err error
-	if d.requestCtx.TokenProvider != nil {
-		token, err = d.requestCtx.TokenProvider()
+	if c.requestCtx.TokenProvider != nil {
+		token, err = c.requestCtx.TokenProvider()
 		if err != nil {
 			return nil, fmt.Errorf("failed to get token: %w", err)
 		}
 	} else {
-		token = d.requestCtx.AccessToken
+		token = c.requestCtx.AccessToken
 	}
 
 	// Build SSE URL
-	sseUrl := fmt.Sprintf("%s/jobs/%s/streaming", d.requestCtx.BaseUrl, jobId)
+	sseUrl := fmt.Sprintf("%s/jobs/%s/streaming", c.requestCtx.BaseUrl, jobId)
 
 	// Create HTTP request
 	req, err := http.NewRequest("GET", sseUrl, nil)
@@ -238,21 +238,21 @@ func (d *DexClient) WaitForJob(jobId string, timeout time.Duration) (map[string]
 }
 
 // WaitForJobWithContext waits for job completion with context
-func (d *DexClient) WaitForJobWithContext(ctx context.Context, jobId string) (map[string]interface{}, error) {
+func (c *ChainStreamClient) WaitForJobWithContext(ctx context.Context, jobId string) (map[string]interface{}, error) {
 	// Get access token
 	var token string
 	var err error
-	if d.requestCtx.TokenProvider != nil {
-		token, err = d.requestCtx.TokenProvider()
+	if c.requestCtx.TokenProvider != nil {
+		token, err = c.requestCtx.TokenProvider()
 		if err != nil {
 			return nil, fmt.Errorf("failed to get token: %w", err)
 		}
 	} else {
-		token = d.requestCtx.AccessToken
+		token = c.requestCtx.AccessToken
 	}
 
 	// Build SSE URL
-	sseUrl := fmt.Sprintf("%s/jobs/%s/streaming", d.requestCtx.BaseUrl, jobId)
+	sseUrl := fmt.Sprintf("%s/jobs/%s/streaming", c.requestCtx.BaseUrl, jobId)
 
 	// Create HTTP request with context
 	req, err := http.NewRequestWithContext(ctx, "GET", sseUrl, nil)
@@ -315,9 +315,9 @@ func (d *DexClient) WaitForJobWithContext(ctx context.Context, jobId string) (ma
 }
 
 // Close closes the client connection
-func (d *DexClient) Close() error {
-	if d.stream != nil {
-		return d.stream.Disconnect()
+func (c *ChainStreamClient) Close() error {
+	if c.stream != nil {
+		return c.stream.Disconnect()
 	}
 	return nil
 }

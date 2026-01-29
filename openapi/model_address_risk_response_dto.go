@@ -22,23 +22,23 @@ var _ MappedNullable = &AddressRiskResponseDTO{}
 
 // AddressRiskResponseDTO struct for AddressRiskResponseDTO
 type AddressRiskResponseDTO struct {
-	// DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS
+	// Address
 	Address string `json:"address"`
-	// DTO.KYT.ADDRESS_RISK_RESPONSE.RISK
+	// Risk level
 	Risk string `json:"risk"`
-	// DTO.KYT.ADDRESS_RISK_RESPONSE.RISK_REASON
+	// Risk reason
 	RiskReason string `json:"riskReason"`
-	// DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS_TYPE
+	// Address type
 	AddressType string `json:"addressType"`
-	// DTO.KYT.ADDRESS_RISK_RESPONSE.CLUSTER
+	// Cluster
 	Cluster string `json:"cluster"`
-	// DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS_IDENTIFICATIONS
+	// Address identification list
 	AddressIdentifications []string `json:"addressIdentifications"`
-	// DTO.KYT.ADDRESS_RISK_RESPONSE.EXPOSURES
+	// Exposure list
 	Exposures []AddressExposure `json:"exposures"`
-	// DTO.KYT.ADDRESS_RISK_RESPONSE.TRIGGERS
+	// Trigger list
 	Triggers []string `json:"triggers"`
-	// DTO.KYT.ADDRESS_RISK_RESPONSE.STATUS
+	// Status
 	Status string `json:"status"`
 }
 

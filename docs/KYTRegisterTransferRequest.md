@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Network** | **string** | DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.NETWORK | 
-**Asset** | **string** | DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.ASSET | 
-**TransferReference** | **string** | DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.TRANSFER_REFERENCE | 
-**Direction** | **string** | DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.DIRECTION | 
+**Network** | **string** | Transfer network | 
+**Asset** | **string** | Asset type | 
+**TransferReference** | **string** | Transfer hash/transaction ID | 
+**Direction** | **string** | Transfer direction | 
 
 ## Methods
 

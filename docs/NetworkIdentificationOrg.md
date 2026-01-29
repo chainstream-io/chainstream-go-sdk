@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | DTO.KYT.NETWORK_IDENTIFICATION_ORG.NAME | 
+**Name** | **string** | Organization name | 
 
 ## Methods
 
