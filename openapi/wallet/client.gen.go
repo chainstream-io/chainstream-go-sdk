@@ -306,12 +306,6 @@ type WalletPnlDTO struct {
 	WalletAddress string `json:"walletAddress"`
 }
 
-// GetPnlParams defines parameters for GetPnl.
-type GetPnlParams struct {
-	// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
-	TokenAddress *string `form:"tokenAddress,omitempty" json:"tokenAddress,omitempty"`
-}
-
 // GetBalanceParams defines parameters for GetBalance.
 type GetBalanceParams struct {
 	// TokenAddress DTO.WALLET.BALANCE.QUERY.TOKEN_ADDRESS
@@ -340,6 +334,12 @@ type GetBalanceUpdatesParams struct {
 
 	// Limit DTO.PAGE.LIMIT
 	Limit *int32 `form:"limit,omitempty" json:"limit,omitempty"`
+}
+
+// GetPnlParams defines parameters for GetPnl.
+type GetPnlParams struct {
+	// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+	TokenAddress *string `form:"tokenAddress,omitempty" json:"tokenAddress,omitempty"`
 }
 
 // CalculatePnlJSONRequestBody defines body for CalculatePnl for application/json ContentType.
@@ -418,9 +418,6 @@ func WithRequestEditorFn(fn RequestEditorFn) ClientOption {
 
 // The interface specification for the client above.
 type ClientInterface interface {
-	// GetPnl request
-	GetPnl(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetBalance request
 	GetBalance(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetBalanceParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -432,20 +429,11 @@ type ClientInterface interface {
 
 	CalculatePnl(ctx context.Context, chain ChainSymbol, walletAddress string, body CalculatePnlJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetPnl request
+	GetPnl(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetPnlStats request
 	GetPnlStats(ctx context.Context, chain ChainSymbol, walletAddress string, reqEditors ...RequestEditorFn) (*http.Response, error)
-}
-
-func (c *Client) GetPnl(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetPnlRequest(c.Server, chain, walletAddress, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
 }
 
 func (c *Client) GetBalance(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetBalanceParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -496,8 +484,8 @@ func (c *Client) CalculatePnl(ctx context.Context, chain ChainSymbol, walletAddr
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetPnlStats(ctx context.Context, chain ChainSymbol, walletAddress string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetPnlStatsRequest(c.Server, chain, walletAddress)
+func (c *Client) GetPnl(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetPnlRequest(c.Server, chain, walletAddress, params)
 	if err != nil {
 		return nil, err
 	}
@@ -508,67 +496,16 @@ func (c *Client) GetPnlStats(ctx context.Context, chain ChainSymbol, walletAddre
 	return c.Client.Do(req)
 }
 
-// NewGetPnlRequest generates requests for GetPnl
-func NewGetPnlRequest(server string, chain ChainSymbol, walletAddress string, params *GetPnlParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+func (c *Client) GetPnlStats(ctx context.Context, chain ChainSymbol, walletAddress string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetPnlStatsRequest(c.Server, chain, walletAddress)
 	if err != nil {
 		return nil, err
 	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "walletAddress", runtime.ParamLocationPath, walletAddress)
-	if err != nil {
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
 		return nil, err
 	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if params.TokenAddress != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tokenAddress", runtime.ParamLocationQuery, *params.TokenAddress); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
+	return c.Client.Do(req)
 }
 
 // NewGetBalanceRequest generates requests for GetBalance
@@ -847,6 +784,69 @@ func NewCalculatePnlRequestWithBody(server string, chain ChainSymbol, walletAddr
 	return req, nil
 }
 
+// NewGetPnlRequest generates requests for GetPnl
+func NewGetPnlRequest(server string, chain ChainSymbol, walletAddress string, params *GetPnlParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "walletAddress", runtime.ParamLocationPath, walletAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/pnl", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.TokenAddress != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tokenAddress", runtime.ParamLocationQuery, *params.TokenAddress); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetPnlStatsRequest generates requests for GetPnlStats
 func NewGetPnlStatsRequest(server string, chain ChainSymbol, walletAddress string) (*http.Request, error) {
 	var err error
@@ -931,9 +931,6 @@ func WithBaseURL(baseURL string) ClientOption {
 
 // ClientWithResponsesInterface is the interface specification for the client with responses above.
 type ClientWithResponsesInterface interface {
-	// GetPnlWithResponse request
-	GetPnlWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*GetPnlResponse, error)
-
 	// GetBalanceWithResponse request
 	GetBalanceWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetBalanceParams, reqEditors ...RequestEditorFn) (*GetBalanceResponse, error)
 
@@ -945,30 +942,11 @@ type ClientWithResponsesInterface interface {
 
 	CalculatePnlWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, body CalculatePnlJSONRequestBody, reqEditors ...RequestEditorFn) (*CalculatePnlResponse, error)
 
+	// GetPnlWithResponse request
+	GetPnlWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*GetPnlResponse, error)
+
 	// GetPnlStatsWithResponse request
 	GetPnlStatsWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, reqEditors ...RequestEditorFn) (*GetPnlStatsResponse, error)
-}
-
-type GetPnlResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON200      *[]WalletPnlDTO
-}
-
-// Status returns HTTPResponse.Status
-func (r GetPnlResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetPnlResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
 }
 
 type GetBalanceResponse struct {
@@ -1037,6 +1015,28 @@ func (r CalculatePnlResponse) StatusCode() int {
 	return 0
 }
 
+type GetPnlResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *[]WalletPnlDTO
+}
+
+// Status returns HTTPResponse.Status
+func (r GetPnlResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetPnlResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 type GetPnlStatsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -1057,15 +1057,6 @@ func (r GetPnlStatsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
-}
-
-// GetPnlWithResponse request returning *GetPnlResponse
-func (c *ClientWithResponses) GetPnlWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*GetPnlResponse, error) {
-	rsp, err := c.GetPnl(ctx, chain, walletAddress, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetPnlResponse(rsp)
 }
 
 // GetBalanceWithResponse request returning *GetBalanceResponse
@@ -1103,6 +1094,15 @@ func (c *ClientWithResponses) CalculatePnlWithResponse(ctx context.Context, chai
 	return ParseCalculatePnlResponse(rsp)
 }
 
+// GetPnlWithResponse request returning *GetPnlResponse
+func (c *ClientWithResponses) GetPnlWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*GetPnlResponse, error) {
+	rsp, err := c.GetPnl(ctx, chain, walletAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetPnlResponse(rsp)
+}
+
 // GetPnlStatsWithResponse request returning *GetPnlStatsResponse
 func (c *ClientWithResponses) GetPnlStatsWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, reqEditors ...RequestEditorFn) (*GetPnlStatsResponse, error) {
 	rsp, err := c.GetPnlStats(ctx, chain, walletAddress, reqEditors...)
@@ -1110,32 +1110,6 @@ func (c *ClientWithResponses) GetPnlStatsWithResponse(ctx context.Context, chain
 		return nil, err
 	}
 	return ParseGetPnlStatsResponse(rsp)
-}
-
-// ParseGetPnlResponse parses an HTTP response from a GetPnlWithResponse call
-func ParseGetPnlResponse(rsp *http.Response) (*GetPnlResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetPnlResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []WalletPnlDTO
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	}
-
-	return response, nil
 }
 
 // ParseGetBalanceResponse parses an HTTP response from a GetBalanceWithResponse call
@@ -1206,6 +1180,32 @@ func ParseCalculatePnlResponse(rsp *http.Response) (*CalculatePnlResponse, error
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest BooleanResultDTO
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetPnlResponse parses an HTTP response from a GetPnlWithResponse call
+func ParseGetPnlResponse(rsp *http.Response) (*GetPnlResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetPnlResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []WalletPnlDTO
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
