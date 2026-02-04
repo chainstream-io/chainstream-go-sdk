@@ -157,7 +157,7 @@ func NewGetRequest(server string, id string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/jobs/%s", pathParam0)
+	operationPath := fmt.Sprintf("/v1/jobs/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -191,7 +191,7 @@ func NewStreamingRequest(server string, id string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/jobs/%s/streaming", pathParam0)
+	operationPath := fmt.Sprintf("/v1/jobs/%s/streaming", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
