@@ -144,7 +144,7 @@ type DexPage struct {
 	StartCursor *string `json:"startCursor,omitempty"`
 
 	// Total DTO.PAGE.TOTAL
-	Total *float32 `json:"total,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 }
 
 // DexQuoteResponse defines model for DexQuoteResponse.

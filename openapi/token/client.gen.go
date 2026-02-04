@@ -308,6 +308,12 @@ const (
 	GetMintAndBurnParamsTypeMint GetMintAndBurnParamsType = "mint"
 )
 
+// Defines values for GetPoolsParamsDirection.
+const (
+	GetPoolsParamsDirectionNext GetPoolsParamsDirection = "next"
+	GetPoolsParamsDirectionPrev GetPoolsParamsDirection = "prev"
+)
+
 // Defines values for GetPoolsParamsSortBy.
 const (
 	TvlInSol GetPoolsParamsSortBy = "tvlInSol"
@@ -322,8 +328,8 @@ const (
 
 // Defines values for GetPricesParamsDirection.
 const (
-	GetPricesParamsDirectionNext GetPricesParamsDirection = "next"
-	GetPricesParamsDirectionPrev GetPricesParamsDirection = "prev"
+	Next GetPricesParamsDirection = "next"
+	Prev GetPricesParamsDirection = "prev"
 )
 
 // Candle defines model for Candle.
@@ -436,6 +442,27 @@ type DexPoolDTOType float32
 
 // DexPoolDTOVersion DTO.DEXPOOL.VERSION
 type DexPoolDTOVersion float32
+
+// DexPoolPage defines model for DexPoolPage.
+type DexPoolPage struct {
+	// Data DTO.DEXPOOL.PAGE.DATA
+	Data []DexPoolDTO `json:"data"`
+
+	// EndCursor DTO.PAGE.END_CURSOR
+	EndCursor *string `json:"endCursor,omitempty"`
+
+	// HasNext DTO.PAGE.HAS_NEXT
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev DTO.PAGE.HAS_PREV
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor DTO.PAGE.START_CURSOR
+	StartCursor *string `json:"startCursor,omitempty"`
+
+	// Total DTO.PAGE.TOTAL
+	Total *int64 `json:"total,omitempty"`
+}
 
 // DexPoolTokenLiquidity defines model for DexPoolTokenLiquidity.
 type DexPoolTokenLiquidity struct {
@@ -587,7 +614,7 @@ type TokenCreationPage struct {
 	StartCursor *string `json:"startCursor,omitempty"`
 
 	// Total DTO.PAGE.TOTAL
-	Total *float32 `json:"total,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 }
 
 // TokenCreatorsDTO defines model for TokenCreatorsDTO.
@@ -701,7 +728,7 @@ type TokenHolderPage struct {
 	StartCursor *string `json:"startCursor,omitempty"`
 
 	// Total DTO.PAGE.TOTAL
-	Total *float32 `json:"total,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 }
 
 // TokenLiquiditySnapshotDTO defines model for TokenLiquiditySnapshotDTO.
@@ -773,7 +800,7 @@ type TokenListPage struct {
 	StartCursor *string `json:"startCursor,omitempty"`
 
 	// Total DTO.PAGE.TOTAL
-	Total *float32 `json:"total,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 }
 
 // TokenMarketData defines model for TokenMarketData.
@@ -980,7 +1007,7 @@ type TokenPage struct {
 	StartCursor *string `json:"startCursor,omitempty"`
 
 	// Total DTO.PAGE.TOTAL
-	Total *float32 `json:"total,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 }
 
 // TokenPriceDTO defines model for TokenPriceDTO.
@@ -1016,7 +1043,7 @@ type TokenPricePage struct {
 	StartCursor *string `json:"startCursor,omitempty"`
 
 	// Total DTO.PAGE.TOTAL
-	Total *float32 `json:"total,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 }
 
 // TokenSocialMediasDTO defines model for TokenSocialMediasDTO.
@@ -1526,7 +1553,7 @@ type ListTokenParams struct {
 	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 
 	// Limit DTO.PAGE.LIMIT
-	Limit *float32 `form:"limit,omitempty" json:"limit,omitempty"`
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
 	Direction *ListTokenParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
@@ -1985,7 +2012,7 @@ type GetHoldersParams struct {
 	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 
 	// Limit DTO.PAGE.LIMIT
-	Limit *float32 `form:"limit,omitempty" json:"limit,omitempty"`
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
 	Direction *GetHoldersParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
@@ -2018,7 +2045,7 @@ type GetMintAndBurnParams struct {
 	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 
 	// Limit DTO.PAGE.LIMIT
-	Limit *float32 `form:"limit,omitempty" json:"limit,omitempty"`
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
 	Direction *GetMintAndBurnParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
@@ -2035,6 +2062,15 @@ type GetMintAndBurnParamsType string
 
 // GetPoolsParams defines parameters for GetPools.
 type GetPoolsParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetPoolsParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+
 	// SortBy DTO.POOL.SORT_BY
 	SortBy *GetPoolsParamsSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
@@ -2054,6 +2090,9 @@ type GetPoolsParams struct {
 	MaxTvlInUsd *string `form:"maxTvlInUsd,omitempty" json:"maxTvlInUsd,omitempty"`
 }
 
+// GetPoolsParamsDirection defines parameters for GetPools.
+type GetPoolsParamsDirection string
+
 // GetPoolsParamsSortBy defines parameters for GetPools.
 type GetPoolsParamsSortBy string
 
@@ -2072,7 +2111,7 @@ type GetPricesParams struct {
 	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 
 	// Limit DTO.PAGE.LIMIT
-	Limit *float32 `form:"limit,omitempty" json:"limit,omitempty"`
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
 	Direction *GetPricesParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
@@ -5745,6 +5784,54 @@ func NewGetPoolsRequest(server string, chain ChainSymbol, tokenAddress string, p
 	if params != nil {
 		queryValues := queryURL.Query()
 
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
 		if params.SortBy != nil {
 
 			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "sortBy", runtime.ParamLocationQuery, *params.SortBy); err != nil {
@@ -6645,7 +6732,7 @@ func (r GetMintAndBurnResponse) StatusCode() int {
 type GetPoolsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *[]DexPoolDTO
+	JSON200      *DexPoolPage
 }
 
 // Status returns HTTPResponse.Status
@@ -7434,7 +7521,7 @@ func ParseGetPoolsResponse(rsp *http.Response) (*GetPoolsResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []DexPoolDTO
+		var dest DexPoolPage
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

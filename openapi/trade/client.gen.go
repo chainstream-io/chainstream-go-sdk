@@ -147,7 +147,7 @@ type TopTradersPage struct {
 	StartCursor *string `json:"startCursor,omitempty"`
 
 	// Total DTO.PAGE.TOTAL
-	Total *float32 `json:"total,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 }
 
 // TradeDetailDTO defines model for TradeDetailDTO.
@@ -246,7 +246,7 @@ type TradePage struct {
 	StartCursor *string `json:"startCursor,omitempty"`
 
 	// Total DTO.PAGE.TOTAL
-	Total *float32 `json:"total,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 }
 
 // GetTradesParams defines parameters for GetTrades.
@@ -255,7 +255,7 @@ type GetTradesParams struct {
 	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 
 	// Limit DTO.PAGE.LIMIT
-	Limit *float32 `form:"limit,omitempty" json:"limit,omitempty"`
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
 	Direction *GetTradesParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
@@ -300,7 +300,7 @@ type GetActivitiesParams struct {
 	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 
 	// Limit DTO.PAGE.LIMIT
-	Limit *float32 `form:"limit,omitempty" json:"limit,omitempty"`
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
 	Direction *GetActivitiesParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
