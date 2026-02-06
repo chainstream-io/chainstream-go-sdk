@@ -319,28 +319,71 @@ func (s *StreamApi) formatScientificNotation(value interface{}) string {
 	return strValue
 }
 
+// parseCandle parses candle data from WebSocket message
+func (s *StreamApi) parseCandle(dataMap map[string]interface{}) Candle {
+	return Candle{
+		Address:    getString(dataMap, "a"),
+		Open:       s.formatScientificNotation(dataMap["o"]),
+		Close:      s.formatScientificNotation(dataMap["c"]),
+		High:       s.formatScientificNotation(dataMap["h"]),
+		Low:        s.formatScientificNotation(dataMap["l"]),
+		Volume:     s.formatScientificNotation(dataMap["v"]),
+		Resolution: getString(dataMap, "r"),
+		Time:       getInt64(dataMap, "t"),
+		Number:     getInt(dataMap, "n"),
+	}
+}
+
 // SubscribeTokenCandles subscribes to token candle data
-func (s *StreamApi) SubscribeTokenCandles(chain, tokenAddress string, resolution token.Resolution, callback StreamCallback[TokenCandle], filter string) Unsubscribe {
-	channel := fmt.Sprintf("dex-candle:%s_%s_%s", chain, tokenAddress, resolution)
+// priceType: PriceTypeUSD (default) or PriceTypeNative
+func (s *StreamApi) SubscribeTokenCandles(chain, tokenAddress string, resolution token.Resolution, callback StreamCallback[Candle], filter string, priceType ...PriceType) Unsubscribe {
+	prefix := "dex-candle"
+	if len(priceType) > 0 && priceType[0] == PriceTypeNative {
+		prefix = "dex-candle-in-native"
+	}
+	channel := fmt.Sprintf("%s:%s_%s_%s", prefix, chain, tokenAddress, resolution)
 	return s.Subscribe(channel, func(data interface{}) {
 		dataMap, ok := data.(map[string]interface{})
 		if !ok {
 			return
 		}
-
-		candle := TokenCandle{
-			Open:       s.formatScientificNotation(dataMap["o"]),
-			Close:      s.formatScientificNotation(dataMap["c"]),
-			High:       s.formatScientificNotation(dataMap["h"]),
-			Low:        s.formatScientificNotation(dataMap["l"]),
-			Volume:     s.formatScientificNotation(dataMap["v"]),
-			Resolution: getString(dataMap, "r"),
-			Time:       getInt64(dataMap, "t"),
-			Number:     getInt(dataMap, "n"),
-		}
-
-		callback(candle)
+		callback(s.parseCandle(dataMap))
 	}, filter, "subscribeTokenCandles")
+}
+
+// SubscribePoolCandles subscribes to pool candle data
+// priceType: PriceTypeUSD (default) or PriceTypeNative
+func (s *StreamApi) SubscribePoolCandles(chain, poolAddress string, resolution token.Resolution, callback StreamCallback[Candle], filter string, priceType ...PriceType) Unsubscribe {
+	prefix := "dex-pool-candle"
+	if len(priceType) > 0 && priceType[0] == PriceTypeNative {
+		prefix = "dex-pool-candle-in-native"
+	}
+	channel := fmt.Sprintf("%s:%s_%s_%s", prefix, chain, poolAddress, resolution)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataMap, ok := data.(map[string]interface{})
+		if !ok {
+			return
+		}
+		callback(s.parseCandle(dataMap))
+	}, filter, "subscribePoolCandles")
+}
+
+// SubscribePairCandles subscribes to pair candle data
+// pairAddress format: {tokenA}-{tokenB}
+// priceType: PriceTypeUSD (default) or PriceTypeNative
+func (s *StreamApi) SubscribePairCandles(chain, pairAddress string, resolution token.Resolution, callback StreamCallback[Candle], filter string, priceType ...PriceType) Unsubscribe {
+	prefix := "dex-pair-candle"
+	if len(priceType) > 0 && priceType[0] == PriceTypeNative {
+		prefix = "dex-pair-candle-in-native"
+	}
+	channel := fmt.Sprintf("%s:%s_%s_%s", prefix, chain, pairAddress, resolution)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataMap, ok := data.(map[string]interface{})
+		if !ok {
+			return
+		}
+		callback(s.parseCandle(dataMap))
+	}, filter, "subscribePairCandles")
 }
 
 // SubscribeTokenStats subscribes to token statistics

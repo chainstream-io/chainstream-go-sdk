@@ -20,6 +20,24 @@ const (
 	BearerScopes = "bearer.Scopes"
 )
 
+// Defines values for CreateEndpointInputChannels.
+const (
+	CreateEndpointInputChannelsSolTokenCreated  CreateEndpointInputChannels = "sol.token.created"
+	CreateEndpointInputChannelsSolTokenMigrated CreateEndpointInputChannels = "sol.token.migrated"
+)
+
+// Defines values for EndpointResponseChannels.
+const (
+	EndpointResponseChannelsSolTokenCreated  EndpointResponseChannels = "sol.token.created"
+	EndpointResponseChannelsSolTokenMigrated EndpointResponseChannels = "sol.token.migrated"
+)
+
+// Defines values for UpdateEndpointInputChannels.
+const (
+	SolTokenCreated  UpdateEndpointInputChannels = "sol.token.created"
+	SolTokenMigrated UpdateEndpointInputChannels = "sol.token.migrated"
+)
+
 // Defines values for ListEndpointsParamsOrder.
 const (
 	Ascending  ListEndpointsParamsOrder = "ascending"
@@ -29,7 +47,7 @@ const (
 // CreateEndpointInput defines model for CreateEndpointInput.
 type CreateEndpointInput struct {
 	// Channels DTO.ENDPOINT.CHANNELS
-	Channels *[]string `json:"channels,omitempty"`
+	Channels *[]CreateEndpointInputChannels `json:"channels,omitempty"`
 
 	// Description DTO.ENDPOINT.DESCRIPTION
 	Description *string `json:"description,omitempty"`
@@ -52,6 +70,9 @@ type CreateEndpointInput struct {
 	// Url DTO.ENDPOINT.URL
 	Url *string `json:"url,omitempty"`
 }
+
+// CreateEndpointInputChannels defines model for CreateEndpointInput.Channels.
+type CreateEndpointInputChannels string
 
 // EndpointListResponse defines model for EndpointListResponse.
 type EndpointListResponse struct {
@@ -77,7 +98,7 @@ type EndpointOperationResponse struct {
 // EndpointResponse defines model for EndpointResponse.
 type EndpointResponse struct {
 	// Channels DTO.ENDPOINT.CHANNELS
-	Channels *[]string `json:"channels,omitempty"`
+	Channels *[]EndpointResponseChannels `json:"channels,omitempty"`
 
 	// CreatedAt DTO.ENDPOINT.CREATED_AT
 	CreatedAt *string `json:"createdAt,omitempty"`
@@ -110,6 +131,9 @@ type EndpointResponse struct {
 	Url *string `json:"url,omitempty"`
 }
 
+// EndpointResponseChannels defines model for EndpointResponse.Channels.
+type EndpointResponseChannels string
+
 // EndpointSecretResponse defines model for EndpointSecretResponse.
 type EndpointSecretResponse struct {
 	// Secret DTO.ENDPOINT.SECRET
@@ -119,7 +143,7 @@ type EndpointSecretResponse struct {
 // UpdateEndpointInput defines model for UpdateEndpointInput.
 type UpdateEndpointInput struct {
 	// Channels DTO.ENDPOINT.CHANNELS
-	Channels *[]string `json:"channels,omitempty"`
+	Channels *[]UpdateEndpointInputChannels `json:"channels,omitempty"`
 
 	// Description DTO.ENDPOINT.DESCRIPTION
 	Description *string `json:"description,omitempty"`
@@ -145,6 +169,9 @@ type UpdateEndpointInput struct {
 	// Url DTO.ENDPOINT.URL
 	Url *string `json:"url,omitempty"`
 }
+
+// UpdateEndpointInputChannels defines model for UpdateEndpointInput.Channels.
+type UpdateEndpointInputChannels string
 
 // ListEndpointsParams defines parameters for ListEndpoints.
 type ListEndpointsParams struct {

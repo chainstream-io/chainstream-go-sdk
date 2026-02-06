@@ -291,8 +291,17 @@ type TokenMetadata struct {
 	MigratedTo   *DexProtocol `json:"migratedTo,omitempty"`
 }
 
-// TokenCandle represents token candlestick data
-type TokenCandle struct {
+// PriceType represents the price type for candle data
+type PriceType string
+
+const (
+	PriceTypeUSD    PriceType = "usd"
+	PriceTypeNative PriceType = "native"
+)
+
+// Candle represents candlestick data for Token/Pool/Pair
+type Candle struct {
+	Address    string `json:"address"`
 	Open       string `json:"open"`
 	Close      string `json:"close"`
 	High       string `json:"high"`
@@ -302,6 +311,9 @@ type TokenCandle struct {
 	Time       int64  `json:"time"`
 	Number     int    `json:"number"`
 }
+
+// TokenCandle is an alias for backward compatibility
+type TokenCandle = Candle
 
 // TradeActivity represents trade activity data
 type TradeActivity struct {

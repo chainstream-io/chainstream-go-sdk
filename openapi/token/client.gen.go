@@ -103,18 +103,32 @@ const (
 	FilterConditionFieldTokenCreatedAt                 FilterConditionField = "tokenCreatedAt"
 )
 
+// Defines values for PriceType.
+const (
+	Native PriceType = "native"
+	Usd    PriceType = "usd"
+)
+
 // Defines values for Resolution.
 const (
 	N12h Resolution = "12h"
 	N15m Resolution = "15m"
 	N15s Resolution = "15s"
+	N1M  Resolution = "1M"
 	N1d  Resolution = "1d"
 	N1h  Resolution = "1h"
 	N1m  Resolution = "1m"
 	N1s  Resolution = "1s"
+	N1w  Resolution = "1w"
+	N2h  Resolution = "2h"
+	N30m Resolution = "30m"
 	N30s Resolution = "30s"
+	N3d  Resolution = "3d"
+	N3m  Resolution = "3m"
 	N4h  Resolution = "4h"
 	N5m  Resolution = "5m"
+	N6h  Resolution = "6h"
+	N8h  Resolution = "8h"
 )
 
 // Defines values for TokenCreationDTOType.
@@ -134,6 +148,7 @@ const (
 	Kol      TokenTraderTag = "kol"
 	Pro      TokenTraderTag = "pro"
 	Sandwish TokenTraderTag = "sandwish"
+	Smart    TokenTraderTag = "smart"
 	Sniper   TokenTraderTag = "sniper"
 )
 
@@ -352,6 +367,12 @@ type Candle struct {
 	// Time DTO.CANDLE.TIME
 	Time int64 `json:"time"`
 
+	// Trades DTO.CANDLE.TRADES
+	Trades int64 `json:"trades"`
+
+	// UpdatedAt DTO.CANDLE.UPDATED_AT
+	UpdatedAt int64 `json:"updatedAt"`
+
 	// Volume DTO.CANDLE.VOLUME
 	Volume string `json:"volume"`
 }
@@ -502,6 +523,9 @@ type FilterCondition struct {
 
 // FilterConditionField DTO.TOKEN.FILTER.FIELD
 type FilterConditionField string
+
+// PriceType defines model for PriceType.
+type PriceType string
 
 // Resolution defines model for Resolution.
 type Resolution string
@@ -1985,6 +2009,42 @@ type GetTokensParamsSortBy string
 // GetTokensParamsSortDirection defines parameters for GetTokens.
 type GetTokensParamsSortDirection string
 
+// GetPairCandlesParams defines parameters for GetPairCandles.
+type GetPairCandlesParams struct {
+	// Resolution DTO.CANDLE.RESOLUTION
+	Resolution Resolution `form:"resolution" json:"resolution"`
+
+	// PriceType DTO.CANDLE.PRICE_TYPE
+	PriceType *PriceType `form:"priceType,omitempty" json:"priceType,omitempty"`
+
+	// From DTO.CANDLE.FROM
+	From *int64 `form:"from,omitempty" json:"from,omitempty"`
+
+	// To DTO.CANDLE.TO
+	To *int64 `form:"to,omitempty" json:"to,omitempty"`
+
+	// Limit DTO.CANDLE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+}
+
+// GetPoolCandlesParams defines parameters for GetPoolCandles.
+type GetPoolCandlesParams struct {
+	// Resolution DTO.CANDLE.RESOLUTION
+	Resolution Resolution `form:"resolution" json:"resolution"`
+
+	// PriceType DTO.CANDLE.PRICE_TYPE
+	PriceType *PriceType `form:"priceType,omitempty" json:"priceType,omitempty"`
+
+	// From DTO.CANDLE.FROM
+	From *int64 `form:"from,omitempty" json:"from,omitempty"`
+
+	// To DTO.CANDLE.TO
+	To *int64 `form:"to,omitempty" json:"to,omitempty"`
+
+	// Limit DTO.CANDLE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+}
+
 // GetStatsMultiParams defines parameters for GetStatsMulti.
 type GetStatsMultiParams struct {
 	// TokenAddresses GLOBAL.TOKENADDRESSES.DESCRIPTION
@@ -1995,6 +2055,9 @@ type GetStatsMultiParams struct {
 type GetCandlesParams struct {
 	// Resolution DTO.CANDLE.RESOLUTION
 	Resolution Resolution `form:"resolution" json:"resolution"`
+
+	// PriceType DTO.CANDLE.PRICE_TYPE
+	PriceType *PriceType `form:"priceType,omitempty" json:"priceType,omitempty"`
 
 	// From DTO.CANDLE.FROM
 	From *int64 `form:"from,omitempty" json:"from,omitempty"`
@@ -2211,6 +2274,12 @@ type ClientInterface interface {
 	// GetTokens request
 	GetTokens(ctx context.Context, chain ChainSymbol, params *GetTokensParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetPairCandles request
+	GetPairCandles(ctx context.Context, chain ChainSymbol, pair string, params *GetPairCandlesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetPoolCandles request
+	GetPoolCandles(ctx context.Context, chain ChainSymbol, poolAddress string, params *GetPoolCandlesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetStatsMulti request
 	GetStatsMulti(ctx context.Context, chain ChainSymbol, params *GetStatsMultiParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -2325,6 +2394,30 @@ func (c *Client) GetMetadataMulti(ctx context.Context, chain ChainSymbol, params
 
 func (c *Client) GetTokens(ctx context.Context, chain ChainSymbol, params *GetTokensParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetTokensRequest(c.Server, chain, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetPairCandles(ctx context.Context, chain ChainSymbol, pair string, params *GetPairCandlesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetPairCandlesRequest(c.Server, chain, pair, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetPoolCandles(ctx context.Context, chain ChainSymbol, poolAddress string, params *GetPoolCandlesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetPoolCandlesRequest(c.Server, chain, poolAddress, params)
 	if err != nil {
 		return nil, err
 	}
@@ -5065,6 +5158,252 @@ func NewGetTokensRequest(server string, chain ChainSymbol, params *GetTokensPara
 	return req, nil
 }
 
+// NewGetPairCandlesRequest generates requests for GetPairCandles
+func NewGetPairCandlesRequest(server string, chain ChainSymbol, pair string, params *GetPairCandlesParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "pair", runtime.ParamLocationPath, pair)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/token/%s/pair/%s/candles", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "resolution", runtime.ParamLocationQuery, params.Resolution); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		if params.PriceType != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "priceType", runtime.ParamLocationQuery, *params.PriceType); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.From != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "from", runtime.ParamLocationQuery, *params.From); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.To != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "to", runtime.ParamLocationQuery, *params.To); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetPoolCandlesRequest generates requests for GetPoolCandles
+func NewGetPoolCandlesRequest(server string, chain ChainSymbol, poolAddress string, params *GetPoolCandlesParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "poolAddress", runtime.ParamLocationPath, poolAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/token/%s/pool/%s/candles", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "resolution", runtime.ParamLocationQuery, params.Resolution); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		if params.PriceType != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "priceType", runtime.ParamLocationQuery, *params.PriceType); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.From != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "from", runtime.ParamLocationQuery, *params.From); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.To != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "to", runtime.ParamLocationQuery, *params.To); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetStatsMultiRequest generates requests for GetStatsMulti
 func NewGetStatsMultiRequest(server string, chain ChainSymbol, params *GetStatsMultiParams) (*http.Request, error) {
 	var err error
@@ -5204,6 +5543,22 @@ func NewGetCandlesRequest(server string, chain ChainSymbol, tokenAddress string,
 					queryValues.Add(k, v2)
 				}
 			}
+		}
+
+		if params.PriceType != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "priceType", runtime.ParamLocationQuery, *params.PriceType); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
 		}
 
 		if params.From != nil {
@@ -6325,6 +6680,12 @@ type ClientWithResponsesInterface interface {
 	// GetTokensWithResponse request
 	GetTokensWithResponse(ctx context.Context, chain ChainSymbol, params *GetTokensParams, reqEditors ...RequestEditorFn) (*GetTokensResponse, error)
 
+	// GetPairCandlesWithResponse request
+	GetPairCandlesWithResponse(ctx context.Context, chain ChainSymbol, pair string, params *GetPairCandlesParams, reqEditors ...RequestEditorFn) (*GetPairCandlesResponse, error)
+
+	// GetPoolCandlesWithResponse request
+	GetPoolCandlesWithResponse(ctx context.Context, chain ChainSymbol, poolAddress string, params *GetPoolCandlesParams, reqEditors ...RequestEditorFn) (*GetPoolCandlesResponse, error)
+
 	// GetStatsMultiWithResponse request
 	GetStatsMultiWithResponse(ctx context.Context, chain ChainSymbol, params *GetStatsMultiParams, reqEditors ...RequestEditorFn) (*GetStatsMultiResponse, error)
 
@@ -6503,6 +6864,50 @@ func (r GetTokensResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r GetTokensResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetPairCandlesResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *[]Candle
+}
+
+// Status returns HTTPResponse.Status
+func (r GetPairCandlesResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetPairCandlesResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetPoolCandlesResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *[]Candle
+}
+
+// Status returns HTTPResponse.Status
+func (r GetPoolCandlesResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetPoolCandlesResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -6937,6 +7342,24 @@ func (c *ClientWithResponses) GetTokensWithResponse(ctx context.Context, chain C
 	return ParseGetTokensResponse(rsp)
 }
 
+// GetPairCandlesWithResponse request returning *GetPairCandlesResponse
+func (c *ClientWithResponses) GetPairCandlesWithResponse(ctx context.Context, chain ChainSymbol, pair string, params *GetPairCandlesParams, reqEditors ...RequestEditorFn) (*GetPairCandlesResponse, error) {
+	rsp, err := c.GetPairCandles(ctx, chain, pair, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetPairCandlesResponse(rsp)
+}
+
+// GetPoolCandlesWithResponse request returning *GetPoolCandlesResponse
+func (c *ClientWithResponses) GetPoolCandlesWithResponse(ctx context.Context, chain ChainSymbol, poolAddress string, params *GetPoolCandlesParams, reqEditors ...RequestEditorFn) (*GetPoolCandlesResponse, error) {
+	rsp, err := c.GetPoolCandles(ctx, chain, poolAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetPoolCandlesResponse(rsp)
+}
+
 // GetStatsMultiWithResponse request returning *GetStatsMultiResponse
 func (c *ClientWithResponses) GetStatsMultiWithResponse(ctx context.Context, chain ChainSymbol, params *GetStatsMultiParams, reqEditors ...RequestEditorFn) (*GetStatsMultiResponse, error) {
 	rsp, err := c.GetStatsMulti(ctx, chain, params, reqEditors...)
@@ -7236,6 +7659,58 @@ func ParseGetTokensResponse(rsp *http.Response) (*GetTokensResponse, error) {
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []Token
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetPairCandlesResponse parses an HTTP response from a GetPairCandlesWithResponse call
+func ParseGetPairCandlesResponse(rsp *http.Response) (*GetPairCandlesResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetPairCandlesResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []Candle
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetPoolCandlesResponse parses an HTTP response from a GetPoolCandlesWithResponse call
+func ParseGetPoolCandlesResponse(rsp *http.Response) (*GetPoolCandlesResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetPoolCandlesResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []Candle
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
