@@ -26,6 +26,13 @@ const (
 	Sol ChainSymbol = "sol"
 )
 
+// Defines values for TraderPnlResolution.
+const (
+	N1d  TraderPnlResolution = "1d"
+	N30d TraderPnlResolution = "30d"
+	N7d  TraderPnlResolution = "7d"
+)
+
 // Defines values for GetTradesParamsDirection.
 const (
 	GetTradesParamsDirectionNext GetTradesParamsDirection = "next"
@@ -59,8 +66,8 @@ const (
 
 // Defines values for GetTopTradersParamsDirection.
 const (
-	Next GetTopTradersParamsDirection = "next"
-	Prev GetTopTradersParamsDirection = "prev"
+	GetTopTradersParamsDirectionNext GetTopTradersParamsDirection = "next"
+	GetTopTradersParamsDirectionPrev GetTopTradersParamsDirection = "prev"
 )
 
 // Defines values for GetTopTradersParamsTimeFrame.
@@ -77,14 +84,26 @@ const (
 
 // Defines values for GetTopTradersParamsSortType.
 const (
-	Asc  GetTopTradersParamsSortType = "asc"
-	Desc GetTopTradersParamsSortType = "desc"
+	GetTopTradersParamsSortTypeAsc  GetTopTradersParamsSortType = "asc"
+	GetTopTradersParamsSortTypeDesc GetTopTradersParamsSortType = "desc"
 )
 
 // Defines values for GetTopTradersParamsSortBy.
 const (
 	TradeAmount GetTopTradersParamsSortBy = "tradeAmount"
 	TradeCount  GetTopTradersParamsSortBy = "tradeCount"
+)
+
+// Defines values for GetTraderGainersLosersParamsDirection.
+const (
+	GetTraderGainersLosersParamsDirectionNext GetTraderGainersLosersParamsDirection = "next"
+	GetTraderGainersLosersParamsDirectionPrev GetTraderGainersLosersParamsDirection = "prev"
+)
+
+// Defines values for GetTraderGainersLosersParamsSortType.
+const (
+	GetTraderGainersLosersParamsSortTypeAsc  GetTraderGainersLosersParamsSortType = "asc"
+	GetTraderGainersLosersParamsSortTypeDesc GetTraderGainersLosersParamsSortType = "desc"
 )
 
 // ChainSymbol defines model for ChainSymbol.
@@ -249,6 +268,48 @@ type TradePage struct {
 	Total *int64 `json:"total,omitempty"`
 }
 
+// TraderGainersLosersItemDTO defines model for TraderGainersLosersItemDTO.
+type TraderGainersLosersItemDTO struct {
+	// Address DTO.TRADER.GAINERS_LOSERS.ITEM.ADDRESS
+	Address string `json:"address"`
+
+	// Chain GLOBAL.CHAIN.DESCRIPTION
+	Chain ChainSymbol `json:"chain"`
+
+	// Pnl DTO.TRADER.GAINERS_LOSERS.ITEM.PNL
+	Pnl string `json:"pnl"`
+
+	// TradeCount DTO.TRADER.GAINERS_LOSERS.ITEM.TRADE_COUNT
+	TradeCount string `json:"tradeCount"`
+
+	// Volume DTO.TRADER.GAINERS_LOSERS.ITEM.VOLUME
+	Volume string `json:"volume"`
+}
+
+// TraderGainersLosersPage defines model for TraderGainersLosersPage.
+type TraderGainersLosersPage struct {
+	// Data DTO.TRADE.GAINERS_LOSERS.PAGE.DATA
+	Data []TraderGainersLosersItemDTO `json:"data"`
+
+	// EndCursor DTO.PAGE.END_CURSOR
+	EndCursor *string `json:"endCursor,omitempty"`
+
+	// HasNext DTO.PAGE.HAS_NEXT
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev DTO.PAGE.HAS_PREV
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor DTO.PAGE.START_CURSOR
+	StartCursor *string `json:"startCursor,omitempty"`
+
+	// Total DTO.PAGE.TOTAL
+	Total *int64 `json:"total,omitempty"`
+}
+
+// TraderPnlResolution defines model for TraderPnlResolution.
+type TraderPnlResolution string
+
 // GetTradesParams defines parameters for GetTrades.
 type GetTradesParams struct {
 	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
@@ -375,6 +436,30 @@ type GetTopTradersParamsSortType string
 // GetTopTradersParamsSortBy defines parameters for GetTopTraders.
 type GetTopTradersParamsSortBy string
 
+// GetTraderGainersLosersParams defines parameters for GetTraderGainersLosers.
+type GetTraderGainersLosersParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetTraderGainersLosersParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+
+	// Resolution DTO.TRADER.GAINERS_LOSERS.QUERY.RESOLUTION
+	Resolution *TraderPnlResolution `form:"resolution,omitempty" json:"resolution,omitempty"`
+
+	// SortType DTO.TRADER.GAINERS_LOSERS.QUERY.SORT_TYPE
+	SortType *GetTraderGainersLosersParamsSortType `form:"sortType,omitempty" json:"sortType,omitempty"`
+}
+
+// GetTraderGainersLosersParamsDirection defines parameters for GetTraderGainersLosers.
+type GetTraderGainersLosersParamsDirection string
+
+// GetTraderGainersLosersParamsSortType defines parameters for GetTraderGainersLosers.
+type GetTraderGainersLosersParamsSortType string
+
 // RequestEditorFn  is the function signature for the RequestEditor callback function
 type RequestEditorFn func(ctx context.Context, req *http.Request) error
 
@@ -456,6 +541,9 @@ type ClientInterface interface {
 
 	// GetTopTraders request
 	GetTopTraders(ctx context.Context, chain ChainSymbol, params *GetTopTradersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetTraderGainersLosers request
+	GetTraderGainersLosers(ctx context.Context, chain ChainSymbol, params *GetTraderGainersLosersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
 
 func (c *Client) GetTrades(ctx context.Context, chain ChainSymbol, params *GetTradesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -484,6 +572,18 @@ func (c *Client) GetActivities(ctx context.Context, chain ChainSymbol, params *G
 
 func (c *Client) GetTopTraders(ctx context.Context, chain ChainSymbol, params *GetTopTradersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetTopTradersRequest(c.Server, chain, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetTraderGainersLosers(ctx context.Context, chain ChainSymbol, params *GetTraderGainersLosersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetTraderGainersLosersRequest(c.Server, chain, params)
 	if err != nil {
 		return nil, err
 	}
@@ -1106,6 +1206,126 @@ func NewGetTopTradersRequest(server string, chain ChainSymbol, params *GetTopTra
 	return req, nil
 }
 
+// NewGetTraderGainersLosersRequest generates requests for GetTraderGainersLosers
+func NewGetTraderGainersLosersRequest(server string, chain ChainSymbol, params *GetTraderGainersLosersParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/trade/%s/trader-gainers-losers", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Resolution != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "resolution", runtime.ParamLocationQuery, *params.Resolution); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.SortType != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "sortType", runtime.ParamLocationQuery, *params.SortType); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 func (c *Client) applyEditors(ctx context.Context, req *http.Request, additionalEditors []RequestEditorFn) error {
 	for _, r := range c.RequestEditors {
 		if err := r(ctx, req); err != nil {
@@ -1157,6 +1377,9 @@ type ClientWithResponsesInterface interface {
 
 	// GetTopTradersWithResponse request
 	GetTopTradersWithResponse(ctx context.Context, chain ChainSymbol, params *GetTopTradersParams, reqEditors ...RequestEditorFn) (*GetTopTradersResponse, error)
+
+	// GetTraderGainersLosersWithResponse request
+	GetTraderGainersLosersWithResponse(ctx context.Context, chain ChainSymbol, params *GetTraderGainersLosersParams, reqEditors ...RequestEditorFn) (*GetTraderGainersLosersResponse, error)
 }
 
 type GetTradesResponse struct {
@@ -1225,6 +1448,28 @@ func (r GetTopTradersResponse) StatusCode() int {
 	return 0
 }
 
+type GetTraderGainersLosersResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *TraderGainersLosersPage
+}
+
+// Status returns HTTPResponse.Status
+func (r GetTraderGainersLosersResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetTraderGainersLosersResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 // GetTradesWithResponse request returning *GetTradesResponse
 func (c *ClientWithResponses) GetTradesWithResponse(ctx context.Context, chain ChainSymbol, params *GetTradesParams, reqEditors ...RequestEditorFn) (*GetTradesResponse, error) {
 	rsp, err := c.GetTrades(ctx, chain, params, reqEditors...)
@@ -1250,6 +1495,15 @@ func (c *ClientWithResponses) GetTopTradersWithResponse(ctx context.Context, cha
 		return nil, err
 	}
 	return ParseGetTopTradersResponse(rsp)
+}
+
+// GetTraderGainersLosersWithResponse request returning *GetTraderGainersLosersResponse
+func (c *ClientWithResponses) GetTraderGainersLosersWithResponse(ctx context.Context, chain ChainSymbol, params *GetTraderGainersLosersParams, reqEditors ...RequestEditorFn) (*GetTraderGainersLosersResponse, error) {
+	rsp, err := c.GetTraderGainersLosers(ctx, chain, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetTraderGainersLosersResponse(rsp)
 }
 
 // ParseGetTradesResponse parses an HTTP response from a GetTradesWithResponse call
@@ -1320,6 +1574,32 @@ func ParseGetTopTradersResponse(rsp *http.Response) (*GetTopTradersResponse, err
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest TopTradersPage
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetTraderGainersLosersResponse parses an HTTP response from a GetTraderGainersLosersWithResponse call
+func ParseGetTraderGainersLosersResponse(rsp *http.Response) (*GetTraderGainersLosersResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetTraderGainersLosersResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest TraderGainersLosersPage
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

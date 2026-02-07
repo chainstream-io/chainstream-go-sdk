@@ -52,6 +52,12 @@ const (
 	N3 DexPoolDTOVersion = 3
 )
 
+// Defines values for GetDexpoolSnapshotsParamsDirection.
+const (
+	Next GetDexpoolSnapshotsParamsDirection = "next"
+	Prev GetDexpoolSnapshotsParamsDirection = "prev"
+)
+
 // ChainSymbol defines model for ChainSymbol.
 type ChainSymbol string
 
@@ -85,7 +91,7 @@ type DexPoolDTO struct {
 	ProtocolName *string `json:"protocolName,omitempty"`
 
 	// TickSpacing DTO.DEXPOOL.TICK_SPACING
-	TickSpacing *int `json:"tickSpacing,omitempty"`
+	TickSpacing *int64 `json:"tickSpacing,omitempty"`
 
 	// TokenAAddress DTO.DEXPOOL.TOKEN_A
 	TokenAAddress string `json:"tokenAAddress"`
@@ -100,7 +106,7 @@ type DexPoolDTO struct {
 	TokenBLiquidity *DexPoolTokenLiquidity `json:"tokenBLiquidity,omitempty"`
 
 	// TokenCount DTO.DEXPOOL.TOKEN_COUNT
-	TokenCount *int `json:"tokenCount,omitempty"`
+	TokenCount *int64 `json:"tokenCount,omitempty"`
 
 	// TvlInSol DTO.DEXPOOL.TVL_SOL
 	TvlInSol *string `json:"tvlInSol,omitempty"`
@@ -180,6 +186,9 @@ type DexPoolTokenLiquidity struct {
 	// AmountInUsd DTO.DEXPOOL.AMOUNT_IN_USD
 	AmountInUsd string `json:"amountInUsd"`
 
+	// Decimals DTO.DEXPOOL.TOKEN_DECIMALS
+	Decimals int64 `json:"decimals"`
+
 	// PriceNative DTO.DEXPOOL.PRICE_NATIVE
 	PriceNative string `json:"priceNative"`
 
@@ -188,9 +197,6 @@ type DexPoolTokenLiquidity struct {
 
 	// TokenAddress DTO.DEXPOOL.TOKEN_ADDRESS
 	TokenAddress string `json:"tokenAddress"`
-
-	// TokenDecimals DTO.DEXPOOL.TOKEN_DECIMALS
-	TokenDecimals int `json:"tokenDecimals"`
 
 	// VaultAmount DTO.DEXPOOL.VAULT_AMOUNT
 	VaultAmount string `json:"vaultAmount"`
@@ -204,6 +210,9 @@ type DexPoolTokenSnapshotDTO struct {
 	// AmountInUsd DTO.DEXPOOL.AMOUNT_IN_USD
 	AmountInUsd string `json:"amountInUsd"`
 
+	// Decimals DTO.DEXPOOL.TOKEN_DECIMALS
+	Decimals int64 `json:"decimals"`
+
 	// PriceNative DTO.DEXPOOL.PRICE_NATIVE
 	PriceNative string `json:"priceNative"`
 
@@ -213,24 +222,27 @@ type DexPoolTokenSnapshotDTO struct {
 	// TokenAddress DTO.DEXPOOL.TOKEN_ADDRESS
 	TokenAddress string `json:"tokenAddress"`
 
-	// TokenDecimals DTO.DEXPOOL.TOKEN_DECIMALS
-	TokenDecimals int `json:"tokenDecimals"`
-
 	// VaultAmount DTO.DEXPOOL.VAULT_AMOUNT
 	VaultAmount string `json:"vaultAmount"`
 }
 
 // GetDexpoolSnapshotsParams defines parameters for GetDexpoolSnapshots.
 type GetDexpoolSnapshotsParams struct {
-	// Time DTO.DEXPOOL.SNAPSHOT.TIME
-	Time *int64 `form:"time,omitempty" json:"time,omitempty"`
-
-	// Cursor DTO.PAGE.CURSOR
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
 	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 
 	// Limit DTO.PAGE.LIMIT
-	Limit *int `form:"limit,omitempty" json:"limit,omitempty"`
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetDexpoolSnapshotsParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+
+	// Time DTO.DEXPOOL.SNAPSHOT.TIME
+	Time *int64 `form:"time,omitempty" json:"time,omitempty"`
 }
+
+// GetDexpoolSnapshotsParamsDirection defines parameters for GetDexpoolSnapshots.
+type GetDexpoolSnapshotsParamsDirection string
 
 // RequestEditorFn  is the function signature for the RequestEditor callback function
 type RequestEditorFn func(ctx context.Context, req *http.Request) error
@@ -413,22 +425,6 @@ func NewGetDexpoolSnapshotsRequest(server string, chain ChainSymbol, poolAddress
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.Time != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "time", runtime.ParamLocationQuery, *params.Time); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
 		if params.Cursor != nil {
 
 			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
@@ -448,6 +444,38 @@ func NewGetDexpoolSnapshotsRequest(server string, chain ChainSymbol, poolAddress
 		if params.Limit != nil {
 
 			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Time != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "time", runtime.ParamLocationQuery, *params.Time); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err

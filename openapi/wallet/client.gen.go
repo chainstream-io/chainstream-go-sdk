@@ -39,6 +39,89 @@ const (
 	Sol ChainSymbol = "sol"
 )
 
+// Defines values for PnlResolution.
+const (
+	PnlResolutionAll  PnlResolution = "all"
+	PnlResolutionN1d  PnlResolution = "1d"
+	PnlResolutionN30d PnlResolution = "30d"
+	PnlResolutionN7d  PnlResolution = "7d"
+)
+
+// Defines values for TransactionHistoryItemDTOMainAction.
+const (
+	Receive TransactionHistoryItemDTOMainAction = "receive"
+	Send    TransactionHistoryItemDTOMainAction = "send"
+)
+
+// Defines values for TransactionHistoryItemDTOStatus.
+const (
+	FAILED    TransactionHistoryItemDTOStatus = "FAILED"
+	SUCCEEDED TransactionHistoryItemDTOStatus = "SUCCEEDED"
+	UNKNOWN   TransactionHistoryItemDTOStatus = "UNKNOWN"
+)
+
+// Defines values for WalletPnlSummaryDTOResolution.
+const (
+	WalletPnlSummaryDTOResolutionAll  WalletPnlSummaryDTOResolution = "all"
+	WalletPnlSummaryDTOResolutionN1d  WalletPnlSummaryDTOResolution = "1d"
+	WalletPnlSummaryDTOResolutionN30d WalletPnlSummaryDTOResolution = "30d"
+	WalletPnlSummaryDTOResolutionN7d  WalletPnlSummaryDTOResolution = "7d"
+)
+
+// Defines values for GetPnlByWalletParamsDirection.
+const (
+	GetPnlByWalletParamsDirectionNext GetPnlByWalletParamsDirection = "next"
+	GetPnlByWalletParamsDirectionPrev GetPnlByWalletParamsDirection = "prev"
+)
+
+// Defines values for GetBalanceUpdatesParamsDirection.
+const (
+	GetBalanceUpdatesParamsDirectionNext GetBalanceUpdatesParamsDirection = "next"
+	GetBalanceUpdatesParamsDirectionPrev GetBalanceUpdatesParamsDirection = "prev"
+)
+
+// Defines values for GetNetWorthParamsDirection.
+const (
+	GetNetWorthParamsDirectionNext GetNetWorthParamsDirection = "next"
+	GetNetWorthParamsDirectionPrev GetNetWorthParamsDirection = "prev"
+)
+
+// Defines values for GetNetWorthDetailsParamsDirection.
+const (
+	GetNetWorthDetailsParamsDirectionNext GetNetWorthDetailsParamsDirection = "next"
+	GetNetWorthDetailsParamsDirectionPrev GetNetWorthDetailsParamsDirection = "prev"
+)
+
+// Defines values for GetPnlByTokenParamsDirection.
+const (
+	GetPnlByTokenParamsDirectionNext GetPnlByTokenParamsDirection = "next"
+	GetPnlByTokenParamsDirectionPrev GetPnlByTokenParamsDirection = "prev"
+)
+
+// Defines values for GetPnlDetailsParamsDirection.
+const (
+	GetPnlDetailsParamsDirectionNext GetPnlDetailsParamsDirection = "next"
+	GetPnlDetailsParamsDirectionPrev GetPnlDetailsParamsDirection = "prev"
+)
+
+// Defines values for GetTokensBalanceParamsDirection.
+const (
+	GetTokensBalanceParamsDirectionNext GetTokensBalanceParamsDirection = "next"
+	GetTokensBalanceParamsDirectionPrev GetTokensBalanceParamsDirection = "prev"
+)
+
+// Defines values for GetWalletTransferTotalParamsDirection.
+const (
+	GetWalletTransferTotalParamsDirectionNext GetWalletTransferTotalParamsDirection = "next"
+	GetWalletTransferTotalParamsDirectionPrev GetWalletTransferTotalParamsDirection = "prev"
+)
+
+// Defines values for GetWalletTransfersParamsDirection.
+const (
+	Next GetWalletTransfersParamsDirection = "next"
+	Prev GetWalletTransfersParamsDirection = "prev"
+)
+
 // BalanceChangeType defines model for BalanceChangeType.
 type BalanceChangeType string
 
@@ -144,176 +227,542 @@ type CalculatePnlInput struct {
 // ChainSymbol defines model for ChainSymbol.
 type ChainSymbol string
 
-// WalletBalanceDetailDTO defines model for WalletBalanceDetailDTO.
-type WalletBalanceDetailDTO struct {
-	// Amount DTO.WALLET.BALANCE.AMOUNT
-	Amount string `json:"amount"`
+// PnlDetailItemDTO defines model for PnlDetailItemDTO.
+type PnlDetailItemDTO struct {
+	// AvgBuyPriceInUsd DTO.WALLET.PNL_DETAIL.ITEM.AVG_BUY_PRICE_IN_USD
+	AvgBuyPriceInUsd string `json:"avgBuyPriceInUsd"`
 
-	// AverageBuyPriceInUsd DTO.WALLET.BALANCE.AVERAGE_BUY_PRICE
-	AverageBuyPriceInUsd string `json:"averageBuyPriceInUsd"`
+	// AvgProfitPerTradeInUsd DTO.WALLET.PNL_DETAIL.ITEM.AVG_PROFIT_PER_TRADE_IN_USD
+	AvgProfitPerTradeInUsd string `json:"avgProfitPerTradeInUsd"`
 
-	// AverageSellPriceInUsd DTO.WALLET.BALANCE.AVERAGE_SELL_PRICE
-	AverageSellPriceInUsd string `json:"averageSellPriceInUsd"`
+	// AvgSellPriceInUsd DTO.WALLET.PNL_DETAIL.ITEM.AVG_SELL_PRICE_IN_USD
+	AvgSellPriceInUsd string `json:"avgSellPriceInUsd"`
 
-	// BuyAmount DTO.WALLET.BALANCE.BUY_AMOUNT
-	BuyAmount string `json:"buyAmount"`
-
-	// BuyAmountInUsd DTO.WALLET.BALANCE.BUY_AMOUNT_USD
-	BuyAmountInUsd string `json:"buyAmountInUsd"`
-
-	// Buys DTO.WALLET.BALANCE.BUYS
-	Buys string `json:"buys"`
-
-	// CloseTime DTO.WALLET.BALANCE.CLOSE_TIME
-	CloseTime int64 `json:"closeTime"`
-
-	// ImageUrl DTO.WALLET.BALANCE.TOKEN_IMAGE_URL
-	ImageUrl string `json:"imageUrl"`
-
-	// Name DTO.WALLET.BALANCE.TOKEN_NAME
-	Name string `json:"name"`
-
-	// OpenTime DTO.WALLET.BALANCE.OPEN_TIME
-	OpenTime int64 `json:"openTime"`
-
-	// PriceChangeRatioInUsd24h DTO.WALLET.BALANCE.PRICE_CHANGE_24H
-	PriceChangeRatioInUsd24h string `json:"priceChangeRatioInUsd24h"`
-
-	// PriceInSol DTO.WALLET.BALANCE.TOKEN_PRICE_IN_SOL
-	PriceInSol string `json:"priceInSol"`
-
-	// PriceInUsd DTO.WALLET.BALANCE.TOKEN_PRICE_IN_USD
-	PriceInUsd string `json:"priceInUsd"`
-
-	// RealizedProfitInUsd DTO.WALLET.BALANCE.REALIZED_PROFIT_IN_USD
-	RealizedProfitInUsd string `json:"realizedProfitInUsd"`
-
-	// RealizedProfitRatio DTO.WALLET.BALANCE.REALIZED_PROFIT_RATIO
-	RealizedProfitRatio string `json:"realizedProfitRatio"`
-
-	// SellAmount DTO.WALLET.BALANCE.SELL_AMOUNT
-	SellAmount string `json:"sellAmount"`
-
-	// SellAmountInUsd DTO.WALLET.BALANCE.SELL_AMOUNT_USD
-	SellAmountInUsd string `json:"sellAmountInUsd"`
-
-	// Sells DTO.WALLET.BALANCE.SELLS
-	Sells string `json:"sells"`
-
-	// Symbol DTO.WALLET.BALANCE.TOKEN_SYMBOL
-	Symbol string `json:"symbol"`
-
-	// TokenAddress DTO.WALLET.BALANCE.TOKEN_ADDRESS
-	TokenAddress string `json:"tokenAddress"`
-
-	// TotalRealizedProfitInUsd DTO.WALLET.BALANCE.TOTAL_REALIZED_PROFIT
-	TotalRealizedProfitInUsd string `json:"totalRealizedProfitInUsd"`
-
-	// TotalRealizedProfitRatio DTO.WALLET.BALANCE.TOTAL_REALIZED_PROFIT_RATIO
-	TotalRealizedProfitRatio string `json:"totalRealizedProfitRatio"`
-
-	// UnrealizedProfitInUsd DTO.WALLET.BALANCE.UNREALIZED_PROFIT
-	UnrealizedProfitInUsd string `json:"unrealizedProfitInUsd"`
-
-	// UnrealizedProfitRatio DTO.WALLET.BALANCE.UNREALIZED_PROFIT_RATIO
-	UnrealizedProfitRatio string `json:"unrealizedProfitRatio"`
-
-	// ValueInUsd DTO.WALLET.BALANCE.AMOUNT_IN_USD
-	ValueInUsd string `json:"valueInUsd"`
-}
-
-// WalletBalancesDTO defines model for WalletBalancesDTO.
-type WalletBalancesDTO struct {
-	// Balances DTO.WALLET.BALANCES.BALANCES.DETAIL
-	Balances []WalletBalanceDetailDTO `json:"balances"`
-
-	// TotalBalancesInUsd DTO.WALLET.BALANCES.TOTAL_BALANCES_IN_USD
-	TotalBalancesInUsd string `json:"totalBalancesInUsd"`
-
-	// TotalProfitInUsd DTO.WALLET.BALANCES.TOTAL_PROFIT_IN_USD
-	TotalProfitInUsd string `json:"totalProfitInUsd"`
-}
-
-// WalletPnlDTO defines model for WalletPnlDTO.
-type WalletPnlDTO struct {
-	// AverageBuyPriceInUsd DTO.WALLET.PNL.AVERAGE_BUY_PRICE
-	AverageBuyPriceInUsd string `json:"averageBuyPriceInUsd"`
-
-	// AverageSellPriceInUsd DTO.WALLET.PNL.AVERAGE_SELL_PRICE
-	AverageSellPriceInUsd string `json:"averageSellPriceInUsd"`
-
-	// Balance DTO.WALLET.PNL.BALANCE
+	// Balance DTO.WALLET.PNL_DETAIL.ITEM.BALANCE
 	Balance string `json:"balance"`
 
-	// BuyAmount DTO.WALLET.PNL.BUY_AMOUNT
+	// BuyAmount DTO.WALLET.PNL_DETAIL.ITEM.BUY_AMOUNT
 	BuyAmount string `json:"buyAmount"`
 
-	// BuyAmountInUsd DTO.WALLET.PNL.BUY_AMOUNT_USD
+	// BuyAmountInUsd DTO.WALLET.PNL_DETAIL.ITEM.BUY_AMOUNT_IN_USD
 	BuyAmountInUsd string `json:"buyAmountInUsd"`
 
-	// Buys DTO.WALLET.PNL.BUYS
+	// Buys DTO.WALLET.PNL_DETAIL.ITEM.BUYS
 	Buys string `json:"buys"`
 
-	// Chain DTO.WALLET.PNL.CHAIN
-	Chain string `json:"chain"`
+	// CurrentValue DTO.WALLET.PNL_DETAIL.ITEM.CURRENT_VALUE
+	CurrentValue string `json:"currentValue"`
 
-	// CloseTime DTO.WALLET.PNL.CLOSE_TIME
-	CloseTime int64 `json:"closeTime"`
+	// Decimals DTO.WALLET.PNL_DETAIL.ITEM.DECIMALS
+	Decimals int64 `json:"decimals"`
 
-	// Id DTO.WALLET.PNL.ID
-	Id int64 `json:"id"`
+	// LogoUri DTO.WALLET.PNL_DETAIL.ITEM.LOGO_URI
+	LogoUri *string `json:"logoUri,omitempty"`
 
-	// LastTime DTO.WALLET.PNL.LAST_TIME
-	LastTime int64 `json:"lastTime"`
+	// Name DTO.WALLET.PNL_DETAIL.ITEM.NAME
+	Name string `json:"name"`
 
-	// OpenTime DTO.WALLET.PNL.OPEN_TIME
-	OpenTime int64 `json:"openTime"`
+	// PriceInUsd DTO.WALLET.PNL_DETAIL.ITEM.PRICE_IN_USD
+	PriceInUsd string `json:"priceInUsd"`
 
-	// RealizedProfitInUsd DTO.WALLET.PNL.REALIZED_PROFIT
+	// RealizedProfitInUsd DTO.WALLET.PNL_DETAIL.ITEM.REALIZED_PROFIT_IN_USD
 	RealizedProfitInUsd string `json:"realizedProfitInUsd"`
 
-	// RealizedProfitRatio DTO.WALLET.PNL.REALIZED_PROFIT_RATIO
+	// RealizedProfitRatio DTO.WALLET.PNL_DETAIL.ITEM.REALIZED_PROFIT_RATIO
 	RealizedProfitRatio string `json:"realizedProfitRatio"`
 
-	// SellAmount DTO.WALLET.PNL.SELL_AMOUNT
+	// SellAmount DTO.WALLET.PNL_DETAIL.ITEM.SELL_AMOUNT
 	SellAmount string `json:"sellAmount"`
 
-	// SellAmountInUsd DTO.WALLET.PNL.SELL_AMOUNT_USD
+	// SellAmountInUsd DTO.WALLET.PNL_DETAIL.ITEM.SELL_AMOUNT_IN_USD
 	SellAmountInUsd string `json:"sellAmountInUsd"`
 
-	// Sells DTO.WALLET.PNL.SELLS
+	// Sells DTO.WALLET.PNL_DETAIL.ITEM.SELLS
 	Sells string `json:"sells"`
 
-	// TokenAddress DTO.WALLET.PNL.TOKEN_ADDRESS
+	// Symbol DTO.WALLET.PNL_DETAIL.ITEM.SYMBOL
+	Symbol string `json:"symbol"`
+
+	// TokenAddress DTO.WALLET.PNL_DETAIL.ITEM.TOKEN_ADDRESS
 	TokenAddress string `json:"tokenAddress"`
 
-	// TokenPriceInUsd DTO.WALLET.PNL.TOKEN_PRICE
-	TokenPriceInUsd string `json:"tokenPriceInUsd"`
+	// TotalProfitInUsd DTO.WALLET.PNL_DETAIL.ITEM.TOTAL_PROFIT_IN_USD
+	TotalProfitInUsd string `json:"totalProfitInUsd"`
 
-	// TotalRealizedProfitInUsd DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT
-	TotalRealizedProfitInUsd string `json:"totalRealizedProfitInUsd"`
+	// TotalProfitRatio DTO.WALLET.PNL_DETAIL.ITEM.TOTAL_PROFIT_RATIO
+	TotalProfitRatio string `json:"totalProfitRatio"`
 
-	// TotalRealizedProfitRatio DTO.WALLET.PNL.TOTAL_REALIZED_PROFIT_RATIO
-	TotalRealizedProfitRatio string `json:"totalRealizedProfitRatio"`
+	// TotalTrades DTO.WALLET.PNL_DETAIL.ITEM.TOTAL_TRADES
+	TotalTrades string `json:"totalTrades"`
 
-	// UnrealizedProfitInUsd DTO.WALLET.PNL.UNREALIZED_PROFIT
+	// UnrealizedProfitInUsd DTO.WALLET.PNL_DETAIL.ITEM.UNREALIZED_PROFIT_IN_USD
 	UnrealizedProfitInUsd string `json:"unrealizedProfitInUsd"`
 
-	// UnrealizedProfitRatio DTO.WALLET.PNL.UNREALIZED_PROFIT_RATIO
+	// UnrealizedProfitRatio DTO.WALLET.PNL_DETAIL.ITEM.UNREALIZED_PROFIT_RATIO
 	UnrealizedProfitRatio string `json:"unrealizedProfitRatio"`
 
-	// WalletAddress DTO.WALLET.PNL.WALLET_ADDRESS
+	// WalletAddress DTO.WALLET.PNL_DETAIL.ITEM.WALLET_ADDRESS
 	WalletAddress string `json:"walletAddress"`
 }
 
-// GetBalanceParams defines parameters for GetBalance.
-type GetBalanceParams struct {
-	// TokenAddress DTO.WALLET.BALANCE.QUERY.TOKEN_ADDRESS
-	TokenAddress *string `form:"tokenAddress,omitempty" json:"tokenAddress,omitempty"`
+// PnlDetailSummaryDTO defines model for PnlDetailSummaryDTO.
+type PnlDetailSummaryDTO struct {
+	// AvgProfitPerTradeInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.AVG_PROFIT_PER_TRADE_IN_USD
+	AvgProfitPerTradeInUsd string `json:"avgProfitPerTradeInUsd"`
+
+	// BuyAmountInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.BUY_AMOUNT_IN_USD
+	BuyAmountInUsd string `json:"buyAmountInUsd"`
+
+	// Buys DTO.WALLET.PNL_DETAIL.SUMMARY.BUYS
+	Buys string `json:"buys"`
+
+	// CurrentValue DTO.WALLET.PNL_DETAIL.SUMMARY.CURRENT_VALUE
+	CurrentValue string `json:"currentValue"`
+
+	// Losses DTO.WALLET.PNL_DETAIL.SUMMARY.LOSSES
+	Losses string `json:"losses"`
+
+	// RealizedProfitInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.REALIZED_PROFIT_IN_USD
+	RealizedProfitInUsd string `json:"realizedProfitInUsd"`
+
+	// RealizedProfitRatio DTO.WALLET.PNL_DETAIL.SUMMARY.REALIZED_PROFIT_RATIO
+	RealizedProfitRatio string `json:"realizedProfitRatio"`
+
+	// SellAmountInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.SELL_AMOUNT_IN_USD
+	SellAmountInUsd string `json:"sellAmountInUsd"`
+
+	// Sells DTO.WALLET.PNL_DETAIL.SUMMARY.SELLS
+	Sells string `json:"sells"`
+
+	// Tokens DTO.WALLET.PNL_DETAIL.SUMMARY.TOKENS
+	Tokens string `json:"tokens"`
+
+	// TotalCostInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.TOTAL_COST_IN_USD
+	TotalCostInUsd string `json:"totalCostInUsd"`
+
+	// TotalProfitInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.TOTAL_PROFIT_IN_USD
+	TotalProfitInUsd string `json:"totalProfitInUsd"`
+
+	// TotalTrades DTO.WALLET.PNL_DETAIL.SUMMARY.TOTAL_TRADES
+	TotalTrades string `json:"totalTrades"`
+
+	// UnrealizedProfitInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.UNREALIZED_PROFIT_IN_USD
+	UnrealizedProfitInUsd string `json:"unrealizedProfitInUsd"`
+
+	// WinRate DTO.WALLET.PNL_DETAIL.SUMMARY.WIN_RATE
+	WinRate string `json:"winRate"`
+
+	// Wins DTO.WALLET.PNL_DETAIL.SUMMARY.WINS
+	Wins string `json:"wins"`
 }
+
+// PnlDetailsPage defines model for PnlDetailsPage.
+type PnlDetailsPage struct {
+	// Data DTO.PAGE.DATA
+	Data []PnlDetailItemDTO `json:"data"`
+
+	// EndCursor DTO.PAGE.END_CURSOR
+	EndCursor *string `json:"endCursor,omitempty"`
+
+	// HasNext DTO.PAGE.HAS_NEXT
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev DTO.PAGE.HAS_PREV
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor DTO.PAGE.START_CURSOR
+	StartCursor *string `json:"startCursor,omitempty"`
+
+	// Summary DTO.WALLET.PNL_DETAIL.SUMMARY
+	Summary PnlDetailSummaryDTO `json:"summary"`
+
+	// Total DTO.PAGE.TOTAL
+	Total *int64 `json:"total,omitempty"`
+}
+
+// PnlResolution defines model for PnlResolution.
+type PnlResolution string
+
+// TokenTransferTotalDTO defines model for TokenTransferTotalDTO.
+type TokenTransferTotalDTO struct {
+	// Total DTO.TOKEN.TRANSFER.TOTAL
+	Total int64 `json:"total"`
+}
+
+// TokensBalancePage defines model for TokensBalancePage.
+type TokensBalancePage struct {
+	// Data DTO.PAGE.DATA
+	Data []WalletNetWorthItemDTO `json:"data"`
+
+	// EndCursor DTO.PAGE.END_CURSOR
+	EndCursor *string `json:"endCursor,omitempty"`
+
+	// HasNext DTO.PAGE.HAS_NEXT
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev DTO.PAGE.HAS_PREV
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor DTO.PAGE.START_CURSOR
+	StartCursor *string `json:"startCursor,omitempty"`
+
+	// Total DTO.PAGE.TOTAL
+	Total *int64 `json:"total,omitempty"`
+}
+
+// TransactionHistoryItemDTO defines model for TransactionHistoryItemDTO.
+type TransactionHistoryItemDTO struct {
+	// BlockNumber DTO.WALLET.TX_HISTORY.BLOCK_NUMBER
+	BlockNumber int64 `json:"blockNumber"`
+
+	// BlockTime DTO.WALLET.TX_HISTORY.BLOCK_TIME
+	BlockTime int64 `json:"blockTime"`
+
+	// DappProgram DTO.WALLET.TX_HISTORY.DAPP_PROGRAM
+	DappProgram string `json:"dappProgram"`
+
+	// Decimals DTO.WALLET.TX_HISTORY.DECIMALS
+	Decimals int64 `json:"decimals"`
+
+	// Fee DTO.WALLET.TX_HISTORY.FEE
+	Fee string `json:"fee"`
+
+	// From DTO.WALLET.TX_HISTORY.FROM
+	From string `json:"from"`
+
+	// FromTokenAccount DTO.WALLET.TX_HISTORY.FROM_TOKEN_ACCOUNT
+	FromTokenAccount string `json:"fromTokenAccount"`
+
+	// FromUserAccount DTO.WALLET.TX_HISTORY.FROM_USER_ACCOUNT
+	FromUserAccount string `json:"fromUserAccount"`
+
+	// LogoUri DTO.WALLET.TX_HISTORY.LOGO_URI
+	LogoUri *string `json:"logoUri,omitempty"`
+
+	// MainAction DTO.WALLET.TX_HISTORY.MAIN_ACTION
+	MainAction TransactionHistoryItemDTOMainAction `json:"mainAction"`
+
+	// Name DTO.WALLET.TX_HISTORY.NAME
+	Name string `json:"name"`
+
+	// OuterDappProgram DTO.WALLET.TX_HISTORY.OUTER_DAPP_PROGRAM
+	OuterDappProgram string `json:"outerDappProgram"`
+
+	// Status DTO.WALLET.TX_HISTORY.STATUS
+	Status TransactionHistoryItemDTOStatus `json:"status"`
+
+	// Symbol DTO.WALLET.TX_HISTORY.SYMBOL
+	Symbol string `json:"symbol"`
+
+	// To DTO.WALLET.TX_HISTORY.TO
+	To string `json:"to"`
+
+	// ToTokenAccount DTO.WALLET.TX_HISTORY.TO_TOKEN_ACCOUNT
+	ToTokenAccount string `json:"toTokenAccount"`
+
+	// ToUserAccount DTO.WALLET.TX_HISTORY.TO_USER_ACCOUNT
+	ToUserAccount string `json:"toUserAccount"`
+
+	// TokenAddress DTO.WALLET.TX_HISTORY.TOKEN_ADDRESS
+	TokenAddress string `json:"tokenAddress"`
+
+	// TokenAmount DTO.WALLET.TX_HISTORY.TOKEN_AMOUNT
+	TokenAmount string `json:"tokenAmount"`
+
+	// TokenAmountInUsd DTO.WALLET.TX_HISTORY.TOKEN_AMOUNT_IN_USD
+	TokenAmountInUsd string `json:"tokenAmountInUsd"`
+
+	// TokenPriceInUsd DTO.WALLET.TX_HISTORY.TOKEN_PRICE_IN_USD
+	TokenPriceInUsd string `json:"tokenPriceInUsd"`
+
+	// TxHash DTO.WALLET.TX_HISTORY.TX_HASH
+	TxHash string `json:"txHash"`
+}
+
+// TransactionHistoryItemDTOMainAction DTO.WALLET.TX_HISTORY.MAIN_ACTION
+type TransactionHistoryItemDTOMainAction string
+
+// TransactionHistoryItemDTOStatus DTO.WALLET.TX_HISTORY.STATUS
+type TransactionHistoryItemDTOStatus string
+
+// TransactionHistoryPage defines model for TransactionHistoryPage.
+type TransactionHistoryPage struct {
+	// Data DTO.PAGE.DATA
+	Data []TransactionHistoryItemDTO `json:"data"`
+
+	// EndCursor DTO.PAGE.END_CURSOR
+	EndCursor *string `json:"endCursor,omitempty"`
+
+	// HasNext DTO.PAGE.HAS_NEXT
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev DTO.PAGE.HAS_PREV
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor DTO.PAGE.START_CURSOR
+	StartCursor *string `json:"startCursor,omitempty"`
+
+	// Total DTO.PAGE.TOTAL
+	Total *int64 `json:"total,omitempty"`
+}
+
+// WalletFirstTxDTO defines model for WalletFirstTxDTO.
+type WalletFirstTxDTO struct {
+	// Wallets DTO.WALLET.FIRST_TX.TX_HASH
+	Wallets map[string]interface{} `json:"wallets"`
+}
+
+// WalletNetWorthChartDTO defines model for WalletNetWorthChartDTO.
+type WalletNetWorthChartDTO struct {
+	// CurrentTimestamp DTO.WALLET.NET_WORTH_CHART.CURRENT_TIMESTAMP
+	CurrentTimestamp string `json:"currentTimestamp"`
+
+	// History DTO.WALLET.NET_WORTH_CHART.HISTORY
+	History []WalletNetWorthHistoryItemDTO `json:"history"`
+
+	// PastTimestamp DTO.WALLET.NET_WORTH_CHART.PAST_TIMESTAMP
+	PastTimestamp string `json:"pastTimestamp"`
+
+	// WalletAddress DTO.WALLET.NET_WORTH_CHART.WALLET_ADDRESS
+	WalletAddress string `json:"walletAddress"`
+}
+
+// WalletNetWorthDetailsPage defines model for WalletNetWorthDetailsPage.
+type WalletNetWorthDetailsPage struct {
+	// Data DTO.PAGE.DATA
+	Data []WalletNetWorthItemDTO `json:"data"`
+
+	// EndCursor DTO.PAGE.END_CURSOR
+	EndCursor *string `json:"endCursor,omitempty"`
+
+	// HasNext DTO.PAGE.HAS_NEXT
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev DTO.PAGE.HAS_PREV
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// NetWorth DTO.WALLET.NET_WORTH_DETAILS.NET_WORTH
+	NetWorth string `json:"netWorth"`
+
+	// RequestedTimestamp DTO.WALLET.NET_WORTH_DETAILS.REQUESTED_TIMESTAMP
+	RequestedTimestamp string `json:"requestedTimestamp"`
+
+	// ResolvedTimestamp DTO.WALLET.NET_WORTH_DETAILS.RESOLVED_TIMESTAMP
+	ResolvedTimestamp string `json:"resolvedTimestamp"`
+
+	// StartCursor DTO.PAGE.START_CURSOR
+	StartCursor *string `json:"startCursor,omitempty"`
+
+	// Total DTO.PAGE.TOTAL
+	Total *int64 `json:"total,omitempty"`
+
+	// WalletAddress DTO.WALLET.NET_WORTH_DETAILS.WALLET_ADDRESS
+	WalletAddress string `json:"walletAddress"`
+}
+
+// WalletNetWorthHistoryItemDTO defines model for WalletNetWorthHistoryItemDTO.
+type WalletNetWorthHistoryItemDTO struct {
+	// NetWorth DTO.WALLET.NET_WORTH_CHART.ITEM.NET_WORTH
+	NetWorth string `json:"netWorth"`
+
+	// NetWorthChange DTO.WALLET.NET_WORTH_CHART.ITEM.NET_WORTH_CHANGE
+	NetWorthChange string `json:"netWorthChange"`
+
+	// NetWorthChangePercent DTO.WALLET.NET_WORTH_CHART.ITEM.NET_WORTH_CHANGE_PERCENT
+	NetWorthChangePercent string `json:"netWorthChangePercent"`
+
+	// Timestamp DTO.WALLET.NET_WORTH_CHART.ITEM.TIMESTAMP
+	Timestamp string `json:"timestamp"`
+}
+
+// WalletNetWorthItemDTO defines model for WalletNetWorthItemDTO.
+type WalletNetWorthItemDTO struct {
+	// Amount DTO.WALLET.NET_WORTH.ITEM.AMOUNT
+	Amount string `json:"amount"`
+
+	// Chain GLOBAL.CHAIN.DESCRIPTION
+	Chain string `json:"chain"`
+
+	// Decimals DTO.WALLET.NET_WORTH.ITEM.DECIMALS
+	Decimals int64 `json:"decimals"`
+
+	// LogoUri DTO.WALLET.NET_WORTH.ITEM.LOGO_URI
+	LogoUri *string `json:"logoUri,omitempty"`
+
+	// Name DTO.WALLET.NET_WORTH.ITEM.NAME
+	Name string `json:"name"`
+
+	// PriceInNative DTO.WALLET.NET_WORTH.ITEM.PRICE_IN_NATIVE
+	PriceInNative string `json:"priceInNative"`
+
+	// PriceInUsd DTO.WALLET.NET_WORTH.ITEM.PRICE_IN_USD
+	PriceInUsd string `json:"priceInUsd"`
+
+	// Symbol DTO.WALLET.NET_WORTH.ITEM.SYMBOL
+	Symbol string `json:"symbol"`
+
+	// TokenAddress DTO.WALLET.NET_WORTH.ITEM.TOKEN_ADDRESS
+	TokenAddress string `json:"tokenAddress"`
+
+	// ValueInNative DTO.WALLET.NET_WORTH.ITEM.VALUE_IN_NATIVE
+	ValueInNative string `json:"valueInNative"`
+
+	// ValueInUsd DTO.WALLET.NET_WORTH.ITEM.VALUE_IN_USD
+	ValueInUsd string `json:"valueInUsd"`
+}
+
+// WalletNetWorthPage defines model for WalletNetWorthPage.
+type WalletNetWorthPage struct {
+	// CurrentTimestamp DTO.WALLET.NET_WORTH.CURRENT_TIMESTAMP
+	CurrentTimestamp string `json:"currentTimestamp"`
+
+	// Data DTO.PAGE.DATA
+	Data []WalletNetWorthItemDTO `json:"data"`
+
+	// EndCursor DTO.PAGE.END_CURSOR
+	EndCursor *string `json:"endCursor,omitempty"`
+
+	// HasNext DTO.PAGE.HAS_NEXT
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev DTO.PAGE.HAS_PREV
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor DTO.PAGE.START_CURSOR
+	StartCursor *string `json:"startCursor,omitempty"`
+
+	// Total DTO.PAGE.TOTAL
+	Total *int64 `json:"total,omitempty"`
+
+	// TotalValueInNative DTO.WALLET.NET_WORTH.TOTAL_VALUE_IN_NATIVE
+	TotalValueInNative string `json:"totalValueInNative"`
+
+	// TotalValueInUsd DTO.WALLET.NET_WORTH.TOTAL_VALUE_IN_USD
+	TotalValueInUsd string `json:"totalValueInUsd"`
+
+	// WalletAddress DTO.WALLET.NET_WORTH.WALLET_ADDRESS
+	WalletAddress string `json:"walletAddress"`
+}
+
+// WalletNetWorthSummaryDTO defines model for WalletNetWorthSummaryDTO.
+type WalletNetWorthSummaryDTO struct {
+	// CurrentTimestamp DTO.WALLET.NET_WORTH_SUMMARY.CURRENT_TIMESTAMP
+	CurrentTimestamp string `json:"currentTimestamp"`
+
+	// Wallets DTO.WALLET.NET_WORTH_SUMMARY.WALLETS
+	Wallets map[string]interface{} `json:"wallets"`
+}
+
+// WalletPnlSummaryDTO defines model for WalletPnlSummaryDTO.
+type WalletPnlSummaryDTO struct {
+	// AvgProfitPerTradeInUsd DTO.WALLET.PNL_SUMMARY.AVG_PROFIT_PER_TRADE_IN_USD
+	AvgProfitPerTradeInUsd string `json:"avgProfitPerTradeInUsd"`
+
+	// BuyAmountInUsd DTO.WALLET.PNL_SUMMARY.BUY_AMOUNT_IN_USD
+	BuyAmountInUsd string `json:"buyAmountInUsd"`
+
+	// Buys DTO.WALLET.PNL_SUMMARY.BUYS
+	Buys string `json:"buys"`
+
+	// Losses DTO.WALLET.PNL_SUMMARY.LOSSES
+	Losses string `json:"losses"`
+
+	// RealizedProfitInUsd DTO.WALLET.PNL_SUMMARY.REALIZED_PROFIT_IN_USD
+	RealizedProfitInUsd string `json:"realizedProfitInUsd"`
+
+	// RealizedProfitRatio DTO.WALLET.PNL_SUMMARY.REALIZED_PROFIT_RATIO
+	RealizedProfitRatio string `json:"realizedProfitRatio"`
+
+	// Resolution DTO.WALLET.PNL_SUMMARY.RESOLUTION
+	Resolution WalletPnlSummaryDTOResolution `json:"resolution"`
+
+	// SellAmountInUsd DTO.WALLET.PNL_SUMMARY.SELL_AMOUNT_IN_USD
+	SellAmountInUsd string `json:"sellAmountInUsd"`
+
+	// Sells DTO.WALLET.PNL_SUMMARY.SELLS
+	Sells string `json:"sells"`
+
+	// Tokens DTO.WALLET.PNL_SUMMARY.TOKENS
+	Tokens string `json:"tokens"`
+
+	// TotalCostInUsd DTO.WALLET.PNL_SUMMARY.TOTAL_COST_IN_USD
+	TotalCostInUsd string `json:"totalCostInUsd"`
+
+	// TotalProfitInUsd DTO.WALLET.PNL_SUMMARY.TOTAL_PROFIT_IN_USD
+	TotalProfitInUsd string `json:"totalProfitInUsd"`
+
+	// TotalProfitRatio DTO.WALLET.PNL_SUMMARY.TOTAL_PROFIT_RATIO
+	TotalProfitRatio string `json:"totalProfitRatio"`
+
+	// TotalTrades DTO.WALLET.PNL_SUMMARY.TOTAL_TRADES
+	TotalTrades string `json:"totalTrades"`
+
+	// UnrealizedProfitInUsd DTO.WALLET.PNL_SUMMARY.UNREALIZED_PROFIT_IN_USD
+	UnrealizedProfitInUsd string `json:"unrealizedProfitInUsd"`
+
+	// UnrealizedProfitRatio DTO.WALLET.PNL_SUMMARY.UNREALIZED_PROFIT_RATIO
+	UnrealizedProfitRatio string `json:"unrealizedProfitRatio"`
+
+	// UpdatedAt DTO.WALLET.PNL_SUMMARY.UPDATED_AT
+	UpdatedAt *string `json:"updatedAt,omitempty"`
+
+	// WalletAddress DTO.WALLET.PNL_SUMMARY.WALLET_ADDRESS
+	WalletAddress string `json:"walletAddress"`
+
+	// WinRate DTO.WALLET.PNL_SUMMARY.WIN_RATE
+	WinRate string `json:"winRate"`
+
+	// Wins DTO.WALLET.PNL_SUMMARY.WINS
+	Wins string `json:"wins"`
+}
+
+// WalletPnlSummaryDTOResolution DTO.WALLET.PNL_SUMMARY.RESOLUTION
+type WalletPnlSummaryDTOResolution string
+
+// GetWalletFirstTxParams defines parameters for GetWalletFirstTx.
+type GetWalletFirstTxParams struct {
+	// WalletAddresses GLOBAL.WALLETADDRESSES.DESCRIPTION
+	WalletAddresses string `form:"walletAddresses" json:"walletAddresses"`
+}
+
+// GetNetWorthSummaryParams defines parameters for GetNetWorthSummary.
+type GetNetWorthSummaryParams struct {
+	// WalletAddresses GLOBAL.WALLETADDRESSES.DESCRIPTION
+	WalletAddresses string `form:"walletAddresses" json:"walletAddresses"`
+}
+
+// GetPnlByWalletParams defines parameters for GetPnlByWallet.
+type GetPnlByWalletParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetPnlByWalletParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+
+	// WalletAddresses GLOBAL.WALLETADDRESSES.DESCRIPTION
+	WalletAddresses string `form:"walletAddresses" json:"walletAddresses"`
+
+	// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+	TokenAddress string `form:"tokenAddress" json:"tokenAddress"`
+}
+
+// GetPnlByWalletParamsDirection defines parameters for GetPnlByWallet.
+type GetPnlByWalletParamsDirection string
 
 // GetBalanceUpdatesParams defines parameters for GetBalanceUpdates.
 type GetBalanceUpdatesParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetBalanceUpdatesParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+
 	// TokenAddress DTO.WALLET.BALANCE_UPDATE.QUERY.TOKEN_ADDRESS
 	TokenAddress *string `form:"tokenAddress,omitempty" json:"tokenAddress,omitempty"`
 
@@ -328,19 +777,151 @@ type GetBalanceUpdatesParams struct {
 
 	// ChangeType DTO.WALLET.BALANCE_UPDATE.QUERY.CHANGE_TYPE
 	ChangeType *BalanceChangeType `form:"changeType,omitempty" json:"changeType,omitempty"`
+}
 
-	// Cursor DTO.PAGE.CURSOR
+// GetBalanceUpdatesParamsDirection defines parameters for GetBalanceUpdates.
+type GetBalanceUpdatesParamsDirection string
+
+// GetNetWorthParams defines parameters for GetNetWorth.
+type GetNetWorthParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
 	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 
 	// Limit DTO.PAGE.LIMIT
-	Limit *int32 `form:"limit,omitempty" json:"limit,omitempty"`
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetNetWorthParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
 }
+
+// GetNetWorthParamsDirection defines parameters for GetNetWorth.
+type GetNetWorthParamsDirection string
+
+// GetNetWorthChartParams defines parameters for GetNetWorthChart.
+type GetNetWorthChartParams struct {
+	// Hours DTO.WALLET.NET_WORTH_CHART.QUERY.HOURS
+	Hours *int32 `form:"hours,omitempty" json:"hours,omitempty"`
+}
+
+// GetNetWorthDetailsParams defines parameters for GetNetWorthDetails.
+type GetNetWorthDetailsParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetNetWorthDetailsParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+
+	// Hours DTO.WALLET.NET_WORTH_DETAILS.QUERY.HOURS
+	Hours *int32 `form:"hours,omitempty" json:"hours,omitempty"`
+}
+
+// GetNetWorthDetailsParamsDirection defines parameters for GetNetWorthDetails.
+type GetNetWorthDetailsParamsDirection string
 
 // GetPnlParams defines parameters for GetPnl.
 type GetPnlParams struct {
+	// Resolution DTO.WALLET.PNL_SUMMARY.QUERY.RESOLUTION
+	Resolution *PnlResolution `form:"resolution,omitempty" json:"resolution,omitempty"`
+}
+
+// GetPnlByTokenParams defines parameters for GetPnlByToken.
+type GetPnlByTokenParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetPnlByTokenParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+
+	// TokenAddresses GLOBAL.TOKENADDRESSES.DESCRIPTION
+	TokenAddresses string `form:"tokenAddresses" json:"tokenAddresses"`
+}
+
+// GetPnlByTokenParamsDirection defines parameters for GetPnlByToken.
+type GetPnlByTokenParamsDirection string
+
+// GetPnlDetailsParams defines parameters for GetPnlDetails.
+type GetPnlDetailsParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetPnlDetailsParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+}
+
+// GetPnlDetailsParamsDirection defines parameters for GetPnlDetails.
+type GetPnlDetailsParamsDirection string
+
+// GetTokensBalanceParams defines parameters for GetTokensBalance.
+type GetTokensBalanceParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetTokensBalanceParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+}
+
+// GetTokensBalanceParamsDirection defines parameters for GetTokensBalance.
+type GetTokensBalanceParamsDirection string
+
+// GetWalletTransferTotalParams defines parameters for GetWalletTransferTotal.
+type GetWalletTransferTotalParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetWalletTransferTotalParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+
 	// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
 	TokenAddress *string `form:"tokenAddress,omitempty" json:"tokenAddress,omitempty"`
+
+	// BeforeTimestamp DTO.TOKEN.TRANSFER.QUERY.BEFORE_TIMESTAMP
+	BeforeTimestamp *int64 `form:"beforeTimestamp,omitempty" json:"beforeTimestamp,omitempty"`
+
+	// AfterTimestamp DTO.TOKEN.TRANSFER.QUERY.AFTER_TIMESTAMP
+	AfterTimestamp *int64 `form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
 }
+
+// GetWalletTransferTotalParamsDirection defines parameters for GetWalletTransferTotal.
+type GetWalletTransferTotalParamsDirection string
+
+// GetWalletTransfersParams defines parameters for GetWalletTransfers.
+type GetWalletTransfersParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetWalletTransfersParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+
+	// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+	TokenAddress *string `form:"tokenAddress,omitempty" json:"tokenAddress,omitempty"`
+
+	// BeforeTimestamp DTO.TOKEN.TRANSFER.QUERY.BEFORE_TIMESTAMP
+	BeforeTimestamp *int64 `form:"beforeTimestamp,omitempty" json:"beforeTimestamp,omitempty"`
+
+	// AfterTimestamp DTO.TOKEN.TRANSFER.QUERY.AFTER_TIMESTAMP
+	AfterTimestamp *int64 `form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
+}
+
+// GetWalletTransfersParamsDirection defines parameters for GetWalletTransfers.
+type GetWalletTransfersParamsDirection string
 
 // CalculatePnlJSONRequestBody defines body for CalculatePnl for application/json ContentType.
 type CalculatePnlJSONRequestBody = CalculatePnlInput
@@ -418,8 +999,14 @@ func WithRequestEditorFn(fn RequestEditorFn) ClientOption {
 
 // The interface specification for the client above.
 type ClientInterface interface {
-	// GetBalance request
-	GetBalance(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetBalanceParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// GetWalletFirstTx request
+	GetWalletFirstTx(ctx context.Context, chain ChainSymbol, params *GetWalletFirstTxParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetNetWorthSummary request
+	GetNetWorthSummary(ctx context.Context, chain ChainSymbol, params *GetNetWorthSummaryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetPnlByWallet request
+	GetPnlByWallet(ctx context.Context, chain ChainSymbol, params *GetPnlByWalletParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetBalanceUpdates request
 	GetBalanceUpdates(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetBalanceUpdatesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -429,15 +1016,60 @@ type ClientInterface interface {
 
 	CalculatePnl(ctx context.Context, chain ChainSymbol, walletAddress string, body CalculatePnlJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetNetWorth request
+	GetNetWorth(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetNetWorthChart request
+	GetNetWorthChart(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthChartParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetNetWorthDetails request
+	GetNetWorthDetails(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthDetailsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetPnl request
 	GetPnl(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetPnlStats request
-	GetPnlStats(ctx context.Context, chain ChainSymbol, walletAddress string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// GetPnlByToken request
+	GetPnlByToken(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlByTokenParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetPnlDetails request
+	GetPnlDetails(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlDetailsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetTokensBalance request
+	GetTokensBalance(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetTokensBalanceParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetWalletTransferTotal request
+	GetWalletTransferTotal(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetWalletTransferTotalParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetWalletTransfers request
+	GetWalletTransfers(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetWalletTransfersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
 
-func (c *Client) GetBalance(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetBalanceParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetBalanceRequest(c.Server, chain, walletAddress, params)
+func (c *Client) GetWalletFirstTx(ctx context.Context, chain ChainSymbol, params *GetWalletFirstTxParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetWalletFirstTxRequest(c.Server, chain, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetNetWorthSummary(ctx context.Context, chain ChainSymbol, params *GetNetWorthSummaryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetNetWorthSummaryRequest(c.Server, chain, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetPnlByWallet(ctx context.Context, chain ChainSymbol, params *GetPnlByWalletParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetPnlByWalletRequest(c.Server, chain, params)
 	if err != nil {
 		return nil, err
 	}
@@ -484,6 +1116,42 @@ func (c *Client) CalculatePnl(ctx context.Context, chain ChainSymbol, walletAddr
 	return c.Client.Do(req)
 }
 
+func (c *Client) GetNetWorth(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetNetWorthRequest(c.Server, chain, walletAddress, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetNetWorthChart(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthChartParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetNetWorthChartRequest(c.Server, chain, walletAddress, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetNetWorthDetails(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthDetailsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetNetWorthDetailsRequest(c.Server, chain, walletAddress, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 func (c *Client) GetPnl(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetPnlRequest(c.Server, chain, walletAddress, params)
 	if err != nil {
@@ -496,8 +1164,8 @@ func (c *Client) GetPnl(ctx context.Context, chain ChainSymbol, walletAddress st
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetPnlStats(ctx context.Context, chain ChainSymbol, walletAddress string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetPnlStatsRequest(c.Server, chain, walletAddress)
+func (c *Client) GetPnlByToken(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlByTokenParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetPnlByTokenRequest(c.Server, chain, walletAddress, params)
 	if err != nil {
 		return nil, err
 	}
@@ -508,8 +1176,56 @@ func (c *Client) GetPnlStats(ctx context.Context, chain ChainSymbol, walletAddre
 	return c.Client.Do(req)
 }
 
-// NewGetBalanceRequest generates requests for GetBalance
-func NewGetBalanceRequest(server string, chain ChainSymbol, walletAddress string, params *GetBalanceParams) (*http.Request, error) {
+func (c *Client) GetPnlDetails(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlDetailsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetPnlDetailsRequest(c.Server, chain, walletAddress, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetTokensBalance(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetTokensBalanceParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetTokensBalanceRequest(c.Server, chain, walletAddress, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetWalletTransferTotal(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetWalletTransferTotalParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetWalletTransferTotalRequest(c.Server, chain, walletAddress, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetWalletTransfers(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetWalletTransfersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetWalletTransfersRequest(c.Server, chain, walletAddress, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// NewGetWalletFirstTxRequest generates requests for GetWalletFirstTx
+func NewGetWalletFirstTxRequest(server string, chain ChainSymbol, params *GetWalletFirstTxParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -519,19 +1235,12 @@ func NewGetBalanceRequest(server string, chain ChainSymbol, walletAddress string
 		return nil, err
 	}
 
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "walletAddress", runtime.ParamLocationPath, walletAddress)
-	if err != nil {
-		return nil, err
-	}
-
 	serverURL, err := url.Parse(server)
 	if err != nil {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/balance", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v1/wallet/%s/first-tx", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -544,9 +1253,113 @@ func NewGetBalanceRequest(server string, chain ChainSymbol, walletAddress string
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.TokenAddress != nil {
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "walletAddresses", runtime.ParamLocationQuery, params.WalletAddresses); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tokenAddress", runtime.ParamLocationQuery, *params.TokenAddress); err != nil {
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetNetWorthSummaryRequest generates requests for GetNetWorthSummary
+func NewGetNetWorthSummaryRequest(server string, chain ChainSymbol, params *GetNetWorthSummaryParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/wallet/%s/net-worth-summary", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "walletAddresses", runtime.ParamLocationQuery, params.WalletAddresses); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetPnlByWalletRequest generates requests for GetPnlByWallet
+func NewGetPnlByWalletRequest(server string, chain ChainSymbol, params *GetPnlByWalletParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/wallet/%s/pnl-by-wallet", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -558,6 +1371,62 @@ func NewGetBalanceRequest(server string, chain ChainSymbol, walletAddress string
 				}
 			}
 
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "walletAddresses", runtime.ParamLocationQuery, params.WalletAddresses); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tokenAddress", runtime.ParamLocationQuery, params.TokenAddress); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
 		}
 
 		queryURL.RawQuery = queryValues.Encode()
@@ -606,6 +1475,54 @@ func NewGetBalanceUpdatesRequest(server string, chain ChainSymbol, walletAddress
 
 	if params != nil {
 		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
 
 		if params.TokenAddress != nil {
 
@@ -687,38 +1604,6 @@ func NewGetBalanceUpdatesRequest(server string, chain ChainSymbol, walletAddress
 
 		}
 
-		if params.Cursor != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Limit != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
 		queryURL.RawQuery = queryValues.Encode()
 	}
 
@@ -784,6 +1669,275 @@ func NewCalculatePnlRequestWithBody(server string, chain ChainSymbol, walletAddr
 	return req, nil
 }
 
+// NewGetNetWorthRequest generates requests for GetNetWorth
+func NewGetNetWorthRequest(server string, chain ChainSymbol, walletAddress string, params *GetNetWorthParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "walletAddress", runtime.ParamLocationPath, walletAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/net-worth", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetNetWorthChartRequest generates requests for GetNetWorthChart
+func NewGetNetWorthChartRequest(server string, chain ChainSymbol, walletAddress string, params *GetNetWorthChartParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "walletAddress", runtime.ParamLocationPath, walletAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/net-worth-chart", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Hours != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "hours", runtime.ParamLocationQuery, *params.Hours); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetNetWorthDetailsRequest generates requests for GetNetWorthDetails
+func NewGetNetWorthDetailsRequest(server string, chain ChainSymbol, walletAddress string, params *GetNetWorthDetailsParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "walletAddress", runtime.ParamLocationPath, walletAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/net-worth-details", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Hours != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "hours", runtime.ParamLocationQuery, *params.Hours); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetPnlRequest generates requests for GetPnl
 func NewGetPnlRequest(server string, chain ChainSymbol, walletAddress string, params *GetPnlParams) (*http.Request, error) {
 	var err error
@@ -820,9 +1974,9 @@ func NewGetPnlRequest(server string, chain ChainSymbol, walletAddress string, pa
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.TokenAddress != nil {
+		if params.Resolution != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tokenAddress", runtime.ParamLocationQuery, *params.TokenAddress); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "resolution", runtime.ParamLocationQuery, *params.Resolution); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -847,8 +2001,8 @@ func NewGetPnlRequest(server string, chain ChainSymbol, walletAddress string, pa
 	return req, nil
 }
 
-// NewGetPnlStatsRequest generates requests for GetPnlStats
-func NewGetPnlStatsRequest(server string, chain ChainSymbol, walletAddress string) (*http.Request, error) {
+// NewGetPnlByTokenRequest generates requests for GetPnlByToken
+func NewGetPnlByTokenRequest(server string, chain ChainSymbol, walletAddress string, params *GetPnlByTokenParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -870,7 +2024,7 @@ func NewGetPnlStatsRequest(server string, chain ChainSymbol, walletAddress strin
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/stats", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/pnl-by-token", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -878,6 +2032,548 @@ func NewGetPnlStatsRequest(server string, chain ChainSymbol, walletAddress strin
 	queryURL, err := serverURL.Parse(operationPath)
 	if err != nil {
 		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tokenAddresses", runtime.ParamLocationQuery, params.TokenAddresses); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetPnlDetailsRequest generates requests for GetPnlDetails
+func NewGetPnlDetailsRequest(server string, chain ChainSymbol, walletAddress string, params *GetPnlDetailsParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "walletAddress", runtime.ParamLocationPath, walletAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/pnl-details", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetTokensBalanceRequest generates requests for GetTokensBalance
+func NewGetTokensBalanceRequest(server string, chain ChainSymbol, walletAddress string, params *GetTokensBalanceParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "walletAddress", runtime.ParamLocationPath, walletAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/tokens-balance", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetWalletTransferTotalRequest generates requests for GetWalletTransferTotal
+func NewGetWalletTransferTotalRequest(server string, chain ChainSymbol, walletAddress string, params *GetWalletTransferTotalParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "walletAddress", runtime.ParamLocationPath, walletAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/transfer-total", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.TokenAddress != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tokenAddress", runtime.ParamLocationQuery, *params.TokenAddress); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.BeforeTimestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "beforeTimestamp", runtime.ParamLocationQuery, *params.BeforeTimestamp); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.AfterTimestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "afterTimestamp", runtime.ParamLocationQuery, *params.AfterTimestamp); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetWalletTransfersRequest generates requests for GetWalletTransfers
+func NewGetWalletTransfersRequest(server string, chain ChainSymbol, walletAddress string, params *GetWalletTransfersParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "walletAddress", runtime.ParamLocationPath, walletAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/transfers", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.TokenAddress != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tokenAddress", runtime.ParamLocationQuery, *params.TokenAddress); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.BeforeTimestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "beforeTimestamp", runtime.ParamLocationQuery, *params.BeforeTimestamp); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.AfterTimestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "afterTimestamp", runtime.ParamLocationQuery, *params.AfterTimestamp); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
 	}
 
 	req, err := http.NewRequest("GET", queryURL.String(), nil)
@@ -931,8 +2627,14 @@ func WithBaseURL(baseURL string) ClientOption {
 
 // ClientWithResponsesInterface is the interface specification for the client with responses above.
 type ClientWithResponsesInterface interface {
-	// GetBalanceWithResponse request
-	GetBalanceWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetBalanceParams, reqEditors ...RequestEditorFn) (*GetBalanceResponse, error)
+	// GetWalletFirstTxWithResponse request
+	GetWalletFirstTxWithResponse(ctx context.Context, chain ChainSymbol, params *GetWalletFirstTxParams, reqEditors ...RequestEditorFn) (*GetWalletFirstTxResponse, error)
+
+	// GetNetWorthSummaryWithResponse request
+	GetNetWorthSummaryWithResponse(ctx context.Context, chain ChainSymbol, params *GetNetWorthSummaryParams, reqEditors ...RequestEditorFn) (*GetNetWorthSummaryResponse, error)
+
+	// GetPnlByWalletWithResponse request
+	GetPnlByWalletWithResponse(ctx context.Context, chain ChainSymbol, params *GetPnlByWalletParams, reqEditors ...RequestEditorFn) (*GetPnlByWalletResponse, error)
 
 	// GetBalanceUpdatesWithResponse request
 	GetBalanceUpdatesWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetBalanceUpdatesParams, reqEditors ...RequestEditorFn) (*GetBalanceUpdatesResponse, error)
@@ -942,21 +2644,42 @@ type ClientWithResponsesInterface interface {
 
 	CalculatePnlWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, body CalculatePnlJSONRequestBody, reqEditors ...RequestEditorFn) (*CalculatePnlResponse, error)
 
+	// GetNetWorthWithResponse request
+	GetNetWorthWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthParams, reqEditors ...RequestEditorFn) (*GetNetWorthResponse, error)
+
+	// GetNetWorthChartWithResponse request
+	GetNetWorthChartWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthChartParams, reqEditors ...RequestEditorFn) (*GetNetWorthChartResponse, error)
+
+	// GetNetWorthDetailsWithResponse request
+	GetNetWorthDetailsWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthDetailsParams, reqEditors ...RequestEditorFn) (*GetNetWorthDetailsResponse, error)
+
 	// GetPnlWithResponse request
 	GetPnlWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*GetPnlResponse, error)
 
-	// GetPnlStatsWithResponse request
-	GetPnlStatsWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, reqEditors ...RequestEditorFn) (*GetPnlStatsResponse, error)
+	// GetPnlByTokenWithResponse request
+	GetPnlByTokenWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlByTokenParams, reqEditors ...RequestEditorFn) (*GetPnlByTokenResponse, error)
+
+	// GetPnlDetailsWithResponse request
+	GetPnlDetailsWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlDetailsParams, reqEditors ...RequestEditorFn) (*GetPnlDetailsResponse, error)
+
+	// GetTokensBalanceWithResponse request
+	GetTokensBalanceWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetTokensBalanceParams, reqEditors ...RequestEditorFn) (*GetTokensBalanceResponse, error)
+
+	// GetWalletTransferTotalWithResponse request
+	GetWalletTransferTotalWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetWalletTransferTotalParams, reqEditors ...RequestEditorFn) (*GetWalletTransferTotalResponse, error)
+
+	// GetWalletTransfersWithResponse request
+	GetWalletTransfersWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetWalletTransfersParams, reqEditors ...RequestEditorFn) (*GetWalletTransfersResponse, error)
 }
 
-type GetBalanceResponse struct {
+type GetWalletFirstTxResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *WalletBalancesDTO
+	JSON200      *WalletFirstTxDTO
 }
 
 // Status returns HTTPResponse.Status
-func (r GetBalanceResponse) Status() string {
+func (r GetWalletFirstTxResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -964,7 +2687,51 @@ func (r GetBalanceResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetBalanceResponse) StatusCode() int {
+func (r GetWalletFirstTxResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetNetWorthSummaryResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *WalletNetWorthSummaryDTO
+}
+
+// Status returns HTTPResponse.Status
+func (r GetNetWorthSummaryResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetNetWorthSummaryResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetPnlByWalletResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *PnlDetailsPage
+}
+
+// Status returns HTTPResponse.Status
+func (r GetPnlByWalletResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetPnlByWalletResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -1015,10 +2782,76 @@ func (r CalculatePnlResponse) StatusCode() int {
 	return 0
 }
 
+type GetNetWorthResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *WalletNetWorthPage
+}
+
+// Status returns HTTPResponse.Status
+func (r GetNetWorthResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetNetWorthResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetNetWorthChartResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *WalletNetWorthChartDTO
+}
+
+// Status returns HTTPResponse.Status
+func (r GetNetWorthChartResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetNetWorthChartResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetNetWorthDetailsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *WalletNetWorthDetailsPage
+}
+
+// Status returns HTTPResponse.Status
+func (r GetNetWorthDetailsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetNetWorthDetailsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 type GetPnlResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *[]WalletPnlDTO
+	JSON200      *WalletPnlSummaryDTO
 }
 
 // Status returns HTTPResponse.Status
@@ -1037,14 +2870,14 @@ func (r GetPnlResponse) StatusCode() int {
 	return 0
 }
 
-type GetPnlStatsResponse struct {
+type GetPnlByTokenResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *[]WalletPnlDTO
+	JSON200      *PnlDetailsPage
 }
 
 // Status returns HTTPResponse.Status
-func (r GetPnlStatsResponse) Status() string {
+func (r GetPnlByTokenResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -1052,20 +2885,126 @@ func (r GetPnlStatsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetPnlStatsResponse) StatusCode() int {
+func (r GetPnlByTokenResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-// GetBalanceWithResponse request returning *GetBalanceResponse
-func (c *ClientWithResponses) GetBalanceWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetBalanceParams, reqEditors ...RequestEditorFn) (*GetBalanceResponse, error) {
-	rsp, err := c.GetBalance(ctx, chain, walletAddress, params, reqEditors...)
+type GetPnlDetailsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *PnlDetailsPage
+}
+
+// Status returns HTTPResponse.Status
+func (r GetPnlDetailsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetPnlDetailsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetTokensBalanceResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *TokensBalancePage
+}
+
+// Status returns HTTPResponse.Status
+func (r GetTokensBalanceResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetTokensBalanceResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetWalletTransferTotalResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *TokenTransferTotalDTO
+}
+
+// Status returns HTTPResponse.Status
+func (r GetWalletTransferTotalResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetWalletTransferTotalResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetWalletTransfersResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *TransactionHistoryPage
+}
+
+// Status returns HTTPResponse.Status
+func (r GetWalletTransfersResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetWalletTransfersResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// GetWalletFirstTxWithResponse request returning *GetWalletFirstTxResponse
+func (c *ClientWithResponses) GetWalletFirstTxWithResponse(ctx context.Context, chain ChainSymbol, params *GetWalletFirstTxParams, reqEditors ...RequestEditorFn) (*GetWalletFirstTxResponse, error) {
+	rsp, err := c.GetWalletFirstTx(ctx, chain, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseGetBalanceResponse(rsp)
+	return ParseGetWalletFirstTxResponse(rsp)
+}
+
+// GetNetWorthSummaryWithResponse request returning *GetNetWorthSummaryResponse
+func (c *ClientWithResponses) GetNetWorthSummaryWithResponse(ctx context.Context, chain ChainSymbol, params *GetNetWorthSummaryParams, reqEditors ...RequestEditorFn) (*GetNetWorthSummaryResponse, error) {
+	rsp, err := c.GetNetWorthSummary(ctx, chain, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetNetWorthSummaryResponse(rsp)
+}
+
+// GetPnlByWalletWithResponse request returning *GetPnlByWalletResponse
+func (c *ClientWithResponses) GetPnlByWalletWithResponse(ctx context.Context, chain ChainSymbol, params *GetPnlByWalletParams, reqEditors ...RequestEditorFn) (*GetPnlByWalletResponse, error) {
+	rsp, err := c.GetPnlByWallet(ctx, chain, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetPnlByWalletResponse(rsp)
 }
 
 // GetBalanceUpdatesWithResponse request returning *GetBalanceUpdatesResponse
@@ -1094,6 +3033,33 @@ func (c *ClientWithResponses) CalculatePnlWithResponse(ctx context.Context, chai
 	return ParseCalculatePnlResponse(rsp)
 }
 
+// GetNetWorthWithResponse request returning *GetNetWorthResponse
+func (c *ClientWithResponses) GetNetWorthWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthParams, reqEditors ...RequestEditorFn) (*GetNetWorthResponse, error) {
+	rsp, err := c.GetNetWorth(ctx, chain, walletAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetNetWorthResponse(rsp)
+}
+
+// GetNetWorthChartWithResponse request returning *GetNetWorthChartResponse
+func (c *ClientWithResponses) GetNetWorthChartWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthChartParams, reqEditors ...RequestEditorFn) (*GetNetWorthChartResponse, error) {
+	rsp, err := c.GetNetWorthChart(ctx, chain, walletAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetNetWorthChartResponse(rsp)
+}
+
+// GetNetWorthDetailsWithResponse request returning *GetNetWorthDetailsResponse
+func (c *ClientWithResponses) GetNetWorthDetailsWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthDetailsParams, reqEditors ...RequestEditorFn) (*GetNetWorthDetailsResponse, error) {
+	rsp, err := c.GetNetWorthDetails(ctx, chain, walletAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetNetWorthDetailsResponse(rsp)
+}
+
 // GetPnlWithResponse request returning *GetPnlResponse
 func (c *ClientWithResponses) GetPnlWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*GetPnlResponse, error) {
 	rsp, err := c.GetPnl(ctx, chain, walletAddress, params, reqEditors...)
@@ -1103,31 +3069,119 @@ func (c *ClientWithResponses) GetPnlWithResponse(ctx context.Context, chain Chai
 	return ParseGetPnlResponse(rsp)
 }
 
-// GetPnlStatsWithResponse request returning *GetPnlStatsResponse
-func (c *ClientWithResponses) GetPnlStatsWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, reqEditors ...RequestEditorFn) (*GetPnlStatsResponse, error) {
-	rsp, err := c.GetPnlStats(ctx, chain, walletAddress, reqEditors...)
+// GetPnlByTokenWithResponse request returning *GetPnlByTokenResponse
+func (c *ClientWithResponses) GetPnlByTokenWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlByTokenParams, reqEditors ...RequestEditorFn) (*GetPnlByTokenResponse, error) {
+	rsp, err := c.GetPnlByToken(ctx, chain, walletAddress, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseGetPnlStatsResponse(rsp)
+	return ParseGetPnlByTokenResponse(rsp)
 }
 
-// ParseGetBalanceResponse parses an HTTP response from a GetBalanceWithResponse call
-func ParseGetBalanceResponse(rsp *http.Response) (*GetBalanceResponse, error) {
+// GetPnlDetailsWithResponse request returning *GetPnlDetailsResponse
+func (c *ClientWithResponses) GetPnlDetailsWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlDetailsParams, reqEditors ...RequestEditorFn) (*GetPnlDetailsResponse, error) {
+	rsp, err := c.GetPnlDetails(ctx, chain, walletAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetPnlDetailsResponse(rsp)
+}
+
+// GetTokensBalanceWithResponse request returning *GetTokensBalanceResponse
+func (c *ClientWithResponses) GetTokensBalanceWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetTokensBalanceParams, reqEditors ...RequestEditorFn) (*GetTokensBalanceResponse, error) {
+	rsp, err := c.GetTokensBalance(ctx, chain, walletAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetTokensBalanceResponse(rsp)
+}
+
+// GetWalletTransferTotalWithResponse request returning *GetWalletTransferTotalResponse
+func (c *ClientWithResponses) GetWalletTransferTotalWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetWalletTransferTotalParams, reqEditors ...RequestEditorFn) (*GetWalletTransferTotalResponse, error) {
+	rsp, err := c.GetWalletTransferTotal(ctx, chain, walletAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetWalletTransferTotalResponse(rsp)
+}
+
+// GetWalletTransfersWithResponse request returning *GetWalletTransfersResponse
+func (c *ClientWithResponses) GetWalletTransfersWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetWalletTransfersParams, reqEditors ...RequestEditorFn) (*GetWalletTransfersResponse, error) {
+	rsp, err := c.GetWalletTransfers(ctx, chain, walletAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetWalletTransfersResponse(rsp)
+}
+
+// ParseGetWalletFirstTxResponse parses an HTTP response from a GetWalletFirstTxWithResponse call
+func ParseGetWalletFirstTxResponse(rsp *http.Response) (*GetWalletFirstTxResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &GetBalanceResponse{
+	response := &GetWalletFirstTxResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest WalletBalancesDTO
+		var dest WalletFirstTxDTO
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetNetWorthSummaryResponse parses an HTTP response from a GetNetWorthSummaryWithResponse call
+func ParseGetNetWorthSummaryResponse(rsp *http.Response) (*GetNetWorthSummaryResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetNetWorthSummaryResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest WalletNetWorthSummaryDTO
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetPnlByWalletResponse parses an HTTP response from a GetPnlByWalletWithResponse call
+func ParseGetPnlByWalletResponse(rsp *http.Response) (*GetPnlByWalletResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetPnlByWalletResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest PnlDetailsPage
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1190,6 +3244,84 @@ func ParseCalculatePnlResponse(rsp *http.Response) (*CalculatePnlResponse, error
 	return response, nil
 }
 
+// ParseGetNetWorthResponse parses an HTTP response from a GetNetWorthWithResponse call
+func ParseGetNetWorthResponse(rsp *http.Response) (*GetNetWorthResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetNetWorthResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest WalletNetWorthPage
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetNetWorthChartResponse parses an HTTP response from a GetNetWorthChartWithResponse call
+func ParseGetNetWorthChartResponse(rsp *http.Response) (*GetNetWorthChartResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetNetWorthChartResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest WalletNetWorthChartDTO
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetNetWorthDetailsResponse parses an HTTP response from a GetNetWorthDetailsWithResponse call
+func ParseGetNetWorthDetailsResponse(rsp *http.Response) (*GetNetWorthDetailsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetNetWorthDetailsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest WalletNetWorthDetailsPage
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetPnlResponse parses an HTTP response from a GetPnlWithResponse call
 func ParseGetPnlResponse(rsp *http.Response) (*GetPnlResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -1205,7 +3337,7 @@ func ParseGetPnlResponse(rsp *http.Response) (*GetPnlResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []WalletPnlDTO
+		var dest WalletPnlSummaryDTO
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1216,22 +3348,126 @@ func ParseGetPnlResponse(rsp *http.Response) (*GetPnlResponse, error) {
 	return response, nil
 }
 
-// ParseGetPnlStatsResponse parses an HTTP response from a GetPnlStatsWithResponse call
-func ParseGetPnlStatsResponse(rsp *http.Response) (*GetPnlStatsResponse, error) {
+// ParseGetPnlByTokenResponse parses an HTTP response from a GetPnlByTokenWithResponse call
+func ParseGetPnlByTokenResponse(rsp *http.Response) (*GetPnlByTokenResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &GetPnlStatsResponse{
+	response := &GetPnlByTokenResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []WalletPnlDTO
+		var dest PnlDetailsPage
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetPnlDetailsResponse parses an HTTP response from a GetPnlDetailsWithResponse call
+func ParseGetPnlDetailsResponse(rsp *http.Response) (*GetPnlDetailsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetPnlDetailsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest PnlDetailsPage
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetTokensBalanceResponse parses an HTTP response from a GetTokensBalanceWithResponse call
+func ParseGetTokensBalanceResponse(rsp *http.Response) (*GetTokensBalanceResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetTokensBalanceResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest TokensBalancePage
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetWalletTransferTotalResponse parses an HTTP response from a GetWalletTransferTotalWithResponse call
+func ParseGetWalletTransferTotalResponse(rsp *http.Response) (*GetWalletTransferTotalResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetWalletTransferTotalResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest TokenTransferTotalDTO
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetWalletTransfersResponse parses an HTTP response from a GetWalletTransfersWithResponse call
+func ParseGetWalletTransfersResponse(rsp *http.Response) (*GetWalletTransfersResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetWalletTransfersResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest TransactionHistoryPage
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

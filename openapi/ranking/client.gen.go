@@ -469,7 +469,7 @@ type DexPoolDTO struct {
 	ProtocolName *string `json:"protocolName,omitempty"`
 
 	// TickSpacing DTO.DEXPOOL.TICK_SPACING
-	TickSpacing *int `json:"tickSpacing,omitempty"`
+	TickSpacing *int64 `json:"tickSpacing,omitempty"`
 
 	// TokenAAddress DTO.DEXPOOL.TOKEN_A
 	TokenAAddress string `json:"tokenAAddress"`
@@ -484,7 +484,7 @@ type DexPoolDTO struct {
 	TokenBLiquidity *DexPoolTokenLiquidity `json:"tokenBLiquidity,omitempty"`
 
 	// TokenCount DTO.DEXPOOL.TOKEN_COUNT
-	TokenCount *int `json:"tokenCount,omitempty"`
+	TokenCount *int64 `json:"tokenCount,omitempty"`
 
 	// TvlInSol DTO.DEXPOOL.TVL_SOL
 	TvlInSol *string `json:"tvlInSol,omitempty"`
@@ -516,6 +516,9 @@ type DexPoolTokenLiquidity struct {
 	// AmountInUsd DTO.DEXPOOL.AMOUNT_IN_USD
 	AmountInUsd string `json:"amountInUsd"`
 
+	// Decimals DTO.DEXPOOL.TOKEN_DECIMALS
+	Decimals int64 `json:"decimals"`
+
 	// PriceNative DTO.DEXPOOL.PRICE_NATIVE
 	PriceNative string `json:"priceNative"`
 
@@ -524,9 +527,6 @@ type DexPoolTokenLiquidity struct {
 
 	// TokenAddress DTO.DEXPOOL.TOKEN_ADDRESS
 	TokenAddress string `json:"tokenAddress"`
-
-	// TokenDecimals DTO.DEXPOOL.TOKEN_DECIMALS
-	TokenDecimals int `json:"tokenDecimals"`
 
 	// VaultAmount DTO.DEXPOOL.VAULT_AMOUNT
 	VaultAmount string `json:"vaultAmount"`

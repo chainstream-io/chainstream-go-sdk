@@ -152,6 +152,18 @@ const (
 	Sniper   TokenTraderTag = "sniper"
 )
 
+// Defines values for TokenTransferItemDTOFlow.
+const (
+	In  TokenTransferItemDTOFlow = "in"
+	Out TokenTransferItemDTOFlow = "out"
+)
+
+// Defines values for SearchParamsDirection.
+const (
+	SearchParamsDirectionNext SearchParamsDirection = "next"
+	SearchParamsDirectionPrev SearchParamsDirection = "prev"
+)
+
 // Defines values for SearchParamsSort.
 const (
 	SearchParamsSortAsc  SearchParamsSort = "asc"
@@ -310,6 +322,12 @@ const (
 	GetHoldersParamsDirectionPrev GetHoldersParamsDirection = "prev"
 )
 
+// Defines values for GetTokenLiquiditySnapshotsParamsDirection.
+const (
+	GetTokenLiquiditySnapshotsParamsDirectionNext GetTokenLiquiditySnapshotsParamsDirection = "next"
+	GetTokenLiquiditySnapshotsParamsDirectionPrev GetTokenLiquiditySnapshotsParamsDirection = "prev"
+)
+
 // Defines values for GetMintAndBurnParamsDirection.
 const (
 	GetMintAndBurnParamsDirectionNext GetMintAndBurnParamsDirection = "next"
@@ -343,8 +361,20 @@ const (
 
 // Defines values for GetPricesParamsDirection.
 const (
-	Next GetPricesParamsDirection = "next"
-	Prev GetPricesParamsDirection = "prev"
+	GetPricesParamsDirectionNext GetPricesParamsDirection = "next"
+	GetPricesParamsDirectionPrev GetPricesParamsDirection = "prev"
+)
+
+// Defines values for GetTokenTransferTotalParamsDirection.
+const (
+	GetTokenTransferTotalParamsDirectionNext GetTokenTransferTotalParamsDirection = "next"
+	GetTokenTransferTotalParamsDirectionPrev GetTokenTransferTotalParamsDirection = "prev"
+)
+
+// Defines values for GetTokenTransfersParamsDirection.
+const (
+	Next GetTokenTransfersParamsDirection = "next"
+	Prev GetTokenTransfersParamsDirection = "prev"
 )
 
 // Candle defines model for Candle.
@@ -425,7 +455,7 @@ type DexPoolDTO struct {
 	ProtocolName *string `json:"protocolName,omitempty"`
 
 	// TickSpacing DTO.DEXPOOL.TICK_SPACING
-	TickSpacing *int `json:"tickSpacing,omitempty"`
+	TickSpacing *int64 `json:"tickSpacing,omitempty"`
 
 	// TokenAAddress DTO.DEXPOOL.TOKEN_A
 	TokenAAddress string `json:"tokenAAddress"`
@@ -440,7 +470,7 @@ type DexPoolDTO struct {
 	TokenBLiquidity *DexPoolTokenLiquidity `json:"tokenBLiquidity,omitempty"`
 
 	// TokenCount DTO.DEXPOOL.TOKEN_COUNT
-	TokenCount *int `json:"tokenCount,omitempty"`
+	TokenCount *int64 `json:"tokenCount,omitempty"`
 
 	// TvlInSol DTO.DEXPOOL.TVL_SOL
 	TvlInSol *string `json:"tvlInSol,omitempty"`
@@ -493,6 +523,9 @@ type DexPoolTokenLiquidity struct {
 	// AmountInUsd DTO.DEXPOOL.AMOUNT_IN_USD
 	AmountInUsd string `json:"amountInUsd"`
 
+	// Decimals DTO.DEXPOOL.TOKEN_DECIMALS
+	Decimals int64 `json:"decimals"`
+
 	// PriceNative DTO.DEXPOOL.PRICE_NATIVE
 	PriceNative string `json:"priceNative"`
 
@@ -501,9 +534,6 @@ type DexPoolTokenLiquidity struct {
 
 	// TokenAddress DTO.DEXPOOL.TOKEN_ADDRESS
 	TokenAddress string `json:"tokenAddress"`
-
-	// TokenDecimals DTO.DEXPOOL.TOKEN_DECIMALS
-	TokenDecimals int `json:"tokenDecimals"`
 
 	// VaultAmount DTO.DEXPOOL.VAULT_AMOUNT
 	VaultAmount string `json:"vaultAmount"`
@@ -770,7 +800,7 @@ type TokenLiquiditySnapshotDTO struct {
 	MaxLiquidityPoolAddress string `json:"maxLiquidityPoolAddress"`
 
 	// PoolCount DTO.TOKEN.LIQUIDITY_SNAPSHOT.POOL_COUNT
-	PoolCount int `json:"poolCount"`
+	PoolCount int64 `json:"poolCount"`
 
 	// PriceNative DTO.TOKEN.LIQUIDITY_SNAPSHOT.PRICE_NATIVE
 	PriceNative string `json:"priceNative"`
@@ -1541,16 +1571,106 @@ type TokenTrader struct {
 // TokenTraderTag defines model for TokenTraderTag.
 type TokenTraderTag string
 
+// TokenTransferItemDTO defines model for TokenTransferItemDTO.
+type TokenTransferItemDTO struct {
+	// Action DTO.TOKEN.TRANSFER.ACTION
+	Action string `json:"action"`
+
+	// Amount DTO.TOKEN.TRANSFER.AMOUNT
+	Amount string `json:"amount"`
+
+	// BlockNumber DTO.TOKEN.TRANSFER.BLOCK_NUMBER
+	BlockNumber int64 `json:"blockNumber"`
+
+	// BlockTime DTO.TOKEN.TRANSFER.BLOCK_TIME
+	BlockTime int64 `json:"blockTime"`
+
+	// Decimals DTO.TOKEN.TRANSFER.DECIMALS
+	Decimals int64 `json:"decimals"`
+
+	// Flow DTO.TOKEN.TRANSFER.FLOW
+	Flow TokenTransferItemDTOFlow `json:"flow"`
+
+	// FromAddress DTO.TOKEN.TRANSFER.FROM_ADDRESS
+	FromAddress string `json:"fromAddress"`
+
+	// FromTokenAccount DTO.TOKEN.TRANSFER.FROM_TOKEN_ACCOUNT
+	FromTokenAccount string `json:"fromTokenAccount"`
+
+	// LogoUri DTO.TOKEN.TRANSFER.LOGO_URI
+	LogoUri *string `json:"logoUri,omitempty"`
+
+	// Name DTO.TOKEN.TRANSFER.NAME
+	Name string `json:"name"`
+
+	// Price DTO.TOKEN.TRANSFER.PRICE
+	Price string `json:"price"`
+
+	// Symbol DTO.TOKEN.TRANSFER.SYMBOL
+	Symbol string `json:"symbol"`
+
+	// ToAddress DTO.TOKEN.TRANSFER.TO_ADDRESS
+	ToAddress string `json:"toAddress"`
+
+	// ToTokenAccount DTO.TOKEN.TRANSFER.TO_TOKEN_ACCOUNT
+	ToTokenAccount string `json:"toTokenAccount"`
+
+	// TokenAddress DTO.TOKEN.TRANSFER.TOKEN_ADDRESS
+	TokenAddress string `json:"tokenAddress"`
+
+	// TxHash DTO.TOKEN.TRANSFER.TX_HASH
+	TxHash string `json:"txHash"`
+
+	// Value DTO.TOKEN.TRANSFER.VALUE
+	Value string `json:"value"`
+}
+
+// TokenTransferItemDTOFlow DTO.TOKEN.TRANSFER.FLOW
+type TokenTransferItemDTOFlow string
+
+// TokenTransferPage defines model for TokenTransferPage.
+type TokenTransferPage struct {
+	// Data DTO.PAGE.DATA
+	Data []TokenTransferItemDTO `json:"data"`
+
+	// EndCursor DTO.PAGE.END_CURSOR
+	EndCursor *string `json:"endCursor,omitempty"`
+
+	// HasNext DTO.PAGE.HAS_NEXT
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev DTO.PAGE.HAS_PREV
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor DTO.PAGE.START_CURSOR
+	StartCursor *string `json:"startCursor,omitempty"`
+
+	// Total DTO.PAGE.TOTAL
+	Total *int64 `json:"total,omitempty"`
+}
+
+// TokenTransferTotalDTO defines model for TokenTransferTotalDTO.
+type TokenTransferTotalDTO struct {
+	// Total DTO.TOKEN.TRANSFER.TOTAL
+	Total int64 `json:"total"`
+}
+
 // SearchParams defines parameters for Search.
 type SearchParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *SearchParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+
 	// Chains DTO.TOKEN.SEARCH.CHAINS
 	Chains *[]string `form:"chains,omitempty" json:"chains,omitempty"`
 
 	// Q DTO.TOKEN.SEARCH.QUERY
 	Q *string `form:"q,omitempty" json:"q,omitempty"`
-
-	// Limit DTO.TOKEN.SEARCH.LIMIT
-	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Sort DTO.TOKEN.SEARCH.SORT_DIRECTION
 	Sort *SearchParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
@@ -1558,12 +1678,12 @@ type SearchParams struct {
 	// Protocols DTO.TOKEN.SEARCH.PROTOCOLS
 	Protocols *[]string `form:"protocols,omitempty" json:"protocols,omitempty"`
 
-	// Cursor DTO.PAGE.CURSOR
-	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
-
 	// SortBy DTO.TOKEN.SEARCH.SORT_BY
 	SortBy *SearchParamsSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
 }
+
+// SearchParamsDirection defines parameters for Search.
+type SearchParamsDirection string
 
 // SearchParamsSort defines parameters for Search.
 type SearchParamsSort string
@@ -2092,15 +2212,21 @@ type GetHoldersMultiParams struct {
 
 // GetTokenLiquiditySnapshotsParams defines parameters for GetTokenLiquiditySnapshots.
 type GetTokenLiquiditySnapshotsParams struct {
-	// Time DTO.TOKEN.LIQUIDITY_SNAPSHOT.TIME
-	Time *int64 `form:"time,omitempty" json:"time,omitempty"`
-
-	// Cursor DTO.PAGE.CURSOR
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
 	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 
 	// Limit DTO.PAGE.LIMIT
-	Limit *int `form:"limit,omitempty" json:"limit,omitempty"`
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetTokenLiquiditySnapshotsParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+
+	// Time DTO.TOKEN.LIQUIDITY_SNAPSHOT.TIME
+	Time *int64 `form:"time,omitempty" json:"time,omitempty"`
 }
+
+// GetTokenLiquiditySnapshotsParamsDirection defines parameters for GetTokenLiquiditySnapshots.
+type GetTokenLiquiditySnapshotsParamsDirection string
 
 // GetMintAndBurnParams defines parameters for GetMintAndBurn.
 type GetMintAndBurnParams struct {
@@ -2182,6 +2308,48 @@ type GetPricesParams struct {
 
 // GetPricesParamsDirection defines parameters for GetPrices.
 type GetPricesParamsDirection string
+
+// GetTokenTransferTotalParams defines parameters for GetTokenTransferTotal.
+type GetTokenTransferTotalParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetTokenTransferTotalParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+
+	// BeforeTimestamp DTO.TOKEN.TRANSFER.QUERY.BEFORE_TIMESTAMP
+	BeforeTimestamp *int64 `form:"beforeTimestamp,omitempty" json:"beforeTimestamp,omitempty"`
+
+	// AfterTimestamp DTO.TOKEN.TRANSFER.QUERY.AFTER_TIMESTAMP
+	AfterTimestamp *int64 `form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
+}
+
+// GetTokenTransferTotalParamsDirection defines parameters for GetTokenTransferTotal.
+type GetTokenTransferTotalParamsDirection string
+
+// GetTokenTransfersParams defines parameters for GetTokenTransfers.
+type GetTokenTransfersParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Direction DTO.PAGE.DIRECTION
+	Direction *GetTokenTransfersParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+
+	// BeforeTimestamp DTO.TOKEN.TRANSFER.QUERY.BEFORE_TIMESTAMP
+	BeforeTimestamp *int64 `form:"beforeTimestamp,omitempty" json:"beforeTimestamp,omitempty"`
+
+	// AfterTimestamp DTO.TOKEN.TRANSFER.QUERY.AFTER_TIMESTAMP
+	AfterTimestamp *int64 `form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
+}
+
+// GetTokenTransfersParamsDirection defines parameters for GetTokenTransfers.
+type GetTokenTransfersParamsDirection string
 
 // RequestEditorFn  is the function signature for the RequestEditor callback function
 type RequestEditorFn func(ctx context.Context, req *http.Request) error
@@ -2330,6 +2498,12 @@ type ClientInterface interface {
 
 	// GetTokenTraders request
 	GetTokenTraders(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetTokenTransferTotal request
+	GetTokenTransferTotal(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTransferTotalParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetTokenTransfers request
+	GetTokenTransfers(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTransfersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
 
 func (c *Client) Search(ctx context.Context, params *SearchParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -2632,6 +2806,30 @@ func (c *Client) GetTokenTraders(ctx context.Context, chain ChainSymbol, tokenAd
 	return c.Client.Do(req)
 }
 
+func (c *Client) GetTokenTransferTotal(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTransferTotalParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetTokenTransferTotalRequest(c.Server, chain, tokenAddress, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetTokenTransfers(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTransfersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetTokenTransfersRequest(c.Server, chain, tokenAddress, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // NewSearchRequest generates requests for Search
 func NewSearchRequest(server string, params *SearchParams) (*http.Request, error) {
 	var err error
@@ -2653,6 +2851,54 @@ func NewSearchRequest(server string, params *SearchParams) (*http.Request, error
 
 	if params != nil {
 		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
 
 		if params.Chains != nil {
 
@@ -2686,22 +2932,6 @@ func NewSearchRequest(server string, params *SearchParams) (*http.Request, error
 
 		}
 
-		if params.Limit != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
 		if params.Sort != nil {
 
 			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "sort", runtime.ParamLocationQuery, *params.Sort); err != nil {
@@ -2721,22 +2951,6 @@ func NewSearchRequest(server string, params *SearchParams) (*http.Request, error
 		if params.Protocols != nil {
 
 			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "protocols", runtime.ParamLocationQuery, *params.Protocols); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Cursor != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -5851,22 +6065,6 @@ func NewGetTokenLiquiditySnapshotsRequest(server string, chain ChainSymbol, toke
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.Time != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "time", runtime.ParamLocationQuery, *params.Time); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
 		if params.Cursor != nil {
 
 			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
@@ -5886,6 +6084,38 @@ func NewGetTokenLiquiditySnapshotsRequest(server string, chain ChainSymbol, toke
 		if params.Limit != nil {
 
 			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Time != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "time", runtime.ParamLocationQuery, *params.Time); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -6619,6 +6849,260 @@ func NewGetTokenTradersRequest(server string, chain ChainSymbol, tokenAddress st
 	return req, nil
 }
 
+// NewGetTokenTransferTotalRequest generates requests for GetTokenTransferTotal
+func NewGetTokenTransferTotalRequest(server string, chain ChainSymbol, tokenAddress string, params *GetTokenTransferTotalParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "tokenAddress", runtime.ParamLocationPath, tokenAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/token/%s/%s/transfer-total", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.BeforeTimestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "beforeTimestamp", runtime.ParamLocationQuery, *params.BeforeTimestamp); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.AfterTimestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "afterTimestamp", runtime.ParamLocationQuery, *params.AfterTimestamp); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetTokenTransfersRequest generates requests for GetTokenTransfers
+func NewGetTokenTransfersRequest(server string, chain ChainSymbol, tokenAddress string, params *GetTokenTransfersParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "tokenAddress", runtime.ParamLocationPath, tokenAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/token/%s/%s/transfers", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.BeforeTimestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "beforeTimestamp", runtime.ParamLocationQuery, *params.BeforeTimestamp); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.AfterTimestamp != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "afterTimestamp", runtime.ParamLocationQuery, *params.AfterTimestamp); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 func (c *Client) applyEditors(ctx context.Context, req *http.Request, additionalEditors []RequestEditorFn) error {
 	for _, r := range c.RequestEditors {
 		if err := r(ctx, req); err != nil {
@@ -6736,6 +7220,12 @@ type ClientWithResponsesInterface interface {
 
 	// GetTokenTradersWithResponse request
 	GetTokenTradersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, reqEditors ...RequestEditorFn) (*GetTokenTradersResponse, error)
+
+	// GetTokenTransferTotalWithResponse request
+	GetTokenTransferTotalWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTransferTotalParams, reqEditors ...RequestEditorFn) (*GetTokenTransferTotalResponse, error)
+
+	// GetTokenTransfersWithResponse request
+	GetTokenTransfersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTransfersParams, reqEditors ...RequestEditorFn) (*GetTokenTransfersResponse, error)
 }
 
 type SearchResponse struct {
@@ -7288,6 +7778,50 @@ func (r GetTokenTradersResponse) StatusCode() int {
 	return 0
 }
 
+type GetTokenTransferTotalResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *TokenTransferTotalDTO
+}
+
+// Status returns HTTPResponse.Status
+func (r GetTokenTransferTotalResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetTokenTransferTotalResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetTokenTransfersResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *TokenTransferPage
+}
+
+// Status returns HTTPResponse.Status
+func (r GetTokenTransfersResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetTokenTransfersResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 // SearchWithResponse request returning *SearchResponse
 func (c *ClientWithResponses) SearchWithResponse(ctx context.Context, params *SearchParams, reqEditors ...RequestEditorFn) (*SearchResponse, error) {
 	rsp, err := c.Search(ctx, params, reqEditors...)
@@ -7511,6 +8045,24 @@ func (c *ClientWithResponses) GetTokenTradersWithResponse(ctx context.Context, c
 		return nil, err
 	}
 	return ParseGetTokenTradersResponse(rsp)
+}
+
+// GetTokenTransferTotalWithResponse request returning *GetTokenTransferTotalResponse
+func (c *ClientWithResponses) GetTokenTransferTotalWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTransferTotalParams, reqEditors ...RequestEditorFn) (*GetTokenTransferTotalResponse, error) {
+	rsp, err := c.GetTokenTransferTotal(ctx, chain, tokenAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetTokenTransferTotalResponse(rsp)
+}
+
+// GetTokenTransfersWithResponse request returning *GetTokenTransfersResponse
+func (c *ClientWithResponses) GetTokenTransfersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTransfersParams, reqEditors ...RequestEditorFn) (*GetTokenTransfersResponse, error) {
+	rsp, err := c.GetTokenTransfers(ctx, chain, tokenAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetTokenTransfersResponse(rsp)
 }
 
 // ParseSearchResponse parses an HTTP response from a SearchWithResponse call
@@ -8153,6 +8705,58 @@ func ParseGetTokenTradersResponse(rsp *http.Response) (*GetTokenTradersResponse,
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []TokenTrader
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetTokenTransferTotalResponse parses an HTTP response from a GetTokenTransferTotalWithResponse call
+func ParseGetTokenTransferTotalResponse(rsp *http.Response) (*GetTokenTransferTotalResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetTokenTransferTotalResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest TokenTransferTotalDTO
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetTokenTransfersResponse parses an HTTP response from a GetTokenTransfersWithResponse call
+func ParseGetTokenTransfersResponse(rsp *http.Response) (*GetTokenTransfersResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetTokenTransfersResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest TokenTransferPage
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
