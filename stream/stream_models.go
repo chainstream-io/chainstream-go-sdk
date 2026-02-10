@@ -62,90 +62,218 @@ type TokenActivity struct {
 	Timestamp int64             `json:"timestamp"`
 }
 
-// TokenStat represents token statistics
+// TokenStat represents token statistics with multi-timeframe data
+// Time windows: 1m, 5m, 15m, 30m, 1h, 2h, 4h, 6h, 8h, 24h, 1W, 1M
 type TokenStat struct {
 	Address   string `json:"address"`
 	Timestamp int64  `json:"timestamp"`
 
+	// Current price (first positive closeInUsd across windows, or from cache)
+	Price *string `json:"price,omitempty"`
+
 	// 1-minute data
-	Buys1m            *int    `json:"buys1m,omitempty"`
-	Sells1m           *int    `json:"sells1m,omitempty"`
-	Buyers1m          *int    `json:"buyers1m,omitempty"`
-	Sellers1m         *int    `json:"sellers1m,omitempty"`
-	BuyVolumeInUsd1m  *string `json:"buyVolumeInUsd1m,omitempty"`
-	SellVolumeInUsd1m *string `json:"sellVolumeInUsd1m,omitempty"`
-	Price1m           *string `json:"price1m,omitempty"`
-	OpenInUsd1m       *string `json:"openInUsd1m,omitempty"`
-	CloseInUsd1m      *string `json:"closeInUsd1m,omitempty"`
+	Buys1m                 *int    `json:"buys1m,omitempty"`
+	Sells1m                *int    `json:"sells1m,omitempty"`
+	Buyers1m               *int    `json:"buyers1m,omitempty"`
+	Sellers1m              *int    `json:"sellers1m,omitempty"`
+	BuyVolumeInUsd1m       *string `json:"buyVolumeInUsd1m,omitempty"`
+	SellVolumeInUsd1m      *string `json:"sellVolumeInUsd1m,omitempty"`
+	Price1m                *string `json:"price1m,omitempty"`
+	OpenInUsd1m            *string `json:"openInUsd1m,omitempty"`
+	CloseInUsd1m           *string `json:"closeInUsd1m,omitempty"`
+	VolumeChangeRatio1m    *string `json:"volumeChangeRatio1m,omitempty"`
+	Trades1m               *int    `json:"trades1m,omitempty"`
+	DappProgramCount1m     *int    `json:"dappProgramCount1m,omitempty"`
+	PoolCount1m            *int    `json:"poolCount1m,omitempty"`
+	LiquidityInUsd1m       *string `json:"liquidityInUsd1m,omitempty"`
+	LiquidityChangeRatio1m *string `json:"liquidityChangeRatio1m,omitempty"`
 
 	// 5-minute data
-	Buys5m            *int    `json:"buys5m,omitempty"`
-	Sells5m           *int    `json:"sells5m,omitempty"`
-	Buyers5m          *int    `json:"buyers5m,omitempty"`
-	Sellers5m         *int    `json:"sellers5m,omitempty"`
-	BuyVolumeInUsd5m  *string `json:"buyVolumeInUsd5m,omitempty"`
-	SellVolumeInUsd5m *string `json:"sellVolumeInUsd5m,omitempty"`
-	Price5m           *string `json:"price5m,omitempty"`
-	OpenInUsd5m       *string `json:"openInUsd5m,omitempty"`
-	CloseInUsd5m      *string `json:"closeInUsd5m,omitempty"`
+	Buys5m                 *int    `json:"buys5m,omitempty"`
+	Sells5m                *int    `json:"sells5m,omitempty"`
+	Buyers5m               *int    `json:"buyers5m,omitempty"`
+	Sellers5m              *int    `json:"sellers5m,omitempty"`
+	BuyVolumeInUsd5m       *string `json:"buyVolumeInUsd5m,omitempty"`
+	SellVolumeInUsd5m      *string `json:"sellVolumeInUsd5m,omitempty"`
+	Price5m                *string `json:"price5m,omitempty"`
+	OpenInUsd5m            *string `json:"openInUsd5m,omitempty"`
+	CloseInUsd5m           *string `json:"closeInUsd5m,omitempty"`
+	VolumeChangeRatio5m    *string `json:"volumeChangeRatio5m,omitempty"`
+	Trades5m               *int    `json:"trades5m,omitempty"`
+	DappProgramCount5m     *int    `json:"dappProgramCount5m,omitempty"`
+	PoolCount5m            *int    `json:"poolCount5m,omitempty"`
+	LiquidityInUsd5m       *string `json:"liquidityInUsd5m,omitempty"`
+	LiquidityChangeRatio5m *string `json:"liquidityChangeRatio5m,omitempty"`
 
 	// 15-minute data
-	Buys15m            *int    `json:"buys15m,omitempty"`
-	Sells15m           *int    `json:"sells15m,omitempty"`
-	Buyers15m          *int    `json:"buyers15m,omitempty"`
-	Sellers15m         *int    `json:"sellers15m,omitempty"`
-	BuyVolumeInUsd15m  *string `json:"buyVolumeInUsd15m,omitempty"`
-	SellVolumeInUsd15m *string `json:"sellVolumeInUsd15m,omitempty"`
-	Price15m           *string `json:"price15m,omitempty"`
-	OpenInUsd15m       *string `json:"openInUsd15m,omitempty"`
-	CloseInUsd15m      *string `json:"closeInUsd15m,omitempty"`
+	Buys15m                 *int    `json:"buys15m,omitempty"`
+	Sells15m                *int    `json:"sells15m,omitempty"`
+	Buyers15m               *int    `json:"buyers15m,omitempty"`
+	Sellers15m              *int    `json:"sellers15m,omitempty"`
+	BuyVolumeInUsd15m       *string `json:"buyVolumeInUsd15m,omitempty"`
+	SellVolumeInUsd15m      *string `json:"sellVolumeInUsd15m,omitempty"`
+	Price15m                *string `json:"price15m,omitempty"`
+	OpenInUsd15m            *string `json:"openInUsd15m,omitempty"`
+	CloseInUsd15m           *string `json:"closeInUsd15m,omitempty"`
+	VolumeChangeRatio15m    *string `json:"volumeChangeRatio15m,omitempty"`
+	Trades15m               *int    `json:"trades15m,omitempty"`
+	DappProgramCount15m     *int    `json:"dappProgramCount15m,omitempty"`
+	PoolCount15m            *int    `json:"poolCount15m,omitempty"`
+	LiquidityInUsd15m       *string `json:"liquidityInUsd15m,omitempty"`
+	LiquidityChangeRatio15m *string `json:"liquidityChangeRatio15m,omitempty"`
 
 	// 30-minute data
-	Buys30m            *int    `json:"buys30m,omitempty"`
-	Sells30m           *int    `json:"sells30m,omitempty"`
-	Buyers30m          *int    `json:"buyers30m,omitempty"`
-	Sellers30m         *int    `json:"sellers30m,omitempty"`
-	BuyVolumeInUsd30m  *string `json:"buyVolumeInUsd30m,omitempty"`
-	SellVolumeInUsd30m *string `json:"sellVolumeInUsd30m,omitempty"`
-	Price30m           *string `json:"price30m,omitempty"`
-	OpenInUsd30m       *string `json:"openInUsd30m,omitempty"`
-	CloseInUsd30m      *string `json:"closeInUsd30m,omitempty"`
+	Buys30m                 *int    `json:"buys30m,omitempty"`
+	Sells30m                *int    `json:"sells30m,omitempty"`
+	Buyers30m               *int    `json:"buyers30m,omitempty"`
+	Sellers30m              *int    `json:"sellers30m,omitempty"`
+	BuyVolumeInUsd30m       *string `json:"buyVolumeInUsd30m,omitempty"`
+	SellVolumeInUsd30m      *string `json:"sellVolumeInUsd30m,omitempty"`
+	Price30m                *string `json:"price30m,omitempty"`
+	OpenInUsd30m            *string `json:"openInUsd30m,omitempty"`
+	CloseInUsd30m           *string `json:"closeInUsd30m,omitempty"`
+	VolumeChangeRatio30m    *string `json:"volumeChangeRatio30m,omitempty"`
+	Trades30m               *int    `json:"trades30m,omitempty"`
+	DappProgramCount30m     *int    `json:"dappProgramCount30m,omitempty"`
+	PoolCount30m            *int    `json:"poolCount30m,omitempty"`
+	LiquidityInUsd30m       *string `json:"liquidityInUsd30m,omitempty"`
+	LiquidityChangeRatio30m *string `json:"liquidityChangeRatio30m,omitempty"`
 
 	// 1-hour data
-	Buys1h            *int    `json:"buys1h,omitempty"`
-	Sells1h           *int    `json:"sells1h,omitempty"`
-	Buyers1h          *int    `json:"buyers1h,omitempty"`
-	Sellers1h         *int    `json:"sellers1h,omitempty"`
-	BuyVolumeInUsd1h  *string `json:"buyVolumeInUsd1h,omitempty"`
-	SellVolumeInUsd1h *string `json:"sellVolumeInUsd1h,omitempty"`
-	Price1h           *string `json:"price1h,omitempty"`
-	OpenInUsd1h       *string `json:"openInUsd1h,omitempty"`
-	CloseInUsd1h      *string `json:"closeInUsd1h,omitempty"`
+	Buys1h                 *int    `json:"buys1h,omitempty"`
+	Sells1h                *int    `json:"sells1h,omitempty"`
+	Buyers1h               *int    `json:"buyers1h,omitempty"`
+	Sellers1h              *int    `json:"sellers1h,omitempty"`
+	BuyVolumeInUsd1h       *string `json:"buyVolumeInUsd1h,omitempty"`
+	SellVolumeInUsd1h      *string `json:"sellVolumeInUsd1h,omitempty"`
+	Price1h                *string `json:"price1h,omitempty"`
+	OpenInUsd1h            *string `json:"openInUsd1h,omitempty"`
+	CloseInUsd1h           *string `json:"closeInUsd1h,omitempty"`
+	VolumeChangeRatio1h    *string `json:"volumeChangeRatio1h,omitempty"`
+	Trades1h               *int    `json:"trades1h,omitempty"`
+	DappProgramCount1h     *int    `json:"dappProgramCount1h,omitempty"`
+	PoolCount1h            *int    `json:"poolCount1h,omitempty"`
+	LiquidityInUsd1h       *string `json:"liquidityInUsd1h,omitempty"`
+	LiquidityChangeRatio1h *string `json:"liquidityChangeRatio1h,omitempty"`
+
+	// 2-hour data
+	Buys2h                 *int    `json:"buys2h,omitempty"`
+	Sells2h                *int    `json:"sells2h,omitempty"`
+	Buyers2h               *int    `json:"buyers2h,omitempty"`
+	Sellers2h              *int    `json:"sellers2h,omitempty"`
+	BuyVolumeInUsd2h       *string `json:"buyVolumeInUsd2h,omitempty"`
+	SellVolumeInUsd2h      *string `json:"sellVolumeInUsd2h,omitempty"`
+	Price2h                *string `json:"price2h,omitempty"`
+	OpenInUsd2h            *string `json:"openInUsd2h,omitempty"`
+	CloseInUsd2h           *string `json:"closeInUsd2h,omitempty"`
+	VolumeChangeRatio2h    *string `json:"volumeChangeRatio2h,omitempty"`
+	Trades2h               *int    `json:"trades2h,omitempty"`
+	DappProgramCount2h     *int    `json:"dappProgramCount2h,omitempty"`
+	PoolCount2h            *int    `json:"poolCount2h,omitempty"`
+	LiquidityInUsd2h       *string `json:"liquidityInUsd2h,omitempty"`
+	LiquidityChangeRatio2h *string `json:"liquidityChangeRatio2h,omitempty"`
 
 	// 4-hour data
-	Buys4h            *int    `json:"buys4h,omitempty"`
-	Sells4h           *int    `json:"sells4h,omitempty"`
-	Buyers4h          *int    `json:"buyers4h,omitempty"`
-	Sellers4h         *int    `json:"sellers4h,omitempty"`
-	BuyVolumeInUsd4h  *string `json:"buyVolumeInUsd4h,omitempty"`
-	SellVolumeInUsd4h *string `json:"sellVolumeInUsd4h,omitempty"`
-	Price4h           *string `json:"price4h,omitempty"`
-	OpenInUsd4h       *string `json:"openInUsd4h,omitempty"`
-	CloseInUsd4h      *string `json:"closeInUsd4h,omitempty"`
+	Buys4h                 *int    `json:"buys4h,omitempty"`
+	Sells4h                *int    `json:"sells4h,omitempty"`
+	Buyers4h               *int    `json:"buyers4h,omitempty"`
+	Sellers4h              *int    `json:"sellers4h,omitempty"`
+	BuyVolumeInUsd4h       *string `json:"buyVolumeInUsd4h,omitempty"`
+	SellVolumeInUsd4h      *string `json:"sellVolumeInUsd4h,omitempty"`
+	Price4h                *string `json:"price4h,omitempty"`
+	OpenInUsd4h            *string `json:"openInUsd4h,omitempty"`
+	CloseInUsd4h           *string `json:"closeInUsd4h,omitempty"`
+	VolumeChangeRatio4h    *string `json:"volumeChangeRatio4h,omitempty"`
+	Trades4h               *int    `json:"trades4h,omitempty"`
+	DappProgramCount4h     *int    `json:"dappProgramCount4h,omitempty"`
+	PoolCount4h            *int    `json:"poolCount4h,omitempty"`
+	LiquidityInUsd4h       *string `json:"liquidityInUsd4h,omitempty"`
+	LiquidityChangeRatio4h *string `json:"liquidityChangeRatio4h,omitempty"`
+
+	// 6-hour data
+	Buys6h                 *int    `json:"buys6h,omitempty"`
+	Sells6h                *int    `json:"sells6h,omitempty"`
+	Buyers6h               *int    `json:"buyers6h,omitempty"`
+	Sellers6h              *int    `json:"sellers6h,omitempty"`
+	BuyVolumeInUsd6h       *string `json:"buyVolumeInUsd6h,omitempty"`
+	SellVolumeInUsd6h      *string `json:"sellVolumeInUsd6h,omitempty"`
+	Price6h                *string `json:"price6h,omitempty"`
+	OpenInUsd6h            *string `json:"openInUsd6h,omitempty"`
+	CloseInUsd6h           *string `json:"closeInUsd6h,omitempty"`
+	VolumeChangeRatio6h    *string `json:"volumeChangeRatio6h,omitempty"`
+	Trades6h               *int    `json:"trades6h,omitempty"`
+	DappProgramCount6h     *int    `json:"dappProgramCount6h,omitempty"`
+	PoolCount6h            *int    `json:"poolCount6h,omitempty"`
+	LiquidityInUsd6h       *string `json:"liquidityInUsd6h,omitempty"`
+	LiquidityChangeRatio6h *string `json:"liquidityChangeRatio6h,omitempty"`
+
+	// 8-hour data
+	Buys8h                 *int    `json:"buys8h,omitempty"`
+	Sells8h                *int    `json:"sells8h,omitempty"`
+	Buyers8h               *int    `json:"buyers8h,omitempty"`
+	Sellers8h              *int    `json:"sellers8h,omitempty"`
+	BuyVolumeInUsd8h       *string `json:"buyVolumeInUsd8h,omitempty"`
+	SellVolumeInUsd8h      *string `json:"sellVolumeInUsd8h,omitempty"`
+	Price8h                *string `json:"price8h,omitempty"`
+	OpenInUsd8h            *string `json:"openInUsd8h,omitempty"`
+	CloseInUsd8h           *string `json:"closeInUsd8h,omitempty"`
+	VolumeChangeRatio8h    *string `json:"volumeChangeRatio8h,omitempty"`
+	Trades8h               *int    `json:"trades8h,omitempty"`
+	DappProgramCount8h     *int    `json:"dappProgramCount8h,omitempty"`
+	PoolCount8h            *int    `json:"poolCount8h,omitempty"`
+	LiquidityInUsd8h       *string `json:"liquidityInUsd8h,omitempty"`
+	LiquidityChangeRatio8h *string `json:"liquidityChangeRatio8h,omitempty"`
 
 	// 24-hour data
-	Buys24h            *int    `json:"buys24h,omitempty"`
-	Sells24h           *int    `json:"sells24h,omitempty"`
-	Buyers24h          *int    `json:"buyers24h,omitempty"`
-	Sellers24h         *int    `json:"sellers24h,omitempty"`
-	BuyVolumeInUsd24h  *string `json:"buyVolumeInUsd24h,omitempty"`
-	SellVolumeInUsd24h *string `json:"sellVolumeInUsd24h,omitempty"`
-	Price24h           *string `json:"price24h,omitempty"`
-	OpenInUsd24h       *string `json:"openInUsd24h,omitempty"`
-	CloseInUsd24h      *string `json:"closeInUsd24h,omitempty"`
+	Buys24h                 *int    `json:"buys24h,omitempty"`
+	Sells24h                *int    `json:"sells24h,omitempty"`
+	Buyers24h               *int    `json:"buyers24h,omitempty"`
+	Sellers24h              *int    `json:"sellers24h,omitempty"`
+	BuyVolumeInUsd24h       *string `json:"buyVolumeInUsd24h,omitempty"`
+	SellVolumeInUsd24h      *string `json:"sellVolumeInUsd24h,omitempty"`
+	Price24h                *string `json:"price24h,omitempty"`
+	OpenInUsd24h            *string `json:"openInUsd24h,omitempty"`
+	CloseInUsd24h           *string `json:"closeInUsd24h,omitempty"`
+	VolumeChangeRatio24h    *string `json:"volumeChangeRatio24h,omitempty"`
+	Trades24h               *int    `json:"trades24h,omitempty"`
+	DappProgramCount24h     *int    `json:"dappProgramCount24h,omitempty"`
+	PoolCount24h            *int    `json:"poolCount24h,omitempty"`
+	LiquidityInUsd24h       *string `json:"liquidityInUsd24h,omitempty"`
+	LiquidityChangeRatio24h *string `json:"liquidityChangeRatio24h,omitempty"`
 
-	// Current price
-	Price *string `json:"price,omitempty"`
+	// 1-week data (note: JSON keys use uppercase W, e.g., b1W)
+	Buys1W                 *int    `json:"buys1W,omitempty"`
+	Sells1W                *int    `json:"sells1W,omitempty"`
+	Buyers1W               *int    `json:"buyers1W,omitempty"`
+	Sellers1W              *int    `json:"sellers1W,omitempty"`
+	BuyVolumeInUsd1W       *string `json:"buyVolumeInUsd1W,omitempty"`
+	SellVolumeInUsd1W      *string `json:"sellVolumeInUsd1W,omitempty"`
+	Price1W                *string `json:"price1W,omitempty"`
+	OpenInUsd1W            *string `json:"openInUsd1W,omitempty"`
+	CloseInUsd1W           *string `json:"closeInUsd1W,omitempty"`
+	VolumeChangeRatio1W    *string `json:"volumeChangeRatio1W,omitempty"`
+	Trades1W               *int    `json:"trades1W,omitempty"`
+	DappProgramCount1W     *int    `json:"dappProgramCount1W,omitempty"`
+	PoolCount1W            *int    `json:"poolCount1W,omitempty"`
+	LiquidityInUsd1W       *string `json:"liquidityInUsd1W,omitempty"`
+	LiquidityChangeRatio1W *string `json:"liquidityChangeRatio1W,omitempty"`
+
+	// 1-month data (note: JSON keys use uppercase M, e.g., b1M)
+	Buys1M                 *int    `json:"buys1M,omitempty"`
+	Sells1M                *int    `json:"sells1M,omitempty"`
+	Buyers1M               *int    `json:"buyers1M,omitempty"`
+	Sellers1M              *int    `json:"sellers1M,omitempty"`
+	BuyVolumeInUsd1M       *string `json:"buyVolumeInUsd1M,omitempty"`
+	SellVolumeInUsd1M      *string `json:"sellVolumeInUsd1M,omitempty"`
+	Price1M                *string `json:"price1M,omitempty"`
+	OpenInUsd1M            *string `json:"openInUsd1M,omitempty"`
+	CloseInUsd1M           *string `json:"closeInUsd1M,omitempty"`
+	VolumeChangeRatio1M    *string `json:"volumeChangeRatio1M,omitempty"`
+	Trades1M               *int    `json:"trades1M,omitempty"`
+	DappProgramCount1M     *int    `json:"dappProgramCount1M,omitempty"`
+	PoolCount1M            *int    `json:"poolCount1M,omitempty"`
+	LiquidityInUsd1M       *string `json:"liquidityInUsd1M,omitempty"`
+	LiquidityChangeRatio1M *string `json:"liquidityChangeRatio1M,omitempty"`
 }
 
 // TokenHolder represents token holder information

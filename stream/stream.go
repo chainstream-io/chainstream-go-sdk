@@ -386,7 +386,76 @@ func (s *StreamApi) SubscribePairCandles(chain, pairAddress string, resolution t
 	}, filter, "subscribePairCandles")
 }
 
+// parseTokenStatWindow parses token stat data for a specific time window
+func (s *StreamApi) parseTokenStatWindow(dataMap map[string]interface{}, suffix string) (
+	buys, sells, buyers, sellers, trades, dappProgramCount, poolCount *int,
+	buyVolumeInUsd, sellVolumeInUsd, price, openInUsd, closeInUsd, volumeChangeRatio, liquidityInUsd, liquidityChangeRatio *string,
+) {
+	if val, ok := dataMap["b"+suffix]; ok {
+		if v, ok := val.(float64); ok {
+			buys = PtrInt(int(v))
+		}
+	}
+	if val, ok := dataMap["s"+suffix]; ok {
+		if v, ok := val.(float64); ok {
+			sells = PtrInt(int(v))
+		}
+	}
+	if val, ok := dataMap["be"+suffix]; ok {
+		if v, ok := val.(float64); ok {
+			buyers = PtrInt(int(v))
+		}
+	}
+	if val, ok := dataMap["se"+suffix]; ok {
+		if v, ok := val.(float64); ok {
+			sellers = PtrInt(int(v))
+		}
+	}
+	if val, ok := dataMap["bviu"+suffix]; ok {
+		buyVolumeInUsd = PtrString(s.formatScientificNotation(val))
+	}
+	if val, ok := dataMap["sviu"+suffix]; ok {
+		sellVolumeInUsd = PtrString(s.formatScientificNotation(val))
+	}
+	if val, ok := dataMap["p"+suffix]; ok {
+		price = PtrString(s.formatScientificNotation(val))
+	}
+	if val, ok := dataMap["oiu"+suffix]; ok {
+		openInUsd = PtrString(s.formatScientificNotation(val))
+	}
+	if val, ok := dataMap["ciu"+suffix]; ok {
+		closeInUsd = PtrString(s.formatScientificNotation(val))
+	}
+	if val, ok := dataMap["vpc"+suffix]; ok {
+		volumeChangeRatio = PtrString(s.formatScientificNotation(val))
+	}
+	if val, ok := dataMap["tr"+suffix]; ok {
+		if v, ok := val.(float64); ok {
+			trades = PtrInt(int(v))
+		}
+	}
+	if val, ok := dataMap["dpc"+suffix]; ok {
+		if v, ok := val.(float64); ok {
+			dappProgramCount = PtrInt(int(v))
+		}
+	}
+	if val, ok := dataMap["pc"+suffix]; ok {
+		if v, ok := val.(float64); ok {
+			poolCount = PtrInt(int(v))
+		}
+	}
+	if val, ok := dataMap["liq"+suffix]; ok {
+		liquidityInUsd = PtrString(s.formatScientificNotation(val))
+	}
+	if val, ok := dataMap["lpc"+suffix]; ok {
+		liquidityChangeRatio = PtrString(s.formatScientificNotation(val))
+	}
+	return
+}
+
 // SubscribeTokenStats subscribes to token statistics
+// Channel: dex-token-stats:{chain}_{tokenAddress}
+// Time windows: 1m, 5m, 15m, 30m, 1h, 2h, 4h, 6h, 8h, 24h, 1W, 1M
 func (s *StreamApi) SubscribeTokenStats(chain, tokenAddress string, callback StreamCallback[TokenStat], filter string) Unsubscribe {
 	channel := fmt.Sprintf("dex-token-stats:%s_%s", chain, tokenAddress)
 	return s.Subscribe(channel, func(data interface{}) {
@@ -400,47 +469,70 @@ func (s *StreamApi) SubscribeTokenStats(chain, tokenAddress string, callback Str
 			Timestamp: getInt64(dataMap, "t"),
 		}
 
-		// Set 1-minute data
-		if val, ok := dataMap["b1m"]; ok {
-			if v, ok := val.(float64); ok {
-				stat.Buys1m = PtrInt(int(v))
-			}
-		}
-		if val, ok := dataMap["s1m"]; ok {
-			if v, ok := val.(float64); ok {
-				stat.Sells1m = PtrInt(int(v))
-			}
-		}
-		if val, ok := dataMap["be1m"]; ok {
-			if v, ok := val.(float64); ok {
-				stat.Buyers1m = PtrInt(int(v))
-			}
-		}
-		if val, ok := dataMap["se1m"]; ok {
-			if v, ok := val.(float64); ok {
-				stat.Sellers1m = PtrInt(int(v))
-			}
-		}
-		if val, ok := dataMap["bviu1m"]; ok {
-			stat.BuyVolumeInUsd1m = PtrString(s.formatScientificNotation(val))
-		}
-		if val, ok := dataMap["sviu1m"]; ok {
-			stat.SellVolumeInUsd1m = PtrString(s.formatScientificNotation(val))
-		}
-		if val, ok := dataMap["p1m"]; ok {
-			stat.Price1m = PtrString(s.formatScientificNotation(val))
-		}
-		if val, ok := dataMap["oiu1m"]; ok {
-			stat.OpenInUsd1m = PtrString(s.formatScientificNotation(val))
-		}
-		if val, ok := dataMap["ciu1m"]; ok {
-			stat.CloseInUsd1m = PtrString(s.formatScientificNotation(val))
-		}
-
 		// Set current price
 		if val, ok := dataMap["p"]; ok {
 			stat.Price = PtrString(s.formatScientificNotation(val))
 		}
+
+		// Parse 1m window
+		stat.Buys1m, stat.Sells1m, stat.Buyers1m, stat.Sellers1m, stat.Trades1m, stat.DappProgramCount1m, stat.PoolCount1m,
+			stat.BuyVolumeInUsd1m, stat.SellVolumeInUsd1m, stat.Price1m, stat.OpenInUsd1m, stat.CloseInUsd1m,
+			stat.VolumeChangeRatio1m, stat.LiquidityInUsd1m, stat.LiquidityChangeRatio1m = s.parseTokenStatWindow(dataMap, "1m")
+
+		// Parse 5m window
+		stat.Buys5m, stat.Sells5m, stat.Buyers5m, stat.Sellers5m, stat.Trades5m, stat.DappProgramCount5m, stat.PoolCount5m,
+			stat.BuyVolumeInUsd5m, stat.SellVolumeInUsd5m, stat.Price5m, stat.OpenInUsd5m, stat.CloseInUsd5m,
+			stat.VolumeChangeRatio5m, stat.LiquidityInUsd5m, stat.LiquidityChangeRatio5m = s.parseTokenStatWindow(dataMap, "5m")
+
+		// Parse 15m window
+		stat.Buys15m, stat.Sells15m, stat.Buyers15m, stat.Sellers15m, stat.Trades15m, stat.DappProgramCount15m, stat.PoolCount15m,
+			stat.BuyVolumeInUsd15m, stat.SellVolumeInUsd15m, stat.Price15m, stat.OpenInUsd15m, stat.CloseInUsd15m,
+			stat.VolumeChangeRatio15m, stat.LiquidityInUsd15m, stat.LiquidityChangeRatio15m = s.parseTokenStatWindow(dataMap, "15m")
+
+		// Parse 30m window
+		stat.Buys30m, stat.Sells30m, stat.Buyers30m, stat.Sellers30m, stat.Trades30m, stat.DappProgramCount30m, stat.PoolCount30m,
+			stat.BuyVolumeInUsd30m, stat.SellVolumeInUsd30m, stat.Price30m, stat.OpenInUsd30m, stat.CloseInUsd30m,
+			stat.VolumeChangeRatio30m, stat.LiquidityInUsd30m, stat.LiquidityChangeRatio30m = s.parseTokenStatWindow(dataMap, "30m")
+
+		// Parse 1h window
+		stat.Buys1h, stat.Sells1h, stat.Buyers1h, stat.Sellers1h, stat.Trades1h, stat.DappProgramCount1h, stat.PoolCount1h,
+			stat.BuyVolumeInUsd1h, stat.SellVolumeInUsd1h, stat.Price1h, stat.OpenInUsd1h, stat.CloseInUsd1h,
+			stat.VolumeChangeRatio1h, stat.LiquidityInUsd1h, stat.LiquidityChangeRatio1h = s.parseTokenStatWindow(dataMap, "1h")
+
+		// Parse 2h window
+		stat.Buys2h, stat.Sells2h, stat.Buyers2h, stat.Sellers2h, stat.Trades2h, stat.DappProgramCount2h, stat.PoolCount2h,
+			stat.BuyVolumeInUsd2h, stat.SellVolumeInUsd2h, stat.Price2h, stat.OpenInUsd2h, stat.CloseInUsd2h,
+			stat.VolumeChangeRatio2h, stat.LiquidityInUsd2h, stat.LiquidityChangeRatio2h = s.parseTokenStatWindow(dataMap, "2h")
+
+		// Parse 4h window
+		stat.Buys4h, stat.Sells4h, stat.Buyers4h, stat.Sellers4h, stat.Trades4h, stat.DappProgramCount4h, stat.PoolCount4h,
+			stat.BuyVolumeInUsd4h, stat.SellVolumeInUsd4h, stat.Price4h, stat.OpenInUsd4h, stat.CloseInUsd4h,
+			stat.VolumeChangeRatio4h, stat.LiquidityInUsd4h, stat.LiquidityChangeRatio4h = s.parseTokenStatWindow(dataMap, "4h")
+
+		// Parse 6h window
+		stat.Buys6h, stat.Sells6h, stat.Buyers6h, stat.Sellers6h, stat.Trades6h, stat.DappProgramCount6h, stat.PoolCount6h,
+			stat.BuyVolumeInUsd6h, stat.SellVolumeInUsd6h, stat.Price6h, stat.OpenInUsd6h, stat.CloseInUsd6h,
+			stat.VolumeChangeRatio6h, stat.LiquidityInUsd6h, stat.LiquidityChangeRatio6h = s.parseTokenStatWindow(dataMap, "6h")
+
+		// Parse 8h window
+		stat.Buys8h, stat.Sells8h, stat.Buyers8h, stat.Sellers8h, stat.Trades8h, stat.DappProgramCount8h, stat.PoolCount8h,
+			stat.BuyVolumeInUsd8h, stat.SellVolumeInUsd8h, stat.Price8h, stat.OpenInUsd8h, stat.CloseInUsd8h,
+			stat.VolumeChangeRatio8h, stat.LiquidityInUsd8h, stat.LiquidityChangeRatio8h = s.parseTokenStatWindow(dataMap, "8h")
+
+		// Parse 24h window
+		stat.Buys24h, stat.Sells24h, stat.Buyers24h, stat.Sellers24h, stat.Trades24h, stat.DappProgramCount24h, stat.PoolCount24h,
+			stat.BuyVolumeInUsd24h, stat.SellVolumeInUsd24h, stat.Price24h, stat.OpenInUsd24h, stat.CloseInUsd24h,
+			stat.VolumeChangeRatio24h, stat.LiquidityInUsd24h, stat.LiquidityChangeRatio24h = s.parseTokenStatWindow(dataMap, "24h")
+
+		// Parse 1W window (note: uppercase W)
+		stat.Buys1W, stat.Sells1W, stat.Buyers1W, stat.Sellers1W, stat.Trades1W, stat.DappProgramCount1W, stat.PoolCount1W,
+			stat.BuyVolumeInUsd1W, stat.SellVolumeInUsd1W, stat.Price1W, stat.OpenInUsd1W, stat.CloseInUsd1W,
+			stat.VolumeChangeRatio1W, stat.LiquidityInUsd1W, stat.LiquidityChangeRatio1W = s.parseTokenStatWindow(dataMap, "1W")
+
+		// Parse 1M window (note: uppercase M)
+		stat.Buys1M, stat.Sells1M, stat.Buyers1M, stat.Sellers1M, stat.Trades1M, stat.DappProgramCount1M, stat.PoolCount1M,
+			stat.BuyVolumeInUsd1M, stat.SellVolumeInUsd1M, stat.Price1M, stat.OpenInUsd1M, stat.CloseInUsd1M,
+			stat.VolumeChangeRatio1M, stat.LiquidityInUsd1M, stat.LiquidityChangeRatio1M = s.parseTokenStatWindow(dataMap, "1M")
 
 		callback(stat)
 	}, filter, "subscribeTokenStats")
