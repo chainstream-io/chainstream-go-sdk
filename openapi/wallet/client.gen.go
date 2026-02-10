@@ -509,7 +509,28 @@ type TransactionHistoryPage struct {
 // WalletFirstTxDTO defines model for WalletFirstTxDTO.
 type WalletFirstTxDTO struct {
 	// Wallets DTO.WALLET.FIRST_TX.TX_HASH
-	Wallets map[string]interface{} `json:"wallets"`
+	Wallets map[string]WalletFirstTxItemDTO `json:"wallets"`
+}
+
+// WalletFirstTxItemDTO defines model for WalletFirstTxItemDTO.
+type WalletFirstTxItemDTO struct {
+	// BalanceChange DTO.WALLET.FIRST_TX.BALANCE_CHANGE
+	BalanceChange string `json:"balanceChange"`
+
+	// BlockNumber DTO.WALLET.FIRST_TX.BLOCK_NUMBER
+	BlockNumber int64 `json:"blockNumber"`
+
+	// BlockTime DTO.WALLET.FIRST_TX.BLOCK_TIME
+	BlockTime int64 `json:"blockTime"`
+
+	// Decimals DTO.WALLET.FIRST_TX.TOKEN_DECIMALS
+	Decimals int64 `json:"decimals"`
+
+	// TokenAddress DTO.WALLET.FIRST_TX.TOKEN_ADDRESS
+	TokenAddress string `json:"tokenAddress"`
+
+	// TxHash DTO.WALLET.FIRST_TX.TX_HASH
+	TxHash string `json:"txHash"`
 }
 
 // WalletNetWorthChartDTO defines model for WalletNetWorthChartDTO.
@@ -650,7 +671,13 @@ type WalletNetWorthSummaryDTO struct {
 	CurrentTimestamp string `json:"currentTimestamp"`
 
 	// Wallets DTO.WALLET.NET_WORTH_SUMMARY.WALLETS
-	Wallets map[string]interface{} `json:"wallets"`
+	Wallets map[string]WalletNetWorthSummaryValueDTO `json:"wallets"`
+}
+
+// WalletNetWorthSummaryValueDTO defines model for WalletNetWorthSummaryValueDTO.
+type WalletNetWorthSummaryValueDTO struct {
+	// Value DTO.WALLET.NET_WORTH_SUMMARY.VALUE
+	Value string `json:"value"`
 }
 
 // WalletPnlSummaryDTO defines model for WalletPnlSummaryDTO.
