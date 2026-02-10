@@ -1148,7 +1148,172 @@ type TokenStat struct {
 	Address string `json:"address"`
 
 	// Periods DTO.TOKEN.TRADE_STAT.PERIODS
-	Periods map[string]interface{} `json:"periods"`
+	Periods map[string]TokenTradeStatPeriod `json:"periods"`
+}
+
+// TokenTradeStatPeriod defines model for TokenTradeStatPeriod.
+type TokenTradeStatPeriod struct {
+	// AveragePriceInNative DTO.TOKEN.TRADE_STAT.PERIOD.AVERAGE_PRICE_IN_NATIVE
+	AveragePriceInNative string `json:"averagePriceInNative"`
+
+	// AveragePriceInUsd DTO.TOKEN.TRADE_STAT.PERIOD.AVERAGE_PRICE_IN_USD
+	AveragePriceInUsd string `json:"averagePriceInUsd"`
+
+	// BuySellRatio DTO.TOKEN.TRADE_STAT.PERIOD.BUY_SELL_RATIO
+	BuySellRatio *map[string]interface{} `json:"buySellRatio,omitempty"`
+
+	// BuyVolume DTO.TOKEN.TRADE_STAT.PERIOD.BUY_VOLUME
+	BuyVolume string `json:"buyVolume"`
+
+	// BuyVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.BUY_VOLUME_IN_NATIVE
+	BuyVolumeInNative string `json:"buyVolumeInNative"`
+
+	// BuyVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.BUY_VOLUME_IN_USD
+	BuyVolumeInUsd string `json:"buyVolumeInUsd"`
+
+	// Buyers DTO.TOKEN.TRADE_STAT.PERIOD.BUYERS
+	Buyers string `json:"buyers"`
+
+	// Buys DTO.TOKEN.TRADE_STAT.PERIOD.BUYS
+	Buys string `json:"buys"`
+
+	// CloseInNative DTO.TOKEN.TRADE_STAT.PERIOD.CLOSE_IN_NATIVE
+	CloseInNative string `json:"closeInNative"`
+
+	// CloseInUsd DTO.TOKEN.TRADE_STAT.PERIOD.CLOSE_IN_USD
+	CloseInUsd string `json:"closeInUsd"`
+
+	// CurrentLiquidityInUsd DTO.TOKEN.TRADE_STAT.PERIOD.CURRENT_LIQUIDITY_IN_USD
+	CurrentLiquidityInUsd string `json:"currentLiquidityInUsd"`
+
+	// DappProgramCount DTO.TOKEN.TRADE_STAT.PERIOD.DAPP_PROGRAM_COUNT
+	DappProgramCount string `json:"dappProgramCount"`
+
+	// HighInNative DTO.TOKEN.TRADE_STAT.PERIOD.HIGH_IN_NATIVE
+	HighInNative string `json:"highInNative"`
+
+	// HighInUsd DTO.TOKEN.TRADE_STAT.PERIOD.HIGH_IN_USD
+	HighInUsd string `json:"highInUsd"`
+
+	// LiquidityChangeRatio DTO.TOKEN.TRADE_STAT.PERIOD.LIQUIDITY_CHANGE_RATIO
+	LiquidityChangeRatio *map[string]interface{} `json:"liquidityChangeRatio,omitempty"`
+
+	// LowInNative DTO.TOKEN.TRADE_STAT.PERIOD.LOW_IN_NATIVE
+	LowInNative string `json:"lowInNative"`
+
+	// LowInUsd DTO.TOKEN.TRADE_STAT.PERIOD.LOW_IN_USD
+	LowInUsd string `json:"lowInUsd"`
+
+	// OpenInNative DTO.TOKEN.TRADE_STAT.PERIOD.OPEN_IN_NATIVE
+	OpenInNative string `json:"openInNative"`
+
+	// OpenInUsd DTO.TOKEN.TRADE_STAT.PERIOD.OPEN_IN_USD
+	OpenInUsd string `json:"openInUsd"`
+
+	// PoolCount DTO.TOKEN.TRADE_STAT.PERIOD.POOL_COUNT
+	PoolCount string `json:"poolCount"`
+
+	// PrevBuyVolume DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUY_VOLUME
+	PrevBuyVolume string `json:"prevBuyVolume"`
+
+	// PrevBuyVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUY_VOLUME_IN_NATIVE
+	PrevBuyVolumeInNative string `json:"prevBuyVolumeInNative"`
+
+	// PrevBuyVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUY_VOLUME_IN_USD
+	PrevBuyVolumeInUsd string `json:"prevBuyVolumeInUsd"`
+
+	// PrevBuyers DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUYERS
+	PrevBuyers string `json:"prevBuyers"`
+
+	// PrevBuys DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUYS
+	PrevBuys string `json:"prevBuys"`
+
+	// PrevCloseInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_CLOSE_IN_NATIVE
+	PrevCloseInNative string `json:"prevCloseInNative"`
+
+	// PrevCloseInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_CLOSE_IN_USD
+	PrevCloseInUsd string `json:"prevCloseInUsd"`
+
+	// PrevDappProgramCount DTO.TOKEN.TRADE_STAT.PERIOD.PREV_DAPP_PROGRAM_COUNT
+	PrevDappProgramCount string `json:"prevDappProgramCount"`
+
+	// PrevHighInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_HIGH_IN_NATIVE
+	PrevHighInNative string `json:"prevHighInNative"`
+
+	// PrevHighInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_HIGH_IN_USD
+	PrevHighInUsd string `json:"prevHighInUsd"`
+
+	// PrevLiquidityInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_LIQUIDITY_IN_USD
+	PrevLiquidityInUsd string `json:"prevLiquidityInUsd"`
+
+	// PrevLowInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_LOW_IN_NATIVE
+	PrevLowInNative string `json:"prevLowInNative"`
+
+	// PrevLowInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_LOW_IN_USD
+	PrevLowInUsd string `json:"prevLowInUsd"`
+
+	// PrevOpenInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_OPEN_IN_NATIVE
+	PrevOpenInNative string `json:"prevOpenInNative"`
+
+	// PrevOpenInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_OPEN_IN_USD
+	PrevOpenInUsd string `json:"prevOpenInUsd"`
+
+	// PrevPoolCount DTO.TOKEN.TRADE_STAT.PERIOD.PREV_POOL_COUNT
+	PrevPoolCount string `json:"prevPoolCount"`
+
+	// PrevSellVolume DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELL_VOLUME
+	PrevSellVolume string `json:"prevSellVolume"`
+
+	// PrevSellVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELL_VOLUME_IN_NATIVE
+	PrevSellVolumeInNative string `json:"prevSellVolumeInNative"`
+
+	// PrevSellVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELL_VOLUME_IN_USD
+	PrevSellVolumeInUsd string `json:"prevSellVolumeInUsd"`
+
+	// PrevSellers DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELLERS
+	PrevSellers string `json:"prevSellers"`
+
+	// PrevSells DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELLS
+	PrevSells string `json:"prevSells"`
+
+	// PrevTrades DTO.TOKEN.TRADE_STAT.PERIOD.PREV_TRADES
+	PrevTrades string `json:"prevTrades"`
+
+	// PriceChangeRatioInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PRICE_CHANGE_RATIO_IN_USD
+	PriceChangeRatioInUsd string `json:"priceChangeRatioInUsd"`
+
+	// SellVolume DTO.TOKEN.TRADE_STAT.PERIOD.SELL_VOLUME
+	SellVolume string `json:"sellVolume"`
+
+	// SellVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.SELL_VOLUME_IN_NATIVE
+	SellVolumeInNative string `json:"sellVolumeInNative"`
+
+	// SellVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.SELL_VOLUME_IN_USD
+	SellVolumeInUsd string `json:"sellVolumeInUsd"`
+
+	// Sellers DTO.TOKEN.TRADE_STAT.PERIOD.SELLERS
+	Sellers string `json:"sellers"`
+
+	// Sells DTO.TOKEN.TRADE_STAT.PERIOD.SELLS
+	Sells string `json:"sells"`
+
+	// TotalVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.TOTAL_VOLUME_IN_NATIVE
+	TotalVolumeInNative string `json:"totalVolumeInNative"`
+
+	// TotalVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.TOTAL_VOLUME_IN_USD
+	TotalVolumeInUsd string `json:"totalVolumeInUsd"`
+
+	// Traders DTO.TOKEN.TRADE_STAT.PERIOD.TRADERS
+	Traders string `json:"traders"`
+
+	// Trades DTO.TOKEN.TRADE_STAT.PERIOD.TRADES
+	Trades string `json:"trades"`
+
+	// UpdatedAt DTO.TOKEN.TRADE_STAT.PERIOD.UPDATED_AT
+	UpdatedAt *string `json:"updatedAt,omitempty"`
+
+	// VolumeChangeRatio DTO.TOKEN.TRADE_STAT.PERIOD.VOLUME_CHANGE_RATIO
+	VolumeChangeRatio *map[string]interface{} `json:"volumeChangeRatio,omitempty"`
 }
 
 // TokenTrader defines model for TokenTrader.
