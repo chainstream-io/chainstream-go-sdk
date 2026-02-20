@@ -10,7 +10,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/chainstream-io/chainstream-go-sdk/stream"
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/blockchain"
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/defi_moonshot"
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/defi_pumpfun"
@@ -27,13 +26,14 @@ import (
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/transaction"
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/wallet"
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/watchlist"
+	"github.com/chainstream-io/chainstream-go-sdk/stream"
 )
 
 // LIB_VERSION is the version of the ChainStream Go SDK
-const LIB_VERSION = "0.2.0"
+const LIB_VERSION = "0.2.1"
 
 // DefaultServerURL is the default ChainStream API server URL.
-const DefaultServerURL = "https://api-dex.chainstream.io"
+const DefaultServerURL = "https://api.chainstream.io"
 
 // DefaultStreamURL is the default ChainStream WebSocket URL.
 const DefaultStreamURL = "wss://realtime-dex.chainstream.io/connection/websocket"

@@ -568,6 +568,9 @@ type Token struct {
 	// Chain DTO.TOKEN.METADATA.CHAIN
 	Chain string `json:"chain"`
 
+	// CoingeckoCoinId DTO.TOKEN.METADATA.COINGECKO_COIN_ID
+	CoingeckoCoinId *string `json:"coingeckoCoinId,omitempty"`
+
 	// Decimals DTO.TOKEN.METADATA.DECIMALS
 	Decimals int64 `json:"decimals"`
 
@@ -615,6 +618,15 @@ type Token struct {
 
 	// TokenCreatedAt DTO.TOKEN.METADATA.TOKEN_CREATED_AT
 	TokenCreatedAt *int64 `json:"tokenCreatedAt,omitempty"`
+
+	// TokenCreatedBlockHeight DTO.TOKEN.METADATA.TOKEN_CREATED_BLOCK_HEIGHT
+	TokenCreatedBlockHeight *string `json:"tokenCreatedBlockHeight,omitempty"`
+
+	// TokenCreatedSlot DTO.TOKEN.METADATA.TOKEN_CREATED_SLOT
+	TokenCreatedSlot *string `json:"tokenCreatedSlot,omitempty"`
+
+	// TokenCreatedTxSignature DTO.TOKEN.METADATA.TOKEN_CREATED_TX_SIGNATURE
+	TokenCreatedTxSignature *string `json:"tokenCreatedTxSignature,omitempty"`
 
 	// TokenCreators DTO.TOKEN.METADATA.TOKEN_CREATORS
 	TokenCreators *[]TokenCreatorsDTO `json:"tokenCreators,omitempty"`
@@ -1000,6 +1012,9 @@ type TokenMetadata struct {
 	// Chain DTO.TOKEN.METADATA.CHAIN
 	Chain string `json:"chain"`
 
+	// CoingeckoCoinId DTO.TOKEN.METADATA.COINGECKO_COIN_ID
+	CoingeckoCoinId *string `json:"coingeckoCoinId,omitempty"`
+
 	// Decimals DTO.TOKEN.METADATA.DECIMALS
 	Decimals int64 `json:"decimals"`
 
@@ -1032,6 +1047,15 @@ type TokenMetadata struct {
 
 	// TokenCreatedAt DTO.TOKEN.METADATA.TOKEN_CREATED_AT
 	TokenCreatedAt *int64 `json:"tokenCreatedAt,omitempty"`
+
+	// TokenCreatedBlockHeight DTO.TOKEN.METADATA.TOKEN_CREATED_BLOCK_HEIGHT
+	TokenCreatedBlockHeight *string `json:"tokenCreatedBlockHeight,omitempty"`
+
+	// TokenCreatedSlot DTO.TOKEN.METADATA.TOKEN_CREATED_SLOT
+	TokenCreatedSlot *string `json:"tokenCreatedSlot,omitempty"`
+
+	// TokenCreatedTxSignature DTO.TOKEN.METADATA.TOKEN_CREATED_TX_SIGNATURE
+	TokenCreatedTxSignature *string `json:"tokenCreatedTxSignature,omitempty"`
 
 	// TokenCreators DTO.TOKEN.METADATA.TOKEN_CREATORS
 	TokenCreators *[]TokenCreatorsDTO `json:"tokenCreators,omitempty"`

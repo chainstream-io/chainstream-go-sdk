@@ -2,6 +2,7 @@ package stream
 
 import (
 	"regexp"
+	"sort"
 )
 
 // FieldMapping represents field mapping
@@ -116,12 +117,35 @@ var CEL_FIELD_MAPPINGS = MethodFieldMappings{
 		"timestamp":     "ts",
 	},
 
-	// New token subscription fields
+	// New token subscription fields (dex-new-token, supports CEL filter)
 	"subscribeNewToken": {
-		"tokenAddress": "a",
-		"name":         "n",
-		"symbol":       "s",
-		"createdAtMs":  "cts",
+		"tokenAddress":                "a",
+		"name":                        "n",
+		"symbol":                      "s",
+		"decimals":                    "dec",
+		"imageUrl":                    "iu",
+		"description":                 "de",
+		"createdAtMs":                 "cts",
+		"coingeckoCoinId":             "cgi",
+		"socialMedia.twitter":         "sm.tw",
+		"socialMedia.telegram":        "sm.tg",
+		"socialMedia.website":         "sm.w",
+		"socialMedia.tiktok":          "sm.tt",
+		"socialMedia.discord":         "sm.dc",
+		"socialMedia.facebook":        "sm.fb",
+		"socialMedia.github":          "sm.gh",
+		"socialMedia.instagram":       "sm.ig",
+		"socialMedia.linkedin":        "sm.li",
+		"socialMedia.medium":          "sm.md",
+		"socialMedia.reddit":          "sm.rd",
+		"socialMedia.youtube":         "sm.yt",
+		"socialMedia.bitbucket":       "sm.bb",
+		"launchFrom.programAddress":   "lf.pa",
+		"launchFrom.protocolFamily":   "lf.pf",
+		"launchFrom.protocolName":     "lf.pn",
+		"migratedTo.programAddress":   "mt.pa",
+		"migratedTo.protocolFamily":   "mt.pf",
+		"migratedTo.protocolName":     "mt.pn",
 	},
 
 	// Token supply subscription fields
@@ -148,15 +172,66 @@ var CEL_FIELD_MAPPINGS = MethodFieldMappings{
 		"timestamp":    "ts",
 	},
 
-	// New token metadata subscription fields
+	// New token metadata subscription fields (dex-new-tokens-metadata)
 	"subscribeNewTokensMetadata": {
-		"tokenAddress": "a",
-		"name":         "n",
-		"symbol":       "s",
-		"imageUrl":     "iu",
-		"description":  "de",
-		"socialMedia":  "sm",
-		"createdAtMs":  "cts",
+		"tokenAddress":                "a",
+		"name":                        "n",
+		"decimals":                    "dec",
+		"symbol":                      "s",
+		"imageUrl":                    "iu",
+		"description":                 "de",
+		"createdAtMs":                 "cts",
+		"coingeckoCoinId":             "cgi",
+		"socialMedia.twitter":         "sm.tw",
+		"socialMedia.telegram":        "sm.tg",
+		"socialMedia.website":         "sm.w",
+		"socialMedia.tiktok":          "sm.tt",
+		"socialMedia.discord":         "sm.dc",
+		"socialMedia.facebook":        "sm.fb",
+		"socialMedia.github":          "sm.gh",
+		"socialMedia.instagram":       "sm.ig",
+		"socialMedia.linkedin":        "sm.li",
+		"socialMedia.medium":          "sm.md",
+		"socialMedia.reddit":          "sm.rd",
+		"socialMedia.youtube":         "sm.yt",
+		"socialMedia.bitbucket":       "sm.bb",
+		"launchFrom.programAddress":   "lf.pa",
+		"launchFrom.protocolFamily":   "lf.pf",
+		"launchFrom.protocolName":     "lf.pn",
+		"migratedTo.programAddress":   "mt.pa",
+		"migratedTo.protocolFamily":   "mt.pf",
+		"migratedTo.protocolName":     "mt.pn",
+	},
+
+	// New tokens list subscription fields (dex-new-tokens)
+	"subscribeNewTokens": {
+		"tokenAddress":                "a",
+		"name":                        "n",
+		"decimals":                    "dec",
+		"symbol":                      "s",
+		"imageUrl":                    "iu",
+		"description":                 "de",
+		"createdAtMs":                 "cts",
+		"coingeckoCoinId":             "cgi",
+		"socialMedia.twitter":         "sm.tw",
+		"socialMedia.telegram":        "sm.tg",
+		"socialMedia.website":         "sm.w",
+		"socialMedia.tiktok":          "sm.tt",
+		"socialMedia.discord":         "sm.dc",
+		"socialMedia.facebook":        "sm.fb",
+		"socialMedia.github":          "sm.gh",
+		"socialMedia.instagram":       "sm.ig",
+		"socialMedia.linkedin":        "sm.li",
+		"socialMedia.medium":          "sm.md",
+		"socialMedia.reddit":          "sm.rd",
+		"socialMedia.youtube":         "sm.yt",
+		"socialMedia.bitbucket":       "sm.bb",
+		"launchFrom.programAddress":   "lf.pa",
+		"launchFrom.protocolFamily":   "lf.pf",
+		"launchFrom.protocolName":     "lf.pn",
+		"migratedTo.programAddress":   "mt.pa",
+		"migratedTo.protocolFamily":   "mt.pf",
+		"migratedTo.protocolName":     "mt.pn",
 	},
 
 	// Token trade subscription fields
@@ -258,6 +333,7 @@ func GetFieldMappings(methodName string) FieldMapping {
 
 // ReplaceFilterFields replaces long field names with short field names in filter expressions
 // Automatically adds meta. prefix if not present
+// Supports nested field paths (e.g., launchFrom.protocolFamily -> lf.pf)
 func ReplaceFilterFields(filter, methodName string) string {
 	if filter == "" {
 		return filter
@@ -266,18 +342,30 @@ func ReplaceFilterFields(filter, methodName string) string {
 	fieldMappings := GetFieldMappings(methodName)
 	result := filter
 
-	// Replace all long field names with short field names
-	for longField, shortField := range fieldMappings {
+	// Sort entries by key length descending to replace longer (nested) paths first
+	type entry struct {
+		longField  string
+		shortField string
+	}
+	entries := make([]entry, 0, len(fieldMappings))
+	for k, v := range fieldMappings {
+		entries = append(entries, entry{k, v})
+	}
+	sort.Slice(entries, func(i, j int) bool {
+		return len(entries[i].longField) > len(entries[j].longField)
+	})
+
+	for _, e := range entries {
 		// Handle two cases: with and without meta. prefix
 		patterns := []*regexp.Regexp{
-			// Pattern 1: fieldName (without meta. prefix)
-			regexp.MustCompile(`\b` + regexp.QuoteMeta(longField) + `\b`),
-			// Pattern 2: meta.fieldName (with meta. prefix)
-			regexp.MustCompile(`\bmeta\.` + regexp.QuoteMeta(longField) + `\b`),
+			// Pattern 1: meta.fieldName (with meta. prefix) — check first to avoid double meta.
+			regexp.MustCompile(`\bmeta\.` + regexp.QuoteMeta(e.longField) + `\b`),
+			// Pattern 2: fieldName (without meta. prefix)
+			regexp.MustCompile(`\b` + regexp.QuoteMeta(e.longField) + `\b`),
 		}
 
 		for _, pattern := range patterns {
-			result = pattern.ReplaceAllString(result, "meta."+shortField)
+			result = pattern.ReplaceAllString(result, "meta."+e.shortField)
 		}
 	}
 

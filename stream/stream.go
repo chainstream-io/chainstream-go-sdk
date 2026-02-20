@@ -595,7 +595,8 @@ func (s *StreamApi) SubscribeTokenHolders(chain, tokenAddress string, callback S
 	}, filter, "subscribeTokenHolders")
 }
 
-// SubscribeNewToken subscribes to new token events
+// SubscribeNewToken subscribes to new token events (single token per event, supports CEL filter)
+// Channel: dex-new-token:{chain}
 func (s *StreamApi) SubscribeNewToken(chain string, callback StreamCallback[NewToken], filter string) Unsubscribe {
 	channel := fmt.Sprintf("dex-new-token:%s", chain)
 	return s.Subscribe(channel, func(data interface{}) {
@@ -616,20 +617,23 @@ func (s *StreamApi) SubscribeNewToken(chain string, callback StreamCallback[NewT
 				token.Decimals = PtrInt(int(v))
 			}
 		}
-
-		if val, ok := dataMap["lf"]; ok {
-			if lfMap, ok := val.(map[string]interface{}); ok {
-				token.LaunchFrom = &DexProtocol{}
-				if pa, ok := lfMap["pa"]; ok {
-					token.LaunchFrom.ProgramAddress = PtrString(pa.(string))
-				}
-				if pf, ok := lfMap["pf"]; ok {
-					token.LaunchFrom.ProtocolFamily = PtrString(pf.(string))
-				}
-				if pn, ok := lfMap["pn"]; ok {
-					token.LaunchFrom.ProtocolName = PtrString(pn.(string))
-				}
-			}
+		if val, ok := dataMap["iu"]; ok {
+			token.ImageUrl = PtrString(val.(string))
+		}
+		if val, ok := dataMap["de"]; ok {
+			token.Description = PtrString(val.(string))
+		}
+		if val, ok := dataMap["cgi"]; ok {
+			token.CoingeckoCoinId = PtrString(val.(string))
+		}
+		if sm, ok := dataMap["sm"].(map[string]interface{}); ok {
+			token.SocialMedia = parseSocialMedia(sm)
+		}
+		if lf, ok := dataMap["lf"].(map[string]interface{}); ok {
+			token.LaunchFrom = parseDexProtocol(lf)
+		}
+		if mt, ok := dataMap["mt"].(map[string]interface{}); ok {
+			token.MigratedTo = parseDexProtocol(mt)
 		}
 
 		callback(token)
@@ -752,7 +756,9 @@ func (s *StreamApi) SubscribeDexPoolBalance(chain, poolAddress string, callback 
 	}, "", "subscribeDexPoolBalance")
 }
 
-// SubscribeNewTokensMetadata subscribes to new tokens metadata
+// SubscribeNewTokensMetadata subscribes to new tokens metadata (batch, aggregated every 1 second)
+// Channel: dex-new-tokens-metadata:{chain}
+// No CEL filter support
 func (s *StreamApi) SubscribeNewTokensMetadata(chain string, callback StreamCallback[[]TokenMetadata]) Unsubscribe {
 	channel := fmt.Sprintf("dex-new-tokens-metadata:%s", chain)
 	return s.Subscribe(channel, func(data interface{}) {
@@ -767,44 +773,35 @@ func (s *StreamApi) SubscribeNewTokensMetadata(chain string, callback StreamCall
 			if !ok {
 				continue
 			}
-
-			metadata := TokenMetadata{
-				TokenAddress: getString(itemMap, "a"),
-			}
-			if val, ok := itemMap["n"]; ok {
-				metadata.Name = PtrString(val.(string))
-			}
-			if val, ok := itemMap["s"]; ok {
-				metadata.Symbol = PtrString(val.(string))
-			}
-			if val, ok := itemMap["iu"]; ok {
-				metadata.ImageUrl = PtrString(val.(string))
-			}
-			if val, ok := itemMap["de"]; ok {
-				metadata.Description = PtrString(val.(string))
-			}
-			if val, ok := itemMap["cts"]; ok {
-				cts := int64(val.(float64))
-				metadata.CreatedAtMs = &cts
-			}
-			if sm, ok := itemMap["sm"].(map[string]interface{}); ok {
-				metadata.SocialMedia = &SocialMedia{}
-				if v, ok := sm["tw"]; ok {
-					metadata.SocialMedia.Twitter = PtrString(v.(string))
-				}
-				if v, ok := sm["tg"]; ok {
-					metadata.SocialMedia.Telegram = PtrString(v.(string))
-				}
-				if v, ok := sm["w"]; ok {
-					metadata.SocialMedia.Website = PtrString(v.(string))
-				}
-			}
-
-			result = append(result, metadata)
+			result = append(result, parseTokenMetadata(itemMap))
 		}
 
 		callback(result)
 	}, "", "subscribeNewTokensMetadata")
+}
+
+// SubscribeNewTokens subscribes to new tokens list (batch from token-created-to-realtime-pipeline)
+// Channel: dex-new-tokens:{chain}
+// No CEL filter support
+func (s *StreamApi) SubscribeNewTokens(chain string, callback StreamCallback[[]TokenMetadata]) Unsubscribe {
+	channel := fmt.Sprintf("dex-new-tokens:%s", chain)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataArr, ok := data.([]interface{})
+		if !ok {
+			return
+		}
+
+		var result []TokenMetadata
+		for _, item := range dataArr {
+			itemMap, ok := item.(map[string]interface{})
+			if !ok {
+				continue
+			}
+			result = append(result, parseTokenMetadata(itemMap))
+		}
+
+		callback(result)
+	}, "", "subscribeNewTokens")
 }
 
 // SubscribeTokenSupply subscribes to token supply data
@@ -1228,6 +1225,108 @@ func (s *StreamApi) SubscribeRankingTokensList(chain string, rankingType Ranking
 
 		callback(result)
 	}, "", "subscribeRankingTokensList")
+}
+
+// parseSocialMedia parses social media data from short field names
+func parseSocialMedia(m map[string]interface{}) *SocialMedia {
+	sm := &SocialMedia{}
+	if v, ok := m["tw"]; ok {
+		sm.Twitter = PtrString(v.(string))
+	}
+	if v, ok := m["tg"]; ok {
+		sm.Telegram = PtrString(v.(string))
+	}
+	if v, ok := m["w"]; ok {
+		sm.Website = PtrString(v.(string))
+	}
+	if v, ok := m["tt"]; ok {
+		sm.Tiktok = PtrString(v.(string))
+	}
+	if v, ok := m["dc"]; ok {
+		sm.Discord = PtrString(v.(string))
+	}
+	if v, ok := m["fb"]; ok {
+		sm.Facebook = PtrString(v.(string))
+	}
+	if v, ok := m["gh"]; ok {
+		sm.Github = PtrString(v.(string))
+	}
+	if v, ok := m["ig"]; ok {
+		sm.Instagram = PtrString(v.(string))
+	}
+	if v, ok := m["li"]; ok {
+		sm.Linkedin = PtrString(v.(string))
+	}
+	if v, ok := m["md"]; ok {
+		sm.Medium = PtrString(v.(string))
+	}
+	if v, ok := m["rd"]; ok {
+		sm.Reddit = PtrString(v.(string))
+	}
+	if v, ok := m["yt"]; ok {
+		sm.Youtube = PtrString(v.(string))
+	}
+	if v, ok := m["bb"]; ok {
+		sm.Bitbucket = PtrString(v.(string))
+	}
+	return sm
+}
+
+// parseDexProtocol parses DEX protocol data from short field names
+func parseDexProtocol(m map[string]interface{}) *DexProtocol {
+	dp := &DexProtocol{}
+	if pa, ok := m["pa"]; ok {
+		dp.ProgramAddress = PtrString(pa.(string))
+	}
+	if pf, ok := m["pf"]; ok {
+		dp.ProtocolFamily = PtrString(pf.(string))
+	}
+	if pn, ok := m["pn"]; ok {
+		dp.ProtocolName = PtrString(pn.(string))
+	}
+	return dp
+}
+
+// parseTokenMetadata parses a TokenMetadataTimeEvent from raw WebSocket data
+func parseTokenMetadata(itemMap map[string]interface{}) TokenMetadata {
+	metadata := TokenMetadata{
+		TokenAddress: getString(itemMap, "a"),
+	}
+	if val, ok := itemMap["n"]; ok {
+		metadata.Name = PtrString(val.(string))
+	}
+	if val, ok := itemMap["dec"]; ok {
+		if v, ok := val.(float64); ok {
+			d := int(v)
+			metadata.Decimals = &d
+		}
+	}
+	if val, ok := itemMap["s"]; ok {
+		metadata.Symbol = PtrString(val.(string))
+	}
+	if val, ok := itemMap["iu"]; ok {
+		metadata.ImageUrl = PtrString(val.(string))
+	}
+	if val, ok := itemMap["de"]; ok {
+		metadata.Description = PtrString(val.(string))
+	}
+	if val, ok := itemMap["cts"]; ok {
+		cts := int64(val.(float64))
+		metadata.CreatedAtMs = &cts
+	}
+	if val, ok := itemMap["cgi"]; ok {
+		metadata.CoingeckoCoinId = PtrString(val.(string))
+	}
+	if sm, ok := itemMap["sm"].(map[string]interface{}); ok {
+		metadata.SocialMedia = parseSocialMedia(sm)
+	}
+	if lf, ok := itemMap["lf"].(map[string]interface{}); ok {
+		metadata.LaunchFrom = parseDexProtocol(lf)
+	}
+	if mt, ok := itemMap["mt"].(map[string]interface{}); ok {
+		metadata.MigratedTo = parseDexProtocol(mt)
+	}
+	return metadata
 }
 
 // Helper functions

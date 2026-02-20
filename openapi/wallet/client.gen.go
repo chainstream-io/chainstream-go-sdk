@@ -157,9 +157,6 @@ type BalanceUpdateDTO struct {
 	// ChangeType DTO.WALLET.BALANCE_UPDATE.CHANGE_TYPE
 	ChangeType BalanceChangeType `json:"changeType"`
 
-	// Id DTO.WALLET.BALANCE_UPDATE.ID
-	Id int64 `json:"id"`
-
 	// Index DTO.WALLET.BALANCE_UPDATE.INDEX
 	Index int64 `json:"index"`
 
@@ -921,6 +918,18 @@ type GetWalletTransferTotalParams struct {
 
 	// AfterTimestamp DTO.TOKEN.TRANSFER.QUERY.AFTER_TIMESTAMP
 	AfterTimestamp *int64 `form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
+
+	// MinTokenAmount DTO.WALLET.TRANSFER.QUERY.MIN_TOKEN_AMOUNT
+	MinTokenAmount *string `form:"minTokenAmount,omitempty" json:"minTokenAmount,omitempty"`
+
+	// MaxTokenAmount DTO.WALLET.TRANSFER.QUERY.MAX_TOKEN_AMOUNT
+	MaxTokenAmount *string `form:"maxTokenAmount,omitempty" json:"maxTokenAmount,omitempty"`
+
+	// MinTokenAmountInUsd DTO.WALLET.TRANSFER.QUERY.MIN_TOKEN_AMOUNT_IN_USD
+	MinTokenAmountInUsd *string `form:"minTokenAmountInUsd,omitempty" json:"minTokenAmountInUsd,omitempty"`
+
+	// MaxTokenAmountInUsd DTO.WALLET.TRANSFER.QUERY.MAX_TOKEN_AMOUNT_IN_USD
+	MaxTokenAmountInUsd *string `form:"maxTokenAmountInUsd,omitempty" json:"maxTokenAmountInUsd,omitempty"`
 }
 
 // GetWalletTransferTotalParamsDirection defines parameters for GetWalletTransferTotal.
@@ -945,6 +954,18 @@ type GetWalletTransfersParams struct {
 
 	// AfterTimestamp DTO.TOKEN.TRANSFER.QUERY.AFTER_TIMESTAMP
 	AfterTimestamp *int64 `form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
+
+	// MinTokenAmount DTO.WALLET.TRANSFER.QUERY.MIN_TOKEN_AMOUNT
+	MinTokenAmount *string `form:"minTokenAmount,omitempty" json:"minTokenAmount,omitempty"`
+
+	// MaxTokenAmount DTO.WALLET.TRANSFER.QUERY.MAX_TOKEN_AMOUNT
+	MaxTokenAmount *string `form:"maxTokenAmount,omitempty" json:"maxTokenAmount,omitempty"`
+
+	// MinTokenAmountInUsd DTO.WALLET.TRANSFER.QUERY.MIN_TOKEN_AMOUNT_IN_USD
+	MinTokenAmountInUsd *string `form:"minTokenAmountInUsd,omitempty" json:"minTokenAmountInUsd,omitempty"`
+
+	// MaxTokenAmountInUsd DTO.WALLET.TRANSFER.QUERY.MAX_TOKEN_AMOUNT_IN_USD
+	MaxTokenAmountInUsd *string `form:"maxTokenAmountInUsd,omitempty" json:"maxTokenAmountInUsd,omitempty"`
 }
 
 // GetWalletTransfersParamsDirection defines parameters for GetWalletTransfers.
@@ -2457,6 +2478,70 @@ func NewGetWalletTransferTotalRequest(server string, chain ChainSymbol, walletAd
 
 		}
 
+		if params.MinTokenAmount != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "minTokenAmount", runtime.ParamLocationQuery, *params.MinTokenAmount); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.MaxTokenAmount != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "maxTokenAmount", runtime.ParamLocationQuery, *params.MaxTokenAmount); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.MinTokenAmountInUsd != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "minTokenAmountInUsd", runtime.ParamLocationQuery, *params.MinTokenAmountInUsd); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.MaxTokenAmountInUsd != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "maxTokenAmountInUsd", runtime.ParamLocationQuery, *params.MaxTokenAmountInUsd); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
 		queryURL.RawQuery = queryValues.Encode()
 	}
 
@@ -2587,6 +2672,70 @@ func NewGetWalletTransfersRequest(server string, chain ChainSymbol, walletAddres
 		if params.AfterTimestamp != nil {
 
 			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "afterTimestamp", runtime.ParamLocationQuery, *params.AfterTimestamp); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.MinTokenAmount != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "minTokenAmount", runtime.ParamLocationQuery, *params.MinTokenAmount); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.MaxTokenAmount != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "maxTokenAmount", runtime.ParamLocationQuery, *params.MaxTokenAmount); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.MinTokenAmountInUsd != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "minTokenAmountInUsd", runtime.ParamLocationQuery, *params.MinTokenAmountInUsd); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.MaxTokenAmountInUsd != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "maxTokenAmountInUsd", runtime.ParamLocationQuery, *params.MaxTokenAmountInUsd); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err

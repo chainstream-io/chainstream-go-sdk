@@ -324,12 +324,17 @@ type WalletPnl struct {
 
 // NewToken represents new token data
 type NewToken struct {
-	TokenAddress string       `json:"tokenAddress"`
-	Name         string       `json:"name"`
-	Symbol       string       `json:"symbol"`
-	Decimals     *int         `json:"decimals,omitempty"`
-	LaunchFrom   *DexProtocol `json:"launchFrom,omitempty"`
-	CreatedAtMs  int64        `json:"createdAtMs"`
+	TokenAddress    string       `json:"tokenAddress"`
+	Name            string       `json:"name"`
+	Symbol          string       `json:"symbol"`
+	Decimals        *int         `json:"decimals,omitempty"`
+	ImageUrl        *string      `json:"imageUrl,omitempty"`
+	Description     *string      `json:"description,omitempty"`
+	SocialMedia     *SocialMedia `json:"socialMedia,omitempty"`
+	CoingeckoCoinId *string      `json:"coingeckoCoinId,omitempty"`
+	LaunchFrom      *DexProtocol `json:"launchFrom,omitempty"`
+	MigratedTo      *DexProtocol `json:"migratedTo,omitempty"`
+	CreatedAtMs     int64        `json:"createdAtMs"`
 }
 
 // TokenSupply represents token supply data
@@ -407,16 +412,17 @@ type SocialMedia struct {
 
 // TokenMetadata represents token metadata
 type TokenMetadata struct {
-	TokenAddress string       `json:"tokenAddress"`
-	Name         *string      `json:"name,omitempty"`
-	Decimals     *int         `json:"decimals,omitempty"`
-	Symbol       *string      `json:"symbol,omitempty"`
-	ImageUrl     *string      `json:"imageUrl,omitempty"`
-	Description  *string      `json:"description,omitempty"`
-	SocialMedia  *SocialMedia `json:"socialMedia,omitempty"`
-	CreatedAtMs  *int64       `json:"createdAtMs,omitempty"`
-	LaunchFrom   *DexProtocol `json:"launchFrom,omitempty"`
-	MigratedTo   *DexProtocol `json:"migratedTo,omitempty"`
+	TokenAddress    string       `json:"tokenAddress"`
+	Name            *string      `json:"name,omitempty"`
+	Decimals        *int         `json:"decimals,omitempty"`
+	Symbol          *string      `json:"symbol,omitempty"`
+	ImageUrl        *string      `json:"imageUrl,omitempty"`
+	Description     *string      `json:"description,omitempty"`
+	SocialMedia     *SocialMedia `json:"socialMedia,omitempty"`
+	CreatedAtMs     *int64       `json:"createdAtMs,omitempty"`
+	CoingeckoCoinId *string      `json:"coingeckoCoinId,omitempty"`
+	LaunchFrom      *DexProtocol `json:"launchFrom,omitempty"`
+	MigratedTo      *DexProtocol `json:"migratedTo,omitempty"`
 }
 
 // PriceType represents the price type for candle data

@@ -201,6 +201,9 @@ type TradeDetailDTO struct {
 	// SideTokenAmount DTO.TRADE.DETAIL.SIDE_TOKEN_AMOUNT
 	SideTokenAmount string `json:"sideTokenAmount"`
 
+	// SideTokenAmountInNative DTO.TRADE.DETAIL.SIDE_TOKEN_AMOUNT_IN_NATIVE
+	SideTokenAmountInNative string `json:"sideTokenAmountInNative"`
+
 	// SideTokenAmountInUsd DTO.TRADE.DETAIL.SIDE_TOKEN_AMOUNT_IN_USD
 	SideTokenAmountInUsd string `json:"sideTokenAmountInUsd"`
 
@@ -209,6 +212,9 @@ type TradeDetailDTO struct {
 
 	// SideTokenName DTO.TRADE.DETAIL.SIDE_TOKEN_NAME
 	SideTokenName string `json:"sideTokenName"`
+
+	// SideTokenPriceInNative DTO.TRADE.DETAIL.SIDE_TOKEN_PRICE_IN_NATIVE
+	SideTokenPriceInNative string `json:"sideTokenPriceInNative"`
 
 	// SideTokenPriceInUsd DTO.TRADE.DETAIL.SIDE_TOKEN_PRICE_IN_USD
 	SideTokenPriceInUsd string `json:"sideTokenPriceInUsd"`
@@ -225,6 +231,9 @@ type TradeDetailDTO struct {
 	// TokenAmount DTO.TRADE.DETAIL.TOKEN_AMOUNT
 	TokenAmount string `json:"tokenAmount"`
 
+	// TokenAmountInNative DTO.TRADE.DETAIL.TOKEN_AMOUNT_IN_NATIVE
+	TokenAmountInNative string `json:"tokenAmountInNative"`
+
 	// TokenAmountInUsd DTO.TRADE.DETAIL.TOKEN_AMOUNT_IN_USD
 	TokenAmountInUsd string `json:"tokenAmountInUsd"`
 
@@ -233,6 +242,9 @@ type TradeDetailDTO struct {
 
 	// TokenName DTO.TRADE.DETAIL.TOKEN_NAME
 	TokenName string `json:"tokenName"`
+
+	// TokenPriceInNative DTO.TRADE.DETAIL.TOKEN_PRICE_IN_NATIVE
+	TokenPriceInNative string `json:"tokenPriceInNative"`
 
 	// TokenPriceInUsd DTO.TRADE.DETAIL.TOKEN_PRICE_IN_USD
 	TokenPriceInUsd string `json:"tokenPriceInUsd"`
