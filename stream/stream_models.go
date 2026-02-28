@@ -17,8 +17,8 @@ const (
 	ChannelTypeNew       ChannelType = "new"
 	ChannelTypeHot       ChannelType = "trending"
 	ChannelTypeUSStocks  ChannelType = "us_stocks"
-	ChannelTypeCompleted ChannelType = "completed"
-	ChannelTypeGraduated ChannelType = "graduated"
+	ChannelTypeFinalStretch ChannelType = "graduated"
+	ChannelTypeMigrated    ChannelType = "completed"
 )
 
 // MetricType represents the type of metric
@@ -471,32 +471,32 @@ type TradeActivity struct {
 
 // WalletTokenPnl represents wallet token profit and loss data
 type WalletTokenPnl struct {
-	WalletAddress            string `json:"walletAddress"`
-	TokenAddress             string `json:"tokenAddress"`
-	TokenPriceInUsd          string `json:"tokenPriceInUsd"`
-	Timestamp                int64  `json:"timestamp"`
-	OpenTime                 int64  `json:"opentime"`
-	LastTime                 int64  `json:"lasttime"`
-	CloseTime                int64  `json:"closetime"`
-	BuyAmount                string `json:"buyAmount"`
-	BuyAmountInUsd           string `json:"buyAmountInUsd"`
-	BuyCount                 int    `json:"buyCount"`
-	BuyCount30d              int    `json:"buyCount30d"`
-	BuyCount7d               int    `json:"buyCount7d"`
-	SellAmount               string `json:"sellAmount"`
-	SellAmountInUsd          string `json:"sellAmountInUsd"`
-	SellCount                int    `json:"sellCount"`
-	SellCount30d             int    `json:"sellCount30d"`
-	SellCount7d              int    `json:"sellCount7d"`
-	HeldDurationTimestamp    int64  `json:"heldDurationTimestamp"`
-	AverageBuyPriceInUsd     string `json:"averageBuyPriceInUsd"`
-	AverageSellPriceInUsd    string `json:"averageSellPriceInUsd"`
-	UnrealizedProfitInUsd    string `json:"unrealizedProfitInUsd"`
-	UnrealizedProfitRatio    string `json:"unrealizedProfitRatio"`
-	RealizedProfitInUsd      string `json:"realizedProfitInUsd"`
-	RealizedProfitRatio      string `json:"realizedProfitRatio"`
-	TotalRealizedProfitInUsd string `json:"totalRealizedProfitInUsd"`
-	TotalRealizedProfitRatio string `json:"totalRealizedProfitRatio"`
+	WalletAddress            string  `json:"walletAddress"`
+	TokenAddress             string  `json:"tokenAddress"`
+	Timestamp                int64   `json:"timestamp"`
+	BuyCount                 int     `json:"buyCount"`
+	BuyCount30d              int     `json:"buyCount30d"`
+	BuyCount7d               int     `json:"buyCount7d"`
+	SellCount                int     `json:"sellCount"`
+	SellCount30d             int     `json:"sellCount30d"`
+	SellCount7d              int     `json:"sellCount7d"`
+	TokenPriceInUsd          *string `json:"tokenPriceInUsd,omitempty"`
+	OpenTime                 *int64  `json:"opentime,omitempty"`
+	LastTime                 *int64  `json:"lasttime,omitempty"`
+	CloseTime                *int64  `json:"closetime,omitempty"`
+	BuyAmount                *string `json:"buyAmount,omitempty"`
+	BuyAmountInUsd           *string `json:"buyAmountInUsd,omitempty"`
+	SellAmount               *string `json:"sellAmount,omitempty"`
+	SellAmountInUsd          *string `json:"sellAmountInUsd,omitempty"`
+	HeldDurationTimestamp    *int64  `json:"heldDurationTimestamp,omitempty"`
+	AverageBuyPriceInUsd     *string `json:"averageBuyPriceInUsd,omitempty"`
+	AverageSellPriceInUsd    *string `json:"averageSellPriceInUsd,omitempty"`
+	UnrealizedProfitInUsd    *string `json:"unrealizedProfitInUsd,omitempty"`
+	UnrealizedProfitRatio    *string `json:"unrealizedProfitRatio,omitempty"`
+	RealizedProfitInUsd      *string `json:"realizedProfitInUsd,omitempty"`
+	RealizedProfitRatio      *string `json:"realizedProfitRatio,omitempty"`
+	TotalRealizedProfitInUsd *string `json:"totalRealizedProfitInUsd,omitempty"`
+	TotalRealizedProfitRatio *string `json:"totalRealizedProfitRatio,omitempty"`
 }
 
 // RankingTokenList represents ranking token list data

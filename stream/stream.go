@@ -673,30 +673,30 @@ func (s *StreamApi) SubscribeWalletPnl(chain, walletAddress string, callback Str
 		pnl := WalletTokenPnl{
 			WalletAddress:            getString(dataMap, "a"),
 			TokenAddress:             getString(dataMap, "ta"),
-			TokenPriceInUsd:          s.formatScientificNotation(dataMap["tpiu"]),
 			Timestamp:                getInt64(dataMap, "t"),
-			OpenTime:                 getInt64(dataMap, "ot"),
-			LastTime:                 getInt64(dataMap, "lt"),
-			CloseTime:                getInt64(dataMap, "ct"),
-			BuyAmount:                s.formatScientificNotation(dataMap["ba"]),
-			BuyAmountInUsd:           s.formatScientificNotation(dataMap["baiu"]),
 			BuyCount:                 getInt(dataMap, "bs"),
 			BuyCount30d:              getInt(dataMap, "bs30d"),
 			BuyCount7d:               getInt(dataMap, "bs7d"),
-			SellAmount:               s.formatScientificNotation(dataMap["sa"]),
-			SellAmountInUsd:          s.formatScientificNotation(dataMap["saiu"]),
 			SellCount:                getInt(dataMap, "ss"),
 			SellCount30d:             getInt(dataMap, "ss30d"),
 			SellCount7d:              getInt(dataMap, "ss7d"),
-			HeldDurationTimestamp:    getInt64(dataMap, "hdts"),
-			AverageBuyPriceInUsd:     s.formatScientificNotation(dataMap["abpiu"]),
-			AverageSellPriceInUsd:    s.formatScientificNotation(dataMap["aspiu"]),
-			UnrealizedProfitInUsd:    s.formatScientificNotation(dataMap["upiu"]),
-			UnrealizedProfitRatio:    s.formatScientificNotation(dataMap["upr"]),
-			RealizedProfitInUsd:      s.formatScientificNotation(dataMap["rpiu"]),
-			RealizedProfitRatio:      s.formatScientificNotation(dataMap["rpr"]),
-			TotalRealizedProfitInUsd: s.formatScientificNotation(dataMap["trpiu"]),
-			TotalRealizedProfitRatio: s.formatScientificNotation(dataMap["trr"]),
+			TokenPriceInUsd:          s.formatOptionalScientificNotation(dataMap["tpiu"]),
+			OpenTime:                 getOptionalInt64(dataMap, "ot"),
+			LastTime:                 getOptionalInt64(dataMap, "lt"),
+			CloseTime:                getOptionalInt64(dataMap, "ct"),
+			BuyAmount:                s.formatOptionalScientificNotation(dataMap["ba"]),
+			BuyAmountInUsd:           s.formatOptionalScientificNotation(dataMap["baiu"]),
+			SellAmount:               s.formatOptionalScientificNotation(dataMap["sa"]),
+			SellAmountInUsd:          s.formatOptionalScientificNotation(dataMap["saiu"]),
+			HeldDurationTimestamp:    getOptionalInt64(dataMap, "hdts"),
+			AverageBuyPriceInUsd:     s.formatOptionalScientificNotation(dataMap["abpiu"]),
+			AverageSellPriceInUsd:    s.formatOptionalScientificNotation(dataMap["aspiu"]),
+			UnrealizedProfitInUsd:    s.formatOptionalScientificNotation(dataMap["upiu"]),
+			UnrealizedProfitRatio:    s.formatOptionalScientificNotation(dataMap["upr"]),
+			RealizedProfitInUsd:      s.formatOptionalScientificNotation(dataMap["rpiu"]),
+			RealizedProfitRatio:      s.formatOptionalScientificNotation(dataMap["rpr"]),
+			TotalRealizedProfitInUsd: s.formatOptionalScientificNotation(dataMap["trpiu"]),
+			TotalRealizedProfitRatio: s.formatOptionalScientificNotation(dataMap["trr"]),
 		}
 
 		callback(pnl)
@@ -1363,4 +1363,22 @@ func getInt64(m map[string]interface{}, key string) int64 {
 		}
 	}
 	return 0
+}
+
+func getOptionalInt64(m map[string]interface{}, key string) *int64 {
+	if val, ok := m[key]; ok && val != nil {
+		if f, ok := val.(float64); ok {
+			v := int64(f)
+			return &v
+		}
+	}
+	return nil
+}
+
+func (s *StreamApi) formatOptionalScientificNotation(value interface{}) *string {
+	if value == nil {
+		return nil
+	}
+	result := s.formatScientificNotation(value)
+	return &result
 }

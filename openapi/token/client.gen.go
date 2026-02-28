@@ -592,9 +592,6 @@ type Token struct {
 	// ImageUrl DTO.TOKEN.METADATA.IMAGE_URL
 	ImageUrl *string `json:"imageUrl,omitempty"`
 
-	// Liquidity DTO.TOKEN.LIQUIDITY
-	Liquidity *[]DexPoolDTO `json:"liquidity,omitempty"`
-
 	// Market DTO.TOKEN.MARKET_ID
 	Market *string `json:"market,omitempty"`
 

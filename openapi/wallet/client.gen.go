@@ -530,6 +530,24 @@ type WalletFirstTxItemDTO struct {
 	TxHash string `json:"txHash"`
 }
 
+// WalletNetWorthByTokensResult defines model for WalletNetWorthByTokensResult.
+type WalletNetWorthByTokensResult struct {
+	// CurrentTimestamp DTO.WALLET.NET_WORTH.CURRENT_TIMESTAMP
+	CurrentTimestamp string `json:"currentTimestamp"`
+
+	// Data DTO.PAGE.DATA
+	Data []WalletNetWorthItemDTO `json:"data"`
+
+	// TotalValueInNative DTO.WALLET.NET_WORTH.TOTAL_VALUE_IN_NATIVE
+	TotalValueInNative string `json:"totalValueInNative"`
+
+	// TotalValueInUsd DTO.WALLET.NET_WORTH.TOTAL_VALUE_IN_USD
+	TotalValueInUsd string `json:"totalValueInUsd"`
+
+	// WalletAddress DTO.WALLET.NET_WORTH.WALLET_ADDRESS
+	WalletAddress string `json:"walletAddress"`
+}
+
 // WalletNetWorthChartDTO defines model for WalletNetWorthChartDTO.
 type WalletNetWorthChartDTO struct {
 	// CurrentTimestamp DTO.WALLET.NET_WORTH_CHART.CURRENT_TIMESTAMP
@@ -845,6 +863,12 @@ type GetNetWorthDetailsParams struct {
 // GetNetWorthDetailsParamsDirection defines parameters for GetNetWorthDetails.
 type GetNetWorthDetailsParamsDirection string
 
+// GetNetWorthByTokensParams defines parameters for GetNetWorthByTokens.
+type GetNetWorthByTokensParams struct {
+	// TokenAddresses DTO.WALLET.NET_WORTH_BY_TOKENS.QUERY.TOKEN_ADDRESSES
+	TokenAddresses string `form:"tokenAddresses" json:"tokenAddresses"`
+}
+
 // GetPnlParams defines parameters for GetPnl.
 type GetPnlParams struct {
 	// Resolution DTO.WALLET.PNL_SUMMARY.QUERY.RESOLUTION
@@ -1073,6 +1097,9 @@ type ClientInterface interface {
 	// GetNetWorthDetails request
 	GetNetWorthDetails(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthDetailsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetNetWorthByTokens request
+	GetNetWorthByTokens(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthByTokensParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetPnl request
 	GetPnl(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -1190,6 +1217,18 @@ func (c *Client) GetNetWorthChart(ctx context.Context, chain ChainSymbol, wallet
 
 func (c *Client) GetNetWorthDetails(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthDetailsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetNetWorthDetailsRequest(c.Server, chain, walletAddress, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetNetWorthByTokens(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthByTokensParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetNetWorthByTokensRequest(c.Server, chain, walletAddress, params)
 	if err != nil {
 		return nil, err
 	}
@@ -1973,6 +2012,65 @@ func NewGetNetWorthDetailsRequest(server string, chain ChainSymbol, walletAddres
 				}
 			}
 
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetNetWorthByTokensRequest generates requests for GetNetWorthByTokens
+func NewGetNetWorthByTokensRequest(server string, chain ChainSymbol, walletAddress string, params *GetNetWorthByTokensParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "walletAddress", runtime.ParamLocationPath, walletAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/net-worth/tokens", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tokenAddresses", runtime.ParamLocationQuery, params.TokenAddresses); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
 		}
 
 		queryURL.RawQuery = queryValues.Encode()
@@ -2829,6 +2927,9 @@ type ClientWithResponsesInterface interface {
 	// GetNetWorthDetailsWithResponse request
 	GetNetWorthDetailsWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthDetailsParams, reqEditors ...RequestEditorFn) (*GetNetWorthDetailsResponse, error)
 
+	// GetNetWorthByTokensWithResponse request
+	GetNetWorthByTokensWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthByTokensParams, reqEditors ...RequestEditorFn) (*GetNetWorthByTokensResponse, error)
+
 	// GetPnlWithResponse request
 	GetPnlWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetPnlParams, reqEditors ...RequestEditorFn) (*GetPnlResponse, error)
 
@@ -3018,6 +3119,28 @@ func (r GetNetWorthDetailsResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r GetNetWorthDetailsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type GetNetWorthByTokensResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *WalletNetWorthByTokensResult
+}
+
+// Status returns HTTPResponse.Status
+func (r GetNetWorthByTokensResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetNetWorthByTokensResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -3234,6 +3357,15 @@ func (c *ClientWithResponses) GetNetWorthDetailsWithResponse(ctx context.Context
 		return nil, err
 	}
 	return ParseGetNetWorthDetailsResponse(rsp)
+}
+
+// GetNetWorthByTokensWithResponse request returning *GetNetWorthByTokensResponse
+func (c *ClientWithResponses) GetNetWorthByTokensWithResponse(ctx context.Context, chain ChainSymbol, walletAddress string, params *GetNetWorthByTokensParams, reqEditors ...RequestEditorFn) (*GetNetWorthByTokensResponse, error) {
+	rsp, err := c.GetNetWorthByTokens(ctx, chain, walletAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetNetWorthByTokensResponse(rsp)
 }
 
 // GetPnlWithResponse request returning *GetPnlResponse
@@ -3488,6 +3620,32 @@ func ParseGetNetWorthDetailsResponse(rsp *http.Response) (*GetNetWorthDetailsRes
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest WalletNetWorthDetailsPage
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetNetWorthByTokensResponse parses an HTTP response from a GetNetWorthByTokensWithResponse call
+func ParseGetNetWorthByTokensResponse(rsp *http.Response) (*GetNetWorthByTokensResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetNetWorthByTokensResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest WalletNetWorthByTokensResult
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

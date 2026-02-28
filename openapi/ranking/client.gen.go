@@ -26,32 +26,6 @@ const (
 	Sol ChainSymbol = "sol"
 )
 
-// Defines values for DexPoolDTOLiquidityModel.
-const (
-	DexPoolDTOLiquidityModelN0 DexPoolDTOLiquidityModel = 0
-	DexPoolDTOLiquidityModelN1 DexPoolDTOLiquidityModel = 1
-	DexPoolDTOLiquidityModelN2 DexPoolDTOLiquidityModel = 2
-	DexPoolDTOLiquidityModelN3 DexPoolDTOLiquidityModel = 3
-	DexPoolDTOLiquidityModelN4 DexPoolDTOLiquidityModel = 4
-)
-
-// Defines values for DexPoolDTOType.
-const (
-	DexPoolDTOTypeN0 DexPoolDTOType = 0
-	DexPoolDTOTypeN1 DexPoolDTOType = 1
-	DexPoolDTOTypeN2 DexPoolDTOType = 2
-	DexPoolDTOTypeN3 DexPoolDTOType = 3
-	DexPoolDTOTypeN4 DexPoolDTOType = 4
-)
-
-// Defines values for DexPoolDTOVersion.
-const (
-	N0 DexPoolDTOVersion = 0
-	N1 DexPoolDTOVersion = 1
-	N2 DexPoolDTOVersion = 2
-	N3 DexPoolDTOVersion = 3
-)
-
 // Defines values for FilterConditionField.
 const (
 	FilterConditionFieldMarketDataCreatorHoldings      FilterConditionField = "marketData.creatorHoldings"
@@ -439,99 +413,6 @@ const (
 // ChainSymbol defines model for ChainSymbol.
 type ChainSymbol string
 
-// DexPoolDTO defines model for DexPoolDTO.
-type DexPoolDTO struct {
-	// Chain DTO.DEX.CHAIN
-	Chain string `json:"chain"`
-
-	// CreatedBlockTimestamp DTO.DEXPOOL.CREATED_BLOCK_TIMESTAMP
-	CreatedBlockTimestamp *string `json:"createdBlockTimestamp,omitempty"`
-
-	// FeeRate DTO.DEXPOOL.FEE_RATE
-	FeeRate *string `json:"feeRate,omitempty"`
-
-	// Image DTO.DEX.IMAGE
-	Image *string `json:"image,omitempty"`
-
-	// LiquidityModel DTO.DEXPOOL.LIQUIDITY_MODEL
-	LiquidityModel *DexPoolDTOLiquidityModel `json:"liquidityModel,omitempty"`
-
-	// PoolAddress DTO.DEXPOOL.POOL_ADDRESS
-	PoolAddress string `json:"poolAddress"`
-
-	// ProgramAddress DTO.DEX.PROGRAM_ADDRESS
-	ProgramAddress *string `json:"programAddress,omitempty"`
-
-	// ProtocolFamily DTO.DEX.PROTOCOL_FAMILY
-	ProtocolFamily *string `json:"protocolFamily,omitempty"`
-
-	// ProtocolName DTO.DEXPOOL.PROTOCOL_NAME
-	ProtocolName *string `json:"protocolName,omitempty"`
-
-	// TickSpacing DTO.DEXPOOL.TICK_SPACING
-	TickSpacing *int64 `json:"tickSpacing,omitempty"`
-
-	// TokenAAddress DTO.DEXPOOL.TOKEN_A
-	TokenAAddress string `json:"tokenAAddress"`
-
-	// TokenALiquidity DTO.DEXPOOL.TOKEN_A_LIQUIDITY
-	TokenALiquidity *DexPoolTokenLiquidity `json:"tokenALiquidity,omitempty"`
-
-	// TokenBAddress DTO.DEXPOOL.TOKEN_B
-	TokenBAddress string `json:"tokenBAddress"`
-
-	// TokenBLiquidity DTO.DEXPOOL.TOKEN_B_LIQUIDITY
-	TokenBLiquidity *DexPoolTokenLiquidity `json:"tokenBLiquidity,omitempty"`
-
-	// TokenCount DTO.DEXPOOL.TOKEN_COUNT
-	TokenCount *int64 `json:"tokenCount,omitempty"`
-
-	// TvlInSol DTO.DEXPOOL.TVL_SOL
-	TvlInSol *string `json:"tvlInSol,omitempty"`
-
-	// TvlInUsd DTO.DEXPOOL.TVL_USD
-	TvlInUsd *string `json:"tvlInUsd,omitempty"`
-
-	// Type DTO.DEXPOOL.TYPE
-	Type *DexPoolDTOType `json:"type,omitempty"`
-
-	// Version DTO.DEXPOOL.VERSION
-	Version *DexPoolDTOVersion `json:"version,omitempty"`
-}
-
-// DexPoolDTOLiquidityModel DTO.DEXPOOL.LIQUIDITY_MODEL
-type DexPoolDTOLiquidityModel float32
-
-// DexPoolDTOType DTO.DEXPOOL.TYPE
-type DexPoolDTOType float32
-
-// DexPoolDTOVersion DTO.DEXPOOL.VERSION
-type DexPoolDTOVersion float32
-
-// DexPoolTokenLiquidity defines model for DexPoolTokenLiquidity.
-type DexPoolTokenLiquidity struct {
-	// AmountInNative DTO.DEXPOOL.AMOUNT_IN_NATIVE
-	AmountInNative string `json:"amountInNative"`
-
-	// AmountInUsd DTO.DEXPOOL.AMOUNT_IN_USD
-	AmountInUsd string `json:"amountInUsd"`
-
-	// Decimals DTO.DEXPOOL.TOKEN_DECIMALS
-	Decimals int64 `json:"decimals"`
-
-	// PriceNative DTO.DEXPOOL.PRICE_NATIVE
-	PriceNative string `json:"priceNative"`
-
-	// PriceUsd DTO.DEXPOOL.PRICE_USD
-	PriceUsd string `json:"priceUsd"`
-
-	// TokenAddress DTO.DEXPOOL.TOKEN_ADDRESS
-	TokenAddress string `json:"tokenAddress"`
-
-	// VaultAmount DTO.DEXPOOL.VAULT_AMOUNT
-	VaultAmount string `json:"vaultAmount"`
-}
-
 // FilterCondition defines model for FilterCondition.
 type FilterCondition struct {
 	// Field DTO.TOKEN.FILTER.FIELD
@@ -578,9 +459,6 @@ type Token struct {
 
 	// ImageUrl DTO.TOKEN.METADATA.IMAGE_URL
 	ImageUrl *string `json:"imageUrl,omitempty"`
-
-	// Liquidity DTO.TOKEN.LIQUIDITY
-	Liquidity *[]DexPoolDTO `json:"liquidity,omitempty"`
 
 	// Market DTO.TOKEN.MARKET_ID
 	Market *string `json:"market,omitempty"`
