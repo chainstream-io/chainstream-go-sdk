@@ -15,10 +15,6 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
-const (
-	BearerScopes = "bearer.Scopes"
-)
-
 // Defines values for ChainSymbol.
 const (
 	Bsc ChainSymbol = "bsc"
@@ -26,31 +22,21 @@ const (
 	Sol ChainSymbol = "sol"
 )
 
-// BlockchainDTO defines model for BlockchainDTO.
-type BlockchainDTO struct {
-	// ChainId DTO.BLOCKCHAIN.CHAIN_ID
-	ChainId int64 `json:"chainId"`
-
-	// ExplorerUrl DTO.BLOCKCHAIN.EXPLORER_URL
+// Blockchain Blockchain information
+type Blockchain struct {
+	ChainId     int64  `json:"chainId"`
 	ExplorerUrl string `json:"explorerUrl"`
-
-	// Name DTO.BLOCKCHAIN.NAME
-	Name string `json:"name"`
-
-	// Symbol DTO.BLOCKCHAIN.SYMBOL
-	Symbol string `json:"symbol"`
+	Name        string `json:"name"`
+	Symbol      string `json:"symbol"`
 }
 
-// BlockchainLatestBlockDTO defines model for BlockchainLatestBlockDTO.
-type BlockchainLatestBlockDTO struct {
-	// Blockhash DTO.BLOCKCHAIN.LATEST_BLOCK.BLOCKHASH
-	Blockhash string `json:"blockhash"`
-
-	// LastValidBlockHeight DTO.BLOCKCHAIN.LATEST_BLOCK.LAST_VALID_BLOCK_HEIGHT
-	LastValidBlockHeight int64 `json:"lastValidBlockHeight"`
+// BlockchainLatestBlock defines model for BlockchainLatestBlock.
+type BlockchainLatestBlock struct {
+	Blockhash            string `json:"blockhash"`
+	LastValidBlockHeight int64  `json:"lastValidBlockHeight"`
 }
 
-// ChainSymbol defines model for ChainSymbol.
+// ChainSymbol Supported blockchain chains
 type ChainSymbol string
 
 // RequestEditorFn  is the function signature for the RequestEditor callback function
@@ -166,7 +152,7 @@ func NewGetSupportedBlockchainsRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/blockchain")
+	operationPath := fmt.Sprintf("/v2/blockchain")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -200,7 +186,7 @@ func NewGetLatestBlockRequest(server string, chain ChainSymbol) (*http.Request, 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/blockchain/%s/latest_block", pathParam0)
+	operationPath := fmt.Sprintf("/v2/blockchain/%s/latest_block", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -271,7 +257,7 @@ type ClientWithResponsesInterface interface {
 type GetSupportedBlockchainsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *[]BlockchainDTO
+	JSON200      *[]Blockchain
 }
 
 // Status returns HTTPResponse.Status
@@ -293,7 +279,7 @@ func (r GetSupportedBlockchainsResponse) StatusCode() int {
 type GetLatestBlockResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *BlockchainLatestBlockDTO
+	JSON200      *BlockchainLatestBlock
 }
 
 // Status returns HTTPResponse.Status
@@ -345,7 +331,7 @@ func ParseGetSupportedBlockchainsResponse(rsp *http.Response) (*GetSupportedBloc
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []BlockchainDTO
+		var dest []Blockchain
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -371,7 +357,7 @@ func ParseGetLatestBlockResponse(rsp *http.Response) (*GetLatestBlockResponse, e
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BlockchainLatestBlockDTO
+		var dest BlockchainLatestBlock
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

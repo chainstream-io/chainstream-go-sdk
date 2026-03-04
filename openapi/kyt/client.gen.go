@@ -17,169 +17,41 @@ import (
 )
 
 const (
-	BearerScopes = "bearer.Scopes"
+	Bearer_authScopes = "bearer_auth.Scopes"
 )
 
-// Defines values for KYTRegisterTransferRequestDirection.
+// Defines values for KytNetwork.
 const (
-	Received KYTRegisterTransferRequestDirection = "received"
-	Sent     KYTRegisterTransferRequestDirection = "sent"
+	Bitcoin  KytNetwork = "bitcoin"
+	Ethereum KytNetwork = "ethereum"
+	Solana   KytNetwork = "Solana"
 )
 
-// Defines values for KYTRegisterTransferRequestNetwork.
+// Defines values for TransferDirection.
 const (
-	KYTRegisterTransferRequestNetworkBitcoin  KYTRegisterTransferRequestNetwork = "bitcoin"
-	KYTRegisterTransferRequestNetworkEthereum KYTRegisterTransferRequestNetwork = "ethereum"
-	KYTRegisterTransferRequestNetworkSolana   KYTRegisterTransferRequestNetwork = "Solana"
+	Received TransferDirection = "received"
+	Sent     TransferDirection = "sent"
 )
 
-// Defines values for KYTRegisterWithdrawalRequestNetwork.
-const (
-	KYTRegisterWithdrawalRequestNetworkBitcoin  KYTRegisterWithdrawalRequestNetwork = "bitcoin"
-	KYTRegisterWithdrawalRequestNetworkEthereum KYTRegisterWithdrawalRequestNetwork = "ethereum"
-	KYTRegisterWithdrawalRequestNetworkSolana   KYTRegisterWithdrawalRequestNetwork = "Solana"
-)
-
-// AddressExposure defines model for AddressExposure.
-type AddressExposure struct {
-	// Category DTO.KYT.ADDRESS_EXPOSURE.CATEGORY
-	Category string `json:"category"`
-
-	// Direction DTO.KYT.ADDRESS_EXPOSURE.DIRECTION
-	Direction string `json:"direction"`
-
-	// ExposureType DTO.KYT.ADDRESS_EXPOSURE.EXPOSURE_TYPE
-	ExposureType string `json:"exposureType"`
-
-	// Value DTO.KYT.ADDRESS_EXPOSURE.VALUE
-	Value string `json:"value"`
-}
-
-// AddressRiskResponseDTO defines model for AddressRiskResponseDTO.
-type AddressRiskResponseDTO struct {
-	// Address DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS
+// KYTRegisterAddressInput defines model for KYTRegisterAddressInput.
+type KYTRegisterAddressInput struct {
+	// Address DTO.KYT.REGISTER_ADDRESS_REQUEST.ADDRESS
 	Address string `json:"address"`
-
-	// AddressIdentifications DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS_IDENTIFICATIONS
-	AddressIdentifications []string `json:"addressIdentifications"`
-
-	// AddressType DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS_TYPE
-	AddressType string `json:"addressType"`
-
-	// Cluster DTO.KYT.ADDRESS_RISK_RESPONSE.CLUSTER
-	Cluster *string `json:"cluster"`
-
-	// Exposures DTO.KYT.ADDRESS_RISK_RESPONSE.EXPOSURES
-	Exposures []AddressExposure `json:"exposures"`
-
-	// Risk DTO.KYT.ADDRESS_RISK_RESPONSE.RISK
-	Risk string `json:"risk"`
-
-	// RiskReason DTO.KYT.ADDRESS_RISK_RESPONSE.RISK_REASON
-	RiskReason *string `json:"riskReason"`
-
-	// Status DTO.KYT.ADDRESS_RISK_RESPONSE.STATUS
-	Status string `json:"status"`
-
-	// Triggers DTO.KYT.ADDRESS_RISK_RESPONSE.TRIGGERS
-	Triggers []string `json:"triggers"`
 }
 
-// AlertDetail defines model for AlertDetail.
-type AlertDetail struct {
-	// AlertAmount DTO.KYT.ALERT_DETAIL.ALERT_AMOUNT
-	AlertAmount string `json:"alertAmount"`
-
-	// AlertLevel DTO.KYT.ALERT_DETAIL.ALERT_LEVEL
-	AlertLevel string `json:"alertLevel"`
-
-	// CategoryId DTO.KYT.ALERT_DETAIL.CATEGORY_ID
-	CategoryId int64 `json:"categoryId"`
-
-	// ExposureType DTO.KYT.ALERT_DETAIL.EXPOSURE_TYPE
-	ExposureType string `json:"exposureType"`
-
-	// ExternalId DTO.KYT.ALERT_DETAIL.EXTERNAL_ID
-	ExternalId string `json:"externalId"`
-
-	// Memo DTO.KYT.ALERT_DETAIL.MEMO
-	Memo *string `json:"memo"`
-
-	// Service DTO.KYT.ALERT_DETAIL.SERVICE
-	Service string `json:"service"`
-}
-
-// AlteryaIdentification defines model for AlteryaIdentification.
-type AlteryaIdentification struct {
-	// Address DTO.KYT.ALTERYA_IDENTIFICATION.ADDRESS
-	Address string `json:"address"`
-
-	// Chain DTO.KYT.ALTERYA_IDENTIFICATION.CHAIN
-	Chain string `json:"chain"`
-
-	// Labels DTO.KYT.ALTERYA_IDENTIFICATION.LABELS
-	Labels []string `json:"labels"`
-
-	// Object DTO.KYT.ALTERYA_IDENTIFICATION.OBJECT
-	Object string `json:"object"`
-
-	// OnChainActivity DTO.KYT.ALTERYA_IDENTIFICATION.ON_CHAIN_ACTIVITY
-	OnChainActivity OnChainActivity `json:"on_chain_activity"`
-
-	// Reason DTO.KYT.ALTERYA_IDENTIFICATION.REASON
-	Reason string `json:"reason"`
-
-	// RiskLevel DTO.KYT.ALTERYA_IDENTIFICATION.RISK_LEVEL
-	RiskLevel string `json:"risk_level"`
-
-	// RiskScore DTO.KYT.ALTERYA_IDENTIFICATION.RISK_SCORE
-	RiskScore string `json:"risk_score"`
-}
-
-// ChainalysisAddressIdentification defines model for ChainalysisAddressIdentification.
-type ChainalysisAddressIdentification struct {
-	// AddressName DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.ADDRESS_NAME
-	AddressName string `json:"addressName"`
-
-	// CategoryId DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.CATEGORY_ID
-	CategoryId int64 `json:"categoryId"`
-
-	// Description DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.DESCRIPTION
-	Description string `json:"description"`
-}
-
-// DirectExposureDetail defines model for DirectExposureDetail.
-type DirectExposureDetail struct {
-	// CategoryId DTO.KYT.DIRECT_EXPOSURE_DETAIL.CATEGORY_ID
-	CategoryId int64 `json:"categoryId"`
-
-	// Name DTO.KYT.DIRECT_EXPOSURE_DETAIL.NAME
-	Name string `json:"name"`
-}
-
-// KYTRegisterTransferRequest defines model for KYTRegisterTransferRequest.
-type KYTRegisterTransferRequest struct {
+// KYTRegisterTransferInput defines model for KYTRegisterTransferInput.
+type KYTRegisterTransferInput struct {
 	// Asset DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.ASSET
-	Asset string `json:"asset"`
-
-	// Direction DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.DIRECTION
-	Direction KYTRegisterTransferRequestDirection `json:"direction"`
-
-	// Network DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.NETWORK
-	Network KYTRegisterTransferRequestNetwork `json:"network"`
+	Asset     string            `json:"asset"`
+	Direction TransferDirection `json:"direction"`
+	Network   KytNetwork        `json:"network"`
 
 	// TransferReference DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.TRANSFER_REFERENCE
 	TransferReference string `json:"transferReference"`
 }
 
-// KYTRegisterTransferRequestDirection DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.DIRECTION
-type KYTRegisterTransferRequestDirection string
-
-// KYTRegisterTransferRequestNetwork DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.NETWORK
-type KYTRegisterTransferRequestNetwork string
-
-// KYTRegisterWithdrawalRequest defines model for KYTRegisterWithdrawalRequest.
-type KYTRegisterWithdrawalRequest struct {
+// KYTRegisterWithdrawalInput defines model for KYTRegisterWithdrawalInput.
+type KYTRegisterWithdrawalInput struct {
 	// Address DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ADDRESS
 	Address string `json:"address"`
 
@@ -202,47 +74,174 @@ type KYTRegisterWithdrawalRequest struct {
 	AttemptTimestamp string `json:"attemptTimestamp"`
 
 	// Memo DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.MEMO
+	Memo    *string    `json:"memo"`
+	Network KytNetwork `json:"network"`
+}
+
+// KytAddressExposure defines model for KytAddressExposure.
+type KytAddressExposure struct {
+	// Category DTO.KYT.ADDRESS_EXPOSURE.CATEGORY
+	Category *string `json:"category"`
+
+	// Direction DTO.KYT.ADDRESS_EXPOSURE.DIRECTION
+	Direction *string `json:"direction"`
+
+	// ExposureType DTO.KYT.ADDRESS_EXPOSURE.EXPOSURE_TYPE
+	ExposureType *string `json:"exposureType"`
+
+	// Value DTO.KYT.ADDRESS_EXPOSURE.VALUE
+	Value *string `json:"value"`
+}
+
+// KytAddressIdentification defines model for KytAddressIdentification.
+type KytAddressIdentification struct {
+	// AddressName DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.ADDRESS_NAME
+	AddressName *string `json:"addressName"`
+
+	// CategoryId DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.CATEGORY_ID
+	CategoryId *int64 `json:"categoryId"`
+
+	// Description DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.DESCRIPTION
+	Description *string `json:"description"`
+}
+
+// KytAddressRiskResponse defines model for KytAddressRiskResponse.
+type KytAddressRiskResponse struct {
+	// Address DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS
+	Address string `json:"address"`
+
+	// AddressIdentifications DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS_IDENTIFICATIONS
+	AddressIdentifications *[]interface{} `json:"addressIdentifications,omitempty"`
+
+	// AddressType DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS_TYPE
+	AddressType *string `json:"addressType"`
+
+	// Cluster DTO.KYT.ADDRESS_RISK_RESPONSE.CLUSTER
+	Cluster *map[string]interface{} `json:"cluster"`
+
+	// Exposures DTO.KYT.ADDRESS_RISK_RESPONSE.EXPOSURES
+	Exposures *[]KytAddressExposure `json:"exposures,omitempty"`
+
+	// Risk DTO.KYT.ADDRESS_RISK_RESPONSE.RISK
+	Risk *string `json:"risk"`
+
+	// RiskReason DTO.KYT.ADDRESS_RISK_RESPONSE.RISK_REASON
+	RiskReason *string `json:"riskReason"`
+
+	// Status DTO.KYT.ADDRESS_RISK_RESPONSE.STATUS
+	Status *string `json:"status"`
+
+	// Triggers DTO.KYT.ADDRESS_RISK_RESPONSE.TRIGGERS
+	Triggers *[]interface{} `json:"triggers,omitempty"`
+}
+
+// KytAlertDetail defines model for KytAlertDetail.
+type KytAlertDetail struct {
+	// AlertAmount DTO.KYT.ALERT_DETAIL.ALERT_AMOUNT
+	AlertAmount *string `json:"alertAmount"`
+
+	// AlertLevel DTO.KYT.ALERT_DETAIL.ALERT_LEVEL
+	AlertLevel *string `json:"alertLevel"`
+
+	// CategoryId DTO.KYT.ALERT_DETAIL.CATEGORY_ID
+	CategoryId *int64 `json:"categoryId"`
+
+	// ExposureType DTO.KYT.ALERT_DETAIL.EXPOSURE_TYPE
+	ExposureType *string `json:"exposureType"`
+
+	// ExternalId DTO.KYT.ALERT_DETAIL.EXTERNAL_ID
+	ExternalId *string `json:"externalId"`
+
+	// Memo DTO.KYT.ALERT_DETAIL.MEMO
 	Memo *string `json:"memo"`
 
-	// Network DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.NETWORK
-	Network KYTRegisterWithdrawalRequestNetwork `json:"network"`
+	// Service DTO.KYT.ALERT_DETAIL.SERVICE
+	Service *string `json:"service"`
 }
 
-// KYTRegisterWithdrawalRequestNetwork DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.NETWORK
-type KYTRegisterWithdrawalRequestNetwork string
+// KytAlertsResponse defines model for KytAlertsResponse.
+type KytAlertsResponse struct {
+	// Alerts DTO.KYT.TRANSFER_ALERTS_RESPONSE.ALERTS
+	Alerts []KytAlertDetail `json:"alerts"`
+}
 
-// NetworkIdentificationOrg defines model for NetworkIdentificationOrg.
-type NetworkIdentificationOrg struct {
+// KytAlteryaIdentification defines model for KytAlteryaIdentification.
+type KytAlteryaIdentification struct {
+	// Address DTO.KYT.ALTERYA_IDENTIFICATION.ADDRESS
+	Address *string `json:"address"`
+
+	// Chain DTO.KYT.ALTERYA_IDENTIFICATION.CHAIN
+	Chain *string `json:"chain"`
+
+	// Labels DTO.KYT.ALTERYA_IDENTIFICATION.LABELS
+	Labels *[]string `json:"labels,omitempty"`
+
+	// Object DTO.KYT.ALTERYA_IDENTIFICATION.OBJECT
+	Object          *string             `json:"object"`
+	OnChainActivity *KytOnChainActivity `json:"on_chain_activity,omitempty"`
+
+	// Reason DTO.KYT.ALTERYA_IDENTIFICATION.REASON
+	Reason *string `json:"reason"`
+
+	// RiskLevel DTO.KYT.ALTERYA_IDENTIFICATION.RISK_LEVEL
+	RiskLevel *string `json:"risk_level"`
+
+	// RiskScore DTO.KYT.ALTERYA_IDENTIFICATION.RISK_SCORE
+	RiskScore *string `json:"risk_score"`
+}
+
+// KytDirectExposureDetail defines model for KytDirectExposureDetail.
+type KytDirectExposureDetail struct {
+	// CategoryId DTO.KYT.DIRECT_EXPOSURE_DETAIL.CATEGORY_ID
+	CategoryId *int64 `json:"categoryId"`
+
+	// Name DTO.KYT.DIRECT_EXPOSURE_DETAIL.NAME
+	Name *string `json:"name"`
+}
+
+// KytDirectExposureResponse defines model for KytDirectExposureResponse.
+type KytDirectExposureResponse struct {
+	Direct *KytDirectExposureDetail `json:"direct,omitempty"`
+}
+
+// KytFraudAssessmentResponse defines model for KytFraudAssessmentResponse.
+type KytFraudAssessmentResponse struct {
+	// AlteryaIdentifications DTO.KYT.WITHDRAWAL_FRAUD_ASSESSMENT_RESPONSE.ALTERYA_IDENTIFICATIONS
+	AlteryaIdentifications *[]KytAlteryaIdentification `json:"alteryaIdentifications,omitempty"`
+}
+
+// KytNetwork defines model for KytNetwork.
+type KytNetwork string
+
+// KytNetworkIdentificationOrg defines model for KytNetworkIdentificationOrg.
+type KytNetworkIdentificationOrg struct {
 	// Name DTO.KYT.NETWORK_IDENTIFICATION_ORG.NAME
-	Name string `json:"name"`
+	Name *string `json:"name"`
 }
 
-// OnChainActivity defines model for OnChainActivity.
-type OnChainActivity struct {
+// KytNetworkIdentificationsResponse defines model for KytNetworkIdentificationsResponse.
+type KytNetworkIdentificationsResponse struct {
+	// Count DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.COUNT
+	Count *int64 `json:"count"`
+
+	// NetworkIdentificationOrgs DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.NETWORK_IDENTIFICATION_ORGS
+	NetworkIdentificationOrgs *[]KytNetworkIdentificationOrg `json:"networkIdentificationOrgs,omitempty"`
+}
+
+// KytOnChainActivity defines model for KytOnChainActivity.
+type KytOnChainActivity struct {
 	// FirstTransactionAt DTO.KYT.ON_CHAIN_ACTIVITY.FIRST_TRANSACTION_AT
-	FirstTransactionAt int64 `json:"first_transaction_at"`
+	FirstTransactionAt *int64 `json:"first_transaction_at"`
 }
 
-// RegisterAddressRequest defines model for RegisterAddressRequest.
-type RegisterAddressRequest struct {
-	// Address DTO.KYT.REGISTER_ADDRESS_REQUEST.ADDRESS
-	Address string `json:"address"`
-}
-
-// RegisterAddressResponseDTO defines model for RegisterAddressResponseDTO.
-type RegisterAddressResponseDTO struct {
+// KytRegisterAddressResponse defines model for KytRegisterAddressResponse.
+type KytRegisterAddressResponse struct {
 	// Address DTO.KYT.REGISTER_ADDRESS_RESPONSE.ADDRESS
 	Address string `json:"address"`
 }
 
-// TransferAlertsResponseDTO defines model for TransferAlertsResponseDTO.
-type TransferAlertsResponseDTO struct {
-	// Alerts DTO.KYT.TRANSFER_ALERTS_RESPONSE.ALERTS
-	Alerts []AlertDetail `json:"alerts"`
-}
-
-// TransferBaseResponseDTO defines model for TransferBaseResponseDTO.
-type TransferBaseResponseDTO struct {
+// KytTransferBaseResponse defines model for KytTransferBaseResponse.
+type KytTransferBaseResponse struct {
 	// Asset DTO.KYT.TRANSFER_BASE_RESPONSE.ASSET
 	Asset string `json:"asset"`
 
@@ -283,32 +282,17 @@ type TransferBaseResponseDTO struct {
 	UsdAmount *string `json:"usdAmount"`
 }
 
-// TransferDirectExposureResponseDTO defines model for TransferDirectExposureResponseDTO.
-type TransferDirectExposureResponseDTO struct {
-	// Direct DTO.KYT.TRANSFER_DIRECT_EXPOSURE_RESPONSE.DIRECT
-	Direct DirectExposureDetail `json:"direct"`
-}
-
-// TransferNetworkIdentificationsResponseDTO defines model for TransferNetworkIdentificationsResponseDTO.
-type TransferNetworkIdentificationsResponseDTO struct {
-	// Count DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.COUNT
-	Count int64 `json:"count"`
-
-	// NetworkIdentificationOrgs DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.NETWORK_IDENTIFICATION_ORGS
-	NetworkIdentificationOrgs []NetworkIdentificationOrg `json:"networkIdentificationOrgs"`
-}
-
-// WithdrawalAddressIdentificationsResponseDTO defines model for WithdrawalAddressIdentificationsResponseDTO.
-type WithdrawalAddressIdentificationsResponseDTO struct {
+// KytWithdrawalAddressIdentificationsResponse defines model for KytWithdrawalAddressIdentificationsResponse.
+type KytWithdrawalAddressIdentificationsResponse struct {
 	// ChainalysisIdentifications DTO.KYT.WITHDRAWAL_ADDRESS_IDENTIFICATIONS_RESPONSE.CHAINALYSIS_IDENTIFICATIONS
-	ChainalysisIdentifications []ChainalysisAddressIdentification `json:"chainalysisIdentifications"`
+	ChainalysisIdentifications *[]KytAddressIdentification `json:"chainalysisIdentifications,omitempty"`
 
 	// CustomAddresses DTO.KYT.WITHDRAWAL_ADDRESS_IDENTIFICATIONS_RESPONSE.CUSTOM_ADDRESSES
-	CustomAddresses []string `json:"customAddresses"`
+	CustomAddresses *[]interface{} `json:"customAddresses,omitempty"`
 }
 
-// WithdrawalBaseResponseDTO defines model for WithdrawalBaseResponseDTO.
-type WithdrawalBaseResponseDTO struct {
+// KytWithdrawalBaseResponse defines model for KytWithdrawalBaseResponse.
+type KytWithdrawalBaseResponse struct {
 	// Address DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ADDRESS
 	Address string `json:"address"`
 
@@ -340,20 +324,17 @@ type WithdrawalBaseResponseDTO struct {
 	UsdAmount string `json:"usdAmount"`
 }
 
-// WithdrawalFraudAssessmentResponseDTO defines model for WithdrawalFraudAssessmentResponseDTO.
-type WithdrawalFraudAssessmentResponseDTO struct {
-	// AlteryaIdentifications DTO.KYT.WITHDRAWAL_FRAUD_ASSESSMENT_RESPONSE.ALTERYA_IDENTIFICATIONS
-	AlteryaIdentifications []AlteryaIdentification `json:"alteryaIdentifications"`
-}
+// TransferDirection defines model for TransferDirection.
+type TransferDirection string
 
 // RegisterAddressJSONRequestBody defines body for RegisterAddress for application/json ContentType.
-type RegisterAddressJSONRequestBody = RegisterAddressRequest
+type RegisterAddressJSONRequestBody = KYTRegisterAddressInput
 
 // RegisterTransferJSONRequestBody defines body for RegisterTransfer for application/json ContentType.
-type RegisterTransferJSONRequestBody = KYTRegisterTransferRequest
+type RegisterTransferJSONRequestBody = KYTRegisterTransferInput
 
 // RegisterWithdrawalJSONRequestBody defines body for RegisterWithdrawal for application/json ContentType.
-type RegisterWithdrawalJSONRequestBody = KYTRegisterWithdrawalRequest
+type RegisterWithdrawalJSONRequestBody = KYTRegisterWithdrawalInput
 
 // RequestEditorFn  is the function signature for the RequestEditor callback function
 type RequestEditorFn func(ctx context.Context, req *http.Request) error
@@ -701,7 +682,7 @@ func NewRegisterAddressRequestWithBody(server string, contentType string, body i
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/address")
+	operationPath := fmt.Sprintf("/v2/kyt/address")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -737,7 +718,7 @@ func NewGetAddressRiskRequest(server string, address string) (*http.Request, err
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/addresses/%s/risk", pathParam0)
+	operationPath := fmt.Sprintf("/v2/kyt/addresses/%s/risk", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -775,7 +756,7 @@ func NewRegisterTransferRequestWithBody(server string, contentType string, body 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/transfer")
+	operationPath := fmt.Sprintf("/v2/kyt/transfer")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -811,7 +792,7 @@ func NewGetTransferAlertsRequest(server string, transferId string) (*http.Reques
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/transfers/%s/alerts", pathParam0)
+	operationPath := fmt.Sprintf("/v2/kyt/transfers/%s/alerts", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -845,7 +826,7 @@ func NewGetTransferDirectExposureRequest(server string, transferId string) (*htt
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/transfers/%s/exposures/direct", pathParam0)
+	operationPath := fmt.Sprintf("/v2/kyt/transfers/%s/exposures/direct", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -879,7 +860,7 @@ func NewGetTransferNetworkIdentificationsRequest(server string, transferId strin
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/transfers/%s/network-identifications", pathParam0)
+	operationPath := fmt.Sprintf("/v2/kyt/transfers/%s/network-identifications", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -913,7 +894,7 @@ func NewGetTransferSummaryRequest(server string, transferId string) (*http.Reque
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/transfers/%s/summary", pathParam0)
+	operationPath := fmt.Sprintf("/v2/kyt/transfers/%s/summary", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -951,7 +932,7 @@ func NewRegisterWithdrawalRequestWithBody(server string, contentType string, bod
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/withdrawal")
+	operationPath := fmt.Sprintf("/v2/kyt/withdrawal")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -987,7 +968,7 @@ func NewGetWithdrawalAddressIdentificationsRequest(server string, withdrawalId s
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/withdrawal/%s/address-identifications", pathParam0)
+	operationPath := fmt.Sprintf("/v2/kyt/withdrawal/%s/address-identifications", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1021,7 +1002,7 @@ func NewGetWithdrawalAlertsRequest(server string, withdrawalId string) (*http.Re
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/withdrawal/%s/alerts", pathParam0)
+	operationPath := fmt.Sprintf("/v2/kyt/withdrawal/%s/alerts", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1055,7 +1036,7 @@ func NewGetWithdrawalDirectExposureRequest(server string, withdrawalId string) (
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/withdrawal/%s/exposures/direct", pathParam0)
+	operationPath := fmt.Sprintf("/v2/kyt/withdrawal/%s/exposures/direct", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1089,7 +1070,7 @@ func NewGetWithdrawalFraudAssessmentRequest(server string, withdrawalId string) 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/withdrawal/%s/fraud-assessment", pathParam0)
+	operationPath := fmt.Sprintf("/v2/kyt/withdrawal/%s/fraud-assessment", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1123,7 +1104,7 @@ func NewGetWithdrawalNetworkIdentificationsRequest(server string, withdrawalId s
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/withdrawal/%s/network-identifications", pathParam0)
+	operationPath := fmt.Sprintf("/v2/kyt/withdrawal/%s/network-identifications", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1157,7 +1138,7 @@ func NewGetWithdrawalSummaryRequest(server string, withdrawalId string) (*http.R
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/kyt/withdrawal/%s/summary", pathParam0)
+	operationPath := fmt.Sprintf("/v2/kyt/withdrawal/%s/summary", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1270,7 +1251,7 @@ type ClientWithResponsesInterface interface {
 type RegisterAddressResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *RegisterAddressResponseDTO
+	JSON200      *KytRegisterAddressResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1292,7 +1273,7 @@ func (r RegisterAddressResponse) StatusCode() int {
 type GetAddressRiskResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *AddressRiskResponseDTO
+	JSON200      *KytAddressRiskResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1314,7 +1295,7 @@ func (r GetAddressRiskResponse) StatusCode() int {
 type RegisterTransferResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TransferBaseResponseDTO
+	JSON200      *KytTransferBaseResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1336,7 +1317,7 @@ func (r RegisterTransferResponse) StatusCode() int {
 type GetTransferAlertsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TransferAlertsResponseDTO
+	JSON200      *KytAlertsResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1358,7 +1339,7 @@ func (r GetTransferAlertsResponse) StatusCode() int {
 type GetTransferDirectExposureResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TransferDirectExposureResponseDTO
+	JSON200      *KytDirectExposureResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1380,7 +1361,7 @@ func (r GetTransferDirectExposureResponse) StatusCode() int {
 type GetTransferNetworkIdentificationsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TransferNetworkIdentificationsResponseDTO
+	JSON200      *KytNetworkIdentificationsResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1402,7 +1383,7 @@ func (r GetTransferNetworkIdentificationsResponse) StatusCode() int {
 type GetTransferSummaryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TransferBaseResponseDTO
+	JSON200      *KytTransferBaseResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1424,7 +1405,7 @@ func (r GetTransferSummaryResponse) StatusCode() int {
 type RegisterWithdrawalResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *WithdrawalBaseResponseDTO
+	JSON200      *KytWithdrawalBaseResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1446,7 +1427,7 @@ func (r RegisterWithdrawalResponse) StatusCode() int {
 type GetWithdrawalAddressIdentificationsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *WithdrawalAddressIdentificationsResponseDTO
+	JSON200      *KytWithdrawalAddressIdentificationsResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1468,7 +1449,7 @@ func (r GetWithdrawalAddressIdentificationsResponse) StatusCode() int {
 type GetWithdrawalAlertsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TransferAlertsResponseDTO
+	JSON200      *KytAlertsResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1490,7 +1471,7 @@ func (r GetWithdrawalAlertsResponse) StatusCode() int {
 type GetWithdrawalDirectExposureResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TransferDirectExposureResponseDTO
+	JSON200      *KytDirectExposureResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1512,7 +1493,7 @@ func (r GetWithdrawalDirectExposureResponse) StatusCode() int {
 type GetWithdrawalFraudAssessmentResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *WithdrawalFraudAssessmentResponseDTO
+	JSON200      *KytFraudAssessmentResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1534,7 +1515,7 @@ func (r GetWithdrawalFraudAssessmentResponse) StatusCode() int {
 type GetWithdrawalNetworkIdentificationsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TransferNetworkIdentificationsResponseDTO
+	JSON200      *KytNetworkIdentificationsResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1556,7 +1537,7 @@ func (r GetWithdrawalNetworkIdentificationsResponse) StatusCode() int {
 type GetWithdrawalSummaryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *WithdrawalBaseResponseDTO
+	JSON200      *KytWithdrawalBaseResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1740,7 +1721,7 @@ func ParseRegisterAddressResponse(rsp *http.Response) (*RegisterAddressResponse,
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest RegisterAddressResponseDTO
+		var dest KytRegisterAddressResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1766,7 +1747,7 @@ func ParseGetAddressRiskResponse(rsp *http.Response) (*GetAddressRiskResponse, e
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest AddressRiskResponseDTO
+		var dest KytAddressRiskResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1792,7 +1773,7 @@ func ParseRegisterTransferResponse(rsp *http.Response) (*RegisterTransferRespons
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TransferBaseResponseDTO
+		var dest KytTransferBaseResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1818,7 +1799,7 @@ func ParseGetTransferAlertsResponse(rsp *http.Response) (*GetTransferAlertsRespo
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TransferAlertsResponseDTO
+		var dest KytAlertsResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1844,7 +1825,7 @@ func ParseGetTransferDirectExposureResponse(rsp *http.Response) (*GetTransferDir
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TransferDirectExposureResponseDTO
+		var dest KytDirectExposureResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1870,7 +1851,7 @@ func ParseGetTransferNetworkIdentificationsResponse(rsp *http.Response) (*GetTra
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TransferNetworkIdentificationsResponseDTO
+		var dest KytNetworkIdentificationsResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1896,7 +1877,7 @@ func ParseGetTransferSummaryResponse(rsp *http.Response) (*GetTransferSummaryRes
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TransferBaseResponseDTO
+		var dest KytTransferBaseResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1922,7 +1903,7 @@ func ParseRegisterWithdrawalResponse(rsp *http.Response) (*RegisterWithdrawalRes
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest WithdrawalBaseResponseDTO
+		var dest KytWithdrawalBaseResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1948,7 +1929,7 @@ func ParseGetWithdrawalAddressIdentificationsResponse(rsp *http.Response) (*GetW
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest WithdrawalAddressIdentificationsResponseDTO
+		var dest KytWithdrawalAddressIdentificationsResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1974,7 +1955,7 @@ func ParseGetWithdrawalAlertsResponse(rsp *http.Response) (*GetWithdrawalAlertsR
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TransferAlertsResponseDTO
+		var dest KytAlertsResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -2000,7 +1981,7 @@ func ParseGetWithdrawalDirectExposureResponse(rsp *http.Response) (*GetWithdrawa
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TransferDirectExposureResponseDTO
+		var dest KytDirectExposureResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -2026,7 +2007,7 @@ func ParseGetWithdrawalFraudAssessmentResponse(rsp *http.Response) (*GetWithdraw
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest WithdrawalFraudAssessmentResponseDTO
+		var dest KytFraudAssessmentResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -2052,7 +2033,7 @@ func ParseGetWithdrawalNetworkIdentificationsResponse(rsp *http.Response) (*GetW
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TransferNetworkIdentificationsResponseDTO
+		var dest KytNetworkIdentificationsResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -2078,7 +2059,7 @@ func ParseGetWithdrawalSummaryResponse(rsp *http.Response) (*GetWithdrawalSummar
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest WithdrawalBaseResponseDTO
+		var dest KytWithdrawalBaseResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

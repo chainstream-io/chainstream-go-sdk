@@ -38,6 +38,13 @@ const (
 	GetGasPriceParamsChainEth GetGasPriceParamsChain = "eth"
 )
 
+// Defines values for SendParamsChain.
+const (
+	Bsc SendParamsChain = "bsc"
+	Eth SendParamsChain = "eth"
+	Sol SendParamsChain = "sol"
+)
+
 // EstimateGasLimitInput defines model for EstimateGasLimitInput.
 type EstimateGasLimitInput struct {
 	// Data Transaction data (hex)
@@ -103,6 +110,9 @@ type GetGasLimitParamsChain string
 
 // GetGasPriceParamsChain defines parameters for GetGasPrice.
 type GetGasPriceParamsChain string
+
+// SendParamsChain defines parameters for Send.
+type SendParamsChain string
 
 // GetGasLimitJSONRequestBody defines body for GetGasLimit for application/json ContentType.
 type GetGasLimitJSONRequestBody = EstimateGasLimitInput
@@ -192,9 +202,9 @@ type ClientInterface interface {
 	GetGasPrice(ctx context.Context, chain GetGasPriceParamsChain, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// SendWithBody request with any body
-	SendWithBody(ctx context.Context, chain string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	SendWithBody(ctx context.Context, chain SendParamsChain, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	Send(ctx context.Context, chain string, body SendJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	Send(ctx context.Context, chain SendParamsChain, body SendJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
 
 func (c *Client) GetGasLimitWithBody(ctx context.Context, chain GetGasLimitParamsChain, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -233,7 +243,7 @@ func (c *Client) GetGasPrice(ctx context.Context, chain GetGasPriceParamsChain, 
 	return c.Client.Do(req)
 }
 
-func (c *Client) SendWithBody(ctx context.Context, chain string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) SendWithBody(ctx context.Context, chain SendParamsChain, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewSendRequestWithBody(c.Server, chain, contentType, body)
 	if err != nil {
 		return nil, err
@@ -245,7 +255,7 @@ func (c *Client) SendWithBody(ctx context.Context, chain string, contentType str
 	return c.Client.Do(req)
 }
 
-func (c *Client) Send(ctx context.Context, chain string, body SendJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) Send(ctx context.Context, chain SendParamsChain, body SendJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewSendRequest(c.Server, chain, body)
 	if err != nil {
 		return nil, err
@@ -284,7 +294,7 @@ func NewGetGasLimitRequestWithBody(server string, chain GetGasLimitParamsChain, 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/transaction/%s/estimate-gas-limit", pathParam0)
+	operationPath := fmt.Sprintf("/v2/transaction/%s/estimate-gas-limit", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -320,7 +330,7 @@ func NewGetGasPriceRequest(server string, chain GetGasPriceParamsChain) (*http.R
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/transaction/%s/gas-price", pathParam0)
+	operationPath := fmt.Sprintf("/v2/transaction/%s/gas-price", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -339,7 +349,7 @@ func NewGetGasPriceRequest(server string, chain GetGasPriceParamsChain) (*http.R
 }
 
 // NewSendRequest calls the generic Send builder with application/json body
-func NewSendRequest(server string, chain string, body SendJSONRequestBody) (*http.Request, error) {
+func NewSendRequest(server string, chain SendParamsChain, body SendJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
@@ -350,7 +360,7 @@ func NewSendRequest(server string, chain string, body SendJSONRequestBody) (*htt
 }
 
 // NewSendRequestWithBody generates requests for Send with any type of body
-func NewSendRequestWithBody(server string, chain string, contentType string, body io.Reader) (*http.Request, error) {
+func NewSendRequestWithBody(server string, chain SendParamsChain, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -365,7 +375,7 @@ func NewSendRequestWithBody(server string, chain string, contentType string, bod
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/transaction/%s/send", pathParam0)
+	operationPath := fmt.Sprintf("/v2/transaction/%s/send", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -437,9 +447,9 @@ type ClientWithResponsesInterface interface {
 	GetGasPriceWithResponse(ctx context.Context, chain GetGasPriceParamsChain, reqEditors ...RequestEditorFn) (*GetGasPriceResponse, error)
 
 	// SendWithBodyWithResponse request with any body
-	SendWithBodyWithResponse(ctx context.Context, chain string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SendResponse, error)
+	SendWithBodyWithResponse(ctx context.Context, chain SendParamsChain, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SendResponse, error)
 
-	SendWithResponse(ctx context.Context, chain string, body SendJSONRequestBody, reqEditors ...RequestEditorFn) (*SendResponse, error)
+	SendWithResponse(ctx context.Context, chain SendParamsChain, body SendJSONRequestBody, reqEditors ...RequestEditorFn) (*SendResponse, error)
 }
 
 type GetGasLimitResponse struct {
@@ -535,7 +545,7 @@ func (c *ClientWithResponses) GetGasPriceWithResponse(ctx context.Context, chain
 }
 
 // SendWithBodyWithResponse request with arbitrary body returning *SendResponse
-func (c *ClientWithResponses) SendWithBodyWithResponse(ctx context.Context, chain string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SendResponse, error) {
+func (c *ClientWithResponses) SendWithBodyWithResponse(ctx context.Context, chain SendParamsChain, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SendResponse, error) {
 	rsp, err := c.SendWithBody(ctx, chain, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -543,7 +553,7 @@ func (c *ClientWithResponses) SendWithBodyWithResponse(ctx context.Context, chai
 	return ParseSendResponse(rsp)
 }
 
-func (c *ClientWithResponses) SendWithResponse(ctx context.Context, chain string, body SendJSONRequestBody, reqEditors ...RequestEditorFn) (*SendResponse, error) {
+func (c *ClientWithResponses) SendWithResponse(ctx context.Context, chain SendParamsChain, body SendJSONRequestBody, reqEditors ...RequestEditorFn) (*SendResponse, error) {
 	rsp, err := c.Send(ctx, chain, body, reqEditors...)
 	if err != nil {
 		return nil, err

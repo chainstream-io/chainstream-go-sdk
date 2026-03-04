@@ -11,13 +11,10 @@ import (
 	"time"
 
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/blockchain"
-	"github.com/chainstream-io/chainstream-go-sdk/openapi/defi_moonshot"
-	"github.com/chainstream-io/chainstream-go-sdk/openapi/defi_pumpfun"
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/dex"
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/dexpool"
-	"github.com/chainstream-io/chainstream-go-sdk/openapi/endpoint"
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/ipfs"
-	"github.com/chainstream-io/chainstream-go-sdk/openapi/jobs"
+	"github.com/chainstream-io/chainstream-go-sdk/openapi/job"
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/kyt"
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/ranking"
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/redpacket"
@@ -26,11 +23,12 @@ import (
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/transaction"
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/wallet"
 	"github.com/chainstream-io/chainstream-go-sdk/openapi/watchlist"
+	"github.com/chainstream-io/chainstream-go-sdk/openapi/webhook"
 	"github.com/chainstream-io/chainstream-go-sdk/stream"
 )
 
 // LIB_VERSION is the version of the ChainStream Go SDK
-const LIB_VERSION = "0.2.2"
+const LIB_VERSION = "2.0.0"
 
 // DefaultServerURL is the default ChainStream API server URL.
 const DefaultServerURL = "https://api.chainstream.io"
@@ -66,9 +64,8 @@ type ChainStreamClient struct {
 	Blockchain  *blockchain.ClientWithResponses
 	Dex         *dex.ClientWithResponses
 	DexPool     *dexpool.ClientWithResponses
-	Endpoint    *endpoint.ClientWithResponses
 	Ipfs        *ipfs.ClientWithResponses
-	Jobs        *jobs.ClientWithResponses
+	Job         *job.ClientWithResponses
 	Kyt         *kyt.ClientWithResponses
 	Ranking     *ranking.ClientWithResponses
 	RedPacket   *redpacket.ClientWithResponses
@@ -77,8 +74,7 @@ type ChainStreamClient struct {
 	Transaction *transaction.ClientWithResponses
 	Wallet      *wallet.ClientWithResponses
 	Watchlist   *watchlist.ClientWithResponses
-	Moonshot    *defi_moonshot.ClientWithResponses
-	Pumpfun     *defi_pumpfun.ClientWithResponses
+	Webhook     *webhook.ClientWithResponses
 
 	// WebSocket streaming API
 	Stream *stream.StreamApi
@@ -161,15 +157,6 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, op
 		return nil, fmt.Errorf("failed to create dexpool client: %w", err)
 	}
 
-	// Create endpoint client
-	client.Endpoint, err = endpoint.NewClientWithResponses(serverURL,
-		endpoint.WithRequestEditorFn(authHeaderFn[endpoint.RequestEditorFn](authToken)),
-		endpoint.WithRequestEditorFn(userAgentFn[endpoint.RequestEditorFn]()),
-	)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create endpoint client: %w", err)
-	}
-
 	// Create ipfs client
 	client.Ipfs, err = ipfs.NewClientWithResponses(serverURL,
 		ipfs.WithRequestEditorFn(authHeaderFn[ipfs.RequestEditorFn](authToken)),
@@ -179,13 +166,13 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, op
 		return nil, fmt.Errorf("failed to create ipfs client: %w", err)
 	}
 
-	// Create jobs client
-	client.Jobs, err = jobs.NewClientWithResponses(serverURL,
-		jobs.WithRequestEditorFn(authHeaderFn[jobs.RequestEditorFn](authToken)),
-		jobs.WithRequestEditorFn(userAgentFn[jobs.RequestEditorFn]()),
+	// Create job client
+	client.Job, err = job.NewClientWithResponses(serverURL,
+		job.WithRequestEditorFn(authHeaderFn[job.RequestEditorFn](authToken)),
+		job.WithRequestEditorFn(userAgentFn[job.RequestEditorFn]()),
 	)
 	if err != nil {
-		return nil, fmt.Errorf("failed to create jobs client: %w", err)
+		return nil, fmt.Errorf("failed to create job client: %w", err)
 	}
 
 	// Create kyt client
@@ -260,22 +247,13 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, op
 		return nil, fmt.Errorf("failed to create watchlist client: %w", err)
 	}
 
-	// Create moonshot client
-	client.Moonshot, err = defi_moonshot.NewClientWithResponses(serverURL,
-		defi_moonshot.WithRequestEditorFn(authHeaderFn[defi_moonshot.RequestEditorFn](authToken)),
-		defi_moonshot.WithRequestEditorFn(userAgentFn[defi_moonshot.RequestEditorFn]()),
+	// Create webhook client
+	client.Webhook, err = webhook.NewClientWithResponses(serverURL,
+		webhook.WithRequestEditorFn(authHeaderFn[webhook.RequestEditorFn](authToken)),
+		webhook.WithRequestEditorFn(userAgentFn[webhook.RequestEditorFn]()),
 	)
 	if err != nil {
-		return nil, fmt.Errorf("failed to create moonshot client: %w", err)
-	}
-
-	// Create pumpfun client
-	client.Pumpfun, err = defi_pumpfun.NewClientWithResponses(serverURL,
-		defi_pumpfun.WithRequestEditorFn(authHeaderFn[defi_pumpfun.RequestEditorFn](authToken)),
-		defi_pumpfun.WithRequestEditorFn(userAgentFn[defi_pumpfun.RequestEditorFn]()),
-	)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create pumpfun client: %w", err)
+		return nil, fmt.Errorf("failed to create webhook client: %w", err)
 	}
 
 	// Create stream API

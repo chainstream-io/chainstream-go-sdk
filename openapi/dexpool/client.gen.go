@@ -15,10 +15,6 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
-const (
-	BearerScopes = "bearer.Scopes"
-)
-
 // Defines values for ChainSymbol.
 const (
 	Bsc ChainSymbol = "bsc"
@@ -26,204 +22,169 @@ const (
 	Sol ChainSymbol = "sol"
 )
 
-// Defines values for DexPoolDTOLiquidityModel.
+// Defines values for PageDirection.
 const (
-	DexPoolDTOLiquidityModelN0 DexPoolDTOLiquidityModel = 0
-	DexPoolDTOLiquidityModelN1 DexPoolDTOLiquidityModel = 1
-	DexPoolDTOLiquidityModelN2 DexPoolDTOLiquidityModel = 2
-	DexPoolDTOLiquidityModelN3 DexPoolDTOLiquidityModel = 3
-	DexPoolDTOLiquidityModelN4 DexPoolDTOLiquidityModel = 4
+	Next PageDirection = "next"
+	Prev PageDirection = "prev"
 )
 
-// Defines values for DexPoolDTOType.
-const (
-	DexPoolDTOTypeN0 DexPoolDTOType = 0
-	DexPoolDTOTypeN1 DexPoolDTOType = 1
-	DexPoolDTOTypeN2 DexPoolDTOType = 2
-	DexPoolDTOTypeN3 DexPoolDTOType = 3
-	DexPoolDTOTypeN4 DexPoolDTOType = 4
-)
-
-// Defines values for DexPoolDTOVersion.
-const (
-	N0 DexPoolDTOVersion = 0
-	N1 DexPoolDTOVersion = 1
-	N2 DexPoolDTOVersion = 2
-	N3 DexPoolDTOVersion = 3
-)
-
-// Defines values for GetDexpoolSnapshotsParamsDirection.
-const (
-	Next GetDexpoolSnapshotsParamsDirection = "next"
-	Prev GetDexpoolSnapshotsParamsDirection = "prev"
-)
-
-// ChainSymbol defines model for ChainSymbol.
+// ChainSymbol Supported blockchain chains
 type ChainSymbol string
 
-// DexPoolDTO defines model for DexPoolDTO.
-type DexPoolDTO struct {
-	// Chain DTO.DEX.CHAIN
+// DexPoolDetail DEX pool detail
+type DexPoolDetail struct {
+	// Chain Chain identifier
 	Chain string `json:"chain"`
 
-	// CreatedBlockTimestamp DTO.DEXPOOL.CREATED_BLOCK_TIMESTAMP
-	CreatedBlockTimestamp *string `json:"createdBlockTimestamp,omitempty"`
+	// CreatedBlockTimestamp Creation block timestamp
+	CreatedBlockTimestamp *string `json:"createdBlockTimestamp"`
 
-	// FeeRate DTO.DEXPOOL.FEE_RATE
-	FeeRate *string `json:"feeRate,omitempty"`
+	// FeeRate Fee rate
+	FeeRate *string `json:"feeRate"`
 
-	// Image DTO.DEX.IMAGE
-	Image *string `json:"image,omitempty"`
+	// Image Image URL
+	Image *string `json:"image"`
 
-	// LiquidityModel DTO.DEXPOOL.LIQUIDITY_MODEL
-	LiquidityModel *DexPoolDTOLiquidityModel `json:"liquidityModel,omitempty"`
+	// LiquidityModel Liquidity model
+	LiquidityModel *int32 `json:"liquidityModel"`
 
-	// PoolAddress DTO.DEXPOOL.POOL_ADDRESS
+	// PoolAddress Pool address
 	PoolAddress string `json:"poolAddress"`
 
-	// ProgramAddress DTO.DEX.PROGRAM_ADDRESS
-	ProgramAddress *string `json:"programAddress,omitempty"`
+	// ProgramAddress DEX program address
+	ProgramAddress *string `json:"programAddress"`
 
-	// ProtocolFamily DTO.DEX.PROTOCOL_FAMILY
-	ProtocolFamily *string `json:"protocolFamily,omitempty"`
+	// ProtocolFamily Protocol family
+	ProtocolFamily *string `json:"protocolFamily"`
 
-	// ProtocolName DTO.DEXPOOL.PROTOCOL_NAME
-	ProtocolName *string `json:"protocolName,omitempty"`
+	// ProtocolName Protocol name
+	ProtocolName *string `json:"protocolName"`
 
-	// TickSpacing DTO.DEXPOOL.TICK_SPACING
-	TickSpacing *int64 `json:"tickSpacing,omitempty"`
+	// TickSpacing Tick spacing
+	TickSpacing *int64 `json:"tickSpacing"`
 
-	// TokenAAddress DTO.DEXPOOL.TOKEN_A
+	// TokenAAddress Token A address
 	TokenAAddress string `json:"tokenAAddress"`
 
-	// TokenALiquidity DTO.DEXPOOL.TOKEN_A_LIQUIDITY
+	// TokenALiquidity DEX pool token liquidity
 	TokenALiquidity *DexPoolTokenLiquidity `json:"tokenALiquidity,omitempty"`
 
-	// TokenBAddress DTO.DEXPOOL.TOKEN_B
+	// TokenBAddress Token B address
 	TokenBAddress string `json:"tokenBAddress"`
 
-	// TokenBLiquidity DTO.DEXPOOL.TOKEN_B_LIQUIDITY
+	// TokenBLiquidity DEX pool token liquidity
 	TokenBLiquidity *DexPoolTokenLiquidity `json:"tokenBLiquidity,omitempty"`
 
-	// TokenCount DTO.DEXPOOL.TOKEN_COUNT
-	TokenCount *int64 `json:"tokenCount,omitempty"`
+	// TokenCount Token count
+	TokenCount *int32 `json:"tokenCount"`
 
-	// TvlInSol DTO.DEXPOOL.TVL_SOL
-	TvlInSol *string `json:"tvlInSol,omitempty"`
+	// TvlInSol TVL in native token
+	TvlInSol *string `json:"tvlInSol"`
 
-	// TvlInUsd DTO.DEXPOOL.TVL_USD
-	TvlInUsd *string `json:"tvlInUsd,omitempty"`
+	// TvlInUsd TVL in USD
+	TvlInUsd *string `json:"tvlInUsd"`
 
-	// Type DTO.DEXPOOL.TYPE
-	Type *DexPoolDTOType `json:"type,omitempty"`
+	// Type Pool type
+	Type *int32 `json:"type"`
 
-	// Version DTO.DEXPOOL.VERSION
-	Version *DexPoolDTOVersion `json:"version,omitempty"`
+	// Version Pool version
+	Version *int32 `json:"version"`
 }
 
-// DexPoolDTOLiquidityModel DTO.DEXPOOL.LIQUIDITY_MODEL
-type DexPoolDTOLiquidityModel float32
-
-// DexPoolDTOType DTO.DEXPOOL.TYPE
-type DexPoolDTOType float32
-
-// DexPoolDTOVersion DTO.DEXPOOL.VERSION
-type DexPoolDTOVersion float32
-
-// DexPoolSnapshotDTO defines model for DexPoolSnapshotDTO.
-type DexPoolSnapshotDTO struct {
-	// BlockHeight DTO.DEXPOOL.SNAPSHOT.BLOCK_HEIGHT
-	BlockHeight int64 `json:"blockHeight"`
-
-	// BlockSlot DTO.DEXPOOL.SNAPSHOT.BLOCK_SLOT
-	BlockSlot *int64 `json:"blockSlot,omitempty"`
-
-	// BlockTimestamp DTO.DEXPOOL.SNAPSHOT.BLOCK_TIMESTAMP
-	BlockTimestamp int64 `json:"blockTimestamp"`
-
-	// PoolAddress DTO.DEXPOOL.POOL_ADDRESS
-	PoolAddress string `json:"poolAddress"`
-
-	// SnapshotTime DTO.DEXPOOL.SNAPSHOT.SNAPSHOT_TIME
-	SnapshotTime int64 `json:"snapshotTime"`
-
-	// TokenA DTO.DEXPOOL.SNAPSHOT.TOKEN_A
-	TokenA DexPoolTokenSnapshotDTO `json:"tokenA"`
-
-	// TokenB DTO.DEXPOOL.SNAPSHOT.TOKEN_B
-	TokenB DexPoolTokenSnapshotDTO `json:"tokenB"`
-
-	// TvlInNative DTO.DEXPOOL.TVL_SOL
-	TvlInNative string `json:"tvlInNative"`
-
-	// TvlInUsd DTO.DEXPOOL.TVL_USD
-	TvlInUsd string `json:"tvlInUsd"`
-}
-
-// DexPoolSnapshotPage defines model for DexPoolSnapshotPage.
-type DexPoolSnapshotPage struct {
-	// Data DTO.PAGE.DATA
-	Data []DexPoolSnapshotDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext bool `json:"hasNext"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev bool `json:"hasPrev"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-}
-
-// DexPoolTokenLiquidity defines model for DexPoolTokenLiquidity.
+// DexPoolTokenLiquidity DEX pool token liquidity
 type DexPoolTokenLiquidity struct {
-	// AmountInNative DTO.DEXPOOL.AMOUNT_IN_NATIVE
+	// AmountInNative Amount in native token
 	AmountInNative string `json:"amountInNative"`
 
-	// AmountInUsd DTO.DEXPOOL.AMOUNT_IN_USD
+	// AmountInUsd Amount in USD
 	AmountInUsd string `json:"amountInUsd"`
 
-	// Decimals DTO.DEXPOOL.TOKEN_DECIMALS
-	Decimals int64 `json:"decimals"`
+	// Decimals Token decimals
+	Decimals int32 `json:"decimals"`
 
-	// PriceNative DTO.DEXPOOL.PRICE_NATIVE
+	// PriceNative Price in native token
 	PriceNative string `json:"priceNative"`
 
-	// PriceUsd DTO.DEXPOOL.PRICE_USD
+	// PriceUsd Price in USD
 	PriceUsd string `json:"priceUsd"`
 
-	// TokenAddress DTO.DEXPOOL.TOKEN_ADDRESS
+	// TokenAddress Token address
 	TokenAddress string `json:"tokenAddress"`
 
-	// VaultAmount DTO.DEXPOOL.VAULT_AMOUNT
+	// VaultAmount Vault amount
 	VaultAmount string `json:"vaultAmount"`
 }
 
-// DexPoolTokenSnapshotDTO defines model for DexPoolTokenSnapshotDTO.
-type DexPoolTokenSnapshotDTO struct {
-	// AmountInNative DTO.DEXPOOL.AMOUNT_IN_NATIVE
+// DexPoolTokenSnapshot DEX pool token snapshot
+type DexPoolTokenSnapshot struct {
+	// AmountInNative Amount in native token
 	AmountInNative string `json:"amountInNative"`
 
-	// AmountInUsd DTO.DEXPOOL.AMOUNT_IN_USD
+	// AmountInUsd Amount in USD
 	AmountInUsd string `json:"amountInUsd"`
 
-	// Decimals DTO.DEXPOOL.TOKEN_DECIMALS
-	Decimals int64 `json:"decimals"`
+	// Decimals Token decimals
+	Decimals int32 `json:"decimals"`
 
-	// PriceNative DTO.DEXPOOL.PRICE_NATIVE
+	// PriceNative Price in native token
 	PriceNative string `json:"priceNative"`
 
-	// PriceUsd DTO.DEXPOOL.PRICE_USD
+	// PriceUsd Price in USD
 	PriceUsd string `json:"priceUsd"`
 
-	// TokenAddress DTO.DEXPOOL.TOKEN_ADDRESS
+	// TokenAddress Token address
 	TokenAddress string `json:"tokenAddress"`
 
-	// VaultAmount DTO.DEXPOOL.VAULT_AMOUNT
+	// VaultAmount Vault amount
 	VaultAmount string `json:"vaultAmount"`
+}
+
+// PageDirection Pagination direction
+type PageDirection string
+
+// PageResponseDexPoolSnapshot Generic pagination response
+type PageResponseDexPoolSnapshot struct {
+	// Data Page data
+	Data []struct {
+		// BlockHeight Block height
+		BlockHeight int64 `json:"blockHeight"`
+
+		// BlockSlot Block slot (optional)
+		BlockSlot *int64 `json:"blockSlot"`
+
+		// BlockTimestamp Block timestamp (ms)
+		BlockTimestamp int64 `json:"blockTimestamp"`
+
+		// PoolAddress Pool address
+		PoolAddress string `json:"poolAddress"`
+
+		// SnapshotTime Snapshot timestamp (ms)
+		SnapshotTime int64 `json:"snapshotTime"`
+
+		// TokenA DEX pool token snapshot
+		TokenA DexPoolTokenSnapshot `json:"tokenA"`
+
+		// TokenB DEX pool token snapshot
+		TokenB DexPoolTokenSnapshot `json:"tokenB"`
+
+		// TvlInNative TVL in native token
+		TvlInNative string `json:"tvlInNative"`
+
+		// TvlInUsd TVL in USD
+		TvlInUsd string `json:"tvlInUsd"`
+	} `json:"data"`
+
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
 }
 
 // GetDexpoolSnapshotsParams defines parameters for GetDexpoolSnapshots.
@@ -235,14 +196,13 @@ type GetDexpoolSnapshotsParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetDexpoolSnapshotsParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
-	// Time DTO.DEXPOOL.SNAPSHOT.TIME
+	// Time DTO.DEXPOOL.SNAPSHOTS.TIME
 	Time *int64 `form:"time,omitempty" json:"time,omitempty"`
 }
-
-// GetDexpoolSnapshotsParamsDirection defines parameters for GetDexpoolSnapshots.
-type GetDexpoolSnapshotsParamsDirection string
 
 // RequestEditorFn  is the function signature for the RequestEditor callback function
 type RequestEditorFn func(ctx context.Context, req *http.Request) error
@@ -371,7 +331,7 @@ func NewGetDexpoolRequest(server string, chain ChainSymbol, poolAddress string) 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/dexpools/%s/%s", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/dexpools/%s/%s", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -412,7 +372,7 @@ func NewGetDexpoolSnapshotsRequest(server string, chain ChainSymbol, poolAddress
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/dexpools/%s/%s/snapshots", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/dexpools/%s/%s/snapshots", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -553,7 +513,7 @@ type ClientWithResponsesInterface interface {
 type GetDexpoolResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *DexPoolDTO
+	JSON200      *DexPoolDetail
 }
 
 // Status returns HTTPResponse.Status
@@ -575,7 +535,7 @@ func (r GetDexpoolResponse) StatusCode() int {
 type GetDexpoolSnapshotsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *DexPoolSnapshotPage
+	JSON200      *PageResponseDexPoolSnapshot
 }
 
 // Status returns HTTPResponse.Status
@@ -627,7 +587,7 @@ func ParseGetDexpoolResponse(rsp *http.Response) (*GetDexpoolResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest DexPoolDTO
+		var dest DexPoolDetail
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -653,7 +613,7 @@ func ParseGetDexpoolSnapshotsResponse(rsp *http.Response) (*GetDexpoolSnapshotsR
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest DexPoolSnapshotPage
+		var dest PageResponseDexPoolSnapshot
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

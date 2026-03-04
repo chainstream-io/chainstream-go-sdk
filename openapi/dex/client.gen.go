@@ -36,9 +36,64 @@ const (
 	CreateTokenInputDexRaydium   CreateTokenInputDex = "raydium"
 )
 
+// Defines values for DexProtocolFamily.
+const (
+	DexProtocolFamilyAldrin       DexProtocolFamily = "Aldrin"
+	DexProtocolFamilyAldrinAmm    DexProtocolFamily = "AldrinAmm"
+	DexProtocolFamilyBonkFun      DexProtocolFamily = "BonkFun"
+	DexProtocolFamilyBoopFun      DexProtocolFamily = "BoopFun"
+	DexProtocolFamilyCremaFinance DexProtocolFamily = "CremaFinance"
+	DexProtocolFamilyCropper      DexProtocolFamily = "Cropper"
+	DexProtocolFamilyCykura       DexProtocolFamily = "Cykura"
+	DexProtocolFamilyDradex       DexProtocolFamily = "Dradex"
+	DexProtocolFamilyFluxbeam     DexProtocolFamily = "Fluxbeam"
+	DexProtocolFamilyGooseFx      DexProtocolFamily = "GooseFx"
+	DexProtocolFamilyIntro        DexProtocolFamily = "Intro"
+	DexProtocolFamilyInvariant    DexProtocolFamily = "Invariant"
+	DexProtocolFamilyJupiter      DexProtocolFamily = "Jupiter"
+	DexProtocolFamilyLifinity     DexProtocolFamily = "Lifinity"
+	DexProtocolFamilyMagicEden    DexProtocolFamily = "MagicEden"
+	DexProtocolFamilyMetaplex     DexProtocolFamily = "Metaplex"
+	DexProtocolFamilyMeteora      DexProtocolFamily = "Meteora"
+	DexProtocolFamilyMoonshot     DexProtocolFamily = "Moonshot"
+	DexProtocolFamilyOasisProgram DexProtocolFamily = "OasisProgram"
+	DexProtocolFamilyObric        DexProtocolFamily = "Obric"
+	DexProtocolFamilyOpenBook     DexProtocolFamily = "OpenBook"
+	DexProtocolFamilyOrca         DexProtocolFamily = "Orca"
+	DexProtocolFamilyOrcaWhirpool DexProtocolFamily = "OrcaWhirpool"
+	DexProtocolFamilyPancakeClmm  DexProtocolFamily = "PancakeClmm"
+	DexProtocolFamilyPenguin      DexProtocolFamily = "Penguin"
+	DexProtocolFamilyPhoenix      DexProtocolFamily = "Phoenix"
+	DexProtocolFamilyPumpfun      DexProtocolFamily = "Pumpfun"
+	DexProtocolFamilyPumpswap     DexProtocolFamily = "Pumpswap"
+	DexProtocolFamilyRaydium      DexProtocolFamily = "Raydium"
+	DexProtocolFamilySaber        DexProtocolFamily = "Saber"
+	DexProtocolFamilySaros        DexProtocolFamily = "Saros"
+	DexProtocolFamilySencha       DexProtocolFamily = "Sencha"
+	DexProtocolFamilySentre       DexProtocolFamily = "Sentre"
+	DexProtocolFamilySerum        DexProtocolFamily = "Serum"
+	DexProtocolFamilySolFi        DexProtocolFamily = "SolFi"
+	DexProtocolFamilySolana       DexProtocolFamily = "Solana"
+	DexProtocolFamilyStabble      DexProtocolFamily = "Stabble"
+	DexProtocolFamilyStepFinance  DexProtocolFamily = "StepFinance"
+	DexProtocolFamilyStepN        DexProtocolFamily = "StepN"
+	DexProtocolFamilySymmetry     DexProtocolFamily = "Symmetry"
+	DexProtocolFamilyTensor       DexProtocolFamily = "Tensor"
+	DexProtocolFamilyUnknown      DexProtocolFamily = "Unknown"
+	DexProtocolFamilyZeroFi       DexProtocolFamily = "ZeroFi"
+)
+
+// Defines values for PageDirection.
+const (
+	Next PageDirection = "next"
+	Prev PageDirection = "prev"
+)
+
 // Defines values for SwapInputDex.
 const (
 	SwapInputDexCandy     SwapInputDex = "candy"
+	SwapInputDexJupiter   SwapInputDex = "jupiter"
+	SwapInputDexKyberswap SwapInputDex = "kyberswap"
 	SwapInputDexLaunchpad SwapInputDex = "launchpad"
 	SwapInputDexMoonshot  SwapInputDex = "moonshot"
 	SwapInputDexPumpfun   SwapInputDex = "pumpfun"
@@ -53,8 +108,13 @@ const (
 
 // Defines values for SwapRouteInputDex.
 const (
-	Jupiter   SwapRouteInputDex = "jupiter"
-	Kyberswap SwapRouteInputDex = "kyberswap"
+	SwapRouteInputDexCandy     SwapRouteInputDex = "candy"
+	SwapRouteInputDexJupiter   SwapRouteInputDex = "jupiter"
+	SwapRouteInputDexKyberswap SwapRouteInputDex = "kyberswap"
+	SwapRouteInputDexLaunchpad SwapRouteInputDex = "launchpad"
+	SwapRouteInputDexMoonshot  SwapRouteInputDex = "moonshot"
+	SwapRouteInputDexPumpfun   SwapRouteInputDex = "pumpfun"
+	SwapRouteInputDexRaydium   SwapRouteInputDex = "raydium"
 )
 
 // Defines values for SwapRouteInputSwapMode.
@@ -69,7 +129,7 @@ const (
 	Raydium QuoteParamsDex = "raydium"
 )
 
-// ChainSymbol defines model for ChainSymbol.
+// ChainSymbol Supported blockchain chains
 type ChainSymbol string
 
 // CreateTokenInput defines model for CreateTokenInput.
@@ -111,41 +171,8 @@ type CreateTokenReply struct {
 	SerializedTx string `json:"serializedTx"`
 }
 
-// DexDTO defines model for DexDTO.
-type DexDTO struct {
-	// Chain DTO.DEX.CHAIN
-	Chain string `json:"chain"`
-
-	// Image DTO.DEX.IMAGE
-	Image *string `json:"image,omitempty"`
-
-	// ProgramAddress DTO.DEX.PROGRAM_ADDRESS
-	ProgramAddress *string `json:"programAddress,omitempty"`
-
-	// ProtocolFamily DTO.DEX.PROTOCOL_FAMILY
-	ProtocolFamily *string `json:"protocolFamily,omitempty"`
-}
-
-// DexPage defines model for DexPage.
-type DexPage struct {
-	// Data DTO.DEX.PAGE.DATA
-	Data []DexDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext *bool `json:"hasNext,omitempty"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev *bool `json:"hasPrev,omitempty"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
-}
+// DexProtocolFamily DEX protocol family identifier
+type DexProtocolFamily string
 
 // DexQuoteResponse defines model for DexQuoteResponse.
 type DexQuoteResponse struct {
@@ -166,6 +193,39 @@ type DexQuoteResponse struct {
 
 	// PriceImpact DTO.DEX.QUOTE.PRICE_IMPACT
 	PriceImpact *string `json:"priceImpact,omitempty"`
+}
+
+// PageDirection Pagination direction
+type PageDirection string
+
+// PageResponseDex Generic pagination response
+type PageResponseDex struct {
+	// Data Page data
+	Data []struct {
+		// Chain Chain identifier
+		Chain string `json:"chain"`
+
+		// Image DEX image URL
+		Image *string `json:"image"`
+
+		// ProgramAddress DEX program address
+		ProgramAddress *string `json:"programAddress"`
+
+		// ProtocolFamily DEX protocol family identifier
+		ProtocolFamily *DexProtocolFamily `json:"protocolFamily,omitempty"`
+	} `json:"data"`
+
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
 }
 
 // SwapInput defines model for SwapInput.
@@ -278,12 +338,21 @@ type SwapRouteResponse struct {
 
 // ListDexParams defines parameters for ListDex.
 type ListDexParams struct {
-	Chains *[]string `form:"chains,omitempty" json:"chains,omitempty"`
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 
-	// Limit DTO.DEX.QUERY.LIMIT
+	// Limit DTO.PAGE.LIMIT
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
-	// DexProgram DTO.DEX.QUERY.DEX_PROGRAM
+	// Direction DTO.PAGE.DIRECTION
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
+
+	// Chains DTO.DEX.LIST.CHAINS
+	Chains *[]string `form:"chains,omitempty" json:"chains,omitempty"`
+
+	// DexProgram DTO.DEX.LIST.DEX_PROGRAM
 	DexProgram *string `form:"dexProgram,omitempty" json:"dexProgram,omitempty"`
 }
 
@@ -520,7 +589,7 @@ func NewListDexRequest(server string, params *ListDexParams) (*http.Request, err
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/dex")
+	operationPath := fmt.Sprintf("/v2/dex")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -533,9 +602,9 @@ func NewListDexRequest(server string, params *ListDexParams) (*http.Request, err
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.Chains != nil {
+		if params.Cursor != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "chains", runtime.ParamLocationQuery, *params.Chains); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -552,6 +621,38 @@ func NewListDexRequest(server string, params *ListDexParams) (*http.Request, err
 		if params.Limit != nil {
 
 			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Chains != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "chains", runtime.ParamLocationQuery, *params.Chains); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -619,7 +720,7 @@ func NewCreateTokenRequestWithBody(server string, chain ChainSymbol, contentType
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/dex/%s/create", pathParam0)
+	operationPath := fmt.Sprintf("/v2/dex/%s/create", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -655,7 +756,7 @@ func NewQuoteRequest(server string, chain ChainSymbol, params *QuoteParams) (*ht
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/dex/%s/quote", pathParam0)
+	operationPath := fmt.Sprintf("/v2/dex/%s/quote", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -778,7 +879,7 @@ func NewRouteRequestWithBody(server string, chain ChainSymbol, contentType strin
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/dex/%s/route", pathParam0)
+	operationPath := fmt.Sprintf("/v2/dex/%s/route", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -825,7 +926,7 @@ func NewSwapRequestWithBody(server string, chain ChainSymbol, contentType string
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/dex/%s/swap", pathParam0)
+	operationPath := fmt.Sprintf("/v2/dex/%s/swap", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -913,7 +1014,7 @@ type ClientWithResponsesInterface interface {
 type ListDexResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *DexPage
+	JSON200      *PageResponseDex
 }
 
 // Status returns HTTPResponse.Status
@@ -1104,7 +1205,7 @@ func ParseListDexResponse(rsp *http.Response) (*ListDexResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest DexPage
+		var dest PageResponseDex
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

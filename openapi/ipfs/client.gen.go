@@ -13,9 +13,11 @@ import (
 	"strings"
 )
 
-const (
-	BearerScopes = "bearer.Scopes"
-)
+// PresignResponseModel defines model for PresignResponseModel.
+type PresignResponseModel struct {
+	// PresignUrl Presigned upload URL
+	PresignUrl string `json:"presignUrl"`
+}
 
 // RequestEditorFn  is the function signature for the RequestEditor callback function
 type RequestEditorFn func(ctx context.Context, req *http.Request) error
@@ -115,7 +117,7 @@ func NewPresignRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/ipfs/presign")
+	operationPath := fmt.Sprintf("/v2/ipfs/presign")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -183,7 +185,7 @@ type ClientWithResponsesInterface interface {
 type PresignResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *string
+	JSON200      *PresignResponseModel
 }
 
 // Status returns HTTPResponse.Status
@@ -226,7 +228,7 @@ func ParsePresignResponse(rsp *http.Response) (*PresignResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest string
+		var dest PresignResponseModel
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

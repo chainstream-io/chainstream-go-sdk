@@ -16,10 +16,6 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
-const (
-	BearerScopes = "bearer.Scopes"
-)
-
 // Defines values for BalanceChangeType.
 const (
 	DECREASE BalanceChangeType = "DECREASE"
@@ -39,727 +35,327 @@ const (
 	Sol ChainSymbol = "sol"
 )
 
+// Defines values for PageDirection.
+const (
+	Next PageDirection = "next"
+	Prev PageDirection = "prev"
+)
+
 // Defines values for PnlResolution.
 const (
-	PnlResolutionAll  PnlResolution = "all"
-	PnlResolutionN1d  PnlResolution = "1d"
-	PnlResolutionN30d PnlResolution = "30d"
-	PnlResolutionN7d  PnlResolution = "7d"
+	All  PnlResolution = "all"
+	N1d  PnlResolution = "1d"
+	N30d PnlResolution = "30d"
+	N7d  PnlResolution = "7d"
 )
 
-// Defines values for TransactionHistoryItemDTOMainAction.
-const (
-	Receive TransactionHistoryItemDTOMainAction = "receive"
-	Send    TransactionHistoryItemDTOMainAction = "send"
-)
-
-// Defines values for TransactionHistoryItemDTOStatus.
-const (
-	FAILED    TransactionHistoryItemDTOStatus = "FAILED"
-	SUCCEEDED TransactionHistoryItemDTOStatus = "SUCCEEDED"
-	UNKNOWN   TransactionHistoryItemDTOStatus = "UNKNOWN"
-)
-
-// Defines values for WalletPnlSummaryDTOResolution.
-const (
-	WalletPnlSummaryDTOResolutionAll  WalletPnlSummaryDTOResolution = "all"
-	WalletPnlSummaryDTOResolutionN1d  WalletPnlSummaryDTOResolution = "1d"
-	WalletPnlSummaryDTOResolutionN30d WalletPnlSummaryDTOResolution = "30d"
-	WalletPnlSummaryDTOResolutionN7d  WalletPnlSummaryDTOResolution = "7d"
-)
-
-// Defines values for GetPnlByWalletParamsDirection.
-const (
-	GetPnlByWalletParamsDirectionNext GetPnlByWalletParamsDirection = "next"
-	GetPnlByWalletParamsDirectionPrev GetPnlByWalletParamsDirection = "prev"
-)
-
-// Defines values for GetBalanceUpdatesParamsDirection.
-const (
-	GetBalanceUpdatesParamsDirectionNext GetBalanceUpdatesParamsDirection = "next"
-	GetBalanceUpdatesParamsDirectionPrev GetBalanceUpdatesParamsDirection = "prev"
-)
-
-// Defines values for GetNetWorthParamsDirection.
-const (
-	GetNetWorthParamsDirectionNext GetNetWorthParamsDirection = "next"
-	GetNetWorthParamsDirectionPrev GetNetWorthParamsDirection = "prev"
-)
-
-// Defines values for GetNetWorthDetailsParamsDirection.
-const (
-	GetNetWorthDetailsParamsDirectionNext GetNetWorthDetailsParamsDirection = "next"
-	GetNetWorthDetailsParamsDirectionPrev GetNetWorthDetailsParamsDirection = "prev"
-)
-
-// Defines values for GetPnlByTokenParamsDirection.
-const (
-	GetPnlByTokenParamsDirectionNext GetPnlByTokenParamsDirection = "next"
-	GetPnlByTokenParamsDirectionPrev GetPnlByTokenParamsDirection = "prev"
-)
-
-// Defines values for GetPnlDetailsParamsDirection.
-const (
-	GetPnlDetailsParamsDirectionNext GetPnlDetailsParamsDirection = "next"
-	GetPnlDetailsParamsDirectionPrev GetPnlDetailsParamsDirection = "prev"
-)
-
-// Defines values for GetTokensBalanceParamsDirection.
-const (
-	GetTokensBalanceParamsDirectionNext GetTokensBalanceParamsDirection = "next"
-	GetTokensBalanceParamsDirectionPrev GetTokensBalanceParamsDirection = "prev"
-)
-
-// Defines values for GetWalletTransferTotalParamsDirection.
-const (
-	GetWalletTransferTotalParamsDirectionNext GetWalletTransferTotalParamsDirection = "next"
-	GetWalletTransferTotalParamsDirectionPrev GetWalletTransferTotalParamsDirection = "prev"
-)
-
-// Defines values for GetWalletTransfersParamsDirection.
-const (
-	Next GetWalletTransfersParamsDirection = "next"
-	Prev GetWalletTransfersParamsDirection = "prev"
-)
-
-// BalanceChangeType defines model for BalanceChangeType.
+// BalanceChangeType Balance change type
 type BalanceChangeType string
 
-// BalanceTokenType defines model for BalanceTokenType.
+// BalanceTokenType Balance token type
 type BalanceTokenType string
-
-// BalanceUpdateDTO defines model for BalanceUpdateDTO.
-type BalanceUpdateDTO struct {
-	// AccountOwnerAddress DTO.WALLET.BALANCE_UPDATE.ACCOUNT_OWNER_ADDRESS
-	AccountOwnerAddress string `json:"accountOwnerAddress"`
-
-	// BalanceChange DTO.WALLET.BALANCE_UPDATE.BALANCE_CHANGE
-	BalanceChange string `json:"balanceChange"`
-
-	// BalanceChangeInNative DTO.WALLET.BALANCE_UPDATE.BALANCE_CHANGE_IN_NATIVE
-	BalanceChangeInNative string `json:"balanceChangeInNative"`
-
-	// BalanceChangeInUsd DTO.WALLET.BALANCE_UPDATE.BALANCE_CHANGE_IN_USD
-	BalanceChangeInUsd string `json:"balanceChangeInUsd"`
-
-	// BlockHash DTO.WALLET.BALANCE_UPDATE.BLOCK_HASH
-	BlockHash string `json:"blockHash"`
-
-	// BlockHeight DTO.WALLET.BALANCE_UPDATE.BLOCK_HEIGHT
-	BlockHeight int64 `json:"blockHeight"`
-
-	// BlockSlot DTO.WALLET.BALANCE_UPDATE.BLOCK_SLOT
-	BlockSlot int64 `json:"blockSlot"`
-
-	// BlockTimestamp DTO.WALLET.BALANCE_UPDATE.BLOCK_TIMESTAMP
-	BlockTimestamp int64 `json:"blockTimestamp"`
-
-	// ChangeType DTO.WALLET.BALANCE_UPDATE.CHANGE_TYPE
-	ChangeType BalanceChangeType `json:"changeType"`
-
-	// Index DTO.WALLET.BALANCE_UPDATE.INDEX
-	Index int64 `json:"index"`
-
-	// PostBalance DTO.WALLET.BALANCE_UPDATE.POST_BALANCE
-	PostBalance string `json:"postBalance"`
-
-	// PostBalanceInNative DTO.WALLET.BALANCE_UPDATE.POST_BALANCE_IN_NATIVE
-	PostBalanceInNative string `json:"postBalanceInNative"`
-
-	// PostBalanceInUsd DTO.WALLET.BALANCE_UPDATE.POST_BALANCE_IN_USD
-	PostBalanceInUsd string `json:"postBalanceInUsd"`
-
-	// PreBalance DTO.WALLET.BALANCE_UPDATE.PRE_BALANCE
-	PreBalance string `json:"preBalance"`
-
-	// PreBalanceInNative DTO.WALLET.BALANCE_UPDATE.PRE_BALANCE_IN_NATIVE
-	PreBalanceInNative string `json:"preBalanceInNative"`
-
-	// PreBalanceInUsd DTO.WALLET.BALANCE_UPDATE.PRE_BALANCE_IN_USD
-	PreBalanceInUsd string `json:"preBalanceInUsd"`
-
-	// TokenAccountAddress DTO.WALLET.BALANCE_UPDATE.TOKEN_ACCOUNT_ADDRESS
-	TokenAccountAddress string `json:"tokenAccountAddress"`
-
-	// TokenAddress DTO.WALLET.BALANCE_UPDATE.TOKEN_ADDRESS
-	TokenAddress string `json:"tokenAddress"`
-
-	// TransactionSignature DTO.WALLET.BALANCE_UPDATE.TRANSACTION_SIGNATURE
-	TransactionSignature string `json:"transactionSignature"`
-
-	// Type DTO.WALLET.BALANCE_UPDATE.TYPE
-	Type BalanceTokenType `json:"type"`
-}
-
-// BalanceUpdatePage defines model for BalanceUpdatePage.
-type BalanceUpdatePage struct {
-	// Data DTO.PAGE.DATA
-	Data []BalanceUpdateDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext bool `json:"hasNext"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev bool `json:"hasPrev"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-}
-
-// BooleanResultDTO defines model for BooleanResultDTO.
-type BooleanResultDTO struct {
-	// Success DTO.BOOLEAN_RESULT.SUCCESS
-	Success bool `json:"success"`
-}
 
 // CalculatePnlInput defines model for CalculatePnlInput.
 type CalculatePnlInput struct {
-	// TokenAddresses DTO.WALLET.CALCULATE_PNL.INPUT.TOKEN_ADDRESSES
-	TokenAddresses *[]string `json:"tokenAddresses,omitempty"`
+	TokenAddresses *[]string `json:"tokenAddresses"`
 }
 
-// ChainSymbol defines model for ChainSymbol.
+// ChainSymbol Supported blockchain chains
 type ChainSymbol string
 
-// PnlDetailItemDTO defines model for PnlDetailItemDTO.
-type PnlDetailItemDTO struct {
-	// AvgBuyPriceInUsd DTO.WALLET.PNL_DETAIL.ITEM.AVG_BUY_PRICE_IN_USD
-	AvgBuyPriceInUsd string `json:"avgBuyPriceInUsd"`
-
-	// AvgProfitPerTradeInUsd DTO.WALLET.PNL_DETAIL.ITEM.AVG_PROFIT_PER_TRADE_IN_USD
-	AvgProfitPerTradeInUsd string `json:"avgProfitPerTradeInUsd"`
-
-	// AvgSellPriceInUsd DTO.WALLET.PNL_DETAIL.ITEM.AVG_SELL_PRICE_IN_USD
-	AvgSellPriceInUsd string `json:"avgSellPriceInUsd"`
-
-	// Balance DTO.WALLET.PNL_DETAIL.ITEM.BALANCE
-	Balance string `json:"balance"`
-
-	// BuyAmount DTO.WALLET.PNL_DETAIL.ITEM.BUY_AMOUNT
-	BuyAmount string `json:"buyAmount"`
-
-	// BuyAmountInUsd DTO.WALLET.PNL_DETAIL.ITEM.BUY_AMOUNT_IN_USD
-	BuyAmountInUsd string `json:"buyAmountInUsd"`
-
-	// Buys DTO.WALLET.PNL_DETAIL.ITEM.BUYS
-	Buys string `json:"buys"`
-
-	// CurrentValue DTO.WALLET.PNL_DETAIL.ITEM.CURRENT_VALUE
-	CurrentValue string `json:"currentValue"`
-
-	// Decimals DTO.WALLET.PNL_DETAIL.ITEM.DECIMALS
-	Decimals int64 `json:"decimals"`
-
-	// LogoUri DTO.WALLET.PNL_DETAIL.ITEM.LOGO_URI
-	LogoUri *string `json:"logoUri,omitempty"`
-
-	// Name DTO.WALLET.PNL_DETAIL.ITEM.NAME
-	Name string `json:"name"`
-
-	// PriceInUsd DTO.WALLET.PNL_DETAIL.ITEM.PRICE_IN_USD
-	PriceInUsd string `json:"priceInUsd"`
-
-	// RealizedProfitInUsd DTO.WALLET.PNL_DETAIL.ITEM.REALIZED_PROFIT_IN_USD
-	RealizedProfitInUsd string `json:"realizedProfitInUsd"`
-
-	// RealizedProfitRatio DTO.WALLET.PNL_DETAIL.ITEM.REALIZED_PROFIT_RATIO
-	RealizedProfitRatio string `json:"realizedProfitRatio"`
-
-	// SellAmount DTO.WALLET.PNL_DETAIL.ITEM.SELL_AMOUNT
-	SellAmount string `json:"sellAmount"`
-
-	// SellAmountInUsd DTO.WALLET.PNL_DETAIL.ITEM.SELL_AMOUNT_IN_USD
-	SellAmountInUsd string `json:"sellAmountInUsd"`
-
-	// Sells DTO.WALLET.PNL_DETAIL.ITEM.SELLS
-	Sells string `json:"sells"`
-
-	// Symbol DTO.WALLET.PNL_DETAIL.ITEM.SYMBOL
-	Symbol string `json:"symbol"`
-
-	// TokenAddress DTO.WALLET.PNL_DETAIL.ITEM.TOKEN_ADDRESS
-	TokenAddress string `json:"tokenAddress"`
-
-	// TotalProfitInUsd DTO.WALLET.PNL_DETAIL.ITEM.TOTAL_PROFIT_IN_USD
-	TotalProfitInUsd string `json:"totalProfitInUsd"`
-
-	// TotalProfitRatio DTO.WALLET.PNL_DETAIL.ITEM.TOTAL_PROFIT_RATIO
-	TotalProfitRatio string `json:"totalProfitRatio"`
-
-	// TotalTrades DTO.WALLET.PNL_DETAIL.ITEM.TOTAL_TRADES
-	TotalTrades string `json:"totalTrades"`
-
-	// UnrealizedProfitInUsd DTO.WALLET.PNL_DETAIL.ITEM.UNREALIZED_PROFIT_IN_USD
-	UnrealizedProfitInUsd string `json:"unrealizedProfitInUsd"`
-
-	// UnrealizedProfitRatio DTO.WALLET.PNL_DETAIL.ITEM.UNREALIZED_PROFIT_RATIO
-	UnrealizedProfitRatio string `json:"unrealizedProfitRatio"`
-
-	// WalletAddress DTO.WALLET.PNL_DETAIL.ITEM.WALLET_ADDRESS
-	WalletAddress string `json:"walletAddress"`
+// NetWorthByTokensItem Single token net-worth item (mirrors TS WalletNetWorthItemDTO).
+type NetWorthByTokensItem struct {
+	Amount        string  `json:"amount"`
+	Chain         string  `json:"chain"`
+	Decimals      int32   `json:"decimals"`
+	LogoUri       *string `json:"logoUri"`
+	Name          string  `json:"name"`
+	PriceInNative string  `json:"priceInNative"`
+	PriceInUsd    string  `json:"priceInUsd"`
+	Symbol        string  `json:"symbol"`
+	TokenAddress  string  `json:"tokenAddress"`
+	ValueInNative string  `json:"valueInNative"`
+	ValueInUsd    string  `json:"valueInUsd"`
 }
 
-// PnlDetailSummaryDTO defines model for PnlDetailSummaryDTO.
-type PnlDetailSummaryDTO struct {
-	// AvgProfitPerTradeInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.AVG_PROFIT_PER_TRADE_IN_USD
-	AvgProfitPerTradeInUsd string `json:"avgProfitPerTradeInUsd"`
-
-	// BuyAmountInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.BUY_AMOUNT_IN_USD
-	BuyAmountInUsd string `json:"buyAmountInUsd"`
-
-	// Buys DTO.WALLET.PNL_DETAIL.SUMMARY.BUYS
-	Buys string `json:"buys"`
-
-	// CurrentValue DTO.WALLET.PNL_DETAIL.SUMMARY.CURRENT_VALUE
-	CurrentValue string `json:"currentValue"`
-
-	// Losses DTO.WALLET.PNL_DETAIL.SUMMARY.LOSSES
-	Losses string `json:"losses"`
-
-	// RealizedProfitInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.REALIZED_PROFIT_IN_USD
-	RealizedProfitInUsd string `json:"realizedProfitInUsd"`
-
-	// RealizedProfitRatio DTO.WALLET.PNL_DETAIL.SUMMARY.REALIZED_PROFIT_RATIO
-	RealizedProfitRatio string `json:"realizedProfitRatio"`
-
-	// SellAmountInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.SELL_AMOUNT_IN_USD
-	SellAmountInUsd string `json:"sellAmountInUsd"`
-
-	// Sells DTO.WALLET.PNL_DETAIL.SUMMARY.SELLS
-	Sells string `json:"sells"`
-
-	// Tokens DTO.WALLET.PNL_DETAIL.SUMMARY.TOKENS
-	Tokens string `json:"tokens"`
-
-	// TotalCostInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.TOTAL_COST_IN_USD
-	TotalCostInUsd string `json:"totalCostInUsd"`
-
-	// TotalProfitInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.TOTAL_PROFIT_IN_USD
-	TotalProfitInUsd string `json:"totalProfitInUsd"`
-
-	// TotalTrades DTO.WALLET.PNL_DETAIL.SUMMARY.TOTAL_TRADES
-	TotalTrades string `json:"totalTrades"`
-
-	// UnrealizedProfitInUsd DTO.WALLET.PNL_DETAIL.SUMMARY.UNREALIZED_PROFIT_IN_USD
-	UnrealizedProfitInUsd string `json:"unrealizedProfitInUsd"`
-
-	// WinRate DTO.WALLET.PNL_DETAIL.SUMMARY.WIN_RATE
-	WinRate string `json:"winRate"`
-
-	// Wins DTO.WALLET.PNL_DETAIL.SUMMARY.WINS
-	Wins string `json:"wins"`
+// NetWorthByTokensResult Wallet net-worth by tokens result (mirrors TS WalletNetWorthByTokensResult).
+type NetWorthByTokensResult struct {
+	CurrentTimestamp   string                 `json:"currentTimestamp"`
+	Data               []NetWorthByTokensItem `json:"data"`
+	TotalValueInNative string                 `json:"totalValueInNative"`
+	TotalValueInUsd    string                 `json:"totalValueInUsd"`
+	WalletAddress      string                 `json:"walletAddress"`
 }
 
-// PnlDetailsPage defines model for PnlDetailsPage.
-type PnlDetailsPage struct {
-	// Data DTO.PAGE.DATA
-	Data []PnlDetailItemDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext *bool `json:"hasNext,omitempty"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev *bool `json:"hasPrev,omitempty"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Summary DTO.WALLET.PNL_DETAIL.SUMMARY
-	Summary PnlDetailSummaryDTO `json:"summary"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
-}
-
-// PnlResolution defines model for PnlResolution.
-type PnlResolution string
-
-// TokenTransferTotalDTO defines model for TokenTransferTotalDTO.
-type TokenTransferTotalDTO struct {
-	// Total DTO.TOKEN.TRANSFER.TOTAL
-	Total int64 `json:"total"`
-}
-
-// TokensBalancePage defines model for TokensBalancePage.
-type TokensBalancePage struct {
-	// Data DTO.PAGE.DATA
-	Data []WalletNetWorthItemDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext *bool `json:"hasNext,omitempty"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev *bool `json:"hasPrev,omitempty"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
-}
-
-// TransactionHistoryItemDTO defines model for TransactionHistoryItemDTO.
-type TransactionHistoryItemDTO struct {
-	// BlockNumber DTO.WALLET.TX_HISTORY.BLOCK_NUMBER
-	BlockNumber int64 `json:"blockNumber"`
-
-	// BlockTime DTO.WALLET.TX_HISTORY.BLOCK_TIME
-	BlockTime int64 `json:"blockTime"`
-
-	// DappProgram DTO.WALLET.TX_HISTORY.DAPP_PROGRAM
-	DappProgram string `json:"dappProgram"`
-
-	// Decimals DTO.WALLET.TX_HISTORY.DECIMALS
-	Decimals int64 `json:"decimals"`
-
-	// Fee DTO.WALLET.TX_HISTORY.FEE
-	Fee string `json:"fee"`
-
-	// From DTO.WALLET.TX_HISTORY.FROM
-	From string `json:"from"`
-
-	// FromTokenAccount DTO.WALLET.TX_HISTORY.FROM_TOKEN_ACCOUNT
-	FromTokenAccount string `json:"fromTokenAccount"`
-
-	// FromUserAccount DTO.WALLET.TX_HISTORY.FROM_USER_ACCOUNT
-	FromUserAccount string `json:"fromUserAccount"`
-
-	// LogoUri DTO.WALLET.TX_HISTORY.LOGO_URI
-	LogoUri *string `json:"logoUri,omitempty"`
-
-	// MainAction DTO.WALLET.TX_HISTORY.MAIN_ACTION
-	MainAction TransactionHistoryItemDTOMainAction `json:"mainAction"`
-
-	// Name DTO.WALLET.TX_HISTORY.NAME
-	Name string `json:"name"`
-
-	// OuterDappProgram DTO.WALLET.TX_HISTORY.OUTER_DAPP_PROGRAM
-	OuterDappProgram string `json:"outerDappProgram"`
-
-	// Status DTO.WALLET.TX_HISTORY.STATUS
-	Status TransactionHistoryItemDTOStatus `json:"status"`
-
-	// Symbol DTO.WALLET.TX_HISTORY.SYMBOL
-	Symbol string `json:"symbol"`
-
-	// To DTO.WALLET.TX_HISTORY.TO
-	To string `json:"to"`
-
-	// ToTokenAccount DTO.WALLET.TX_HISTORY.TO_TOKEN_ACCOUNT
-	ToTokenAccount string `json:"toTokenAccount"`
-
-	// ToUserAccount DTO.WALLET.TX_HISTORY.TO_USER_ACCOUNT
-	ToUserAccount string `json:"toUserAccount"`
-
-	// TokenAddress DTO.WALLET.TX_HISTORY.TOKEN_ADDRESS
-	TokenAddress string `json:"tokenAddress"`
-
-	// TokenAmount DTO.WALLET.TX_HISTORY.TOKEN_AMOUNT
-	TokenAmount string `json:"tokenAmount"`
-
-	// TokenAmountInUsd DTO.WALLET.TX_HISTORY.TOKEN_AMOUNT_IN_USD
-	TokenAmountInUsd string `json:"tokenAmountInUsd"`
-
-	// TokenPriceInUsd DTO.WALLET.TX_HISTORY.TOKEN_PRICE_IN_USD
-	TokenPriceInUsd string `json:"tokenPriceInUsd"`
-
-	// TxHash DTO.WALLET.TX_HISTORY.TX_HASH
-	TxHash string `json:"txHash"`
-}
-
-// TransactionHistoryItemDTOMainAction DTO.WALLET.TX_HISTORY.MAIN_ACTION
-type TransactionHistoryItemDTOMainAction string
-
-// TransactionHistoryItemDTOStatus DTO.WALLET.TX_HISTORY.STATUS
-type TransactionHistoryItemDTOStatus string
-
-// TransactionHistoryPage defines model for TransactionHistoryPage.
-type TransactionHistoryPage struct {
-	// Data DTO.PAGE.DATA
-	Data []TransactionHistoryItemDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext *bool `json:"hasNext,omitempty"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev *bool `json:"hasPrev,omitempty"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
-}
-
-// WalletFirstTxDTO defines model for WalletFirstTxDTO.
-type WalletFirstTxDTO struct {
-	// Wallets DTO.WALLET.FIRST_TX.TX_HASH
-	Wallets map[string]WalletFirstTxItemDTO `json:"wallets"`
-}
-
-// WalletFirstTxItemDTO defines model for WalletFirstTxItemDTO.
-type WalletFirstTxItemDTO struct {
-	// BalanceChange DTO.WALLET.FIRST_TX.BALANCE_CHANGE
-	BalanceChange string `json:"balanceChange"`
-
-	// BlockNumber DTO.WALLET.FIRST_TX.BLOCK_NUMBER
-	BlockNumber int64 `json:"blockNumber"`
-
-	// BlockTime DTO.WALLET.FIRST_TX.BLOCK_TIME
-	BlockTime int64 `json:"blockTime"`
-
-	// Decimals DTO.WALLET.FIRST_TX.TOKEN_DECIMALS
-	Decimals int64 `json:"decimals"`
-
-	// TokenAddress DTO.WALLET.FIRST_TX.TOKEN_ADDRESS
-	TokenAddress string `json:"tokenAddress"`
-
-	// TxHash DTO.WALLET.FIRST_TX.TX_HASH
-	TxHash string `json:"txHash"`
-}
-
-// WalletNetWorthByTokensResult defines model for WalletNetWorthByTokensResult.
-type WalletNetWorthByTokensResult struct {
-	// CurrentTimestamp DTO.WALLET.NET_WORTH.CURRENT_TIMESTAMP
-	CurrentTimestamp string `json:"currentTimestamp"`
-
-	// Data DTO.PAGE.DATA
-	Data []WalletNetWorthItemDTO `json:"data"`
-
-	// TotalValueInNative DTO.WALLET.NET_WORTH.TOTAL_VALUE_IN_NATIVE
-	TotalValueInNative string `json:"totalValueInNative"`
-
-	// TotalValueInUsd DTO.WALLET.NET_WORTH.TOTAL_VALUE_IN_USD
-	TotalValueInUsd string `json:"totalValueInUsd"`
-
-	// WalletAddress DTO.WALLET.NET_WORTH.WALLET_ADDRESS
-	WalletAddress string `json:"walletAddress"`
-}
-
-// WalletNetWorthChartDTO defines model for WalletNetWorthChartDTO.
-type WalletNetWorthChartDTO struct {
-	// CurrentTimestamp DTO.WALLET.NET_WORTH_CHART.CURRENT_TIMESTAMP
-	CurrentTimestamp string `json:"currentTimestamp"`
-
-	// History DTO.WALLET.NET_WORTH_CHART.HISTORY
-	History []WalletNetWorthHistoryItemDTO `json:"history"`
-
-	// PastTimestamp DTO.WALLET.NET_WORTH_CHART.PAST_TIMESTAMP
-	PastTimestamp string `json:"pastTimestamp"`
-
-	// WalletAddress DTO.WALLET.NET_WORTH_CHART.WALLET_ADDRESS
-	WalletAddress string `json:"walletAddress"`
-}
-
-// WalletNetWorthDetailsPage defines model for WalletNetWorthDetailsPage.
-type WalletNetWorthDetailsPage struct {
-	// Data DTO.PAGE.DATA
-	Data []WalletNetWorthItemDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext *bool `json:"hasNext,omitempty"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev *bool `json:"hasPrev,omitempty"`
-
-	// NetWorth DTO.WALLET.NET_WORTH_DETAILS.NET_WORTH
-	NetWorth string `json:"netWorth"`
-
-	// RequestedTimestamp DTO.WALLET.NET_WORTH_DETAILS.REQUESTED_TIMESTAMP
-	RequestedTimestamp string `json:"requestedTimestamp"`
-
-	// ResolvedTimestamp DTO.WALLET.NET_WORTH_DETAILS.RESOLVED_TIMESTAMP
-	ResolvedTimestamp string `json:"resolvedTimestamp"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
-
-	// WalletAddress DTO.WALLET.NET_WORTH_DETAILS.WALLET_ADDRESS
-	WalletAddress string `json:"walletAddress"`
-}
-
-// WalletNetWorthHistoryItemDTO defines model for WalletNetWorthHistoryItemDTO.
-type WalletNetWorthHistoryItemDTO struct {
-	// NetWorth DTO.WALLET.NET_WORTH_CHART.ITEM.NET_WORTH
-	NetWorth string `json:"netWorth"`
-
-	// NetWorthChange DTO.WALLET.NET_WORTH_CHART.ITEM.NET_WORTH_CHANGE
-	NetWorthChange string `json:"netWorthChange"`
-
-	// NetWorthChangePercent DTO.WALLET.NET_WORTH_CHART.ITEM.NET_WORTH_CHANGE_PERCENT
+// NetWorthHistoryItem Single data point in a net-worth chart time series.
+type NetWorthHistoryItem struct {
+	NetWorth              string `json:"netWorth"`
+	NetWorthChange        string `json:"netWorthChange"`
 	NetWorthChangePercent string `json:"netWorthChangePercent"`
-
-	// Timestamp DTO.WALLET.NET_WORTH_CHART.ITEM.TIMESTAMP
-	Timestamp string `json:"timestamp"`
+	Timestamp             string `json:"timestamp"`
 }
 
-// WalletNetWorthItemDTO defines model for WalletNetWorthItemDTO.
-type WalletNetWorthItemDTO struct {
-	// Amount DTO.WALLET.NET_WORTH.ITEM.AMOUNT
-	Amount string `json:"amount"`
-
-	// Chain GLOBAL.CHAIN.DESCRIPTION
-	Chain string `json:"chain"`
-
-	// Decimals DTO.WALLET.NET_WORTH.ITEM.DECIMALS
-	Decimals int64 `json:"decimals"`
-
-	// LogoUri DTO.WALLET.NET_WORTH.ITEM.LOGO_URI
-	LogoUri *string `json:"logoUri,omitempty"`
-
-	// Name DTO.WALLET.NET_WORTH.ITEM.NAME
-	Name string `json:"name"`
-
-	// PriceInNative DTO.WALLET.NET_WORTH.ITEM.PRICE_IN_NATIVE
-	PriceInNative string `json:"priceInNative"`
-
-	// PriceInUsd DTO.WALLET.NET_WORTH.ITEM.PRICE_IN_USD
-	PriceInUsd string `json:"priceInUsd"`
-
-	// Symbol DTO.WALLET.NET_WORTH.ITEM.SYMBOL
-	Symbol string `json:"symbol"`
-
-	// TokenAddress DTO.WALLET.NET_WORTH.ITEM.TOKEN_ADDRESS
-	TokenAddress string `json:"tokenAddress"`
-
-	// ValueInNative DTO.WALLET.NET_WORTH.ITEM.VALUE_IN_NATIVE
-	ValueInNative string `json:"valueInNative"`
-
-	// ValueInUsd DTO.WALLET.NET_WORTH.ITEM.VALUE_IN_USD
-	ValueInUsd string `json:"valueInUsd"`
-}
-
-// WalletNetWorthPage defines model for WalletNetWorthPage.
-type WalletNetWorthPage struct {
-	// CurrentTimestamp DTO.WALLET.NET_WORTH.CURRENT_TIMESTAMP
-	CurrentTimestamp string `json:"currentTimestamp"`
-
-	// Data DTO.PAGE.DATA
-	Data []WalletNetWorthItemDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext *bool `json:"hasNext,omitempty"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev *bool `json:"hasPrev,omitempty"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
-
-	// TotalValueInNative DTO.WALLET.NET_WORTH.TOTAL_VALUE_IN_NATIVE
-	TotalValueInNative string `json:"totalValueInNative"`
-
-	// TotalValueInUsd DTO.WALLET.NET_WORTH.TOTAL_VALUE_IN_USD
-	TotalValueInUsd string `json:"totalValueInUsd"`
-
-	// WalletAddress DTO.WALLET.NET_WORTH.WALLET_ADDRESS
-	WalletAddress string `json:"walletAddress"`
-}
-
-// WalletNetWorthSummaryDTO defines model for WalletNetWorthSummaryDTO.
-type WalletNetWorthSummaryDTO struct {
-	// CurrentTimestamp DTO.WALLET.NET_WORTH_SUMMARY.CURRENT_TIMESTAMP
-	CurrentTimestamp string `json:"currentTimestamp"`
-
-	// Wallets DTO.WALLET.NET_WORTH_SUMMARY.WALLETS
-	Wallets map[string]WalletNetWorthSummaryValueDTO `json:"wallets"`
-}
-
-// WalletNetWorthSummaryValueDTO defines model for WalletNetWorthSummaryValueDTO.
-type WalletNetWorthSummaryValueDTO struct {
-	// Value DTO.WALLET.NET_WORTH_SUMMARY.VALUE
+// NetWorthSummaryValue defines model for NetWorthSummaryValue.
+type NetWorthSummaryValue struct {
 	Value string `json:"value"`
 }
 
-// WalletPnlSummaryDTO defines model for WalletPnlSummaryDTO.
-type WalletPnlSummaryDTO struct {
-	// AvgProfitPerTradeInUsd DTO.WALLET.PNL_SUMMARY.AVG_PROFIT_PER_TRADE_IN_USD
-	AvgProfitPerTradeInUsd string `json:"avgProfitPerTradeInUsd"`
+// PageDirection Pagination direction
+type PageDirection string
 
-	// BuyAmountInUsd DTO.WALLET.PNL_SUMMARY.BUY_AMOUNT_IN_USD
-	BuyAmountInUsd string `json:"buyAmountInUsd"`
+// PageResponseBalanceUpdate Generic pagination response
+type PageResponseBalanceUpdate struct {
+	// Data Page data
+	Data []struct {
+		AccountOwnerAddress   string `json:"accountOwnerAddress"`
+		BalanceChange         string `json:"balanceChange"`
+		BalanceChangeInNative string `json:"balanceChangeInNative"`
+		BalanceChangeInUsd    string `json:"balanceChangeInUsd"`
+		BlockHash             string `json:"blockHash"`
+		BlockHeight           int64  `json:"blockHeight"`
+		BlockSlot             *int64 `json:"blockSlot"`
+		BlockTimestamp        int64  `json:"blockTimestamp"`
 
-	// Buys DTO.WALLET.PNL_SUMMARY.BUYS
-	Buys string `json:"buys"`
+		// ChangeType Balance change type
+		ChangeType           BalanceChangeType `json:"changeType"`
+		Index                int64             `json:"index"`
+		PostBalance          string            `json:"postBalance"`
+		PostBalanceInNative  string            `json:"postBalanceInNative"`
+		PostBalanceInUsd     string            `json:"postBalanceInUsd"`
+		PreBalance           string            `json:"preBalance"`
+		PreBalanceInNative   string            `json:"preBalanceInNative"`
+		PreBalanceInUsd      string            `json:"preBalanceInUsd"`
+		TokenAccountAddress  string            `json:"tokenAccountAddress"`
+		TokenAddress         string            `json:"tokenAddress"`
+		TransactionSignature string            `json:"transactionSignature"`
 
-	// Losses DTO.WALLET.PNL_SUMMARY.LOSSES
-	Losses string `json:"losses"`
+		// Type Balance token type
+		Type BalanceTokenType `json:"type"`
+	} `json:"data"`
 
-	// RealizedProfitInUsd DTO.WALLET.PNL_SUMMARY.REALIZED_PROFIT_IN_USD
-	RealizedProfitInUsd string `json:"realizedProfitInUsd"`
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
 
-	// RealizedProfitRatio DTO.WALLET.PNL_SUMMARY.REALIZED_PROFIT_RATIO
-	RealizedProfitRatio string `json:"realizedProfitRatio"`
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
 
-	// Resolution DTO.WALLET.PNL_SUMMARY.RESOLUTION
-	Resolution WalletPnlSummaryDTOResolution `json:"resolution"`
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
 
-	// SellAmountInUsd DTO.WALLET.PNL_SUMMARY.SELL_AMOUNT_IN_USD
-	SellAmountInUsd string `json:"sellAmountInUsd"`
-
-	// Sells DTO.WALLET.PNL_SUMMARY.SELLS
-	Sells string `json:"sells"`
-
-	// Tokens DTO.WALLET.PNL_SUMMARY.TOKENS
-	Tokens string `json:"tokens"`
-
-	// TotalCostInUsd DTO.WALLET.PNL_SUMMARY.TOTAL_COST_IN_USD
-	TotalCostInUsd string `json:"totalCostInUsd"`
-
-	// TotalProfitInUsd DTO.WALLET.PNL_SUMMARY.TOTAL_PROFIT_IN_USD
-	TotalProfitInUsd string `json:"totalProfitInUsd"`
-
-	// TotalProfitRatio DTO.WALLET.PNL_SUMMARY.TOTAL_PROFIT_RATIO
-	TotalProfitRatio string `json:"totalProfitRatio"`
-
-	// TotalTrades DTO.WALLET.PNL_SUMMARY.TOTAL_TRADES
-	TotalTrades string `json:"totalTrades"`
-
-	// UnrealizedProfitInUsd DTO.WALLET.PNL_SUMMARY.UNREALIZED_PROFIT_IN_USD
-	UnrealizedProfitInUsd string `json:"unrealizedProfitInUsd"`
-
-	// UnrealizedProfitRatio DTO.WALLET.PNL_SUMMARY.UNREALIZED_PROFIT_RATIO
-	UnrealizedProfitRatio string `json:"unrealizedProfitRatio"`
-
-	// UpdatedAt DTO.WALLET.PNL_SUMMARY.UPDATED_AT
-	UpdatedAt *string `json:"updatedAt,omitempty"`
-
-	// WalletAddress DTO.WALLET.PNL_SUMMARY.WALLET_ADDRESS
-	WalletAddress string `json:"walletAddress"`
-
-	// WinRate DTO.WALLET.PNL_SUMMARY.WIN_RATE
-	WinRate string `json:"winRate"`
-
-	// Wins DTO.WALLET.PNL_SUMMARY.WINS
-	Wins string `json:"wins"`
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
 }
 
-// WalletPnlSummaryDTOResolution DTO.WALLET.PNL_SUMMARY.RESOLUTION
-type WalletPnlSummaryDTOResolution string
+// PageResponseNetWorthByTokensItem Generic pagination response
+type PageResponseNetWorthByTokensItem struct {
+	// Data Page data
+	Data []struct {
+		Amount        string  `json:"amount"`
+		Chain         string  `json:"chain"`
+		Decimals      int32   `json:"decimals"`
+		LogoUri       *string `json:"logoUri"`
+		Name          string  `json:"name"`
+		PriceInNative string  `json:"priceInNative"`
+		PriceInUsd    string  `json:"priceInUsd"`
+		Symbol        string  `json:"symbol"`
+		TokenAddress  string  `json:"tokenAddress"`
+		ValueInNative string  `json:"valueInNative"`
+		ValueInUsd    string  `json:"valueInUsd"`
+	} `json:"data"`
+
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
+}
+
+// PageResponseWalletTransfer Generic pagination response
+type PageResponseWalletTransfer struct {
+	// Data Page data
+	Data []struct {
+		Amount               string  `json:"amount"`
+		AmountInUsd          *string `json:"amountInUsd"`
+		BlockTimestamp       int64   `json:"blockTimestamp"`
+		FromAddress          string  `json:"fromAddress"`
+		Id                   string  `json:"id"`
+		ToAddress            string  `json:"toAddress"`
+		TokenAddress         string  `json:"tokenAddress"`
+		TransactionSignature string  `json:"transactionSignature"`
+		TransferType         string  `json:"transferType"`
+	} `json:"data"`
+
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
+}
+
+// PnlDetailItem PnL detail for a single wallet-token pair (mirrors TS PnlDetailItemDTO).
+type PnlDetailItem struct {
+	AvgBuyPriceInUsd       string  `json:"avgBuyPriceInUsd"`
+	AvgProfitPerTradeInUsd string  `json:"avgProfitPerTradeInUsd"`
+	AvgSellPriceInUsd      string  `json:"avgSellPriceInUsd"`
+	Balance                string  `json:"balance"`
+	BuyAmount              string  `json:"buyAmount"`
+	BuyAmountInUsd         string  `json:"buyAmountInUsd"`
+	Buys                   string  `json:"buys"`
+	CurrentValue           string  `json:"currentValue"`
+	Decimals               *int32  `json:"decimals,omitempty"`
+	LogoUri                *string `json:"logoUri"`
+	Name                   *string `json:"name,omitempty"`
+	PriceInUsd             string  `json:"priceInUsd"`
+	RealizedProfitInUsd    string  `json:"realizedProfitInUsd"`
+	RealizedProfitRatio    string  `json:"realizedProfitRatio"`
+	SellAmount             string  `json:"sellAmount"`
+	SellAmountInUsd        string  `json:"sellAmountInUsd"`
+	Sells                  string  `json:"sells"`
+	Symbol                 *string `json:"symbol,omitempty"`
+	TokenAddress           string  `json:"tokenAddress"`
+	TotalProfitInUsd       string  `json:"totalProfitInUsd"`
+	TotalProfitRatio       string  `json:"totalProfitRatio"`
+	TotalTrades            string  `json:"totalTrades"`
+	UnrealizedProfitInUsd  string  `json:"unrealizedProfitInUsd"`
+	UnrealizedProfitRatio  string  `json:"unrealizedProfitRatio"`
+	WalletAddress          string  `json:"walletAddress"`
+}
+
+// PnlDetailSummary Aggregated PnL summary across all items (mirrors TS PnlDetailSummaryDTO).
+type PnlDetailSummary struct {
+	AvgProfitPerTradeInUsd string `json:"avgProfitPerTradeInUsd"`
+	BuyAmountInUsd         string `json:"buyAmountInUsd"`
+	Buys                   string `json:"buys"`
+	CurrentValue           string `json:"currentValue"`
+	Losses                 string `json:"losses"`
+	RealizedProfitInUsd    string `json:"realizedProfitInUsd"`
+	RealizedProfitRatio    string `json:"realizedProfitRatio"`
+	SellAmountInUsd        string `json:"sellAmountInUsd"`
+	Sells                  string `json:"sells"`
+	Tokens                 string `json:"tokens"`
+	TotalCostInUsd         string `json:"totalCostInUsd"`
+	TotalProfitInUsd       string `json:"totalProfitInUsd"`
+	TotalTrades            string `json:"totalTrades"`
+	UnrealizedProfitInUsd  string `json:"unrealizedProfitInUsd"`
+	WinRate                string `json:"winRate"`
+	Wins                   string `json:"wins"`
+}
+
+// PnlDetailsResult Full PnL details result with cursor pagination.
+type PnlDetailsResult struct {
+	Data        []PnlDetailItem `json:"data"`
+	EndCursor   *string         `json:"endCursor"`
+	HasNext     *bool           `json:"hasNext,omitempty"`
+	HasPrev     *bool           `json:"hasPrev,omitempty"`
+	StartCursor *string         `json:"startCursor"`
+
+	// Summary Aggregated PnL summary across all items (mirrors TS PnlDetailSummaryDTO).
+	Summary PnlDetailSummary `json:"summary"`
+}
+
+// PnlResolution PnL resolution period
+type PnlResolution string
+
+// SuccessResponse defines model for SuccessResponse.
+type SuccessResponse struct {
+	Success bool `json:"success"`
+}
+
+// TransferTotalResponse defines model for TransferTotalResponse.
+type TransferTotalResponse struct {
+	Total int64 `json:"total"`
+}
+
+// WalletFirstTx Wallet first transaction summary
+type WalletFirstTx struct {
+	BalanceChange string `json:"balanceChange"`
+	BlockNumber   int64  `json:"blockNumber"`
+	BlockTime     int64  `json:"blockTime"`
+	Decimals      int32  `json:"decimals"`
+	TokenAddress  string `json:"tokenAddress"`
+	TxHash        string `json:"txHash"`
+}
+
+// WalletNetWorthChartResponse Wallet net-worth chart response with pagination.
+type WalletNetWorthChartResponse struct {
+	CurrentTimestamp string                `json:"currentTimestamp"`
+	History          []NetWorthHistoryItem `json:"history"`
+	PastTimestamp    string                `json:"pastTimestamp"`
+	WalletAddress    string                `json:"walletAddress"`
+}
+
+// WalletNetWorthDetailsPage Paginated wallet net-worth details (mirrors TS WalletNetWorthDetailsPage).
+type WalletNetWorthDetailsPage struct {
+	Data               []NetWorthByTokensItem `json:"data"`
+	EndCursor          *string                `json:"endCursor"`
+	HasNext            *bool                  `json:"hasNext,omitempty"`
+	HasPrev            *bool                  `json:"hasPrev,omitempty"`
+	NetWorth           string                 `json:"netWorth"`
+	RequestedTimestamp string                 `json:"requestedTimestamp"`
+	ResolvedTimestamp  string                 `json:"resolvedTimestamp"`
+	StartCursor        *string                `json:"startCursor"`
+	WalletAddress      string                 `json:"walletAddress"`
+}
+
+// WalletNetWorthPage Paginated wallet net-worth page (mirrors TS WalletNetWorthPage).
+type WalletNetWorthPage struct {
+	CurrentTimestamp   string                 `json:"currentTimestamp"`
+	Data               []NetWorthByTokensItem `json:"data"`
+	EndCursor          *string                `json:"endCursor"`
+	HasNext            *bool                  `json:"hasNext,omitempty"`
+	HasPrev            *bool                  `json:"hasPrev,omitempty"`
+	StartCursor        *string                `json:"startCursor"`
+	TotalValueInNative string                 `json:"totalValueInNative"`
+	TotalValueInUsd    string                 `json:"totalValueInUsd"`
+	WalletAddress      string                 `json:"walletAddress"`
+}
+
+// WalletNetWorthSummaryResponse defines model for WalletNetWorthSummaryResponse.
+type WalletNetWorthSummaryResponse struct {
+	CurrentTimestamp string                          `json:"currentTimestamp"`
+	Wallets          map[string]NetWorthSummaryValue `json:"wallets"`
+}
+
+// WalletPnlSummary Wallet PnL Summary (aggregated across all tokens for a given resolution)
+type WalletPnlSummary struct {
+	AvgProfitPerTradeInUsd string  `json:"avgProfitPerTradeInUsd"`
+	BuyAmountInUsd         string  `json:"buyAmountInUsd"`
+	Buys                   string  `json:"buys"`
+	Losses                 string  `json:"losses"`
+	RealizedProfitInUsd    string  `json:"realizedProfitInUsd"`
+	RealizedProfitRatio    string  `json:"realizedProfitRatio"`
+	Resolution             string  `json:"resolution"`
+	SellAmountInUsd        string  `json:"sellAmountInUsd"`
+	Sells                  string  `json:"sells"`
+	Tokens                 string  `json:"tokens"`
+	TotalCostInUsd         string  `json:"totalCostInUsd"`
+	TotalProfitInUsd       string  `json:"totalProfitInUsd"`
+	TotalProfitRatio       string  `json:"totalProfitRatio"`
+	TotalTrades            string  `json:"totalTrades"`
+	UnrealizedProfitInUsd  string  `json:"unrealizedProfitInUsd"`
+	UnrealizedProfitRatio  string  `json:"unrealizedProfitRatio"`
+	UpdatedAt              *string `json:"updatedAt"`
+	WalletAddress          string  `json:"walletAddress"`
+	WinRate                string  `json:"winRate"`
+	Wins                   string  `json:"wins"`
+}
+
+// WalletsMapResponse defines model for WalletsMapResponse.
+type WalletsMapResponse struct {
+	Wallets map[string]WalletFirstTx `json:"wallets"`
+}
 
 // GetWalletFirstTxParams defines parameters for GetWalletFirstTx.
 type GetWalletFirstTxParams struct {
@@ -775,24 +371,12 @@ type GetNetWorthSummaryParams struct {
 
 // GetPnlByWalletParams defines parameters for GetPnlByWallet.
 type GetPnlByWalletParams struct {
-	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
-	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
-
-	// Limit DTO.PAGE.LIMIT
-	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
-
-	// Direction DTO.PAGE.DIRECTION
-	Direction *GetPnlByWalletParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
-
 	// WalletAddresses GLOBAL.WALLETADDRESSES.DESCRIPTION
 	WalletAddresses string `form:"walletAddresses" json:"walletAddresses"`
 
 	// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
 	TokenAddress string `form:"tokenAddress" json:"tokenAddress"`
 }
-
-// GetPnlByWalletParamsDirection defines parameters for GetPnlByWallet.
-type GetPnlByWalletParamsDirection string
 
 // GetBalanceUpdatesParams defines parameters for GetBalanceUpdates.
 type GetBalanceUpdatesParams struct {
@@ -803,26 +387,25 @@ type GetBalanceUpdatesParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetBalanceUpdatesParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
-	// TokenAddress DTO.WALLET.BALANCE_UPDATE.QUERY.TOKEN_ADDRESS
+	// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
 	TokenAddress *string `form:"tokenAddress,omitempty" json:"tokenAddress,omitempty"`
 
-	// TimeFrom DTO.WALLET.BALANCE_UPDATE.QUERY.TIME_FROM
+	// TimeFrom DTO.WALLET.BALANCE_UPDATES.TIME_FROM
 	TimeFrom *int64 `form:"timeFrom,omitempty" json:"timeFrom,omitempty"`
 
-	// TimeTo DTO.WALLET.BALANCE_UPDATE.QUERY.TIME_TO
+	// TimeTo DTO.WALLET.BALANCE_UPDATES.TIME_TO
 	TimeTo *int64 `form:"timeTo,omitempty" json:"timeTo,omitempty"`
 
-	// Type DTO.WALLET.BALANCE_UPDATE.QUERY.TYPE
+	// Type DTO.WALLET.BALANCE_UPDATES.TYPE
 	Type *BalanceTokenType `form:"type,omitempty" json:"type,omitempty"`
 
-	// ChangeType DTO.WALLET.BALANCE_UPDATE.QUERY.CHANGE_TYPE
+	// ChangeType DTO.WALLET.BALANCE_UPDATES.CHANGE_TYPE
 	ChangeType *BalanceChangeType `form:"changeType,omitempty" json:"changeType,omitempty"`
 }
-
-// GetBalanceUpdatesParamsDirection defines parameters for GetBalanceUpdates.
-type GetBalanceUpdatesParamsDirection string
 
 // GetNetWorthParams defines parameters for GetNetWorth.
 type GetNetWorthParams struct {
@@ -833,15 +416,14 @@ type GetNetWorthParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetNetWorthParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 }
-
-// GetNetWorthParamsDirection defines parameters for GetNetWorth.
-type GetNetWorthParamsDirection string
 
 // GetNetWorthChartParams defines parameters for GetNetWorthChart.
 type GetNetWorthChartParams struct {
-	// Hours DTO.WALLET.NET_WORTH_CHART.QUERY.HOURS
+	// Hours DTO.WALLET.NET_WORTH_CHART.HOURS (1-720, default 24)
 	Hours *int32 `form:"hours,omitempty" json:"hours,omitempty"`
 }
 
@@ -854,44 +436,33 @@ type GetNetWorthDetailsParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetNetWorthDetailsParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
-	// Hours DTO.WALLET.NET_WORTH_DETAILS.QUERY.HOURS
+	// Hours DTO.WALLET.NET_WORTH_DETAILS.HOURS (0=realtime, 1-720=historical snapshot, default 0)
 	Hours *int32 `form:"hours,omitempty" json:"hours,omitempty"`
 }
 
-// GetNetWorthDetailsParamsDirection defines parameters for GetNetWorthDetails.
-type GetNetWorthDetailsParamsDirection string
-
 // GetNetWorthByTokensParams defines parameters for GetNetWorthByTokens.
 type GetNetWorthByTokensParams struct {
-	// TokenAddresses DTO.WALLET.NET_WORTH_BY_TOKENS.QUERY.TOKEN_ADDRESSES
+	// TokenAddresses GLOBAL.TOKENADDRESSES.DESCRIPTION
 	TokenAddresses string `form:"tokenAddresses" json:"tokenAddresses"`
 }
 
 // GetPnlParams defines parameters for GetPnl.
 type GetPnlParams struct {
 	// Resolution DTO.WALLET.PNL_SUMMARY.QUERY.RESOLUTION
-	Resolution *PnlResolution `form:"resolution,omitempty" json:"resolution,omitempty"`
+	Resolution *struct {
+		union json.RawMessage
+	} `form:"resolution,omitempty" json:"resolution,omitempty"`
 }
 
 // GetPnlByTokenParams defines parameters for GetPnlByToken.
 type GetPnlByTokenParams struct {
-	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
-	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
-
-	// Limit DTO.PAGE.LIMIT
-	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
-
-	// Direction DTO.PAGE.DIRECTION
-	Direction *GetPnlByTokenParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
-
 	// TokenAddresses GLOBAL.TOKENADDRESSES.DESCRIPTION
 	TokenAddresses string `form:"tokenAddresses" json:"tokenAddresses"`
 }
-
-// GetPnlByTokenParamsDirection defines parameters for GetPnlByToken.
-type GetPnlByTokenParamsDirection string
 
 // GetPnlDetailsParams defines parameters for GetPnlDetails.
 type GetPnlDetailsParams struct {
@@ -902,11 +473,10 @@ type GetPnlDetailsParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetPnlDetailsParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 }
-
-// GetPnlDetailsParamsDirection defines parameters for GetPnlDetails.
-type GetPnlDetailsParamsDirection string
 
 // GetTokensBalanceParams defines parameters for GetTokensBalance.
 type GetTokensBalanceParams struct {
@@ -917,31 +487,21 @@ type GetTokensBalanceParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetTokensBalanceParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 }
-
-// GetTokensBalanceParamsDirection defines parameters for GetTokensBalance.
-type GetTokensBalanceParamsDirection string
 
 // GetWalletTransferTotalParams defines parameters for GetWalletTransferTotal.
 type GetWalletTransferTotalParams struct {
-	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
-	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
-
-	// Limit DTO.PAGE.LIMIT
-	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
-
-	// Direction DTO.PAGE.DIRECTION
-	Direction *GetWalletTransferTotalParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
-
 	// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
 	TokenAddress *string `form:"tokenAddress,omitempty" json:"tokenAddress,omitempty"`
 
-	// BeforeTimestamp DTO.TOKEN.TRANSFER.QUERY.BEFORE_TIMESTAMP
-	BeforeTimestamp *int64 `form:"beforeTimestamp,omitempty" json:"beforeTimestamp,omitempty"`
+	// FromTimestamp DTO.TOKEN.TRANSFER.QUERY.AFTER_TIMESTAMP
+	FromTimestamp *int64 `form:"fromTimestamp,omitempty" json:"fromTimestamp,omitempty"`
 
-	// AfterTimestamp DTO.TOKEN.TRANSFER.QUERY.AFTER_TIMESTAMP
-	AfterTimestamp *int64 `form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
+	// ToTimestamp DTO.TOKEN.TRANSFER.QUERY.BEFORE_TIMESTAMP
+	ToTimestamp *int64 `form:"toTimestamp,omitempty" json:"toTimestamp,omitempty"`
 
 	// MinTokenAmount DTO.WALLET.TRANSFER.QUERY.MIN_TOKEN_AMOUNT
 	MinTokenAmount *string `form:"minTokenAmount,omitempty" json:"minTokenAmount,omitempty"`
@@ -955,9 +515,6 @@ type GetWalletTransferTotalParams struct {
 	// MaxTokenAmountInUsd DTO.WALLET.TRANSFER.QUERY.MAX_TOKEN_AMOUNT_IN_USD
 	MaxTokenAmountInUsd *string `form:"maxTokenAmountInUsd,omitempty" json:"maxTokenAmountInUsd,omitempty"`
 }
-
-// GetWalletTransferTotalParamsDirection defines parameters for GetWalletTransferTotal.
-type GetWalletTransferTotalParamsDirection string
 
 // GetWalletTransfersParams defines parameters for GetWalletTransfers.
 type GetWalletTransfersParams struct {
@@ -968,16 +525,18 @@ type GetWalletTransfersParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetWalletTransfersParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
 	// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
 	TokenAddress *string `form:"tokenAddress,omitempty" json:"tokenAddress,omitempty"`
 
-	// BeforeTimestamp DTO.TOKEN.TRANSFER.QUERY.BEFORE_TIMESTAMP
-	BeforeTimestamp *int64 `form:"beforeTimestamp,omitempty" json:"beforeTimestamp,omitempty"`
+	// FromTimestamp DTO.TOKEN.TRANSFER.QUERY.AFTER_TIMESTAMP
+	FromTimestamp *int64 `form:"fromTimestamp,omitempty" json:"fromTimestamp,omitempty"`
 
-	// AfterTimestamp DTO.TOKEN.TRANSFER.QUERY.AFTER_TIMESTAMP
-	AfterTimestamp *int64 `form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
+	// ToTimestamp DTO.TOKEN.TRANSFER.QUERY.BEFORE_TIMESTAMP
+	ToTimestamp *int64 `form:"toTimestamp,omitempty" json:"toTimestamp,omitempty"`
 
 	// MinTokenAmount DTO.WALLET.TRANSFER.QUERY.MIN_TOKEN_AMOUNT
 	MinTokenAmount *string `form:"minTokenAmount,omitempty" json:"minTokenAmount,omitempty"`
@@ -991,9 +550,6 @@ type GetWalletTransfersParams struct {
 	// MaxTokenAmountInUsd DTO.WALLET.TRANSFER.QUERY.MAX_TOKEN_AMOUNT_IN_USD
 	MaxTokenAmountInUsd *string `form:"maxTokenAmountInUsd,omitempty" json:"maxTokenAmountInUsd,omitempty"`
 }
-
-// GetWalletTransfersParamsDirection defines parameters for GetWalletTransfers.
-type GetWalletTransfersParamsDirection string
 
 // CalculatePnlJSONRequestBody defines body for CalculatePnl for application/json ContentType.
 type CalculatePnlJSONRequestBody = CalculatePnlInput
@@ -1327,7 +883,7 @@ func NewGetWalletFirstTxRequest(server string, chain ChainSymbol, params *GetWal
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/first-tx", pathParam0)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/first-tx", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1379,7 +935,7 @@ func NewGetNetWorthSummaryRequest(server string, chain ChainSymbol, params *GetN
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/net-worth-summary", pathParam0)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/net-worth-summary", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1431,7 +987,7 @@ func NewGetPnlByWalletRequest(server string, chain ChainSymbol, params *GetPnlBy
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/pnl-by-wallet", pathParam0)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/pnl-by-wallet", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1443,54 +999,6 @@ func NewGetPnlByWalletRequest(server string, chain ChainSymbol, params *GetPnlBy
 
 	if params != nil {
 		queryValues := queryURL.Query()
-
-		if params.Cursor != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Limit != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Direction != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
 
 		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "walletAddresses", runtime.ParamLocationQuery, params.WalletAddresses); err != nil {
 			return nil, err
@@ -1550,7 +1058,7 @@ func NewGetBalanceUpdatesRequest(server string, chain ChainSymbol, walletAddress
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/balance-updates", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/%s/balance-updates", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1736,7 +1244,7 @@ func NewCalculatePnlRequestWithBody(server string, chain ChainSymbol, walletAddr
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/calculate-pnl", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/%s/calculate-pnl", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1779,7 +1287,7 @@ func NewGetNetWorthRequest(server string, chain ChainSymbol, walletAddress strin
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/net-worth", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/%s/net-worth", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1874,7 +1382,7 @@ func NewGetNetWorthChartRequest(server string, chain ChainSymbol, walletAddress 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/net-worth-chart", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/%s/net-worth-chart", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1937,7 +1445,7 @@ func NewGetNetWorthDetailsRequest(server string, chain ChainSymbol, walletAddres
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/net-worth-details", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/%s/net-worth-details", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -2048,7 +1556,7 @@ func NewGetNetWorthByTokensRequest(server string, chain ChainSymbol, walletAddre
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/net-worth/tokens", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/%s/net-worth/tokens", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -2107,7 +1615,7 @@ func NewGetPnlRequest(server string, chain ChainSymbol, walletAddress string, pa
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/pnl", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/%s/pnl", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -2170,7 +1678,7 @@ func NewGetPnlByTokenRequest(server string, chain ChainSymbol, walletAddress str
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/pnl-by-token", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/%s/pnl-by-token", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -2182,54 +1690,6 @@ func NewGetPnlByTokenRequest(server string, chain ChainSymbol, walletAddress str
 
 	if params != nil {
 		queryValues := queryURL.Query()
-
-		if params.Cursor != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Limit != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Direction != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
 
 		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tokenAddresses", runtime.ParamLocationQuery, params.TokenAddresses); err != nil {
 			return nil, err
@@ -2277,7 +1737,7 @@ func NewGetPnlDetailsRequest(server string, chain ChainSymbol, walletAddress str
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/pnl-details", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/%s/pnl-details", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -2372,7 +1832,7 @@ func NewGetTokensBalanceRequest(server string, chain ChainSymbol, walletAddress 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/tokens-balance", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/%s/tokens-balance", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -2467,7 +1927,7 @@ func NewGetWalletTransferTotalRequest(server string, chain ChainSymbol, walletAd
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/transfer-total", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/%s/transfer-total", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -2479,54 +1939,6 @@ func NewGetWalletTransferTotalRequest(server string, chain ChainSymbol, walletAd
 
 	if params != nil {
 		queryValues := queryURL.Query()
-
-		if params.Cursor != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Limit != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Direction != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
 
 		if params.TokenAddress != nil {
 
@@ -2544,9 +1956,9 @@ func NewGetWalletTransferTotalRequest(server string, chain ChainSymbol, walletAd
 
 		}
 
-		if params.BeforeTimestamp != nil {
+		if params.FromTimestamp != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "beforeTimestamp", runtime.ParamLocationQuery, *params.BeforeTimestamp); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "fromTimestamp", runtime.ParamLocationQuery, *params.FromTimestamp); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2560,9 +1972,9 @@ func NewGetWalletTransferTotalRequest(server string, chain ChainSymbol, walletAd
 
 		}
 
-		if params.AfterTimestamp != nil {
+		if params.ToTimestamp != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "afterTimestamp", runtime.ParamLocationQuery, *params.AfterTimestamp); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "toTimestamp", runtime.ParamLocationQuery, *params.ToTimestamp); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2674,7 +2086,7 @@ func NewGetWalletTransfersRequest(server string, chain ChainSymbol, walletAddres
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/wallet/%s/%s/transfers", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/wallet/%s/%s/transfers", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -2751,9 +2163,9 @@ func NewGetWalletTransfersRequest(server string, chain ChainSymbol, walletAddres
 
 		}
 
-		if params.BeforeTimestamp != nil {
+		if params.FromTimestamp != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "beforeTimestamp", runtime.ParamLocationQuery, *params.BeforeTimestamp); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "fromTimestamp", runtime.ParamLocationQuery, *params.FromTimestamp); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2767,9 +2179,9 @@ func NewGetWalletTransfersRequest(server string, chain ChainSymbol, walletAddres
 
 		}
 
-		if params.AfterTimestamp != nil {
+		if params.ToTimestamp != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "afterTimestamp", runtime.ParamLocationQuery, *params.AfterTimestamp); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "toTimestamp", runtime.ParamLocationQuery, *params.ToTimestamp); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2952,7 +2364,7 @@ type ClientWithResponsesInterface interface {
 type GetWalletFirstTxResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *WalletFirstTxDTO
+	JSON200      *WalletsMapResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -2974,7 +2386,7 @@ func (r GetWalletFirstTxResponse) StatusCode() int {
 type GetNetWorthSummaryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *WalletNetWorthSummaryDTO
+	JSON200      *WalletNetWorthSummaryResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -2996,7 +2408,7 @@ func (r GetNetWorthSummaryResponse) StatusCode() int {
 type GetPnlByWalletResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *PnlDetailsPage
+	JSON200      *PnlDetailsResult
 }
 
 // Status returns HTTPResponse.Status
@@ -3018,7 +2430,7 @@ func (r GetPnlByWalletResponse) StatusCode() int {
 type GetBalanceUpdatesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *BalanceUpdatePage
+	JSON200      *PageResponseBalanceUpdate
 }
 
 // Status returns HTTPResponse.Status
@@ -3040,7 +2452,7 @@ func (r GetBalanceUpdatesResponse) StatusCode() int {
 type CalculatePnlResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *BooleanResultDTO
+	JSON200      *SuccessResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -3084,7 +2496,7 @@ func (r GetNetWorthResponse) StatusCode() int {
 type GetNetWorthChartResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *WalletNetWorthChartDTO
+	JSON200      *WalletNetWorthChartResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -3128,7 +2540,7 @@ func (r GetNetWorthDetailsResponse) StatusCode() int {
 type GetNetWorthByTokensResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *WalletNetWorthByTokensResult
+	JSON200      *NetWorthByTokensResult
 }
 
 // Status returns HTTPResponse.Status
@@ -3150,7 +2562,7 @@ func (r GetNetWorthByTokensResponse) StatusCode() int {
 type GetPnlResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *WalletPnlSummaryDTO
+	JSON200      *WalletPnlSummary
 }
 
 // Status returns HTTPResponse.Status
@@ -3172,7 +2584,7 @@ func (r GetPnlResponse) StatusCode() int {
 type GetPnlByTokenResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *PnlDetailsPage
+	JSON200      *PnlDetailsResult
 }
 
 // Status returns HTTPResponse.Status
@@ -3194,7 +2606,7 @@ func (r GetPnlByTokenResponse) StatusCode() int {
 type GetPnlDetailsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *PnlDetailsPage
+	JSON200      *PnlDetailsResult
 }
 
 // Status returns HTTPResponse.Status
@@ -3216,7 +2628,7 @@ func (r GetPnlDetailsResponse) StatusCode() int {
 type GetTokensBalanceResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokensBalancePage
+	JSON200      *PageResponseNetWorthByTokensItem
 }
 
 // Status returns HTTPResponse.Status
@@ -3238,7 +2650,7 @@ func (r GetTokensBalanceResponse) StatusCode() int {
 type GetWalletTransferTotalResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokenTransferTotalDTO
+	JSON200      *TransferTotalResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -3260,7 +2672,7 @@ func (r GetWalletTransferTotalResponse) StatusCode() int {
 type GetWalletTransfersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TransactionHistoryPage
+	JSON200      *PageResponseWalletTransfer
 }
 
 // Status returns HTTPResponse.Status
@@ -3437,7 +2849,7 @@ func ParseGetWalletFirstTxResponse(rsp *http.Response) (*GetWalletFirstTxRespons
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest WalletFirstTxDTO
+		var dest WalletsMapResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -3463,7 +2875,7 @@ func ParseGetNetWorthSummaryResponse(rsp *http.Response) (*GetNetWorthSummaryRes
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest WalletNetWorthSummaryDTO
+		var dest WalletNetWorthSummaryResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -3489,7 +2901,7 @@ func ParseGetPnlByWalletResponse(rsp *http.Response) (*GetPnlByWalletResponse, e
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest PnlDetailsPage
+		var dest PnlDetailsResult
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -3515,7 +2927,7 @@ func ParseGetBalanceUpdatesResponse(rsp *http.Response) (*GetBalanceUpdatesRespo
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BalanceUpdatePage
+		var dest PageResponseBalanceUpdate
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -3541,7 +2953,7 @@ func ParseCalculatePnlResponse(rsp *http.Response) (*CalculatePnlResponse, error
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest BooleanResultDTO
+		var dest SuccessResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -3593,7 +3005,7 @@ func ParseGetNetWorthChartResponse(rsp *http.Response) (*GetNetWorthChartRespons
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest WalletNetWorthChartDTO
+		var dest WalletNetWorthChartResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -3645,7 +3057,7 @@ func ParseGetNetWorthByTokensResponse(rsp *http.Response) (*GetNetWorthByTokensR
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest WalletNetWorthByTokensResult
+		var dest NetWorthByTokensResult
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -3671,7 +3083,7 @@ func ParseGetPnlResponse(rsp *http.Response) (*GetPnlResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest WalletPnlSummaryDTO
+		var dest WalletPnlSummary
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -3697,7 +3109,7 @@ func ParseGetPnlByTokenResponse(rsp *http.Response) (*GetPnlByTokenResponse, err
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest PnlDetailsPage
+		var dest PnlDetailsResult
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -3723,7 +3135,7 @@ func ParseGetPnlDetailsResponse(rsp *http.Response) (*GetPnlDetailsResponse, err
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest PnlDetailsPage
+		var dest PnlDetailsResult
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -3749,7 +3161,7 @@ func ParseGetTokensBalanceResponse(rsp *http.Response) (*GetTokensBalanceRespons
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokensBalancePage
+		var dest PageResponseNetWorthByTokensItem
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -3775,7 +3187,7 @@ func ParseGetWalletTransferTotalResponse(rsp *http.Response) (*GetWalletTransfer
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenTransferTotalDTO
+		var dest TransferTotalResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -3801,7 +3213,7 @@ func ParseGetWalletTransfersResponse(rsp *http.Response) (*GetWalletTransfersRes
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TransactionHistoryPage
+		var dest PageResponseWalletTransfer
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

@@ -15,8 +15,17 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
+// Defines values for ActivityType.
 const (
-	BearerScopes = "bearer.Scopes"
+	ActivityTypeBUY                 ActivityType = "BUY"
+	ActivityTypeLIQUIDITYADD        ActivityType = "LIQUIDITY_ADD"
+	ActivityTypeLIQUIDITYINITIALIZE ActivityType = "LIQUIDITY_INITIALIZE"
+	ActivityTypeLIQUIDITYREMOVE     ActivityType = "LIQUIDITY_REMOVE"
+	ActivityTypeREDPACKETCLAIM      ActivityType = "RED_PACKET_CLAIM"
+	ActivityTypeREDPACKETCOMPLETE   ActivityType = "RED_PACKET_COMPLETE"
+	ActivityTypeREDPACKETCREATE     ActivityType = "RED_PACKET_CREATE"
+	ActivityTypeREDPACKETREFUND     ActivityType = "RED_PACKET_REFUND"
+	ActivityTypeSELL                ActivityType = "SELL"
 )
 
 // Defines values for ChainSymbol.
@@ -26,6 +35,42 @@ const (
 	Sol ChainSymbol = "sol"
 )
 
+// Defines values for PageDirection.
+const (
+	Next PageDirection = "next"
+	Prev PageDirection = "prev"
+)
+
+// Defines values for SortDirection.
+const (
+	Asc  SortDirection = "asc"
+	Desc SortDirection = "desc"
+)
+
+// Defines values for TimeFrame.
+const (
+	N12h TimeFrame = "12h"
+	N1h  TimeFrame = "1h"
+	N24h TimeFrame = "24h"
+	N2h  TimeFrame = "2h"
+	N30m TimeFrame = "30m"
+	N4h  TimeFrame = "4h"
+	N6h  TimeFrame = "6h"
+	N8h  TimeFrame = "8h"
+)
+
+// Defines values for TopTraderSortBy.
+const (
+	TradeAmount TopTraderSortBy = "tradeAmount"
+	TradeCount  TopTraderSortBy = "tradeCount"
+)
+
+// Defines values for TradeType.
+const (
+	TradeTypeBUY  TradeType = "BUY"
+	TradeTypeSELL TradeType = "SELL"
+)
+
 // Defines values for TraderPnlResolution.
 const (
 	N1d  TraderPnlResolution = "1d"
@@ -33,293 +78,188 @@ const (
 	N7d  TraderPnlResolution = "7d"
 )
 
-// Defines values for GetTradesParamsDirection.
-const (
-	GetTradesParamsDirectionNext GetTradesParamsDirection = "next"
-	GetTradesParamsDirectionPrev GetTradesParamsDirection = "prev"
-)
+// ActivityType Activity type (extends TradeType)
+type ActivityType string
 
-// Defines values for GetTradesParamsType.
-const (
-	GetTradesParamsTypeBUY  GetTradesParamsType = "BUY"
-	GetTradesParamsTypeSELL GetTradesParamsType = "SELL"
-)
-
-// Defines values for GetActivitiesParamsDirection.
-const (
-	GetActivitiesParamsDirectionNext GetActivitiesParamsDirection = "next"
-	GetActivitiesParamsDirectionPrev GetActivitiesParamsDirection = "prev"
-)
-
-// Defines values for GetActivitiesParamsType.
-const (
-	GetActivitiesParamsTypeBUY                 GetActivitiesParamsType = "BUY"
-	GetActivitiesParamsTypeLIQUIDITYADD        GetActivitiesParamsType = "LIQUIDITY_ADD"
-	GetActivitiesParamsTypeLIQUIDITYINITIALIZE GetActivitiesParamsType = "LIQUIDITY_INITIALIZE"
-	GetActivitiesParamsTypeLIQUIDITYREMOVE     GetActivitiesParamsType = "LIQUIDITY_REMOVE"
-	GetActivitiesParamsTypeREDPACKETCLAIM      GetActivitiesParamsType = "RED_PACKET_CLAIM"
-	GetActivitiesParamsTypeREDPACKETCOMPLETE   GetActivitiesParamsType = "RED_PACKET_COMPLETE"
-	GetActivitiesParamsTypeREDPACKETCREATE     GetActivitiesParamsType = "RED_PACKET_CREATE"
-	GetActivitiesParamsTypeREDPACKETREFUND     GetActivitiesParamsType = "RED_PACKET_REFUND"
-	GetActivitiesParamsTypeSELL                GetActivitiesParamsType = "SELL"
-)
-
-// Defines values for GetTopTradersParamsDirection.
-const (
-	GetTopTradersParamsDirectionNext GetTopTradersParamsDirection = "next"
-	GetTopTradersParamsDirectionPrev GetTopTradersParamsDirection = "prev"
-)
-
-// Defines values for GetTopTradersParamsTimeFrame.
-const (
-	N12h GetTopTradersParamsTimeFrame = "12h"
-	N1h  GetTopTradersParamsTimeFrame = "1h"
-	N24h GetTopTradersParamsTimeFrame = "24h"
-	N2h  GetTopTradersParamsTimeFrame = "2h"
-	N30m GetTopTradersParamsTimeFrame = "30m"
-	N4h  GetTopTradersParamsTimeFrame = "4h"
-	N6h  GetTopTradersParamsTimeFrame = "6h"
-	N8h  GetTopTradersParamsTimeFrame = "8h"
-)
-
-// Defines values for GetTopTradersParamsSortType.
-const (
-	GetTopTradersParamsSortTypeAsc  GetTopTradersParamsSortType = "asc"
-	GetTopTradersParamsSortTypeDesc GetTopTradersParamsSortType = "desc"
-)
-
-// Defines values for GetTopTradersParamsSortBy.
-const (
-	TradeAmount GetTopTradersParamsSortBy = "tradeAmount"
-	TradeCount  GetTopTradersParamsSortBy = "tradeCount"
-)
-
-// Defines values for GetTraderGainersLosersParamsDirection.
-const (
-	GetTraderGainersLosersParamsDirectionNext GetTraderGainersLosersParamsDirection = "next"
-	GetTraderGainersLosersParamsDirectionPrev GetTraderGainersLosersParamsDirection = "prev"
-)
-
-// Defines values for GetTraderGainersLosersParamsSortType.
-const (
-	GetTraderGainersLosersParamsSortTypeAsc  GetTraderGainersLosersParamsSortType = "asc"
-	GetTraderGainersLosersParamsSortTypeDesc GetTraderGainersLosersParamsSortType = "desc"
-)
-
-// ChainSymbol defines model for ChainSymbol.
+// ChainSymbol Supported blockchain chains
 type ChainSymbol string
 
-// TopTradersDTO defines model for TopTradersDTO.
-type TopTradersDTO struct {
-	// BuyAmount DTO.TRADE.TOP_TRADERS.BUY_AMOUNT
-	BuyAmount string `json:"buyAmount"`
+// PageDirection Pagination direction
+type PageDirection string
 
-	// BuyAmountInNative DTO.TRADE.TOP_TRADERS.BUY_AMOUNT_IN_NATIVE
-	BuyAmountInNative string `json:"buyAmountInNative"`
+// PageResponseTopTrader Generic pagination response
+type PageResponseTopTrader struct {
+	// Data Page data
+	Data []struct {
+		BuyAmount          string `json:"buyAmount"`
+		BuyAmountInNative  string `json:"buyAmountInNative"`
+		BuyAmountInUsd     string `json:"buyAmountInUsd"`
+		BuyCount           int64  `json:"buyCount"`
+		SellAmount         string `json:"sellAmount"`
+		SellAmountInNative string `json:"sellAmountInNative"`
+		SellAmountInUsd    string `json:"sellAmountInUsd"`
+		SellCount          int64  `json:"sellCount"`
+		TokenAddress       string `json:"tokenAddress"`
+		TradeAmount        string `json:"tradeAmount"`
+		TradeCount         int64  `json:"tradeCount"`
+		WalletAddress      string `json:"walletAddress"`
+	} `json:"data"`
 
-	// BuyAmountInUsd DTO.TRADE.TOP_TRADERS.BUY_AMOUNT_IN_USD
-	BuyAmountInUsd string `json:"buyAmountInUsd"`
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
 
-	// BuyCount DTO.TRADE.TOP_TRADERS.BUY_COUNT
-	BuyCount int64 `json:"buyCount"`
-
-	// SellAmount DTO.TRADE.TOP_TRADERS.SELL_AMOUNT
-	SellAmount string `json:"sellAmount"`
-
-	// SellAmountInNative DTO.TRADE.TOP_TRADERS.SELL_AMOUNT_IN_NATIVE
-	SellAmountInNative string `json:"sellAmountInNative"`
-
-	// SellAmountInUsd DTO.TRADE.TOP_TRADERS.SELL_AMOUNT_IN_USD
-	SellAmountInUsd string `json:"sellAmountInUsd"`
-
-	// SellCount DTO.TRADE.TOP_TRADERS.SELL_COUNT
-	SellCount int64 `json:"sellCount"`
-
-	// TokenAddress DTO.TRADE.TOP_TRADERS.TOKEN_ADDRESS
-	TokenAddress string `json:"tokenAddress"`
-
-	// TradeAmount DTO.TRADE.TOP_TRADERS.TRADE_AMOUNT
-	TradeAmount string `json:"tradeAmount"`
-
-	// TradeCount DTO.TRADE.TOP_TRADERS.TRADE_COUNT
-	TradeCount int64 `json:"tradeCount"`
-
-	// WalletAddress DTO.TRADE.TOP_TRADERS.WALLET_ADDRESS
-	WalletAddress string `json:"walletAddress"`
-}
-
-// TopTradersPage defines model for TopTradersPage.
-type TopTradersPage struct {
-	// Data DTO.TRADE.TOP_TRADERS.PAGE.DATA
-	Data []TopTradersDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
+	// HasNext Whether there is a next page
 	HasNext *bool `json:"hasNext,omitempty"`
 
-	// HasPrev DTO.PAGE.HAS_PREV
+	// HasPrev Whether there is a previous page
 	HasPrev *bool `json:"hasPrev,omitempty"`
 
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
 }
 
-// TradeDetailDTO defines model for TradeDetailDTO.
-type TradeDetailDTO struct {
-	// AccountOwnerAddress DTO.TRADE.DETAIL.ACCOUNT_OWNER_ADDRESS
-	AccountOwnerAddress string `json:"accountOwnerAddress"`
+// PageResponseTradeDetail Generic pagination response
+type PageResponseTradeDetail struct {
+	// Data Page data
+	Data []struct {
+		// AccountOwnerAddress Account owner address (trader wallet)
+		AccountOwnerAddress string `json:"accountOwnerAddress"`
 
-	// BlockHeight DTO.TRADE.DETAIL.BLOCK_HEIGHT
-	BlockHeight int64 `json:"blockHeight"`
+		// BlockHeight Block height
+		BlockHeight int64 `json:"blockHeight"`
 
-	// BlockTimestamp DTO.TRADE.DETAIL.BLOCK_TIMESTAMP
-	BlockTimestamp int64 `json:"blockTimestamp"`
+		// BlockTimestamp Block timestamp (milliseconds)
+		BlockTimestamp int64 `json:"blockTimestamp"`
 
-	// Chain DTO.TRADE.DETAIL.CHAIN
-	Chain string `json:"chain"`
+		// Chain Chain identifier
+		Chain string `json:"chain"`
 
-	// DexImage DTO.TRADE.DETAIL.DEX_IMAGE
-	DexImage string `json:"dexImage"`
+		// DexImage DEX image
+		DexImage *string `json:"dexImage"`
 
-	// DexProgramAddress DTO.TRADE.DETAIL.DEX_PROGRAM_ADDRESS
-	DexProgramAddress string `json:"dexProgramAddress"`
+		// DexProgramAddress DEX program address
+		DexProgramAddress *string `json:"dexProgramAddress"`
 
-	// DexProtocolFamily DTO.TRADE.DETAIL.DEX_PROTOCOL_FAMILY
-	DexProtocolFamily string `json:"dexProtocolFamily"`
+		// DexProtocolFamily DEX protocol family
+		DexProtocolFamily *string `json:"dexProtocolFamily"`
 
-	// PoolAddress DTO.TRADE.DETAIL.POOL_ADDRESS
-	PoolAddress string `json:"poolAddress"`
+		// PoolAddress Pool address
+		PoolAddress string `json:"poolAddress"`
 
-	// SideTokenAddress DTO.TRADE.DETAIL.SIDE_TOKEN_ADDRESS
-	SideTokenAddress string `json:"sideTokenAddress"`
+		// SideTokenAddress Side token address
+		SideTokenAddress string `json:"sideTokenAddress"`
 
-	// SideTokenAmount DTO.TRADE.DETAIL.SIDE_TOKEN_AMOUNT
-	SideTokenAmount string `json:"sideTokenAmount"`
+		// SideTokenAmount Side token amount
+		SideTokenAmount string `json:"sideTokenAmount"`
 
-	// SideTokenAmountInNative DTO.TRADE.DETAIL.SIDE_TOKEN_AMOUNT_IN_NATIVE
-	SideTokenAmountInNative string `json:"sideTokenAmountInNative"`
+		// SideTokenAmountInNative Side token amount in native currency
+		SideTokenAmountInNative string `json:"sideTokenAmountInNative"`
 
-	// SideTokenAmountInUsd DTO.TRADE.DETAIL.SIDE_TOKEN_AMOUNT_IN_USD
-	SideTokenAmountInUsd string `json:"sideTokenAmountInUsd"`
+		// SideTokenAmountInUsd Side token amount in USD
+		SideTokenAmountInUsd string `json:"sideTokenAmountInUsd"`
 
-	// SideTokenImageUrl DTO.TRADE.DETAIL.SIDE_TOKEN_IMAGE_URL
-	SideTokenImageUrl string `json:"sideTokenImageUrl"`
+		// SideTokenImageUrl Side token image URL
+		SideTokenImageUrl *string `json:"sideTokenImageUrl"`
 
-	// SideTokenName DTO.TRADE.DETAIL.SIDE_TOKEN_NAME
-	SideTokenName string `json:"sideTokenName"`
+		// SideTokenName Side token name
+		SideTokenName string `json:"sideTokenName"`
 
-	// SideTokenPriceInNative DTO.TRADE.DETAIL.SIDE_TOKEN_PRICE_IN_NATIVE
-	SideTokenPriceInNative string `json:"sideTokenPriceInNative"`
+		// SideTokenPriceInNative Side token price in native currency
+		SideTokenPriceInNative string `json:"sideTokenPriceInNative"`
 
-	// SideTokenPriceInUsd DTO.TRADE.DETAIL.SIDE_TOKEN_PRICE_IN_USD
-	SideTokenPriceInUsd string `json:"sideTokenPriceInUsd"`
+		// SideTokenPriceInUsd Side token price in USD
+		SideTokenPriceInUsd string `json:"sideTokenPriceInUsd"`
 
-	// SideTokenSymbol DTO.TRADE.DETAIL.SIDE_TOKEN_SYMBOL
-	SideTokenSymbol string `json:"sideTokenSymbol"`
+		// SideTokenSymbol Side token symbol
+		SideTokenSymbol string `json:"sideTokenSymbol"`
 
-	// Status DTO.TRADE.DETAIL.STATUS
-	Status string `json:"status"`
+		// Status Transaction status
+		Status string `json:"status"`
 
-	// TokenAddress DTO.TRADE.DETAIL.TOKEN_ADDRESS
-	TokenAddress string `json:"tokenAddress"`
+		// TokenAddress Token address
+		TokenAddress string `json:"tokenAddress"`
 
-	// TokenAmount DTO.TRADE.DETAIL.TOKEN_AMOUNT
-	TokenAmount string `json:"tokenAmount"`
+		// TokenAmount Token amount
+		TokenAmount string `json:"tokenAmount"`
 
-	// TokenAmountInNative DTO.TRADE.DETAIL.TOKEN_AMOUNT_IN_NATIVE
-	TokenAmountInNative string `json:"tokenAmountInNative"`
+		// TokenAmountInNative Token amount in native currency
+		TokenAmountInNative string `json:"tokenAmountInNative"`
 
-	// TokenAmountInUsd DTO.TRADE.DETAIL.TOKEN_AMOUNT_IN_USD
-	TokenAmountInUsd string `json:"tokenAmountInUsd"`
+		// TokenAmountInUsd Token amount in USD
+		TokenAmountInUsd string `json:"tokenAmountInUsd"`
 
-	// TokenImageUrl DTO.TRADE.DETAIL.TOKEN_IMAGE_URL
-	TokenImageUrl string `json:"tokenImageUrl"`
+		// TokenImageUrl Token image URL
+		TokenImageUrl *string `json:"tokenImageUrl"`
 
-	// TokenName DTO.TRADE.DETAIL.TOKEN_NAME
-	TokenName string `json:"tokenName"`
+		// TokenName Token name
+		TokenName string `json:"tokenName"`
 
-	// TokenPriceInNative DTO.TRADE.DETAIL.TOKEN_PRICE_IN_NATIVE
-	TokenPriceInNative string `json:"tokenPriceInNative"`
+		// TokenPriceInNative Token price in native currency
+		TokenPriceInNative string `json:"tokenPriceInNative"`
 
-	// TokenPriceInUsd DTO.TRADE.DETAIL.TOKEN_PRICE_IN_USD
-	TokenPriceInUsd string `json:"tokenPriceInUsd"`
+		// TokenPriceInUsd Token price in USD
+		TokenPriceInUsd string `json:"tokenPriceInUsd"`
 
-	// TokenSymbol DTO.TRADE.DETAIL.TOKEN_SYMBOL
-	TokenSymbol string `json:"tokenSymbol"`
+		// TokenSymbol Token symbol
+		TokenSymbol string `json:"tokenSymbol"`
 
-	// TransactionSignature DTO.TRADE.DETAIL.TRANSACTION_SIGNATURE
-	TransactionSignature string `json:"transactionSignature"`
+		// TransactionSignature Transaction signature
+		TransactionSignature string `json:"transactionSignature"`
 
-	// Type DTO.TRADE.DETAIL.TYPE
-	Type string `json:"type"`
-}
+		// Type Trade type (BUY/SELL)
+		Type string `json:"type"`
+	} `json:"data"`
 
-// TradePage defines model for TradePage.
-type TradePage struct {
-	// Data DTO.TRADE.PAGE.DATA
-	Data []TradeDetailDTO `json:"data"`
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
 
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
+	// HasNext Whether there is a next page
 	HasNext *bool `json:"hasNext,omitempty"`
 
-	// HasPrev DTO.PAGE.HAS_PREV
+	// HasPrev Whether there is a previous page
 	HasPrev *bool `json:"hasPrev,omitempty"`
 
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
 }
 
-// TraderGainersLosersItemDTO defines model for TraderGainersLosersItemDTO.
-type TraderGainersLosersItemDTO struct {
-	// Address DTO.TRADER.GAINERS_LOSERS.ITEM.ADDRESS
-	Address string `json:"address"`
+// PageResponseTraderGainersLosersItem Generic pagination response
+type PageResponseTraderGainersLosersItem struct {
+	// Data Page data
+	Data []struct {
+		Address    string `json:"address"`
+		Chain      string `json:"chain"`
+		Pnl        string `json:"pnl"`
+		TradeCount string `json:"tradeCount"`
+		Volume     string `json:"volume"`
+	} `json:"data"`
 
-	// Chain GLOBAL.CHAIN.DESCRIPTION
-	Chain ChainSymbol `json:"chain"`
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
 
-	// Pnl DTO.TRADER.GAINERS_LOSERS.ITEM.PNL
-	Pnl string `json:"pnl"`
-
-	// TradeCount DTO.TRADER.GAINERS_LOSERS.ITEM.TRADE_COUNT
-	TradeCount string `json:"tradeCount"`
-
-	// Volume DTO.TRADER.GAINERS_LOSERS.ITEM.VOLUME
-	Volume string `json:"volume"`
-}
-
-// TraderGainersLosersPage defines model for TraderGainersLosersPage.
-type TraderGainersLosersPage struct {
-	// Data DTO.TRADE.GAINERS_LOSERS.PAGE.DATA
-	Data []TraderGainersLosersItemDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
+	// HasNext Whether there is a next page
 	HasNext *bool `json:"hasNext,omitempty"`
 
-	// HasPrev DTO.PAGE.HAS_PREV
+	// HasPrev Whether there is a previous page
 	HasPrev *bool `json:"hasPrev,omitempty"`
 
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
 }
 
-// TraderPnlResolution defines model for TraderPnlResolution.
+// SortDirection Sort direction (case-insensitive: accepts "asc"/"ASC"/"Asc" etc.)
+type SortDirection string
+
+// TimeFrame Time frame for statistics
+type TimeFrame string
+
+// TopTraderSortBy Sort field for top traders query
+type TopTraderSortBy string
+
+// TradeType Trade type
+type TradeType string
+
+// TraderPnlResolution Trader PnL resolution period
 type TraderPnlResolution string
 
 // GetTradesParams defines parameters for GetTrades.
@@ -331,41 +271,37 @@ type GetTradesParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetTradesParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
-	// TokenAddress DTO.TRADE.QUERY.TOKEN_ADDRESS
+	// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
 	TokenAddress *string `form:"tokenAddress,omitempty" json:"tokenAddress,omitempty"`
 
-	// WalletAddress DTO.TRADE.QUERY.WALLET_ADDRESS
+	// WalletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
 	WalletAddress *string `form:"walletAddress,omitempty" json:"walletAddress,omitempty"`
 
-	// PoolAddress DTO.TRADE.QUERY.POOL_ADDRESS
+	// PoolAddress GLOBAL.POOLADDRESS.DESCRIPTION
 	PoolAddress *string `form:"poolAddress,omitempty" json:"poolAddress,omitempty"`
 
-	// BeforeTimestamp DTO.TRADE.QUERY.BEFORE_TIMESTAMP
+	// BeforeTimestamp DTO.TRADE.BEFORE_TIMESTAMP
 	BeforeTimestamp *int64 `form:"beforeTimestamp,omitempty" json:"beforeTimestamp,omitempty"`
 
-	// AfterTimestamp DTO.TRADE.QUERY.AFTER_TIMESTAMP
+	// AfterTimestamp DTO.TRADE.AFTER_TIMESTAMP
 	AfterTimestamp *int64 `form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
 
-	// BeforeBlockHeight DTO.TRADE.QUERY.BEFORE_BLOCK_HEIGHT
+	// BeforeBlockHeight DTO.TRADE.BEFORE_BLOCK_HEIGHT
 	BeforeBlockHeight *int64 `form:"beforeBlockHeight,omitempty" json:"beforeBlockHeight,omitempty"`
 
-	// AfterBlockHeight DTO.TRADE.QUERY.AFTER_BLOCK_HEIGHT
+	// AfterBlockHeight DTO.TRADE.AFTER_BLOCK_HEIGHT
 	AfterBlockHeight *int64 `form:"afterBlockHeight,omitempty" json:"afterBlockHeight,omitempty"`
 
-	// TransactionsSignature DTO.TRADE.QUERY.TRANSACTIONS_SIGNATURE
+	// TransactionsSignature DTO.TRADE.TRANSACTIONS_SIGNATURE
 	TransactionsSignature *string `form:"transactionsSignature,omitempty" json:"transactionsSignature,omitempty"`
 
-	// Type DTO.TRADE.QUERY.TRADES_TYPE
-	Type *GetTradesParamsType `form:"type,omitempty" json:"type,omitempty"`
+	// Type DTO.TRADE.TYPE
+	Type *TradeType `form:"type,omitempty" json:"type,omitempty"`
 }
-
-// GetTradesParamsDirection defines parameters for GetTrades.
-type GetTradesParamsDirection string
-
-// GetTradesParamsType defines parameters for GetTrades.
-type GetTradesParamsType string
 
 // GetActivitiesParams defines parameters for GetActivities.
 type GetActivitiesParams struct {
@@ -376,77 +312,67 @@ type GetActivitiesParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetActivitiesParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
-	// TokenAddress DTO.TRADE.QUERY.TOKEN_ADDRESS
+	// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
 	TokenAddress *string `form:"tokenAddress,omitempty" json:"tokenAddress,omitempty"`
 
-	// WalletAddress DTO.TRADE.QUERY.WALLET_ADDRESS
+	// WalletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
 	WalletAddress *string `form:"walletAddress,omitempty" json:"walletAddress,omitempty"`
 
-	// PoolAddress DTO.TRADE.QUERY.POOL_ADDRESS
+	// PoolAddress GLOBAL.POOLADDRESS.DESCRIPTION
 	PoolAddress *string `form:"poolAddress,omitempty" json:"poolAddress,omitempty"`
 
-	// BeforeTimestamp DTO.TRADE.QUERY.BEFORE_TIMESTAMP
+	// BeforeTimestamp DTO.TRADE.BEFORE_TIMESTAMP
 	BeforeTimestamp *int64 `form:"beforeTimestamp,omitempty" json:"beforeTimestamp,omitempty"`
 
-	// AfterTimestamp DTO.TRADE.QUERY.AFTER_TIMESTAMP
+	// AfterTimestamp DTO.TRADE.AFTER_TIMESTAMP
 	AfterTimestamp *int64 `form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
 
-	// BeforeBlockHeight DTO.TRADE.QUERY.BEFORE_BLOCK_HEIGHT
+	// BeforeBlockHeight DTO.TRADE.BEFORE_BLOCK_HEIGHT
 	BeforeBlockHeight *int64 `form:"beforeBlockHeight,omitempty" json:"beforeBlockHeight,omitempty"`
 
-	// AfterBlockHeight DTO.TRADE.QUERY.AFTER_BLOCK_HEIGHT
+	// AfterBlockHeight DTO.TRADE.AFTER_BLOCK_HEIGHT
 	AfterBlockHeight *int64 `form:"afterBlockHeight,omitempty" json:"afterBlockHeight,omitempty"`
 
-	// TransactionsSignature DTO.TRADE.QUERY.TRANSACTIONS_SIGNATURE
+	// TransactionsSignature DTO.TRADE.TRANSACTIONS_SIGNATURE
 	TransactionsSignature *string `form:"transactionsSignature,omitempty" json:"transactionsSignature,omitempty"`
 
-	// Type DTO.TRADE.QUERY.ACTIVITIES_TYPE
-	Type *GetActivitiesParamsType `form:"type,omitempty" json:"type,omitempty"`
+	// Type DTO.TRADE.ACTIVITY_TYPE
+	Type *ActivityType `form:"type,omitempty" json:"type,omitempty"`
 }
-
-// GetActivitiesParamsDirection defines parameters for GetActivities.
-type GetActivitiesParamsDirection string
-
-// GetActivitiesParamsType defines parameters for GetActivities.
-type GetActivitiesParamsType string
 
 // GetTopTradersParams defines parameters for GetTopTraders.
 type GetTopTradersParams struct {
 	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
 	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 
-	// Limit DTO.TRADE.QUERY.LIMIT
+	// Limit DTO.PAGE.LIMIT
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetTopTradersParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
-	// TokenAddress DTO.TRADE.QUERY.TOKEN_ADDRESS
+	// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
 	TokenAddress string `form:"tokenAddress" json:"tokenAddress"`
 
-	// TimeFrame DTO.TRADE.QUERY.TIME_FRAME
-	TimeFrame *GetTopTradersParamsTimeFrame `form:"timeFrame,omitempty" json:"timeFrame,omitempty"`
+	// TimeFrame DTO.TRADE.TIME_FRAME
+	TimeFrame *TimeFrame `form:"timeFrame,omitempty" json:"timeFrame,omitempty"`
 
-	// SortType DTO.TRADE.QUERY.SORT_TYPE
-	SortType *GetTopTradersParamsSortType `form:"sortType,omitempty" json:"sortType,omitempty"`
+	// SortType DTO.TRADE.SORT_TYPE
+	SortType *struct {
+		union json.RawMessage
+	} `form:"sortType,omitempty" json:"sortType,omitempty"`
 
-	// SortBy DTO.TRADE.QUERY.SORT_BY
-	SortBy *GetTopTradersParamsSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
+	// SortBy DTO.TRADE.SORT_BY
+	SortBy *struct {
+		union json.RawMessage
+	} `form:"sortBy,omitempty" json:"sortBy,omitempty"`
 }
-
-// GetTopTradersParamsDirection defines parameters for GetTopTraders.
-type GetTopTradersParamsDirection string
-
-// GetTopTradersParamsTimeFrame defines parameters for GetTopTraders.
-type GetTopTradersParamsTimeFrame string
-
-// GetTopTradersParamsSortType defines parameters for GetTopTraders.
-type GetTopTradersParamsSortType string
-
-// GetTopTradersParamsSortBy defines parameters for GetTopTraders.
-type GetTopTradersParamsSortBy string
 
 // GetTraderGainersLosersParams defines parameters for GetTraderGainersLosers.
 type GetTraderGainersLosersParams struct {
@@ -457,20 +383,20 @@ type GetTraderGainersLosersParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetTraderGainersLosersParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
 	// Resolution DTO.TRADER.GAINERS_LOSERS.QUERY.RESOLUTION
-	Resolution *TraderPnlResolution `form:"resolution,omitempty" json:"resolution,omitempty"`
+	Resolution *struct {
+		union json.RawMessage
+	} `form:"resolution,omitempty" json:"resolution,omitempty"`
 
 	// SortType DTO.TRADER.GAINERS_LOSERS.QUERY.SORT_TYPE
-	SortType *GetTraderGainersLosersParamsSortType `form:"sortType,omitempty" json:"sortType,omitempty"`
+	SortType *struct {
+		union json.RawMessage
+	} `form:"sortType,omitempty" json:"sortType,omitempty"`
 }
-
-// GetTraderGainersLosersParamsDirection defines parameters for GetTraderGainersLosers.
-type GetTraderGainersLosersParamsDirection string
-
-// GetTraderGainersLosersParamsSortType defines parameters for GetTraderGainersLosers.
-type GetTraderGainersLosersParamsSortType string
 
 // RequestEditorFn  is the function signature for the RequestEditor callback function
 type RequestEditorFn func(ctx context.Context, req *http.Request) error
@@ -622,7 +548,7 @@ func NewGetTradesRequest(server string, chain ChainSymbol, params *GetTradesPara
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/trade/%s", pathParam0)
+	operationPath := fmt.Sprintf("/v2/trade/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -854,7 +780,7 @@ func NewGetActivitiesRequest(server string, chain ChainSymbol, params *GetActivi
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/trade/%s/activities", pathParam0)
+	operationPath := fmt.Sprintf("/v2/trade/%s/activities", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1086,7 +1012,7 @@ func NewGetTopTradersRequest(server string, chain ChainSymbol, params *GetTopTra
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/trade/%s/top-traders", pathParam0)
+	operationPath := fmt.Sprintf("/v2/trade/%s/top-traders", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1234,7 +1160,7 @@ func NewGetTraderGainersLosersRequest(server string, chain ChainSymbol, params *
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/trade/%s/trader-gainers-losers", pathParam0)
+	operationPath := fmt.Sprintf("/v2/trade/%s/trader-gainers-losers", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1397,7 +1323,7 @@ type ClientWithResponsesInterface interface {
 type GetTradesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TradePage
+	JSON200      *PageResponseTradeDetail
 }
 
 // Status returns HTTPResponse.Status
@@ -1419,7 +1345,7 @@ func (r GetTradesResponse) StatusCode() int {
 type GetActivitiesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TradePage
+	JSON200      *PageResponseTradeDetail
 }
 
 // Status returns HTTPResponse.Status
@@ -1441,7 +1367,7 @@ func (r GetActivitiesResponse) StatusCode() int {
 type GetTopTradersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TopTradersPage
+	JSON200      *PageResponseTopTrader
 }
 
 // Status returns HTTPResponse.Status
@@ -1463,7 +1389,7 @@ func (r GetTopTradersResponse) StatusCode() int {
 type GetTraderGainersLosersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TraderGainersLosersPage
+	JSON200      *PageResponseTraderGainersLosersItem
 }
 
 // Status returns HTTPResponse.Status
@@ -1533,7 +1459,7 @@ func ParseGetTradesResponse(rsp *http.Response) (*GetTradesResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TradePage
+		var dest PageResponseTradeDetail
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1559,7 +1485,7 @@ func ParseGetActivitiesResponse(rsp *http.Response) (*GetActivitiesResponse, err
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TradePage
+		var dest PageResponseTradeDetail
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1585,7 +1511,7 @@ func ParseGetTopTradersResponse(rsp *http.Response) (*GetTopTradersResponse, err
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TopTradersPage
+		var dest PageResponseTopTrader
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1611,7 +1537,7 @@ func ParseGetTraderGainersLosersResponse(rsp *http.Response) (*GetTraderGainersL
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TraderGainersLosersPage
+		var dest PageResponseTraderGainersLosersItem
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

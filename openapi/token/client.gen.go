@@ -11,13 +11,8 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"time"
 
 	"github.com/oapi-codegen/runtime"
-)
-
-const (
-	BearerScopes = "bearer.Scopes"
 )
 
 // Defines values for ChainSymbol.
@@ -27,80 +22,23 @@ const (
 	Sol ChainSymbol = "sol"
 )
 
-// Defines values for DexPoolDTOLiquidityModel.
+// Defines values for MintBurnType.
 const (
-	DexPoolDTOLiquidityModelN0 DexPoolDTOLiquidityModel = 0
-	DexPoolDTOLiquidityModelN1 DexPoolDTOLiquidityModel = 1
-	DexPoolDTOLiquidityModelN2 DexPoolDTOLiquidityModel = 2
-	DexPoolDTOLiquidityModelN3 DexPoolDTOLiquidityModel = 3
-	DexPoolDTOLiquidityModelN4 DexPoolDTOLiquidityModel = 4
+	All  MintBurnType = "all"
+	Burn MintBurnType = "burn"
+	Mint MintBurnType = "mint"
 )
 
-// Defines values for DexPoolDTOType.
+// Defines values for PageDirection.
 const (
-	DexPoolDTOTypeN0 DexPoolDTOType = 0
-	DexPoolDTOTypeN1 DexPoolDTOType = 1
-	DexPoolDTOTypeN2 DexPoolDTOType = 2
-	DexPoolDTOTypeN3 DexPoolDTOType = 3
-	DexPoolDTOTypeN4 DexPoolDTOType = 4
+	Next PageDirection = "next"
+	Prev PageDirection = "prev"
 )
 
-// Defines values for DexPoolDTOVersion.
+// Defines values for PoolSortField.
 const (
-	N0 DexPoolDTOVersion = 0
-	N1 DexPoolDTOVersion = 1
-	N2 DexPoolDTOVersion = 2
-	N3 DexPoolDTOVersion = 3
-)
-
-// Defines values for FilterConditionField.
-const (
-	FilterConditionFieldMarketDataCreatorHoldings      FilterConditionField = "marketData.creatorHoldings"
-	FilterConditionFieldMarketDataCreatorHoldingsRatio FilterConditionField = "marketData.creatorHoldingsRatio"
-	FilterConditionFieldMarketDataHolders              FilterConditionField = "marketData.holders"
-	FilterConditionFieldMarketDataMarketCapInUsd       FilterConditionField = "marketData.marketCapInUsd"
-	FilterConditionFieldMarketDataMaxPoolTvlInUsd      FilterConditionField = "marketData.maxPoolTvlInUsd"
-	FilterConditionFieldMarketDataPriceInUsd           FilterConditionField = "marketData.priceInUsd"
-	FilterConditionFieldMarketDataTop100HoldingsRatio  FilterConditionField = "marketData.top100HoldingsRatio"
-	FilterConditionFieldMarketDataTop100TotalHoldings  FilterConditionField = "marketData.top100TotalHoldings"
-	FilterConditionFieldMarketDataTop10HoldingsRatio   FilterConditionField = "marketData.top10HoldingsRatio"
-	FilterConditionFieldMarketDataTop10TotalHoldings   FilterConditionField = "marketData.top10TotalHoldings"
-	FilterConditionFieldMarketDataTotalTvlInUsd        FilterConditionField = "marketData.totalTvlInUsd"
-	FilterConditionFieldStatsBuys15m                   FilterConditionField = "stats.buys15m"
-	FilterConditionFieldStatsBuys1h                    FilterConditionField = "stats.buys1h"
-	FilterConditionFieldStatsBuys1m                    FilterConditionField = "stats.buys1m"
-	FilterConditionFieldStatsBuys24h                   FilterConditionField = "stats.buys24h"
-	FilterConditionFieldStatsBuys30m                   FilterConditionField = "stats.buys30m"
-	FilterConditionFieldStatsBuys4h                    FilterConditionField = "stats.buys4h"
-	FilterConditionFieldStatsBuys5m                    FilterConditionField = "stats.buys5m"
-	FilterConditionFieldStatsPriceChangeRatioInUsd1h   FilterConditionField = "stats.priceChangeRatioInUsd1h"
-	FilterConditionFieldStatsPriceChangeRatioInUsd1m   FilterConditionField = "stats.priceChangeRatioInUsd1m"
-	FilterConditionFieldStatsPriceChangeRatioInUsd24h  FilterConditionField = "stats.priceChangeRatioInUsd24h"
-	FilterConditionFieldStatsPriceChangeRatioInUsd4h   FilterConditionField = "stats.priceChangeRatioInUsd4h"
-	FilterConditionFieldStatsPriceChangeRatioInUsd5m   FilterConditionField = "stats.priceChangeRatioInUsd5m"
-	FilterConditionFieldStatsSells15m                  FilterConditionField = "stats.sells15m"
-	FilterConditionFieldStatsSells1h                   FilterConditionField = "stats.sells1h"
-	FilterConditionFieldStatsSells1m                   FilterConditionField = "stats.sells1m"
-	FilterConditionFieldStatsSells24h                  FilterConditionField = "stats.sells24h"
-	FilterConditionFieldStatsSells30m                  FilterConditionField = "stats.sells30m"
-	FilterConditionFieldStatsSells4h                   FilterConditionField = "stats.sells4h"
-	FilterConditionFieldStatsSells5m                   FilterConditionField = "stats.sells5m"
-	FilterConditionFieldStatsTraders1h                 FilterConditionField = "stats.traders1h"
-	FilterConditionFieldStatsTraders1m                 FilterConditionField = "stats.traders1m"
-	FilterConditionFieldStatsTraders24h                FilterConditionField = "stats.traders24h"
-	FilterConditionFieldStatsTraders4h                 FilterConditionField = "stats.traders4h"
-	FilterConditionFieldStatsTraders5m                 FilterConditionField = "stats.traders5m"
-	FilterConditionFieldStatsTrades1h                  FilterConditionField = "stats.trades1h"
-	FilterConditionFieldStatsTrades1m                  FilterConditionField = "stats.trades1m"
-	FilterConditionFieldStatsTrades24h                 FilterConditionField = "stats.trades24h"
-	FilterConditionFieldStatsTrades4h                  FilterConditionField = "stats.trades4h"
-	FilterConditionFieldStatsTrades5m                  FilterConditionField = "stats.trades5m"
-	FilterConditionFieldStatsVolumesInUsd1h            FilterConditionField = "stats.volumesInUsd1h"
-	FilterConditionFieldStatsVolumesInUsd1m            FilterConditionField = "stats.volumesInUsd1m"
-	FilterConditionFieldStatsVolumesInUsd24h           FilterConditionField = "stats.volumesInUsd24h"
-	FilterConditionFieldStatsVolumesInUsd4h            FilterConditionField = "stats.volumesInUsd4h"
-	FilterConditionFieldStatsVolumesInUsd5m            FilterConditionField = "stats.volumesInUsd5m"
-	FilterConditionFieldTokenCreatedAt                 FilterConditionField = "tokenCreatedAt"
+	TvlInSol PoolSortField = "tvlInSol"
+	TvlInUsd PoolSortField = "tvlInUsd"
 )
 
 // Defines values for PriceType.
@@ -131,11 +69,138 @@ const (
 	N8h  Resolution = "8h"
 )
 
-// Defines values for TokenCreationDTOType.
+// Defines values for SearchSortBy.
 const (
-	TokenCreationDTOTypeBurn   TokenCreationDTOType = "burn"
-	TokenCreationDTOTypeCreate TokenCreationDTOType = "create"
-	TokenCreationDTOTypeMint   TokenCreationDTOType = "mint"
+	SearchSortByH24Transactions SearchSortBy = "h24Transactions"
+	SearchSortByH24VolumeInUsd  SearchSortBy = "h24VolumeInUsd"
+	SearchSortByHolderCount     SearchSortBy = "holderCount"
+	SearchSortByLiquidityInUsd  SearchSortBy = "liquidityInUsd"
+	SearchSortByMarketCapInUsd  SearchSortBy = "marketCapInUsd"
+	SearchSortByPriceInUsd      SearchSortBy = "priceInUsd"
+	SearchSortByTokenCreatedAt  SearchSortBy = "tokenCreatedAt"
+)
+
+// Defines values for SortDirection.
+const (
+	Asc  SortDirection = "asc"
+	Desc SortDirection = "desc"
+)
+
+// Defines values for TokenField.
+const (
+	TokenFieldMarketDataCreatorHoldings      TokenField = "marketData.creatorHoldings"
+	TokenFieldMarketDataCreatorHoldingsRatio TokenField = "marketData.creatorHoldingsRatio"
+	TokenFieldMarketDataHolders              TokenField = "marketData.holders"
+	TokenFieldMarketDataMarketCapInUsd       TokenField = "marketData.marketCapInUsd"
+	TokenFieldMarketDataMaxPoolTvlInUsd      TokenField = "marketData.maxPoolTvlInUsd"
+	TokenFieldMarketDataPriceInUsd           TokenField = "marketData.priceInUsd"
+	TokenFieldMarketDataTop100HoldingsRatio  TokenField = "marketData.top100HoldingsRatio"
+	TokenFieldMarketDataTop100TotalHoldings  TokenField = "marketData.top100TotalHoldings"
+	TokenFieldMarketDataTop10HoldingsRatio   TokenField = "marketData.top10HoldingsRatio"
+	TokenFieldMarketDataTop10TotalHoldings   TokenField = "marketData.top10TotalHoldings"
+	TokenFieldMarketDataTotalTvlInUsd        TokenField = "marketData.totalTvlInUsd"
+	TokenFieldStatsBuys15m                   TokenField = "stats.buys15m"
+	TokenFieldStatsBuys1h                    TokenField = "stats.buys1h"
+	TokenFieldStatsBuys1m                    TokenField = "stats.buys1m"
+	TokenFieldStatsBuys24h                   TokenField = "stats.buys24h"
+	TokenFieldStatsBuys30m                   TokenField = "stats.buys30m"
+	TokenFieldStatsBuys4h                    TokenField = "stats.buys4h"
+	TokenFieldStatsBuys5m                    TokenField = "stats.buys5m"
+	TokenFieldStatsPriceChangeRatioInUsd1h   TokenField = "stats.priceChangeRatioInUsd1h"
+	TokenFieldStatsPriceChangeRatioInUsd1m   TokenField = "stats.priceChangeRatioInUsd1m"
+	TokenFieldStatsPriceChangeRatioInUsd24h  TokenField = "stats.priceChangeRatioInUsd24h"
+	TokenFieldStatsPriceChangeRatioInUsd4h   TokenField = "stats.priceChangeRatioInUsd4h"
+	TokenFieldStatsPriceChangeRatioInUsd5m   TokenField = "stats.priceChangeRatioInUsd5m"
+	TokenFieldStatsSells15m                  TokenField = "stats.sells15m"
+	TokenFieldStatsSells1h                   TokenField = "stats.sells1h"
+	TokenFieldStatsSells1m                   TokenField = "stats.sells1m"
+	TokenFieldStatsSells24h                  TokenField = "stats.sells24h"
+	TokenFieldStatsSells30m                  TokenField = "stats.sells30m"
+	TokenFieldStatsSells4h                   TokenField = "stats.sells4h"
+	TokenFieldStatsSells5m                   TokenField = "stats.sells5m"
+	TokenFieldStatsTraders1h                 TokenField = "stats.traders1h"
+	TokenFieldStatsTraders1m                 TokenField = "stats.traders1m"
+	TokenFieldStatsTraders24h                TokenField = "stats.traders24h"
+	TokenFieldStatsTraders4h                 TokenField = "stats.traders4h"
+	TokenFieldStatsTraders5m                 TokenField = "stats.traders5m"
+	TokenFieldStatsTrades1h                  TokenField = "stats.trades1h"
+	TokenFieldStatsTrades1m                  TokenField = "stats.trades1m"
+	TokenFieldStatsTrades24h                 TokenField = "stats.trades24h"
+	TokenFieldStatsTrades4h                  TokenField = "stats.trades4h"
+	TokenFieldStatsTrades5m                  TokenField = "stats.trades5m"
+	TokenFieldStatsVolumesInUsd1h            TokenField = "stats.volumesInUsd1h"
+	TokenFieldStatsVolumesInUsd1m            TokenField = "stats.volumesInUsd1m"
+	TokenFieldStatsVolumesInUsd24h           TokenField = "stats.volumesInUsd24h"
+	TokenFieldStatsVolumesInUsd4h            TokenField = "stats.volumesInUsd4h"
+	TokenFieldStatsVolumesInUsd5m            TokenField = "stats.volumesInUsd5m"
+	TokenFieldTokenCreatedAt                 TokenField = "tokenCreatedAt"
+)
+
+// Defines values for TokenListSortField.
+const (
+	H1BuyVolumeInUsd    TokenListSortField = "h1BuyVolumeInUsd"
+	H1Buyers            TokenListSortField = "h1Buyers"
+	H1Buys              TokenListSortField = "h1Buys"
+	H1PriceChangeRatio  TokenListSortField = "h1PriceChangeRatio"
+	H1SellVolumeInUsd   TokenListSortField = "h1SellVolumeInUsd"
+	H1Sellers           TokenListSortField = "h1Sellers"
+	H1Sells             TokenListSortField = "h1Sells"
+	H1Trades            TokenListSortField = "h1Trades"
+	H1VolumeInUsd       TokenListSortField = "h1VolumeInUsd"
+	H24BuyVolumeInUsd   TokenListSortField = "h24BuyVolumeInUsd"
+	H24Buyers           TokenListSortField = "h24Buyers"
+	H24Buys             TokenListSortField = "h24Buys"
+	H24PriceChangeRatio TokenListSortField = "h24PriceChangeRatio"
+	H24SellVolumeInUsd  TokenListSortField = "h24SellVolumeInUsd"
+	H24Sellers          TokenListSortField = "h24Sellers"
+	H24Sells            TokenListSortField = "h24Sells"
+	H24Trades           TokenListSortField = "h24Trades"
+	H24VolumeInUsd      TokenListSortField = "h24VolumeInUsd"
+	H4BuyVolumeInUsd    TokenListSortField = "h4BuyVolumeInUsd"
+	H4Buyers            TokenListSortField = "h4Buyers"
+	H4Buys              TokenListSortField = "h4Buys"
+	H4PriceChangeRatio  TokenListSortField = "h4PriceChangeRatio"
+	H4SellVolumeInUsd   TokenListSortField = "h4SellVolumeInUsd"
+	H4Sellers           TokenListSortField = "h4Sellers"
+	H4Sells             TokenListSortField = "h4Sells"
+	H4Trades            TokenListSortField = "h4Trades"
+	H4VolumeInUsd       TokenListSortField = "h4VolumeInUsd"
+	M15BuyVolumeInUsd   TokenListSortField = "m15BuyVolumeInUsd"
+	M15Buyers           TokenListSortField = "m15Buyers"
+	M15Buys             TokenListSortField = "m15Buys"
+	M15PriceChangeRatio TokenListSortField = "m15PriceChangeRatio"
+	M15SellVolumeInUsd  TokenListSortField = "m15SellVolumeInUsd"
+	M15Sellers          TokenListSortField = "m15Sellers"
+	M15Sells            TokenListSortField = "m15Sells"
+	M15Trades           TokenListSortField = "m15Trades"
+	M15VolumeInUsd      TokenListSortField = "m15VolumeInUsd"
+	M1BuyVolumeInUsd    TokenListSortField = "m1BuyVolumeInUsd"
+	M1Buyers            TokenListSortField = "m1Buyers"
+	M1Buys              TokenListSortField = "m1Buys"
+	M1PriceChangeRatio  TokenListSortField = "m1PriceChangeRatio"
+	M1SellVolumeInUsd   TokenListSortField = "m1SellVolumeInUsd"
+	M1Sellers           TokenListSortField = "m1Sellers"
+	M1Sells             TokenListSortField = "m1Sells"
+	M1Trades            TokenListSortField = "m1Trades"
+	M1VolumeInUsd       TokenListSortField = "m1VolumeInUsd"
+	M30BuyVolumeInUsd   TokenListSortField = "m30BuyVolumeInUsd"
+	M30Buyers           TokenListSortField = "m30Buyers"
+	M30Buys             TokenListSortField = "m30Buys"
+	M30PriceChangeRatio TokenListSortField = "m30PriceChangeRatio"
+	M30SellVolumeInUsd  TokenListSortField = "m30SellVolumeInUsd"
+	M30Sellers          TokenListSortField = "m30Sellers"
+	M30Sells            TokenListSortField = "m30Sells"
+	M30Trades           TokenListSortField = "m30Trades"
+	M30VolumeInUsd      TokenListSortField = "m30VolumeInUsd"
+	M5BuyVolumeInUsd    TokenListSortField = "m5BuyVolumeInUsd"
+	M5Buyers            TokenListSortField = "m5Buyers"
+	M5Buys              TokenListSortField = "m5Buys"
+	M5PriceChangeRatio  TokenListSortField = "m5PriceChangeRatio"
+	M5SellVolumeInUsd   TokenListSortField = "m5SellVolumeInUsd"
+	M5Sellers           TokenListSortField = "m5Sellers"
+	M5Sells             TokenListSortField = "m5Sells"
+	M5Trades            TokenListSortField = "m5Trades"
+	M5VolumeInUsd       TokenListSortField = "m5VolumeInUsd"
 )
 
 // Defines values for TokenTraderTag.
@@ -152,1317 +217,654 @@ const (
 	Sniper   TokenTraderTag = "sniper"
 )
 
-// Defines values for TokenTransferItemDTOFlow.
-const (
-	In  TokenTransferItemDTOFlow = "in"
-	Out TokenTransferItemDTOFlow = "out"
-)
+// ChainSymbol Supported blockchain chains
+type ChainSymbol string
 
-// Defines values for SearchParamsDirection.
-const (
-	SearchParamsDirectionNext SearchParamsDirection = "next"
-	SearchParamsDirectionPrev SearchParamsDirection = "prev"
-)
+// MintBurnType Mint/burn type filter
+type MintBurnType string
 
-// Defines values for SearchParamsSort.
-const (
-	SearchParamsSortAsc  SearchParamsSort = "asc"
-	SearchParamsSortDesc SearchParamsSort = "desc"
-)
+// PageDirection Pagination direction
+type PageDirection string
 
-// Defines values for SearchParamsSortBy.
-const (
-	SearchParamsSortByH24Transactions SearchParamsSortBy = "h24Transactions"
-	SearchParamsSortByH24VolumeInUsd  SearchParamsSortBy = "h24VolumeInUsd"
-	SearchParamsSortByHolderCount     SearchParamsSortBy = "holderCount"
-	SearchParamsSortByLiquidityInUsd  SearchParamsSortBy = "liquidityInUsd"
-	SearchParamsSortByMarketCapInUsd  SearchParamsSortBy = "marketCapInUsd"
-	SearchParamsSortByPriceInUsd      SearchParamsSortBy = "priceInUsd"
-	SearchParamsSortByTokenCreatedAt  SearchParamsSortBy = "tokenCreatedAt"
-)
+// PageResponseDevToken Generic pagination response
+type PageResponseDevToken struct {
+	// Data Page data
+	Data []struct {
+		// Address Token address
+		Address string `json:"address"`
 
-// Defines values for ListTokenParamsDirection.
-const (
-	ListTokenParamsDirectionNext ListTokenParamsDirection = "next"
-	ListTokenParamsDirectionPrev ListTokenParamsDirection = "prev"
-)
+		// MarketData Token market data
+		MarketData TokenMarketData `json:"marketData"`
 
-// Defines values for ListTokenParamsSort.
-const (
-	ListTokenParamsSortAsc  ListTokenParamsSort = "asc"
-	ListTokenParamsSortDesc ListTokenParamsSort = "desc"
-)
+		// Metadata Token metadata
+		Metadata TokenMetadata `json:"metadata"`
 
-// Defines values for ListTokenParamsSortBy.
-const (
-	H1BuyVolumeInUsd    ListTokenParamsSortBy = "h1BuyVolumeInUsd"
-	H1Buyers            ListTokenParamsSortBy = "h1Buyers"
-	H1Buys              ListTokenParamsSortBy = "h1Buys"
-	H1PriceChangeRatio  ListTokenParamsSortBy = "h1PriceChangeRatio"
-	H1SellVolumeInUsd   ListTokenParamsSortBy = "h1SellVolumeInUsd"
-	H1Sellers           ListTokenParamsSortBy = "h1Sellers"
-	H1Sells             ListTokenParamsSortBy = "h1Sells"
-	H1Trades            ListTokenParamsSortBy = "h1Trades"
-	H1VolumeInUsd       ListTokenParamsSortBy = "h1VolumeInUsd"
-	H24BuyVolumeInUsd   ListTokenParamsSortBy = "h24BuyVolumeInUsd"
-	H24Buyers           ListTokenParamsSortBy = "h24Buyers"
-	H24Buys             ListTokenParamsSortBy = "h24Buys"
-	H24PriceChangeRatio ListTokenParamsSortBy = "h24PriceChangeRatio"
-	H24SellVolumeInUsd  ListTokenParamsSortBy = "h24SellVolumeInUsd"
-	H24Sellers          ListTokenParamsSortBy = "h24Sellers"
-	H24Sells            ListTokenParamsSortBy = "h24Sells"
-	H24Trades           ListTokenParamsSortBy = "h24Trades"
-	H24VolumeInUsd      ListTokenParamsSortBy = "h24VolumeInUsd"
-	H4BuyVolumeInUsd    ListTokenParamsSortBy = "h4BuyVolumeInUsd"
-	H4Buyers            ListTokenParamsSortBy = "h4Buyers"
-	H4Buys              ListTokenParamsSortBy = "h4Buys"
-	H4PriceChangeRatio  ListTokenParamsSortBy = "h4PriceChangeRatio"
-	H4SellVolumeInUsd   ListTokenParamsSortBy = "h4SellVolumeInUsd"
-	H4Sellers           ListTokenParamsSortBy = "h4Sellers"
-	H4Sells             ListTokenParamsSortBy = "h4Sells"
-	H4Trades            ListTokenParamsSortBy = "h4Trades"
-	H4VolumeInUsd       ListTokenParamsSortBy = "h4VolumeInUsd"
-	M15BuyVolumeInUsd   ListTokenParamsSortBy = "m15BuyVolumeInUsd"
-	M15Buyers           ListTokenParamsSortBy = "m15Buyers"
-	M15Buys             ListTokenParamsSortBy = "m15Buys"
-	M15PriceChangeRatio ListTokenParamsSortBy = "m15PriceChangeRatio"
-	M15SellVolumeInUsd  ListTokenParamsSortBy = "m15SellVolumeInUsd"
-	M15Sellers          ListTokenParamsSortBy = "m15Sellers"
-	M15Sells            ListTokenParamsSortBy = "m15Sells"
-	M15Trades           ListTokenParamsSortBy = "m15Trades"
-	M15VolumeInUsd      ListTokenParamsSortBy = "m15VolumeInUsd"
-	M1BuyVolumeInUsd    ListTokenParamsSortBy = "m1BuyVolumeInUsd"
-	M1Buyers            ListTokenParamsSortBy = "m1Buyers"
-	M1Buys              ListTokenParamsSortBy = "m1Buys"
-	M1PriceChangeRatio  ListTokenParamsSortBy = "m1PriceChangeRatio"
-	M1SellVolumeInUsd   ListTokenParamsSortBy = "m1SellVolumeInUsd"
-	M1Sellers           ListTokenParamsSortBy = "m1Sellers"
-	M1Sells             ListTokenParamsSortBy = "m1Sells"
-	M1Trades            ListTokenParamsSortBy = "m1Trades"
-	M1VolumeInUsd       ListTokenParamsSortBy = "m1VolumeInUsd"
-	M30BuyVolumeInUsd   ListTokenParamsSortBy = "m30BuyVolumeInUsd"
-	M30Buyers           ListTokenParamsSortBy = "m30Buyers"
-	M30Buys             ListTokenParamsSortBy = "m30Buys"
-	M30PriceChangeRatio ListTokenParamsSortBy = "m30PriceChangeRatio"
-	M30SellVolumeInUsd  ListTokenParamsSortBy = "m30SellVolumeInUsd"
-	M30Sellers          ListTokenParamsSortBy = "m30Sellers"
-	M30Sells            ListTokenParamsSortBy = "m30Sells"
-	M30Trades           ListTokenParamsSortBy = "m30Trades"
-	M30VolumeInUsd      ListTokenParamsSortBy = "m30VolumeInUsd"
-	M5BuyVolumeInUsd    ListTokenParamsSortBy = "m5BuyVolumeInUsd"
-	M5Buyers            ListTokenParamsSortBy = "m5Buyers"
-	M5Buys              ListTokenParamsSortBy = "m5Buys"
-	M5PriceChangeRatio  ListTokenParamsSortBy = "m5PriceChangeRatio"
-	M5SellVolumeInUsd   ListTokenParamsSortBy = "m5SellVolumeInUsd"
-	M5Sellers           ListTokenParamsSortBy = "m5Sellers"
-	M5Sells             ListTokenParamsSortBy = "m5Sells"
-	M5Trades            ListTokenParamsSortBy = "m5Trades"
-	M5VolumeInUsd       ListTokenParamsSortBy = "m5VolumeInUsd"
-)
+		// Stats Token statistics with nested time period data
+		Stats TokenStats `json:"stats"`
+	} `json:"data"`
 
-// Defines values for GetTokensParamsSortBy.
-const (
-	MarketDataCreatorHoldings      GetTokensParamsSortBy = "marketData.creatorHoldings"
-	MarketDataCreatorHoldingsRatio GetTokensParamsSortBy = "marketData.creatorHoldingsRatio"
-	MarketDataHolders              GetTokensParamsSortBy = "marketData.holders"
-	MarketDataMarketCapInUsd       GetTokensParamsSortBy = "marketData.marketCapInUsd"
-	MarketDataMaxPoolTvlInUsd      GetTokensParamsSortBy = "marketData.maxPoolTvlInUsd"
-	MarketDataPriceInUsd           GetTokensParamsSortBy = "marketData.priceInUsd"
-	MarketDataTop100HoldingsRatio  GetTokensParamsSortBy = "marketData.top100HoldingsRatio"
-	MarketDataTop100TotalHoldings  GetTokensParamsSortBy = "marketData.top100TotalHoldings"
-	MarketDataTop10HoldingsRatio   GetTokensParamsSortBy = "marketData.top10HoldingsRatio"
-	MarketDataTop10TotalHoldings   GetTokensParamsSortBy = "marketData.top10TotalHoldings"
-	MarketDataTotalTvlInUsd        GetTokensParamsSortBy = "marketData.totalTvlInUsd"
-	StatsBuys15m                   GetTokensParamsSortBy = "stats.buys15m"
-	StatsBuys1h                    GetTokensParamsSortBy = "stats.buys1h"
-	StatsBuys1m                    GetTokensParamsSortBy = "stats.buys1m"
-	StatsBuys24h                   GetTokensParamsSortBy = "stats.buys24h"
-	StatsBuys30m                   GetTokensParamsSortBy = "stats.buys30m"
-	StatsBuys4h                    GetTokensParamsSortBy = "stats.buys4h"
-	StatsBuys5m                    GetTokensParamsSortBy = "stats.buys5m"
-	StatsPriceChangeRatioInUsd1h   GetTokensParamsSortBy = "stats.priceChangeRatioInUsd1h"
-	StatsPriceChangeRatioInUsd1m   GetTokensParamsSortBy = "stats.priceChangeRatioInUsd1m"
-	StatsPriceChangeRatioInUsd24h  GetTokensParamsSortBy = "stats.priceChangeRatioInUsd24h"
-	StatsPriceChangeRatioInUsd4h   GetTokensParamsSortBy = "stats.priceChangeRatioInUsd4h"
-	StatsPriceChangeRatioInUsd5m   GetTokensParamsSortBy = "stats.priceChangeRatioInUsd5m"
-	StatsSells15m                  GetTokensParamsSortBy = "stats.sells15m"
-	StatsSells1h                   GetTokensParamsSortBy = "stats.sells1h"
-	StatsSells1m                   GetTokensParamsSortBy = "stats.sells1m"
-	StatsSells24h                  GetTokensParamsSortBy = "stats.sells24h"
-	StatsSells30m                  GetTokensParamsSortBy = "stats.sells30m"
-	StatsSells4h                   GetTokensParamsSortBy = "stats.sells4h"
-	StatsSells5m                   GetTokensParamsSortBy = "stats.sells5m"
-	StatsTraders1h                 GetTokensParamsSortBy = "stats.traders1h"
-	StatsTraders1m                 GetTokensParamsSortBy = "stats.traders1m"
-	StatsTraders24h                GetTokensParamsSortBy = "stats.traders24h"
-	StatsTraders4h                 GetTokensParamsSortBy = "stats.traders4h"
-	StatsTraders5m                 GetTokensParamsSortBy = "stats.traders5m"
-	StatsTrades1h                  GetTokensParamsSortBy = "stats.trades1h"
-	StatsTrades1m                  GetTokensParamsSortBy = "stats.trades1m"
-	StatsTrades24h                 GetTokensParamsSortBy = "stats.trades24h"
-	StatsTrades4h                  GetTokensParamsSortBy = "stats.trades4h"
-	StatsTrades5m                  GetTokensParamsSortBy = "stats.trades5m"
-	StatsVolumesInUsd1h            GetTokensParamsSortBy = "stats.volumesInUsd1h"
-	StatsVolumesInUsd1m            GetTokensParamsSortBy = "stats.volumesInUsd1m"
-	StatsVolumesInUsd24h           GetTokensParamsSortBy = "stats.volumesInUsd24h"
-	StatsVolumesInUsd4h            GetTokensParamsSortBy = "stats.volumesInUsd4h"
-	StatsVolumesInUsd5m            GetTokensParamsSortBy = "stats.volumesInUsd5m"
-	TokenCreatedAt                 GetTokensParamsSortBy = "tokenCreatedAt"
-)
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
 
-// Defines values for GetTokensParamsSortDirection.
-const (
-	ASC  GetTokensParamsSortDirection = "ASC"
-	DESC GetTokensParamsSortDirection = "DESC"
-)
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
 
-// Defines values for GetHoldersParamsDirection.
-const (
-	GetHoldersParamsDirectionNext GetHoldersParamsDirection = "next"
-	GetHoldersParamsDirectionPrev GetHoldersParamsDirection = "prev"
-)
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
 
-// Defines values for GetTokenLiquiditySnapshotsParamsDirection.
-const (
-	GetTokenLiquiditySnapshotsParamsDirectionNext GetTokenLiquiditySnapshotsParamsDirection = "next"
-	GetTokenLiquiditySnapshotsParamsDirectionPrev GetTokenLiquiditySnapshotsParamsDirection = "prev"
-)
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
+}
 
-// Defines values for GetMintAndBurnParamsDirection.
-const (
-	GetMintAndBurnParamsDirectionNext GetMintAndBurnParamsDirection = "next"
-	GetMintAndBurnParamsDirectionPrev GetMintAndBurnParamsDirection = "prev"
-)
+// PageResponseDexPool Generic pagination response
+type PageResponseDexPool struct {
+	// Data Page data
+	Data []struct {
+		// Chain Chain
+		Chain string `json:"chain"`
 
-// Defines values for GetMintAndBurnParamsType.
-const (
-	GetMintAndBurnParamsTypeAll  GetMintAndBurnParamsType = "all"
-	GetMintAndBurnParamsTypeBurn GetMintAndBurnParamsType = "burn"
-	GetMintAndBurnParamsTypeMint GetMintAndBurnParamsType = "mint"
-)
+		// PoolAddress Pool address
+		PoolAddress string `json:"poolAddress"`
 
-// Defines values for GetPoolsParamsDirection.
-const (
-	GetPoolsParamsDirectionNext GetPoolsParamsDirection = "next"
-	GetPoolsParamsDirectionPrev GetPoolsParamsDirection = "prev"
-)
+		// ProgramAddress DEX program address
+		ProgramAddress *string `json:"programAddress"`
 
-// Defines values for GetPoolsParamsSortBy.
-const (
-	TvlInSol GetPoolsParamsSortBy = "tvlInSol"
-	TvlInUsd GetPoolsParamsSortBy = "tvlInUsd"
-)
+		// ProtocolFamily Protocol family
+		ProtocolFamily *string `json:"protocolFamily"`
 
-// Defines values for GetPoolsParamsSortDirection.
-const (
-	Asc  GetPoolsParamsSortDirection = "asc"
-	Desc GetPoolsParamsSortDirection = "desc"
-)
+		// TokenAAddress Token A address
+		TokenAAddress string `json:"tokenAAddress"`
 
-// Defines values for GetPricesParamsDirection.
-const (
-	GetPricesParamsDirectionNext GetPricesParamsDirection = "next"
-	GetPricesParamsDirectionPrev GetPricesParamsDirection = "prev"
-)
+		// TokenBAddress Token B address
+		TokenBAddress string `json:"tokenBAddress"`
 
-// Defines values for GetTokenTransferTotalParamsDirection.
-const (
-	GetTokenTransferTotalParamsDirectionNext GetTokenTransferTotalParamsDirection = "next"
-	GetTokenTransferTotalParamsDirectionPrev GetTokenTransferTotalParamsDirection = "prev"
-)
+		// TvlInSol TVL in native token
+		TvlInSol *string `json:"tvlInSol"`
 
-// Defines values for GetTokenTransfersParamsDirection.
-const (
-	Next GetTokenTransfersParamsDirection = "next"
-	Prev GetTokenTransfersParamsDirection = "prev"
-)
+		// TvlInUsd TVL in USD
+		TvlInUsd *string `json:"tvlInUsd"`
+	} `json:"data"`
 
-// Candle defines model for Candle.
-type Candle struct {
-	// Close DTO.CANDLE.CLOSE
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
+}
+
+// PageResponseToken Generic pagination response
+type PageResponseToken struct {
+	// Data Page data
+	Data []struct {
+		Address               string  `json:"address"`
+		Chain                 string  `json:"chain"`
+		CoingeckoCoinId       *string `json:"coingeckoCoinId"`
+		Decimals              int32   `json:"decimals"`
+		Description           *string `json:"description"`
+		DevLastTokenCreatedAt *string `json:"devLastTokenCreatedAt"`
+		DevTotalTokens        *string `json:"devTotalTokens"`
+
+		// Extension Token extra metadata
+		Extension *TokenExtra `json:"extension,omitempty"`
+
+		// Extra Token extra metadata
+		Extra    *TokenExtra `json:"extra,omitempty"`
+		ImageUrl *string     `json:"imageUrl"`
+		Market   *string     `json:"market"`
+
+		// MarketData Token market data
+		MarketData      *TokenMarketData `json:"marketData,omitempty"`
+		MetadataAddress *string          `json:"metadataAddress"`
+		Name            string           `json:"name"`
+
+		// SocialMedias Token social media links
+		SocialMedias *TokenSocialMedias `json:"socialMedias,omitempty"`
+
+		// Stats Token statistics with nested time period data
+		Stats                   *TokenStats     `json:"stats,omitempty"`
+		Symbol                  string          `json:"symbol"`
+		TokenCreatedAt          *int64          `json:"tokenCreatedAt"`
+		TokenCreatedBlockHeight *string         `json:"tokenCreatedBlockHeight"`
+		TokenCreatedSlot        *string         `json:"tokenCreatedSlot"`
+		TokenCreatedTxSignature *string         `json:"tokenCreatedTxSignature"`
+		TokenCreators           *[]TokenCreator `json:"tokenCreators,omitempty"`
+		Uri                     *string         `json:"uri"`
+	} `json:"data"`
+
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
+}
+
+// PageResponseTokenHolder Generic pagination response
+type PageResponseTokenHolder struct {
+	// Data Page data
+	Data []struct {
+		Amount        string `json:"amount"`
+		AmountInUsd   string `json:"amountInUsd"`
+		Percentage    string `json:"percentage"`
+		WalletAddress string `json:"walletAddress"`
+	} `json:"data"`
+
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
+}
+
+// PageResponseTokenLiquiditySnapshot Generic pagination response
+type PageResponseTokenLiquiditySnapshot struct {
+	// Data Page data
+	Data []struct {
+		CalculatedAt            int64  `json:"calculatedAt"`
+		MaxLiquidityInNative    string `json:"maxLiquidityInNative"`
+		MaxLiquidityInUsd       string `json:"maxLiquidityInUsd"`
+		MaxLiquidityPoolAddress string `json:"maxLiquidityPoolAddress"`
+		PoolCount               int64  `json:"poolCount"`
+		PriceNative             string `json:"priceNative"`
+		PriceUsd                string `json:"priceUsd"`
+		SnapshotTime            int64  `json:"snapshotTime"`
+		TotalLiquidityInNative  string `json:"totalLiquidityInNative"`
+		TotalLiquidityInUsd     string `json:"totalLiquidityInUsd"`
+	} `json:"data"`
+
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
+}
+
+// PageResponseTokenMintBurn Generic pagination response
+type PageResponseTokenMintBurn struct {
+	// Data Page data
+	Data []struct {
+		Amount         string `json:"amount"`
+		BlockHeight    int64  `json:"blockHeight"`
+		BlockTimestamp int64  `json:"blockTimestamp"`
+
+		// MintBurnType Mint/burn type filter
+		MintBurnType         MintBurnType `json:"mintBurnType"`
+		TokenAddress         string       `json:"tokenAddress"`
+		TransactionSignature string       `json:"transactionSignature"`
+	} `json:"data"`
+
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
+}
+
+// PageResponseTokenPrice Generic pagination response
+type PageResponseTokenPrice struct {
+	// Data Page data
+	Data []struct {
+		// Address Token address
+		Address string `json:"address"`
+
+		// PriceInSol Price in native token
+		PriceInSol *string `json:"priceInSol"`
+
+		// PriceInUsd Price in USD
+		PriceInUsd string `json:"priceInUsd"`
+
+		// Timestamp Timestamp
+		Timestamp int64 `json:"timestamp"`
+	} `json:"data"`
+
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
+}
+
+// PageResponseTokenTrader Generic pagination response
+type PageResponseTokenTrader struct {
+	// Data Page data
+	Data []struct {
+		// Address Wallet address
+		Address string `json:"address"`
+
+		// BlockTimestamp Block timestamp (sniper)
+		BlockTimestamp *string `json:"blockTimestamp"`
+
+		// OnchainCreatedAt Onchain account creation time (fresh/dev)
+		OnchainCreatedAt *string `json:"onchainCreatedAt"`
+
+		// PercentileRankTradeAmountInUsd Percentile rank of trade amount in USD (pro/insider)
+		PercentileRankTradeAmountInUsd *string `json:"percentileRankTradeAmountInUsd"`
+
+		// PercentileRankTradeCount Percentile rank of trade count (pro)
+		PercentileRankTradeCount *int64 `json:"percentileRankTradeCount"`
+
+		// RankTradeAmountInUsd Rank trade amount in USD (insider)
+		RankTradeAmountInUsd *string `json:"rankTradeAmountInUsd"`
+
+		// TradeAmountInNative Trade amount in native token (pro/insider)
+		TradeAmountInNative *string `json:"tradeAmountInNative"`
+
+		// TradeAmountInUsd Trade amount in USD (pro/insider)
+		TradeAmountInUsd *string `json:"tradeAmountInUsd"`
+
+		// TradeCount Trade count (pro/insider)
+		TradeCount *int64 `json:"tradeCount"`
+
+		// TransactionSignature Transaction signature (sandwish/bundle/sniper)
+		TransactionSignature *string `json:"transactionSignature"`
+	} `json:"data"`
+
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
+}
+
+// PageResponseTokenTransfer Generic pagination response
+type PageResponseTokenTransfer struct {
+	// Data Page data
+	Data []struct {
+		Amount         string  `json:"amount"`
+		AmountInUsd    *string `json:"amountInUsd"`
+		BlockTimestamp int64   `json:"blockTimestamp"`
+		FromAddress    string  `json:"fromAddress"`
+		Id             string  `json:"id"`
+
+		// Status Transfer status: unknown / succeeded / failed
+		Status               string `json:"status"`
+		ToAddress            string `json:"toAddress"`
+		TokenAddress         string `json:"tokenAddress"`
+		TransactionSignature string `json:"transactionSignature"`
+
+		// Type Transfer type: unknown / in / out
+		Type string `json:"type"`
+	} `json:"data"`
+
+	// EndCursor Cursor for the end of current page
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext Whether there is a next page
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev Whether there is a previous page
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor Cursor for the start of current page
+	StartCursor *string `json:"startCursor"`
+}
+
+// PoolSortField Pool sort field
+type PoolSortField string
+
+// PriceType Price type for candle data
+type PriceType string
+
+// Resolution Candle resolution
+type Resolution string
+
+// SearchSortBy defines model for SearchSortBy.
+type SearchSortBy string
+
+// SortDirection Sort direction (case-insensitive: accepts "asc"/"ASC"/"Asc" etc.)
+type SortDirection string
+
+// Token Token entity — mirrors TS `TokenDTO extends TokenMetadataDTO`.
+//
+// TS uses class inheritance to flatten metadata into the top level.
+// Rust uses `#[serde(flatten)]` for the same effect.
+type Token struct {
+	Address               string  `json:"address"`
+	Chain                 string  `json:"chain"`
+	CoingeckoCoinId       *string `json:"coingeckoCoinId"`
+	Decimals              int32   `json:"decimals"`
+	Description           *string `json:"description"`
+	DevLastTokenCreatedAt *string `json:"devLastTokenCreatedAt"`
+	DevTotalTokens        *string `json:"devTotalTokens"`
+
+	// Extension Token extra metadata
+	Extension *TokenExtra `json:"extension,omitempty"`
+
+	// Extra Token extra metadata
+	Extra    *TokenExtra `json:"extra,omitempty"`
+	ImageUrl *string     `json:"imageUrl"`
+	Market   *string     `json:"market"`
+
+	// MarketData Token market data
+	MarketData      *TokenMarketData `json:"marketData,omitempty"`
+	MetadataAddress *string          `json:"metadataAddress"`
+	Name            string           `json:"name"`
+
+	// SocialMedias Token social media links
+	SocialMedias *TokenSocialMedias `json:"socialMedias,omitempty"`
+
+	// Stats Token statistics with nested time period data
+	Stats                   *TokenStats     `json:"stats,omitempty"`
+	Symbol                  string          `json:"symbol"`
+	TokenCreatedAt          *int64          `json:"tokenCreatedAt"`
+	TokenCreatedBlockHeight *string         `json:"tokenCreatedBlockHeight"`
+	TokenCreatedSlot        *string         `json:"tokenCreatedSlot"`
+	TokenCreatedTxSignature *string         `json:"tokenCreatedTxSignature"`
+	TokenCreators           *[]TokenCreator `json:"tokenCreators,omitempty"`
+	Uri                     *string         `json:"uri"`
+}
+
+// TokenCandle Token candle (OHLCV)
+type TokenCandle struct {
+	// Close Close price
 	Close string `json:"close"`
 
-	// High DTO.CANDLE.HIGH
+	// High High price
 	High string `json:"high"`
 
-	// Low DTO.CANDLE.LOW
+	// Low Low price
 	Low string `json:"low"`
 
-	// Open DTO.CANDLE.OPEN
+	// Open Open price
 	Open string `json:"open"`
 
-	// Resolution DTO.CANDLE.RESOLUTION
-	Resolution Resolution `json:"resolution"`
+	// Timestamp Timestamp
+	Timestamp int64 `json:"timestamp"`
 
-	// Time DTO.CANDLE.TIME
-	Time int64 `json:"time"`
-
-	// Trades DTO.CANDLE.TRADES
-	Trades int64 `json:"trades"`
-
-	// UpdatedAt DTO.CANDLE.UPDATED_AT
-	UpdatedAt int64 `json:"updatedAt"`
-
-	// Volume DTO.CANDLE.VOLUME
+	// Volume Volume
 	Volume string `json:"volume"`
 }
 
-// ChainSymbol defines model for ChainSymbol.
-type ChainSymbol string
-
-// DevTokenDTO defines model for DevTokenDTO.
-type DevTokenDTO struct {
-	// Address DTO.DEV_TOKEN.ADDRESS
-	Address string `json:"address"`
-
-	// MarketData DTO.DEV_TOKEN.MARKET_DATA
-	MarketData TokenMarketData `json:"marketData"`
-
-	// Metadata DTO.DEV_TOKEN.METADATA
-	Metadata TokenMetadata `json:"metadata"`
-
-	// Stats DTO.DEV_TOKEN.STATS
-	Stats TokenStat `json:"stats"`
+// TokenCreation Token creation info — mirrors TS `TokenCreationDTO`
+type TokenCreation struct {
+	BlockHash            *string `json:"blockHash"`
+	BlockHeight          int64   `json:"blockHeight"`
+	BlockSlot            int64   `json:"blockSlot"`
+	BlockTimestamp       *int64  `json:"blockTimestamp"`
+	TokenAddress         string  `json:"tokenAddress"`
+	TransactionSignature string  `json:"transactionSignature"`
+	Type                 string  `json:"type"`
 }
 
-// DexPoolDTO defines model for DexPoolDTO.
-type DexPoolDTO struct {
-	// Chain DTO.DEX.CHAIN
-	Chain string `json:"chain"`
-
-	// CreatedBlockTimestamp DTO.DEXPOOL.CREATED_BLOCK_TIMESTAMP
-	CreatedBlockTimestamp *string `json:"createdBlockTimestamp,omitempty"`
-
-	// FeeRate DTO.DEXPOOL.FEE_RATE
-	FeeRate *string `json:"feeRate,omitempty"`
-
-	// Image DTO.DEX.IMAGE
-	Image *string `json:"image,omitempty"`
-
-	// LiquidityModel DTO.DEXPOOL.LIQUIDITY_MODEL
-	LiquidityModel *DexPoolDTOLiquidityModel `json:"liquidityModel,omitempty"`
-
-	// PoolAddress DTO.DEXPOOL.POOL_ADDRESS
-	PoolAddress string `json:"poolAddress"`
-
-	// ProgramAddress DTO.DEX.PROGRAM_ADDRESS
-	ProgramAddress *string `json:"programAddress,omitempty"`
-
-	// ProtocolFamily DTO.DEX.PROTOCOL_FAMILY
-	ProtocolFamily *string `json:"protocolFamily,omitempty"`
-
-	// ProtocolName DTO.DEXPOOL.PROTOCOL_NAME
-	ProtocolName *string `json:"protocolName,omitempty"`
-
-	// TickSpacing DTO.DEXPOOL.TICK_SPACING
-	TickSpacing *int64 `json:"tickSpacing,omitempty"`
-
-	// TokenAAddress DTO.DEXPOOL.TOKEN_A
-	TokenAAddress string `json:"tokenAAddress"`
-
-	// TokenALiquidity DTO.DEXPOOL.TOKEN_A_LIQUIDITY
-	TokenALiquidity *DexPoolTokenLiquidity `json:"tokenALiquidity,omitempty"`
-
-	// TokenBAddress DTO.DEXPOOL.TOKEN_B
-	TokenBAddress string `json:"tokenBAddress"`
-
-	// TokenBLiquidity DTO.DEXPOOL.TOKEN_B_LIQUIDITY
-	TokenBLiquidity *DexPoolTokenLiquidity `json:"tokenBLiquidity,omitempty"`
-
-	// TokenCount DTO.DEXPOOL.TOKEN_COUNT
-	TokenCount *int64 `json:"tokenCount,omitempty"`
-
-	// TvlInSol DTO.DEXPOOL.TVL_SOL
-	TvlInSol *string `json:"tvlInSol,omitempty"`
-
-	// TvlInUsd DTO.DEXPOOL.TVL_USD
-	TvlInUsd *string `json:"tvlInUsd,omitempty"`
-
-	// Type DTO.DEXPOOL.TYPE
-	Type *DexPoolDTOType `json:"type,omitempty"`
-
-	// Version DTO.DEXPOOL.VERSION
-	Version *DexPoolDTOVersion `json:"version,omitempty"`
+// TokenCreator Token creator info
+type TokenCreator struct {
+	Address    *string `json:"address"`
+	IsVerified *bool   `json:"isVerified"`
+	Share      *int64  `json:"share"`
 }
 
-// DexPoolDTOLiquidityModel DTO.DEXPOOL.LIQUIDITY_MODEL
-type DexPoolDTOLiquidityModel float32
-
-// DexPoolDTOType DTO.DEXPOOL.TYPE
-type DexPoolDTOType float32
-
-// DexPoolDTOVersion DTO.DEXPOOL.VERSION
-type DexPoolDTOVersion float32
-
-// DexPoolPage defines model for DexPoolPage.
-type DexPoolPage struct {
-	// Data DTO.DEXPOOL.PAGE.DATA
-	Data []DexPoolDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext *bool `json:"hasNext,omitempty"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev *bool `json:"hasPrev,omitempty"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
+// TokenExtra Token extra metadata
+type TokenExtra struct {
+	CollectionAddress        *string `json:"collectionAddress"`
+	EditionNonce             *int64  `json:"editionNonce"`
+	FreezeAuthority          *string `json:"freezeAuthority"`
+	Fungible                 *bool   `json:"fungible"`
+	IsMutable                *bool   `json:"isMutable"`
+	IsNative                 *bool   `json:"isNative"`
+	IsVerifiedCollection     *bool   `json:"isVerifiedCollection"`
+	IsWrapped                *bool   `json:"isWrapped"`
+	Key                      *string `json:"key"`
+	LaunchFromProgramAddress *string `json:"launchFromProgramAddress"`
+	LaunchFromProtocolFamily *string `json:"launchFromProtocolFamily"`
+	MigratedAt               *int64  `json:"migratedAt"`
+	MigratedToPoolAddress    *string `json:"migratedToPoolAddress"`
+	MigratedToProgramAddress *string `json:"migratedToProgramAddress"`
+	MigratedToProtocolFamily *string `json:"migratedToProtocolFamily"`
+	MintAuthority            *string `json:"mintAuthority"`
+	PrimarySaleHappened      *bool   `json:"primarySaleHappened"`
+	ProgramAddress           *string `json:"programAddress"`
+	SellerFeeBasisPoints     *int64  `json:"sellerFeeBasisPoints"`
+	TokenStandard            *string `json:"tokenStandard"`
+	UpdateAuthority          *string `json:"updateAuthority"`
 }
 
-// DexPoolTokenLiquidity defines model for DexPoolTokenLiquidity.
-type DexPoolTokenLiquidity struct {
-	// AmountInNative DTO.DEXPOOL.AMOUNT_IN_NATIVE
-	AmountInNative string `json:"amountInNative"`
+// TokenField defines model for TokenField.
+type TokenField string
 
-	// AmountInUsd DTO.DEXPOOL.AMOUNT_IN_USD
-	AmountInUsd string `json:"amountInUsd"`
-
-	// Decimals DTO.DEXPOOL.TOKEN_DECIMALS
-	Decimals int64 `json:"decimals"`
-
-	// PriceNative DTO.DEXPOOL.PRICE_NATIVE
-	PriceNative string `json:"priceNative"`
-
-	// PriceUsd DTO.DEXPOOL.PRICE_USD
-	PriceUsd string `json:"priceUsd"`
-
-	// TokenAddress DTO.DEXPOOL.TOKEN_ADDRESS
-	TokenAddress string `json:"tokenAddress"`
-
-	// VaultAmount DTO.DEXPOOL.VAULT_AMOUNT
-	VaultAmount string `json:"vaultAmount"`
-}
-
-// FilterCondition defines model for FilterCondition.
-type FilterCondition struct {
-	// Field DTO.TOKEN.FILTER.FIELD
-	Field *FilterConditionField `json:"field,omitempty"`
-
-	// Max DTO.TOKEN.FILTER.MAX
-	Max *string `json:"max,omitempty"`
-
-	// Min DTO.TOKEN.FILTER.MIN
-	Min *string `json:"min,omitempty"`
-}
-
-// FilterConditionField DTO.TOKEN.FILTER.FIELD
-type FilterConditionField string
-
-// PriceType defines model for PriceType.
-type PriceType string
-
-// Resolution defines model for Resolution.
-type Resolution string
-
-// Token defines model for Token.
-type Token struct {
-	// Address DTO.TOKEN.METADATA.ADDRESS
-	Address string `json:"address"`
-
-	// Chain DTO.TOKEN.METADATA.CHAIN
-	Chain string `json:"chain"`
-
-	// CoingeckoCoinId DTO.TOKEN.METADATA.COINGECKO_COIN_ID
-	CoingeckoCoinId *string `json:"coingeckoCoinId,omitempty"`
-
-	// Decimals DTO.TOKEN.METADATA.DECIMALS
-	Decimals int64 `json:"decimals"`
-
-	// Description DTO.TOKEN.METADATA.DESCRIPTION
-	Description *string `json:"description,omitempty"`
-
-	// DevLastTokenCreatedAt DTO.TOKEN.METADATA.DEV_LAST_TOKEN_CREATED_AT
-	DevLastTokenCreatedAt *string `json:"devLastTokenCreatedAt,omitempty"`
-
-	// DevTotalTokens DTO.TOKEN.METADATA.DEV_TOTAL_TOKENS
-	DevTotalTokens *string `json:"devTotalTokens,omitempty"`
-
-	// Extension DTO.TOKEN.EXTENSION
-	Extension *map[string]interface{} `json:"extension,omitempty"`
-
-	// Extra DTO.TOKEN.METADATA.EXTRA
-	Extra *TokenExtraDTO `json:"extra,omitempty"`
-
-	// ImageUrl DTO.TOKEN.METADATA.IMAGE_URL
-	ImageUrl *string `json:"imageUrl,omitempty"`
-
-	// Market DTO.TOKEN.MARKET_ID
-	Market *string `json:"market,omitempty"`
-
-	// MarketData DTO.TOKEN.MARKET_CAP_INFO
-	MarketData TokenMarketData `json:"marketData"`
-
-	// MetadataAddress DTO.TOKEN.METADATA.METADATA_ADDRESS
-	MetadataAddress *string `json:"metadataAddress,omitempty"`
-
-	// Name DTO.TOKEN.METADATA.NAME
-	Name string `json:"name"`
-
-	// SocialMedias DTO.TOKEN.METADATA.SOCIAL_MEDIAS
-	SocialMedias *TokenSocialMediasDTO `json:"socialMedias,omitempty"`
-
-	// Stats DTO.TOKEN.STATS
-	Stats *TokenStat `json:"stats,omitempty"`
-
-	// Symbol DTO.TOKEN.METADATA.SYMBOL
-	Symbol string `json:"symbol"`
-
-	// TokenCreatedAt DTO.TOKEN.METADATA.TOKEN_CREATED_AT
-	TokenCreatedAt *int64 `json:"tokenCreatedAt,omitempty"`
-
-	// TokenCreatedBlockHeight DTO.TOKEN.METADATA.TOKEN_CREATED_BLOCK_HEIGHT
-	TokenCreatedBlockHeight *string `json:"tokenCreatedBlockHeight,omitempty"`
-
-	// TokenCreatedSlot DTO.TOKEN.METADATA.TOKEN_CREATED_SLOT
-	TokenCreatedSlot *string `json:"tokenCreatedSlot,omitempty"`
-
-	// TokenCreatedTxSignature DTO.TOKEN.METADATA.TOKEN_CREATED_TX_SIGNATURE
-	TokenCreatedTxSignature *string `json:"tokenCreatedTxSignature,omitempty"`
-
-	// TokenCreators DTO.TOKEN.METADATA.TOKEN_CREATORS
-	TokenCreators *[]TokenCreatorsDTO `json:"tokenCreators,omitempty"`
-
-	// Uri DTO.TOKEN.METADATA.URI
-	Uri *string `json:"uri,omitempty"`
-}
-
-// TokenCreationDTO defines model for TokenCreationDTO.
-type TokenCreationDTO struct {
-	// BlockHash DTO.TOKEN.CREATION.BLOCK_HASH
-	BlockHash string `json:"blockHash"`
-
-	// BlockHeight DTO.TOKEN.CREATION.BLOCK_HEIGHT
-	BlockHeight int64 `json:"blockHeight"`
-
-	// BlockSlot DTO.TOKEN.CREATION.BLOCK_SLOT
-	BlockSlot int64 `json:"blockSlot"`
-
-	// BlockTimestamp DTO.TOKEN.CREATION.BLOCK_TIMESTAMP
-	BlockTimestamp *int64 `json:"blockTimestamp,omitempty"`
-
-	// TokenAddress DTO.TOKEN.CREATION.TOKEN_ADDRESS
-	TokenAddress string `json:"tokenAddress"`
-
-	// TransactionSignature DTO.TOKEN.CREATION.TRANSACTION_SIGNATURE
-	TransactionSignature string `json:"transactionSignature"`
-
-	// Type DTO.TOKEN.CREATION.TYPE
-	Type TokenCreationDTOType `json:"type"`
-}
-
-// TokenCreationDTOType DTO.TOKEN.CREATION.TYPE
-type TokenCreationDTOType string
-
-// TokenCreationPage defines model for TokenCreationPage.
-type TokenCreationPage struct {
-	// Data DTO.TOKEN.CREATION.PAGE.DATA
-	Data []TokenCreationDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext *bool `json:"hasNext,omitempty"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev *bool `json:"hasPrev,omitempty"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
-}
-
-// TokenCreatorsDTO defines model for TokenCreatorsDTO.
-type TokenCreatorsDTO struct {
-	// Address DTO.TOKEN.CREATORS.ADDRESS
-	Address *string `json:"address,omitempty"`
-
-	// IsVerified DTO.TOKEN.CREATORS.IS_VERIFIED
-	IsVerified *bool `json:"isVerified,omitempty"`
-
-	// Share DTO.TOKEN.CREATORS.SHARE
-	Share *int64 `json:"share,omitempty"`
-}
-
-// TokenExtraDTO defines model for TokenExtraDTO.
-type TokenExtraDTO struct {
-	// CollectionAddress DTO.TOKEN.EXTRA.COLLECTION_ADDRESS
-	CollectionAddress *string `json:"collectionAddress,omitempty"`
-
-	// EditionNonce DTO.TOKEN.EXTRA.EDITION_NONCE
-	EditionNonce *int64 `json:"editionNonce,omitempty"`
-
-	// FreezeAuthority DTO.TOKEN.EXTRA.FREEZE_AUTHORITY
-	FreezeAuthority *string `json:"freezeAuthority,omitempty"`
-
-	// Fungible DTO.TOKEN.EXTRA.FUNGIBLE
-	Fungible *bool `json:"fungible,omitempty"`
-
-	// IsMutable DTO.TOKEN.EXTRA.IS_MUTABLE
-	IsMutable *bool `json:"isMutable,omitempty"`
-
-	// IsNative DTO.TOKEN.EXTRA.IS_NATIVE
-	IsNative *bool `json:"isNative,omitempty"`
-
-	// IsVerifiedCollection DTO.TOKEN.EXTRA.IS_VERIFIED_COLLECTION
-	IsVerifiedCollection *bool `json:"isVerifiedCollection,omitempty"`
-
-	// IsWrapped DTO.TOKEN.EXTRA.IS_WRAPPED
-	IsWrapped *bool `json:"isWrapped,omitempty"`
-
-	// Key DTO.TOKEN.EXTRA.KEY
-	Key *string `json:"key,omitempty"`
-
-	// LaunchFromProgramAddress DTO.TOKEN.EXTRA.LAUNCH_FROM_PROGRAM_ADDRESS
-	LaunchFromProgramAddress *string `json:"launchFromProgramAddress,omitempty"`
-
-	// LaunchFromProtocolFamily DTO.TOKEN.EXTRA.LAUNCH_FROM_PROTOCOL_FAMILY
-	LaunchFromProtocolFamily *string `json:"launchFromProtocolFamily,omitempty"`
-
-	// MigratedAt DTO.TOKEN.EXTRA.MIGRATED_AT
-	MigratedAt *int64 `json:"migratedAt,omitempty"`
-
-	// MigratedToPoolAddress DTO.TOKEN.EXTRA.MIGRATED_TO_POOL_ADDRESS
-	MigratedToPoolAddress *string `json:"migratedToPoolAddress,omitempty"`
-
-	// MigratedToProgramAddress DTO.TOKEN.EXTRA.MIGRATED_TO_PROGRAM_ADDRESS
-	MigratedToProgramAddress *string `json:"migratedToProgramAddress,omitempty"`
-
-	// MigratedToProtocolFamily DTO.TOKEN.EXTRA.MIGRATED_TO_PROTOCOL_FAMILY
-	MigratedToProtocolFamily *string `json:"migratedToProtocolFamily,omitempty"`
-
-	// MintAuthority DTO.TOKEN.EXTRA.MINT_AUTHORITY
-	MintAuthority *string `json:"mintAuthority,omitempty"`
-
-	// PrimarySaleHappened DTO.TOKEN.EXTRA.PRIMARY_SALE_HAPPENED
-	PrimarySaleHappened *bool `json:"primarySaleHappened,omitempty"`
-
-	// ProgramAddress DTO.TOKEN.EXTRA.PROGRAM_ADDRESS
-	ProgramAddress *string `json:"programAddress,omitempty"`
-
-	// SellerFeeBasisPoints DTO.TOKEN.EXTRA.SELLER_FEE_BASIS_POINTS
-	SellerFeeBasisPoints *int64 `json:"sellerFeeBasisPoints,omitempty"`
-
-	// TokenStandard DTO.TOKEN.EXTRA.TOKEN_STANDARD
-	TokenStandard *string `json:"tokenStandard,omitempty"`
-
-	// UpdateAuthority DTO.TOKEN.EXTRA.UPDATE_AUTHORITY
-	UpdateAuthority *string `json:"updateAuthority,omitempty"`
-}
-
-// TokenHolder defines model for TokenHolder.
+// TokenHolder Token holder
 type TokenHolder struct {
-	// Amount DTO.TOKEN_HOLDER.AMOUNT
-	Amount string `json:"amount"`
-
-	// AmountInUsd DTO.TOKEN_HOLDER.AMOUNT_USD
-	AmountInUsd string `json:"amountInUsd"`
-
-	// Percentage DTO.TOKEN_HOLDER.PERCENTAGE
-	Percentage string `json:"percentage"`
-
-	// WalletAddress DTO.TOKEN_HOLDER.WALLET_ADDRESS
+	Amount        string `json:"amount"`
+	AmountInUsd   string `json:"amountInUsd"`
+	Percentage    string `json:"percentage"`
 	WalletAddress string `json:"walletAddress"`
 }
 
-// TokenHolderPage defines model for TokenHolderPage.
-type TokenHolderPage struct {
-	// Data DTO.TOKEN_HOLDER.PAGE.DATA
-	Data []TokenHolder `json:"data"`
+// TokenListSortField defines model for TokenListSortField.
+type TokenListSortField string
 
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext *bool `json:"hasNext,omitempty"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev *bool `json:"hasPrev,omitempty"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
-}
-
-// TokenLiquiditySnapshotDTO defines model for TokenLiquiditySnapshotDTO.
-type TokenLiquiditySnapshotDTO struct {
-	// CalculatedAt DTO.TOKEN.LIQUIDITY_SNAPSHOT.CALCULATED_AT
-	CalculatedAt int64 `json:"calculatedAt"`
-
-	// MaxLiquidityInNative DTO.TOKEN.LIQUIDITY_SNAPSHOT.MAX_LIQUIDITY_IN_NATIVE
-	MaxLiquidityInNative string `json:"maxLiquidityInNative"`
-
-	// MaxLiquidityInUsd DTO.TOKEN.LIQUIDITY_SNAPSHOT.MAX_LIQUIDITY_IN_USD
-	MaxLiquidityInUsd string `json:"maxLiquidityInUsd"`
-
-	// MaxLiquidityPoolAddress DTO.TOKEN.LIQUIDITY_SNAPSHOT.MAX_LIQUIDITY_POOL_ADDRESS
-	MaxLiquidityPoolAddress string `json:"maxLiquidityPoolAddress"`
-
-	// PoolCount DTO.TOKEN.LIQUIDITY_SNAPSHOT.POOL_COUNT
-	PoolCount int64 `json:"poolCount"`
-
-	// PriceNative DTO.TOKEN.LIQUIDITY_SNAPSHOT.PRICE_NATIVE
-	PriceNative string `json:"priceNative"`
-
-	// PriceUsd DTO.TOKEN.LIQUIDITY_SNAPSHOT.PRICE_USD
-	PriceUsd string `json:"priceUsd"`
-
-	// SnapshotTime DTO.TOKEN.LIQUIDITY_SNAPSHOT.SNAPSHOT_TIME
-	SnapshotTime int64 `json:"snapshotTime"`
-
-	// TotalLiquidityInNative DTO.TOKEN.LIQUIDITY_SNAPSHOT.TOTAL_LIQUIDITY_IN_NATIVE
-	TotalLiquidityInNative string `json:"totalLiquidityInNative"`
-
-	// TotalLiquidityInUsd DTO.TOKEN.LIQUIDITY_SNAPSHOT.TOTAL_LIQUIDITY_IN_USD
-	TotalLiquidityInUsd string `json:"totalLiquidityInUsd"`
-}
-
-// TokenLiquiditySnapshotPage defines model for TokenLiquiditySnapshotPage.
-type TokenLiquiditySnapshotPage struct {
-	// Data DTO.PAGE.DATA
-	Data []TokenLiquiditySnapshotDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext bool `json:"hasNext"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev bool `json:"hasPrev"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-}
-
-// TokenListPage defines model for TokenListPage.
-type TokenListPage struct {
-	// Data DTO.TOKEN.PAGE.DATA
-	Data []Token `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext *bool `json:"hasNext,omitempty"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev *bool `json:"hasPrev,omitempty"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
-}
-
-// TokenMarketData defines model for TokenMarketData.
+// TokenMarketData Token market data
 type TokenMarketData struct {
-	// BluechipHoldingsRatio DTO.TOKEN.MARKET_CAP.BLUECHIP_HOLDINGS_RATIO
-	BluechipHoldingsRatio *string `json:"bluechipHoldingsRatio,omitempty"`
-
-	// BluechipTotalHolders DTO.TOKEN.MARKET_CAP.BLUECHIP_TOTAL_HOLDERS
-	BluechipTotalHolders *string `json:"bluechipTotalHolders,omitempty"`
-
-	// BluechipTotalHoldings DTO.TOKEN.MARKET_CAP.BLUECHIP_TOTAL_HOLDINGS
-	BluechipTotalHoldings *string `json:"bluechipTotalHoldings,omitempty"`
-
-	// BundleHoldingsRatio DTO.TOKEN.MARKET_CAP.BUNDLE_HOLDINGS_RATIO
-	BundleHoldingsRatio *string `json:"bundleHoldingsRatio,omitempty"`
-
-	// BundleTotalHolders DTO.TOKEN.MARKET_CAP.BUNDLE_TOTAL_HOLDERS
-	BundleTotalHolders *string `json:"bundleTotalHolders,omitempty"`
-
-	// BundleTotalHoldings DTO.TOKEN.MARKET_CAP.BUNDLE_TOTAL_HOLDINGS
-	BundleTotalHoldings *string `json:"bundleTotalHoldings,omitempty"`
-
-	// CompletionRatio DTO.TOKEN.MARKET_CAP.COMPLETION_RATIO
-	CompletionRatio *string `json:"completionRatio,omitempty"`
-
-	// DevHoldingsRatio DTO.TOKEN.MARKET_CAP.DEV_HOLDINGS_RATIO
-	DevHoldingsRatio *string `json:"devHoldingsRatio,omitempty"`
-
-	// DevTotalHolders DTO.TOKEN.MARKET_CAP.DEV_TOTAL_HOLDERS
-	DevTotalHolders *string `json:"devTotalHolders,omitempty"`
-
-	// DevTotalHoldings DTO.TOKEN.MARKET_CAP.DEV_TOTAL_HOLDINGS
-	DevTotalHoldings *string `json:"devTotalHoldings,omitempty"`
-
-	// FreshHoldingsRatio DTO.TOKEN.MARKET_CAP.FRESH_HOLDINGS_RATIO
-	FreshHoldingsRatio *string `json:"freshHoldingsRatio,omitempty"`
-
-	// FreshTotalHolders DTO.TOKEN.MARKET_CAP.FRESH_TOTAL_HOLDERS
-	FreshTotalHolders *string `json:"freshTotalHolders,omitempty"`
-
-	// FreshTotalHoldings DTO.TOKEN.MARKET_CAP.FRESH_TOTAL_HOLDINGS
-	FreshTotalHoldings *string `json:"freshTotalHoldings,omitempty"`
-
-	// Holders DTO.TOKEN.MARKET_CAP.HOLDERS
-	Holders string `json:"holders"`
-
-	// InsiderHoldingsRatio DTO.TOKEN.MARKET_CAP.INSIDER_HOLDINGS_RATIO
-	InsiderHoldingsRatio *string `json:"insiderHoldingsRatio,omitempty"`
-
-	// InsiderTotalHolders DTO.TOKEN.MARKET_CAP.INSIDER_TOTAL_HOLDERS
-	InsiderTotalHolders *string `json:"insiderTotalHolders,omitempty"`
-
-	// InsiderTotalHoldings DTO.TOKEN.MARKET_CAP.INSIDER_TOTAL_HOLDINGS
-	InsiderTotalHoldings *string `json:"insiderTotalHoldings,omitempty"`
-
-	// KolHoldingsRatio DTO.TOKEN.MARKET_CAP.KOL_HOLDINGS_RATIO
-	KolHoldingsRatio *string `json:"kolHoldingsRatio,omitempty"`
-
-	// KolTotalHolders DTO.TOKEN.MARKET_CAP.KOL_TOTAL_HOLDERS
-	KolTotalHolders *string `json:"kolTotalHolders,omitempty"`
-
-	// KolTotalHoldings DTO.TOKEN.MARKET_CAP.KOL_TOTAL_HOLDINGS
-	KolTotalHoldings *string `json:"kolTotalHoldings,omitempty"`
-
-	// MarketCapInSol DTO.TOKEN.MARKET_CAP.MARKET_CAP_IN_SOL
-	MarketCapInSol *string `json:"marketCapInSol,omitempty"`
-
-	// MarketCapInUsd DTO.TOKEN.MARKET_CAP.MARKET_CAP_IN_USD
-	MarketCapInUsd string `json:"marketCapInUsd"`
-
-	// MaxPoolTvlInSol DTO.TOKEN.MARKET_CAP.MAX_POOL_TVL_IN_SOL
-	MaxPoolTvlInSol *string `json:"maxPoolTvlInSol,omitempty"`
-
-	// MaxPoolTvlInUsd DTO.TOKEN.MARKET_CAP.MAX_POOL_TVL_IN_USD
-	MaxPoolTvlInUsd *string `json:"maxPoolTvlInUsd,omitempty"`
-
-	// PriceInSol DTO.TOKEN.MARKET_CAP.PRICE_IN_SOL
-	PriceInSol *string `json:"priceInSol,omitempty"`
-
-	// PriceInUsd DTO.TOKEN.MARKET_CAP.PRICE_IN_USD
-	PriceInUsd string `json:"priceInUsd"`
-
-	// ProHoldingsRatio DTO.TOKEN.MARKET_CAP.PRO_HOLDINGS_RATIO
-	ProHoldingsRatio *string `json:"proHoldingsRatio,omitempty"`
-
-	// ProTotalHolders DTO.TOKEN.MARKET_CAP.PRO_TOTAL_HOLDERS
-	ProTotalHolders *string `json:"proTotalHolders,omitempty"`
-
-	// ProTotalHoldings DTO.TOKEN.MARKET_CAP.PRO_TOTAL_HOLDINGS
-	ProTotalHoldings *string `json:"proTotalHoldings,omitempty"`
-
-	// SandwishHoldingsRatio DTO.TOKEN.MARKET_CAP.SANDWISH_HOLDINGS_RATIO
-	SandwishHoldingsRatio *string `json:"sandwishHoldingsRatio,omitempty"`
-
-	// SandwishTotalHolders DTO.TOKEN.MARKET_CAP.SANDWISH_TOTAL_HOLDERS
-	SandwishTotalHolders *string `json:"sandwishTotalHolders,omitempty"`
-
-	// SandwishTotalHoldings DTO.TOKEN.MARKET_CAP.SANDWISH_TOTAL_HOLDINGS
-	SandwishTotalHoldings *string `json:"sandwishTotalHoldings,omitempty"`
-
-	// SniperHoldingsRatio DTO.TOKEN.MARKET_CAP.SNIPER_HOLDINGS_RATIO
-	SniperHoldingsRatio *string `json:"sniperHoldingsRatio,omitempty"`
-
-	// SniperTotalHolders DTO.TOKEN.MARKET_CAP.SNIPER_TOTAL_HOLDERS
-	SniperTotalHolders *string `json:"sniperTotalHolders,omitempty"`
-
-	// SniperTotalHoldings DTO.TOKEN.MARKET_CAP.SNIPER_TOTAL_HOLDINGS
-	SniperTotalHoldings *string `json:"sniperTotalHoldings,omitempty"`
-
-	// Top100HoldingsRatio DTO.TOKEN.MARKET_CAP.TOP100_HOLDINGS_RATIO
-	Top100HoldingsRatio *string `json:"top100HoldingsRatio,omitempty"`
-
-	// Top100TotalHoldings DTO.TOKEN.MARKET_CAP.TOP100_TOTAL_HOLDINGS
-	Top100TotalHoldings *string `json:"top100TotalHoldings,omitempty"`
-
-	// Top10HoldingsRatio DTO.TOKEN.MARKET_CAP.TOP10_HOLDINGS_RATIO
-	Top10HoldingsRatio *string `json:"top10HoldingsRatio,omitempty"`
-
-	// Top10TotalHoldings DTO.TOKEN.MARKET_CAP.TOP10_TOTAL_HOLDINGS
-	Top10TotalHoldings *string `json:"top10TotalHoldings,omitempty"`
-
-	// Top50HoldingsRatio DTO.TOKEN.MARKET_CAP.TOP50_HOLDINGS_RATIO
-	Top50HoldingsRatio *string `json:"top50HoldingsRatio,omitempty"`
-
-	// Top50TotalHoldings DTO.TOKEN.MARKET_CAP.TOP50_TOTAL_HOLDINGS
-	Top50TotalHoldings *string `json:"top50TotalHoldings,omitempty"`
-
-	// TotalSupply DTO.TOKEN.MARKET_CAP.TOTAL_SUPPLY
-	TotalSupply string `json:"totalSupply"`
-
-	// TotalTvlInSol DTO.TOKEN.MARKET_CAP.TOTAL_TVL_IN_SOL
-	TotalTvlInSol string `json:"totalTvlInSol"`
-
-	// TotalTvlInUsd DTO.TOKEN.MARKET_CAP.TOTAL_TVL_IN_USD
-	TotalTvlInUsd string `json:"totalTvlInUsd"`
+	BluechipHoldingsRatio *string `json:"bluechipHoldingsRatio"`
+	BluechipTotalHolders  *string `json:"bluechipTotalHolders"`
+	BluechipTotalHoldings *string `json:"bluechipTotalHoldings"`
+	BundleHoldingsRatio   *string `json:"bundleHoldingsRatio"`
+	BundleTotalHolders    *string `json:"bundleTotalHolders"`
+	BundleTotalHoldings   *string `json:"bundleTotalHoldings"`
+	CompletionRatio       *string `json:"completionRatio"`
+	DevHoldingsRatio      *string `json:"devHoldingsRatio"`
+	DevTotalHolders       *string `json:"devTotalHolders"`
+	DevTotalHoldings      *string `json:"devTotalHoldings"`
+	FreshHoldingsRatio    *string `json:"freshHoldingsRatio"`
+	FreshTotalHolders     *string `json:"freshTotalHolders"`
+	FreshTotalHoldings    *string `json:"freshTotalHoldings"`
+	Holders               *string `json:"holders"`
+	InsiderHoldingsRatio  *string `json:"insiderHoldingsRatio"`
+	InsiderTotalHolders   *string `json:"insiderTotalHolders"`
+	InsiderTotalHoldings  *string `json:"insiderTotalHoldings"`
+	KolHoldingsRatio      *string `json:"kolHoldingsRatio"`
+	KolTotalHolders       *string `json:"kolTotalHolders"`
+	KolTotalHoldings      *string `json:"kolTotalHoldings"`
+	MarketCapInSol        *string `json:"marketCapInSol"`
+	MarketCapInUsd        *string `json:"marketCapInUsd"`
+	MaxPoolTvlInSol       *string `json:"maxPoolTvlInSol"`
+	MaxPoolTvlInUsd       *string `json:"maxPoolTvlInUsd"`
+	PriceInSol            *string `json:"priceInSol"`
+	PriceInUsd            *string `json:"priceInUsd"`
+	ProHoldingsRatio      *string `json:"proHoldingsRatio"`
+	ProTotalHolders       *string `json:"proTotalHolders"`
+	ProTotalHoldings      *string `json:"proTotalHoldings"`
+	SandwishHoldingsRatio *string `json:"sandwishHoldingsRatio"`
+	SandwishTotalHolders  *string `json:"sandwishTotalHolders"`
+	SandwishTotalHoldings *string `json:"sandwishTotalHoldings"`
+	SniperHoldingsRatio   *string `json:"sniperHoldingsRatio"`
+	SniperTotalHolders    *string `json:"sniperTotalHolders"`
+	SniperTotalHoldings   *string `json:"sniperTotalHoldings"`
+	Top100HoldingsRatio   *string `json:"top100HoldingsRatio"`
+	Top100TotalHoldings   *string `json:"top100TotalHoldings"`
+	Top10HoldingsRatio    *string `json:"top10HoldingsRatio"`
+	Top10TotalHoldings    *string `json:"top10TotalHoldings"`
+	Top50HoldingsRatio    *string `json:"top50HoldingsRatio"`
+	Top50TotalHoldings    *string `json:"top50TotalHoldings"`
+	TotalSupply           *string `json:"totalSupply"`
+	TotalTvlInSol         *string `json:"totalTvlInSol"`
+	TotalTvlInUsd         *string `json:"totalTvlInUsd"`
 }
 
-// TokenMetadata defines model for TokenMetadata.
+// TokenMetadata Token metadata
 type TokenMetadata struct {
-	// Address DTO.TOKEN.METADATA.ADDRESS
+	Address               string  `json:"address"`
+	Chain                 string  `json:"chain"`
+	CoingeckoCoinId       *string `json:"coingeckoCoinId"`
+	Decimals              string  `json:"decimals"`
+	Description           *string `json:"description"`
+	DevLastTokenCreatedAt *string `json:"devLastTokenCreatedAt"`
+	DevTotalTokens        *string `json:"devTotalTokens"`
+
+	// Extra Token extra metadata
+	Extra           *TokenExtra `json:"extra,omitempty"`
+	ImageUrl        *string     `json:"imageUrl"`
+	MetadataAddress *string     `json:"metadataAddress"`
+	Name            string      `json:"name"`
+
+	// SocialMedias Token social media links
+	SocialMedias            *TokenSocialMedias `json:"socialMedias,omitempty"`
+	Symbol                  string             `json:"symbol"`
+	TokenCreatedAt          *int64             `json:"tokenCreatedAt"`
+	TokenCreatedBlockHeight *string            `json:"tokenCreatedBlockHeight"`
+	TokenCreatedSlot        *string            `json:"tokenCreatedSlot"`
+	TokenCreatedTxSignature *string            `json:"tokenCreatedTxSignature"`
+	TokenCreators           *[]TokenCreator    `json:"tokenCreators,omitempty"`
+	UpdatedAt               *string            `json:"updatedAt"`
+	Uri                     *string            `json:"uri"`
+}
+
+// TokenPage Token search result page — mirrors TS `TokenPage`.
+// Extends `PageResponse<Token>` with `countsByProtocols`.
+type TokenPage struct {
+	CountsByProtocols *map[string]int64 `json:"countsByProtocols"`
+	Data              []Token           `json:"data"`
+	EndCursor         *string           `json:"endCursor"`
+	HasNext           *bool             `json:"hasNext,omitempty"`
+	HasPrev           *bool             `json:"hasPrev,omitempty"`
+	StartCursor       *string           `json:"startCursor"`
+}
+
+// TokenPrice Token price
+type TokenPrice struct {
+	// Address Token address
 	Address string `json:"address"`
 
-	// Chain DTO.TOKEN.METADATA.CHAIN
-	Chain string `json:"chain"`
+	// PriceInSol Price in native token
+	PriceInSol *string `json:"priceInSol"`
 
-	// CoingeckoCoinId DTO.TOKEN.METADATA.COINGECKO_COIN_ID
-	CoingeckoCoinId *string `json:"coingeckoCoinId,omitempty"`
-
-	// Decimals DTO.TOKEN.METADATA.DECIMALS
-	Decimals int64 `json:"decimals"`
-
-	// Description DTO.TOKEN.METADATA.DESCRIPTION
-	Description *string `json:"description,omitempty"`
-
-	// DevLastTokenCreatedAt DTO.TOKEN.METADATA.DEV_LAST_TOKEN_CREATED_AT
-	DevLastTokenCreatedAt *string `json:"devLastTokenCreatedAt,omitempty"`
-
-	// DevTotalTokens DTO.TOKEN.METADATA.DEV_TOTAL_TOKENS
-	DevTotalTokens *string `json:"devTotalTokens,omitempty"`
-
-	// Extra DTO.TOKEN.METADATA.EXTRA
-	Extra *TokenExtraDTO `json:"extra,omitempty"`
-
-	// ImageUrl DTO.TOKEN.METADATA.IMAGE_URL
-	ImageUrl *string `json:"imageUrl,omitempty"`
-
-	// MetadataAddress DTO.TOKEN.METADATA.METADATA_ADDRESS
-	MetadataAddress *string `json:"metadataAddress,omitempty"`
-
-	// Name DTO.TOKEN.METADATA.NAME
-	Name string `json:"name"`
-
-	// SocialMedias DTO.TOKEN.METADATA.SOCIAL_MEDIAS
-	SocialMedias *TokenSocialMediasDTO `json:"socialMedias,omitempty"`
-
-	// Symbol DTO.TOKEN.METADATA.SYMBOL
-	Symbol string `json:"symbol"`
-
-	// TokenCreatedAt DTO.TOKEN.METADATA.TOKEN_CREATED_AT
-	TokenCreatedAt *int64 `json:"tokenCreatedAt,omitempty"`
-
-	// TokenCreatedBlockHeight DTO.TOKEN.METADATA.TOKEN_CREATED_BLOCK_HEIGHT
-	TokenCreatedBlockHeight *string `json:"tokenCreatedBlockHeight,omitempty"`
-
-	// TokenCreatedSlot DTO.TOKEN.METADATA.TOKEN_CREATED_SLOT
-	TokenCreatedSlot *string `json:"tokenCreatedSlot,omitempty"`
-
-	// TokenCreatedTxSignature DTO.TOKEN.METADATA.TOKEN_CREATED_TX_SIGNATURE
-	TokenCreatedTxSignature *string `json:"tokenCreatedTxSignature,omitempty"`
-
-	// TokenCreators DTO.TOKEN.METADATA.TOKEN_CREATORS
-	TokenCreators *[]TokenCreatorsDTO `json:"tokenCreators,omitempty"`
-
-	// Uri DTO.TOKEN.METADATA.URI
-	Uri *string `json:"uri,omitempty"`
-}
-
-// TokenPage defines model for TokenPage.
-type TokenPage struct {
-	// CountsByProtocols DTO.TOKEN.PAGE.COUNTS_BY_PROTOCOLS
-	CountsByProtocols *map[string]interface{} `json:"countsByProtocols,omitempty"`
-
-	// Data DTO.TOKEN.PAGE.DATA
-	Data []Token `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext *bool `json:"hasNext,omitempty"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev *bool `json:"hasPrev,omitempty"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
-}
-
-// TokenPriceDTO defines model for TokenPriceDTO.
-type TokenPriceDTO struct {
-	// PriceInNative DTO.TOKEN.PRICE.PRICE_IN_NATIVE
-	PriceInNative string `json:"priceInNative"`
-
-	// PriceInUsd DTO.TOKEN.PRICE.PRICE_IN_USD
+	// PriceInUsd Price in USD
 	PriceInUsd string `json:"priceInUsd"`
 
-	// Timestamp DTO.TOKEN.PRICE.TIMESTAMP
+	// Timestamp Timestamp
 	Timestamp int64 `json:"timestamp"`
-
-	// TokenAddress DTO.TOKEN.PRICE.TOKEN_ADDRESS
-	TokenAddress string `json:"tokenAddress"`
 }
 
-// TokenPricePage defines model for TokenPricePage.
-type TokenPricePage struct {
-	// Data DTO.TOKEN.PRICE.PAGE.DATA
-	Data []TokenPriceDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext *bool `json:"hasNext,omitempty"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev *bool `json:"hasPrev,omitempty"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
+// TokenSocialMedias Token social media links
+type TokenSocialMedias struct {
+	Bitbucket *string `json:"bitbucket"`
+	Discord   *string `json:"discord"`
+	Facebook  *string `json:"facebook"`
+	Github    *string `json:"github"`
+	Instagram *string `json:"instagram"`
+	Linkedin  *string `json:"linkedin"`
+	Medium    *string `json:"medium"`
+	Reddit    *string `json:"reddit"`
+	Telegram  *string `json:"telegram"`
+	Tiktok    *string `json:"tiktok"`
+	Twitter   *string `json:"twitter"`
+	Website   *string `json:"website"`
+	Youtube   *string `json:"youtube"`
 }
 
-// TokenSocialMediasDTO defines model for TokenSocialMediasDTO.
-type TokenSocialMediasDTO struct {
-	// Bitbucket DTO.TOKEN.SOCIAL_MEDIAS.BITBUCKET
-	Bitbucket *string `json:"bitbucket,omitempty"`
-
-	// Discord DTO.TOKEN.SOCIAL_MEDIAS.DISCORD
-	Discord *string `json:"discord,omitempty"`
-
-	// Facebook DTO.TOKEN.SOCIAL_MEDIAS.FACEBOOK
-	Facebook *string `json:"facebook,omitempty"`
-
-	// Github DTO.TOKEN.SOCIAL_MEDIAS.GITHUB
-	Github *string `json:"github,omitempty"`
-
-	// Instagram DTO.TOKEN.SOCIAL_MEDIAS.INSTAGRAM
-	Instagram *string `json:"instagram,omitempty"`
-
-	// Linkedin DTO.TOKEN.SOCIAL_MEDIAS.LINKEDIN
-	Linkedin *string `json:"linkedin,omitempty"`
-
-	// Medium DTO.TOKEN.SOCIAL_MEDIAS.MEDIUM
-	Medium *string `json:"medium,omitempty"`
-
-	// Reddit DTO.TOKEN.SOCIAL_MEDIAS.REDDIT
-	Reddit *string `json:"reddit,omitempty"`
-
-	// Telegram DTO.TOKEN.SOCIAL_MEDIAS.TELEGRAM
-	Telegram *string `json:"telegram,omitempty"`
-
-	// Tiktok DTO.TOKEN.SOCIAL_MEDIAS.TIKTOK
-	Tiktok *string `json:"tiktok,omitempty"`
-
-	// Twitter DTO.TOKEN.SOCIAL_MEDIAS.TWITTER
-	Twitter *string `json:"twitter,omitempty"`
-
-	// Website DTO.TOKEN.SOCIAL_MEDIAS.WEBSITE
-	Website *string `json:"website,omitempty"`
-
-	// Youtube DTO.TOKEN.SOCIAL_MEDIAS.YOUTUBE
-	Youtube *string `json:"youtube,omitempty"`
-}
-
-// TokenStat defines model for TokenStat.
-type TokenStat struct {
-	// Address DTO.TOKEN.STAT.ADDRESS
+// TokenStats Token statistics with nested time period data
+type TokenStats struct {
 	Address string `json:"address"`
 
-	// Periods DTO.TOKEN.TRADE_STAT.PERIODS
+	// Periods Trade statistics grouped by time period (1m, 5m, 15m, 30m, 1h, 4h, 24h).
+	// Each period contains full OHLCV data, trade counts, and previous-period comparisons.
+	// See `TokenTradeStatPeriod` schema for all fields.
 	Periods map[string]TokenTradeStatPeriod `json:"periods"`
 }
 
-// TokenTradeStatPeriod defines model for TokenTradeStatPeriod.
+// TokenTradeStatPeriod Single time window trade statistics period
 type TokenTradeStatPeriod struct {
-	// AveragePriceInNative DTO.TOKEN.TRADE_STAT.PERIOD.AVERAGE_PRICE_IN_NATIVE
-	AveragePriceInNative string `json:"averagePriceInNative"`
-
-	// AveragePriceInUsd DTO.TOKEN.TRADE_STAT.PERIOD.AVERAGE_PRICE_IN_USD
-	AveragePriceInUsd string `json:"averagePriceInUsd"`
-
-	// BuySellRatio DTO.TOKEN.TRADE_STAT.PERIOD.BUY_SELL_RATIO
-	BuySellRatio *map[string]interface{} `json:"buySellRatio,omitempty"`
-
-	// BuyVolume DTO.TOKEN.TRADE_STAT.PERIOD.BUY_VOLUME
-	BuyVolume string `json:"buyVolume"`
-
-	// BuyVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.BUY_VOLUME_IN_NATIVE
-	BuyVolumeInNative string `json:"buyVolumeInNative"`
-
-	// BuyVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.BUY_VOLUME_IN_USD
-	BuyVolumeInUsd string `json:"buyVolumeInUsd"`
-
-	// Buyers DTO.TOKEN.TRADE_STAT.PERIOD.BUYERS
-	Buyers string `json:"buyers"`
-
-	// Buys DTO.TOKEN.TRADE_STAT.PERIOD.BUYS
-	Buys string `json:"buys"`
-
-	// CloseInNative DTO.TOKEN.TRADE_STAT.PERIOD.CLOSE_IN_NATIVE
-	CloseInNative string `json:"closeInNative"`
-
-	// CloseInUsd DTO.TOKEN.TRADE_STAT.PERIOD.CLOSE_IN_USD
-	CloseInUsd string `json:"closeInUsd"`
-
-	// CurrentLiquidityInUsd DTO.TOKEN.TRADE_STAT.PERIOD.CURRENT_LIQUIDITY_IN_USD
-	CurrentLiquidityInUsd string `json:"currentLiquidityInUsd"`
-
-	// DappProgramCount DTO.TOKEN.TRADE_STAT.PERIOD.DAPP_PROGRAM_COUNT
-	DappProgramCount string `json:"dappProgramCount"`
-
-	// HighInNative DTO.TOKEN.TRADE_STAT.PERIOD.HIGH_IN_NATIVE
-	HighInNative string `json:"highInNative"`
-
-	// HighInUsd DTO.TOKEN.TRADE_STAT.PERIOD.HIGH_IN_USD
-	HighInUsd string `json:"highInUsd"`
-
-	// LiquidityChangeRatio DTO.TOKEN.TRADE_STAT.PERIOD.LIQUIDITY_CHANGE_RATIO
-	LiquidityChangeRatio *map[string]interface{} `json:"liquidityChangeRatio,omitempty"`
-
-	// LowInNative DTO.TOKEN.TRADE_STAT.PERIOD.LOW_IN_NATIVE
-	LowInNative string `json:"lowInNative"`
-
-	// LowInUsd DTO.TOKEN.TRADE_STAT.PERIOD.LOW_IN_USD
-	LowInUsd string `json:"lowInUsd"`
-
-	// OpenInNative DTO.TOKEN.TRADE_STAT.PERIOD.OPEN_IN_NATIVE
-	OpenInNative string `json:"openInNative"`
-
-	// OpenInUsd DTO.TOKEN.TRADE_STAT.PERIOD.OPEN_IN_USD
-	OpenInUsd string `json:"openInUsd"`
-
-	// PoolCount DTO.TOKEN.TRADE_STAT.PERIOD.POOL_COUNT
-	PoolCount string `json:"poolCount"`
-
-	// PrevBuyVolume DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUY_VOLUME
-	PrevBuyVolume string `json:"prevBuyVolume"`
-
-	// PrevBuyVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUY_VOLUME_IN_NATIVE
-	PrevBuyVolumeInNative string `json:"prevBuyVolumeInNative"`
-
-	// PrevBuyVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUY_VOLUME_IN_USD
-	PrevBuyVolumeInUsd string `json:"prevBuyVolumeInUsd"`
-
-	// PrevBuyers DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUYERS
-	PrevBuyers string `json:"prevBuyers"`
-
-	// PrevBuys DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUYS
-	PrevBuys string `json:"prevBuys"`
-
-	// PrevCloseInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_CLOSE_IN_NATIVE
-	PrevCloseInNative string `json:"prevCloseInNative"`
-
-	// PrevCloseInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_CLOSE_IN_USD
-	PrevCloseInUsd string `json:"prevCloseInUsd"`
-
-	// PrevDappProgramCount DTO.TOKEN.TRADE_STAT.PERIOD.PREV_DAPP_PROGRAM_COUNT
-	PrevDappProgramCount string `json:"prevDappProgramCount"`
-
-	// PrevHighInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_HIGH_IN_NATIVE
-	PrevHighInNative string `json:"prevHighInNative"`
-
-	// PrevHighInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_HIGH_IN_USD
-	PrevHighInUsd string `json:"prevHighInUsd"`
-
-	// PrevLiquidityInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_LIQUIDITY_IN_USD
-	PrevLiquidityInUsd string `json:"prevLiquidityInUsd"`
-
-	// PrevLowInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_LOW_IN_NATIVE
-	PrevLowInNative string `json:"prevLowInNative"`
-
-	// PrevLowInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_LOW_IN_USD
-	PrevLowInUsd string `json:"prevLowInUsd"`
-
-	// PrevOpenInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_OPEN_IN_NATIVE
-	PrevOpenInNative string `json:"prevOpenInNative"`
-
-	// PrevOpenInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_OPEN_IN_USD
-	PrevOpenInUsd string `json:"prevOpenInUsd"`
-
-	// PrevPoolCount DTO.TOKEN.TRADE_STAT.PERIOD.PREV_POOL_COUNT
-	PrevPoolCount string `json:"prevPoolCount"`
-
-	// PrevSellVolume DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELL_VOLUME
-	PrevSellVolume string `json:"prevSellVolume"`
-
-	// PrevSellVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELL_VOLUME_IN_NATIVE
-	PrevSellVolumeInNative string `json:"prevSellVolumeInNative"`
-
-	// PrevSellVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELL_VOLUME_IN_USD
-	PrevSellVolumeInUsd string `json:"prevSellVolumeInUsd"`
-
-	// PrevSellers DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELLERS
-	PrevSellers string `json:"prevSellers"`
-
-	// PrevSells DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELLS
-	PrevSells string `json:"prevSells"`
-
-	// PrevTrades DTO.TOKEN.TRADE_STAT.PERIOD.PREV_TRADES
-	PrevTrades string `json:"prevTrades"`
-
-	// PriceChangeRatioInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PRICE_CHANGE_RATIO_IN_USD
-	PriceChangeRatioInUsd string `json:"priceChangeRatioInUsd"`
-
-	// SellVolume DTO.TOKEN.TRADE_STAT.PERIOD.SELL_VOLUME
-	SellVolume string `json:"sellVolume"`
-
-	// SellVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.SELL_VOLUME_IN_NATIVE
-	SellVolumeInNative string `json:"sellVolumeInNative"`
-
-	// SellVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.SELL_VOLUME_IN_USD
-	SellVolumeInUsd string `json:"sellVolumeInUsd"`
-
-	// Sellers DTO.TOKEN.TRADE_STAT.PERIOD.SELLERS
-	Sellers string `json:"sellers"`
-
-	// Sells DTO.TOKEN.TRADE_STAT.PERIOD.SELLS
-	Sells string `json:"sells"`
-
-	// TotalVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.TOTAL_VOLUME_IN_NATIVE
-	TotalVolumeInNative string `json:"totalVolumeInNative"`
-
-	// TotalVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.TOTAL_VOLUME_IN_USD
-	TotalVolumeInUsd string `json:"totalVolumeInUsd"`
-
-	// Traders DTO.TOKEN.TRADE_STAT.PERIOD.TRADERS
-	Traders string `json:"traders"`
-
-	// Trades DTO.TOKEN.TRADE_STAT.PERIOD.TRADES
-	Trades string `json:"trades"`
-
-	// UpdatedAt DTO.TOKEN.TRADE_STAT.PERIOD.UPDATED_AT
-	UpdatedAt *string `json:"updatedAt,omitempty"`
-
-	// VolumeChangeRatio DTO.TOKEN.TRADE_STAT.PERIOD.VOLUME_CHANGE_RATIO
-	VolumeChangeRatio *map[string]interface{} `json:"volumeChangeRatio,omitempty"`
+	AveragePriceInNative   *string `json:"averagePriceInNative,omitempty"`
+	AveragePriceInUsd      *string `json:"averagePriceInUsd,omitempty"`
+	BuySellRatio           *string `json:"buySellRatio"`
+	BuyVolume              *string `json:"buyVolume,omitempty"`
+	BuyVolumeInNative      *string `json:"buyVolumeInNative,omitempty"`
+	BuyVolumeInUsd         *string `json:"buyVolumeInUsd,omitempty"`
+	Buyers                 *string `json:"buyers,omitempty"`
+	Buys                   *string `json:"buys,omitempty"`
+	CloseInNative          *string `json:"closeInNative,omitempty"`
+	CloseInUsd             *string `json:"closeInUsd,omitempty"`
+	CurrentLiquidityInUsd  *string `json:"currentLiquidityInUsd,omitempty"`
+	DappProgramCount       *string `json:"dappProgramCount,omitempty"`
+	HighInNative           *string `json:"highInNative,omitempty"`
+	HighInUsd              *string `json:"highInUsd,omitempty"`
+	LiquidityChangeRatio   *string `json:"liquidityChangeRatio"`
+	LowInNative            *string `json:"lowInNative,omitempty"`
+	LowInUsd               *string `json:"lowInUsd,omitempty"`
+	OpenInNative           *string `json:"openInNative,omitempty"`
+	OpenInUsd              *string `json:"openInUsd,omitempty"`
+	PoolCount              *string `json:"poolCount,omitempty"`
+	PrevBuyVolume          *string `json:"prevBuyVolume,omitempty"`
+	PrevBuyVolumeInNative  *string `json:"prevBuyVolumeInNative,omitempty"`
+	PrevBuyVolumeInUsd     *string `json:"prevBuyVolumeInUsd,omitempty"`
+	PrevBuyers             *string `json:"prevBuyers,omitempty"`
+	PrevBuys               *string `json:"prevBuys,omitempty"`
+	PrevCloseInNative      *string `json:"prevCloseInNative,omitempty"`
+	PrevCloseInUsd         *string `json:"prevCloseInUsd,omitempty"`
+	PrevDappProgramCount   *string `json:"prevDappProgramCount,omitempty"`
+	PrevHighInNative       *string `json:"prevHighInNative,omitempty"`
+	PrevHighInUsd          *string `json:"prevHighInUsd,omitempty"`
+	PrevLiquidityInUsd     *string `json:"prevLiquidityInUsd,omitempty"`
+	PrevLowInNative        *string `json:"prevLowInNative,omitempty"`
+	PrevLowInUsd           *string `json:"prevLowInUsd,omitempty"`
+	PrevOpenInNative       *string `json:"prevOpenInNative,omitempty"`
+	PrevOpenInUsd          *string `json:"prevOpenInUsd,omitempty"`
+	PrevPoolCount          *string `json:"prevPoolCount,omitempty"`
+	PrevSellVolume         *string `json:"prevSellVolume,omitempty"`
+	PrevSellVolumeInNative *string `json:"prevSellVolumeInNative,omitempty"`
+	PrevSellVolumeInUsd    *string `json:"prevSellVolumeInUsd,omitempty"`
+	PrevSellers            *string `json:"prevSellers,omitempty"`
+	PrevSells              *string `json:"prevSells,omitempty"`
+	PrevTrades             *string `json:"prevTrades,omitempty"`
+	PriceChangeRatioInUsd  *string `json:"priceChangeRatioInUsd,omitempty"`
+	SellVolume             *string `json:"sellVolume,omitempty"`
+	SellVolumeInNative     *string `json:"sellVolumeInNative,omitempty"`
+	SellVolumeInUsd        *string `json:"sellVolumeInUsd,omitempty"`
+	Sellers                *string `json:"sellers,omitempty"`
+	Sells                  *string `json:"sells,omitempty"`
+	TotalVolumeInNative    *string `json:"totalVolumeInNative,omitempty"`
+	TotalVolumeInUsd       *string `json:"totalVolumeInUsd,omitempty"`
+	Traders                *string `json:"traders,omitempty"`
+	Trades                 *string `json:"trades,omitempty"`
+	UpdatedAt              *string `json:"updatedAt"`
+	VolumeChangeRatio      *string `json:"volumeChangeRatio"`
 }
 
-// TokenTrader defines model for TokenTrader.
-type TokenTrader struct {
-	// Address DTO.TOKEN_TRADER.ADDRESS
-	Address string `json:"address"`
-
-	// BlockHash DTO.TOKEN_TRADER.BLOCK_HASH
-	BlockHash *string `json:"blockHash,omitempty"`
-
-	// BlockHeight DTO.TOKEN_TRADER.BLOCK_HEIGHT
-	BlockHeight *int64 `json:"blockHeight,omitempty"`
-
-	// BlockSlot DTO.TOKEN_TRADER.BLOCK_SLOT
-	BlockSlot *int64 `json:"blockSlot,omitempty"`
-
-	// BlockTimestamp DTO.TOKEN_TRADER.BLOCK_TIMESTAMP
-	BlockTimestamp *time.Time `json:"blockTimestamp,omitempty"`
-
-	// OnchainCreatedAt DTO.TOKEN_TRADER.ONCHAIN_CREATED_AT
-	OnchainCreatedAt *map[string]interface{} `json:"onchainCreatedAt,omitempty"`
-
-	// PercentileRankTradeAmountInUsd DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_AMOUNT_IN_USD
-	PercentileRankTradeAmountInUsd *string `json:"percentileRankTradeAmountInUsd,omitempty"`
-
-	// PercentileRankTradeCount DTO.TOKEN_TRADER.PERCENTILE_RANK_TRADE_COUNT
-	PercentileRankTradeCount *int64 `json:"percentileRankTradeCount,omitempty"`
-
-	// RankTradeAmountInUsd DTO.TOKEN_TRADER.RANK_TRADE_AMOUNT_IN_USD
-	RankTradeAmountInUsd *string `json:"rankTradeAmountInUsd,omitempty"`
-
-	// TradeAmountInNative DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_NATIVE
-	TradeAmountInNative *string `json:"tradeAmountInNative,omitempty"`
-
-	// TradeAmountInUsd DTO.TOKEN_TRADER.TRADE_AMOUNT_IN_USD
-	TradeAmountInUsd *string `json:"tradeAmountInUsd,omitempty"`
-
-	// TradeCount DTO.TOKEN_TRADER.TRADE_COUNT
-	TradeCount *int64 `json:"tradeCount,omitempty"`
-
-	// TransactionSignature DTO.TOKEN_TRADER.TRANSACTION_SIGNATURE
-	TransactionSignature *string `json:"transactionSignature,omitempty"`
-}
-
-// TokenTraderTag defines model for TokenTraderTag.
+// TokenTraderTag Token trader tag
 type TokenTraderTag string
 
-// TokenTransferItemDTO defines model for TokenTransferItemDTO.
-type TokenTransferItemDTO struct {
-	// Action DTO.TOKEN.TRANSFER.ACTION
-	Action string `json:"action"`
-
-	// Amount DTO.TOKEN.TRANSFER.AMOUNT
-	Amount string `json:"amount"`
-
-	// BlockNumber DTO.TOKEN.TRANSFER.BLOCK_NUMBER
-	BlockNumber int64 `json:"blockNumber"`
-
-	// BlockTime DTO.TOKEN.TRANSFER.BLOCK_TIME
-	BlockTime int64 `json:"blockTime"`
-
-	// Decimals DTO.TOKEN.TRANSFER.DECIMALS
-	Decimals int64 `json:"decimals"`
-
-	// Flow DTO.TOKEN.TRANSFER.FLOW
-	Flow TokenTransferItemDTOFlow `json:"flow"`
-
-	// FromAddress DTO.TOKEN.TRANSFER.FROM_ADDRESS
-	FromAddress string `json:"fromAddress"`
-
-	// FromTokenAccount DTO.TOKEN.TRANSFER.FROM_TOKEN_ACCOUNT
-	FromTokenAccount string `json:"fromTokenAccount"`
-
-	// LogoUri DTO.TOKEN.TRANSFER.LOGO_URI
-	LogoUri *string `json:"logoUri,omitempty"`
-
-	// Name DTO.TOKEN.TRANSFER.NAME
-	Name string `json:"name"`
-
-	// Price DTO.TOKEN.TRANSFER.PRICE
-	Price string `json:"price"`
-
-	// Symbol DTO.TOKEN.TRANSFER.SYMBOL
-	Symbol string `json:"symbol"`
-
-	// ToAddress DTO.TOKEN.TRANSFER.TO_ADDRESS
-	ToAddress string `json:"toAddress"`
-
-	// ToTokenAccount DTO.TOKEN.TRANSFER.TO_TOKEN_ACCOUNT
-	ToTokenAccount string `json:"toTokenAccount"`
-
-	// TokenAddress DTO.TOKEN.TRANSFER.TOKEN_ADDRESS
-	TokenAddress string `json:"tokenAddress"`
-
-	// TxHash DTO.TOKEN.TRANSFER.TX_HASH
-	TxHash string `json:"txHash"`
-
-	// Value DTO.TOKEN.TRANSFER.VALUE
-	Value string `json:"value"`
-}
-
-// TokenTransferItemDTOFlow DTO.TOKEN.TRANSFER.FLOW
-type TokenTransferItemDTOFlow string
-
-// TokenTransferPage defines model for TokenTransferPage.
-type TokenTransferPage struct {
-	// Data DTO.PAGE.DATA
-	Data []TokenTransferItemDTO `json:"data"`
-
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor *string `json:"endCursor,omitempty"`
-
-	// HasNext DTO.PAGE.HAS_NEXT
-	HasNext *bool `json:"hasNext,omitempty"`
-
-	// HasPrev DTO.PAGE.HAS_PREV
-	HasPrev *bool `json:"hasPrev,omitempty"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor *string `json:"startCursor,omitempty"`
-
-	// Total DTO.PAGE.TOTAL
-	Total *int64 `json:"total,omitempty"`
-}
-
-// TokenTransferTotalDTO defines model for TokenTransferTotalDTO.
-type TokenTransferTotalDTO struct {
-	// Total DTO.TOKEN.TRANSFER.TOTAL
+// TokenTransferTotal Token transfer total count
+type TokenTransferTotal struct {
 	Total int64 `json:"total"`
 }
 
@@ -1475,7 +877,9 @@ type SearchParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *SearchParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
 	// Chains DTO.TOKEN.SEARCH.CHAINS
 	Chains *[]string `form:"chains,omitempty" json:"chains,omitempty"`
@@ -1484,23 +888,30 @@ type SearchParams struct {
 	Q *string `form:"q,omitempty" json:"q,omitempty"`
 
 	// Sort DTO.TOKEN.SEARCH.SORT_DIRECTION
-	Sort *SearchParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *struct {
+		union json.RawMessage
+	} `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// Protocols DTO.TOKEN.SEARCH.PROTOCOLS
 	Protocols *[]string `form:"protocols,omitempty" json:"protocols,omitempty"`
 
 	// SortBy DTO.TOKEN.SEARCH.SORT_BY
-	SortBy *SearchParamsSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
+	SortBy *SearchSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
 }
 
-// SearchParamsDirection defines parameters for Search.
-type SearchParamsDirection string
+// GetDevTokensParams defines parameters for GetDevTokens.
+type GetDevTokensParams struct {
+	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// SearchParamsSort defines parameters for Search.
-type SearchParamsSort string
+	// Limit DTO.PAGE.LIMIT
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
-// SearchParamsSortBy defines parameters for Search.
-type SearchParamsSortBy string
+	// Direction DTO.PAGE.DIRECTION
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
+}
 
 // ListTokenParams defines parameters for ListToken.
 type ListTokenParams struct {
@@ -1511,13 +922,15 @@ type ListTokenParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *ListTokenParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
-	// Sort DTO.TOKEN.SEARCH.SORT_DIRECTION
-	Sort *ListTokenParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	// Sort DTO.TOKEN.LIST.SORT_DIRECTION
+	Sort *SortDirection `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// SortBy DTO.TOKEN.LIST.QUERY.SORT_BY
-	SortBy *ListTokenParamsSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
+	SortBy *TokenListSortField `form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
 	// MinH24VolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_H24_VOLUME_IN_USD
 	MinH24VolumeInUsd *string `form:"min_h24_volume_in_usd,omitempty" json:"min_h24_volume_in_usd,omitempty"`
@@ -1898,15 +1311,6 @@ type ListTokenParams struct {
 	MaxM1SellVolumeInUsd *string `form:"max_m1_sell_volume_in_usd,omitempty" json:"max_m1_sell_volume_in_usd,omitempty"`
 }
 
-// ListTokenParamsDirection defines parameters for ListToken.
-type ListTokenParamsDirection string
-
-// ListTokenParamsSort defines parameters for ListToken.
-type ListTokenParamsSort string
-
-// ListTokenParamsSortBy defines parameters for ListToken.
-type ListTokenParamsSortBy string
-
 // GetMarketDataMultiParams defines parameters for GetMarketDataMulti.
 type GetMarketDataMultiParams struct {
 	// TokenAddresses GLOBAL.TOKENADDRESSES.DESCRIPTION
@@ -1925,20 +1329,16 @@ type GetTokensParams struct {
 	TokenAddresses string `form:"tokenAddresses" json:"tokenAddresses"`
 
 	// SortBy DTO.TOKEN.REQUEST.SORT_BY
-	SortBy *GetTokensParamsSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
+	SortBy *TokenField `form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
 	// SortDirection DTO.TOKEN.REQUEST.SORT_DIRECTION
-	SortDirection *GetTokensParamsSortDirection `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+	SortDirection *struct {
+		union json.RawMessage
+	} `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
 
-	// FilterBy DTO.TOKEN.REQUEST.FILTER_BY
-	FilterBy *[]FilterCondition `form:"filterBy,omitempty" json:"filterBy,omitempty"`
+	// FilterBy DTO.TOKEN.REQUEST.FILTER_BY (JSON array of filter conditions)
+	FilterBy *string `form:"filterBy,omitempty" json:"filterBy,omitempty"`
 }
-
-// GetTokensParamsSortBy defines parameters for GetTokens.
-type GetTokensParamsSortBy string
-
-// GetTokensParamsSortDirection defines parameters for GetTokens.
-type GetTokensParamsSortDirection string
 
 // GetPairCandlesParams defines parameters for GetPairCandles.
 type GetPairCandlesParams struct {
@@ -1946,7 +1346,9 @@ type GetPairCandlesParams struct {
 	Resolution Resolution `form:"resolution" json:"resolution"`
 
 	// PriceType DTO.CANDLE.PRICE_TYPE
-	PriceType *PriceType `form:"priceType,omitempty" json:"priceType,omitempty"`
+	PriceType *struct {
+		union json.RawMessage
+	} `form:"priceType,omitempty" json:"priceType,omitempty"`
 
 	// From DTO.CANDLE.FROM
 	From *int64 `form:"from,omitempty" json:"from,omitempty"`
@@ -1954,7 +1356,7 @@ type GetPairCandlesParams struct {
 	// To DTO.CANDLE.TO
 	To *int64 `form:"to,omitempty" json:"to,omitempty"`
 
-	// Limit DTO.CANDLE.LIMIT
+	// Limit DTO.TOKEN.CANDLE.LIMIT
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 }
 
@@ -1964,7 +1366,9 @@ type GetPoolCandlesParams struct {
 	Resolution Resolution `form:"resolution" json:"resolution"`
 
 	// PriceType DTO.CANDLE.PRICE_TYPE
-	PriceType *PriceType `form:"priceType,omitempty" json:"priceType,omitempty"`
+	PriceType *struct {
+		union json.RawMessage
+	} `form:"priceType,omitempty" json:"priceType,omitempty"`
 
 	// From DTO.CANDLE.FROM
 	From *int64 `form:"from,omitempty" json:"from,omitempty"`
@@ -1972,7 +1376,7 @@ type GetPoolCandlesParams struct {
 	// To DTO.CANDLE.TO
 	To *int64 `form:"to,omitempty" json:"to,omitempty"`
 
-	// Limit DTO.CANDLE.LIMIT
+	// Limit DTO.TOKEN.CANDLE.LIMIT
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 }
 
@@ -1988,7 +1392,9 @@ type GetCandlesParams struct {
 	Resolution Resolution `form:"resolution" json:"resolution"`
 
 	// PriceType DTO.CANDLE.PRICE_TYPE
-	PriceType *PriceType `form:"priceType,omitempty" json:"priceType,omitempty"`
+	PriceType *struct {
+		union json.RawMessage
+	} `form:"priceType,omitempty" json:"priceType,omitempty"`
 
 	// From DTO.CANDLE.FROM
 	From *int64 `form:"from,omitempty" json:"from,omitempty"`
@@ -1996,7 +1402,7 @@ type GetCandlesParams struct {
 	// To DTO.CANDLE.TO
 	To *int64 `form:"to,omitempty" json:"to,omitempty"`
 
-	// Limit DTO.CANDLE.LIMIT
+	// Limit DTO.TOKEN.CANDLE.LIMIT
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 }
 
@@ -2009,11 +1415,10 @@ type GetHoldersParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetHoldersParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 }
-
-// GetHoldersParamsDirection defines parameters for GetHolders.
-type GetHoldersParamsDirection string
 
 // GetHoldersMultiParams defines parameters for GetHoldersMulti.
 type GetHoldersMultiParams struct {
@@ -2030,14 +1435,13 @@ type GetTokenLiquiditySnapshotsParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetTokenLiquiditySnapshotsParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
-	// Time DTO.TOKEN.LIQUIDITY_SNAPSHOT.TIME
+	// Time DTO.TOKEN.LIQUIDITY_SNAPSHOTS.TIME
 	Time *int64 `form:"time,omitempty" json:"time,omitempty"`
 }
-
-// GetTokenLiquiditySnapshotsParamsDirection defines parameters for GetTokenLiquiditySnapshots.
-type GetTokenLiquiditySnapshotsParamsDirection string
 
 // GetMintAndBurnParams defines parameters for GetMintAndBurn.
 type GetMintAndBurnParams struct {
@@ -2048,17 +1452,13 @@ type GetMintAndBurnParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetMintAndBurnParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
-	// Type DTO.TOKEN.MINT_AND_BURN.TYPE
-	Type *GetMintAndBurnParamsType `form:"type,omitempty" json:"type,omitempty"`
+	// Type DTO.TOKEN.MINT_BURN.TYPE
+	Type *MintBurnType `form:"type,omitempty" json:"type,omitempty"`
 }
-
-// GetMintAndBurnParamsDirection defines parameters for GetMintAndBurn.
-type GetMintAndBurnParamsDirection string
-
-// GetMintAndBurnParamsType defines parameters for GetMintAndBurn.
-type GetMintAndBurnParamsType string
 
 // GetPoolsParams defines parameters for GetPools.
 type GetPoolsParams struct {
@@ -2069,39 +1469,36 @@ type GetPoolsParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetPoolsParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
-	// SortBy DTO.POOL.SORT_BY
-	SortBy *GetPoolsParamsSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
+	// SortBy DTO.TOKEN.POOLS.SORT_BY
+	SortBy *struct {
+		union json.RawMessage
+	} `form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
-	// SortDirection DTO.POOL.SORT_DIRECTION
-	SortDirection *GetPoolsParamsSortDirection `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+	// SortDirection DTO.TOKEN.POOLS.SORT_DIRECTION
+	SortDirection *struct {
+		union json.RawMessage
+	} `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
 
-	// MinTvlInSol DTO.POOL.MIN_TVL_IN_SOL
+	// MinTvlInSol DTO.TOKEN.POOLS.MIN_TVL_IN_SOL
 	MinTvlInSol *string `form:"minTvlInSol,omitempty" json:"minTvlInSol,omitempty"`
 
-	// MaxTvlInSol DTO.POOL.MAX_TVL_IN_SOL
+	// MaxTvlInSol DTO.TOKEN.POOLS.MAX_TVL_IN_SOL
 	MaxTvlInSol *string `form:"maxTvlInSol,omitempty" json:"maxTvlInSol,omitempty"`
 
-	// MinTvlInUsd DTO.POOL.MIN_TVL_IN_USD
+	// MinTvlInUsd DTO.TOKEN.POOLS.MIN_TVL_IN_USD
 	MinTvlInUsd *string `form:"minTvlInUsd,omitempty" json:"minTvlInUsd,omitempty"`
 
-	// MaxTvlInUsd DTO.POOL.MAX_TVL_IN_USD
+	// MaxTvlInUsd DTO.TOKEN.POOLS.MAX_TVL_IN_USD
 	MaxTvlInUsd *string `form:"maxTvlInUsd,omitempty" json:"maxTvlInUsd,omitempty"`
 }
 
-// GetPoolsParamsDirection defines parameters for GetPools.
-type GetPoolsParamsDirection string
-
-// GetPoolsParamsSortBy defines parameters for GetPools.
-type GetPoolsParamsSortBy string
-
-// GetPoolsParamsSortDirection defines parameters for GetPools.
-type GetPoolsParamsSortDirection string
-
 // GetPriceByTimeParams defines parameters for GetPriceByTime.
 type GetPriceByTimeParams struct {
-	// Timestamp DTO.TOKEN.PRICE.QUERY.TIMESTAMP
+	// Timestamp DTO.TOKEN.PRICE.TIMESTAMP
 	Timestamp int64 `form:"timestamp" json:"timestamp"`
 }
 
@@ -2114,14 +1511,13 @@ type GetPricesParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetPricesParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 }
 
-// GetPricesParamsDirection defines parameters for GetPrices.
-type GetPricesParamsDirection string
-
-// GetTokenTransferTotalParams defines parameters for GetTokenTransferTotal.
-type GetTokenTransferTotalParams struct {
+// GetTokenTradersParams defines parameters for GetTokenTraders.
+type GetTokenTradersParams struct {
 	// Cursor DTO.PAGE.CURSOR.DESCRIPTION
 	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 
@@ -2129,17 +1525,19 @@ type GetTokenTransferTotalParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetTokenTransferTotalParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
+}
 
+// GetTokenTransferTotalParams defines parameters for GetTokenTransferTotal.
+type GetTokenTransferTotalParams struct {
 	// BeforeTimestamp DTO.TOKEN.TRANSFER.QUERY.BEFORE_TIMESTAMP
 	BeforeTimestamp *int64 `form:"beforeTimestamp,omitempty" json:"beforeTimestamp,omitempty"`
 
 	// AfterTimestamp DTO.TOKEN.TRANSFER.QUERY.AFTER_TIMESTAMP
 	AfterTimestamp *int64 `form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
 }
-
-// GetTokenTransferTotalParamsDirection defines parameters for GetTokenTransferTotal.
-type GetTokenTransferTotalParamsDirection string
 
 // GetTokenTransfersParams defines parameters for GetTokenTransfers.
 type GetTokenTransfersParams struct {
@@ -2150,17 +1548,16 @@ type GetTokenTransfersParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.PAGE.DIRECTION
-	Direction *GetTokenTransfersParamsDirection `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
-	// BeforeTimestamp DTO.TOKEN.TRANSFER.QUERY.BEFORE_TIMESTAMP
-	BeforeTimestamp *int64 `form:"beforeTimestamp,omitempty" json:"beforeTimestamp,omitempty"`
+	// FromTimestamp GLOBAL.FROM_TIMESTAMP.DESCRIPTION
+	FromTimestamp *int64 `form:"fromTimestamp,omitempty" json:"fromTimestamp,omitempty"`
 
-	// AfterTimestamp DTO.TOKEN.TRANSFER.QUERY.AFTER_TIMESTAMP
-	AfterTimestamp *int64 `form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
+	// ToTimestamp GLOBAL.TO_TIMESTAMP.DESCRIPTION
+	ToTimestamp *int64 `form:"toTimestamp,omitempty" json:"toTimestamp,omitempty"`
 }
-
-// GetTokenTransfersParamsDirection defines parameters for GetTokenTransfers.
-type GetTokenTransfersParamsDirection string
 
 // RequestEditorFn  is the function signature for the RequestEditor callback function
 type RequestEditorFn func(ctx context.Context, req *http.Request) error
@@ -2239,7 +1636,7 @@ type ClientInterface interface {
 	Search(ctx context.Context, params *SearchParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetDevTokens request
-	GetDevTokens(ctx context.Context, chain ChainSymbol, devAddress string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetDevTokens(ctx context.Context, chain ChainSymbol, devAddress string, params *GetDevTokensParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ListToken request
 	ListToken(ctx context.Context, chain ChainSymbol, params *ListTokenParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -2308,7 +1705,7 @@ type ClientInterface interface {
 	GetTopHolders(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTokenTraders request
-	GetTokenTraders(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetTokenTraders(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, params *GetTokenTradersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetTokenTransferTotal request
 	GetTokenTransferTotal(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTransferTotalParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -2329,8 +1726,8 @@ func (c *Client) Search(ctx context.Context, params *SearchParams, reqEditors ..
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetDevTokens(ctx context.Context, chain ChainSymbol, devAddress string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetDevTokensRequest(c.Server, chain, devAddress)
+func (c *Client) GetDevTokens(ctx context.Context, chain ChainSymbol, devAddress string, params *GetDevTokensParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetDevTokensRequest(c.Server, chain, devAddress, params)
 	if err != nil {
 		return nil, err
 	}
@@ -2605,8 +2002,8 @@ func (c *Client) GetTopHolders(ctx context.Context, chain ChainSymbol, tokenAddr
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetTokenTraders(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetTokenTradersRequest(c.Server, chain, tokenAddress, tag)
+func (c *Client) GetTokenTraders(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, params *GetTokenTradersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetTokenTradersRequest(c.Server, chain, tokenAddress, tag, params)
 	if err != nil {
 		return nil, err
 	}
@@ -2650,7 +2047,7 @@ func NewSearchRequest(server string, params *SearchParams) (*http.Request, error
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/search")
+	operationPath := fmt.Sprintf("/v2/token/search")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -2803,7 +2200,7 @@ func NewSearchRequest(server string, params *SearchParams) (*http.Request, error
 }
 
 // NewGetDevTokensRequest generates requests for GetDevTokens
-func NewGetDevTokensRequest(server string, chain ChainSymbol, devAddress string) (*http.Request, error) {
+func NewGetDevTokensRequest(server string, chain ChainSymbol, devAddress string, params *GetDevTokensParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -2825,7 +2222,7 @@ func NewGetDevTokensRequest(server string, chain ChainSymbol, devAddress string)
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/dev/%s/tokens", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/dev/%s/tokens", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -2833,6 +2230,60 @@ func NewGetDevTokensRequest(server string, chain ChainSymbol, devAddress string)
 	queryURL, err := serverURL.Parse(operationPath)
 	if err != nil {
 		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Cursor != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "cursor", runtime.ParamLocationQuery, *params.Cursor); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "limit", runtime.ParamLocationQuery, *params.Limit); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Direction != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direction", runtime.ParamLocationQuery, *params.Direction); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
 	}
 
 	req, err := http.NewRequest("GET", queryURL.String(), nil)
@@ -2859,7 +2310,7 @@ func NewListTokenRequest(server string, chain ChainSymbol, params *ListTokenPara
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/list", pathParam0)
+	operationPath := fmt.Sprintf("/v2/token/%s/list", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -4995,7 +4446,7 @@ func NewGetMarketDataMultiRequest(server string, chain ChainSymbol, params *GetM
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/marketData/multi", pathParam0)
+	operationPath := fmt.Sprintf("/v2/token/%s/marketData/multi", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -5047,7 +4498,7 @@ func NewGetMetadataMultiRequest(server string, chain ChainSymbol, params *GetMet
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/metadata/multi", pathParam0)
+	operationPath := fmt.Sprintf("/v2/token/%s/metadata/multi", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -5099,7 +4550,7 @@ func NewGetTokensRequest(server string, chain ChainSymbol, params *GetTokensPara
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/multi", pathParam0)
+	operationPath := fmt.Sprintf("/v2/token/%s/multi", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -5206,7 +4657,7 @@ func NewGetPairCandlesRequest(server string, chain ChainSymbol, pair string, par
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/pair/%s/candles", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/pair/%s/candles", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -5329,7 +4780,7 @@ func NewGetPoolCandlesRequest(server string, chain ChainSymbol, poolAddress stri
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/pool/%s/candles", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/pool/%s/candles", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -5445,7 +4896,7 @@ func NewGetStatsMultiRequest(server string, chain ChainSymbol, params *GetStatsM
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/stats/multi", pathParam0)
+	operationPath := fmt.Sprintf("/v2/token/%s/stats/multi", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -5504,7 +4955,7 @@ func NewGetTokenRequest(server string, chain ChainSymbol, tokenAddress string) (
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -5545,7 +4996,7 @@ func NewGetCandlesRequest(server string, chain ChainSymbol, tokenAddress string,
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/candles", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/candles", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -5668,7 +5119,7 @@ func NewGetCreationRequest(server string, chain ChainSymbol, tokenAddress string
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/creation", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/creation", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -5709,7 +5160,7 @@ func NewGetHoldersRequest(server string, chain ChainSymbol, tokenAddress string,
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/holders", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/holders", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -5804,7 +5255,7 @@ func NewGetHoldersMultiRequest(server string, chain ChainSymbol, tokenAddress st
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/holders/multi", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/holders/multi", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -5863,7 +5314,7 @@ func NewGetTokenLiquiditySnapshotsRequest(server string, chain ChainSymbol, toke
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/liquiditySnapshots", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/liquiditySnapshots", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -5974,7 +5425,7 @@ func NewGetMarketDataRequest(server string, chain ChainSymbol, tokenAddress stri
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/marketData", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/marketData", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -6015,7 +5466,7 @@ func NewGetMetadataRequest(server string, chain ChainSymbol, tokenAddress string
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/metadata", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/metadata", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -6056,7 +5507,7 @@ func NewGetMintAndBurnRequest(server string, chain ChainSymbol, tokenAddress str
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/mintAndBurn", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/mintAndBurn", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -6167,7 +5618,7 @@ func NewGetPoolsRequest(server string, chain ChainSymbol, tokenAddress string, p
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/pools", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/pools", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -6358,7 +5809,7 @@ func NewGetPriceByTimeRequest(server string, chain ChainSymbol, tokenAddress str
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/price", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/price", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -6417,7 +5868,7 @@ func NewGetPricesRequest(server string, chain ChainSymbol, tokenAddress string, 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/prices", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/prices", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -6512,7 +5963,7 @@ func NewGetSecurityRequest(server string, chain ChainSymbol, tokenAddress string
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/security", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/security", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -6553,7 +6004,7 @@ func NewGetStatsRequest(server string, chain ChainSymbol, tokenAddress string) (
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/stats", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/stats", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -6594,7 +6045,7 @@ func NewGetTopHoldersRequest(server string, chain ChainSymbol, tokenAddress stri
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/topHolders", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/topHolders", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -6613,7 +6064,7 @@ func NewGetTopHoldersRequest(server string, chain ChainSymbol, tokenAddress stri
 }
 
 // NewGetTokenTradersRequest generates requests for GetTokenTraders
-func NewGetTokenTradersRequest(server string, chain ChainSymbol, tokenAddress string, tag TokenTraderTag) (*http.Request, error) {
+func NewGetTokenTradersRequest(server string, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, params *GetTokenTradersParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -6642,48 +6093,7 @@ func NewGetTokenTradersRequest(server string, chain ChainSymbol, tokenAddress st
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/traders/%s", pathParam0, pathParam1, pathParam2)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetTokenTransferTotalRequest generates requests for GetTokenTransferTotal
-func NewGetTokenTransferTotalRequest(server string, chain ChainSymbol, tokenAddress string, params *GetTokenTransferTotalParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "tokenAddress", runtime.ParamLocationPath, tokenAddress)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/transfer-total", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/traders/%s", pathParam0, pathParam1, pathParam2)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -6743,6 +6153,53 @@ func NewGetTokenTransferTotalRequest(server string, chain ChainSymbol, tokenAddr
 			}
 
 		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetTokenTransferTotalRequest generates requests for GetTokenTransferTotal
+func NewGetTokenTransferTotalRequest(server string, chain ChainSymbol, tokenAddress string, params *GetTokenTransferTotalParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "chain", runtime.ParamLocationPath, chain)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "tokenAddress", runtime.ParamLocationPath, tokenAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/transfer-total", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
 
 		if params.BeforeTimestamp != nil {
 
@@ -6810,7 +6267,7 @@ func NewGetTokenTransfersRequest(server string, chain ChainSymbol, tokenAddress 
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/token/%s/%s/transfers", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/transfers", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -6871,9 +6328,9 @@ func NewGetTokenTransfersRequest(server string, chain ChainSymbol, tokenAddress 
 
 		}
 
-		if params.BeforeTimestamp != nil {
+		if params.FromTimestamp != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "beforeTimestamp", runtime.ParamLocationQuery, *params.BeforeTimestamp); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "fromTimestamp", runtime.ParamLocationQuery, *params.FromTimestamp); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -6887,9 +6344,9 @@ func NewGetTokenTransfersRequest(server string, chain ChainSymbol, tokenAddress 
 
 		}
 
-		if params.AfterTimestamp != nil {
+		if params.ToTimestamp != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "afterTimestamp", runtime.ParamLocationQuery, *params.AfterTimestamp); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "toTimestamp", runtime.ParamLocationQuery, *params.ToTimestamp); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -6961,7 +6418,7 @@ type ClientWithResponsesInterface interface {
 	SearchWithResponse(ctx context.Context, params *SearchParams, reqEditors ...RequestEditorFn) (*SearchResponse, error)
 
 	// GetDevTokensWithResponse request
-	GetDevTokensWithResponse(ctx context.Context, chain ChainSymbol, devAddress string, reqEditors ...RequestEditorFn) (*GetDevTokensResponse, error)
+	GetDevTokensWithResponse(ctx context.Context, chain ChainSymbol, devAddress string, params *GetDevTokensParams, reqEditors ...RequestEditorFn) (*GetDevTokensResponse, error)
 
 	// ListTokenWithResponse request
 	ListTokenWithResponse(ctx context.Context, chain ChainSymbol, params *ListTokenParams, reqEditors ...RequestEditorFn) (*ListTokenResponse, error)
@@ -7030,7 +6487,7 @@ type ClientWithResponsesInterface interface {
 	GetTopHoldersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors ...RequestEditorFn) (*GetTopHoldersResponse, error)
 
 	// GetTokenTradersWithResponse request
-	GetTokenTradersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, reqEditors ...RequestEditorFn) (*GetTokenTradersResponse, error)
+	GetTokenTradersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, params *GetTokenTradersParams, reqEditors ...RequestEditorFn) (*GetTokenTradersResponse, error)
 
 	// GetTokenTransferTotalWithResponse request
 	GetTokenTransferTotalWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTransferTotalParams, reqEditors ...RequestEditorFn) (*GetTokenTransferTotalResponse, error)
@@ -7064,7 +6521,7 @@ func (r SearchResponse) StatusCode() int {
 type GetDevTokensResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *[]DevTokenDTO
+	JSON200      *PageResponseDevToken
 }
 
 // Status returns HTTPResponse.Status
@@ -7086,7 +6543,7 @@ func (r GetDevTokensResponse) StatusCode() int {
 type ListTokenResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokenListPage
+	JSON200      *PageResponseToken
 }
 
 // Status returns HTTPResponse.Status
@@ -7108,7 +6565,52 @@ func (r ListTokenResponse) StatusCode() int {
 type GetMarketDataMultiResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]TokenMarketData
+	JSON200      *map[string]struct {
+		BluechipHoldingsRatio *string `json:"bluechipHoldingsRatio"`
+		BluechipTotalHolders  *string `json:"bluechipTotalHolders"`
+		BluechipTotalHoldings *string `json:"bluechipTotalHoldings"`
+		BundleHoldingsRatio   *string `json:"bundleHoldingsRatio"`
+		BundleTotalHolders    *string `json:"bundleTotalHolders"`
+		BundleTotalHoldings   *string `json:"bundleTotalHoldings"`
+		CompletionRatio       *string `json:"completionRatio"`
+		DevHoldingsRatio      *string `json:"devHoldingsRatio"`
+		DevTotalHolders       *string `json:"devTotalHolders"`
+		DevTotalHoldings      *string `json:"devTotalHoldings"`
+		FreshHoldingsRatio    *string `json:"freshHoldingsRatio"`
+		FreshTotalHolders     *string `json:"freshTotalHolders"`
+		FreshTotalHoldings    *string `json:"freshTotalHoldings"`
+		Holders               *string `json:"holders"`
+		InsiderHoldingsRatio  *string `json:"insiderHoldingsRatio"`
+		InsiderTotalHolders   *string `json:"insiderTotalHolders"`
+		InsiderTotalHoldings  *string `json:"insiderTotalHoldings"`
+		KolHoldingsRatio      *string `json:"kolHoldingsRatio"`
+		KolTotalHolders       *string `json:"kolTotalHolders"`
+		KolTotalHoldings      *string `json:"kolTotalHoldings"`
+		MarketCapInSol        *string `json:"marketCapInSol"`
+		MarketCapInUsd        *string `json:"marketCapInUsd"`
+		MaxPoolTvlInSol       *string `json:"maxPoolTvlInSol"`
+		MaxPoolTvlInUsd       *string `json:"maxPoolTvlInUsd"`
+		PriceInSol            *string `json:"priceInSol"`
+		PriceInUsd            *string `json:"priceInUsd"`
+		ProHoldingsRatio      *string `json:"proHoldingsRatio"`
+		ProTotalHolders       *string `json:"proTotalHolders"`
+		ProTotalHoldings      *string `json:"proTotalHoldings"`
+		SandwishHoldingsRatio *string `json:"sandwishHoldingsRatio"`
+		SandwishTotalHolders  *string `json:"sandwishTotalHolders"`
+		SandwishTotalHoldings *string `json:"sandwishTotalHoldings"`
+		SniperHoldingsRatio   *string `json:"sniperHoldingsRatio"`
+		SniperTotalHolders    *string `json:"sniperTotalHolders"`
+		SniperTotalHoldings   *string `json:"sniperTotalHoldings"`
+		Top100HoldingsRatio   *string `json:"top100HoldingsRatio"`
+		Top100TotalHoldings   *string `json:"top100TotalHoldings"`
+		Top10HoldingsRatio    *string `json:"top10HoldingsRatio"`
+		Top10TotalHoldings    *string `json:"top10TotalHoldings"`
+		Top50HoldingsRatio    *string `json:"top50HoldingsRatio"`
+		Top50TotalHoldings    *string `json:"top50TotalHoldings"`
+		TotalSupply           *string `json:"totalSupply"`
+		TotalTvlInSol         *string `json:"totalTvlInSol"`
+		TotalTvlInUsd         *string `json:"totalTvlInUsd"`
+	}
 }
 
 // Status returns HTTPResponse.Status
@@ -7130,7 +6632,32 @@ func (r GetMarketDataMultiResponse) StatusCode() int {
 type GetMetadataMultiResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]TokenMetadata
+	JSON200      *map[string]struct {
+		Address               string  `json:"address"`
+		Chain                 string  `json:"chain"`
+		CoingeckoCoinId       *string `json:"coingeckoCoinId"`
+		Decimals              string  `json:"decimals"`
+		Description           *string `json:"description"`
+		DevLastTokenCreatedAt *string `json:"devLastTokenCreatedAt"`
+		DevTotalTokens        *string `json:"devTotalTokens"`
+
+		// Extra Token extra metadata
+		Extra           *TokenExtra `json:"extra,omitempty"`
+		ImageUrl        *string     `json:"imageUrl"`
+		MetadataAddress *string     `json:"metadataAddress"`
+		Name            string      `json:"name"`
+
+		// SocialMedias Token social media links
+		SocialMedias            *TokenSocialMedias `json:"socialMedias,omitempty"`
+		Symbol                  string             `json:"symbol"`
+		TokenCreatedAt          *int64             `json:"tokenCreatedAt"`
+		TokenCreatedBlockHeight *string            `json:"tokenCreatedBlockHeight"`
+		TokenCreatedSlot        *string            `json:"tokenCreatedSlot"`
+		TokenCreatedTxSignature *string            `json:"tokenCreatedTxSignature"`
+		TokenCreators           *[]TokenCreator    `json:"tokenCreators,omitempty"`
+		UpdatedAt               *string            `json:"updatedAt"`
+		Uri                     *string            `json:"uri"`
+	}
 }
 
 // Status returns HTTPResponse.Status
@@ -7174,7 +6701,7 @@ func (r GetTokensResponse) StatusCode() int {
 type GetPairCandlesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *[]Candle
+	JSON200      *[]TokenCandle
 }
 
 // Status returns HTTPResponse.Status
@@ -7196,7 +6723,7 @@ func (r GetPairCandlesResponse) StatusCode() int {
 type GetPoolCandlesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *[]Candle
+	JSON200      *[]TokenCandle
 }
 
 // Status returns HTTPResponse.Status
@@ -7218,7 +6745,14 @@ func (r GetPoolCandlesResponse) StatusCode() int {
 type GetStatsMultiResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]TokenStat
+	JSON200      *map[string]struct {
+		Address string `json:"address"`
+
+		// Periods Trade statistics grouped by time period (1m, 5m, 15m, 30m, 1h, 4h, 24h).
+		// Each period contains full OHLCV data, trade counts, and previous-period comparisons.
+		// See `TokenTradeStatPeriod` schema for all fields.
+		Periods map[string]TokenTradeStatPeriod `json:"periods"`
+	}
 }
 
 // Status returns HTTPResponse.Status
@@ -7262,7 +6796,7 @@ func (r GetTokenResponse) StatusCode() int {
 type GetCandlesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *[]Candle
+	JSON200      *[]TokenCandle
 }
 
 // Status returns HTTPResponse.Status
@@ -7284,7 +6818,7 @@ func (r GetCandlesResponse) StatusCode() int {
 type GetCreationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokenCreationDTO
+	JSON200      *TokenCreation
 }
 
 // Status returns HTTPResponse.Status
@@ -7306,7 +6840,7 @@ func (r GetCreationResponse) StatusCode() int {
 type GetHoldersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokenHolderPage
+	JSON200      *PageResponseTokenHolder
 }
 
 // Status returns HTTPResponse.Status
@@ -7350,7 +6884,7 @@ func (r GetHoldersMultiResponse) StatusCode() int {
 type GetTokenLiquiditySnapshotsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokenLiquiditySnapshotPage
+	JSON200      *PageResponseTokenLiquiditySnapshot
 }
 
 // Status returns HTTPResponse.Status
@@ -7416,7 +6950,7 @@ func (r GetMetadataResponse) StatusCode() int {
 type GetMintAndBurnResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokenCreationPage
+	JSON200      *PageResponseTokenMintBurn
 }
 
 // Status returns HTTPResponse.Status
@@ -7438,7 +6972,7 @@ func (r GetMintAndBurnResponse) StatusCode() int {
 type GetPoolsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *DexPoolPage
+	JSON200      *PageResponseDexPool
 }
 
 // Status returns HTTPResponse.Status
@@ -7460,7 +6994,7 @@ func (r GetPoolsResponse) StatusCode() int {
 type GetPriceByTimeResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokenPriceDTO
+	JSON200      *TokenPrice
 }
 
 // Status returns HTTPResponse.Status
@@ -7482,7 +7016,7 @@ func (r GetPriceByTimeResponse) StatusCode() int {
 type GetPricesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokenPricePage
+	JSON200      *PageResponseTokenPrice
 }
 
 // Status returns HTTPResponse.Status
@@ -7504,7 +7038,7 @@ func (r GetPricesResponse) StatusCode() int {
 type GetSecurityResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]interface{}
+	JSON200      *interface{}
 }
 
 // Status returns HTTPResponse.Status
@@ -7526,7 +7060,7 @@ func (r GetSecurityResponse) StatusCode() int {
 type GetStatsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokenStat
+	JSON200      *TokenStats
 }
 
 // Status returns HTTPResponse.Status
@@ -7548,7 +7082,7 @@ func (r GetStatsResponse) StatusCode() int {
 type GetTopHoldersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokenHolderPage
+	JSON200      *PageResponseTokenHolder
 }
 
 // Status returns HTTPResponse.Status
@@ -7570,7 +7104,7 @@ func (r GetTopHoldersResponse) StatusCode() int {
 type GetTokenTradersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *[]TokenTrader
+	JSON200      *PageResponseTokenTrader
 }
 
 // Status returns HTTPResponse.Status
@@ -7592,7 +7126,7 @@ func (r GetTokenTradersResponse) StatusCode() int {
 type GetTokenTransferTotalResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokenTransferTotalDTO
+	JSON200      *TokenTransferTotal
 }
 
 // Status returns HTTPResponse.Status
@@ -7614,7 +7148,7 @@ func (r GetTokenTransferTotalResponse) StatusCode() int {
 type GetTokenTransfersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokenTransferPage
+	JSON200      *PageResponseTokenTransfer
 }
 
 // Status returns HTTPResponse.Status
@@ -7643,8 +7177,8 @@ func (c *ClientWithResponses) SearchWithResponse(ctx context.Context, params *Se
 }
 
 // GetDevTokensWithResponse request returning *GetDevTokensResponse
-func (c *ClientWithResponses) GetDevTokensWithResponse(ctx context.Context, chain ChainSymbol, devAddress string, reqEditors ...RequestEditorFn) (*GetDevTokensResponse, error) {
-	rsp, err := c.GetDevTokens(ctx, chain, devAddress, reqEditors...)
+func (c *ClientWithResponses) GetDevTokensWithResponse(ctx context.Context, chain ChainSymbol, devAddress string, params *GetDevTokensParams, reqEditors ...RequestEditorFn) (*GetDevTokensResponse, error) {
+	rsp, err := c.GetDevTokens(ctx, chain, devAddress, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -7850,8 +7384,8 @@ func (c *ClientWithResponses) GetTopHoldersWithResponse(ctx context.Context, cha
 }
 
 // GetTokenTradersWithResponse request returning *GetTokenTradersResponse
-func (c *ClientWithResponses) GetTokenTradersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, reqEditors ...RequestEditorFn) (*GetTokenTradersResponse, error) {
-	rsp, err := c.GetTokenTraders(ctx, chain, tokenAddress, tag, reqEditors...)
+func (c *ClientWithResponses) GetTokenTradersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, params *GetTokenTradersParams, reqEditors ...RequestEditorFn) (*GetTokenTradersResponse, error) {
+	rsp, err := c.GetTokenTraders(ctx, chain, tokenAddress, tag, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -7917,7 +7451,7 @@ func ParseGetDevTokensResponse(rsp *http.Response) (*GetDevTokensResponse, error
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []DevTokenDTO
+		var dest PageResponseDevToken
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7943,7 +7477,7 @@ func ParseListTokenResponse(rsp *http.Response) (*ListTokenResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenListPage
+		var dest PageResponseToken
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7969,7 +7503,52 @@ func ParseGetMarketDataMultiResponse(rsp *http.Response) (*GetMarketDataMultiRes
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]TokenMarketData
+		var dest map[string]struct {
+			BluechipHoldingsRatio *string `json:"bluechipHoldingsRatio"`
+			BluechipTotalHolders  *string `json:"bluechipTotalHolders"`
+			BluechipTotalHoldings *string `json:"bluechipTotalHoldings"`
+			BundleHoldingsRatio   *string `json:"bundleHoldingsRatio"`
+			BundleTotalHolders    *string `json:"bundleTotalHolders"`
+			BundleTotalHoldings   *string `json:"bundleTotalHoldings"`
+			CompletionRatio       *string `json:"completionRatio"`
+			DevHoldingsRatio      *string `json:"devHoldingsRatio"`
+			DevTotalHolders       *string `json:"devTotalHolders"`
+			DevTotalHoldings      *string `json:"devTotalHoldings"`
+			FreshHoldingsRatio    *string `json:"freshHoldingsRatio"`
+			FreshTotalHolders     *string `json:"freshTotalHolders"`
+			FreshTotalHoldings    *string `json:"freshTotalHoldings"`
+			Holders               *string `json:"holders"`
+			InsiderHoldingsRatio  *string `json:"insiderHoldingsRatio"`
+			InsiderTotalHolders   *string `json:"insiderTotalHolders"`
+			InsiderTotalHoldings  *string `json:"insiderTotalHoldings"`
+			KolHoldingsRatio      *string `json:"kolHoldingsRatio"`
+			KolTotalHolders       *string `json:"kolTotalHolders"`
+			KolTotalHoldings      *string `json:"kolTotalHoldings"`
+			MarketCapInSol        *string `json:"marketCapInSol"`
+			MarketCapInUsd        *string `json:"marketCapInUsd"`
+			MaxPoolTvlInSol       *string `json:"maxPoolTvlInSol"`
+			MaxPoolTvlInUsd       *string `json:"maxPoolTvlInUsd"`
+			PriceInSol            *string `json:"priceInSol"`
+			PriceInUsd            *string `json:"priceInUsd"`
+			ProHoldingsRatio      *string `json:"proHoldingsRatio"`
+			ProTotalHolders       *string `json:"proTotalHolders"`
+			ProTotalHoldings      *string `json:"proTotalHoldings"`
+			SandwishHoldingsRatio *string `json:"sandwishHoldingsRatio"`
+			SandwishTotalHolders  *string `json:"sandwishTotalHolders"`
+			SandwishTotalHoldings *string `json:"sandwishTotalHoldings"`
+			SniperHoldingsRatio   *string `json:"sniperHoldingsRatio"`
+			SniperTotalHolders    *string `json:"sniperTotalHolders"`
+			SniperTotalHoldings   *string `json:"sniperTotalHoldings"`
+			Top100HoldingsRatio   *string `json:"top100HoldingsRatio"`
+			Top100TotalHoldings   *string `json:"top100TotalHoldings"`
+			Top10HoldingsRatio    *string `json:"top10HoldingsRatio"`
+			Top10TotalHoldings    *string `json:"top10TotalHoldings"`
+			Top50HoldingsRatio    *string `json:"top50HoldingsRatio"`
+			Top50TotalHoldings    *string `json:"top50TotalHoldings"`
+			TotalSupply           *string `json:"totalSupply"`
+			TotalTvlInSol         *string `json:"totalTvlInSol"`
+			TotalTvlInUsd         *string `json:"totalTvlInUsd"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -7995,7 +7574,32 @@ func ParseGetMetadataMultiResponse(rsp *http.Response) (*GetMetadataMultiRespons
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]TokenMetadata
+		var dest map[string]struct {
+			Address               string  `json:"address"`
+			Chain                 string  `json:"chain"`
+			CoingeckoCoinId       *string `json:"coingeckoCoinId"`
+			Decimals              string  `json:"decimals"`
+			Description           *string `json:"description"`
+			DevLastTokenCreatedAt *string `json:"devLastTokenCreatedAt"`
+			DevTotalTokens        *string `json:"devTotalTokens"`
+
+			// Extra Token extra metadata
+			Extra           *TokenExtra `json:"extra,omitempty"`
+			ImageUrl        *string     `json:"imageUrl"`
+			MetadataAddress *string     `json:"metadataAddress"`
+			Name            string      `json:"name"`
+
+			// SocialMedias Token social media links
+			SocialMedias            *TokenSocialMedias `json:"socialMedias,omitempty"`
+			Symbol                  string             `json:"symbol"`
+			TokenCreatedAt          *int64             `json:"tokenCreatedAt"`
+			TokenCreatedBlockHeight *string            `json:"tokenCreatedBlockHeight"`
+			TokenCreatedSlot        *string            `json:"tokenCreatedSlot"`
+			TokenCreatedTxSignature *string            `json:"tokenCreatedTxSignature"`
+			TokenCreators           *[]TokenCreator    `json:"tokenCreators,omitempty"`
+			UpdatedAt               *string            `json:"updatedAt"`
+			Uri                     *string            `json:"uri"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8047,7 +7651,7 @@ func ParseGetPairCandlesResponse(rsp *http.Response) (*GetPairCandlesResponse, e
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []Candle
+		var dest []TokenCandle
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8073,7 +7677,7 @@ func ParseGetPoolCandlesResponse(rsp *http.Response) (*GetPoolCandlesResponse, e
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []Candle
+		var dest []TokenCandle
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8099,7 +7703,14 @@ func ParseGetStatsMultiResponse(rsp *http.Response) (*GetStatsMultiResponse, err
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]TokenStat
+		var dest map[string]struct {
+			Address string `json:"address"`
+
+			// Periods Trade statistics grouped by time period (1m, 5m, 15m, 30m, 1h, 4h, 24h).
+			// Each period contains full OHLCV data, trade counts, and previous-period comparisons.
+			// See `TokenTradeStatPeriod` schema for all fields.
+			Periods map[string]TokenTradeStatPeriod `json:"periods"`
+		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8151,7 +7762,7 @@ func ParseGetCandlesResponse(rsp *http.Response) (*GetCandlesResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []Candle
+		var dest []TokenCandle
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8177,7 +7788,7 @@ func ParseGetCreationResponse(rsp *http.Response) (*GetCreationResponse, error) 
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenCreationDTO
+		var dest TokenCreation
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8203,7 +7814,7 @@ func ParseGetHoldersResponse(rsp *http.Response) (*GetHoldersResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenHolderPage
+		var dest PageResponseTokenHolder
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8255,7 +7866,7 @@ func ParseGetTokenLiquiditySnapshotsResponse(rsp *http.Response) (*GetTokenLiqui
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenLiquiditySnapshotPage
+		var dest PageResponseTokenLiquiditySnapshot
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8333,7 +7944,7 @@ func ParseGetMintAndBurnResponse(rsp *http.Response) (*GetMintAndBurnResponse, e
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenCreationPage
+		var dest PageResponseTokenMintBurn
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8359,7 +7970,7 @@ func ParseGetPoolsResponse(rsp *http.Response) (*GetPoolsResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest DexPoolPage
+		var dest PageResponseDexPool
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8385,7 +7996,7 @@ func ParseGetPriceByTimeResponse(rsp *http.Response) (*GetPriceByTimeResponse, e
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenPriceDTO
+		var dest TokenPrice
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8411,7 +8022,7 @@ func ParseGetPricesResponse(rsp *http.Response) (*GetPricesResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenPricePage
+		var dest PageResponseTokenPrice
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8437,7 +8048,7 @@ func ParseGetSecurityResponse(rsp *http.Response) (*GetSecurityResponse, error) 
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]interface{}
+		var dest interface{}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8463,7 +8074,7 @@ func ParseGetStatsResponse(rsp *http.Response) (*GetStatsResponse, error) {
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenStat
+		var dest TokenStats
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8489,7 +8100,7 @@ func ParseGetTopHoldersResponse(rsp *http.Response) (*GetTopHoldersResponse, err
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenHolderPage
+		var dest PageResponseTokenHolder
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8515,7 +8126,7 @@ func ParseGetTokenTradersResponse(rsp *http.Response) (*GetTokenTradersResponse,
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []TokenTrader
+		var dest PageResponseTokenTrader
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8541,7 +8152,7 @@ func ParseGetTokenTransferTotalResponse(rsp *http.Response) (*GetTokenTransferTo
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenTransferTotalDTO
+		var dest TokenTransferTotal
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -8567,7 +8178,7 @@ func ParseGetTokenTransfersResponse(rsp *http.Response) (*GetTokenTransfersRespo
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenTransferPage
+		var dest PageResponseTokenTransfer
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

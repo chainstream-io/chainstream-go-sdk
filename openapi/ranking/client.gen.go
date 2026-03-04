@@ -15,10 +15,6 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
-const (
-	BearerScopes = "bearer.Scopes"
-)
-
 // Defines values for ChainSymbol.
 const (
 	Bsc ChainSymbol = "bsc"
@@ -26,922 +22,322 @@ const (
 	Sol ChainSymbol = "sol"
 )
 
-// Defines values for FilterConditionField.
+// Defines values for RankingDuration.
 const (
-	FilterConditionFieldMarketDataCreatorHoldings      FilterConditionField = "marketData.creatorHoldings"
-	FilterConditionFieldMarketDataCreatorHoldingsRatio FilterConditionField = "marketData.creatorHoldingsRatio"
-	FilterConditionFieldMarketDataHolders              FilterConditionField = "marketData.holders"
-	FilterConditionFieldMarketDataMarketCapInUsd       FilterConditionField = "marketData.marketCapInUsd"
-	FilterConditionFieldMarketDataMaxPoolTvlInUsd      FilterConditionField = "marketData.maxPoolTvlInUsd"
-	FilterConditionFieldMarketDataPriceInUsd           FilterConditionField = "marketData.priceInUsd"
-	FilterConditionFieldMarketDataTop100HoldingsRatio  FilterConditionField = "marketData.top100HoldingsRatio"
-	FilterConditionFieldMarketDataTop100TotalHoldings  FilterConditionField = "marketData.top100TotalHoldings"
-	FilterConditionFieldMarketDataTop10HoldingsRatio   FilterConditionField = "marketData.top10HoldingsRatio"
-	FilterConditionFieldMarketDataTop10TotalHoldings   FilterConditionField = "marketData.top10TotalHoldings"
-	FilterConditionFieldMarketDataTotalTvlInUsd        FilterConditionField = "marketData.totalTvlInUsd"
-	FilterConditionFieldStatsBuys15m                   FilterConditionField = "stats.buys15m"
-	FilterConditionFieldStatsBuys1h                    FilterConditionField = "stats.buys1h"
-	FilterConditionFieldStatsBuys1m                    FilterConditionField = "stats.buys1m"
-	FilterConditionFieldStatsBuys24h                   FilterConditionField = "stats.buys24h"
-	FilterConditionFieldStatsBuys30m                   FilterConditionField = "stats.buys30m"
-	FilterConditionFieldStatsBuys4h                    FilterConditionField = "stats.buys4h"
-	FilterConditionFieldStatsBuys5m                    FilterConditionField = "stats.buys5m"
-	FilterConditionFieldStatsPriceChangeRatioInUsd1h   FilterConditionField = "stats.priceChangeRatioInUsd1h"
-	FilterConditionFieldStatsPriceChangeRatioInUsd1m   FilterConditionField = "stats.priceChangeRatioInUsd1m"
-	FilterConditionFieldStatsPriceChangeRatioInUsd24h  FilterConditionField = "stats.priceChangeRatioInUsd24h"
-	FilterConditionFieldStatsPriceChangeRatioInUsd4h   FilterConditionField = "stats.priceChangeRatioInUsd4h"
-	FilterConditionFieldStatsPriceChangeRatioInUsd5m   FilterConditionField = "stats.priceChangeRatioInUsd5m"
-	FilterConditionFieldStatsSells15m                  FilterConditionField = "stats.sells15m"
-	FilterConditionFieldStatsSells1h                   FilterConditionField = "stats.sells1h"
-	FilterConditionFieldStatsSells1m                   FilterConditionField = "stats.sells1m"
-	FilterConditionFieldStatsSells24h                  FilterConditionField = "stats.sells24h"
-	FilterConditionFieldStatsSells30m                  FilterConditionField = "stats.sells30m"
-	FilterConditionFieldStatsSells4h                   FilterConditionField = "stats.sells4h"
-	FilterConditionFieldStatsSells5m                   FilterConditionField = "stats.sells5m"
-	FilterConditionFieldStatsTraders1h                 FilterConditionField = "stats.traders1h"
-	FilterConditionFieldStatsTraders1m                 FilterConditionField = "stats.traders1m"
-	FilterConditionFieldStatsTraders24h                FilterConditionField = "stats.traders24h"
-	FilterConditionFieldStatsTraders4h                 FilterConditionField = "stats.traders4h"
-	FilterConditionFieldStatsTraders5m                 FilterConditionField = "stats.traders5m"
-	FilterConditionFieldStatsTrades1h                  FilterConditionField = "stats.trades1h"
-	FilterConditionFieldStatsTrades1m                  FilterConditionField = "stats.trades1m"
-	FilterConditionFieldStatsTrades24h                 FilterConditionField = "stats.trades24h"
-	FilterConditionFieldStatsTrades4h                  FilterConditionField = "stats.trades4h"
-	FilterConditionFieldStatsTrades5m                  FilterConditionField = "stats.trades5m"
-	FilterConditionFieldStatsVolumesInUsd1h            FilterConditionField = "stats.volumesInUsd1h"
-	FilterConditionFieldStatsVolumesInUsd1m            FilterConditionField = "stats.volumesInUsd1m"
-	FilterConditionFieldStatsVolumesInUsd24h           FilterConditionField = "stats.volumesInUsd24h"
-	FilterConditionFieldStatsVolumesInUsd4h            FilterConditionField = "stats.volumesInUsd4h"
-	FilterConditionFieldStatsVolumesInUsd5m            FilterConditionField = "stats.volumesInUsd5m"
-	FilterConditionFieldTokenCreatedAt                 FilterConditionField = "tokenCreatedAt"
+	N1h  RankingDuration = "1h"
+	N1m  RankingDuration = "1m"
+	N24h RankingDuration = "24h"
+	N4h  RankingDuration = "4h"
+	N5m  RankingDuration = "5m"
 )
 
-// Defines values for GetFinalStretchTokensParamsSortBy.
+// Defines values for RankingTag.
 const (
-	GetFinalStretchTokensParamsSortByMarketDataCreatorHoldings      GetFinalStretchTokensParamsSortBy = "marketData.creatorHoldings"
-	GetFinalStretchTokensParamsSortByMarketDataCreatorHoldingsRatio GetFinalStretchTokensParamsSortBy = "marketData.creatorHoldingsRatio"
-	GetFinalStretchTokensParamsSortByMarketDataHolders              GetFinalStretchTokensParamsSortBy = "marketData.holders"
-	GetFinalStretchTokensParamsSortByMarketDataMarketCapInUsd       GetFinalStretchTokensParamsSortBy = "marketData.marketCapInUsd"
-	GetFinalStretchTokensParamsSortByMarketDataMaxPoolTvlInUsd      GetFinalStretchTokensParamsSortBy = "marketData.maxPoolTvlInUsd"
-	GetFinalStretchTokensParamsSortByMarketDataPriceInUsd           GetFinalStretchTokensParamsSortBy = "marketData.priceInUsd"
-	GetFinalStretchTokensParamsSortByMarketDataTop100HoldingsRatio  GetFinalStretchTokensParamsSortBy = "marketData.top100HoldingsRatio"
-	GetFinalStretchTokensParamsSortByMarketDataTop100TotalHoldings  GetFinalStretchTokensParamsSortBy = "marketData.top100TotalHoldings"
-	GetFinalStretchTokensParamsSortByMarketDataTop10HoldingsRatio   GetFinalStretchTokensParamsSortBy = "marketData.top10HoldingsRatio"
-	GetFinalStretchTokensParamsSortByMarketDataTop10TotalHoldings   GetFinalStretchTokensParamsSortBy = "marketData.top10TotalHoldings"
-	GetFinalStretchTokensParamsSortByMarketDataTotalTvlInUsd        GetFinalStretchTokensParamsSortBy = "marketData.totalTvlInUsd"
-	GetFinalStretchTokensParamsSortByStatsBuys15m                   GetFinalStretchTokensParamsSortBy = "stats.buys15m"
-	GetFinalStretchTokensParamsSortByStatsBuys1h                    GetFinalStretchTokensParamsSortBy = "stats.buys1h"
-	GetFinalStretchTokensParamsSortByStatsBuys1m                    GetFinalStretchTokensParamsSortBy = "stats.buys1m"
-	GetFinalStretchTokensParamsSortByStatsBuys24h                   GetFinalStretchTokensParamsSortBy = "stats.buys24h"
-	GetFinalStretchTokensParamsSortByStatsBuys30m                   GetFinalStretchTokensParamsSortBy = "stats.buys30m"
-	GetFinalStretchTokensParamsSortByStatsBuys4h                    GetFinalStretchTokensParamsSortBy = "stats.buys4h"
-	GetFinalStretchTokensParamsSortByStatsBuys5m                    GetFinalStretchTokensParamsSortBy = "stats.buys5m"
-	GetFinalStretchTokensParamsSortByStatsPriceChangeRatioInUsd1h   GetFinalStretchTokensParamsSortBy = "stats.priceChangeRatioInUsd1h"
-	GetFinalStretchTokensParamsSortByStatsPriceChangeRatioInUsd1m   GetFinalStretchTokensParamsSortBy = "stats.priceChangeRatioInUsd1m"
-	GetFinalStretchTokensParamsSortByStatsPriceChangeRatioInUsd24h  GetFinalStretchTokensParamsSortBy = "stats.priceChangeRatioInUsd24h"
-	GetFinalStretchTokensParamsSortByStatsPriceChangeRatioInUsd4h   GetFinalStretchTokensParamsSortBy = "stats.priceChangeRatioInUsd4h"
-	GetFinalStretchTokensParamsSortByStatsPriceChangeRatioInUsd5m   GetFinalStretchTokensParamsSortBy = "stats.priceChangeRatioInUsd5m"
-	GetFinalStretchTokensParamsSortByStatsSells15m                  GetFinalStretchTokensParamsSortBy = "stats.sells15m"
-	GetFinalStretchTokensParamsSortByStatsSells1h                   GetFinalStretchTokensParamsSortBy = "stats.sells1h"
-	GetFinalStretchTokensParamsSortByStatsSells1m                   GetFinalStretchTokensParamsSortBy = "stats.sells1m"
-	GetFinalStretchTokensParamsSortByStatsSells24h                  GetFinalStretchTokensParamsSortBy = "stats.sells24h"
-	GetFinalStretchTokensParamsSortByStatsSells30m                  GetFinalStretchTokensParamsSortBy = "stats.sells30m"
-	GetFinalStretchTokensParamsSortByStatsSells4h                   GetFinalStretchTokensParamsSortBy = "stats.sells4h"
-	GetFinalStretchTokensParamsSortByStatsSells5m                   GetFinalStretchTokensParamsSortBy = "stats.sells5m"
-	GetFinalStretchTokensParamsSortByStatsTraders1h                 GetFinalStretchTokensParamsSortBy = "stats.traders1h"
-	GetFinalStretchTokensParamsSortByStatsTraders1m                 GetFinalStretchTokensParamsSortBy = "stats.traders1m"
-	GetFinalStretchTokensParamsSortByStatsTraders24h                GetFinalStretchTokensParamsSortBy = "stats.traders24h"
-	GetFinalStretchTokensParamsSortByStatsTraders4h                 GetFinalStretchTokensParamsSortBy = "stats.traders4h"
-	GetFinalStretchTokensParamsSortByStatsTraders5m                 GetFinalStretchTokensParamsSortBy = "stats.traders5m"
-	GetFinalStretchTokensParamsSortByStatsTrades1h                  GetFinalStretchTokensParamsSortBy = "stats.trades1h"
-	GetFinalStretchTokensParamsSortByStatsTrades1m                  GetFinalStretchTokensParamsSortBy = "stats.trades1m"
-	GetFinalStretchTokensParamsSortByStatsTrades24h                 GetFinalStretchTokensParamsSortBy = "stats.trades24h"
-	GetFinalStretchTokensParamsSortByStatsTrades4h                  GetFinalStretchTokensParamsSortBy = "stats.trades4h"
-	GetFinalStretchTokensParamsSortByStatsTrades5m                  GetFinalStretchTokensParamsSortBy = "stats.trades5m"
-	GetFinalStretchTokensParamsSortByStatsVolumesInUsd1h            GetFinalStretchTokensParamsSortBy = "stats.volumesInUsd1h"
-	GetFinalStretchTokensParamsSortByStatsVolumesInUsd1m            GetFinalStretchTokensParamsSortBy = "stats.volumesInUsd1m"
-	GetFinalStretchTokensParamsSortByStatsVolumesInUsd24h           GetFinalStretchTokensParamsSortBy = "stats.volumesInUsd24h"
-	GetFinalStretchTokensParamsSortByStatsVolumesInUsd4h            GetFinalStretchTokensParamsSortBy = "stats.volumesInUsd4h"
-	GetFinalStretchTokensParamsSortByStatsVolumesInUsd5m            GetFinalStretchTokensParamsSortBy = "stats.volumesInUsd5m"
-	GetFinalStretchTokensParamsSortByTokenCreatedAt                 GetFinalStretchTokensParamsSortBy = "tokenCreatedAt"
+	BonkFun                     RankingTag = "bonk_fun"
+	MeteoraDynamicBoundingCurve RankingTag = "meteora_dynamic_bounding_curve"
+	MoonitFun                   RankingTag = "moonit_fun"
+	PumpFun                     RankingTag = "pump_fun"
+	RaydiumLaunchpad            RankingTag = "raydium_launchpad"
 )
 
-// Defines values for GetFinalStretchTokensParamsSortDirection.
+// Defines values for SortDirection.
 const (
-	GetFinalStretchTokensParamsSortDirectionASC  GetFinalStretchTokensParamsSortDirection = "ASC"
-	GetFinalStretchTokensParamsSortDirectionDESC GetFinalStretchTokensParamsSortDirection = "DESC"
+	Asc  SortDirection = "asc"
+	Desc SortDirection = "desc"
 )
 
-// Defines values for GetFinalStretchTokensParamsTag.
+// Defines values for TokenField.
 const (
-	GetFinalStretchTokensParamsTagBonkFun                     GetFinalStretchTokensParamsTag = "bonk_fun"
-	GetFinalStretchTokensParamsTagMeteoraDynamicBoundingCurve GetFinalStretchTokensParamsTag = "meteora_dynamic_bounding_curve"
-	GetFinalStretchTokensParamsTagMoonitFun                   GetFinalStretchTokensParamsTag = "moonit_fun"
-	GetFinalStretchTokensParamsTagPumpFun                     GetFinalStretchTokensParamsTag = "pump_fun"
-	GetFinalStretchTokensParamsTagRaydiumLaunchpad            GetFinalStretchTokensParamsTag = "raydium_launchpad"
+	MarketDataCreatorHoldings      TokenField = "marketData.creatorHoldings"
+	MarketDataCreatorHoldingsRatio TokenField = "marketData.creatorHoldingsRatio"
+	MarketDataHolders              TokenField = "marketData.holders"
+	MarketDataMarketCapInUsd       TokenField = "marketData.marketCapInUsd"
+	MarketDataMaxPoolTvlInUsd      TokenField = "marketData.maxPoolTvlInUsd"
+	MarketDataPriceInUsd           TokenField = "marketData.priceInUsd"
+	MarketDataTop100HoldingsRatio  TokenField = "marketData.top100HoldingsRatio"
+	MarketDataTop100TotalHoldings  TokenField = "marketData.top100TotalHoldings"
+	MarketDataTop10HoldingsRatio   TokenField = "marketData.top10HoldingsRatio"
+	MarketDataTop10TotalHoldings   TokenField = "marketData.top10TotalHoldings"
+	MarketDataTotalTvlInUsd        TokenField = "marketData.totalTvlInUsd"
+	StatsBuys15m                   TokenField = "stats.buys15m"
+	StatsBuys1h                    TokenField = "stats.buys1h"
+	StatsBuys1m                    TokenField = "stats.buys1m"
+	StatsBuys24h                   TokenField = "stats.buys24h"
+	StatsBuys30m                   TokenField = "stats.buys30m"
+	StatsBuys4h                    TokenField = "stats.buys4h"
+	StatsBuys5m                    TokenField = "stats.buys5m"
+	StatsPriceChangeRatioInUsd1h   TokenField = "stats.priceChangeRatioInUsd1h"
+	StatsPriceChangeRatioInUsd1m   TokenField = "stats.priceChangeRatioInUsd1m"
+	StatsPriceChangeRatioInUsd24h  TokenField = "stats.priceChangeRatioInUsd24h"
+	StatsPriceChangeRatioInUsd4h   TokenField = "stats.priceChangeRatioInUsd4h"
+	StatsPriceChangeRatioInUsd5m   TokenField = "stats.priceChangeRatioInUsd5m"
+	StatsSells15m                  TokenField = "stats.sells15m"
+	StatsSells1h                   TokenField = "stats.sells1h"
+	StatsSells1m                   TokenField = "stats.sells1m"
+	StatsSells24h                  TokenField = "stats.sells24h"
+	StatsSells30m                  TokenField = "stats.sells30m"
+	StatsSells4h                   TokenField = "stats.sells4h"
+	StatsSells5m                   TokenField = "stats.sells5m"
+	StatsTraders1h                 TokenField = "stats.traders1h"
+	StatsTraders1m                 TokenField = "stats.traders1m"
+	StatsTraders24h                TokenField = "stats.traders24h"
+	StatsTraders4h                 TokenField = "stats.traders4h"
+	StatsTraders5m                 TokenField = "stats.traders5m"
+	StatsTrades1h                  TokenField = "stats.trades1h"
+	StatsTrades1m                  TokenField = "stats.trades1m"
+	StatsTrades24h                 TokenField = "stats.trades24h"
+	StatsTrades4h                  TokenField = "stats.trades4h"
+	StatsTrades5m                  TokenField = "stats.trades5m"
+	StatsVolumesInUsd1h            TokenField = "stats.volumesInUsd1h"
+	StatsVolumesInUsd1m            TokenField = "stats.volumesInUsd1m"
+	StatsVolumesInUsd24h           TokenField = "stats.volumesInUsd24h"
+	StatsVolumesInUsd4h            TokenField = "stats.volumesInUsd4h"
+	StatsVolumesInUsd5m            TokenField = "stats.volumesInUsd5m"
+	TokenCreatedAt                 TokenField = "tokenCreatedAt"
 )
 
-// Defines values for GetHotTokensParamsSortBy.
-const (
-	GetHotTokensParamsSortByMarketDataCreatorHoldings      GetHotTokensParamsSortBy = "marketData.creatorHoldings"
-	GetHotTokensParamsSortByMarketDataCreatorHoldingsRatio GetHotTokensParamsSortBy = "marketData.creatorHoldingsRatio"
-	GetHotTokensParamsSortByMarketDataHolders              GetHotTokensParamsSortBy = "marketData.holders"
-	GetHotTokensParamsSortByMarketDataMarketCapInUsd       GetHotTokensParamsSortBy = "marketData.marketCapInUsd"
-	GetHotTokensParamsSortByMarketDataMaxPoolTvlInUsd      GetHotTokensParamsSortBy = "marketData.maxPoolTvlInUsd"
-	GetHotTokensParamsSortByMarketDataPriceInUsd           GetHotTokensParamsSortBy = "marketData.priceInUsd"
-	GetHotTokensParamsSortByMarketDataTop100HoldingsRatio  GetHotTokensParamsSortBy = "marketData.top100HoldingsRatio"
-	GetHotTokensParamsSortByMarketDataTop100TotalHoldings  GetHotTokensParamsSortBy = "marketData.top100TotalHoldings"
-	GetHotTokensParamsSortByMarketDataTop10HoldingsRatio   GetHotTokensParamsSortBy = "marketData.top10HoldingsRatio"
-	GetHotTokensParamsSortByMarketDataTop10TotalHoldings   GetHotTokensParamsSortBy = "marketData.top10TotalHoldings"
-	GetHotTokensParamsSortByMarketDataTotalTvlInUsd        GetHotTokensParamsSortBy = "marketData.totalTvlInUsd"
-	GetHotTokensParamsSortByStatsBuys15m                   GetHotTokensParamsSortBy = "stats.buys15m"
-	GetHotTokensParamsSortByStatsBuys1h                    GetHotTokensParamsSortBy = "stats.buys1h"
-	GetHotTokensParamsSortByStatsBuys1m                    GetHotTokensParamsSortBy = "stats.buys1m"
-	GetHotTokensParamsSortByStatsBuys24h                   GetHotTokensParamsSortBy = "stats.buys24h"
-	GetHotTokensParamsSortByStatsBuys30m                   GetHotTokensParamsSortBy = "stats.buys30m"
-	GetHotTokensParamsSortByStatsBuys4h                    GetHotTokensParamsSortBy = "stats.buys4h"
-	GetHotTokensParamsSortByStatsBuys5m                    GetHotTokensParamsSortBy = "stats.buys5m"
-	GetHotTokensParamsSortByStatsPriceChangeRatioInUsd1h   GetHotTokensParamsSortBy = "stats.priceChangeRatioInUsd1h"
-	GetHotTokensParamsSortByStatsPriceChangeRatioInUsd1m   GetHotTokensParamsSortBy = "stats.priceChangeRatioInUsd1m"
-	GetHotTokensParamsSortByStatsPriceChangeRatioInUsd24h  GetHotTokensParamsSortBy = "stats.priceChangeRatioInUsd24h"
-	GetHotTokensParamsSortByStatsPriceChangeRatioInUsd4h   GetHotTokensParamsSortBy = "stats.priceChangeRatioInUsd4h"
-	GetHotTokensParamsSortByStatsPriceChangeRatioInUsd5m   GetHotTokensParamsSortBy = "stats.priceChangeRatioInUsd5m"
-	GetHotTokensParamsSortByStatsSells15m                  GetHotTokensParamsSortBy = "stats.sells15m"
-	GetHotTokensParamsSortByStatsSells1h                   GetHotTokensParamsSortBy = "stats.sells1h"
-	GetHotTokensParamsSortByStatsSells1m                   GetHotTokensParamsSortBy = "stats.sells1m"
-	GetHotTokensParamsSortByStatsSells24h                  GetHotTokensParamsSortBy = "stats.sells24h"
-	GetHotTokensParamsSortByStatsSells30m                  GetHotTokensParamsSortBy = "stats.sells30m"
-	GetHotTokensParamsSortByStatsSells4h                   GetHotTokensParamsSortBy = "stats.sells4h"
-	GetHotTokensParamsSortByStatsSells5m                   GetHotTokensParamsSortBy = "stats.sells5m"
-	GetHotTokensParamsSortByStatsTraders1h                 GetHotTokensParamsSortBy = "stats.traders1h"
-	GetHotTokensParamsSortByStatsTraders1m                 GetHotTokensParamsSortBy = "stats.traders1m"
-	GetHotTokensParamsSortByStatsTraders24h                GetHotTokensParamsSortBy = "stats.traders24h"
-	GetHotTokensParamsSortByStatsTraders4h                 GetHotTokensParamsSortBy = "stats.traders4h"
-	GetHotTokensParamsSortByStatsTraders5m                 GetHotTokensParamsSortBy = "stats.traders5m"
-	GetHotTokensParamsSortByStatsTrades1h                  GetHotTokensParamsSortBy = "stats.trades1h"
-	GetHotTokensParamsSortByStatsTrades1m                  GetHotTokensParamsSortBy = "stats.trades1m"
-	GetHotTokensParamsSortByStatsTrades24h                 GetHotTokensParamsSortBy = "stats.trades24h"
-	GetHotTokensParamsSortByStatsTrades4h                  GetHotTokensParamsSortBy = "stats.trades4h"
-	GetHotTokensParamsSortByStatsTrades5m                  GetHotTokensParamsSortBy = "stats.trades5m"
-	GetHotTokensParamsSortByStatsVolumesInUsd1h            GetHotTokensParamsSortBy = "stats.volumesInUsd1h"
-	GetHotTokensParamsSortByStatsVolumesInUsd1m            GetHotTokensParamsSortBy = "stats.volumesInUsd1m"
-	GetHotTokensParamsSortByStatsVolumesInUsd24h           GetHotTokensParamsSortBy = "stats.volumesInUsd24h"
-	GetHotTokensParamsSortByStatsVolumesInUsd4h            GetHotTokensParamsSortBy = "stats.volumesInUsd4h"
-	GetHotTokensParamsSortByStatsVolumesInUsd5m            GetHotTokensParamsSortBy = "stats.volumesInUsd5m"
-	GetHotTokensParamsSortByTokenCreatedAt                 GetHotTokensParamsSortBy = "tokenCreatedAt"
-)
-
-// Defines values for GetHotTokensParamsSortDirection.
-const (
-	GetHotTokensParamsSortDirectionASC  GetHotTokensParamsSortDirection = "ASC"
-	GetHotTokensParamsSortDirectionDESC GetHotTokensParamsSortDirection = "DESC"
-)
-
-// Defines values for GetHotTokensParamsTag.
-const (
-	GetHotTokensParamsTagBonkFun                     GetHotTokensParamsTag = "bonk_fun"
-	GetHotTokensParamsTagMeteoraDynamicBoundingCurve GetHotTokensParamsTag = "meteora_dynamic_bounding_curve"
-	GetHotTokensParamsTagMoonitFun                   GetHotTokensParamsTag = "moonit_fun"
-	GetHotTokensParamsTagPumpFun                     GetHotTokensParamsTag = "pump_fun"
-	GetHotTokensParamsTagRaydiumLaunchpad            GetHotTokensParamsTag = "raydium_launchpad"
-)
-
-// Defines values for GetHotTokensParamsDuration.
-const (
-	N1h  GetHotTokensParamsDuration = "1h"
-	N1m  GetHotTokensParamsDuration = "1m"
-	N24h GetHotTokensParamsDuration = "24h"
-	N4h  GetHotTokensParamsDuration = "4h"
-	N5m  GetHotTokensParamsDuration = "5m"
-)
-
-// Defines values for GetMigratedTokensParamsSortBy.
-const (
-	GetMigratedTokensParamsSortByMarketDataCreatorHoldings      GetMigratedTokensParamsSortBy = "marketData.creatorHoldings"
-	GetMigratedTokensParamsSortByMarketDataCreatorHoldingsRatio GetMigratedTokensParamsSortBy = "marketData.creatorHoldingsRatio"
-	GetMigratedTokensParamsSortByMarketDataHolders              GetMigratedTokensParamsSortBy = "marketData.holders"
-	GetMigratedTokensParamsSortByMarketDataMarketCapInUsd       GetMigratedTokensParamsSortBy = "marketData.marketCapInUsd"
-	GetMigratedTokensParamsSortByMarketDataMaxPoolTvlInUsd      GetMigratedTokensParamsSortBy = "marketData.maxPoolTvlInUsd"
-	GetMigratedTokensParamsSortByMarketDataPriceInUsd           GetMigratedTokensParamsSortBy = "marketData.priceInUsd"
-	GetMigratedTokensParamsSortByMarketDataTop100HoldingsRatio  GetMigratedTokensParamsSortBy = "marketData.top100HoldingsRatio"
-	GetMigratedTokensParamsSortByMarketDataTop100TotalHoldings  GetMigratedTokensParamsSortBy = "marketData.top100TotalHoldings"
-	GetMigratedTokensParamsSortByMarketDataTop10HoldingsRatio   GetMigratedTokensParamsSortBy = "marketData.top10HoldingsRatio"
-	GetMigratedTokensParamsSortByMarketDataTop10TotalHoldings   GetMigratedTokensParamsSortBy = "marketData.top10TotalHoldings"
-	GetMigratedTokensParamsSortByMarketDataTotalTvlInUsd        GetMigratedTokensParamsSortBy = "marketData.totalTvlInUsd"
-	GetMigratedTokensParamsSortByStatsBuys15m                   GetMigratedTokensParamsSortBy = "stats.buys15m"
-	GetMigratedTokensParamsSortByStatsBuys1h                    GetMigratedTokensParamsSortBy = "stats.buys1h"
-	GetMigratedTokensParamsSortByStatsBuys1m                    GetMigratedTokensParamsSortBy = "stats.buys1m"
-	GetMigratedTokensParamsSortByStatsBuys24h                   GetMigratedTokensParamsSortBy = "stats.buys24h"
-	GetMigratedTokensParamsSortByStatsBuys30m                   GetMigratedTokensParamsSortBy = "stats.buys30m"
-	GetMigratedTokensParamsSortByStatsBuys4h                    GetMigratedTokensParamsSortBy = "stats.buys4h"
-	GetMigratedTokensParamsSortByStatsBuys5m                    GetMigratedTokensParamsSortBy = "stats.buys5m"
-	GetMigratedTokensParamsSortByStatsPriceChangeRatioInUsd1h   GetMigratedTokensParamsSortBy = "stats.priceChangeRatioInUsd1h"
-	GetMigratedTokensParamsSortByStatsPriceChangeRatioInUsd1m   GetMigratedTokensParamsSortBy = "stats.priceChangeRatioInUsd1m"
-	GetMigratedTokensParamsSortByStatsPriceChangeRatioInUsd24h  GetMigratedTokensParamsSortBy = "stats.priceChangeRatioInUsd24h"
-	GetMigratedTokensParamsSortByStatsPriceChangeRatioInUsd4h   GetMigratedTokensParamsSortBy = "stats.priceChangeRatioInUsd4h"
-	GetMigratedTokensParamsSortByStatsPriceChangeRatioInUsd5m   GetMigratedTokensParamsSortBy = "stats.priceChangeRatioInUsd5m"
-	GetMigratedTokensParamsSortByStatsSells15m                  GetMigratedTokensParamsSortBy = "stats.sells15m"
-	GetMigratedTokensParamsSortByStatsSells1h                   GetMigratedTokensParamsSortBy = "stats.sells1h"
-	GetMigratedTokensParamsSortByStatsSells1m                   GetMigratedTokensParamsSortBy = "stats.sells1m"
-	GetMigratedTokensParamsSortByStatsSells24h                  GetMigratedTokensParamsSortBy = "stats.sells24h"
-	GetMigratedTokensParamsSortByStatsSells30m                  GetMigratedTokensParamsSortBy = "stats.sells30m"
-	GetMigratedTokensParamsSortByStatsSells4h                   GetMigratedTokensParamsSortBy = "stats.sells4h"
-	GetMigratedTokensParamsSortByStatsSells5m                   GetMigratedTokensParamsSortBy = "stats.sells5m"
-	GetMigratedTokensParamsSortByStatsTraders1h                 GetMigratedTokensParamsSortBy = "stats.traders1h"
-	GetMigratedTokensParamsSortByStatsTraders1m                 GetMigratedTokensParamsSortBy = "stats.traders1m"
-	GetMigratedTokensParamsSortByStatsTraders24h                GetMigratedTokensParamsSortBy = "stats.traders24h"
-	GetMigratedTokensParamsSortByStatsTraders4h                 GetMigratedTokensParamsSortBy = "stats.traders4h"
-	GetMigratedTokensParamsSortByStatsTraders5m                 GetMigratedTokensParamsSortBy = "stats.traders5m"
-	GetMigratedTokensParamsSortByStatsTrades1h                  GetMigratedTokensParamsSortBy = "stats.trades1h"
-	GetMigratedTokensParamsSortByStatsTrades1m                  GetMigratedTokensParamsSortBy = "stats.trades1m"
-	GetMigratedTokensParamsSortByStatsTrades24h                 GetMigratedTokensParamsSortBy = "stats.trades24h"
-	GetMigratedTokensParamsSortByStatsTrades4h                  GetMigratedTokensParamsSortBy = "stats.trades4h"
-	GetMigratedTokensParamsSortByStatsTrades5m                  GetMigratedTokensParamsSortBy = "stats.trades5m"
-	GetMigratedTokensParamsSortByStatsVolumesInUsd1h            GetMigratedTokensParamsSortBy = "stats.volumesInUsd1h"
-	GetMigratedTokensParamsSortByStatsVolumesInUsd1m            GetMigratedTokensParamsSortBy = "stats.volumesInUsd1m"
-	GetMigratedTokensParamsSortByStatsVolumesInUsd24h           GetMigratedTokensParamsSortBy = "stats.volumesInUsd24h"
-	GetMigratedTokensParamsSortByStatsVolumesInUsd4h            GetMigratedTokensParamsSortBy = "stats.volumesInUsd4h"
-	GetMigratedTokensParamsSortByStatsVolumesInUsd5m            GetMigratedTokensParamsSortBy = "stats.volumesInUsd5m"
-	GetMigratedTokensParamsSortByTokenCreatedAt                 GetMigratedTokensParamsSortBy = "tokenCreatedAt"
-)
-
-// Defines values for GetMigratedTokensParamsSortDirection.
-const (
-	GetMigratedTokensParamsSortDirectionASC  GetMigratedTokensParamsSortDirection = "ASC"
-	GetMigratedTokensParamsSortDirectionDESC GetMigratedTokensParamsSortDirection = "DESC"
-)
-
-// Defines values for GetMigratedTokensParamsTag.
-const (
-	GetMigratedTokensParamsTagBonkFun                     GetMigratedTokensParamsTag = "bonk_fun"
-	GetMigratedTokensParamsTagMeteoraDynamicBoundingCurve GetMigratedTokensParamsTag = "meteora_dynamic_bounding_curve"
-	GetMigratedTokensParamsTagMoonitFun                   GetMigratedTokensParamsTag = "moonit_fun"
-	GetMigratedTokensParamsTagPumpFun                     GetMigratedTokensParamsTag = "pump_fun"
-	GetMigratedTokensParamsTagRaydiumLaunchpad            GetMigratedTokensParamsTag = "raydium_launchpad"
-)
-
-// Defines values for GetNewTokensParamsSortBy.
-const (
-	GetNewTokensParamsSortByMarketDataCreatorHoldings      GetNewTokensParamsSortBy = "marketData.creatorHoldings"
-	GetNewTokensParamsSortByMarketDataCreatorHoldingsRatio GetNewTokensParamsSortBy = "marketData.creatorHoldingsRatio"
-	GetNewTokensParamsSortByMarketDataHolders              GetNewTokensParamsSortBy = "marketData.holders"
-	GetNewTokensParamsSortByMarketDataMarketCapInUsd       GetNewTokensParamsSortBy = "marketData.marketCapInUsd"
-	GetNewTokensParamsSortByMarketDataMaxPoolTvlInUsd      GetNewTokensParamsSortBy = "marketData.maxPoolTvlInUsd"
-	GetNewTokensParamsSortByMarketDataPriceInUsd           GetNewTokensParamsSortBy = "marketData.priceInUsd"
-	GetNewTokensParamsSortByMarketDataTop100HoldingsRatio  GetNewTokensParamsSortBy = "marketData.top100HoldingsRatio"
-	GetNewTokensParamsSortByMarketDataTop100TotalHoldings  GetNewTokensParamsSortBy = "marketData.top100TotalHoldings"
-	GetNewTokensParamsSortByMarketDataTop10HoldingsRatio   GetNewTokensParamsSortBy = "marketData.top10HoldingsRatio"
-	GetNewTokensParamsSortByMarketDataTop10TotalHoldings   GetNewTokensParamsSortBy = "marketData.top10TotalHoldings"
-	GetNewTokensParamsSortByMarketDataTotalTvlInUsd        GetNewTokensParamsSortBy = "marketData.totalTvlInUsd"
-	GetNewTokensParamsSortByStatsBuys15m                   GetNewTokensParamsSortBy = "stats.buys15m"
-	GetNewTokensParamsSortByStatsBuys1h                    GetNewTokensParamsSortBy = "stats.buys1h"
-	GetNewTokensParamsSortByStatsBuys1m                    GetNewTokensParamsSortBy = "stats.buys1m"
-	GetNewTokensParamsSortByStatsBuys24h                   GetNewTokensParamsSortBy = "stats.buys24h"
-	GetNewTokensParamsSortByStatsBuys30m                   GetNewTokensParamsSortBy = "stats.buys30m"
-	GetNewTokensParamsSortByStatsBuys4h                    GetNewTokensParamsSortBy = "stats.buys4h"
-	GetNewTokensParamsSortByStatsBuys5m                    GetNewTokensParamsSortBy = "stats.buys5m"
-	GetNewTokensParamsSortByStatsPriceChangeRatioInUsd1h   GetNewTokensParamsSortBy = "stats.priceChangeRatioInUsd1h"
-	GetNewTokensParamsSortByStatsPriceChangeRatioInUsd1m   GetNewTokensParamsSortBy = "stats.priceChangeRatioInUsd1m"
-	GetNewTokensParamsSortByStatsPriceChangeRatioInUsd24h  GetNewTokensParamsSortBy = "stats.priceChangeRatioInUsd24h"
-	GetNewTokensParamsSortByStatsPriceChangeRatioInUsd4h   GetNewTokensParamsSortBy = "stats.priceChangeRatioInUsd4h"
-	GetNewTokensParamsSortByStatsPriceChangeRatioInUsd5m   GetNewTokensParamsSortBy = "stats.priceChangeRatioInUsd5m"
-	GetNewTokensParamsSortByStatsSells15m                  GetNewTokensParamsSortBy = "stats.sells15m"
-	GetNewTokensParamsSortByStatsSells1h                   GetNewTokensParamsSortBy = "stats.sells1h"
-	GetNewTokensParamsSortByStatsSells1m                   GetNewTokensParamsSortBy = "stats.sells1m"
-	GetNewTokensParamsSortByStatsSells24h                  GetNewTokensParamsSortBy = "stats.sells24h"
-	GetNewTokensParamsSortByStatsSells30m                  GetNewTokensParamsSortBy = "stats.sells30m"
-	GetNewTokensParamsSortByStatsSells4h                   GetNewTokensParamsSortBy = "stats.sells4h"
-	GetNewTokensParamsSortByStatsSells5m                   GetNewTokensParamsSortBy = "stats.sells5m"
-	GetNewTokensParamsSortByStatsTraders1h                 GetNewTokensParamsSortBy = "stats.traders1h"
-	GetNewTokensParamsSortByStatsTraders1m                 GetNewTokensParamsSortBy = "stats.traders1m"
-	GetNewTokensParamsSortByStatsTraders24h                GetNewTokensParamsSortBy = "stats.traders24h"
-	GetNewTokensParamsSortByStatsTraders4h                 GetNewTokensParamsSortBy = "stats.traders4h"
-	GetNewTokensParamsSortByStatsTraders5m                 GetNewTokensParamsSortBy = "stats.traders5m"
-	GetNewTokensParamsSortByStatsTrades1h                  GetNewTokensParamsSortBy = "stats.trades1h"
-	GetNewTokensParamsSortByStatsTrades1m                  GetNewTokensParamsSortBy = "stats.trades1m"
-	GetNewTokensParamsSortByStatsTrades24h                 GetNewTokensParamsSortBy = "stats.trades24h"
-	GetNewTokensParamsSortByStatsTrades4h                  GetNewTokensParamsSortBy = "stats.trades4h"
-	GetNewTokensParamsSortByStatsTrades5m                  GetNewTokensParamsSortBy = "stats.trades5m"
-	GetNewTokensParamsSortByStatsVolumesInUsd1h            GetNewTokensParamsSortBy = "stats.volumesInUsd1h"
-	GetNewTokensParamsSortByStatsVolumesInUsd1m            GetNewTokensParamsSortBy = "stats.volumesInUsd1m"
-	GetNewTokensParamsSortByStatsVolumesInUsd24h           GetNewTokensParamsSortBy = "stats.volumesInUsd24h"
-	GetNewTokensParamsSortByStatsVolumesInUsd4h            GetNewTokensParamsSortBy = "stats.volumesInUsd4h"
-	GetNewTokensParamsSortByStatsVolumesInUsd5m            GetNewTokensParamsSortBy = "stats.volumesInUsd5m"
-	GetNewTokensParamsSortByTokenCreatedAt                 GetNewTokensParamsSortBy = "tokenCreatedAt"
-)
-
-// Defines values for GetNewTokensParamsSortDirection.
-const (
-	GetNewTokensParamsSortDirectionASC  GetNewTokensParamsSortDirection = "ASC"
-	GetNewTokensParamsSortDirectionDESC GetNewTokensParamsSortDirection = "DESC"
-)
-
-// Defines values for GetNewTokensParamsTag.
-const (
-	GetNewTokensParamsTagBonkFun                     GetNewTokensParamsTag = "bonk_fun"
-	GetNewTokensParamsTagMeteoraDynamicBoundingCurve GetNewTokensParamsTag = "meteora_dynamic_bounding_curve"
-	GetNewTokensParamsTagMoonitFun                   GetNewTokensParamsTag = "moonit_fun"
-	GetNewTokensParamsTagPumpFun                     GetNewTokensParamsTag = "pump_fun"
-	GetNewTokensParamsTagRaydiumLaunchpad            GetNewTokensParamsTag = "raydium_launchpad"
-)
-
-// Defines values for GetStocksTokensParamsSortBy.
-const (
-	GetStocksTokensParamsSortByMarketDataCreatorHoldings      GetStocksTokensParamsSortBy = "marketData.creatorHoldings"
-	GetStocksTokensParamsSortByMarketDataCreatorHoldingsRatio GetStocksTokensParamsSortBy = "marketData.creatorHoldingsRatio"
-	GetStocksTokensParamsSortByMarketDataHolders              GetStocksTokensParamsSortBy = "marketData.holders"
-	GetStocksTokensParamsSortByMarketDataMarketCapInUsd       GetStocksTokensParamsSortBy = "marketData.marketCapInUsd"
-	GetStocksTokensParamsSortByMarketDataMaxPoolTvlInUsd      GetStocksTokensParamsSortBy = "marketData.maxPoolTvlInUsd"
-	GetStocksTokensParamsSortByMarketDataPriceInUsd           GetStocksTokensParamsSortBy = "marketData.priceInUsd"
-	GetStocksTokensParamsSortByMarketDataTop100HoldingsRatio  GetStocksTokensParamsSortBy = "marketData.top100HoldingsRatio"
-	GetStocksTokensParamsSortByMarketDataTop100TotalHoldings  GetStocksTokensParamsSortBy = "marketData.top100TotalHoldings"
-	GetStocksTokensParamsSortByMarketDataTop10HoldingsRatio   GetStocksTokensParamsSortBy = "marketData.top10HoldingsRatio"
-	GetStocksTokensParamsSortByMarketDataTop10TotalHoldings   GetStocksTokensParamsSortBy = "marketData.top10TotalHoldings"
-	GetStocksTokensParamsSortByMarketDataTotalTvlInUsd        GetStocksTokensParamsSortBy = "marketData.totalTvlInUsd"
-	GetStocksTokensParamsSortByStatsBuys15m                   GetStocksTokensParamsSortBy = "stats.buys15m"
-	GetStocksTokensParamsSortByStatsBuys1h                    GetStocksTokensParamsSortBy = "stats.buys1h"
-	GetStocksTokensParamsSortByStatsBuys1m                    GetStocksTokensParamsSortBy = "stats.buys1m"
-	GetStocksTokensParamsSortByStatsBuys24h                   GetStocksTokensParamsSortBy = "stats.buys24h"
-	GetStocksTokensParamsSortByStatsBuys30m                   GetStocksTokensParamsSortBy = "stats.buys30m"
-	GetStocksTokensParamsSortByStatsBuys4h                    GetStocksTokensParamsSortBy = "stats.buys4h"
-	GetStocksTokensParamsSortByStatsBuys5m                    GetStocksTokensParamsSortBy = "stats.buys5m"
-	GetStocksTokensParamsSortByStatsPriceChangeRatioInUsd1h   GetStocksTokensParamsSortBy = "stats.priceChangeRatioInUsd1h"
-	GetStocksTokensParamsSortByStatsPriceChangeRatioInUsd1m   GetStocksTokensParamsSortBy = "stats.priceChangeRatioInUsd1m"
-	GetStocksTokensParamsSortByStatsPriceChangeRatioInUsd24h  GetStocksTokensParamsSortBy = "stats.priceChangeRatioInUsd24h"
-	GetStocksTokensParamsSortByStatsPriceChangeRatioInUsd4h   GetStocksTokensParamsSortBy = "stats.priceChangeRatioInUsd4h"
-	GetStocksTokensParamsSortByStatsPriceChangeRatioInUsd5m   GetStocksTokensParamsSortBy = "stats.priceChangeRatioInUsd5m"
-	GetStocksTokensParamsSortByStatsSells15m                  GetStocksTokensParamsSortBy = "stats.sells15m"
-	GetStocksTokensParamsSortByStatsSells1h                   GetStocksTokensParamsSortBy = "stats.sells1h"
-	GetStocksTokensParamsSortByStatsSells1m                   GetStocksTokensParamsSortBy = "stats.sells1m"
-	GetStocksTokensParamsSortByStatsSells24h                  GetStocksTokensParamsSortBy = "stats.sells24h"
-	GetStocksTokensParamsSortByStatsSells30m                  GetStocksTokensParamsSortBy = "stats.sells30m"
-	GetStocksTokensParamsSortByStatsSells4h                   GetStocksTokensParamsSortBy = "stats.sells4h"
-	GetStocksTokensParamsSortByStatsSells5m                   GetStocksTokensParamsSortBy = "stats.sells5m"
-	GetStocksTokensParamsSortByStatsTraders1h                 GetStocksTokensParamsSortBy = "stats.traders1h"
-	GetStocksTokensParamsSortByStatsTraders1m                 GetStocksTokensParamsSortBy = "stats.traders1m"
-	GetStocksTokensParamsSortByStatsTraders24h                GetStocksTokensParamsSortBy = "stats.traders24h"
-	GetStocksTokensParamsSortByStatsTraders4h                 GetStocksTokensParamsSortBy = "stats.traders4h"
-	GetStocksTokensParamsSortByStatsTraders5m                 GetStocksTokensParamsSortBy = "stats.traders5m"
-	GetStocksTokensParamsSortByStatsTrades1h                  GetStocksTokensParamsSortBy = "stats.trades1h"
-	GetStocksTokensParamsSortByStatsTrades1m                  GetStocksTokensParamsSortBy = "stats.trades1m"
-	GetStocksTokensParamsSortByStatsTrades24h                 GetStocksTokensParamsSortBy = "stats.trades24h"
-	GetStocksTokensParamsSortByStatsTrades4h                  GetStocksTokensParamsSortBy = "stats.trades4h"
-	GetStocksTokensParamsSortByStatsTrades5m                  GetStocksTokensParamsSortBy = "stats.trades5m"
-	GetStocksTokensParamsSortByStatsVolumesInUsd1h            GetStocksTokensParamsSortBy = "stats.volumesInUsd1h"
-	GetStocksTokensParamsSortByStatsVolumesInUsd1m            GetStocksTokensParamsSortBy = "stats.volumesInUsd1m"
-	GetStocksTokensParamsSortByStatsVolumesInUsd24h           GetStocksTokensParamsSortBy = "stats.volumesInUsd24h"
-	GetStocksTokensParamsSortByStatsVolumesInUsd4h            GetStocksTokensParamsSortBy = "stats.volumesInUsd4h"
-	GetStocksTokensParamsSortByStatsVolumesInUsd5m            GetStocksTokensParamsSortBy = "stats.volumesInUsd5m"
-	GetStocksTokensParamsSortByTokenCreatedAt                 GetStocksTokensParamsSortBy = "tokenCreatedAt"
-)
-
-// Defines values for GetStocksTokensParamsSortDirection.
-const (
-	ASC  GetStocksTokensParamsSortDirection = "ASC"
-	DESC GetStocksTokensParamsSortDirection = "DESC"
-)
-
-// Defines values for GetStocksTokensParamsTag.
-const (
-	BonkFun                     GetStocksTokensParamsTag = "bonk_fun"
-	MeteoraDynamicBoundingCurve GetStocksTokensParamsTag = "meteora_dynamic_bounding_curve"
-	MoonitFun                   GetStocksTokensParamsTag = "moonit_fun"
-	PumpFun                     GetStocksTokensParamsTag = "pump_fun"
-	RaydiumLaunchpad            GetStocksTokensParamsTag = "raydium_launchpad"
-)
-
-// ChainSymbol defines model for ChainSymbol.
+// ChainSymbol Supported blockchain chains
 type ChainSymbol string
 
-// FilterCondition defines model for FilterCondition.
-type FilterCondition struct {
-	// Field DTO.TOKEN.FILTER.FIELD
-	Field *FilterConditionField `json:"field,omitempty"`
-
-	// Max DTO.TOKEN.FILTER.MAX
-	Max *string `json:"max,omitempty"`
-
-	// Min DTO.TOKEN.FILTER.MIN
-	Min *string `json:"min,omitempty"`
+// RangeFilterCondition Range filter condition – mirrors TS `FilterCondition` used with min/max.
+type RangeFilterCondition struct {
+	Field string  `json:"field"`
+	Max   *string `json:"max"`
+	Min   *string `json:"min"`
 }
 
-// FilterConditionField DTO.TOKEN.FILTER.FIELD
-type FilterConditionField string
+// RankingDuration defines model for RankingDuration.
+type RankingDuration string
 
-// Token defines model for Token.
+// RankingTag defines model for RankingTag.
+type RankingTag string
+
+// SortDirection Sort direction (case-insensitive: accepts "asc"/"ASC"/"Asc" etc.)
+type SortDirection string
+
+// Token Token entity — mirrors TS `TokenDTO extends TokenMetadataDTO`.
+//
+// TS uses class inheritance to flatten metadata into the top level.
+// Rust uses `#[serde(flatten)]` for the same effect.
 type Token struct {
-	// Address DTO.TOKEN.METADATA.ADDRESS
-	Address string `json:"address"`
+	Address               string  `json:"address"`
+	Chain                 string  `json:"chain"`
+	CoingeckoCoinId       *string `json:"coingeckoCoinId"`
+	Decimals              int32   `json:"decimals"`
+	Description           *string `json:"description"`
+	DevLastTokenCreatedAt *string `json:"devLastTokenCreatedAt"`
+	DevTotalTokens        *string `json:"devTotalTokens"`
 
-	// Chain DTO.TOKEN.METADATA.CHAIN
-	Chain string `json:"chain"`
+	// Extension Token extra metadata
+	Extension *TokenExtra `json:"extension,omitempty"`
 
-	// CoingeckoCoinId DTO.TOKEN.METADATA.COINGECKO_COIN_ID
-	CoingeckoCoinId *string `json:"coingeckoCoinId,omitempty"`
+	// Extra Token extra metadata
+	Extra    *TokenExtra `json:"extra,omitempty"`
+	ImageUrl *string     `json:"imageUrl"`
+	Market   *string     `json:"market"`
 
-	// Decimals DTO.TOKEN.METADATA.DECIMALS
-	Decimals int64 `json:"decimals"`
+	// MarketData Token market data
+	MarketData      *TokenMarketData `json:"marketData,omitempty"`
+	MetadataAddress *string          `json:"metadataAddress"`
+	Name            string           `json:"name"`
 
-	// Description DTO.TOKEN.METADATA.DESCRIPTION
-	Description *string `json:"description,omitempty"`
+	// SocialMedias Token social media links
+	SocialMedias *TokenSocialMedias `json:"socialMedias,omitempty"`
 
-	// DevLastTokenCreatedAt DTO.TOKEN.METADATA.DEV_LAST_TOKEN_CREATED_AT
-	DevLastTokenCreatedAt *string `json:"devLastTokenCreatedAt,omitempty"`
-
-	// DevTotalTokens DTO.TOKEN.METADATA.DEV_TOTAL_TOKENS
-	DevTotalTokens *string `json:"devTotalTokens,omitempty"`
-
-	// Extension DTO.TOKEN.EXTENSION
-	Extension *map[string]interface{} `json:"extension,omitempty"`
-
-	// Extra DTO.TOKEN.METADATA.EXTRA
-	Extra *TokenExtraDTO `json:"extra,omitempty"`
-
-	// ImageUrl DTO.TOKEN.METADATA.IMAGE_URL
-	ImageUrl *string `json:"imageUrl,omitempty"`
-
-	// Market DTO.TOKEN.MARKET_ID
-	Market *string `json:"market,omitempty"`
-
-	// MarketData DTO.TOKEN.MARKET_CAP_INFO
-	MarketData TokenMarketData `json:"marketData"`
-
-	// MetadataAddress DTO.TOKEN.METADATA.METADATA_ADDRESS
-	MetadataAddress *string `json:"metadataAddress,omitempty"`
-
-	// Name DTO.TOKEN.METADATA.NAME
-	Name string `json:"name"`
-
-	// SocialMedias DTO.TOKEN.METADATA.SOCIAL_MEDIAS
-	SocialMedias *TokenSocialMediasDTO `json:"socialMedias,omitempty"`
-
-	// Stats DTO.TOKEN.STATS
-	Stats *TokenStat `json:"stats,omitempty"`
-
-	// Symbol DTO.TOKEN.METADATA.SYMBOL
-	Symbol string `json:"symbol"`
-
-	// TokenCreatedAt DTO.TOKEN.METADATA.TOKEN_CREATED_AT
-	TokenCreatedAt *int64 `json:"tokenCreatedAt,omitempty"`
-
-	// TokenCreatedBlockHeight DTO.TOKEN.METADATA.TOKEN_CREATED_BLOCK_HEIGHT
-	TokenCreatedBlockHeight *string `json:"tokenCreatedBlockHeight,omitempty"`
-
-	// TokenCreatedSlot DTO.TOKEN.METADATA.TOKEN_CREATED_SLOT
-	TokenCreatedSlot *string `json:"tokenCreatedSlot,omitempty"`
-
-	// TokenCreatedTxSignature DTO.TOKEN.METADATA.TOKEN_CREATED_TX_SIGNATURE
-	TokenCreatedTxSignature *string `json:"tokenCreatedTxSignature,omitempty"`
-
-	// TokenCreators DTO.TOKEN.METADATA.TOKEN_CREATORS
-	TokenCreators *[]TokenCreatorsDTO `json:"tokenCreators,omitempty"`
-
-	// Uri DTO.TOKEN.METADATA.URI
-	Uri *string `json:"uri,omitempty"`
+	// Stats Token statistics with nested time period data
+	Stats                   *TokenStats     `json:"stats,omitempty"`
+	Symbol                  string          `json:"symbol"`
+	TokenCreatedAt          *int64          `json:"tokenCreatedAt"`
+	TokenCreatedBlockHeight *string         `json:"tokenCreatedBlockHeight"`
+	TokenCreatedSlot        *string         `json:"tokenCreatedSlot"`
+	TokenCreatedTxSignature *string         `json:"tokenCreatedTxSignature"`
+	TokenCreators           *[]TokenCreator `json:"tokenCreators,omitempty"`
+	Uri                     *string         `json:"uri"`
 }
 
-// TokenCreatorsDTO defines model for TokenCreatorsDTO.
-type TokenCreatorsDTO struct {
-	// Address DTO.TOKEN.CREATORS.ADDRESS
-	Address *string `json:"address,omitempty"`
-
-	// IsVerified DTO.TOKEN.CREATORS.IS_VERIFIED
-	IsVerified *bool `json:"isVerified,omitempty"`
-
-	// Share DTO.TOKEN.CREATORS.SHARE
-	Share *int64 `json:"share,omitempty"`
+// TokenCreator Token creator info
+type TokenCreator struct {
+	Address    *string `json:"address"`
+	IsVerified *bool   `json:"isVerified"`
+	Share      *int64  `json:"share"`
 }
 
-// TokenExtraDTO defines model for TokenExtraDTO.
-type TokenExtraDTO struct {
-	// CollectionAddress DTO.TOKEN.EXTRA.COLLECTION_ADDRESS
-	CollectionAddress *string `json:"collectionAddress,omitempty"`
-
-	// EditionNonce DTO.TOKEN.EXTRA.EDITION_NONCE
-	EditionNonce *int64 `json:"editionNonce,omitempty"`
-
-	// FreezeAuthority DTO.TOKEN.EXTRA.FREEZE_AUTHORITY
-	FreezeAuthority *string `json:"freezeAuthority,omitempty"`
-
-	// Fungible DTO.TOKEN.EXTRA.FUNGIBLE
-	Fungible *bool `json:"fungible,omitempty"`
-
-	// IsMutable DTO.TOKEN.EXTRA.IS_MUTABLE
-	IsMutable *bool `json:"isMutable,omitempty"`
-
-	// IsNative DTO.TOKEN.EXTRA.IS_NATIVE
-	IsNative *bool `json:"isNative,omitempty"`
-
-	// IsVerifiedCollection DTO.TOKEN.EXTRA.IS_VERIFIED_COLLECTION
-	IsVerifiedCollection *bool `json:"isVerifiedCollection,omitempty"`
-
-	// IsWrapped DTO.TOKEN.EXTRA.IS_WRAPPED
-	IsWrapped *bool `json:"isWrapped,omitempty"`
-
-	// Key DTO.TOKEN.EXTRA.KEY
-	Key *string `json:"key,omitempty"`
-
-	// LaunchFromProgramAddress DTO.TOKEN.EXTRA.LAUNCH_FROM_PROGRAM_ADDRESS
-	LaunchFromProgramAddress *string `json:"launchFromProgramAddress,omitempty"`
-
-	// LaunchFromProtocolFamily DTO.TOKEN.EXTRA.LAUNCH_FROM_PROTOCOL_FAMILY
-	LaunchFromProtocolFamily *string `json:"launchFromProtocolFamily,omitempty"`
-
-	// MigratedAt DTO.TOKEN.EXTRA.MIGRATED_AT
-	MigratedAt *int64 `json:"migratedAt,omitempty"`
-
-	// MigratedToPoolAddress DTO.TOKEN.EXTRA.MIGRATED_TO_POOL_ADDRESS
-	MigratedToPoolAddress *string `json:"migratedToPoolAddress,omitempty"`
-
-	// MigratedToProgramAddress DTO.TOKEN.EXTRA.MIGRATED_TO_PROGRAM_ADDRESS
-	MigratedToProgramAddress *string `json:"migratedToProgramAddress,omitempty"`
-
-	// MigratedToProtocolFamily DTO.TOKEN.EXTRA.MIGRATED_TO_PROTOCOL_FAMILY
-	MigratedToProtocolFamily *string `json:"migratedToProtocolFamily,omitempty"`
-
-	// MintAuthority DTO.TOKEN.EXTRA.MINT_AUTHORITY
-	MintAuthority *string `json:"mintAuthority,omitempty"`
-
-	// PrimarySaleHappened DTO.TOKEN.EXTRA.PRIMARY_SALE_HAPPENED
-	PrimarySaleHappened *bool `json:"primarySaleHappened,omitempty"`
-
-	// ProgramAddress DTO.TOKEN.EXTRA.PROGRAM_ADDRESS
-	ProgramAddress *string `json:"programAddress,omitempty"`
-
-	// SellerFeeBasisPoints DTO.TOKEN.EXTRA.SELLER_FEE_BASIS_POINTS
-	SellerFeeBasisPoints *int64 `json:"sellerFeeBasisPoints,omitempty"`
-
-	// TokenStandard DTO.TOKEN.EXTRA.TOKEN_STANDARD
-	TokenStandard *string `json:"tokenStandard,omitempty"`
-
-	// UpdateAuthority DTO.TOKEN.EXTRA.UPDATE_AUTHORITY
-	UpdateAuthority *string `json:"updateAuthority,omitempty"`
+// TokenExtra Token extra metadata
+type TokenExtra struct {
+	CollectionAddress        *string `json:"collectionAddress"`
+	EditionNonce             *int64  `json:"editionNonce"`
+	FreezeAuthority          *string `json:"freezeAuthority"`
+	Fungible                 *bool   `json:"fungible"`
+	IsMutable                *bool   `json:"isMutable"`
+	IsNative                 *bool   `json:"isNative"`
+	IsVerifiedCollection     *bool   `json:"isVerifiedCollection"`
+	IsWrapped                *bool   `json:"isWrapped"`
+	Key                      *string `json:"key"`
+	LaunchFromProgramAddress *string `json:"launchFromProgramAddress"`
+	LaunchFromProtocolFamily *string `json:"launchFromProtocolFamily"`
+	MigratedAt               *int64  `json:"migratedAt"`
+	MigratedToPoolAddress    *string `json:"migratedToPoolAddress"`
+	MigratedToProgramAddress *string `json:"migratedToProgramAddress"`
+	MigratedToProtocolFamily *string `json:"migratedToProtocolFamily"`
+	MintAuthority            *string `json:"mintAuthority"`
+	PrimarySaleHappened      *bool   `json:"primarySaleHappened"`
+	ProgramAddress           *string `json:"programAddress"`
+	SellerFeeBasisPoints     *int64  `json:"sellerFeeBasisPoints"`
+	TokenStandard            *string `json:"tokenStandard"`
+	UpdateAuthority          *string `json:"updateAuthority"`
 }
 
-// TokenMarketData defines model for TokenMarketData.
+// TokenField defines model for TokenField.
+type TokenField string
+
+// TokenMarketData Token market data
 type TokenMarketData struct {
-	// BluechipHoldingsRatio DTO.TOKEN.MARKET_CAP.BLUECHIP_HOLDINGS_RATIO
-	BluechipHoldingsRatio *string `json:"bluechipHoldingsRatio,omitempty"`
-
-	// BluechipTotalHolders DTO.TOKEN.MARKET_CAP.BLUECHIP_TOTAL_HOLDERS
-	BluechipTotalHolders *string `json:"bluechipTotalHolders,omitempty"`
-
-	// BluechipTotalHoldings DTO.TOKEN.MARKET_CAP.BLUECHIP_TOTAL_HOLDINGS
-	BluechipTotalHoldings *string `json:"bluechipTotalHoldings,omitempty"`
-
-	// BundleHoldingsRatio DTO.TOKEN.MARKET_CAP.BUNDLE_HOLDINGS_RATIO
-	BundleHoldingsRatio *string `json:"bundleHoldingsRatio,omitempty"`
-
-	// BundleTotalHolders DTO.TOKEN.MARKET_CAP.BUNDLE_TOTAL_HOLDERS
-	BundleTotalHolders *string `json:"bundleTotalHolders,omitempty"`
-
-	// BundleTotalHoldings DTO.TOKEN.MARKET_CAP.BUNDLE_TOTAL_HOLDINGS
-	BundleTotalHoldings *string `json:"bundleTotalHoldings,omitempty"`
-
-	// CompletionRatio DTO.TOKEN.MARKET_CAP.COMPLETION_RATIO
-	CompletionRatio *string `json:"completionRatio,omitempty"`
-
-	// DevHoldingsRatio DTO.TOKEN.MARKET_CAP.DEV_HOLDINGS_RATIO
-	DevHoldingsRatio *string `json:"devHoldingsRatio,omitempty"`
-
-	// DevTotalHolders DTO.TOKEN.MARKET_CAP.DEV_TOTAL_HOLDERS
-	DevTotalHolders *string `json:"devTotalHolders,omitempty"`
-
-	// DevTotalHoldings DTO.TOKEN.MARKET_CAP.DEV_TOTAL_HOLDINGS
-	DevTotalHoldings *string `json:"devTotalHoldings,omitempty"`
-
-	// FreshHoldingsRatio DTO.TOKEN.MARKET_CAP.FRESH_HOLDINGS_RATIO
-	FreshHoldingsRatio *string `json:"freshHoldingsRatio,omitempty"`
-
-	// FreshTotalHolders DTO.TOKEN.MARKET_CAP.FRESH_TOTAL_HOLDERS
-	FreshTotalHolders *string `json:"freshTotalHolders,omitempty"`
-
-	// FreshTotalHoldings DTO.TOKEN.MARKET_CAP.FRESH_TOTAL_HOLDINGS
-	FreshTotalHoldings *string `json:"freshTotalHoldings,omitempty"`
-
-	// Holders DTO.TOKEN.MARKET_CAP.HOLDERS
-	Holders string `json:"holders"`
-
-	// InsiderHoldingsRatio DTO.TOKEN.MARKET_CAP.INSIDER_HOLDINGS_RATIO
-	InsiderHoldingsRatio *string `json:"insiderHoldingsRatio,omitempty"`
-
-	// InsiderTotalHolders DTO.TOKEN.MARKET_CAP.INSIDER_TOTAL_HOLDERS
-	InsiderTotalHolders *string `json:"insiderTotalHolders,omitempty"`
-
-	// InsiderTotalHoldings DTO.TOKEN.MARKET_CAP.INSIDER_TOTAL_HOLDINGS
-	InsiderTotalHoldings *string `json:"insiderTotalHoldings,omitempty"`
-
-	// KolHoldingsRatio DTO.TOKEN.MARKET_CAP.KOL_HOLDINGS_RATIO
-	KolHoldingsRatio *string `json:"kolHoldingsRatio,omitempty"`
-
-	// KolTotalHolders DTO.TOKEN.MARKET_CAP.KOL_TOTAL_HOLDERS
-	KolTotalHolders *string `json:"kolTotalHolders,omitempty"`
-
-	// KolTotalHoldings DTO.TOKEN.MARKET_CAP.KOL_TOTAL_HOLDINGS
-	KolTotalHoldings *string `json:"kolTotalHoldings,omitempty"`
-
-	// MarketCapInSol DTO.TOKEN.MARKET_CAP.MARKET_CAP_IN_SOL
-	MarketCapInSol *string `json:"marketCapInSol,omitempty"`
-
-	// MarketCapInUsd DTO.TOKEN.MARKET_CAP.MARKET_CAP_IN_USD
-	MarketCapInUsd string `json:"marketCapInUsd"`
-
-	// MaxPoolTvlInSol DTO.TOKEN.MARKET_CAP.MAX_POOL_TVL_IN_SOL
-	MaxPoolTvlInSol *string `json:"maxPoolTvlInSol,omitempty"`
-
-	// MaxPoolTvlInUsd DTO.TOKEN.MARKET_CAP.MAX_POOL_TVL_IN_USD
-	MaxPoolTvlInUsd *string `json:"maxPoolTvlInUsd,omitempty"`
-
-	// PriceInSol DTO.TOKEN.MARKET_CAP.PRICE_IN_SOL
-	PriceInSol *string `json:"priceInSol,omitempty"`
-
-	// PriceInUsd DTO.TOKEN.MARKET_CAP.PRICE_IN_USD
-	PriceInUsd string `json:"priceInUsd"`
-
-	// ProHoldingsRatio DTO.TOKEN.MARKET_CAP.PRO_HOLDINGS_RATIO
-	ProHoldingsRatio *string `json:"proHoldingsRatio,omitempty"`
-
-	// ProTotalHolders DTO.TOKEN.MARKET_CAP.PRO_TOTAL_HOLDERS
-	ProTotalHolders *string `json:"proTotalHolders,omitempty"`
-
-	// ProTotalHoldings DTO.TOKEN.MARKET_CAP.PRO_TOTAL_HOLDINGS
-	ProTotalHoldings *string `json:"proTotalHoldings,omitempty"`
-
-	// SandwishHoldingsRatio DTO.TOKEN.MARKET_CAP.SANDWISH_HOLDINGS_RATIO
-	SandwishHoldingsRatio *string `json:"sandwishHoldingsRatio,omitempty"`
-
-	// SandwishTotalHolders DTO.TOKEN.MARKET_CAP.SANDWISH_TOTAL_HOLDERS
-	SandwishTotalHolders *string `json:"sandwishTotalHolders,omitempty"`
-
-	// SandwishTotalHoldings DTO.TOKEN.MARKET_CAP.SANDWISH_TOTAL_HOLDINGS
-	SandwishTotalHoldings *string `json:"sandwishTotalHoldings,omitempty"`
-
-	// SniperHoldingsRatio DTO.TOKEN.MARKET_CAP.SNIPER_HOLDINGS_RATIO
-	SniperHoldingsRatio *string `json:"sniperHoldingsRatio,omitempty"`
-
-	// SniperTotalHolders DTO.TOKEN.MARKET_CAP.SNIPER_TOTAL_HOLDERS
-	SniperTotalHolders *string `json:"sniperTotalHolders,omitempty"`
-
-	// SniperTotalHoldings DTO.TOKEN.MARKET_CAP.SNIPER_TOTAL_HOLDINGS
-	SniperTotalHoldings *string `json:"sniperTotalHoldings,omitempty"`
-
-	// Top100HoldingsRatio DTO.TOKEN.MARKET_CAP.TOP100_HOLDINGS_RATIO
-	Top100HoldingsRatio *string `json:"top100HoldingsRatio,omitempty"`
-
-	// Top100TotalHoldings DTO.TOKEN.MARKET_CAP.TOP100_TOTAL_HOLDINGS
-	Top100TotalHoldings *string `json:"top100TotalHoldings,omitempty"`
-
-	// Top10HoldingsRatio DTO.TOKEN.MARKET_CAP.TOP10_HOLDINGS_RATIO
-	Top10HoldingsRatio *string `json:"top10HoldingsRatio,omitempty"`
-
-	// Top10TotalHoldings DTO.TOKEN.MARKET_CAP.TOP10_TOTAL_HOLDINGS
-	Top10TotalHoldings *string `json:"top10TotalHoldings,omitempty"`
-
-	// Top50HoldingsRatio DTO.TOKEN.MARKET_CAP.TOP50_HOLDINGS_RATIO
-	Top50HoldingsRatio *string `json:"top50HoldingsRatio,omitempty"`
-
-	// Top50TotalHoldings DTO.TOKEN.MARKET_CAP.TOP50_TOTAL_HOLDINGS
-	Top50TotalHoldings *string `json:"top50TotalHoldings,omitempty"`
-
-	// TotalSupply DTO.TOKEN.MARKET_CAP.TOTAL_SUPPLY
-	TotalSupply string `json:"totalSupply"`
-
-	// TotalTvlInSol DTO.TOKEN.MARKET_CAP.TOTAL_TVL_IN_SOL
-	TotalTvlInSol string `json:"totalTvlInSol"`
-
-	// TotalTvlInUsd DTO.TOKEN.MARKET_CAP.TOTAL_TVL_IN_USD
-	TotalTvlInUsd string `json:"totalTvlInUsd"`
+	BluechipHoldingsRatio *string `json:"bluechipHoldingsRatio"`
+	BluechipTotalHolders  *string `json:"bluechipTotalHolders"`
+	BluechipTotalHoldings *string `json:"bluechipTotalHoldings"`
+	BundleHoldingsRatio   *string `json:"bundleHoldingsRatio"`
+	BundleTotalHolders    *string `json:"bundleTotalHolders"`
+	BundleTotalHoldings   *string `json:"bundleTotalHoldings"`
+	CompletionRatio       *string `json:"completionRatio"`
+	DevHoldingsRatio      *string `json:"devHoldingsRatio"`
+	DevTotalHolders       *string `json:"devTotalHolders"`
+	DevTotalHoldings      *string `json:"devTotalHoldings"`
+	FreshHoldingsRatio    *string `json:"freshHoldingsRatio"`
+	FreshTotalHolders     *string `json:"freshTotalHolders"`
+	FreshTotalHoldings    *string `json:"freshTotalHoldings"`
+	Holders               *string `json:"holders"`
+	InsiderHoldingsRatio  *string `json:"insiderHoldingsRatio"`
+	InsiderTotalHolders   *string `json:"insiderTotalHolders"`
+	InsiderTotalHoldings  *string `json:"insiderTotalHoldings"`
+	KolHoldingsRatio      *string `json:"kolHoldingsRatio"`
+	KolTotalHolders       *string `json:"kolTotalHolders"`
+	KolTotalHoldings      *string `json:"kolTotalHoldings"`
+	MarketCapInSol        *string `json:"marketCapInSol"`
+	MarketCapInUsd        *string `json:"marketCapInUsd"`
+	MaxPoolTvlInSol       *string `json:"maxPoolTvlInSol"`
+	MaxPoolTvlInUsd       *string `json:"maxPoolTvlInUsd"`
+	PriceInSol            *string `json:"priceInSol"`
+	PriceInUsd            *string `json:"priceInUsd"`
+	ProHoldingsRatio      *string `json:"proHoldingsRatio"`
+	ProTotalHolders       *string `json:"proTotalHolders"`
+	ProTotalHoldings      *string `json:"proTotalHoldings"`
+	SandwishHoldingsRatio *string `json:"sandwishHoldingsRatio"`
+	SandwishTotalHolders  *string `json:"sandwishTotalHolders"`
+	SandwishTotalHoldings *string `json:"sandwishTotalHoldings"`
+	SniperHoldingsRatio   *string `json:"sniperHoldingsRatio"`
+	SniperTotalHolders    *string `json:"sniperTotalHolders"`
+	SniperTotalHoldings   *string `json:"sniperTotalHoldings"`
+	Top100HoldingsRatio   *string `json:"top100HoldingsRatio"`
+	Top100TotalHoldings   *string `json:"top100TotalHoldings"`
+	Top10HoldingsRatio    *string `json:"top10HoldingsRatio"`
+	Top10TotalHoldings    *string `json:"top10TotalHoldings"`
+	Top50HoldingsRatio    *string `json:"top50HoldingsRatio"`
+	Top50TotalHoldings    *string `json:"top50TotalHoldings"`
+	TotalSupply           *string `json:"totalSupply"`
+	TotalTvlInSol         *string `json:"totalTvlInSol"`
+	TotalTvlInUsd         *string `json:"totalTvlInUsd"`
 }
 
-// TokenSocialMediasDTO defines model for TokenSocialMediasDTO.
-type TokenSocialMediasDTO struct {
-	// Bitbucket DTO.TOKEN.SOCIAL_MEDIAS.BITBUCKET
-	Bitbucket *string `json:"bitbucket,omitempty"`
-
-	// Discord DTO.TOKEN.SOCIAL_MEDIAS.DISCORD
-	Discord *string `json:"discord,omitempty"`
-
-	// Facebook DTO.TOKEN.SOCIAL_MEDIAS.FACEBOOK
-	Facebook *string `json:"facebook,omitempty"`
-
-	// Github DTO.TOKEN.SOCIAL_MEDIAS.GITHUB
-	Github *string `json:"github,omitempty"`
-
-	// Instagram DTO.TOKEN.SOCIAL_MEDIAS.INSTAGRAM
-	Instagram *string `json:"instagram,omitempty"`
-
-	// Linkedin DTO.TOKEN.SOCIAL_MEDIAS.LINKEDIN
-	Linkedin *string `json:"linkedin,omitempty"`
-
-	// Medium DTO.TOKEN.SOCIAL_MEDIAS.MEDIUM
-	Medium *string `json:"medium,omitempty"`
-
-	// Reddit DTO.TOKEN.SOCIAL_MEDIAS.REDDIT
-	Reddit *string `json:"reddit,omitempty"`
-
-	// Telegram DTO.TOKEN.SOCIAL_MEDIAS.TELEGRAM
-	Telegram *string `json:"telegram,omitempty"`
-
-	// Tiktok DTO.TOKEN.SOCIAL_MEDIAS.TIKTOK
-	Tiktok *string `json:"tiktok,omitempty"`
-
-	// Twitter DTO.TOKEN.SOCIAL_MEDIAS.TWITTER
-	Twitter *string `json:"twitter,omitempty"`
-
-	// Website DTO.TOKEN.SOCIAL_MEDIAS.WEBSITE
-	Website *string `json:"website,omitempty"`
-
-	// Youtube DTO.TOKEN.SOCIAL_MEDIAS.YOUTUBE
-	Youtube *string `json:"youtube,omitempty"`
+// TokenSocialMedias Token social media links
+type TokenSocialMedias struct {
+	Bitbucket *string `json:"bitbucket"`
+	Discord   *string `json:"discord"`
+	Facebook  *string `json:"facebook"`
+	Github    *string `json:"github"`
+	Instagram *string `json:"instagram"`
+	Linkedin  *string `json:"linkedin"`
+	Medium    *string `json:"medium"`
+	Reddit    *string `json:"reddit"`
+	Telegram  *string `json:"telegram"`
+	Tiktok    *string `json:"tiktok"`
+	Twitter   *string `json:"twitter"`
+	Website   *string `json:"website"`
+	Youtube   *string `json:"youtube"`
 }
 
-// TokenStat defines model for TokenStat.
-type TokenStat struct {
-	// Address DTO.TOKEN.STAT.ADDRESS
+// TokenStats Token statistics with nested time period data
+type TokenStats struct {
 	Address string `json:"address"`
 
-	// Periods DTO.TOKEN.TRADE_STAT.PERIODS
+	// Periods Trade statistics grouped by time period (1m, 5m, 15m, 30m, 1h, 4h, 24h).
+	// Each period contains full OHLCV data, trade counts, and previous-period comparisons.
+	// See `TokenTradeStatPeriod` schema for all fields.
 	Periods map[string]TokenTradeStatPeriod `json:"periods"`
 }
 
-// TokenTradeStatPeriod defines model for TokenTradeStatPeriod.
+// TokenTradeStatPeriod Single time window trade statistics period
 type TokenTradeStatPeriod struct {
-	// AveragePriceInNative DTO.TOKEN.TRADE_STAT.PERIOD.AVERAGE_PRICE_IN_NATIVE
-	AveragePriceInNative string `json:"averagePriceInNative"`
-
-	// AveragePriceInUsd DTO.TOKEN.TRADE_STAT.PERIOD.AVERAGE_PRICE_IN_USD
-	AveragePriceInUsd string `json:"averagePriceInUsd"`
-
-	// BuySellRatio DTO.TOKEN.TRADE_STAT.PERIOD.BUY_SELL_RATIO
-	BuySellRatio *map[string]interface{} `json:"buySellRatio,omitempty"`
-
-	// BuyVolume DTO.TOKEN.TRADE_STAT.PERIOD.BUY_VOLUME
-	BuyVolume string `json:"buyVolume"`
-
-	// BuyVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.BUY_VOLUME_IN_NATIVE
-	BuyVolumeInNative string `json:"buyVolumeInNative"`
-
-	// BuyVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.BUY_VOLUME_IN_USD
-	BuyVolumeInUsd string `json:"buyVolumeInUsd"`
-
-	// Buyers DTO.TOKEN.TRADE_STAT.PERIOD.BUYERS
-	Buyers string `json:"buyers"`
-
-	// Buys DTO.TOKEN.TRADE_STAT.PERIOD.BUYS
-	Buys string `json:"buys"`
-
-	// CloseInNative DTO.TOKEN.TRADE_STAT.PERIOD.CLOSE_IN_NATIVE
-	CloseInNative string `json:"closeInNative"`
-
-	// CloseInUsd DTO.TOKEN.TRADE_STAT.PERIOD.CLOSE_IN_USD
-	CloseInUsd string `json:"closeInUsd"`
-
-	// CurrentLiquidityInUsd DTO.TOKEN.TRADE_STAT.PERIOD.CURRENT_LIQUIDITY_IN_USD
-	CurrentLiquidityInUsd string `json:"currentLiquidityInUsd"`
-
-	// DappProgramCount DTO.TOKEN.TRADE_STAT.PERIOD.DAPP_PROGRAM_COUNT
-	DappProgramCount string `json:"dappProgramCount"`
-
-	// HighInNative DTO.TOKEN.TRADE_STAT.PERIOD.HIGH_IN_NATIVE
-	HighInNative string `json:"highInNative"`
-
-	// HighInUsd DTO.TOKEN.TRADE_STAT.PERIOD.HIGH_IN_USD
-	HighInUsd string `json:"highInUsd"`
-
-	// LiquidityChangeRatio DTO.TOKEN.TRADE_STAT.PERIOD.LIQUIDITY_CHANGE_RATIO
-	LiquidityChangeRatio *map[string]interface{} `json:"liquidityChangeRatio,omitempty"`
-
-	// LowInNative DTO.TOKEN.TRADE_STAT.PERIOD.LOW_IN_NATIVE
-	LowInNative string `json:"lowInNative"`
-
-	// LowInUsd DTO.TOKEN.TRADE_STAT.PERIOD.LOW_IN_USD
-	LowInUsd string `json:"lowInUsd"`
-
-	// OpenInNative DTO.TOKEN.TRADE_STAT.PERIOD.OPEN_IN_NATIVE
-	OpenInNative string `json:"openInNative"`
-
-	// OpenInUsd DTO.TOKEN.TRADE_STAT.PERIOD.OPEN_IN_USD
-	OpenInUsd string `json:"openInUsd"`
-
-	// PoolCount DTO.TOKEN.TRADE_STAT.PERIOD.POOL_COUNT
-	PoolCount string `json:"poolCount"`
-
-	// PrevBuyVolume DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUY_VOLUME
-	PrevBuyVolume string `json:"prevBuyVolume"`
-
-	// PrevBuyVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUY_VOLUME_IN_NATIVE
-	PrevBuyVolumeInNative string `json:"prevBuyVolumeInNative"`
-
-	// PrevBuyVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUY_VOLUME_IN_USD
-	PrevBuyVolumeInUsd string `json:"prevBuyVolumeInUsd"`
-
-	// PrevBuyers DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUYERS
-	PrevBuyers string `json:"prevBuyers"`
-
-	// PrevBuys DTO.TOKEN.TRADE_STAT.PERIOD.PREV_BUYS
-	PrevBuys string `json:"prevBuys"`
-
-	// PrevCloseInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_CLOSE_IN_NATIVE
-	PrevCloseInNative string `json:"prevCloseInNative"`
-
-	// PrevCloseInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_CLOSE_IN_USD
-	PrevCloseInUsd string `json:"prevCloseInUsd"`
-
-	// PrevDappProgramCount DTO.TOKEN.TRADE_STAT.PERIOD.PREV_DAPP_PROGRAM_COUNT
-	PrevDappProgramCount string `json:"prevDappProgramCount"`
-
-	// PrevHighInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_HIGH_IN_NATIVE
-	PrevHighInNative string `json:"prevHighInNative"`
-
-	// PrevHighInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_HIGH_IN_USD
-	PrevHighInUsd string `json:"prevHighInUsd"`
-
-	// PrevLiquidityInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_LIQUIDITY_IN_USD
-	PrevLiquidityInUsd string `json:"prevLiquidityInUsd"`
-
-	// PrevLowInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_LOW_IN_NATIVE
-	PrevLowInNative string `json:"prevLowInNative"`
-
-	// PrevLowInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_LOW_IN_USD
-	PrevLowInUsd string `json:"prevLowInUsd"`
-
-	// PrevOpenInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_OPEN_IN_NATIVE
-	PrevOpenInNative string `json:"prevOpenInNative"`
-
-	// PrevOpenInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_OPEN_IN_USD
-	PrevOpenInUsd string `json:"prevOpenInUsd"`
-
-	// PrevPoolCount DTO.TOKEN.TRADE_STAT.PERIOD.PREV_POOL_COUNT
-	PrevPoolCount string `json:"prevPoolCount"`
-
-	// PrevSellVolume DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELL_VOLUME
-	PrevSellVolume string `json:"prevSellVolume"`
-
-	// PrevSellVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELL_VOLUME_IN_NATIVE
-	PrevSellVolumeInNative string `json:"prevSellVolumeInNative"`
-
-	// PrevSellVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELL_VOLUME_IN_USD
-	PrevSellVolumeInUsd string `json:"prevSellVolumeInUsd"`
-
-	// PrevSellers DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELLERS
-	PrevSellers string `json:"prevSellers"`
-
-	// PrevSells DTO.TOKEN.TRADE_STAT.PERIOD.PREV_SELLS
-	PrevSells string `json:"prevSells"`
-
-	// PrevTrades DTO.TOKEN.TRADE_STAT.PERIOD.PREV_TRADES
-	PrevTrades string `json:"prevTrades"`
-
-	// PriceChangeRatioInUsd DTO.TOKEN.TRADE_STAT.PERIOD.PRICE_CHANGE_RATIO_IN_USD
-	PriceChangeRatioInUsd string `json:"priceChangeRatioInUsd"`
-
-	// SellVolume DTO.TOKEN.TRADE_STAT.PERIOD.SELL_VOLUME
-	SellVolume string `json:"sellVolume"`
-
-	// SellVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.SELL_VOLUME_IN_NATIVE
-	SellVolumeInNative string `json:"sellVolumeInNative"`
-
-	// SellVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.SELL_VOLUME_IN_USD
-	SellVolumeInUsd string `json:"sellVolumeInUsd"`
-
-	// Sellers DTO.TOKEN.TRADE_STAT.PERIOD.SELLERS
-	Sellers string `json:"sellers"`
-
-	// Sells DTO.TOKEN.TRADE_STAT.PERIOD.SELLS
-	Sells string `json:"sells"`
-
-	// TotalVolumeInNative DTO.TOKEN.TRADE_STAT.PERIOD.TOTAL_VOLUME_IN_NATIVE
-	TotalVolumeInNative string `json:"totalVolumeInNative"`
-
-	// TotalVolumeInUsd DTO.TOKEN.TRADE_STAT.PERIOD.TOTAL_VOLUME_IN_USD
-	TotalVolumeInUsd string `json:"totalVolumeInUsd"`
-
-	// Traders DTO.TOKEN.TRADE_STAT.PERIOD.TRADERS
-	Traders string `json:"traders"`
-
-	// Trades DTO.TOKEN.TRADE_STAT.PERIOD.TRADES
-	Trades string `json:"trades"`
-
-	// UpdatedAt DTO.TOKEN.TRADE_STAT.PERIOD.UPDATED_AT
-	UpdatedAt *string `json:"updatedAt,omitempty"`
-
-	// VolumeChangeRatio DTO.TOKEN.TRADE_STAT.PERIOD.VOLUME_CHANGE_RATIO
-	VolumeChangeRatio *map[string]interface{} `json:"volumeChangeRatio,omitempty"`
+	AveragePriceInNative   *string `json:"averagePriceInNative,omitempty"`
+	AveragePriceInUsd      *string `json:"averagePriceInUsd,omitempty"`
+	BuySellRatio           *string `json:"buySellRatio"`
+	BuyVolume              *string `json:"buyVolume,omitempty"`
+	BuyVolumeInNative      *string `json:"buyVolumeInNative,omitempty"`
+	BuyVolumeInUsd         *string `json:"buyVolumeInUsd,omitempty"`
+	Buyers                 *string `json:"buyers,omitempty"`
+	Buys                   *string `json:"buys,omitempty"`
+	CloseInNative          *string `json:"closeInNative,omitempty"`
+	CloseInUsd             *string `json:"closeInUsd,omitempty"`
+	CurrentLiquidityInUsd  *string `json:"currentLiquidityInUsd,omitempty"`
+	DappProgramCount       *string `json:"dappProgramCount,omitempty"`
+	HighInNative           *string `json:"highInNative,omitempty"`
+	HighInUsd              *string `json:"highInUsd,omitempty"`
+	LiquidityChangeRatio   *string `json:"liquidityChangeRatio"`
+	LowInNative            *string `json:"lowInNative,omitempty"`
+	LowInUsd               *string `json:"lowInUsd,omitempty"`
+	OpenInNative           *string `json:"openInNative,omitempty"`
+	OpenInUsd              *string `json:"openInUsd,omitempty"`
+	PoolCount              *string `json:"poolCount,omitempty"`
+	PrevBuyVolume          *string `json:"prevBuyVolume,omitempty"`
+	PrevBuyVolumeInNative  *string `json:"prevBuyVolumeInNative,omitempty"`
+	PrevBuyVolumeInUsd     *string `json:"prevBuyVolumeInUsd,omitempty"`
+	PrevBuyers             *string `json:"prevBuyers,omitempty"`
+	PrevBuys               *string `json:"prevBuys,omitempty"`
+	PrevCloseInNative      *string `json:"prevCloseInNative,omitempty"`
+	PrevCloseInUsd         *string `json:"prevCloseInUsd,omitempty"`
+	PrevDappProgramCount   *string `json:"prevDappProgramCount,omitempty"`
+	PrevHighInNative       *string `json:"prevHighInNative,omitempty"`
+	PrevHighInUsd          *string `json:"prevHighInUsd,omitempty"`
+	PrevLiquidityInUsd     *string `json:"prevLiquidityInUsd,omitempty"`
+	PrevLowInNative        *string `json:"prevLowInNative,omitempty"`
+	PrevLowInUsd           *string `json:"prevLowInUsd,omitempty"`
+	PrevOpenInNative       *string `json:"prevOpenInNative,omitempty"`
+	PrevOpenInUsd          *string `json:"prevOpenInUsd,omitempty"`
+	PrevPoolCount          *string `json:"prevPoolCount,omitempty"`
+	PrevSellVolume         *string `json:"prevSellVolume,omitempty"`
+	PrevSellVolumeInNative *string `json:"prevSellVolumeInNative,omitempty"`
+	PrevSellVolumeInUsd    *string `json:"prevSellVolumeInUsd,omitempty"`
+	PrevSellers            *string `json:"prevSellers,omitempty"`
+	PrevSells              *string `json:"prevSells,omitempty"`
+	PrevTrades             *string `json:"prevTrades,omitempty"`
+	PriceChangeRatioInUsd  *string `json:"priceChangeRatioInUsd,omitempty"`
+	SellVolume             *string `json:"sellVolume,omitempty"`
+	SellVolumeInNative     *string `json:"sellVolumeInNative,omitempty"`
+	SellVolumeInUsd        *string `json:"sellVolumeInUsd,omitempty"`
+	Sellers                *string `json:"sellers,omitempty"`
+	Sells                  *string `json:"sells,omitempty"`
+	TotalVolumeInNative    *string `json:"totalVolumeInNative,omitempty"`
+	TotalVolumeInUsd       *string `json:"totalVolumeInUsd,omitempty"`
+	Traders                *string `json:"traders,omitempty"`
+	Trades                 *string `json:"trades,omitempty"`
+	UpdatedAt              *string `json:"updatedAt"`
+	VolumeChangeRatio      *string `json:"volumeChangeRatio"`
 }
 
 // GetFinalStretchTokensParams defines parameters for GetFinalStretchTokens.
 type GetFinalStretchTokensParams struct {
 	// SortBy DTO.TOKEN.REQUEST.SORT_BY
-	SortBy *GetFinalStretchTokensParamsSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
+	SortBy *TokenField `form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
 	// SortDirection DTO.TOKEN.REQUEST.SORT_DIRECTION
-	SortDirection *GetFinalStretchTokensParamsSortDirection `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+	SortDirection *struct {
+		union json.RawMessage
+	} `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+
+	// Tag DTO.RANKING.TAG
+	Tag *RankingTag `form:"tag,omitempty" json:"tag,omitempty"`
 
 	// RangeFilters DTO.TOKEN.REQUEST.FILTER_BY
-	RangeFilters *[]FilterCondition `form:"rangeFilters,omitempty" json:"rangeFilters,omitempty"`
-
-	// Tag DTO.TOKEN.REQUEST.TAG
-	Tag *GetFinalStretchTokensParamsTag `form:"tag,omitempty" json:"tag,omitempty"`
+	RangeFilters *[]RangeFilterCondition `form:"rangeFilters,omitempty" json:"rangeFilters,omitempty"`
 
 	// Filters DTO.TOKEN.FILTER.FILTERS
 	Filters *[]string `form:"filters,omitempty" json:"filters,omitempty"`
@@ -955,29 +351,22 @@ type GetFinalStretchTokensParams struct {
 	// ExcludeKeywords DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS
 	ExcludeKeywords *[]string `form:"excludeKeywords,omitempty" json:"excludeKeywords,omitempty"`
 }
-
-// GetFinalStretchTokensParamsSortBy defines parameters for GetFinalStretchTokens.
-type GetFinalStretchTokensParamsSortBy string
-
-// GetFinalStretchTokensParamsSortDirection defines parameters for GetFinalStretchTokens.
-type GetFinalStretchTokensParamsSortDirection string
-
-// GetFinalStretchTokensParamsTag defines parameters for GetFinalStretchTokens.
-type GetFinalStretchTokensParamsTag string
 
 // GetHotTokensParams defines parameters for GetHotTokens.
 type GetHotTokensParams struct {
 	// SortBy DTO.TOKEN.REQUEST.SORT_BY
-	SortBy *GetHotTokensParamsSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
+	SortBy *TokenField `form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
 	// SortDirection DTO.TOKEN.REQUEST.SORT_DIRECTION
-	SortDirection *GetHotTokensParamsSortDirection `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+	SortDirection *struct {
+		union json.RawMessage
+	} `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+
+	// Tag DTO.RANKING.TAG
+	Tag *RankingTag `form:"tag,omitempty" json:"tag,omitempty"`
 
 	// RangeFilters DTO.TOKEN.REQUEST.FILTER_BY
-	RangeFilters *[]FilterCondition `form:"rangeFilters,omitempty" json:"rangeFilters,omitempty"`
-
-	// Tag DTO.TOKEN.REQUEST.TAG
-	Tag *GetHotTokensParamsTag `form:"tag,omitempty" json:"tag,omitempty"`
+	RangeFilters *[]RangeFilterCondition `form:"rangeFilters,omitempty" json:"rangeFilters,omitempty"`
 
 	// Filters DTO.TOKEN.FILTER.FILTERS
 	Filters *[]string `form:"filters,omitempty" json:"filters,omitempty"`
@@ -991,32 +380,22 @@ type GetHotTokensParams struct {
 	// ExcludeKeywords DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS
 	ExcludeKeywords *[]string `form:"excludeKeywords,omitempty" json:"excludeKeywords,omitempty"`
 }
-
-// GetHotTokensParamsSortBy defines parameters for GetHotTokens.
-type GetHotTokensParamsSortBy string
-
-// GetHotTokensParamsSortDirection defines parameters for GetHotTokens.
-type GetHotTokensParamsSortDirection string
-
-// GetHotTokensParamsTag defines parameters for GetHotTokens.
-type GetHotTokensParamsTag string
-
-// GetHotTokensParamsDuration defines parameters for GetHotTokens.
-type GetHotTokensParamsDuration string
 
 // GetMigratedTokensParams defines parameters for GetMigratedTokens.
 type GetMigratedTokensParams struct {
 	// SortBy DTO.TOKEN.REQUEST.SORT_BY
-	SortBy *GetMigratedTokensParamsSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
+	SortBy *TokenField `form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
 	// SortDirection DTO.TOKEN.REQUEST.SORT_DIRECTION
-	SortDirection *GetMigratedTokensParamsSortDirection `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+	SortDirection *struct {
+		union json.RawMessage
+	} `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+
+	// Tag DTO.RANKING.TAG
+	Tag *RankingTag `form:"tag,omitempty" json:"tag,omitempty"`
 
 	// RangeFilters DTO.TOKEN.REQUEST.FILTER_BY
-	RangeFilters *[]FilterCondition `form:"rangeFilters,omitempty" json:"rangeFilters,omitempty"`
-
-	// Tag DTO.TOKEN.REQUEST.TAG
-	Tag *GetMigratedTokensParamsTag `form:"tag,omitempty" json:"tag,omitempty"`
+	RangeFilters *[]RangeFilterCondition `form:"rangeFilters,omitempty" json:"rangeFilters,omitempty"`
 
 	// Filters DTO.TOKEN.FILTER.FILTERS
 	Filters *[]string `form:"filters,omitempty" json:"filters,omitempty"`
@@ -1030,29 +409,22 @@ type GetMigratedTokensParams struct {
 	// ExcludeKeywords DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS
 	ExcludeKeywords *[]string `form:"excludeKeywords,omitempty" json:"excludeKeywords,omitempty"`
 }
-
-// GetMigratedTokensParamsSortBy defines parameters for GetMigratedTokens.
-type GetMigratedTokensParamsSortBy string
-
-// GetMigratedTokensParamsSortDirection defines parameters for GetMigratedTokens.
-type GetMigratedTokensParamsSortDirection string
-
-// GetMigratedTokensParamsTag defines parameters for GetMigratedTokens.
-type GetMigratedTokensParamsTag string
 
 // GetNewTokensParams defines parameters for GetNewTokens.
 type GetNewTokensParams struct {
 	// SortBy DTO.TOKEN.REQUEST.SORT_BY
-	SortBy *GetNewTokensParamsSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
+	SortBy *TokenField `form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
 	// SortDirection DTO.TOKEN.REQUEST.SORT_DIRECTION
-	SortDirection *GetNewTokensParamsSortDirection `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+	SortDirection *struct {
+		union json.RawMessage
+	} `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+
+	// Tag DTO.RANKING.TAG
+	Tag *RankingTag `form:"tag,omitempty" json:"tag,omitempty"`
 
 	// RangeFilters DTO.TOKEN.REQUEST.FILTER_BY
-	RangeFilters *[]FilterCondition `form:"rangeFilters,omitempty" json:"rangeFilters,omitempty"`
-
-	// Tag DTO.TOKEN.REQUEST.TAG
-	Tag *GetNewTokensParamsTag `form:"tag,omitempty" json:"tag,omitempty"`
+	RangeFilters *[]RangeFilterCondition `form:"rangeFilters,omitempty" json:"rangeFilters,omitempty"`
 
 	// Filters DTO.TOKEN.FILTER.FILTERS
 	Filters *[]string `form:"filters,omitempty" json:"filters,omitempty"`
@@ -1066,29 +438,22 @@ type GetNewTokensParams struct {
 	// ExcludeKeywords DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS
 	ExcludeKeywords *[]string `form:"excludeKeywords,omitempty" json:"excludeKeywords,omitempty"`
 }
-
-// GetNewTokensParamsSortBy defines parameters for GetNewTokens.
-type GetNewTokensParamsSortBy string
-
-// GetNewTokensParamsSortDirection defines parameters for GetNewTokens.
-type GetNewTokensParamsSortDirection string
-
-// GetNewTokensParamsTag defines parameters for GetNewTokens.
-type GetNewTokensParamsTag string
 
 // GetStocksTokensParams defines parameters for GetStocksTokens.
 type GetStocksTokensParams struct {
 	// SortBy DTO.TOKEN.REQUEST.SORT_BY
-	SortBy *GetStocksTokensParamsSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
+	SortBy *TokenField `form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
 	// SortDirection DTO.TOKEN.REQUEST.SORT_DIRECTION
-	SortDirection *GetStocksTokensParamsSortDirection `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+	SortDirection *struct {
+		union json.RawMessage
+	} `form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+
+	// Tag DTO.RANKING.TAG
+	Tag *RankingTag `form:"tag,omitempty" json:"tag,omitempty"`
 
 	// RangeFilters DTO.TOKEN.REQUEST.FILTER_BY
-	RangeFilters *[]FilterCondition `form:"rangeFilters,omitempty" json:"rangeFilters,omitempty"`
-
-	// Tag DTO.TOKEN.REQUEST.TAG
-	Tag *GetStocksTokensParamsTag `form:"tag,omitempty" json:"tag,omitempty"`
+	RangeFilters *[]RangeFilterCondition `form:"rangeFilters,omitempty" json:"rangeFilters,omitempty"`
 
 	// Filters DTO.TOKEN.FILTER.FILTERS
 	Filters *[]string `form:"filters,omitempty" json:"filters,omitempty"`
@@ -1102,15 +467,6 @@ type GetStocksTokensParams struct {
 	// ExcludeKeywords DTO.TOKEN.FILTER.EXCLUDE_KEYWORDS
 	ExcludeKeywords *[]string `form:"excludeKeywords,omitempty" json:"excludeKeywords,omitempty"`
 }
-
-// GetStocksTokensParamsSortBy defines parameters for GetStocksTokens.
-type GetStocksTokensParamsSortBy string
-
-// GetStocksTokensParamsSortDirection defines parameters for GetStocksTokens.
-type GetStocksTokensParamsSortDirection string
-
-// GetStocksTokensParamsTag defines parameters for GetStocksTokens.
-type GetStocksTokensParamsTag string
 
 // RequestEditorFn  is the function signature for the RequestEditor callback function
 type RequestEditorFn func(ctx context.Context, req *http.Request) error
@@ -1189,7 +545,7 @@ type ClientInterface interface {
 	GetFinalStretchTokens(ctx context.Context, chain ChainSymbol, params *GetFinalStretchTokensParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetHotTokens request
-	GetHotTokens(ctx context.Context, chain ChainSymbol, duration GetHotTokensParamsDuration, params *GetHotTokensParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetHotTokens(ctx context.Context, chain ChainSymbol, duration RankingDuration, params *GetHotTokensParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetMigratedTokens request
 	GetMigratedTokens(ctx context.Context, chain ChainSymbol, params *GetMigratedTokensParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -1213,7 +569,7 @@ func (c *Client) GetFinalStretchTokens(ctx context.Context, chain ChainSymbol, p
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetHotTokens(ctx context.Context, chain ChainSymbol, duration GetHotTokensParamsDuration, params *GetHotTokensParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetHotTokens(ctx context.Context, chain ChainSymbol, duration RankingDuration, params *GetHotTokensParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetHotTokensRequest(c.Server, chain, duration, params)
 	if err != nil {
 		return nil, err
@@ -1277,7 +633,7 @@ func NewGetFinalStretchTokensRequest(server string, chain ChainSymbol, params *G
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/ranking/%s/finalStretch", pathParam0)
+	operationPath := fmt.Sprintf("/v2/ranking/%s/finalStretch", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1322,9 +678,9 @@ func NewGetFinalStretchTokensRequest(server string, chain ChainSymbol, params *G
 
 		}
 
-		if params.RangeFilters != nil {
+		if params.Tag != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "rangeFilters", runtime.ParamLocationQuery, *params.RangeFilters); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tag", runtime.ParamLocationQuery, *params.Tag); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -1338,9 +694,9 @@ func NewGetFinalStretchTokensRequest(server string, chain ChainSymbol, params *G
 
 		}
 
-		if params.Tag != nil {
+		if params.RangeFilters != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tag", runtime.ParamLocationQuery, *params.Tag); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "rangeFilters", runtime.ParamLocationQuery, *params.RangeFilters); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -1430,7 +786,7 @@ func NewGetFinalStretchTokensRequest(server string, chain ChainSymbol, params *G
 }
 
 // NewGetHotTokensRequest generates requests for GetHotTokens
-func NewGetHotTokensRequest(server string, chain ChainSymbol, duration GetHotTokensParamsDuration, params *GetHotTokensParams) (*http.Request, error) {
+func NewGetHotTokensRequest(server string, chain ChainSymbol, duration RankingDuration, params *GetHotTokensParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -1452,7 +808,7 @@ func NewGetHotTokensRequest(server string, chain ChainSymbol, duration GetHotTok
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/ranking/%s/hotTokens/%s", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v2/ranking/%s/hotTokens/%s", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1497,9 +853,9 @@ func NewGetHotTokensRequest(server string, chain ChainSymbol, duration GetHotTok
 
 		}
 
-		if params.RangeFilters != nil {
+		if params.Tag != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "rangeFilters", runtime.ParamLocationQuery, *params.RangeFilters); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tag", runtime.ParamLocationQuery, *params.Tag); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -1513,9 +869,9 @@ func NewGetHotTokensRequest(server string, chain ChainSymbol, duration GetHotTok
 
 		}
 
-		if params.Tag != nil {
+		if params.RangeFilters != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tag", runtime.ParamLocationQuery, *params.Tag); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "rangeFilters", runtime.ParamLocationQuery, *params.RangeFilters); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -1620,7 +976,7 @@ func NewGetMigratedTokensRequest(server string, chain ChainSymbol, params *GetMi
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/ranking/%s/migrated", pathParam0)
+	operationPath := fmt.Sprintf("/v2/ranking/%s/migrated", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1665,9 +1021,9 @@ func NewGetMigratedTokensRequest(server string, chain ChainSymbol, params *GetMi
 
 		}
 
-		if params.RangeFilters != nil {
+		if params.Tag != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "rangeFilters", runtime.ParamLocationQuery, *params.RangeFilters); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tag", runtime.ParamLocationQuery, *params.Tag); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -1681,9 +1037,9 @@ func NewGetMigratedTokensRequest(server string, chain ChainSymbol, params *GetMi
 
 		}
 
-		if params.Tag != nil {
+		if params.RangeFilters != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tag", runtime.ParamLocationQuery, *params.Tag); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "rangeFilters", runtime.ParamLocationQuery, *params.RangeFilters); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -1788,7 +1144,7 @@ func NewGetNewTokensRequest(server string, chain ChainSymbol, params *GetNewToke
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/ranking/%s/newTokens", pathParam0)
+	operationPath := fmt.Sprintf("/v2/ranking/%s/newTokens", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1833,9 +1189,9 @@ func NewGetNewTokensRequest(server string, chain ChainSymbol, params *GetNewToke
 
 		}
 
-		if params.RangeFilters != nil {
+		if params.Tag != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "rangeFilters", runtime.ParamLocationQuery, *params.RangeFilters); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tag", runtime.ParamLocationQuery, *params.Tag); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -1849,9 +1205,9 @@ func NewGetNewTokensRequest(server string, chain ChainSymbol, params *GetNewToke
 
 		}
 
-		if params.Tag != nil {
+		if params.RangeFilters != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tag", runtime.ParamLocationQuery, *params.Tag); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "rangeFilters", runtime.ParamLocationQuery, *params.RangeFilters); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -1956,7 +1312,7 @@ func NewGetStocksTokensRequest(server string, chain ChainSymbol, params *GetStoc
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/ranking/%s/stocks", pathParam0)
+	operationPath := fmt.Sprintf("/v2/ranking/%s/stocks", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -2001,9 +1357,9 @@ func NewGetStocksTokensRequest(server string, chain ChainSymbol, params *GetStoc
 
 		}
 
-		if params.RangeFilters != nil {
+		if params.Tag != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "rangeFilters", runtime.ParamLocationQuery, *params.RangeFilters); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tag", runtime.ParamLocationQuery, *params.Tag); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2017,9 +1373,9 @@ func NewGetStocksTokensRequest(server string, chain ChainSymbol, params *GetStoc
 
 		}
 
-		if params.Tag != nil {
+		if params.RangeFilters != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "tag", runtime.ParamLocationQuery, *params.Tag); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "rangeFilters", runtime.ParamLocationQuery, *params.RangeFilters); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2155,7 +1511,7 @@ type ClientWithResponsesInterface interface {
 	GetFinalStretchTokensWithResponse(ctx context.Context, chain ChainSymbol, params *GetFinalStretchTokensParams, reqEditors ...RequestEditorFn) (*GetFinalStretchTokensResponse, error)
 
 	// GetHotTokensWithResponse request
-	GetHotTokensWithResponse(ctx context.Context, chain ChainSymbol, duration GetHotTokensParamsDuration, params *GetHotTokensParams, reqEditors ...RequestEditorFn) (*GetHotTokensResponse, error)
+	GetHotTokensWithResponse(ctx context.Context, chain ChainSymbol, duration RankingDuration, params *GetHotTokensParams, reqEditors ...RequestEditorFn) (*GetHotTokensResponse, error)
 
 	// GetMigratedTokensWithResponse request
 	GetMigratedTokensWithResponse(ctx context.Context, chain ChainSymbol, params *GetMigratedTokensParams, reqEditors ...RequestEditorFn) (*GetMigratedTokensResponse, error)
@@ -2287,7 +1643,7 @@ func (c *ClientWithResponses) GetFinalStretchTokensWithResponse(ctx context.Cont
 }
 
 // GetHotTokensWithResponse request returning *GetHotTokensResponse
-func (c *ClientWithResponses) GetHotTokensWithResponse(ctx context.Context, chain ChainSymbol, duration GetHotTokensParamsDuration, params *GetHotTokensParams, reqEditors ...RequestEditorFn) (*GetHotTokensResponse, error) {
+func (c *ClientWithResponses) GetHotTokensWithResponse(ctx context.Context, chain ChainSymbol, duration RankingDuration, params *GetHotTokensParams, reqEditors ...RequestEditorFn) (*GetHotTokensResponse, error) {
 	rsp, err := c.GetHotTokens(ctx, chain, duration, params, reqEditors...)
 	if err != nil {
 		return nil, err

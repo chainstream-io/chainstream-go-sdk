@@ -16,107 +16,75 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
-const (
-	BearerScopes = "bearer.Scopes"
-)
-
-// Defines values for Chain.
-const (
-	ChainBsc Chain = "bsc"
-	ChainEth Chain = "eth"
-	ChainSol Chain = "sol"
-)
-
 // Defines values for ChainSymbol.
 const (
-	ChainSymbolBsc ChainSymbol = "bsc"
-	ChainSymbolEth ChainSymbol = "eth"
-	ChainSymbolSol ChainSymbol = "sol"
+	Bsc ChainSymbol = "bsc"
+	Eth ChainSymbol = "eth"
+	Sol ChainSymbol = "sol"
 )
 
-// Defines values for ClaimRedPacketInputChain.
+// Defines values for PageDirection.
 const (
-	ClaimRedPacketInputChainBsc ClaimRedPacketInputChain = "bsc"
-	ClaimRedPacketInputChainEth ClaimRedPacketInputChain = "eth"
-	ClaimRedPacketInputChainSol ClaimRedPacketInputChain = "sol"
+	Next PageDirection = "next"
+	Prev PageDirection = "prev"
 )
 
-// Defines values for CreateRedPacketInputChain.
-const (
-	CreateRedPacketInputChainBsc CreateRedPacketInputChain = "bsc"
-	CreateRedPacketInputChainEth CreateRedPacketInputChain = "eth"
-	CreateRedPacketInputChainSol CreateRedPacketInputChain = "sol"
-)
-
-// Defines values for GetRedpacketsParamsChain.
-const (
-	Bsc GetRedpacketsParamsChain = "bsc"
-	Eth GetRedpacketsParamsChain = "eth"
-	Sol GetRedpacketsParamsChain = "sol"
-)
-
-// Chain defines model for Chain.
-type Chain string
-
-// ChainSymbol defines model for ChainSymbol.
+// ChainSymbol Supported blockchain chains
 type ChainSymbol string
 
-// ClaimRedPacketInput defines model for ClaimRedPacketInput.
-type ClaimRedPacketInput struct {
-	// Chain DTO.RED_PACKET.CHAIN
-	Chain ClaimRedPacketInputChain `json:"chain"`
-
+// ClaimRedPacketRequest DTO.RED_PACKET.CLAIMER
+type ClaimRedPacketRequest struct {
 	// Claimer DTO.RED_PACKET.CLAIMER
 	Claimer string `json:"claimer"`
 
 	// PacketId DTO.RED_PACKET.PACKET_ID
-	PacketId *string `json:"packetId,omitempty"`
+	PacketId *string `json:"packetId"`
 
 	// Password DTO.RED_PACKET.PASSWORD
-	Password *string `json:"password,omitempty"`
+	Password *string `json:"password"`
 
 	// ShareId DTO.RED_PACKET.SHARE_ID
-	ShareId *string `json:"shareId,omitempty"`
+	ShareId *string `json:"shareId"`
 }
 
-// ClaimRedPacketInputChain DTO.RED_PACKET.CHAIN
-type ClaimRedPacketInputChain string
+// ClaimRedPacketResponse Claim red packet response
+type ClaimRedPacketResponse struct {
+	// TxSerialize DTO.RED_PACKET.SERIALIZED_TX
+	TxSerialize string `json:"txSerialize"`
+}
 
-// CreateRedPacketInput defines model for CreateRedPacketInput.
-type CreateRedPacketInput struct {
-	// Chain DTO.RED_PACKET.CHAIN
-	Chain CreateRedPacketInputChain `json:"chain"`
-
+// CreateRedPacketRequest DTO.RED_PACKET.CREATOR
+type CreateRedPacketRequest struct {
 	// ClaimAuthority DTO.RED_PACKET.CLAIM_AUTHORITY
-	ClaimAuthority *string `json:"claimAuthority,omitempty"`
+	ClaimAuthority *string `json:"claimAuthority"`
 
 	// Creator DTO.RED_PACKET.CREATOR
 	Creator string `json:"creator"`
 
+	// Expiration DTO.RED_PACKET.EXPIRATION
+	Expiration *int64 `json:"expiration"`
+
 	// FixedAmount DTO.RED_PACKET.FIXED_AMOUNT
-	FixedAmount *string `json:"fixedAmount,omitempty"`
+	FixedAmount *string `json:"fixedAmount"`
 
 	// MaxClaims DTO.RED_PACKET.MAX_CLAIMS
-	MaxClaims int64 `json:"maxClaims"`
+	MaxClaims int32 `json:"maxClaims"`
 
 	// Memo DTO.RED_PACKET.MEMO
-	Memo *string `json:"memo,omitempty"`
+	Memo *string `json:"memo"`
 
 	// Mint DTO.RED_PACKET.MINT
 	Mint string `json:"mint"`
 
 	// Password DTO.RED_PACKET.PASSWORD
-	Password *string `json:"password,omitempty"`
+	Password *string `json:"password"`
 
 	// TotalAmount DTO.RED_PACKET.TOTAL_AMOUNT
-	TotalAmount *string `json:"totalAmount,omitempty"`
+	TotalAmount *string `json:"totalAmount"`
 }
 
-// CreateRedPacketInputChain DTO.RED_PACKET.CHAIN
-type CreateRedPacketInputChain string
-
-// CreateRedPacketReply defines model for CreateRedPacketReply.
-type CreateRedPacketReply struct {
+// CreateRedPacketResponse Create red packet response
+type CreateRedPacketResponse struct {
 	// ShareId DTO.RED_PACKET.SHARE_ID
 	ShareId string `json:"shareId"`
 
@@ -124,22 +92,79 @@ type CreateRedPacketReply struct {
 	TxSerialize string `json:"txSerialize"`
 }
 
-// RedPacketClaimDTO defines model for RedPacketClaimDTO.
-type RedPacketClaimDTO struct {
+// PageDirection Pagination direction
+type PageDirection string
+
+// RedPacket Red packet detail
+type RedPacket struct {
+	// Chain DTO.RED_PACKET.CHAIN
+	Chain *string `json:"chain"`
+
+	// ClaimAuthority DTO.RED_PACKET.CLAIM_AUTHORITY
+	ClaimAuthority *string `json:"claimAuthority"`
+
+	// ClaimedAmount DTO.RED_PACKET.CLAIMED_AMOUNT
+	ClaimedAmount *string `json:"claimedAmount"`
+
+	// ClaimedCount DTO.RED_PACKET.CLAIMED_COUNT
+	ClaimedCount *int32 `json:"claimedCount"`
+
+	// CreatedAt DTO.RED_PACKET.CREATED_AT
+	CreatedAt *int64 `json:"createdAt"`
+
+	// Creator DTO.RED_PACKET.CREATOR
+	Creator string `json:"creator"`
+
+	// Expiration DTO.RED_PACKET.EXPIRATION
+	Expiration *int64 `json:"expiration"`
+
+	// Expired DTO.RED_PACKET.WITHDRAWED
+	Expired *bool `json:"expired"`
+
+	// ExpiredAt DTO.RED_PACKET.EXPIRES_AT
+	ExpiredAt *int64 `json:"expiredAt"`
+
+	// Id DTO.RED_PACKET.ID
+	Id string `json:"id"`
+
+	// MaxClaims DTO.RED_PACKET.MAX_CLAIMS
+	MaxClaims int32 `json:"maxClaims"`
+
+	// Memo DTO.RED_PACKET.MEMO
+	Memo *string `json:"memo"`
+
+	// Mint DTO.RED_PACKET.MINT
+	Mint string `json:"mint"`
+
+	// RefundedAmount DTO.RED_PACKET.REFUND_AMOUNT
+	RefundedAmount *string `json:"refundedAmount"`
+
+	// ShareId DTO.RED_PACKET.SHARE_ID
+	ShareId *string `json:"shareId"`
+
+	// TotalAmount DTO.RED_PACKET.TOTAL_AMOUNT
+	TotalAmount string `json:"totalAmount"`
+
+	// TxHash DTO.RED_PACKET.TX_HASH
+	TxHash *string `json:"txHash"`
+}
+
+// RedPacketClaim Red packet claim record
+type RedPacketClaim struct {
 	// Amount DTO.RED_PACKET.AMOUNT
 	Amount string `json:"amount"`
 
 	// Chain DTO.RED_PACKET.CHAIN
-	Chain Chain `json:"chain"`
+	Chain *string `json:"chain"`
 
 	// ClaimedAt DTO.RED_PACKET.CLAIMED_AT
-	ClaimedAt int64 `json:"claimedAt"`
+	ClaimedAt *int64 `json:"claimedAt"`
 
 	// Claimer DTO.RED_PACKET.CLAIMER
 	Claimer string `json:"claimer"`
 
 	// Creator DTO.RED_PACKET.CREATOR
-	Creator string `json:"creator"`
+	Creator *string `json:"creator"`
 
 	// Mint DTO.RED_PACKET.MINT
 	Mint string `json:"mint"`
@@ -148,115 +173,37 @@ type RedPacketClaimDTO struct {
 	PacketId string `json:"packetId"`
 
 	// TxHash DTO.RED_PACKET.TX_HASH
-	TxHash string `json:"txHash"`
+	TxHash *string `json:"txHash"`
 }
 
-// RedPacketClaimsPage defines model for RedPacketClaimsPage.
+// RedPacketClaimsPage Paginated red packet claims response
 type RedPacketClaimsPage struct {
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor string `json:"endCursor"`
-
-	// HasNextPage DTO.PAGE.HAS_NEXT
-	HasNextPage bool `json:"hasNextPage"`
-
-	// Records Array of claim records
-	Records []RedPacketClaimDTO `json:"records"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor string `json:"startCursor"`
-
-	// Total DTO.PAGE.TOTAL
-	Total int64 `json:"total"`
+	EndCursor   *string          `json:"endCursor"`
+	HasNextPage bool             `json:"hasNextPage"`
+	Records     []RedPacketClaim `json:"records"`
+	StartCursor *string          `json:"startCursor"`
+	Total       int64            `json:"total"`
 }
 
-// RedPacketDTO defines model for RedPacketDTO.
-type RedPacketDTO struct {
-	// Chain GLOBAL.CHAIN.DESCRIPTION
-	Chain Chain `json:"chain"`
-
-	// ClaimAuthority DTO.RED_PACKET.CLAIM_AUTHORITY
-	ClaimAuthority string `json:"claimAuthority"`
-
-	// ClaimedAmount DTO.RED_PACKET.CLAIMED_AMOUNT
-	ClaimedAmount string `json:"claimedAmount"`
-
-	// ClaimedCount DTO.RED_PACKET.CLAIMED_COUNT
-	ClaimedCount int64 `json:"claimedCount"`
-
-	// CreatedAt DTO.RED_PACKET.CREATED_AT
-	CreatedAt int64 `json:"createdAt"`
-
-	// Creator DTO.RED_PACKET.CREATOR
-	Creator string `json:"creator"`
-
-	// Expiration DTO.RED_PACKET.EXPIRATION
-	Expiration int64 `json:"expiration"`
-
-	// Expired DTO.RED_PACKET.WITHDRAWED
-	Expired bool `json:"expired"`
-
-	// ExpiredAt DTO.RED_PACKET.EXPIRES_AT
-	ExpiredAt int64 `json:"expiredAt"`
-
-	// Id DTO.RED_PACKET.ID
-	Id string `json:"id"`
-
-	// MaxClaims DTO.RED_PACKET.MAX_CLAIMS
-	MaxClaims int64 `json:"maxClaims"`
-
-	// Memo DTO.RED_PACKET.MEMO
-	Memo string `json:"memo"`
-
-	// Mint DTO.RED_PACKET.MINT
-	Mint string `json:"mint"`
-
-	// RefundedAmount DTO.RED_PACKET.REFUND_AMOUNT
-	RefundedAmount string `json:"refundedAmount"`
-
-	// ShareId DTO.RED_PACKET.SHARE_ID
-	ShareId string `json:"shareId"`
-
-	// TotalAmount DTO.RED_PACKET.TOTAL_AMOUNT
-	TotalAmount string `json:"totalAmount"`
-
-	// TxHash DTO.RED_PACKET.TX_HASH
-	TxHash string `json:"txHash"`
-}
-
-// RedPacketReply defines model for RedPacketReply.
-type RedPacketReply struct {
-	// TxSerialize DTO.RED_PACKET.SERIALIZED_TX
-	TxSerialize string `json:"txSerialize"`
-}
-
-// RedPacketSendTxInput defines model for RedPacketSendTxInput.
-type RedPacketSendTxInput struct {
+// RedPacketSendTxRequest Send red packet transaction request
+type RedPacketSendTxRequest struct {
 	// SignedTx DTO.RED_PACKET.SIGNED_TX
 	SignedTx string `json:"signedTx"`
 }
 
-// RedPacketSendTxResponse defines model for RedPacketSendTxResponse.
+// RedPacketSendTxResponse Send red packet transaction response
 type RedPacketSendTxResponse struct {
 	// Signature DTO.RED_PACKET.SIGNATURE
 	Signature string `json:"signature"`
 }
 
-// RedPacketsPage defines model for RedPacketsPage.
+// RedPacketsPage Paginated red packets response
 type RedPacketsPage struct {
-	// EndCursor DTO.PAGE.END_CURSOR
-	EndCursor string `json:"endCursor"`
-
-	// HasNextPage DTO.PAGE.HAS_NEXT
-	HasNextPage bool `json:"hasNextPage"`
-
-	// Records Array of red packets
-	Records []RedPacketDTO `json:"records"`
-
-	// StartCursor DTO.PAGE.START_CURSOR
-	StartCursor string `json:"startCursor"`
-
-	// Total DTO.PAGE.TOTAL
-	Total int64 `json:"total"`
+	EndCursor   *string     `json:"endCursor"`
+	HasNextPage bool        `json:"hasNextPage"`
+	Records     []RedPacket `json:"records"`
+	StartCursor *string     `json:"startCursor"`
+	Total       int64       `json:"total"`
 }
 
 // GetRedpacketsParams defines parameters for GetRedpackets.
@@ -268,17 +215,16 @@ type GetRedpacketsParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.RED_PACKET.DIRECTION
-	Direction *string `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 
 	// Creator DTO.RED_PACKET.CREATOR
 	Creator *string `form:"creator,omitempty" json:"creator,omitempty"`
 
 	// Chain DTO.RED_PACKET.CHAIN
-	Chain *GetRedpacketsParamsChain `form:"chain,omitempty" json:"chain,omitempty"`
+	Chain *ChainSymbol `form:"chain,omitempty" json:"chain,omitempty"`
 }
-
-// GetRedpacketsParamsChain defines parameters for GetRedpackets.
-type GetRedpacketsParamsChain string
 
 // GetClaimsByAddressParams defines parameters for GetClaimsByAddress.
 type GetClaimsByAddressParams struct {
@@ -289,7 +235,9 @@ type GetClaimsByAddressParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.RED_PACKET.DIRECTION
-	Direction *string `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 }
 
 // GetRedpacketsByAddressParams defines parameters for GetRedpacketsByAddress.
@@ -301,7 +249,9 @@ type GetRedpacketsByAddressParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.RED_PACKET.DIRECTION
-	Direction *string `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 }
 
 // GetClaimsParams defines parameters for GetClaims.
@@ -313,17 +263,19 @@ type GetClaimsParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// Direction DTO.RED_PACKET.DIRECTION
-	Direction *string `form:"direction,omitempty" json:"direction,omitempty"`
+	Direction *struct {
+		union json.RawMessage
+	} `form:"direction,omitempty" json:"direction,omitempty"`
 }
 
 // ClaimRedpacketJSONRequestBody defines body for ClaimRedpacket for application/json ContentType.
-type ClaimRedpacketJSONRequestBody = ClaimRedPacketInput
+type ClaimRedpacketJSONRequestBody = ClaimRedPacketRequest
 
 // CreateRedpacketJSONRequestBody defines body for CreateRedpacket for application/json ContentType.
-type CreateRedpacketJSONRequestBody = CreateRedPacketInput
+type CreateRedpacketJSONRequestBody = CreateRedPacketRequest
 
 // RedpacketSendJSONRequestBody defines body for RedpacketSend for application/json ContentType.
-type RedpacketSendJSONRequestBody = RedPacketSendTxInput
+type RedpacketSendJSONRequestBody = RedPacketSendTxRequest
 
 // RequestEditorFn  is the function signature for the RequestEditor callback function
 type RequestEditorFn func(ctx context.Context, req *http.Request) error
@@ -570,7 +522,7 @@ func NewGetRedpacketsRequest(server string, params *GetRedpacketsParams) (*http.
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/redpacket")
+	operationPath := fmt.Sprintf("/v2/redpacket")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -690,7 +642,7 @@ func NewGetClaimsByAddressRequest(server string, address string, params *GetClai
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/redpacket/wallet/%s/claims", pathParam0)
+	operationPath := fmt.Sprintf("/v2/redpacket/wallet/%s/claims", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -778,7 +730,7 @@ func NewGetRedpacketsByAddressRequest(server string, address string, params *Get
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/redpacket/wallet/%s/redpackets", pathParam0)
+	operationPath := fmt.Sprintf("/v2/redpacket/wallet/%s/redpackets", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -877,7 +829,7 @@ func NewClaimRedpacketRequestWithBody(server string, chain ChainSymbol, contentT
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/redpacket/%s/claim", pathParam0)
+	operationPath := fmt.Sprintf("/v2/redpacket/%s/claim", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -924,7 +876,7 @@ func NewCreateRedpacketRequestWithBody(server string, chain ChainSymbol, content
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/redpacket/%s/create", pathParam0)
+	operationPath := fmt.Sprintf("/v2/redpacket/%s/create", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -971,7 +923,7 @@ func NewRedpacketSendRequestWithBody(server string, chain ChainSymbol, contentTy
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/redpacket/%s/send", pathParam0)
+	operationPath := fmt.Sprintf("/v2/redpacket/%s/send", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1007,7 +959,7 @@ func NewGetRedpacketRequest(server string, id string) (*http.Request, error) {
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/redpacket/%s", pathParam0)
+	operationPath := fmt.Sprintf("/v2/redpacket/%s", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1041,7 +993,7 @@ func NewGetClaimsRequest(server string, id string, params *GetClaimsParams) (*ht
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/redpacket/%s/claims", pathParam0)
+	operationPath := fmt.Sprintf("/v2/redpacket/%s/claims", pathParam0)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -1256,7 +1208,7 @@ func (r GetRedpacketsByAddressResponse) StatusCode() int {
 type ClaimRedpacketResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *RedPacketReply
+	JSON200      *ClaimRedPacketResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1278,7 +1230,7 @@ func (r ClaimRedpacketResponse) StatusCode() int {
 type CreateRedpacketResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *CreateRedPacketReply
+	JSON200      *CreateRedPacketResponse
 }
 
 // Status returns HTTPResponse.Status
@@ -1322,7 +1274,7 @@ func (r RedpacketSendResponse) StatusCode() int {
 type GetRedpacketResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *RedPacketDTO
+	JSON200      *RedPacket
 }
 
 // Status returns HTTPResponse.Status
@@ -1552,7 +1504,7 @@ func ParseClaimRedpacketResponse(rsp *http.Response) (*ClaimRedpacketResponse, e
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest RedPacketReply
+		var dest ClaimRedPacketResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1578,7 +1530,7 @@ func ParseCreateRedpacketResponse(rsp *http.Response) (*CreateRedpacketResponse,
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CreateRedPacketReply
+		var dest CreateRedPacketResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -1630,7 +1582,7 @@ func ParseGetRedpacketResponse(rsp *http.Response) (*GetRedpacketResponse, error
 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest RedPacketDTO
+		var dest RedPacket
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
