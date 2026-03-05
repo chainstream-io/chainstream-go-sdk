@@ -11,7 +11,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/chainstream-io/chainstream-go-sdk/openapi/token"
+	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/token"
 	"github.com/chainstream-io/centrifuge-go"
 )
 

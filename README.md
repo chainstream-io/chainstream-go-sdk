@@ -5,7 +5,7 @@ Official Go client library for ChainStream API.
 ## Installation
 
 ```bash
-go get github.com/chainstream-io/chainstream-go-sdk
+go get github.com/chainstream-io/chainstream-go-sdk/v2
 ```
 
 ## Quick Start
@@ -15,7 +15,7 @@ package main
 
 import (
     "fmt"
-    chainstream "github.com/chainstream-io/chainstream-go-sdk"
+    chainstream "github.com/chainstream-io/chainstream-go-sdk/v2"
 )
 
 func main() {
