@@ -681,10 +681,13 @@ type TokenMarketData struct {
 	BundleHoldingsRatio   *string `json:"bundleHoldingsRatio"`
 	BundleTotalHolders    *string `json:"bundleTotalHolders"`
 	BundleTotalHoldings   *string `json:"bundleTotalHoldings"`
+	CirculatingSupply     *string `json:"circulatingSupply"`
 	CompletionRatio       *string `json:"completionRatio"`
 	DevHoldingsRatio      *string `json:"devHoldingsRatio"`
 	DevTotalHolders       *string `json:"devTotalHolders"`
 	DevTotalHoldings      *string `json:"devTotalHoldings"`
+	FdvInSol              *string `json:"fdvInSol"`
+	FdvInUsd              *string `json:"fdvInUsd"`
 	FreshHoldingsRatio    *string `json:"freshHoldingsRatio"`
 	FreshTotalHolders     *string `json:"freshTotalHolders"`
 	FreshTotalHoldings    *string `json:"freshTotalHoldings"`
@@ -6572,10 +6575,13 @@ type GetMarketDataMultiResponse struct {
 		BundleHoldingsRatio   *string `json:"bundleHoldingsRatio"`
 		BundleTotalHolders    *string `json:"bundleTotalHolders"`
 		BundleTotalHoldings   *string `json:"bundleTotalHoldings"`
+		CirculatingSupply     *string `json:"circulatingSupply"`
 		CompletionRatio       *string `json:"completionRatio"`
 		DevHoldingsRatio      *string `json:"devHoldingsRatio"`
 		DevTotalHolders       *string `json:"devTotalHolders"`
 		DevTotalHoldings      *string `json:"devTotalHoldings"`
+		FdvInSol              *string `json:"fdvInSol"`
+		FdvInUsd              *string `json:"fdvInUsd"`
 		FreshHoldingsRatio    *string `json:"freshHoldingsRatio"`
 		FreshTotalHolders     *string `json:"freshTotalHolders"`
 		FreshTotalHoldings    *string `json:"freshTotalHoldings"`
@@ -7510,10 +7516,13 @@ func ParseGetMarketDataMultiResponse(rsp *http.Response) (*GetMarketDataMultiRes
 			BundleHoldingsRatio   *string `json:"bundleHoldingsRatio"`
 			BundleTotalHolders    *string `json:"bundleTotalHolders"`
 			BundleTotalHoldings   *string `json:"bundleTotalHoldings"`
+			CirculatingSupply     *string `json:"circulatingSupply"`
 			CompletionRatio       *string `json:"completionRatio"`
 			DevHoldingsRatio      *string `json:"devHoldingsRatio"`
 			DevTotalHolders       *string `json:"devTotalHolders"`
 			DevTotalHoldings      *string `json:"devTotalHoldings"`
+			FdvInSol              *string `json:"fdvInSol"`
+			FdvInUsd              *string `json:"fdvInUsd"`
 			FreshHoldingsRatio    *string `json:"freshHoldingsRatio"`
 			FreshTotalHolders     *string `json:"freshTotalHolders"`
 			FreshTotalHoldings    *string `json:"freshTotalHoldings"`
