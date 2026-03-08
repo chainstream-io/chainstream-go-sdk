@@ -69,6 +69,12 @@ const (
 	N8h  Resolution = "8h"
 )
 
+// Defines values for SearchMode.
+const (
+	Fast   SearchMode = "fast"
+	Normal SearchMode = "normal"
+)
+
 // Defines values for SearchSortBy.
 const (
 	SearchSortByH24Transactions SearchSortBy = "h24Transactions"
@@ -549,6 +555,9 @@ type PriceType string
 // Resolution Candle resolution
 type Resolution string
 
+// SearchMode Search mode: `fast` returns only OpenSearch fields (default), `normal` enriches with full data.
+type SearchMode string
+
 // SearchSortBy defines model for SearchSortBy.
 type SearchSortBy string
 
@@ -900,6 +909,11 @@ type SearchParams struct {
 
 	// SortBy DTO.TOKEN.SEARCH.SORT_BY
 	SortBy *SearchSortBy `form:"sortBy,omitempty" json:"sortBy,omitempty"`
+
+	// Mode DTO.TOKEN.SEARCH.MODE
+	Mode *struct {
+		union json.RawMessage
+	} `form:"mode,omitempty" json:"mode,omitempty"`
 }
 
 // GetDevTokensParams defines parameters for GetDevTokens.
@@ -2178,6 +2192,22 @@ func NewSearchRequest(server string, params *SearchParams) (*http.Request, error
 		if params.SortBy != nil {
 
 			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "sortBy", runtime.ParamLocationQuery, *params.SortBy); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Mode != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "mode", runtime.ParamLocationQuery, *params.Mode); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err

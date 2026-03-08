@@ -28,7 +28,7 @@ import (
 )
 
 // LIB_VERSION is the version of the ChainStream Go SDK
-const LIB_VERSION = "2.0.3"
+const LIB_VERSION = "2.0.4"
 
 // DefaultServerURL is the default ChainStream API server URL.
 const DefaultServerURL = "https://api.chainstream.io"
@@ -303,7 +303,7 @@ func (c *ChainStreamClient) WaitForJob(jobId string, timeout time.Duration) (map
 	}
 
 	// Build SSE URL
-	sseUrl := fmt.Sprintf("%s/jobs/%s/streaming", c.requestCtx.BaseUrl, jobId)
+	sseUrl := fmt.Sprintf("%s/v2/job/%s/streaming", c.requestCtx.BaseUrl, jobId)
 
 	// Create HTTP request
 	req, err := http.NewRequest("GET", sseUrl, nil)
@@ -369,7 +369,7 @@ func (c *ChainStreamClient) WaitForJobWithContext(ctx context.Context, jobId str
 	}
 
 	// Build SSE URL
-	sseUrl := fmt.Sprintf("%s/jobs/%s/streaming", c.requestCtx.BaseUrl, jobId)
+	sseUrl := fmt.Sprintf("%s/v2/job/%s/streaming", c.requestCtx.BaseUrl, jobId)
 
 	// Create HTTP request with context
 	req, err := http.NewRequestWithContext(ctx, "GET", sseUrl, nil)
