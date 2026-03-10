@@ -284,11 +284,23 @@ type SwapRouteInput struct {
 	// Dex DTO.DEX.IDENTIFIER
 	Dex SwapRouteInputDex `json:"dex"`
 
+	// GasLimit DTO.DEX.SWAP.GAS_LIMIT
+	GasLimit *string `json:"gasLimit,omitempty"`
+
+	// GasPrice DTO.DEX.SWAP.GAS_PRICE
+	GasPrice *string `json:"gasPrice,omitempty"`
+
 	// InputMint DTO.DEX.SWAP.INPUT_MINT
 	InputMint *string `json:"inputMint,omitempty"`
 
 	// IsAntiMev DTO.DEX.BASE.IS_ANTI_MEV
 	IsAntiMev *bool `json:"isAntiMev,omitempty"`
+
+	// MaxFeePerGas DTO.DEX.SWAP.MAX_FEE_PER_GAS
+	MaxFeePerGas *string `json:"maxFeePerGas,omitempty"`
+
+	// MaxPriorityFeePerGas DTO.DEX.SWAP.MAX_PRIORITY_FEE_PER_GAS
+	MaxPriorityFeePerGas *string `json:"maxPriorityFeePerGas,omitempty"`
 
 	// OutputMint DTO.DEX.SWAP.OUTPUT_MINT
 	OutputMint *string `json:"outputMint,omitempty"`
