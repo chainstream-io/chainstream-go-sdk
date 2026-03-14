@@ -178,11 +178,20 @@ type RedPacketClaim struct {
 
 // RedPacketClaimsPage Paginated red packet claims response
 type RedPacketClaimsPage struct {
-	EndCursor   *string          `json:"endCursor"`
-	HasNextPage bool             `json:"hasNextPage"`
-	Records     []RedPacketClaim `json:"records"`
-	StartCursor *string          `json:"startCursor"`
-	Total       int64            `json:"total"`
+	// EndCursor ENTITY.RED_PACKET_CLAIMS_PAGE.END_CURSOR
+	EndCursor *string `json:"endCursor"`
+
+	// HasNextPage ENTITY.RED_PACKET_CLAIMS_PAGE.HAS_NEXT_PAGE
+	HasNextPage bool `json:"hasNextPage"`
+
+	// Records ENTITY.RED_PACKET_CLAIMS_PAGE.RECORDS
+	Records []RedPacketClaim `json:"records"`
+
+	// StartCursor ENTITY.RED_PACKET_CLAIMS_PAGE.START_CURSOR
+	StartCursor *string `json:"startCursor"`
+
+	// Total ENTITY.RED_PACKET_CLAIMS_PAGE.TOTAL
+	Total int64 `json:"total"`
 }
 
 // RedPacketSendTxRequest Send red packet transaction request
@@ -199,11 +208,20 @@ type RedPacketSendTxResponse struct {
 
 // RedPacketsPage Paginated red packets response
 type RedPacketsPage struct {
-	EndCursor   *string     `json:"endCursor"`
-	HasNextPage bool        `json:"hasNextPage"`
-	Records     []RedPacket `json:"records"`
-	StartCursor *string     `json:"startCursor"`
-	Total       int64       `json:"total"`
+	// EndCursor ENTITY.RED_PACKETS_PAGE.END_CURSOR
+	EndCursor *string `json:"endCursor"`
+
+	// HasNextPage ENTITY.RED_PACKETS_PAGE.HAS_NEXT_PAGE
+	HasNextPage bool `json:"hasNextPage"`
+
+	// Records ENTITY.RED_PACKETS_PAGE.RECORDS
+	Records []RedPacket `json:"records"`
+
+	// StartCursor ENTITY.RED_PACKETS_PAGE.START_CURSOR
+	StartCursor *string `json:"startCursor"`
+
+	// Total ENTITY.RED_PACKETS_PAGE.TOTAL
+	Total int64 `json:"total"`
 }
 
 // GetRedpacketsParams defines parameters for GetRedpackets.

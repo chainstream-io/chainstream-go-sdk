@@ -17,7 +17,8 @@ import (
 )
 
 const (
-	Bearer_authScopes = "bearer_auth.Scopes"
+	Api_key_authScopes = "api_key_auth.Scopes"
+	Bearer_authScopes  = "bearer_auth.Scopes"
 )
 
 // Defines values for EndpointOrder.

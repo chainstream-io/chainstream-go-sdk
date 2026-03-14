@@ -91,18 +91,41 @@ type PageDirection string
 type PageResponseTopTrader struct {
 	// Data Page data
 	Data []struct {
-		BuyAmount          string `json:"buyAmount"`
-		BuyAmountInNative  string `json:"buyAmountInNative"`
-		BuyAmountInUsd     string `json:"buyAmountInUsd"`
-		BuyCount           int64  `json:"buyCount"`
-		SellAmount         string `json:"sellAmount"`
+		// BuyAmount ENTITY.TOP_TRADER.BUY_AMOUNT
+		BuyAmount string `json:"buyAmount"`
+
+		// BuyAmountInNative ENTITY.TOP_TRADER.BUY_AMOUNT_IN_NATIVE
+		BuyAmountInNative string `json:"buyAmountInNative"`
+
+		// BuyAmountInUsd ENTITY.TOP_TRADER.BUY_AMOUNT_IN_USD
+		BuyAmountInUsd string `json:"buyAmountInUsd"`
+
+		// BuyCount ENTITY.TOP_TRADER.BUY_COUNT
+		BuyCount int64 `json:"buyCount"`
+
+		// SellAmount ENTITY.TOP_TRADER.SELL_AMOUNT
+		SellAmount string `json:"sellAmount"`
+
+		// SellAmountInNative ENTITY.TOP_TRADER.SELL_AMOUNT_IN_NATIVE
 		SellAmountInNative string `json:"sellAmountInNative"`
-		SellAmountInUsd    string `json:"sellAmountInUsd"`
-		SellCount          int64  `json:"sellCount"`
-		TokenAddress       string `json:"tokenAddress"`
-		TradeAmount        string `json:"tradeAmount"`
-		TradeCount         int64  `json:"tradeCount"`
-		WalletAddress      string `json:"walletAddress"`
+
+		// SellAmountInUsd ENTITY.TOP_TRADER.SELL_AMOUNT_IN_USD
+		SellAmountInUsd string `json:"sellAmountInUsd"`
+
+		// SellCount ENTITY.TOP_TRADER.SELL_COUNT
+		SellCount int64 `json:"sellCount"`
+
+		// TokenAddress ENTITY.TOP_TRADER.TOKEN_ADDRESS
+		TokenAddress string `json:"tokenAddress"`
+
+		// TradeAmount ENTITY.TOP_TRADER.TRADE_AMOUNT
+		TradeAmount string `json:"tradeAmount"`
+
+		// TradeCount ENTITY.TOP_TRADER.TRADE_COUNT
+		TradeCount int64 `json:"tradeCount"`
+
+		// WalletAddress ENTITY.TOP_TRADER.WALLET_ADDRESS
+		WalletAddress string `json:"walletAddress"`
 	} `json:"data"`
 
 	// EndCursor Cursor for the end of current page
@@ -227,11 +250,20 @@ type PageResponseTradeDetail struct {
 type PageResponseTraderGainersLosersItem struct {
 	// Data Page data
 	Data []struct {
-		Address    string `json:"address"`
-		Chain      string `json:"chain"`
-		Pnl        string `json:"pnl"`
+		// Address ENTITY.TRADER_GAINERS_LOSERS_ITEM.ADDRESS
+		Address string `json:"address"`
+
+		// Chain ENTITY.TRADER_GAINERS_LOSERS_ITEM.CHAIN
+		Chain string `json:"chain"`
+
+		// Pnl ENTITY.TRADER_GAINERS_LOSERS_ITEM.PNL
+		Pnl string `json:"pnl"`
+
+		// TradeCount ENTITY.TRADER_GAINERS_LOSERS_ITEM.TRADE_COUNT
 		TradeCount string `json:"tradeCount"`
-		Volume     string `json:"volume"`
+
+		// Volume ENTITY.TRADER_GAINERS_LOSERS_ITEM.VOLUME
+		Volume string `json:"volume"`
 	} `json:"data"`
 
 	// EndCursor Cursor for the end of current page

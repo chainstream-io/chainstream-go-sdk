@@ -57,6 +57,7 @@ type BalanceTokenType string
 
 // CalculatePnlInput defines model for CalculatePnlInput.
 type CalculatePnlInput struct {
+	// TokenAddresses DTO.WALLET.CALCULATE_PNL.TOKEN_ADDRESSES
 	TokenAddresses *[]string `json:"tokenAddresses"`
 }
 
@@ -65,38 +66,76 @@ type ChainSymbol string
 
 // NetWorthByTokensItem Single token net-worth item (mirrors TS WalletNetWorthItemDTO).
 type NetWorthByTokensItem struct {
-	Amount        string  `json:"amount"`
-	Chain         string  `json:"chain"`
-	Decimals      int32   `json:"decimals"`
-	LogoUri       *string `json:"logoUri"`
-	Name          string  `json:"name"`
-	PriceInNative string  `json:"priceInNative"`
-	PriceInUsd    string  `json:"priceInUsd"`
-	Symbol        string  `json:"symbol"`
-	TokenAddress  string  `json:"tokenAddress"`
-	ValueInNative string  `json:"valueInNative"`
-	ValueInUsd    string  `json:"valueInUsd"`
+	// Amount ENTITY.NET_WORTH_BY_TOKENS_ITEM.AMOUNT
+	Amount string `json:"amount"`
+
+	// Chain ENTITY.NET_WORTH_BY_TOKENS_ITEM.CHAIN
+	Chain string `json:"chain"`
+
+	// Decimals ENTITY.NET_WORTH_BY_TOKENS_ITEM.DECIMALS
+	Decimals int32 `json:"decimals"`
+
+	// LogoUri ENTITY.NET_WORTH_BY_TOKENS_ITEM.LOGO_URI
+	LogoUri *string `json:"logoUri"`
+
+	// Name ENTITY.NET_WORTH_BY_TOKENS_ITEM.NAME
+	Name string `json:"name"`
+
+	// PriceInNative ENTITY.NET_WORTH_BY_TOKENS_ITEM.PRICE_IN_NATIVE
+	PriceInNative string `json:"priceInNative"`
+
+	// PriceInUsd ENTITY.NET_WORTH_BY_TOKENS_ITEM.PRICE_IN_USD
+	PriceInUsd string `json:"priceInUsd"`
+
+	// Symbol ENTITY.NET_WORTH_BY_TOKENS_ITEM.SYMBOL
+	Symbol string `json:"symbol"`
+
+	// TokenAddress ENTITY.NET_WORTH_BY_TOKENS_ITEM.TOKEN_ADDRESS
+	TokenAddress string `json:"tokenAddress"`
+
+	// ValueInNative ENTITY.NET_WORTH_BY_TOKENS_ITEM.VALUE_IN_NATIVE
+	ValueInNative string `json:"valueInNative"`
+
+	// ValueInUsd ENTITY.NET_WORTH_BY_TOKENS_ITEM.VALUE_IN_USD
+	ValueInUsd string `json:"valueInUsd"`
 }
 
 // NetWorthByTokensResult Wallet net-worth by tokens result (mirrors TS WalletNetWorthByTokensResult).
 type NetWorthByTokensResult struct {
-	CurrentTimestamp   string                 `json:"currentTimestamp"`
-	Data               []NetWorthByTokensItem `json:"data"`
-	TotalValueInNative string                 `json:"totalValueInNative"`
-	TotalValueInUsd    string                 `json:"totalValueInUsd"`
-	WalletAddress      string                 `json:"walletAddress"`
+	// CurrentTimestamp ENTITY.NET_WORTH_BY_TOKENS_RESULT.CURRENT_TIMESTAMP
+	CurrentTimestamp string `json:"currentTimestamp"`
+
+	// Data ENTITY.NET_WORTH_BY_TOKENS_RESULT.DATA
+	Data []NetWorthByTokensItem `json:"data"`
+
+	// TotalValueInNative ENTITY.NET_WORTH_BY_TOKENS_RESULT.TOTAL_VALUE_IN_NATIVE
+	TotalValueInNative string `json:"totalValueInNative"`
+
+	// TotalValueInUsd ENTITY.NET_WORTH_BY_TOKENS_RESULT.TOTAL_VALUE_IN_USD
+	TotalValueInUsd string `json:"totalValueInUsd"`
+
+	// WalletAddress ENTITY.NET_WORTH_BY_TOKENS_RESULT.WALLET_ADDRESS
+	WalletAddress string `json:"walletAddress"`
 }
 
 // NetWorthHistoryItem Single data point in a net-worth chart time series.
 type NetWorthHistoryItem struct {
-	NetWorth              string `json:"netWorth"`
-	NetWorthChange        string `json:"netWorthChange"`
+	// NetWorth ENTITY.NET_WORTH_HISTORY_ITEM.NET_WORTH
+	NetWorth string `json:"netWorth"`
+
+	// NetWorthChange ENTITY.NET_WORTH_HISTORY_ITEM.NET_WORTH_CHANGE
+	NetWorthChange string `json:"netWorthChange"`
+
+	// NetWorthChangePercent ENTITY.NET_WORTH_HISTORY_ITEM.NET_WORTH_CHANGE_PERCENT
 	NetWorthChangePercent string `json:"netWorthChangePercent"`
-	Timestamp             string `json:"timestamp"`
+
+	// Timestamp ENTITY.NET_WORTH_HISTORY_ITEM.TIMESTAMP
+	Timestamp string `json:"timestamp"`
 }
 
 // NetWorthSummaryValue defines model for NetWorthSummaryValue.
 type NetWorthSummaryValue struct {
+	// Value ENTITY.NET_WORTH_SUMMARY_VALUE.VALUE
 	Value string `json:"value"`
 }
 
@@ -107,27 +146,62 @@ type PageDirection string
 type PageResponseBalanceUpdate struct {
 	// Data Page data
 	Data []struct {
-		AccountOwnerAddress   string `json:"accountOwnerAddress"`
-		BalanceChange         string `json:"balanceChange"`
+		// AccountOwnerAddress ENTITY.BALANCE_UPDATE.ACCOUNT_OWNER_ADDRESS
+		AccountOwnerAddress string `json:"accountOwnerAddress"`
+
+		// BalanceChange ENTITY.BALANCE_UPDATE.BALANCE_CHANGE
+		BalanceChange string `json:"balanceChange"`
+
+		// BalanceChangeInNative ENTITY.BALANCE_UPDATE.BALANCE_CHANGE_IN_NATIVE
 		BalanceChangeInNative string `json:"balanceChangeInNative"`
-		BalanceChangeInUsd    string `json:"balanceChangeInUsd"`
-		BlockHash             string `json:"blockHash"`
-		BlockHeight           int64  `json:"blockHeight"`
-		BlockSlot             *int64 `json:"blockSlot"`
-		BlockTimestamp        int64  `json:"blockTimestamp"`
+
+		// BalanceChangeInUsd ENTITY.BALANCE_UPDATE.BALANCE_CHANGE_IN_USD
+		BalanceChangeInUsd string `json:"balanceChangeInUsd"`
+
+		// BlockHash ENTITY.BALANCE_UPDATE.BLOCK_HASH
+		BlockHash string `json:"blockHash"`
+
+		// BlockHeight ENTITY.BALANCE_UPDATE.BLOCK_HEIGHT
+		BlockHeight int64 `json:"blockHeight"`
+
+		// BlockSlot ENTITY.BALANCE_UPDATE.BLOCK_SLOT
+		BlockSlot *int64 `json:"blockSlot"`
+
+		// BlockTimestamp ENTITY.BALANCE_UPDATE.BLOCK_TIMESTAMP
+		BlockTimestamp int64 `json:"blockTimestamp"`
 
 		// ChangeType Balance change type
-		ChangeType           BalanceChangeType `json:"changeType"`
-		Index                int64             `json:"index"`
-		PostBalance          string            `json:"postBalance"`
-		PostBalanceInNative  string            `json:"postBalanceInNative"`
-		PostBalanceInUsd     string            `json:"postBalanceInUsd"`
-		PreBalance           string            `json:"preBalance"`
-		PreBalanceInNative   string            `json:"preBalanceInNative"`
-		PreBalanceInUsd      string            `json:"preBalanceInUsd"`
-		TokenAccountAddress  string            `json:"tokenAccountAddress"`
-		TokenAddress         string            `json:"tokenAddress"`
-		TransactionSignature string            `json:"transactionSignature"`
+		ChangeType BalanceChangeType `json:"changeType"`
+
+		// Index ENTITY.BALANCE_UPDATE.INDEX
+		Index int64 `json:"index"`
+
+		// PostBalance ENTITY.BALANCE_UPDATE.POST_BALANCE
+		PostBalance string `json:"postBalance"`
+
+		// PostBalanceInNative ENTITY.BALANCE_UPDATE.POST_BALANCE_IN_NATIVE
+		PostBalanceInNative string `json:"postBalanceInNative"`
+
+		// PostBalanceInUsd ENTITY.BALANCE_UPDATE.POST_BALANCE_IN_USD
+		PostBalanceInUsd string `json:"postBalanceInUsd"`
+
+		// PreBalance ENTITY.BALANCE_UPDATE.PRE_BALANCE
+		PreBalance string `json:"preBalance"`
+
+		// PreBalanceInNative ENTITY.BALANCE_UPDATE.PRE_BALANCE_IN_NATIVE
+		PreBalanceInNative string `json:"preBalanceInNative"`
+
+		// PreBalanceInUsd ENTITY.BALANCE_UPDATE.PRE_BALANCE_IN_USD
+		PreBalanceInUsd string `json:"preBalanceInUsd"`
+
+		// TokenAccountAddress ENTITY.BALANCE_UPDATE.TOKEN_ACCOUNT_ADDRESS
+		TokenAccountAddress string `json:"tokenAccountAddress"`
+
+		// TokenAddress ENTITY.BALANCE_UPDATE.TOKEN_ADDRESS
+		TokenAddress string `json:"tokenAddress"`
+
+		// TransactionSignature ENTITY.BALANCE_UPDATE.TRANSACTION_SIGNATURE
+		TransactionSignature string `json:"transactionSignature"`
 
 		// Type Balance token type
 		Type BalanceTokenType `json:"type"`
@@ -150,17 +224,38 @@ type PageResponseBalanceUpdate struct {
 type PageResponseNetWorthByTokensItem struct {
 	// Data Page data
 	Data []struct {
-		Amount        string  `json:"amount"`
-		Chain         string  `json:"chain"`
-		Decimals      int32   `json:"decimals"`
-		LogoUri       *string `json:"logoUri"`
-		Name          string  `json:"name"`
-		PriceInNative string  `json:"priceInNative"`
-		PriceInUsd    string  `json:"priceInUsd"`
-		Symbol        string  `json:"symbol"`
-		TokenAddress  string  `json:"tokenAddress"`
-		ValueInNative string  `json:"valueInNative"`
-		ValueInUsd    string  `json:"valueInUsd"`
+		// Amount ENTITY.NET_WORTH_BY_TOKENS_ITEM.AMOUNT
+		Amount string `json:"amount"`
+
+		// Chain ENTITY.NET_WORTH_BY_TOKENS_ITEM.CHAIN
+		Chain string `json:"chain"`
+
+		// Decimals ENTITY.NET_WORTH_BY_TOKENS_ITEM.DECIMALS
+		Decimals int32 `json:"decimals"`
+
+		// LogoUri ENTITY.NET_WORTH_BY_TOKENS_ITEM.LOGO_URI
+		LogoUri *string `json:"logoUri"`
+
+		// Name ENTITY.NET_WORTH_BY_TOKENS_ITEM.NAME
+		Name string `json:"name"`
+
+		// PriceInNative ENTITY.NET_WORTH_BY_TOKENS_ITEM.PRICE_IN_NATIVE
+		PriceInNative string `json:"priceInNative"`
+
+		// PriceInUsd ENTITY.NET_WORTH_BY_TOKENS_ITEM.PRICE_IN_USD
+		PriceInUsd string `json:"priceInUsd"`
+
+		// Symbol ENTITY.NET_WORTH_BY_TOKENS_ITEM.SYMBOL
+		Symbol string `json:"symbol"`
+
+		// TokenAddress ENTITY.NET_WORTH_BY_TOKENS_ITEM.TOKEN_ADDRESS
+		TokenAddress string `json:"tokenAddress"`
+
+		// ValueInNative ENTITY.NET_WORTH_BY_TOKENS_ITEM.VALUE_IN_NATIVE
+		ValueInNative string `json:"valueInNative"`
+
+		// ValueInUsd ENTITY.NET_WORTH_BY_TOKENS_ITEM.VALUE_IN_USD
+		ValueInUsd string `json:"valueInUsd"`
 	} `json:"data"`
 
 	// EndCursor Cursor for the end of current page
@@ -180,15 +275,32 @@ type PageResponseNetWorthByTokensItem struct {
 type PageResponseWalletTransfer struct {
 	// Data Page data
 	Data []struct {
-		Amount               string  `json:"amount"`
-		AmountInUsd          *string `json:"amountInUsd"`
-		BlockTimestamp       int64   `json:"blockTimestamp"`
-		FromAddress          string  `json:"fromAddress"`
-		Id                   string  `json:"id"`
-		ToAddress            string  `json:"toAddress"`
-		TokenAddress         string  `json:"tokenAddress"`
-		TransactionSignature string  `json:"transactionSignature"`
-		TransferType         string  `json:"transferType"`
+		// Amount ENTITY.WALLET_TRANSFER.AMOUNT
+		Amount string `json:"amount"`
+
+		// AmountInUsd ENTITY.WALLET_TRANSFER.AMOUNT_IN_USD
+		AmountInUsd *string `json:"amountInUsd"`
+
+		// BlockTimestamp ENTITY.WALLET_TRANSFER.BLOCK_TIMESTAMP
+		BlockTimestamp int64 `json:"blockTimestamp"`
+
+		// FromAddress ENTITY.WALLET_TRANSFER.FROM_ADDRESS
+		FromAddress string `json:"fromAddress"`
+
+		// Id ENTITY.WALLET_TRANSFER.ID
+		Id string `json:"id"`
+
+		// ToAddress ENTITY.WALLET_TRANSFER.TO_ADDRESS
+		ToAddress string `json:"toAddress"`
+
+		// TokenAddress ENTITY.WALLET_TRANSFER.TOKEN_ADDRESS
+		TokenAddress string `json:"tokenAddress"`
+
+		// TransactionSignature ENTITY.WALLET_TRANSFER.TRANSACTION_SIGNATURE
+		TransactionSignature string `json:"transactionSignature"`
+
+		// TransferType ENTITY.WALLET_TRANSFER.TRANSFER_TYPE
+		TransferType string `json:"transferType"`
 	} `json:"data"`
 
 	// EndCursor Cursor for the end of current page
@@ -206,60 +318,149 @@ type PageResponseWalletTransfer struct {
 
 // PnlDetailItem PnL detail for a single wallet-token pair (mirrors TS PnlDetailItemDTO).
 type PnlDetailItem struct {
-	AvgBuyPriceInUsd       string  `json:"avgBuyPriceInUsd"`
-	AvgProfitPerTradeInUsd string  `json:"avgProfitPerTradeInUsd"`
-	AvgSellPriceInUsd      string  `json:"avgSellPriceInUsd"`
-	Balance                string  `json:"balance"`
-	BuyAmount              string  `json:"buyAmount"`
-	BuyAmountInUsd         string  `json:"buyAmountInUsd"`
-	Buys                   string  `json:"buys"`
-	CurrentValue           string  `json:"currentValue"`
-	Decimals               *int32  `json:"decimals,omitempty"`
-	LogoUri                *string `json:"logoUri"`
-	Name                   *string `json:"name,omitempty"`
-	PriceInUsd             string  `json:"priceInUsd"`
-	RealizedProfitInUsd    string  `json:"realizedProfitInUsd"`
-	RealizedProfitRatio    string  `json:"realizedProfitRatio"`
-	SellAmount             string  `json:"sellAmount"`
-	SellAmountInUsd        string  `json:"sellAmountInUsd"`
-	Sells                  string  `json:"sells"`
-	Symbol                 *string `json:"symbol,omitempty"`
-	TokenAddress           string  `json:"tokenAddress"`
-	TotalProfitInUsd       string  `json:"totalProfitInUsd"`
-	TotalProfitRatio       string  `json:"totalProfitRatio"`
-	TotalTrades            string  `json:"totalTrades"`
-	UnrealizedProfitInUsd  string  `json:"unrealizedProfitInUsd"`
-	UnrealizedProfitRatio  string  `json:"unrealizedProfitRatio"`
-	WalletAddress          string  `json:"walletAddress"`
+	// AvgBuyPriceInUsd ENTITY.PNL_DETAIL_ITEM.AVG_BUY_PRICE_IN_USD
+	AvgBuyPriceInUsd string `json:"avgBuyPriceInUsd"`
+
+	// AvgProfitPerTradeInUsd ENTITY.PNL_DETAIL_ITEM.AVG_PROFIT_PER_TRADE_IN_USD
+	AvgProfitPerTradeInUsd string `json:"avgProfitPerTradeInUsd"`
+
+	// AvgSellPriceInUsd ENTITY.PNL_DETAIL_ITEM.AVG_SELL_PRICE_IN_USD
+	AvgSellPriceInUsd string `json:"avgSellPriceInUsd"`
+
+	// Balance ENTITY.PNL_DETAIL_ITEM.BALANCE
+	Balance string `json:"balance"`
+
+	// BuyAmount ENTITY.PNL_DETAIL_ITEM.BUY_AMOUNT
+	BuyAmount string `json:"buyAmount"`
+
+	// BuyAmountInUsd ENTITY.PNL_DETAIL_ITEM.BUY_AMOUNT_IN_USD
+	BuyAmountInUsd string `json:"buyAmountInUsd"`
+
+	// Buys ENTITY.PNL_DETAIL_ITEM.BUYS
+	Buys string `json:"buys"`
+
+	// CurrentValue ENTITY.PNL_DETAIL_ITEM.CURRENT_VALUE
+	CurrentValue string `json:"currentValue"`
+
+	// Decimals ENTITY.PNL_DETAIL_ITEM.DECIMALS
+	Decimals *int32 `json:"decimals,omitempty"`
+
+	// LogoUri ENTITY.PNL_DETAIL_ITEM.LOGO_URI
+	LogoUri *string `json:"logoUri"`
+
+	// Name ENTITY.PNL_DETAIL_ITEM.NAME
+	Name *string `json:"name,omitempty"`
+
+	// PriceInUsd ENTITY.PNL_DETAIL_ITEM.PRICE_IN_USD
+	PriceInUsd string `json:"priceInUsd"`
+
+	// RealizedProfitInUsd ENTITY.PNL_DETAIL_ITEM.REALIZED_PROFIT_IN_USD
+	RealizedProfitInUsd string `json:"realizedProfitInUsd"`
+
+	// RealizedProfitRatio ENTITY.PNL_DETAIL_ITEM.REALIZED_PROFIT_RATIO
+	RealizedProfitRatio string `json:"realizedProfitRatio"`
+
+	// SellAmount ENTITY.PNL_DETAIL_ITEM.SELL_AMOUNT
+	SellAmount string `json:"sellAmount"`
+
+	// SellAmountInUsd ENTITY.PNL_DETAIL_ITEM.SELL_AMOUNT_IN_USD
+	SellAmountInUsd string `json:"sellAmountInUsd"`
+
+	// Sells ENTITY.PNL_DETAIL_ITEM.SELLS
+	Sells string `json:"sells"`
+
+	// Symbol ENTITY.PNL_DETAIL_ITEM.SYMBOL
+	Symbol *string `json:"symbol,omitempty"`
+
+	// TokenAddress ENTITY.PNL_DETAIL_ITEM.TOKEN_ADDRESS
+	TokenAddress string `json:"tokenAddress"`
+
+	// TotalProfitInUsd ENTITY.PNL_DETAIL_ITEM.TOTAL_PROFIT_IN_USD
+	TotalProfitInUsd string `json:"totalProfitInUsd"`
+
+	// TotalProfitRatio ENTITY.PNL_DETAIL_ITEM.TOTAL_PROFIT_RATIO
+	TotalProfitRatio string `json:"totalProfitRatio"`
+
+	// TotalTrades ENTITY.PNL_DETAIL_ITEM.TOTAL_TRADES
+	TotalTrades string `json:"totalTrades"`
+
+	// UnrealizedProfitInUsd ENTITY.PNL_DETAIL_ITEM.UNREALIZED_PROFIT_IN_USD
+	UnrealizedProfitInUsd string `json:"unrealizedProfitInUsd"`
+
+	// UnrealizedProfitRatio ENTITY.PNL_DETAIL_ITEM.UNREALIZED_PROFIT_RATIO
+	UnrealizedProfitRatio string `json:"unrealizedProfitRatio"`
+
+	// WalletAddress ENTITY.PNL_DETAIL_ITEM.WALLET_ADDRESS
+	WalletAddress string `json:"walletAddress"`
 }
 
 // PnlDetailSummary Aggregated PnL summary across all items (mirrors TS PnlDetailSummaryDTO).
 type PnlDetailSummary struct {
+	// AvgProfitPerTradeInUsd ENTITY.PNL_DETAIL_SUMMARY.AVG_PROFIT_PER_TRADE_IN_USD
 	AvgProfitPerTradeInUsd string `json:"avgProfitPerTradeInUsd"`
-	BuyAmountInUsd         string `json:"buyAmountInUsd"`
-	Buys                   string `json:"buys"`
-	CurrentValue           string `json:"currentValue"`
-	Losses                 string `json:"losses"`
-	RealizedProfitInUsd    string `json:"realizedProfitInUsd"`
-	RealizedProfitRatio    string `json:"realizedProfitRatio"`
-	SellAmountInUsd        string `json:"sellAmountInUsd"`
-	Sells                  string `json:"sells"`
-	Tokens                 string `json:"tokens"`
-	TotalCostInUsd         string `json:"totalCostInUsd"`
-	TotalProfitInUsd       string `json:"totalProfitInUsd"`
-	TotalTrades            string `json:"totalTrades"`
-	UnrealizedProfitInUsd  string `json:"unrealizedProfitInUsd"`
-	WinRate                string `json:"winRate"`
-	Wins                   string `json:"wins"`
+
+	// BuyAmountInUsd ENTITY.PNL_DETAIL_SUMMARY.BUY_AMOUNT_IN_USD
+	BuyAmountInUsd string `json:"buyAmountInUsd"`
+
+	// Buys ENTITY.PNL_DETAIL_SUMMARY.BUYS
+	Buys string `json:"buys"`
+
+	// CurrentValue ENTITY.PNL_DETAIL_SUMMARY.CURRENT_VALUE
+	CurrentValue string `json:"currentValue"`
+
+	// Losses ENTITY.PNL_DETAIL_SUMMARY.LOSSES
+	Losses string `json:"losses"`
+
+	// RealizedProfitInUsd ENTITY.PNL_DETAIL_SUMMARY.REALIZED_PROFIT_IN_USD
+	RealizedProfitInUsd string `json:"realizedProfitInUsd"`
+
+	// RealizedProfitRatio ENTITY.PNL_DETAIL_SUMMARY.REALIZED_PROFIT_RATIO
+	RealizedProfitRatio string `json:"realizedProfitRatio"`
+
+	// SellAmountInUsd ENTITY.PNL_DETAIL_SUMMARY.SELL_AMOUNT_IN_USD
+	SellAmountInUsd string `json:"sellAmountInUsd"`
+
+	// Sells ENTITY.PNL_DETAIL_SUMMARY.SELLS
+	Sells string `json:"sells"`
+
+	// Tokens ENTITY.PNL_DETAIL_SUMMARY.TOKENS
+	Tokens string `json:"tokens"`
+
+	// TotalCostInUsd ENTITY.PNL_DETAIL_SUMMARY.TOTAL_COST_IN_USD
+	TotalCostInUsd string `json:"totalCostInUsd"`
+
+	// TotalProfitInUsd ENTITY.PNL_DETAIL_SUMMARY.TOTAL_PROFIT_IN_USD
+	TotalProfitInUsd string `json:"totalProfitInUsd"`
+
+	// TotalTrades ENTITY.PNL_DETAIL_SUMMARY.TOTAL_TRADES
+	TotalTrades string `json:"totalTrades"`
+
+	// UnrealizedProfitInUsd ENTITY.PNL_DETAIL_SUMMARY.UNREALIZED_PROFIT_IN_USD
+	UnrealizedProfitInUsd string `json:"unrealizedProfitInUsd"`
+
+	// WinRate ENTITY.PNL_DETAIL_SUMMARY.WIN_RATE
+	WinRate string `json:"winRate"`
+
+	// Wins ENTITY.PNL_DETAIL_SUMMARY.WINS
+	Wins string `json:"wins"`
 }
 
 // PnlDetailsResult Full PnL details result with cursor pagination.
 type PnlDetailsResult struct {
-	Data        []PnlDetailItem `json:"data"`
-	EndCursor   *string         `json:"endCursor"`
-	HasNext     *bool           `json:"hasNext,omitempty"`
-	HasPrev     *bool           `json:"hasPrev,omitempty"`
-	StartCursor *string         `json:"startCursor"`
+	// Data ENTITY.PNL_DETAILS_RESULT.DATA
+	Data []PnlDetailItem `json:"data"`
+
+	// EndCursor ENTITY.PNL_DETAILS_RESULT.END_CURSOR
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext ENTITY.PNL_DETAILS_RESULT.HAS_NEXT
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev ENTITY.PNL_DETAILS_RESULT.HAS_PREV
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor ENTITY.PNL_DETAILS_RESULT.START_CURSOR
+	StartCursor *string `json:"startCursor"`
 
 	// Summary Aggregated PnL summary across all items (mirrors TS PnlDetailSummaryDTO).
 	Summary PnlDetailSummary `json:"summary"`
@@ -270,90 +471,187 @@ type PnlResolution string
 
 // SuccessResponse defines model for SuccessResponse.
 type SuccessResponse struct {
+	// Success ENTITY.SUCCESS_RESPONSE.SUCCESS
 	Success bool `json:"success"`
 }
 
 // TransferTotalResponse defines model for TransferTotalResponse.
 type TransferTotalResponse struct {
+	// Total ENTITY.TRANSFER_TOTAL_RESPONSE.TOTAL
 	Total int64 `json:"total"`
 }
 
 // WalletFirstTx Wallet first transaction summary
 type WalletFirstTx struct {
+	// BalanceChange ENTITY.WALLET_FIRST_TX.BALANCE_CHANGE
 	BalanceChange string `json:"balanceChange"`
-	BlockNumber   int64  `json:"blockNumber"`
-	BlockTime     int64  `json:"blockTime"`
-	Decimals      int32  `json:"decimals"`
-	TokenAddress  string `json:"tokenAddress"`
-	TxHash        string `json:"txHash"`
+
+	// BlockNumber ENTITY.WALLET_FIRST_TX.BLOCK_NUMBER
+	BlockNumber int64 `json:"blockNumber"`
+
+	// BlockTime ENTITY.WALLET_FIRST_TX.BLOCK_TIME
+	BlockTime int64 `json:"blockTime"`
+
+	// Decimals ENTITY.WALLET_FIRST_TX.DECIMALS
+	Decimals int32 `json:"decimals"`
+
+	// TokenAddress ENTITY.WALLET_FIRST_TX.TOKEN_ADDRESS
+	TokenAddress string `json:"tokenAddress"`
+
+	// TxHash ENTITY.WALLET_FIRST_TX.TX_HASH
+	TxHash string `json:"txHash"`
 }
 
 // WalletNetWorthChartResponse Wallet net-worth chart response with pagination.
 type WalletNetWorthChartResponse struct {
-	CurrentTimestamp string                `json:"currentTimestamp"`
-	History          []NetWorthHistoryItem `json:"history"`
-	PastTimestamp    string                `json:"pastTimestamp"`
-	WalletAddress    string                `json:"walletAddress"`
+	// CurrentTimestamp ENTITY.WALLET_NET_WORTH_CHART_RESPONSE.CURRENT_TIMESTAMP
+	CurrentTimestamp string `json:"currentTimestamp"`
+
+	// History ENTITY.WALLET_NET_WORTH_CHART_RESPONSE.HISTORY
+	History []NetWorthHistoryItem `json:"history"`
+
+	// PastTimestamp ENTITY.WALLET_NET_WORTH_CHART_RESPONSE.PAST_TIMESTAMP
+	PastTimestamp string `json:"pastTimestamp"`
+
+	// WalletAddress ENTITY.WALLET_NET_WORTH_CHART_RESPONSE.WALLET_ADDRESS
+	WalletAddress string `json:"walletAddress"`
 }
 
 // WalletNetWorthDetailsPage Paginated wallet net-worth details (mirrors TS WalletNetWorthDetailsPage).
 type WalletNetWorthDetailsPage struct {
-	Data               []NetWorthByTokensItem `json:"data"`
-	EndCursor          *string                `json:"endCursor"`
-	HasNext            *bool                  `json:"hasNext,omitempty"`
-	HasPrev            *bool                  `json:"hasPrev,omitempty"`
-	NetWorth           string                 `json:"netWorth"`
-	RequestedTimestamp string                 `json:"requestedTimestamp"`
-	ResolvedTimestamp  string                 `json:"resolvedTimestamp"`
-	StartCursor        *string                `json:"startCursor"`
-	WalletAddress      string                 `json:"walletAddress"`
+	// Data ENTITY.WALLET_NET_WORTH_DETAILS_PAGE.DATA
+	Data []NetWorthByTokensItem `json:"data"`
+
+	// EndCursor ENTITY.WALLET_NET_WORTH_DETAILS_PAGE.END_CURSOR
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext ENTITY.WALLET_NET_WORTH_DETAILS_PAGE.HAS_NEXT
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev ENTITY.WALLET_NET_WORTH_DETAILS_PAGE.HAS_PREV
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// NetWorth ENTITY.WALLET_NET_WORTH_DETAILS_PAGE.NET_WORTH
+	NetWorth string `json:"netWorth"`
+
+	// RequestedTimestamp ENTITY.WALLET_NET_WORTH_DETAILS_PAGE.REQUESTED_TIMESTAMP
+	RequestedTimestamp string `json:"requestedTimestamp"`
+
+	// ResolvedTimestamp ENTITY.WALLET_NET_WORTH_DETAILS_PAGE.RESOLVED_TIMESTAMP
+	ResolvedTimestamp string `json:"resolvedTimestamp"`
+
+	// StartCursor ENTITY.WALLET_NET_WORTH_DETAILS_PAGE.START_CURSOR
+	StartCursor *string `json:"startCursor"`
+
+	// WalletAddress ENTITY.WALLET_NET_WORTH_DETAILS_PAGE.WALLET_ADDRESS
+	WalletAddress string `json:"walletAddress"`
 }
 
 // WalletNetWorthPage Paginated wallet net-worth page (mirrors TS WalletNetWorthPage).
 type WalletNetWorthPage struct {
-	CurrentTimestamp   string                 `json:"currentTimestamp"`
-	Data               []NetWorthByTokensItem `json:"data"`
-	EndCursor          *string                `json:"endCursor"`
-	HasNext            *bool                  `json:"hasNext,omitempty"`
-	HasPrev            *bool                  `json:"hasPrev,omitempty"`
-	StartCursor        *string                `json:"startCursor"`
-	TotalValueInNative string                 `json:"totalValueInNative"`
-	TotalValueInUsd    string                 `json:"totalValueInUsd"`
-	WalletAddress      string                 `json:"walletAddress"`
+	// CurrentTimestamp ENTITY.WALLET_NET_WORTH_PAGE.CURRENT_TIMESTAMP
+	CurrentTimestamp string `json:"currentTimestamp"`
+
+	// Data ENTITY.WALLET_NET_WORTH_PAGE.DATA
+	Data []NetWorthByTokensItem `json:"data"`
+
+	// EndCursor ENTITY.WALLET_NET_WORTH_PAGE.END_CURSOR
+	EndCursor *string `json:"endCursor"`
+
+	// HasNext ENTITY.WALLET_NET_WORTH_PAGE.HAS_NEXT
+	HasNext *bool `json:"hasNext,omitempty"`
+
+	// HasPrev ENTITY.WALLET_NET_WORTH_PAGE.HAS_PREV
+	HasPrev *bool `json:"hasPrev,omitempty"`
+
+	// StartCursor ENTITY.WALLET_NET_WORTH_PAGE.START_CURSOR
+	StartCursor *string `json:"startCursor"`
+
+	// TotalValueInNative ENTITY.WALLET_NET_WORTH_PAGE.TOTAL_VALUE_IN_NATIVE
+	TotalValueInNative string `json:"totalValueInNative"`
+
+	// TotalValueInUsd ENTITY.WALLET_NET_WORTH_PAGE.TOTAL_VALUE_IN_USD
+	TotalValueInUsd string `json:"totalValueInUsd"`
+
+	// WalletAddress ENTITY.WALLET_NET_WORTH_PAGE.WALLET_ADDRESS
+	WalletAddress string `json:"walletAddress"`
 }
 
 // WalletNetWorthSummaryResponse defines model for WalletNetWorthSummaryResponse.
 type WalletNetWorthSummaryResponse struct {
-	CurrentTimestamp string                          `json:"currentTimestamp"`
-	Wallets          map[string]NetWorthSummaryValue `json:"wallets"`
+	// CurrentTimestamp ENTITY.WALLET_NET_WORTH_SUMMARY_RESPONSE.CURRENT_TIMESTAMP
+	CurrentTimestamp string `json:"currentTimestamp"`
+
+	// Wallets ENTITY.WALLET_NET_WORTH_SUMMARY_RESPONSE.WALLETS
+	Wallets map[string]NetWorthSummaryValue `json:"wallets"`
 }
 
 // WalletPnlSummary Wallet PnL Summary (aggregated across all tokens for a given resolution)
 type WalletPnlSummary struct {
-	AvgProfitPerTradeInUsd string  `json:"avgProfitPerTradeInUsd"`
-	BuyAmountInUsd         string  `json:"buyAmountInUsd"`
-	Buys                   string  `json:"buys"`
-	Losses                 string  `json:"losses"`
-	RealizedProfitInUsd    string  `json:"realizedProfitInUsd"`
-	RealizedProfitRatio    string  `json:"realizedProfitRatio"`
-	Resolution             string  `json:"resolution"`
-	SellAmountInUsd        string  `json:"sellAmountInUsd"`
-	Sells                  string  `json:"sells"`
-	Tokens                 string  `json:"tokens"`
-	TotalCostInUsd         string  `json:"totalCostInUsd"`
-	TotalProfitInUsd       string  `json:"totalProfitInUsd"`
-	TotalProfitRatio       string  `json:"totalProfitRatio"`
-	TotalTrades            string  `json:"totalTrades"`
-	UnrealizedProfitInUsd  string  `json:"unrealizedProfitInUsd"`
-	UnrealizedProfitRatio  string  `json:"unrealizedProfitRatio"`
-	UpdatedAt              *string `json:"updatedAt"`
-	WalletAddress          string  `json:"walletAddress"`
-	WinRate                string  `json:"winRate"`
-	Wins                   string  `json:"wins"`
+	// AvgProfitPerTradeInUsd ENTITY.WALLET_PNL_SUMMARY.AVG_PROFIT_PER_TRADE_IN_USD
+	AvgProfitPerTradeInUsd string `json:"avgProfitPerTradeInUsd"`
+
+	// BuyAmountInUsd ENTITY.WALLET_PNL_SUMMARY.BUY_AMOUNT_IN_USD
+	BuyAmountInUsd string `json:"buyAmountInUsd"`
+
+	// Buys ENTITY.WALLET_PNL_SUMMARY.BUYS
+	Buys string `json:"buys"`
+
+	// Losses ENTITY.WALLET_PNL_SUMMARY.LOSSES
+	Losses string `json:"losses"`
+
+	// RealizedProfitInUsd ENTITY.WALLET_PNL_SUMMARY.REALIZED_PROFIT_IN_USD
+	RealizedProfitInUsd string `json:"realizedProfitInUsd"`
+
+	// RealizedProfitRatio ENTITY.WALLET_PNL_SUMMARY.REALIZED_PROFIT_RATIO
+	RealizedProfitRatio string `json:"realizedProfitRatio"`
+
+	// Resolution ENTITY.WALLET_PNL_SUMMARY.RESOLUTION
+	Resolution string `json:"resolution"`
+
+	// SellAmountInUsd ENTITY.WALLET_PNL_SUMMARY.SELL_AMOUNT_IN_USD
+	SellAmountInUsd string `json:"sellAmountInUsd"`
+
+	// Sells ENTITY.WALLET_PNL_SUMMARY.SELLS
+	Sells string `json:"sells"`
+
+	// Tokens ENTITY.WALLET_PNL_SUMMARY.TOKENS
+	Tokens string `json:"tokens"`
+
+	// TotalCostInUsd ENTITY.WALLET_PNL_SUMMARY.TOTAL_COST_IN_USD
+	TotalCostInUsd string `json:"totalCostInUsd"`
+
+	// TotalProfitInUsd ENTITY.WALLET_PNL_SUMMARY.TOTAL_PROFIT_IN_USD
+	TotalProfitInUsd string `json:"totalProfitInUsd"`
+
+	// TotalProfitRatio ENTITY.WALLET_PNL_SUMMARY.TOTAL_PROFIT_RATIO
+	TotalProfitRatio string `json:"totalProfitRatio"`
+
+	// TotalTrades ENTITY.WALLET_PNL_SUMMARY.TOTAL_TRADES
+	TotalTrades string `json:"totalTrades"`
+
+	// UnrealizedProfitInUsd ENTITY.WALLET_PNL_SUMMARY.UNREALIZED_PROFIT_IN_USD
+	UnrealizedProfitInUsd string `json:"unrealizedProfitInUsd"`
+
+	// UnrealizedProfitRatio ENTITY.WALLET_PNL_SUMMARY.UNREALIZED_PROFIT_RATIO
+	UnrealizedProfitRatio string `json:"unrealizedProfitRatio"`
+
+	// UpdatedAt ENTITY.WALLET_PNL_SUMMARY.UPDATED_AT
+	UpdatedAt *string `json:"updatedAt"`
+
+	// WalletAddress ENTITY.WALLET_PNL_SUMMARY.WALLET_ADDRESS
+	WalletAddress string `json:"walletAddress"`
+
+	// WinRate ENTITY.WALLET_PNL_SUMMARY.WIN_RATE
+	WinRate string `json:"winRate"`
+
+	// Wins ENTITY.WALLET_PNL_SUMMARY.WINS
+	Wins string `json:"wins"`
 }
 
 // WalletsMapResponse defines model for WalletsMapResponse.
 type WalletsMapResponse struct {
+	// Wallets ENTITY.WALLETS_MAP_RESPONSE.WALLETS
 	Wallets map[string]WalletFirstTx `json:"wallets"`
 }
 

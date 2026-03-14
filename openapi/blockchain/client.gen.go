@@ -24,16 +24,26 @@ const (
 
 // Blockchain Blockchain information
 type Blockchain struct {
-	ChainId     int64  `json:"chainId"`
+	// ChainId ENTITY.BLOCKCHAIN.CHAIN_ID
+	ChainId int64 `json:"chainId"`
+
+	// ExplorerUrl ENTITY.BLOCKCHAIN.EXPLORER_URL
 	ExplorerUrl string `json:"explorerUrl"`
-	Name        string `json:"name"`
-	Symbol      string `json:"symbol"`
+
+	// Name ENTITY.BLOCKCHAIN.NAME
+	Name string `json:"name"`
+
+	// Symbol ENTITY.BLOCKCHAIN.SYMBOL
+	Symbol string `json:"symbol"`
 }
 
 // BlockchainLatestBlock defines model for BlockchainLatestBlock.
 type BlockchainLatestBlock struct {
-	Blockhash            string `json:"blockhash"`
-	LastValidBlockHeight int64  `json:"lastValidBlockHeight"`
+	// Blockhash ENTITY.BLOCKCHAIN_LATEST_BLOCK.BLOCKHASH
+	Blockhash string `json:"blockhash"`
+
+	// LastValidBlockHeight ENTITY.BLOCKCHAIN_LATEST_BLOCK.LAST_VALID_BLOCK_HEIGHT
+	LastValidBlockHeight int64 `json:"lastValidBlockHeight"`
 }
 
 // ChainSymbol Supported blockchain chains

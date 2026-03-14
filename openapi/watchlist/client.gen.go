@@ -27,6 +27,7 @@ type ChainSymbol string
 
 // WatchlistAddResponseModel defines model for WatchlistAddResponseModel.
 type WatchlistAddResponseModel struct {
+	// Success ENTITY.WATCHLIST_ADD_RESPONSE.SUCCESS
 	Success bool `json:"success"`
 }
 
