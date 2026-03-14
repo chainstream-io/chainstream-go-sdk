@@ -5,7 +5,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io"
 	"net/http"
 	"strings"
 	"time"
@@ -28,7 +27,7 @@ import (
 )
 
 // LIB_VERSION is the version of the ChainStream Go SDK
-const LIB_VERSION = "2.0.5"
+const LIB_VERSION = "2.0.6"
 
 // DefaultServerURL is the default ChainStream API server URL.
 const DefaultServerURL = "https://api.chainstream.io"
@@ -290,68 +289,17 @@ func userAgentFn[T ~func(context.Context, *http.Request) error]() T {
 
 // WaitForJob waits for job completion
 func (c *ChainStreamClient) WaitForJob(jobId string, timeout time.Duration) (map[string]interface{}, error) {
-	// Get access token
-	var authToken string
-	var err error
-	if c.requestCtx.TokenProvider != nil {
-		authToken, err = c.requestCtx.TokenProvider()
-		if err != nil {
-			return nil, fmt.Errorf("failed to get token: %w", err)
-		}
-	} else {
-		authToken = c.requestCtx.AccessToken
-	}
+	ctx, cancel := context.WithTimeout(context.Background(), timeout)
+	defer cancel()
 
-	// Build SSE URL
-	sseUrl := fmt.Sprintf("%s/v2/job/%s/streaming", c.requestCtx.BaseUrl, jobId)
-
-	// Create HTTP request
-	req, err := http.NewRequest("GET", sseUrl, nil)
+	result, err := c.WaitForJobWithContext(ctx, jobId)
 	if err != nil {
-		return nil, fmt.Errorf("failed to create request: %w", err)
-	}
-
-	req.Header.Set("Authorization", "Bearer "+authToken)
-	req.Header.Set("Accept", "text/event-stream")
-	req.Header.Set("Cache-Control", "no-cache")
-
-	// Send request
-	httpClient := &http.Client{Timeout: timeout}
-	resp, err := httpClient.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("failed to send request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != 200 {
-		return nil, fmt.Errorf("unexpected status code: %d", resp.StatusCode)
-	}
-
-	// Read SSE stream
-	decoder := json.NewDecoder(resp.Body)
-	for {
-		var data map[string]interface{}
-		if err := decoder.Decode(&data); err != nil {
-			if err == io.EOF {
-				break
-			}
-			return nil, fmt.Errorf("failed to decode response: %w", err)
+		if ctx.Err() == context.DeadlineExceeded {
+			return nil, fmt.Errorf("job timed out after %v", timeout)
 		}
-
-		if status, ok := data["status"].(string); ok {
-			if status == "error" {
-				message := "unknown error"
-				if msg, ok := data["message"].(string); ok {
-					message = msg
-				}
-				return nil, fmt.Errorf("job error: %s", message)
-			} else if status == "completed" {
-				return data, nil
-			}
-		}
+		return nil, err
 	}
-
-	return nil, fmt.Errorf("job timed out after %v", timeout)
+	return result, nil
 }
 
 // WaitForJobWithContext waits for job completion with context
@@ -413,22 +361,35 @@ func (c *ChainStreamClient) WaitForJobWithContext(ctx context.Context, jobId str
 					return nil, fmt.Errorf("failed to decode response: %w", err)
 				}
 
-				if status, ok := data["status"].(string); ok {
-					if status == "error" {
-						message := "unknown error"
-						if msg, ok := data["message"].(string); ok {
-							message = msg
-						}
-						return nil, fmt.Errorf("job error: %s", message)
-					} else if status == "completed" {
-						return data, nil
+				status, _ := data["status"].(string)
+				switch status {
+				case "pending":
+					continue
+				case "error":
+					return nil, fmt.Errorf("job error: %s", extractErrorMessage(data))
+				case "failed":
+					return nil, fmt.Errorf("job failed: %s", extractErrorMessage(data))
+				case "completed":
+					if success, ok := data["success"].(bool); ok && !success {
+						return nil, fmt.Errorf("transaction failed: %s", extractErrorMessage(data))
 					}
+					return data, nil
 				}
 			}
 		}
 	}
 
 	return nil, fmt.Errorf("job context cancelled")
+}
+
+func extractErrorMessage(data map[string]interface{}) string {
+	if msg, ok := data["error"].(string); ok && msg != "" {
+		return msg
+	}
+	if msg, ok := data["message"].(string); ok && msg != "" {
+		return msg
+	}
+	return "unknown error"
 }
 
 // Close closes the client connection
