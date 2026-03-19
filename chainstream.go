@@ -27,7 +27,7 @@ import (
 )
 
 // LIB_VERSION is the version of the ChainStream Go SDK
-const LIB_VERSION = "2.0.8"
+const LIB_VERSION = "2.0.9"
 
 // DefaultServerURL is the default ChainStream API server URL.
 const DefaultServerURL = "https://api.chainstream.io"
@@ -46,6 +46,10 @@ type ChainStreamClientOptions struct {
 	ServerURL string
 	// StreamURL is the WebSocket URL for streaming data.
 	StreamURL string
+	// ApiKey for X-API-KEY header authentication.
+	// When set, requests use X-API-KEY header instead of Authorization: Bearer.
+	// Use this OR accessToken OR walletSigner, not multiple.
+	ApiKey string
 	// Debugging enables debug logging when true.
 	Debugging bool
 	// AutoConnectWebSocket controls whether to automatically connect to WebSocket on initialization.
@@ -87,6 +91,15 @@ func NewChainStreamClient(accessToken string, options *ChainStreamClientOptions)
 // NewChainStreamClientWithTokenProvider creates a ChainStream client with token provider
 func NewChainStreamClientWithTokenProvider(tokenProvider TokenProvider, options *ChainStreamClientOptions) (*ChainStreamClient, error) {
 	return createChainStreamClient("", tokenProvider, nil, options)
+}
+
+// NewChainStreamClientWithApiKey creates a ChainStream client using X-API-KEY header authentication.
+func NewChainStreamClientWithApiKey(apiKey string, options *ChainStreamClientOptions) (*ChainStreamClient, error) {
+	if options == nil {
+		options = &ChainStreamClientOptions{}
+	}
+	options.ApiKey = apiKey
+	return createChainStreamClient("", nil, nil, options)
 }
 
 // NewChainStreamClientWithWalletSigner creates a ChainStream client using x402 wallet signature auth.
@@ -137,7 +150,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create blockchain client
 	client.Blockchain, err = blockchain.NewClientWithResponses(serverURL,
-		blockchain.WithRequestEditorFn(authEditorFn[blockchain.RequestEditorFn](authToken, walletSigner)),
+		blockchain.WithRequestEditorFn(authEditorFn[blockchain.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		blockchain.WithRequestEditorFn(userAgentFn[blockchain.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -146,7 +159,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create dex client
 	client.Dex, err = dex.NewClientWithResponses(serverURL,
-		dex.WithRequestEditorFn(authEditorFn[dex.RequestEditorFn](authToken, walletSigner)),
+		dex.WithRequestEditorFn(authEditorFn[dex.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		dex.WithRequestEditorFn(userAgentFn[dex.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -155,7 +168,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create dexpool client
 	client.DexPool, err = dexpool.NewClientWithResponses(serverURL,
-		dexpool.WithRequestEditorFn(authEditorFn[dexpool.RequestEditorFn](authToken, walletSigner)),
+		dexpool.WithRequestEditorFn(authEditorFn[dexpool.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		dexpool.WithRequestEditorFn(userAgentFn[dexpool.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -164,7 +177,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create ipfs client
 	client.Ipfs, err = ipfs.NewClientWithResponses(serverURL,
-		ipfs.WithRequestEditorFn(authEditorFn[ipfs.RequestEditorFn](authToken, walletSigner)),
+		ipfs.WithRequestEditorFn(authEditorFn[ipfs.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		ipfs.WithRequestEditorFn(userAgentFn[ipfs.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -173,7 +186,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create job client
 	client.Job, err = job.NewClientWithResponses(serverURL,
-		job.WithRequestEditorFn(authEditorFn[job.RequestEditorFn](authToken, walletSigner)),
+		job.WithRequestEditorFn(authEditorFn[job.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		job.WithRequestEditorFn(userAgentFn[job.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -182,7 +195,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create kyt client
 	client.Kyt, err = kyt.NewClientWithResponses(serverURL,
-		kyt.WithRequestEditorFn(authEditorFn[kyt.RequestEditorFn](authToken, walletSigner)),
+		kyt.WithRequestEditorFn(authEditorFn[kyt.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		kyt.WithRequestEditorFn(userAgentFn[kyt.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -191,7 +204,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create ranking client
 	client.Ranking, err = ranking.NewClientWithResponses(serverURL,
-		ranking.WithRequestEditorFn(authEditorFn[ranking.RequestEditorFn](authToken, walletSigner)),
+		ranking.WithRequestEditorFn(authEditorFn[ranking.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		ranking.WithRequestEditorFn(userAgentFn[ranking.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -200,7 +213,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create redpacket client
 	client.RedPacket, err = redpacket.NewClientWithResponses(serverURL,
-		redpacket.WithRequestEditorFn(authEditorFn[redpacket.RequestEditorFn](authToken, walletSigner)),
+		redpacket.WithRequestEditorFn(authEditorFn[redpacket.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		redpacket.WithRequestEditorFn(userAgentFn[redpacket.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -209,7 +222,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create token client
 	client.Token, err = token.NewClientWithResponses(serverURL,
-		token.WithRequestEditorFn(authEditorFn[token.RequestEditorFn](authToken, walletSigner)),
+		token.WithRequestEditorFn(authEditorFn[token.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		token.WithRequestEditorFn(userAgentFn[token.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -218,7 +231,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create trade client
 	client.Trade, err = trade.NewClientWithResponses(serverURL,
-		trade.WithRequestEditorFn(authEditorFn[trade.RequestEditorFn](authToken, walletSigner)),
+		trade.WithRequestEditorFn(authEditorFn[trade.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		trade.WithRequestEditorFn(userAgentFn[trade.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -227,7 +240,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create transaction client
 	client.Transaction, err = transaction.NewClientWithResponses(serverURL,
-		transaction.WithRequestEditorFn(authEditorFn[transaction.RequestEditorFn](authToken, walletSigner)),
+		transaction.WithRequestEditorFn(authEditorFn[transaction.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		transaction.WithRequestEditorFn(userAgentFn[transaction.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -236,7 +249,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create wallet client
 	client.Wallet, err = wallet.NewClientWithResponses(serverURL,
-		wallet.WithRequestEditorFn(authEditorFn[wallet.RequestEditorFn](authToken, walletSigner)),
+		wallet.WithRequestEditorFn(authEditorFn[wallet.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		wallet.WithRequestEditorFn(userAgentFn[wallet.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -245,7 +258,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create watchlist client
 	client.Watchlist, err = watchlist.NewClientWithResponses(serverURL,
-		watchlist.WithRequestEditorFn(authEditorFn[watchlist.RequestEditorFn](authToken, walletSigner)),
+		watchlist.WithRequestEditorFn(authEditorFn[watchlist.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		watchlist.WithRequestEditorFn(userAgentFn[watchlist.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -254,7 +267,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create webhook client
 	client.Webhook, err = webhook.NewClientWithResponses(serverURL,
-		webhook.WithRequestEditorFn(authEditorFn[webhook.RequestEditorFn](authToken, walletSigner)),
+		webhook.WithRequestEditorFn(authEditorFn[webhook.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		webhook.WithRequestEditorFn(userAgentFn[webhook.RequestEditorFn]()),
 	)
 	if err != nil {
@@ -274,16 +287,29 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 	return client, nil
 }
 
-// authEditorFn returns a request editor that uses wallet signer (if provided) or bearer token.
-func authEditorFn[T ~func(context.Context, *http.Request) error](accessToken string, walletSigner WalletSigner) T {
+// authEditorFn returns a request editor that uses wallet signer, API key, or bearer token.
+// Priority: walletSigner > apiKey > accessToken.
+func authEditorFn[T ~func(context.Context, *http.Request) error](accessToken string, walletSigner WalletSigner, apiKey string) T {
 	if walletSigner != nil {
 		return WalletAuthHeaderFn[T](walletSigner)
 	}
-	return authHeaderFn[T](accessToken)
+	if apiKey != "" {
+		return apiKeyHeaderFn[T](apiKey)
+	}
+	return bearerHeaderFn[T](accessToken)
 }
 
-// authHeaderFn returns a request editor function that adds the Authorization header.
-func authHeaderFn[T ~func(context.Context, *http.Request) error](accessToken string) T {
+// apiKeyHeaderFn returns a request editor function that adds the X-API-KEY header.
+func apiKeyHeaderFn[T ~func(context.Context, *http.Request) error](apiKey string) T {
+	return T(func(_ context.Context, req *http.Request) error {
+		req.Header.Set("X-API-KEY", apiKey)
+		req.Header.Set("Content-Type", "application/json")
+		return nil
+	})
+}
+
+// bearerHeaderFn returns a request editor function that adds the Authorization: Bearer header.
+func bearerHeaderFn[T ~func(context.Context, *http.Request) error](accessToken string) T {
 	return T(func(_ context.Context, req *http.Request) error {
 		if accessToken != "" {
 			req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", accessToken))
