@@ -27,7 +27,7 @@ import (
 )
 
 // LIB_VERSION is the version of the ChainStream Go SDK
-const LIB_VERSION = "2.0.10"
+const LIB_VERSION = "2.0.11"
 
 // DefaultServerURL is the default ChainStream API server URL.
 const DefaultServerURL = "https://api.chainstream.io"
@@ -291,7 +291,8 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 // Priority: walletSigner > apiKey > accessToken.
 func authEditorFn[T ~func(context.Context, *http.Request) error](accessToken string, walletSigner WalletSigner, apiKey string) T {
 	if walletSigner != nil {
-		return WalletAuthHeaderFn[T](walletSigner)
+		cache := NewSiwxTokenCache(walletSigner)
+		return SiwxAuthHeaderFn[T](cache)
 	}
 	if apiKey != "" {
 		return apiKeyHeaderFn[T](apiKey)
