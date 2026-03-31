@@ -27,7 +27,7 @@ import (
 )
 
 // LIB_VERSION is the version of the ChainStream Go SDK
-const LIB_VERSION = "2.0.11"
+const LIB_VERSION = "2.0.12"
 
 // DefaultServerURL is the default ChainStream API server URL.
 const DefaultServerURL = "https://api.chainstream.io"
@@ -141,9 +141,14 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 		BaseUrl:     serverURL,
 		StreamUrl:   streamURL,
 		AccessToken: authToken,
+		ApiKey:      options.ApiKey,
 	}
 	if tokenProvider != nil {
 		requestCtx.TokenProvider = tokenProvider.GetToken
+	}
+	if walletSigner != nil {
+		cache := NewSiwxTokenCache(walletSigner)
+		requestCtx.SiwxTokenProvider = cache.GetToken
 	}
 
 	client := &ChainStreamClient{requestCtx: requestCtx}
@@ -345,18 +350,6 @@ func (c *ChainStreamClient) WaitForJob(jobId string, timeout time.Duration) (map
 
 // WaitForJobWithContext waits for job completion with context
 func (c *ChainStreamClient) WaitForJobWithContext(ctx context.Context, jobId string) (map[string]interface{}, error) {
-	// Get access token
-	var authToken string
-	var err error
-	if c.requestCtx.TokenProvider != nil {
-		authToken, err = c.requestCtx.TokenProvider()
-		if err != nil {
-			return nil, fmt.Errorf("failed to get token: %w", err)
-		}
-	} else {
-		authToken = c.requestCtx.AccessToken
-	}
-
 	// Build SSE URL
 	sseUrl := fmt.Sprintf("%s/v2/job/%s/streaming", c.requestCtx.BaseUrl, jobId)
 
@@ -366,7 +359,25 @@ func (c *ChainStreamClient) WaitForJobWithContext(ctx context.Context, jobId str
 		return nil, fmt.Errorf("failed to create request: %w", err)
 	}
 
-	req.Header.Set("Authorization", "Bearer "+authToken)
+	// Set authentication headers based on priority: SiwxTokenProvider > ApiKey > TokenProvider > AccessToken
+	if c.requestCtx.SiwxTokenProvider != nil {
+		siwxToken, err := c.requestCtx.SiwxTokenProvider()
+		if err != nil {
+			return nil, fmt.Errorf("failed to get SIWX token: %w", err)
+		}
+		req.Header.Set("Authorization", "SIWX "+siwxToken)
+	} else if c.requestCtx.ApiKey != "" {
+		req.Header.Set("X-API-KEY", c.requestCtx.ApiKey)
+	} else if c.requestCtx.TokenProvider != nil {
+		authToken, err := c.requestCtx.TokenProvider()
+		if err != nil {
+			return nil, fmt.Errorf("failed to get token: %w", err)
+		}
+		req.Header.Set("Authorization", "Bearer "+authToken)
+	} else if c.requestCtx.AccessToken != "" {
+		req.Header.Set("Authorization", "Bearer "+c.requestCtx.AccessToken)
+	}
+
 	req.Header.Set("Accept", "text/event-stream")
 	req.Header.Set("Cache-Control", "no-cache")
 

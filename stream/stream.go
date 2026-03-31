@@ -21,6 +21,10 @@ type RequestContext struct {
 	StreamUrl     string
 	AccessToken   string
 	TokenProvider func() (string, error)
+	// ApiKey for X-API-KEY header authentication
+	ApiKey string
+	// SiwxTokenProvider for wallet signature authentication (returns SIWX token)
+	SiwxTokenProvider func() (string, error)
 }
 
 // StreamApi handles WebSocket streaming functionality using Centrifuge
