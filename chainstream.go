@@ -27,7 +27,7 @@ import (
 )
 
 // LIB_VERSION is the version of the ChainStream Go SDK
-const LIB_VERSION = "2.0.12"
+const LIB_VERSION = "2.0.13"
 
 // DefaultServerURL is the default ChainStream API server URL.
 const DefaultServerURL = "https://api.chainstream.io"
@@ -39,6 +39,11 @@ const DefaultStreamURL = "wss://realtime-dex.chainstream.io/connection/websocket
 type TokenProvider interface {
 	GetToken() (string, error)
 }
+
+// DefaultHTTPTimeout is the default timeout for all REST API requests (30 seconds).
+// This aligns with the server-side request timeout, giving the backend enough
+// time to return a meaningful error before the client gives up.
+const DefaultHTTPTimeout = 30 * time.Second
 
 // ChainStreamClientOptions contains configuration options for the ChainStream client.
 type ChainStreamClientOptions struct {
@@ -57,6 +62,9 @@ type ChainStreamClientOptions struct {
 	// If set to true, WebSocket will connect automatically.
 	// If false or not set, connection will happen automatically when you use subscribe methods.
 	AutoConnectWebSocket bool
+	// HTTPTimeout sets the timeout for REST API requests. Default: 30s.
+	// Set to 0 to disable the client-side timeout (context deadlines still apply).
+	HTTPTimeout time.Duration
 }
 
 // ChainStreamClient is the main ChainStream client that provides access to all API modules.
@@ -124,6 +132,12 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 		streamURL = DefaultStreamURL
 	}
 
+	httpTimeout := options.HTTPTimeout
+	if httpTimeout == 0 {
+		httpTimeout = DefaultHTTPTimeout
+	}
+	httpClient := &http.Client{Timeout: httpTimeout}
+
 	// Get access token (either from string or provider)
 	var authToken string
 	var err error
@@ -155,6 +169,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create blockchain client
 	client.Blockchain, err = blockchain.NewClientWithResponses(serverURL,
+		blockchain.WithHTTPClient(httpClient),
 		blockchain.WithRequestEditorFn(authEditorFn[blockchain.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		blockchain.WithRequestEditorFn(userAgentFn[blockchain.RequestEditorFn]()),
 	)
@@ -164,6 +179,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create dex client
 	client.Dex, err = dex.NewClientWithResponses(serverURL,
+		dex.WithHTTPClient(httpClient),
 		dex.WithRequestEditorFn(authEditorFn[dex.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		dex.WithRequestEditorFn(userAgentFn[dex.RequestEditorFn]()),
 	)
@@ -173,6 +189,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create dexpool client
 	client.DexPool, err = dexpool.NewClientWithResponses(serverURL,
+		dexpool.WithHTTPClient(httpClient),
 		dexpool.WithRequestEditorFn(authEditorFn[dexpool.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		dexpool.WithRequestEditorFn(userAgentFn[dexpool.RequestEditorFn]()),
 	)
@@ -182,6 +199,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create ipfs client
 	client.Ipfs, err = ipfs.NewClientWithResponses(serverURL,
+		ipfs.WithHTTPClient(httpClient),
 		ipfs.WithRequestEditorFn(authEditorFn[ipfs.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		ipfs.WithRequestEditorFn(userAgentFn[ipfs.RequestEditorFn]()),
 	)
@@ -191,6 +209,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create job client
 	client.Job, err = job.NewClientWithResponses(serverURL,
+		job.WithHTTPClient(httpClient),
 		job.WithRequestEditorFn(authEditorFn[job.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		job.WithRequestEditorFn(userAgentFn[job.RequestEditorFn]()),
 	)
@@ -200,6 +219,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create kyt client
 	client.Kyt, err = kyt.NewClientWithResponses(serverURL,
+		kyt.WithHTTPClient(httpClient),
 		kyt.WithRequestEditorFn(authEditorFn[kyt.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		kyt.WithRequestEditorFn(userAgentFn[kyt.RequestEditorFn]()),
 	)
@@ -209,6 +229,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create ranking client
 	client.Ranking, err = ranking.NewClientWithResponses(serverURL,
+		ranking.WithHTTPClient(httpClient),
 		ranking.WithRequestEditorFn(authEditorFn[ranking.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		ranking.WithRequestEditorFn(userAgentFn[ranking.RequestEditorFn]()),
 	)
@@ -218,6 +239,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create redpacket client
 	client.RedPacket, err = redpacket.NewClientWithResponses(serverURL,
+		redpacket.WithHTTPClient(httpClient),
 		redpacket.WithRequestEditorFn(authEditorFn[redpacket.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		redpacket.WithRequestEditorFn(userAgentFn[redpacket.RequestEditorFn]()),
 	)
@@ -227,6 +249,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create token client
 	client.Token, err = token.NewClientWithResponses(serverURL,
+		token.WithHTTPClient(httpClient),
 		token.WithRequestEditorFn(authEditorFn[token.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		token.WithRequestEditorFn(userAgentFn[token.RequestEditorFn]()),
 	)
@@ -236,6 +259,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create trade client
 	client.Trade, err = trade.NewClientWithResponses(serverURL,
+		trade.WithHTTPClient(httpClient),
 		trade.WithRequestEditorFn(authEditorFn[trade.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		trade.WithRequestEditorFn(userAgentFn[trade.RequestEditorFn]()),
 	)
@@ -245,6 +269,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create transaction client
 	client.Transaction, err = transaction.NewClientWithResponses(serverURL,
+		transaction.WithHTTPClient(httpClient),
 		transaction.WithRequestEditorFn(authEditorFn[transaction.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		transaction.WithRequestEditorFn(userAgentFn[transaction.RequestEditorFn]()),
 	)
@@ -254,6 +279,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create wallet client
 	client.Wallet, err = wallet.NewClientWithResponses(serverURL,
+		wallet.WithHTTPClient(httpClient),
 		wallet.WithRequestEditorFn(authEditorFn[wallet.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		wallet.WithRequestEditorFn(userAgentFn[wallet.RequestEditorFn]()),
 	)
@@ -263,6 +289,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create watchlist client
 	client.Watchlist, err = watchlist.NewClientWithResponses(serverURL,
+		watchlist.WithHTTPClient(httpClient),
 		watchlist.WithRequestEditorFn(authEditorFn[watchlist.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		watchlist.WithRequestEditorFn(userAgentFn[watchlist.RequestEditorFn]()),
 	)
@@ -272,6 +299,7 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 
 	// Create webhook client
 	client.Webhook, err = webhook.NewClientWithResponses(serverURL,
+		webhook.WithHTTPClient(httpClient),
 		webhook.WithRequestEditorFn(authEditorFn[webhook.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
 		webhook.WithRequestEditorFn(userAgentFn[webhook.RequestEditorFn]()),
 	)
