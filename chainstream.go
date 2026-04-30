@@ -27,7 +27,7 @@ import (
 )
 
 // LIB_VERSION is the version of the ChainStream Go SDK
-const LIB_VERSION = "2.0.13"
+const LIB_VERSION = "2.0.14"
 
 // DefaultServerURL is the default ChainStream API server URL.
 const DefaultServerURL = "https://api.chainstream.io"

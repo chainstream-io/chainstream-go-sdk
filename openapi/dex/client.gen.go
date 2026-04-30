@@ -341,6 +341,12 @@ type SwapRouteResponse struct {
 	// ElapsedTime DTO.DEX.SWAP.ELAPSED_TIME
 	ElapsedTime int64 `json:"elapsedTime"`
 
+	// LastValidBlockHeight DTO.DEX.SWAP.LAST_VALID_BLOCK_HEIGHT
+	LastValidBlockHeight *int64 `json:"lastValidBlockHeight,omitempty"`
+
+	// RecentBlockhash DTO.DEX.SWAP.RECENT_BLOCKHASH
+	RecentBlockhash *string `json:"recentBlockhash,omitempty"`
+
 	// RouteInfo DTO.DEX.SWAP.ROUTE_INFO
 	RouteInfo map[string]interface{} `json:"routeInfo"`
 
