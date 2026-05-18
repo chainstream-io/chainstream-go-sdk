@@ -313,11 +313,46 @@ type PageResponseTradeDetail struct {
 		// DexProtocolFamily DEX protocol family
 		DexProtocolFamily *string `json:"dexProtocolFamily,omitempty"`
 
-		// GasFee Gas fee (transaction fee in lamports / wei)
+		// GasFee Gas fee (raw: lamports for SOL, Gwei for BSC)
 		GasFee *int64 `json:"gasFee,omitempty"`
+
+		// GasFeeInNative Gas fee in native currency (SOL / BNB / ETH)
+		GasFeeInNative *string `json:"gasFeeInNative,omitempty"`
+
+		// GasFeeInUsd Gas fee in USD
+		GasFeeInUsd *string `json:"gasFeeInUsd,omitempty"`
+
+		// HistoryBoughtAmount Cumulative token quantity bought by this wallet (up to and including this trade).
+		// Matches GMGN `history_bought_amount`.
+		HistoryBoughtAmount *string `json:"historyBoughtAmount,omitempty"`
+
+		// HistorySoldAmount Cumulative token quantity sold by this wallet (up to and including this trade).
+		// Matches GMGN `history_sold_amount`.
+		HistorySoldAmount *string `json:"historySoldAmount,omitempty"`
+
+		// IsOpenOrClose Position lifecycle: 0=normal, 1=open_position, 2=close_position
+		// Matches GMGN `is_open_or_close` field.
+		IsOpenOrClose *int32 `json:"isOpenOrClose,omitempty"`
+
+		// MakerEventTags Trade behaviour tags for this event (e.g. "open_position", "dip_buy",
+		// "take_profit", "stop_loss", "close_position", "accumulate",
+		// "transfer_in", "transfer_out").
+		// Matches GMGN `maker_token_tags` on the activity level.
+		MakerEventTags *[]string `json:"makerEventTags,omitempty"`
+
+		// MarketCapInUsd Market cap in USD at trade time
+		MarketCapInUsd *string `json:"marketCapInUsd,omitempty"`
 
 		// PoolAddress Pool address
 		PoolAddress string `json:"poolAddress"`
+
+		// PostBalance Token balance after this trade (token quantity).
+		// Matches GMGN `balance` in activity feed.
+		PostBalance *string `json:"postBalance,omitempty"`
+
+		// RealizedProfitInUsd Realized PnL for this specific trade in USD (non-zero only on Sell events).
+		// Matches GMGN `realized_profit`.
+		RealizedProfitInUsd *string `json:"realizedProfitInUsd,omitempty"`
 
 		// SideTokenAddress Side token address
 		SideTokenAddress string `json:"sideTokenAddress"`
@@ -541,6 +576,13 @@ type GetActivitiesParams struct {
 	SortBy *struct {
 		union json.RawMessage
 	} `form:"sortBy,omitempty" json:"sortBy,omitempty"`
+
+	// TraderTags Filter by trader tag(s). Comma-separated list from: kol, smart, sniper, bundle, dev, bluechip, insider, fresh.
+	// Returns activities where the trader has ANY of the specified tags.
+	TraderTags *string `form:"traderTags,omitempty" json:"traderTags,omitempty"`
+
+	// MinAmountUsd Minimum trade value in USD (inclusive). Filters out small trades.
+	MinAmountUsd *string `form:"minAmountUsd,omitempty" json:"minAmountUsd,omitempty"`
 }
 
 // GetTopTradersParams defines parameters for GetTopTraders.
@@ -1106,6 +1148,30 @@ func NewGetActivitiesRequest(server string, chain ChainSymbol, params *GetActivi
 		if params.SortBy != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sortBy", *params.SortBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.TraderTags != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "traderTags", *params.TraderTags, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.MinAmountUsd != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "minAmountUsd", *params.MinAmountUsd, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
 				return nil, err
 			} else {
 				for _, qp := range strings.Split(queryFrag, "&") {

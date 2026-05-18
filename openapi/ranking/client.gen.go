@@ -317,6 +317,12 @@ type Token struct {
 	// Extra Token extra metadata
 	Extra *TokenExtra `json:"extra,omitempty"`
 
+	// ImageDup ENTITY.TOKEN.IMAGE_DUP
+	ImageDup *bool `json:"imageDup,omitempty"`
+
+	// ImageHash ENTITY.TOKEN.IMAGE_HASH
+	ImageHash *string `json:"imageHash,omitempty"`
+
 	// ImageUrl Token logo image URL
 	ImageUrl *string `json:"imageUrl,omitempty"`
 
@@ -331,6 +337,9 @@ type Token struct {
 
 	// Name Token display name
 	Name string `json:"name"`
+
+	// NormalizedName ENTITY.TOKEN.NORMALIZED_NAME
+	NormalizedName *string `json:"normalizedName,omitempty"`
 
 	// SocialMedias Token social media links
 	SocialMedias *TokenSocialMedias `json:"socialMedias,omitempty"`
@@ -471,6 +480,15 @@ type TokenMarketData struct {
 	// CompletionRatio Bonding curve completion ratio
 	CompletionRatio *string `json:"completionRatio,omitempty"`
 
+	// CreatorsHoldingsRatio ENTITY.TOKEN_MARKET_DATA.CREATORS_HOLDINGS_RATIO
+	CreatorsHoldingsRatio *string `json:"creatorsHoldingsRatio,omitempty"`
+
+	// CreatorsTotalHolders ENTITY.TOKEN_MARKET_DATA.CREATORS_TOTAL_HOLDERS
+	CreatorsTotalHolders *string `json:"creatorsTotalHolders,omitempty"`
+
+	// CreatorsTotalHoldings ENTITY.TOKEN_MARKET_DATA.CREATORS_TOTAL_HOLDINGS
+	CreatorsTotalHoldings *string `json:"creatorsTotalHoldings,omitempty"`
+
 	// DevHoldingsRatio Ratio of developer holdings to total supply
 	DevHoldingsRatio *string `json:"devHoldingsRatio,omitempty"`
 
@@ -528,6 +546,15 @@ type TokenMarketData struct {
 	// MaxPoolTvlInUsd Maximum pool TVL in USD
 	MaxPoolTvlInUsd *string `json:"maxPoolTvlInUsd,omitempty"`
 
+	// PhishingHoldingsRatio ENTITY.TOKEN_MARKET_DATA.PHISHING_HOLDINGS_RATIO
+	PhishingHoldingsRatio *string `json:"phishingHoldingsRatio,omitempty"`
+
+	// PhishingTotalHolders ENTITY.TOKEN_MARKET_DATA.PHISHING_TOTAL_HOLDERS
+	PhishingTotalHolders *string `json:"phishingTotalHolders,omitempty"`
+
+	// PhishingTotalHoldings ENTITY.TOKEN_MARKET_DATA.PHISHING_TOTAL_HOLDINGS
+	PhishingTotalHoldings *string `json:"phishingTotalHoldings,omitempty"`
+
 	// PriceInSol Token price in native token
 	PriceInSol *string `json:"priceInSol,omitempty"`
 
@@ -543,6 +570,15 @@ type TokenMarketData struct {
 	// ProTotalHoldings Total holdings of professional traders
 	ProTotalHoldings *string `json:"proTotalHoldings,omitempty"`
 
+	// RatHoldingsRatio ENTITY.TOKEN_MARKET_DATA.RAT_HOLDINGS_RATIO
+	RatHoldingsRatio *string `json:"ratHoldingsRatio,omitempty"`
+
+	// RatTotalHolders ENTITY.TOKEN_MARKET_DATA.RAT_TOTAL_HOLDERS
+	RatTotalHolders *string `json:"ratTotalHolders,omitempty"`
+
+	// RatTotalHoldings ENTITY.TOKEN_MARKET_DATA.RAT_TOTAL_HOLDINGS
+	RatTotalHoldings *string `json:"ratTotalHoldings,omitempty"`
+
 	// SandwishHoldingsRatio Ratio of sandwich attack holdings to total supply
 	SandwishHoldingsRatio *string `json:"sandwishHoldingsRatio,omitempty"`
 
@@ -551,6 +587,15 @@ type TokenMarketData struct {
 
 	// SandwishTotalHoldings Total holdings of sandwich attack wallets
 	SandwishTotalHoldings *string `json:"sandwishTotalHoldings,omitempty"`
+
+	// SmartHoldingsRatio ENTITY.TOKEN_MARKET_DATA.SMART_HOLDINGS_RATIO
+	SmartHoldingsRatio *string `json:"smartHoldingsRatio,omitempty"`
+
+	// SmartTotalHolders ENTITY.TOKEN_MARKET_DATA.SMART_TOTAL_HOLDERS
+	SmartTotalHolders *string `json:"smartTotalHolders,omitempty"`
+
+	// SmartTotalHoldings ENTITY.TOKEN_MARKET_DATA.SMART_TOTAL_HOLDINGS
+	SmartTotalHoldings *string `json:"smartTotalHoldings,omitempty"`
 
 	// SniperHoldingsRatio Ratio of sniper holdings to total supply
 	SniperHoldingsRatio *string `json:"sniperHoldingsRatio,omitempty"`

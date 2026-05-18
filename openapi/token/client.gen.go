@@ -228,6 +228,24 @@ func (e SearchSortBy) Valid() bool {
 	}
 }
 
+// Defines values for SimilarType.
+const (
+	Image SimilarType = "image"
+	Name  SimilarType = "name"
+)
+
+// Valid indicates whether the value is a known member of the SimilarType enum.
+func (e SimilarType) Valid() bool {
+	switch e {
+	case Image:
+		return true
+	case Name:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for SortDirection.
 const (
 	Asc  SortDirection = "asc"
@@ -654,10 +672,8 @@ type GoPlusSecurityInfo struct {
 	BuyTax *string `json:"buyTax,omitempty"`
 
 	// ChainSupported Whether this source supports the token chain
-	ChainSupported *bool `json:"chainSupported,omitempty"`
-
-	// HolderCount Number of token holders
-	HolderCount *string `json:"holderCount,omitempty"`
+	ChainSupported *bool   `json:"chainSupported,omitempty"`
+	HolderCount    *string `json:"holderCount,omitempty"`
 
 	// IsBlacklisted Whether the contract has blacklist
 	IsBlacklisted *bool `json:"isBlacklisted,omitempty"`
@@ -682,66 +698,33 @@ type GoPlusSecurityInfo struct {
 
 	// LastRefreshedAt Last refresh timestamp
 	LastRefreshedAt *string `json:"lastRefreshedAt,omitempty"`
-
-	// LpHolderCount Number of LP holders
-	LpHolderCount *string `json:"lpHolderCount,omitempty"`
-
-	// OwnerAddress Contract owner address
-	OwnerAddress *string `json:"ownerAddress,omitempty"`
+	LpHolderCount   *string `json:"lpHolderCount,omitempty"`
+	OwnerAddress    *string `json:"ownerAddress,omitempty"`
 
 	// Raw Raw security data from the source
 	Raw interface{} `json:"raw,omitempty"`
 
 	// SellTax Sell tax rate
-	SellTax *string `json:"sellTax,omitempty"`
-
-	// TotalSupply Total token supply
+	SellTax     *string `json:"sellTax,omitempty"`
 	TotalSupply *string `json:"totalSupply,omitempty"`
 }
 
 // HoneypotIsSecurityInfo defines model for HoneypotIsSecurityInfo.
 type HoneypotIsSecurityInfo struct {
-	// Available Whether data is available from this source
-	Available bool `json:"available"`
-
-	// AverageTax Average observed tax rate
-	AverageTax *string `json:"averageTax,omitempty"`
-
-	// BuyTax Buy tax rate
-	BuyTax *string `json:"buyTax,omitempty"`
-
-	// CanNotSell Number of holders that cannot sell
-	CanNotSell *int32 `json:"canNotSell,omitempty"`
-
-	// CanSell Number of holders that can sell
-	CanSell *int32 `json:"canSell,omitempty"`
-
-	// ChainSupported Whether this source supports the token chain
-	ChainSupported *bool `json:"chainSupported,omitempty"`
-
-	// HighTax Highest observed tax rate
-	HighTax *string `json:"highTax,omitempty"`
-
-	// HoneypotResult Honeypot.is verdict
-	HoneypotResult *string `json:"honeypotResult,omitempty"`
-
-	// IsHoneypot Whether the token is a honeypot
-	IsHoneypot *bool `json:"isHoneypot,omitempty"`
-
-	// IsOpenSource Whether the contract is open source
-	IsOpenSource *bool `json:"isOpenSource,omitempty"`
-
-	// IsRenounced Whether the contract ownership is renounced
-	IsRenounced *bool `json:"isRenounced,omitempty"`
-
-	// LastRefreshedAt Last refresh timestamp
-	LastRefreshedAt *string `json:"lastRefreshedAt,omitempty"`
-
-	// Raw Raw security data from the source
-	Raw interface{} `json:"raw,omitempty"`
-
-	// SellTax Sell tax rate
-	SellTax *string `json:"sellTax,omitempty"`
+	Available       bool        `json:"available"`
+	AverageTax      *string     `json:"averageTax,omitempty"`
+	BuyTax          *string     `json:"buyTax,omitempty"`
+	CanNotSell      *int32      `json:"canNotSell,omitempty"`
+	CanSell         *int32      `json:"canSell,omitempty"`
+	ChainSupported  *bool       `json:"chainSupported,omitempty"`
+	HighTax         *string     `json:"highTax,omitempty"`
+	HoneypotResult  *string     `json:"honeypotResult,omitempty"`
+	IsHoneypot      *bool       `json:"isHoneypot,omitempty"`
+	IsOpenSource    *bool       `json:"isOpenSource,omitempty"`
+	IsRenounced     *bool       `json:"isRenounced,omitempty"`
+	LastRefreshedAt *string     `json:"lastRefreshedAt,omitempty"`
+	Raw             interface{} `json:"raw,omitempty"`
+	SellTax         *string     `json:"sellTax,omitempty"`
 }
 
 // MintBurnType Mint/burn type filter
@@ -853,6 +836,12 @@ type PageResponseToken struct {
 		// Extra Token extra metadata
 		Extra *TokenExtra `json:"extra,omitempty"`
 
+		// ImageDup ENTITY.TOKEN.IMAGE_DUP
+		ImageDup *bool `json:"imageDup,omitempty"`
+
+		// ImageHash ENTITY.TOKEN.IMAGE_HASH
+		ImageHash *string `json:"imageHash,omitempty"`
+
 		// ImageUrl Token logo image URL
 		ImageUrl *string `json:"imageUrl,omitempty"`
 
@@ -867,6 +856,9 @@ type PageResponseToken struct {
 
 		// Name Token display name
 		Name string `json:"name"`
+
+		// NormalizedName ENTITY.TOKEN.NORMALIZED_NAME
+		NormalizedName *string `json:"normalizedName,omitempty"`
 
 		// SocialMedias Token social media links
 		SocialMedias *TokenSocialMedias `json:"socialMedias,omitempty"`
@@ -913,17 +905,113 @@ type PageResponseToken struct {
 type PageResponseTokenHolder struct {
 	// Data Page data
 	Data []struct {
+		// AccuCost Traceable position accumulated cost, USD (GMGN: accu_cost)
+		AccuCost *string `json:"accuCost,omitempty"`
+
 		// Amount Token holding amount
 		Amount string `json:"amount"`
 
 		// AmountInUsd Token holding value in USD
 		AmountInUsd string `json:"amountInUsd"`
 
+		// AvgBuyPriceUsd Average buy price in USD per token (all-time)
+		AvgBuyPriceUsd *string `json:"avgBuyPriceUsd,omitempty"`
+
+		// AvgCostUsd Average cost per token in USD (current position cost basis)
+		AvgCostUsd *string `json:"avgCostUsd,omitempty"`
+
+		// AvgSellPriceUsd Average sell price in USD per token (all-time)
+		AvgSellPriceUsd *string `json:"avgSellPriceUsd,omitempty"`
+
+		// BuyAmountCur Cumulative token quantity bought, all-time (GMGN: buy_amount_cur / history_bought_amount)
+		BuyAmountCur *string `json:"buyAmountCur,omitempty"`
+
+		// BuyVolumeNative All-time total buy volume in native token
+		BuyVolumeNative *string `json:"buyVolumeNative,omitempty"`
+
+		// BuyVolumeUsd All-time total buy volume in USD
+		BuyVolumeUsd *string `json:"buyVolumeUsd,omitempty"`
+
+		// EndHoldingAt Timestamp when holder fully closed position (ms since epoch)
+		EndHoldingAt *int64 `json:"endHoldingAt,omitempty"`
+
+		// FirstBuyTime Timestamp of first token purchase (ms since epoch)
+		FirstBuyTime *int64 `json:"firstBuyTime,omitempty"`
+
+		// HistoryBoughtCost Total DEX buy cost including fees, USD (GMGN: history_bought_cost)
+		HistoryBoughtCost *string `json:"historyBoughtCost,omitempty"`
+
+		// HistoryBoughtFee Total DEX buy fees, USD (GMGN: history_bought_fee)
+		HistoryBoughtFee *string `json:"historyBoughtFee,omitempty"`
+
+		// HistorySoldFee Total DEX sell fees, USD (GMGN: history_sold_fee)
+		HistorySoldFee *string `json:"historySoldFee,omitempty"`
+
+		// HistorySoldIncome Total DEX sell income, USD (GMGN: history_sold_income)
+		HistorySoldIncome *string `json:"historySoldIncome,omitempty"`
+
+		// HistoryTransferInAmount Cumulative transfer-in token qty (GMGN: history_transfer_in_amount)
+		HistoryTransferInAmount *string `json:"historyTransferInAmount,omitempty"`
+
+		// HistoryTransferInCost Transfer-in USD cost basis (GMGN: history_transfer_in_cost)
+		HistoryTransferInCost *string `json:"historyTransferInCost,omitempty"`
+
+		// HistoryTransferOutAmount Cumulative transfer-out token qty (GMGN: history_transfer_out_amount)
+		HistoryTransferOutAmount *string `json:"historyTransferOutAmount,omitempty"`
+
+		// HistoryTransferOutIncome Transfer-out USD income (GMGN: history_transfer_out_income)
+		HistoryTransferOutIncome *string `json:"historyTransferOutIncome,omitempty"`
+
+		// IsClosed Whether the token position is fully closed (balance = 0)
+		IsClosed *bool `json:"isClosed,omitempty"`
+
+		// IsTransferIn Position acquired purely via transfers, no DEX buy (GMGN: transfer_in)
+		IsTransferIn *bool `json:"isTransferIn,omitempty"`
+
 		// LastActiveAt Last active timestamp (ms since epoch)
 		LastActiveAt *int64 `json:"lastActiveAt,omitempty"`
 
+		// LossCount Number of losing trades (PnL < 0)
+		LossCount *int64 `json:"lossCount,omitempty"`
+
+		// MakerTokenTags Per-token position/behaviour tags derived at query time.
+		// Possible values: "top_holder" (rank ≤ 10, first page only),
+		// "whale" (holding > $10,000 USD), "diamond_hands" (held > 30 days).
+		MakerTokenTags *[]string `json:"makerTokenTags,omitempty"`
+
+		// NativeBalance Native chain token balance in lamports (SOL) or wei (EVM), as decimal string.
+		// Fetched from RPC with a 10-second Redis cache.
+		NativeBalance *string `json:"nativeBalance,omitempty"`
+
+		// NetflowUsd Net USD inflow (buy_volume_usd − sell_volume_usd); positive = net buyer
+		NetflowUsd *string `json:"netflowUsd,omitempty"`
+
 		// Percentage Percentage of total supply held
 		Percentage string `json:"percentage"`
+
+		// PositionCostUsd Current open position cost in USD
+		PositionCostUsd *string `json:"positionCostUsd,omitempty"`
+
+		// RealizedPnlRatio Realized PnL / total_cost ratio (GMGN: realized_pnl)
+		RealizedPnlRatio *string `json:"realizedPnlRatio,omitempty"`
+
+		// RealizedProfit Realized PnL in USD (all-time)
+		RealizedProfit *string `json:"realizedProfit,omitempty"`
+
+		// Roi Return on investment = total_pnl / total_cost_all (e.g. 0.25 = 25%)
+		Roi *string `json:"roi,omitempty"`
+
+		// SellAmountCur Cumulative token quantity sold, all-time (GMGN: sell_amount_cur / history_sold_amount)
+		SellAmountCur *string `json:"sellAmountCur,omitempty"`
+
+		// SellAmountPercentage Sell quantity / buy quantity, capped 0–1 (GMGN: sell_amount_percentage)
+		SellAmountPercentage *string `json:"sellAmountPercentage,omitempty"`
+
+		// SellVolumeNative All-time total sell volume in native token
+		SellVolumeNative *string `json:"sellVolumeNative,omitempty"`
+
+		// SellVolumeUsd All-time total sell volume in USD
+		SellVolumeUsd *string `json:"sellVolumeUsd,omitempty"`
 
 		// StartHoldingAt Timestamp when holder first acquired the token (ms since epoch)
 		StartHoldingAt *int64 `json:"startHoldingAt,omitempty"`
@@ -931,8 +1019,42 @@ type PageResponseTokenHolder struct {
 		// Tags Trader classification tags (e.g. "kol", "smart", "sniper")
 		Tags *[]string `json:"tags,omitempty"`
 
+		// TotalBuyCount All-time total buy trade count
+		TotalBuyCount *int64 `json:"totalBuyCount,omitempty"`
+
+		// TotalCostUsd All-time accumulated cost basis in USD (total_cost_all from pnl-sync)
+		TotalCostUsd *string `json:"totalCostUsd,omitempty"`
+
+		// TotalProfit Total PnL in USD (realized + unrealized)
+		TotalProfit *string `json:"totalProfit,omitempty"`
+
+		// TotalSellCount All-time total sell trade count
+		TotalSellCount *int64 `json:"totalSellCount,omitempty"`
+
+		// TransferInAmount7d Inbound transfer volume in native token over last 7 days
+		TransferInAmount7d *string `json:"transferInAmount7d,omitempty"`
+
+		// TransferInCount Number of token transfer-in events (GMGN: transfer_in_count)
+		TransferInCount *int64 `json:"transferInCount,omitempty"`
+
+		// TransferOutAmount7d Outbound transfer volume in native token over last 7 days
+		TransferOutAmount7d *string `json:"transferOutAmount7d,omitempty"`
+
+		// TransferOutCount Number of token transfer-out events (GMGN: transfer_out_count)
+		TransferOutCount *int64 `json:"transferOutCount,omitempty"`
+
+		// UnrealizedProfit Unrealized PnL in USD (current position)
+		UnrealizedProfit *string `json:"unrealizedProfit,omitempty"`
+
 		// WalletAddress Holder wallet address
 		WalletAddress string `json:"walletAddress"`
+
+		// WalletTagV2 Global rank tag on this token when sorted by balance (e.g. "TOP1", "TOP2").
+		// Only present on the first page of a balance-sorted query (no cursor).
+		WalletTagV2 *string `json:"walletTagV2,omitempty"`
+
+		// WinCount Number of winning trades (PnL > 0)
+		WinCount *int64 `json:"winCount,omitempty"`
 	} `json:"data"`
 
 	// EndCursor Cursor for the end of current page
@@ -1175,48 +1297,24 @@ type SearchSortBy string
 
 // SerializedSecurityInfo defines model for SerializedSecurityInfo.
 type SerializedSecurityInfo struct {
-	// Available Whether data is available from this source
-	Available bool `json:"available"`
-
-	// ChainSupported Whether this source supports the token chain
-	ChainSupported *bool `json:"chainSupported,omitempty"`
-
-	// IsOpenSource Whether the contract is open source
-	IsOpenSource *bool `json:"isOpenSource,omitempty"`
-
-	// IsProxy Whether it is a proxy contract
-	IsProxy *bool `json:"isProxy,omitempty"`
-
-	// IsRenounced Whether the contract ownership is renounced
-	IsRenounced *bool `json:"isRenounced,omitempty"`
-
-	// IsSafe Whether the contract is safe (Serialized Audit verdict)
-	IsSafe *bool `json:"isSafe,omitempty"`
-
-	// LastRefreshedAt Last refresh timestamp
-	LastRefreshedAt *string `json:"lastRefreshedAt,omitempty"`
-
-	// LaunchpadName Launchpad name
-	LaunchpadName *string `json:"launchpadName,omitempty"`
-
-	// OwnerAddress Contract owner address
-	OwnerAddress *string `json:"ownerAddress,omitempty"`
-
-	// Raw Raw security data from the source
-	Raw interface{} `json:"raw,omitempty"`
-
-	// SourceType Contract source type (verified/decompiled/none)
-	SourceType *string `json:"sourceType,omitempty"`
-
-	// VulnCount Total number of vulnerabilities
-	VulnCount *int32 `json:"vulnCount,omitempty"`
-
-	// VulnCriticalCount Number of critical vulnerabilities
-	VulnCriticalCount *int32 `json:"vulnCriticalCount,omitempty"`
-
-	// VulnMitigatedCount Number of mitigated vulnerabilities
-	VulnMitigatedCount *int32 `json:"vulnMitigatedCount,omitempty"`
+	Available          bool        `json:"available"`
+	ChainSupported     *bool       `json:"chainSupported,omitempty"`
+	IsOpenSource       *bool       `json:"isOpenSource,omitempty"`
+	IsProxy            *bool       `json:"isProxy,omitempty"`
+	IsRenounced        *bool       `json:"isRenounced,omitempty"`
+	IsSafe             *bool       `json:"isSafe,omitempty"`
+	LastRefreshedAt    *string     `json:"lastRefreshedAt,omitempty"`
+	LaunchpadName      *string     `json:"launchpadName,omitempty"`
+	OwnerAddress       *string     `json:"ownerAddress,omitempty"`
+	Raw                interface{} `json:"raw,omitempty"`
+	SourceType         *string     `json:"sourceType,omitempty"`
+	VulnCount          *int32      `json:"vulnCount,omitempty"`
+	VulnCriticalCount  *int32      `json:"vulnCriticalCount,omitempty"`
+	VulnMitigatedCount *int32      `json:"vulnMitigatedCount,omitempty"`
 }
+
+// SimilarType defines model for SimilarType.
+type SimilarType string
 
 // SortDirection Sort direction (case-insensitive: accepts "asc"/"ASC"/"Asc" etc.)
 type SortDirection string
@@ -1253,6 +1351,12 @@ type Token struct {
 	// Extra Token extra metadata
 	Extra *TokenExtra `json:"extra,omitempty"`
 
+	// ImageDup ENTITY.TOKEN.IMAGE_DUP
+	ImageDup *bool `json:"imageDup,omitempty"`
+
+	// ImageHash ENTITY.TOKEN.IMAGE_HASH
+	ImageHash *string `json:"imageHash,omitempty"`
+
 	// ImageUrl Token logo image URL
 	ImageUrl *string `json:"imageUrl,omitempty"`
 
@@ -1267,6 +1371,9 @@ type Token struct {
 
 	// Name Token display name
 	Name string `json:"name"`
+
+	// NormalizedName ENTITY.TOKEN.NORMALIZED_NAME
+	NormalizedName *string `json:"normalizedName,omitempty"`
 
 	// SocialMedias Token social media links
 	SocialMedias *TokenSocialMedias `json:"socialMedias,omitempty"`
@@ -1424,17 +1531,113 @@ type TokenField string
 
 // TokenHolder Token holder
 type TokenHolder struct {
+	// AccuCost Traceable position accumulated cost, USD (GMGN: accu_cost)
+	AccuCost *string `json:"accuCost,omitempty"`
+
 	// Amount Token holding amount
 	Amount string `json:"amount"`
 
 	// AmountInUsd Token holding value in USD
 	AmountInUsd string `json:"amountInUsd"`
 
+	// AvgBuyPriceUsd Average buy price in USD per token (all-time)
+	AvgBuyPriceUsd *string `json:"avgBuyPriceUsd,omitempty"`
+
+	// AvgCostUsd Average cost per token in USD (current position cost basis)
+	AvgCostUsd *string `json:"avgCostUsd,omitempty"`
+
+	// AvgSellPriceUsd Average sell price in USD per token (all-time)
+	AvgSellPriceUsd *string `json:"avgSellPriceUsd,omitempty"`
+
+	// BuyAmountCur Cumulative token quantity bought, all-time (GMGN: buy_amount_cur / history_bought_amount)
+	BuyAmountCur *string `json:"buyAmountCur,omitempty"`
+
+	// BuyVolumeNative All-time total buy volume in native token
+	BuyVolumeNative *string `json:"buyVolumeNative,omitempty"`
+
+	// BuyVolumeUsd All-time total buy volume in USD
+	BuyVolumeUsd *string `json:"buyVolumeUsd,omitempty"`
+
+	// EndHoldingAt Timestamp when holder fully closed position (ms since epoch)
+	EndHoldingAt *int64 `json:"endHoldingAt,omitempty"`
+
+	// FirstBuyTime Timestamp of first token purchase (ms since epoch)
+	FirstBuyTime *int64 `json:"firstBuyTime,omitempty"`
+
+	// HistoryBoughtCost Total DEX buy cost including fees, USD (GMGN: history_bought_cost)
+	HistoryBoughtCost *string `json:"historyBoughtCost,omitempty"`
+
+	// HistoryBoughtFee Total DEX buy fees, USD (GMGN: history_bought_fee)
+	HistoryBoughtFee *string `json:"historyBoughtFee,omitempty"`
+
+	// HistorySoldFee Total DEX sell fees, USD (GMGN: history_sold_fee)
+	HistorySoldFee *string `json:"historySoldFee,omitempty"`
+
+	// HistorySoldIncome Total DEX sell income, USD (GMGN: history_sold_income)
+	HistorySoldIncome *string `json:"historySoldIncome,omitempty"`
+
+	// HistoryTransferInAmount Cumulative transfer-in token qty (GMGN: history_transfer_in_amount)
+	HistoryTransferInAmount *string `json:"historyTransferInAmount,omitempty"`
+
+	// HistoryTransferInCost Transfer-in USD cost basis (GMGN: history_transfer_in_cost)
+	HistoryTransferInCost *string `json:"historyTransferInCost,omitempty"`
+
+	// HistoryTransferOutAmount Cumulative transfer-out token qty (GMGN: history_transfer_out_amount)
+	HistoryTransferOutAmount *string `json:"historyTransferOutAmount,omitempty"`
+
+	// HistoryTransferOutIncome Transfer-out USD income (GMGN: history_transfer_out_income)
+	HistoryTransferOutIncome *string `json:"historyTransferOutIncome,omitempty"`
+
+	// IsClosed Whether the token position is fully closed (balance = 0)
+	IsClosed *bool `json:"isClosed,omitempty"`
+
+	// IsTransferIn Position acquired purely via transfers, no DEX buy (GMGN: transfer_in)
+	IsTransferIn *bool `json:"isTransferIn,omitempty"`
+
 	// LastActiveAt Last active timestamp (ms since epoch)
 	LastActiveAt *int64 `json:"lastActiveAt,omitempty"`
 
+	// LossCount Number of losing trades (PnL < 0)
+	LossCount *int64 `json:"lossCount,omitempty"`
+
+	// MakerTokenTags Per-token position/behaviour tags derived at query time.
+	// Possible values: "top_holder" (rank ≤ 10, first page only),
+	// "whale" (holding > $10,000 USD), "diamond_hands" (held > 30 days).
+	MakerTokenTags *[]string `json:"makerTokenTags,omitempty"`
+
+	// NativeBalance Native chain token balance in lamports (SOL) or wei (EVM), as decimal string.
+	// Fetched from RPC with a 10-second Redis cache.
+	NativeBalance *string `json:"nativeBalance,omitempty"`
+
+	// NetflowUsd Net USD inflow (buy_volume_usd − sell_volume_usd); positive = net buyer
+	NetflowUsd *string `json:"netflowUsd,omitempty"`
+
 	// Percentage Percentage of total supply held
 	Percentage string `json:"percentage"`
+
+	// PositionCostUsd Current open position cost in USD
+	PositionCostUsd *string `json:"positionCostUsd,omitempty"`
+
+	// RealizedPnlRatio Realized PnL / total_cost ratio (GMGN: realized_pnl)
+	RealizedPnlRatio *string `json:"realizedPnlRatio,omitempty"`
+
+	// RealizedProfit Realized PnL in USD (all-time)
+	RealizedProfit *string `json:"realizedProfit,omitempty"`
+
+	// Roi Return on investment = total_pnl / total_cost_all (e.g. 0.25 = 25%)
+	Roi *string `json:"roi,omitempty"`
+
+	// SellAmountCur Cumulative token quantity sold, all-time (GMGN: sell_amount_cur / history_sold_amount)
+	SellAmountCur *string `json:"sellAmountCur,omitempty"`
+
+	// SellAmountPercentage Sell quantity / buy quantity, capped 0–1 (GMGN: sell_amount_percentage)
+	SellAmountPercentage *string `json:"sellAmountPercentage,omitempty"`
+
+	// SellVolumeNative All-time total sell volume in native token
+	SellVolumeNative *string `json:"sellVolumeNative,omitempty"`
+
+	// SellVolumeUsd All-time total sell volume in USD
+	SellVolumeUsd *string `json:"sellVolumeUsd,omitempty"`
 
 	// StartHoldingAt Timestamp when holder first acquired the token (ms since epoch)
 	StartHoldingAt *int64 `json:"startHoldingAt,omitempty"`
@@ -1442,8 +1645,99 @@ type TokenHolder struct {
 	// Tags Trader classification tags (e.g. "kol", "smart", "sniper")
 	Tags *[]string `json:"tags,omitempty"`
 
+	// TotalBuyCount All-time total buy trade count
+	TotalBuyCount *int64 `json:"totalBuyCount,omitempty"`
+
+	// TotalCostUsd All-time accumulated cost basis in USD (total_cost_all from pnl-sync)
+	TotalCostUsd *string `json:"totalCostUsd,omitempty"`
+
+	// TotalProfit Total PnL in USD (realized + unrealized)
+	TotalProfit *string `json:"totalProfit,omitempty"`
+
+	// TotalSellCount All-time total sell trade count
+	TotalSellCount *int64 `json:"totalSellCount,omitempty"`
+
+	// TransferInAmount7d Inbound transfer volume in native token over last 7 days
+	TransferInAmount7d *string `json:"transferInAmount7d,omitempty"`
+
+	// TransferInCount Number of token transfer-in events (GMGN: transfer_in_count)
+	TransferInCount *int64 `json:"transferInCount,omitempty"`
+
+	// TransferOutAmount7d Outbound transfer volume in native token over last 7 days
+	TransferOutAmount7d *string `json:"transferOutAmount7d,omitempty"`
+
+	// TransferOutCount Number of token transfer-out events (GMGN: transfer_out_count)
+	TransferOutCount *int64 `json:"transferOutCount,omitempty"`
+
+	// UnrealizedProfit Unrealized PnL in USD (current position)
+	UnrealizedProfit *string `json:"unrealizedProfit,omitempty"`
+
 	// WalletAddress Holder wallet address
 	WalletAddress string `json:"walletAddress"`
+
+	// WalletTagV2 Global rank tag on this token when sorted by balance (e.g. "TOP1", "TOP2").
+	// Only present on the first page of a balance-sorted query (no cursor).
+	WalletTagV2 *string `json:"walletTagV2,omitempty"`
+
+	// WinCount Number of winning trades (PnL > 0)
+	WinCount *int64 `json:"winCount,omitempty"`
+}
+
+// TokenHolderTrendPoint Single time-point in the holder waterline trend (sparkline data)
+type TokenHolderTrendPoint struct {
+	// BluechipAmountRatio Bluechip holder ratio (0–1)
+	BluechipAmountRatio string `json:"bluechipAmountRatio"`
+
+	// BundleAmountRatio Bundle (bundler) wallet holding ratio (0–1)
+	BundleAmountRatio string `json:"bundleAmountRatio"`
+
+	// CreatorsAmountRatio Creator wallet holding ratio (0–1)
+	CreatorsAmountRatio string `json:"creatorsAmountRatio"`
+
+	// DevAmountRatio Dev wallet holding ratio (0–1)
+	DevAmountRatio string `json:"devAmountRatio"`
+
+	// FreshAmountRatio Fresh wallet holding ratio (0–1)
+	FreshAmountRatio string `json:"freshAmountRatio"`
+
+	// Holders Total holder count
+	Holders string `json:"holders"`
+
+	// InsiderAmountRatio Insider wallet holding ratio (0–1)
+	InsiderAmountRatio string `json:"insiderAmountRatio"`
+
+	// KolAmountRatio KOL wallet holding ratio (0–1)
+	KolAmountRatio string `json:"kolAmountRatio"`
+
+	// PhishingAmountRatio Phishing (entrapment) wallet holding ratio (0–1)
+	PhishingAmountRatio string `json:"phishingAmountRatio"`
+
+	// ProAmountRatio Pro wallet holding ratio (0–1)
+	ProAmountRatio string `json:"proAmountRatio"`
+
+	// RatAmountRatio Rat trader holding ratio (0–1)
+	RatAmountRatio string `json:"ratAmountRatio"`
+
+	// SandwichAmountRatio Sandwich bot holding ratio (0–1)
+	SandwichAmountRatio string `json:"sandwichAmountRatio"`
+
+	// SmartAmountRatio Smart wallet holding ratio (0–1)
+	SmartAmountRatio string `json:"smartAmountRatio"`
+
+	// SniperAmountRatio Sniper wallet holding ratio (0–1)
+	SniperAmountRatio string `json:"sniperAmountRatio"`
+
+	// Timestamp Unix timestamp in milliseconds (start of the hour or day bucket)
+	Timestamp int64 `json:"timestamp"`
+
+	// Top100HoldersRatio Top-100 holder ratio (0–1)
+	Top100HoldersRatio string `json:"top100HoldersRatio"`
+
+	// Top10HoldersRatio Top-10 holder ratio (0–1)
+	Top10HoldersRatio string `json:"top10HoldersRatio"`
+
+	// Top50HoldersRatio Top-50 holder ratio (0–1)
+	Top50HoldersRatio string `json:"top50HoldersRatio"`
 }
 
 // TokenListSortField defines model for TokenListSortField.
@@ -1478,6 +1772,15 @@ type TokenMarketData struct {
 
 	// CompletionRatio Bonding curve completion ratio
 	CompletionRatio *string `json:"completionRatio,omitempty"`
+
+	// CreatorsHoldingsRatio ENTITY.TOKEN_MARKET_DATA.CREATORS_HOLDINGS_RATIO
+	CreatorsHoldingsRatio *string `json:"creatorsHoldingsRatio,omitempty"`
+
+	// CreatorsTotalHolders ENTITY.TOKEN_MARKET_DATA.CREATORS_TOTAL_HOLDERS
+	CreatorsTotalHolders *string `json:"creatorsTotalHolders,omitempty"`
+
+	// CreatorsTotalHoldings ENTITY.TOKEN_MARKET_DATA.CREATORS_TOTAL_HOLDINGS
+	CreatorsTotalHoldings *string `json:"creatorsTotalHoldings,omitempty"`
 
 	// DevHoldingsRatio Ratio of developer holdings to total supply
 	DevHoldingsRatio *string `json:"devHoldingsRatio,omitempty"`
@@ -1536,6 +1839,15 @@ type TokenMarketData struct {
 	// MaxPoolTvlInUsd Maximum pool TVL in USD
 	MaxPoolTvlInUsd *string `json:"maxPoolTvlInUsd,omitempty"`
 
+	// PhishingHoldingsRatio ENTITY.TOKEN_MARKET_DATA.PHISHING_HOLDINGS_RATIO
+	PhishingHoldingsRatio *string `json:"phishingHoldingsRatio,omitempty"`
+
+	// PhishingTotalHolders ENTITY.TOKEN_MARKET_DATA.PHISHING_TOTAL_HOLDERS
+	PhishingTotalHolders *string `json:"phishingTotalHolders,omitempty"`
+
+	// PhishingTotalHoldings ENTITY.TOKEN_MARKET_DATA.PHISHING_TOTAL_HOLDINGS
+	PhishingTotalHoldings *string `json:"phishingTotalHoldings,omitempty"`
+
 	// PriceInSol Token price in native token
 	PriceInSol *string `json:"priceInSol,omitempty"`
 
@@ -1551,6 +1863,15 @@ type TokenMarketData struct {
 	// ProTotalHoldings Total holdings of professional traders
 	ProTotalHoldings *string `json:"proTotalHoldings,omitempty"`
 
+	// RatHoldingsRatio ENTITY.TOKEN_MARKET_DATA.RAT_HOLDINGS_RATIO
+	RatHoldingsRatio *string `json:"ratHoldingsRatio,omitempty"`
+
+	// RatTotalHolders ENTITY.TOKEN_MARKET_DATA.RAT_TOTAL_HOLDERS
+	RatTotalHolders *string `json:"ratTotalHolders,omitempty"`
+
+	// RatTotalHoldings ENTITY.TOKEN_MARKET_DATA.RAT_TOTAL_HOLDINGS
+	RatTotalHoldings *string `json:"ratTotalHoldings,omitempty"`
+
 	// SandwishHoldingsRatio Ratio of sandwich attack holdings to total supply
 	SandwishHoldingsRatio *string `json:"sandwishHoldingsRatio,omitempty"`
 
@@ -1559,6 +1880,15 @@ type TokenMarketData struct {
 
 	// SandwishTotalHoldings Total holdings of sandwich attack wallets
 	SandwishTotalHoldings *string `json:"sandwishTotalHoldings,omitempty"`
+
+	// SmartHoldingsRatio ENTITY.TOKEN_MARKET_DATA.SMART_HOLDINGS_RATIO
+	SmartHoldingsRatio *string `json:"smartHoldingsRatio,omitempty"`
+
+	// SmartTotalHolders ENTITY.TOKEN_MARKET_DATA.SMART_TOTAL_HOLDERS
+	SmartTotalHolders *string `json:"smartTotalHolders,omitempty"`
+
+	// SmartTotalHoldings ENTITY.TOKEN_MARKET_DATA.SMART_TOTAL_HOLDINGS
+	SmartTotalHoldings *string `json:"smartTotalHoldings,omitempty"`
 
 	// SniperHoldingsRatio Ratio of sniper holdings to total supply
 	SniperHoldingsRatio *string `json:"sniperHoldingsRatio,omitempty"`
@@ -1703,6 +2033,9 @@ type TokenSecurityResponse struct {
 	Goplus     *GoPlusSecurityInfo     `json:"goplus,omitempty"`
 	Honeypot   *HoneypotIsSecurityInfo `json:"honeypot,omitempty"`
 	Serialized *SerializedSecurityInfo `json:"serialized,omitempty"`
+
+	// SourcesAvailable ENTITY.TOKEN_SECURITY.SOURCES_AVAILABLE
+	SourcesAvailable *[]string `json:"sourcesAvailable,omitempty"`
 }
 
 // TokenSocialMedias Token social media links
@@ -2484,6 +2817,18 @@ type GetCandlesParams struct {
 	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 }
 
+// GetHolderTrendParams defines parameters for GetHolderTrend.
+type GetHolderTrendParams struct {
+	// Resolution DTO.TOKEN.HOLDER_TREND.RESOLUTION Aggregation resolution: 1h (default) | 1d
+	Resolution *string `form:"resolution,omitempty" json:"resolution,omitempty"`
+
+	// From DTO.TOKEN.HOLDER_TREND.FROM Start timestamp in Unix milliseconds (default: 30 days ago)
+	From *int64 `form:"from,omitempty" json:"from,omitempty"`
+
+	// To DTO.TOKEN.HOLDER_TREND.TO End timestamp in Unix milliseconds (default: now)
+	To *int64 `form:"to,omitempty" json:"to,omitempty"`
+}
+
 // GetHoldersParams defines parameters for GetHolders.
 type GetHoldersParams struct {
 	// Cursor Pagination cursor
@@ -2592,6 +2937,15 @@ type GetPricesParams struct {
 	Direction *struct {
 		union json.RawMessage
 	} `form:"direction,omitempty" json:"direction,omitempty"`
+}
+
+// GetTokenSimilarParams defines parameters for GetTokenSimilar.
+type GetTokenSimilarParams struct {
+	// Type Similarity type: image or name
+	Type *SimilarType `form:"type,omitempty" json:"type,omitempty"`
+
+	// Limit Max results (1-100)
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
 }
 
 // GetTopHoldersParams defines parameters for GetTopHolders.
@@ -2760,6 +3114,9 @@ type ClientInterface interface {
 	// GetCreation request
 	GetCreation(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetHolderTrend request
+	GetHolderTrend(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetHolderTrendParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetHolders request
 	GetHolders(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetHoldersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -2789,6 +3146,9 @@ type ClientInterface interface {
 
 	// GetSecurity request
 	GetSecurity(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetTokenSimilar request
+	GetTokenSimilar(ctx context.Context, chain string, tokenAddress string, params *GetTokenSimilarParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetStats request
 	GetStats(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -2950,6 +3310,18 @@ func (c *Client) GetCreation(ctx context.Context, chain ChainSymbol, tokenAddres
 	return c.Client.Do(req)
 }
 
+func (c *Client) GetHolderTrend(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetHolderTrendParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetHolderTrendRequest(c.Server, chain, tokenAddress, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 func (c *Client) GetHolders(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetHoldersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetHoldersRequest(c.Server, chain, tokenAddress, params)
 	if err != nil {
@@ -3060,6 +3432,18 @@ func (c *Client) GetPrices(ctx context.Context, chain ChainSymbol, tokenAddress 
 
 func (c *Client) GetSecurity(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetSecurityRequest(c.Server, chain, tokenAddress)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetTokenSimilar(ctx context.Context, chain string, tokenAddress string, params *GetTokenSimilarParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetTokenSimilarRequest(c.Server, chain, tokenAddress, params)
 	if err != nil {
 		return nil, err
 	}
@@ -5675,6 +6059,98 @@ func NewGetCreationRequest(server string, chain ChainSymbol, tokenAddress string
 	return req, nil
 }
 
+// NewGetHolderTrendRequest generates requests for GetHolderTrend
+func NewGetHolderTrendRequest(server string, chain ChainSymbol, tokenAddress string, params *GetHolderTrendParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "chain", chain, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "tokenAddress", tokenAddress, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/holderTrend", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Resolution != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "resolution", *params.Resolution, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.From != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "from", *params.From, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int64"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.To != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "to", *params.To, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int64"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetHoldersRequest generates requests for GetHolders
 func NewGetHoldersRequest(server string, chain ChainSymbol, tokenAddress string, params *GetHoldersParams) (*http.Request, error) {
 	var err error
@@ -6482,6 +6958,86 @@ func NewGetSecurityRequest(server string, chain ChainSymbol, tokenAddress string
 	return req, nil
 }
 
+// NewGetTokenSimilarRequest generates requests for GetTokenSimilar
+func NewGetTokenSimilarRequest(server string, chain string, tokenAddress string, params *GetTokenSimilarParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "chain", chain, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "tokenAddress", tokenAddress, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v2/token/%s/%s/similar", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Type != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "type", *params.Type, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "limit", *params.Limit, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: "int64"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetStatsRequest generates requests for GetStats
 func NewGetStatsRequest(server string, chain ChainSymbol, tokenAddress string) (*http.Request, error) {
 	var err error
@@ -6989,6 +7545,9 @@ type ClientWithResponsesInterface interface {
 	// GetCreationWithResponse request
 	GetCreationWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors ...RequestEditorFn) (*GetCreationResponse, error)
 
+	// GetHolderTrendWithResponse request
+	GetHolderTrendWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetHolderTrendParams, reqEditors ...RequestEditorFn) (*GetHolderTrendResponse, error)
+
 	// GetHoldersWithResponse request
 	GetHoldersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetHoldersParams, reqEditors ...RequestEditorFn) (*GetHoldersResponse, error)
 
@@ -7018,6 +7577,9 @@ type ClientWithResponsesInterface interface {
 
 	// GetSecurityWithResponse request
 	GetSecurityWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors ...RequestEditorFn) (*GetSecurityResponse, error)
+
+	// GetTokenSimilarWithResponse request
+	GetTokenSimilarWithResponse(ctx context.Context, chain string, tokenAddress string, params *GetTokenSimilarParams, reqEditors ...RequestEditorFn) (*GetTokenSimilarResponse, error)
 
 	// GetStatsWithResponse request
 	GetStatsWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors ...RequestEditorFn) (*GetStatsResponse, error)
@@ -7157,6 +7719,15 @@ type GetMarketDataMultiResponse struct {
 		// CompletionRatio Bonding curve completion ratio
 		CompletionRatio *string `json:"completionRatio,omitempty"`
 
+		// CreatorsHoldingsRatio ENTITY.TOKEN_MARKET_DATA.CREATORS_HOLDINGS_RATIO
+		CreatorsHoldingsRatio *string `json:"creatorsHoldingsRatio,omitempty"`
+
+		// CreatorsTotalHolders ENTITY.TOKEN_MARKET_DATA.CREATORS_TOTAL_HOLDERS
+		CreatorsTotalHolders *string `json:"creatorsTotalHolders,omitempty"`
+
+		// CreatorsTotalHoldings ENTITY.TOKEN_MARKET_DATA.CREATORS_TOTAL_HOLDINGS
+		CreatorsTotalHoldings *string `json:"creatorsTotalHoldings,omitempty"`
+
 		// DevHoldingsRatio Ratio of developer holdings to total supply
 		DevHoldingsRatio *string `json:"devHoldingsRatio,omitempty"`
 
@@ -7214,6 +7785,15 @@ type GetMarketDataMultiResponse struct {
 		// MaxPoolTvlInUsd Maximum pool TVL in USD
 		MaxPoolTvlInUsd *string `json:"maxPoolTvlInUsd,omitempty"`
 
+		// PhishingHoldingsRatio ENTITY.TOKEN_MARKET_DATA.PHISHING_HOLDINGS_RATIO
+		PhishingHoldingsRatio *string `json:"phishingHoldingsRatio,omitempty"`
+
+		// PhishingTotalHolders ENTITY.TOKEN_MARKET_DATA.PHISHING_TOTAL_HOLDERS
+		PhishingTotalHolders *string `json:"phishingTotalHolders,omitempty"`
+
+		// PhishingTotalHoldings ENTITY.TOKEN_MARKET_DATA.PHISHING_TOTAL_HOLDINGS
+		PhishingTotalHoldings *string `json:"phishingTotalHoldings,omitempty"`
+
 		// PriceInSol Token price in native token
 		PriceInSol *string `json:"priceInSol,omitempty"`
 
@@ -7229,6 +7809,15 @@ type GetMarketDataMultiResponse struct {
 		// ProTotalHoldings Total holdings of professional traders
 		ProTotalHoldings *string `json:"proTotalHoldings,omitempty"`
 
+		// RatHoldingsRatio ENTITY.TOKEN_MARKET_DATA.RAT_HOLDINGS_RATIO
+		RatHoldingsRatio *string `json:"ratHoldingsRatio,omitempty"`
+
+		// RatTotalHolders ENTITY.TOKEN_MARKET_DATA.RAT_TOTAL_HOLDERS
+		RatTotalHolders *string `json:"ratTotalHolders,omitempty"`
+
+		// RatTotalHoldings ENTITY.TOKEN_MARKET_DATA.RAT_TOTAL_HOLDINGS
+		RatTotalHoldings *string `json:"ratTotalHoldings,omitempty"`
+
 		// SandwishHoldingsRatio Ratio of sandwich attack holdings to total supply
 		SandwishHoldingsRatio *string `json:"sandwishHoldingsRatio,omitempty"`
 
@@ -7237,6 +7826,15 @@ type GetMarketDataMultiResponse struct {
 
 		// SandwishTotalHoldings Total holdings of sandwich attack wallets
 		SandwishTotalHoldings *string `json:"sandwishTotalHoldings,omitempty"`
+
+		// SmartHoldingsRatio ENTITY.TOKEN_MARKET_DATA.SMART_HOLDINGS_RATIO
+		SmartHoldingsRatio *string `json:"smartHoldingsRatio,omitempty"`
+
+		// SmartTotalHolders ENTITY.TOKEN_MARKET_DATA.SMART_TOTAL_HOLDERS
+		SmartTotalHolders *string `json:"smartTotalHolders,omitempty"`
+
+		// SmartTotalHoldings ENTITY.TOKEN_MARKET_DATA.SMART_TOTAL_HOLDINGS
+		SmartTotalHoldings *string `json:"smartTotalHoldings,omitempty"`
 
 		// SniperHoldingsRatio Ratio of sniper holdings to total supply
 		SniperHoldingsRatio *string `json:"sniperHoldingsRatio,omitempty"`
@@ -7608,6 +8206,36 @@ func (r GetCreationResponse) ContentType() string {
 	return ""
 }
 
+type GetHolderTrendResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *[]TokenHolderTrendPoint
+}
+
+// Status returns HTTPResponse.Status
+func (r GetHolderTrendResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetHolderTrendResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetHolderTrendResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetHoldersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -7908,6 +8536,36 @@ func (r GetSecurityResponse) ContentType() string {
 	return ""
 }
 
+type GetTokenSimilarResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *[]Token
+}
+
+// Status returns HTTPResponse.Status
+func (r GetTokenSimilarResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetTokenSimilarResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetTokenSimilarResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetStatsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -8166,6 +8824,15 @@ func (c *ClientWithResponses) GetCreationWithResponse(ctx context.Context, chain
 	return ParseGetCreationResponse(rsp)
 }
 
+// GetHolderTrendWithResponse request returning *GetHolderTrendResponse
+func (c *ClientWithResponses) GetHolderTrendWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetHolderTrendParams, reqEditors ...RequestEditorFn) (*GetHolderTrendResponse, error) {
+	rsp, err := c.GetHolderTrend(ctx, chain, tokenAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetHolderTrendResponse(rsp)
+}
+
 // GetHoldersWithResponse request returning *GetHoldersResponse
 func (c *ClientWithResponses) GetHoldersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetHoldersParams, reqEditors ...RequestEditorFn) (*GetHoldersResponse, error) {
 	rsp, err := c.GetHolders(ctx, chain, tokenAddress, params, reqEditors...)
@@ -8254,6 +8921,15 @@ func (c *ClientWithResponses) GetSecurityWithResponse(ctx context.Context, chain
 		return nil, err
 	}
 	return ParseGetSecurityResponse(rsp)
+}
+
+// GetTokenSimilarWithResponse request returning *GetTokenSimilarResponse
+func (c *ClientWithResponses) GetTokenSimilarWithResponse(ctx context.Context, chain string, tokenAddress string, params *GetTokenSimilarParams, reqEditors ...RequestEditorFn) (*GetTokenSimilarResponse, error) {
+	rsp, err := c.GetTokenSimilar(ctx, chain, tokenAddress, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetTokenSimilarResponse(rsp)
 }
 
 // GetStatsWithResponse request returning *GetStatsResponse
@@ -8423,6 +9099,15 @@ func ParseGetMarketDataMultiResponse(rsp *http.Response) (*GetMarketDataMultiRes
 			// CompletionRatio Bonding curve completion ratio
 			CompletionRatio *string `json:"completionRatio,omitempty"`
 
+			// CreatorsHoldingsRatio ENTITY.TOKEN_MARKET_DATA.CREATORS_HOLDINGS_RATIO
+			CreatorsHoldingsRatio *string `json:"creatorsHoldingsRatio,omitempty"`
+
+			// CreatorsTotalHolders ENTITY.TOKEN_MARKET_DATA.CREATORS_TOTAL_HOLDERS
+			CreatorsTotalHolders *string `json:"creatorsTotalHolders,omitempty"`
+
+			// CreatorsTotalHoldings ENTITY.TOKEN_MARKET_DATA.CREATORS_TOTAL_HOLDINGS
+			CreatorsTotalHoldings *string `json:"creatorsTotalHoldings,omitempty"`
+
 			// DevHoldingsRatio Ratio of developer holdings to total supply
 			DevHoldingsRatio *string `json:"devHoldingsRatio,omitempty"`
 
@@ -8480,6 +9165,15 @@ func ParseGetMarketDataMultiResponse(rsp *http.Response) (*GetMarketDataMultiRes
 			// MaxPoolTvlInUsd Maximum pool TVL in USD
 			MaxPoolTvlInUsd *string `json:"maxPoolTvlInUsd,omitempty"`
 
+			// PhishingHoldingsRatio ENTITY.TOKEN_MARKET_DATA.PHISHING_HOLDINGS_RATIO
+			PhishingHoldingsRatio *string `json:"phishingHoldingsRatio,omitempty"`
+
+			// PhishingTotalHolders ENTITY.TOKEN_MARKET_DATA.PHISHING_TOTAL_HOLDERS
+			PhishingTotalHolders *string `json:"phishingTotalHolders,omitempty"`
+
+			// PhishingTotalHoldings ENTITY.TOKEN_MARKET_DATA.PHISHING_TOTAL_HOLDINGS
+			PhishingTotalHoldings *string `json:"phishingTotalHoldings,omitempty"`
+
 			// PriceInSol Token price in native token
 			PriceInSol *string `json:"priceInSol,omitempty"`
 
@@ -8495,6 +9189,15 @@ func ParseGetMarketDataMultiResponse(rsp *http.Response) (*GetMarketDataMultiRes
 			// ProTotalHoldings Total holdings of professional traders
 			ProTotalHoldings *string `json:"proTotalHoldings,omitempty"`
 
+			// RatHoldingsRatio ENTITY.TOKEN_MARKET_DATA.RAT_HOLDINGS_RATIO
+			RatHoldingsRatio *string `json:"ratHoldingsRatio,omitempty"`
+
+			// RatTotalHolders ENTITY.TOKEN_MARKET_DATA.RAT_TOTAL_HOLDERS
+			RatTotalHolders *string `json:"ratTotalHolders,omitempty"`
+
+			// RatTotalHoldings ENTITY.TOKEN_MARKET_DATA.RAT_TOTAL_HOLDINGS
+			RatTotalHoldings *string `json:"ratTotalHoldings,omitempty"`
+
 			// SandwishHoldingsRatio Ratio of sandwich attack holdings to total supply
 			SandwishHoldingsRatio *string `json:"sandwishHoldingsRatio,omitempty"`
 
@@ -8503,6 +9206,15 @@ func ParseGetMarketDataMultiResponse(rsp *http.Response) (*GetMarketDataMultiRes
 
 			// SandwishTotalHoldings Total holdings of sandwich attack wallets
 			SandwishTotalHoldings *string `json:"sandwishTotalHoldings,omitempty"`
+
+			// SmartHoldingsRatio ENTITY.TOKEN_MARKET_DATA.SMART_HOLDINGS_RATIO
+			SmartHoldingsRatio *string `json:"smartHoldingsRatio,omitempty"`
+
+			// SmartTotalHolders ENTITY.TOKEN_MARKET_DATA.SMART_TOTAL_HOLDERS
+			SmartTotalHolders *string `json:"smartTotalHolders,omitempty"`
+
+			// SmartTotalHoldings ENTITY.TOKEN_MARKET_DATA.SMART_TOTAL_HOLDINGS
+			SmartTotalHoldings *string `json:"smartTotalHoldings,omitempty"`
 
 			// SniperHoldingsRatio Ratio of sniper holdings to total supply
 			SniperHoldingsRatio *string `json:"sniperHoldingsRatio,omitempty"`
@@ -8826,6 +9538,32 @@ func ParseGetCreationResponse(rsp *http.Response) (*GetCreationResponse, error) 
 	return response, nil
 }
 
+// ParseGetHolderTrendResponse parses an HTTP response from a GetHolderTrendWithResponse call
+func ParseGetHolderTrendResponse(rsp *http.Response) (*GetHolderTrendResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetHolderTrendResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []TokenHolderTrendPoint
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetHoldersResponse parses an HTTP response from a GetHoldersWithResponse call
 func ParseGetHoldersResponse(rsp *http.Response) (*GetHoldersResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -9076,6 +9814,32 @@ func ParseGetSecurityResponse(rsp *http.Response) (*GetSecurityResponse, error) 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest TokenSecurityResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetTokenSimilarResponse parses an HTTP response from a GetTokenSimilarWithResponse call
+func ParseGetTokenSimilarResponse(rsp *http.Response) (*GetTokenSimilarResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetTokenSimilarResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []Token
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

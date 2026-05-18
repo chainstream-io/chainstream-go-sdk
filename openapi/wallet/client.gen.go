@@ -132,6 +132,11 @@ type ChainSymbol string
 
 // NetWorthByTokensItem Single token net-worth item (mirrors TS WalletNetWorthItemDTO).
 type NetWorthByTokensItem struct {
+	// AccuAmount Accumulated net token position in token native units:
+	// buy_amount - sell_amount + transfer_in_amount - transfer_out_amount.
+	// Mirrors GMGN `accu_amount`. None when all four source fields are absent.
+	AccuAmount *string `json:"accuAmount,omitempty"`
+
 	// Amount Token holding amount
 	Amount string `json:"amount"`
 
@@ -308,6 +313,11 @@ type PageResponseBalanceUpdate struct {
 type PageResponseNetWorthByTokensItem struct {
 	// Data Page data
 	Data []struct {
+		// AccuAmount Accumulated net token position in token native units:
+		// buy_amount - sell_amount + transfer_in_amount - transfer_out_amount.
+		// Mirrors GMGN `accu_amount`. None when all four source fields are absent.
+		AccuAmount *string `json:"accuAmount,omitempty"`
+
 		// Amount Token holding amount
 		Amount string `json:"amount"`
 
