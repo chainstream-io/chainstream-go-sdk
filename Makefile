@@ -92,33 +92,33 @@ client-modules: clean-generated
 	@ cd ../python && uv run python ../scripts/preprocess_openapi.py ../openapi.yaml ../openapi-preprocessed.yaml
 	@ $(foreach mod,$(MODULES),mkdir -p $(OPENAPI_DIR)/$(mod);)
 	@ printf "Generating blockchain client...\n"
-	@ oapi-codegen -package blockchain -generate types,client -include-tags Blockchain -o $(OPENAPI_DIR)/blockchain/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package blockchain -generate types,client,skip-fmt -include-tags Blockchain -o $(OPENAPI_DIR)/blockchain/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating dex client...\n"
-	@ oapi-codegen -package dex -generate types,client -include-tags Dex -o $(OPENAPI_DIR)/dex/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package dex -generate types,client,skip-fmt -include-tags Dex -o $(OPENAPI_DIR)/dex/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating dexpool client...\n"
-	@ oapi-codegen -package dexpool -generate types,client -include-tags DexPool -o $(OPENAPI_DIR)/dexpool/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package dexpool -generate types,client,skip-fmt -include-tags DexPool -o $(OPENAPI_DIR)/dexpool/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating ipfs client...\n"
-	@ oapi-codegen -package ipfs -generate types,client -include-tags IPFS -o $(OPENAPI_DIR)/ipfs/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package ipfs -generate types,client,skip-fmt -include-tags IPFS -o $(OPENAPI_DIR)/ipfs/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating job client...\n"
-	@ oapi-codegen -package job -generate types,client -include-tags Job -o $(OPENAPI_DIR)/job/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package job -generate types,client,skip-fmt -include-tags Job -o $(OPENAPI_DIR)/job/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating kyt client...\n"
-	@ oapi-codegen -package kyt -generate types,client -include-tags KYT -o $(OPENAPI_DIR)/kyt/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package kyt -generate types,client,skip-fmt -include-tags KYT -o $(OPENAPI_DIR)/kyt/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating ranking client...\n"
-	@ oapi-codegen -package ranking -generate types,client -include-tags Ranking -o $(OPENAPI_DIR)/ranking/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package ranking -generate types,client,skip-fmt -include-tags Ranking -o $(OPENAPI_DIR)/ranking/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating redpacket client...\n"
-	@ oapi-codegen -package redpacket -generate types,client -include-tags RedPacket -o $(OPENAPI_DIR)/redpacket/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package redpacket -generate types,client,skip-fmt -include-tags RedPacket -o $(OPENAPI_DIR)/redpacket/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating token client...\n"
-	@ oapi-codegen -package token -generate types,client -include-tags Token -o $(OPENAPI_DIR)/token/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package token -generate types,client,skip-fmt -include-tags Token -o $(OPENAPI_DIR)/token/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating trade client...\n"
-	@ oapi-codegen -package trade -generate types,client -include-tags Trade -o $(OPENAPI_DIR)/trade/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package trade -generate types,client,skip-fmt -include-tags Trade -o $(OPENAPI_DIR)/trade/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating transaction client...\n"
-	@ oapi-codegen -package transaction -generate types,client -include-tags Transaction -o $(OPENAPI_DIR)/transaction/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package transaction -generate types,client,skip-fmt -include-tags Transaction -o $(OPENAPI_DIR)/transaction/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating wallet client...\n"
-	@ oapi-codegen -package wallet -generate types,client -include-tags Wallet -o $(OPENAPI_DIR)/wallet/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package wallet -generate types,client,skip-fmt -include-tags Wallet -o $(OPENAPI_DIR)/wallet/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating watchlist client...\n"
-	@ oapi-codegen -package watchlist -generate types,client -include-tags Watchlist -o $(OPENAPI_DIR)/watchlist/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package watchlist -generate types,client,skip-fmt -include-tags Watchlist -o $(OPENAPI_DIR)/watchlist/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating webhook client...\n"
-	@ oapi-codegen -package webhook -generate types,client -include-tags Webhook -o $(OPENAPI_DIR)/webhook/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package webhook -generate types,client,skip-fmt -include-tags Webhook -o $(OPENAPI_DIR)/webhook/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "\nAll modular clients generated successfully!\n"
 
 # Clean all generated files
