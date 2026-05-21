@@ -80,7 +80,7 @@ func (e PageDirection) Valid() bool {
 // ChainSymbol Supported blockchain chains
 type ChainSymbol  string
 
-// DexPoolDetail DEX pool detail
+// DexPoolDetail DexPool detail
 type DexPoolDetail  struct {
 // Chain Chain identifier
     Chain string`json:"chain"`
@@ -115,13 +115,13 @@ type DexPoolDetail  struct {
 // TokenAAddress Token A address
     TokenAAddress string`json:"tokenAAddress"`
 
-// TokenALiquidity DEX pool token liquidity
+// TokenALiquidity DexPool token liquidity
     TokenALiquidity *DexPoolTokenLiquidity`json:"tokenALiquidity,omitempty"`
 
 // TokenBAddress Token B address
     TokenBAddress string`json:"tokenBAddress"`
 
-// TokenBLiquidity DEX pool token liquidity
+// TokenBLiquidity DexPool token liquidity
     TokenBLiquidity *DexPoolTokenLiquidity`json:"tokenBLiquidity,omitempty"`
 
 // TokenCount Token count
@@ -140,7 +140,7 @@ type DexPoolDetail  struct {
     Version *int32`json:"version,omitempty"`
 }
 
-// DexPoolTokenLiquidity DEX pool token liquidity
+// DexPoolTokenLiquidity DexPool token liquidity
 type DexPoolTokenLiquidity  struct {
 // AmountInNative Amount in native token
     AmountInNative string`json:"amountInNative"`
@@ -164,7 +164,7 @@ type DexPoolTokenLiquidity  struct {
     VaultAmount string`json:"vaultAmount"`
 }
 
-// DexPoolTokenSnapshot DEX pool token snapshot
+// DexPoolTokenSnapshot DexPool token snapshot
 type DexPoolTokenSnapshot  struct {
 // AmountInNative Amount in native token
     AmountInNative string`json:"amountInNative"`
@@ -210,10 +210,10 @@ type PageResponseDexPoolSnapshot  struct {
 // SnapshotTime Snapshot timestamp (ms)
     SnapshotTime int64`json:"snapshotTime"`
 
-// TokenA DEX pool token snapshot
+// TokenA DexPool token snapshot
     TokenA DexPoolTokenSnapshot`json:"tokenA"`
 
-// TokenB DEX pool token snapshot
+// TokenB DexPool token snapshot
     TokenB DexPoolTokenSnapshot`json:"tokenB"`
 
 // TvlInNative TVL in native token
