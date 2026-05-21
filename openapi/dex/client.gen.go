@@ -622,21 +622,21 @@ type bearerAuthContextKey  string
 
 // ListDexParams defines parameters for ListDex.
 type ListDexParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// Chains DTO.DEX.LIST.CHAINS
+// Chains Filter by blockchain networks
     Chains *[]string`form:"chains,omitempty" json:"chains,omitempty"`
 
-// DexProgram DTO.DEX.LIST.DEX_PROGRAM
+// DexProgram Filter by DEX program address
     DexProgram *string`form:"dexProgram,omitempty" json:"dexProgram,omitempty"`
 }
 

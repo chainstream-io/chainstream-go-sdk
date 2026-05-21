@@ -59,25 +59,25 @@ func (e ChainSymbol) Valid() bool {
 
 // Blockchain Blockchain information
 type Blockchain  struct {
-// ChainId ENTITY.BLOCKCHAIN.CHAIN_ID
+// ChainId Blockchain chain ID
     ChainId int64`json:"chainId"`
 
-// ExplorerUrl ENTITY.BLOCKCHAIN.EXPLORER_URL
+// ExplorerUrl Blockchain explorer URL
     ExplorerUrl string`json:"explorerUrl"`
 
-// Name ENTITY.BLOCKCHAIN.NAME
+// Name Blockchain display name
     Name string`json:"name"`
 
-// Symbol ENTITY.BLOCKCHAIN.SYMBOL
+// Symbol Blockchain ticker symbol
     Symbol string`json:"symbol"`
 }
 
 // BlockchainLatestBlock defines model for BlockchainLatestBlock.
 type BlockchainLatestBlock  struct {
-// Blockhash ENTITY.BLOCKCHAIN_LATEST_BLOCK.BLOCKHASH
+// Blockhash Latest block hash
     Blockhash string`json:"blockhash"`
 
-// LastValidBlockHeight ENTITY.BLOCKCHAIN_LATEST_BLOCK.LAST_VALID_BLOCK_HEIGHT
+// LastValidBlockHeight Last valid block height
     LastValidBlockHeight int64`json:"lastValidBlockHeight"`
 }
 

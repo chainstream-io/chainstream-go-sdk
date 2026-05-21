@@ -82,52 +82,52 @@ func (e WebhookChannel) Valid() bool {
 
 // CreateWebhookRequest Request to create a webhook endpoint
 type CreateWebhookRequest  struct {
-// Channels DTO.ENDPOINT.CHANNELS
+// Channels Webhook event channels to subscribe to
     Channels *[]WebhookChannel`json:"channels,omitempty"`
 
-// Description DTO.ENDPOINT.DESCRIPTION
+// Description Endpoint description
     Description *string`json:"description,omitempty"`
 
-// Disabled DTO.ENDPOINT.DISABLED
+// Disabled Whether the endpoint is disabled
     Disabled *bool`json:"disabled,omitempty"`
 
-// Filter DTO.ENDPOINT.FILTER
+// Filter Event filter configuration
     Filter *string`json:"filter,omitempty"`
 
-// FilterTypes DTO.ENDPOINT.FILTER_TYPES
+// FilterTypes Event type filters
     FilterTypes *[]string`json:"filterTypes,omitempty"`
 
-// Metadata DTO.ENDPOINT.METADATA
+// Metadata Endpoint metadata
     Metadata *map[string]interface{}`json:"metadata,omitempty"`
 
-// RateLimit DTO.ENDPOINT.RATE_LIMIT
+// RateLimit Rate limit for the endpoint
     RateLimit *int32`json:"rateLimit,omitempty"`
 
-// Secret DTO.ENDPOINT.SECRET
+// Secret Endpoint signing secret
     Secret *string`json:"secret,omitempty"`
 
-// Url DTO.ENDPOINT.URL
+// Url Webhook destination URL
     Url string`json:"url"`
 }
 
 // EndpointListResponse Paginated list of webhook endpoints
 type EndpointListResponse  struct {
-// Data DTO.ENDPOINT.PAGE.DATA
+// Data Paginated endpoint list
     Data []WebhookEndpoint`json:"data"`
 
-// Done DTO.ENDPOINT.PAGE.DONE
+// Done Whether pagination is complete
     Done bool`json:"done"`
 
-// Iterator DTO.ENDPOINT.PAGE.ITERATOR
+// Iterator Current page iterator
     Iterator *string`json:"iterator,omitempty"`
 
-// PrevIterator DTO.ENDPOINT.PAGE.PREV_ITERATOR
+// PrevIterator Previous page iterator
     PrevIterator *string`json:"prevIterator,omitempty"`
 }
 
 // EndpointOperationResponse Boolean result for endpoint operations (delete, rotate secret)
 type EndpointOperationResponse  struct {
-// Success DTO.ENDPOINT.SUCCESS
+// Success Operation success status
     Success bool`json:"success"`
 }
 
@@ -136,37 +136,37 @@ type EndpointOrder  string
 
 // EndpointSecretResponse Secret response for a webhook endpoint
 type EndpointSecretResponse  struct {
-// Secret DTO.ENDPOINT.SECRET
+// Secret Endpoint signing secret
     Secret string`json:"secret"`
 }
 
 // UpdateWebhookRequest Request to update a webhook endpoint
 type UpdateWebhookRequest  struct {
-// Channels DTO.ENDPOINT.CHANNELS
+// Channels Webhook event channels to subscribe to
     Channels *[]WebhookChannel`json:"channels,omitempty"`
 
-// Description DTO.ENDPOINT.DESCRIPTION
+// Description Endpoint description
     Description *string`json:"description,omitempty"`
 
-// Disabled DTO.ENDPOINT.DISABLED
+// Disabled Whether the endpoint is disabled
     Disabled *bool`json:"disabled,omitempty"`
 
-// EndpointId DTO.ENDPOINT.ENDPOINT_ID
+// EndpointId Endpoint ID
     EndpointId string`json:"endpointId"`
 
-// Filter DTO.ENDPOINT.FILTER
+// Filter Event filter configuration
     Filter *string`json:"filter,omitempty"`
 
-// FilterTypes DTO.ENDPOINT.FILTER_TYPES
+// FilterTypes Event type filters
     FilterTypes *[]string`json:"filterTypes,omitempty"`
 
-// Metadata DTO.ENDPOINT.METADATA
+// Metadata Endpoint metadata
     Metadata *map[string]interface{}`json:"metadata,omitempty"`
 
-// RateLimit DTO.ENDPOINT.RATE_LIMIT
+// RateLimit Rate limit for the endpoint
     RateLimit *int32`json:"rateLimit,omitempty"`
 
-// Url DTO.ENDPOINT.URL
+// Url Webhook destination URL
     Url *string`json:"url,omitempty"`
 }
 
@@ -175,37 +175,37 @@ type WebhookChannel  string
 
 // WebhookEndpoint Webhook endpoint response
 type WebhookEndpoint  struct {
-// Channels DTO.ENDPOINT.CHANNELS
+// Channels Webhook event channels to subscribe to
     Channels *[]WebhookChannel`json:"channels,omitempty"`
 
-// CreatedAt DTO.ENDPOINT.CREATED_AT
+// CreatedAt Endpoint creation timestamp
     CreatedAt *string`json:"createdAt,omitempty"`
 
-// Description DTO.ENDPOINT.DESCRIPTION
+// Description Endpoint description
     Description *string`json:"description,omitempty"`
 
-// Disabled DTO.ENDPOINT.DISABLED
+// Disabled Whether the endpoint is disabled
     Disabled *bool`json:"disabled,omitempty"`
 
-// Filter DTO.ENDPOINT.FILTER
+// Filter Event filter configuration
     Filter *string`json:"filter,omitempty"`
 
-// FilterTypes DTO.ENDPOINT.FILTER_TYPES
+// FilterTypes Event type filters
     FilterTypes *[]string`json:"filterTypes,omitempty"`
 
-// Id DTO.ENDPOINT.ID
+// Id Endpoint internal ID
     Id string`json:"id"`
 
-// Metadata DTO.ENDPOINT.METADATA
+// Metadata Endpoint metadata
     Metadata *map[string]interface{}`json:"metadata,omitempty"`
 
-// RateLimit DTO.ENDPOINT.RATE_LIMIT
+// RateLimit Rate limit for the endpoint
     RateLimit *int32`json:"rateLimit,omitempty"`
 
-// UpdatedAt DTO.ENDPOINT.UPDATED_AT
+// UpdatedAt Endpoint last updated timestamp
     UpdatedAt *string`json:"updatedAt,omitempty"`
 
-// Url DTO.ENDPOINT.URL
+// Url Webhook destination URL
     Url string`json:"url"`
 }
 
@@ -222,13 +222,13 @@ type bearerAuthContextKey  string
 
 // ListEndpointsParams defines parameters for ListEndpoints.
 type ListEndpointsParams  struct {
-// Limit DTO.ENDPOINT.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Iterator DTO.ENDPOINT.ITERATOR
+// Iterator Pagination iterator
     Iterator *string`form:"iterator,omitempty" json:"iterator,omitempty"`
 
-// Order DTO.ENDPOINT.ORDER
+// Order Sort order
     Order *EndpointOrder`form:"order,omitempty" json:"order,omitempty"`
 }
 

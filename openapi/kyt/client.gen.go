@@ -85,167 +85,167 @@ func (e TransferDirection) Valid() bool {
 
 // KYTRegisterAddressInput defines model for KYTRegisterAddressInput.
 type KYTRegisterAddressInput  struct {
-// Address DTO.KYT.REGISTER_ADDRESS_REQUEST.ADDRESS
+// Address Address
     Address string`json:"address"`
 }
 
 // KYTRegisterTransferInput defines model for KYTRegisterTransferInput.
 type KYTRegisterTransferInput  struct {
-// Asset DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.ASSET
+// Asset Asset type
     Asset string`json:"asset"`
     Direction TransferDirection`json:"direction"`
     Network KytNetwork`json:"network"`
 
-// TransferReference DTO.KYT.KYT_REGISTER_TRANSFER_REQUEST.TRANSFER_REFERENCE
+// TransferReference Transfer hash/transaction ID
     TransferReference string`json:"transferReference"`
 }
 
 // KYTRegisterWithdrawalInput defines model for KYTRegisterWithdrawalInput.
 type KYTRegisterWithdrawalInput  struct {
-// Address DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ADDRESS
+// Address Withdrawal address
     Address string`json:"address"`
 
-// Asset DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET
+// Asset Asset type
     Asset string`json:"asset"`
 
-// AssetAmount DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_AMOUNT
+// AssetAmount Asset amount
     AssetAmount string`json:"assetAmount"`
 
-// AssetDenomination DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_DENOMINATION
+// AssetDenomination Asset denomination (e.g., USD)
     AssetDenomination *string`json:"assetDenomination,omitempty"`
 
-// AssetId DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_ID
+// AssetId Asset ID (optional)
     AssetId *string`json:"assetId,omitempty"`
 
-// AssetPrice DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ASSET_PRICE
+// AssetPrice Asset price
     AssetPrice *string`json:"assetPrice,omitempty"`
 
-// AttemptTimestamp DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.ATTEMPT_TIMESTAMP
+// AttemptTimestamp Attempt timestamp
     AttemptTimestamp string`json:"attemptTimestamp"`
 
-// Memo DTO.KYT.KYT_REGISTER_WITHDRAWAL_REQUEST.MEMO
+// Memo Memo information (optional)
     Memo *string`json:"memo,omitempty"`
     Network KytNetwork`json:"network"`
 }
 
 // KytAddressExposure defines model for KytAddressExposure.
 type KytAddressExposure  struct {
-// Category DTO.KYT.ADDRESS_EXPOSURE.CATEGORY
+// Category Category
     Category *string`json:"category,omitempty"`
 
-// Direction DTO.KYT.ADDRESS_EXPOSURE.DIRECTION
+// Direction Direction
     Direction *string`json:"direction,omitempty"`
 
-// ExposureType DTO.KYT.ADDRESS_EXPOSURE.EXPOSURE_TYPE
+// ExposureType Exposure type
     ExposureType *string`json:"exposureType,omitempty"`
 
-// Value DTO.KYT.ADDRESS_EXPOSURE.VALUE
+// Value Value
     Value *string`json:"value,omitempty"`
 }
 
 // KytAddressIdentification defines model for KytAddressIdentification.
 type KytAddressIdentification  struct {
-// AddressName DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.ADDRESS_NAME
+// AddressName Address name
     AddressName *string`json:"addressName,omitempty"`
 
-// CategoryId DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.CATEGORY_ID
+// CategoryId Category ID
     CategoryId *int64`json:"categoryId,omitempty"`
 
-// Description DTO.KYT.CHAINALYSIS_ADDRESS_IDENTIFICATION.DESCRIPTION
+// Description Description information
     Description *string`json:"description,omitempty"`
 }
 
 // KytAddressRiskResponse defines model for KytAddressRiskResponse.
 type KytAddressRiskResponse  struct {
-// Address DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS
+// Address Address
     Address string`json:"address"`
 
-// AddressIdentifications DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS_IDENTIFICATIONS
+// AddressIdentifications Address identification list
     AddressIdentifications *[]interface{}`json:"addressIdentifications,omitempty"`
 
-// AddressType DTO.KYT.ADDRESS_RISK_RESPONSE.ADDRESS_TYPE
+// AddressType Address type
     AddressType *string`json:"addressType,omitempty"`
 
-// Cluster DTO.KYT.ADDRESS_RISK_RESPONSE.CLUSTER
+// Cluster Cluster
     Cluster *map[string]interface{}`json:"cluster,omitempty"`
 
-// Exposures DTO.KYT.ADDRESS_RISK_RESPONSE.EXPOSURES
+// Exposures Exposure list
     Exposures *[]KytAddressExposure`json:"exposures,omitempty"`
 
-// Risk DTO.KYT.ADDRESS_RISK_RESPONSE.RISK
+// Risk Risk level
     Risk *string`json:"risk,omitempty"`
 
-// RiskReason DTO.KYT.ADDRESS_RISK_RESPONSE.RISK_REASON
+// RiskReason Risk reason
     RiskReason *string`json:"riskReason,omitempty"`
 
-// Status DTO.KYT.ADDRESS_RISK_RESPONSE.STATUS
+// Status Status
     Status *string`json:"status,omitempty"`
 
-// Triggers DTO.KYT.ADDRESS_RISK_RESPONSE.TRIGGERS
+// Triggers Trigger list
     Triggers *[]interface{}`json:"triggers,omitempty"`
 }
 
 // KytAlertDetail defines model for KytAlertDetail.
 type KytAlertDetail  struct {
-// AlertAmount DTO.KYT.ALERT_DETAIL.ALERT_AMOUNT
+// AlertAmount Alert amount
     AlertAmount *string`json:"alertAmount,omitempty"`
 
-// AlertLevel DTO.KYT.ALERT_DETAIL.ALERT_LEVEL
+// AlertLevel Alert level
     AlertLevel *string`json:"alertLevel,omitempty"`
 
-// CategoryId DTO.KYT.ALERT_DETAIL.CATEGORY_ID
+// CategoryId Category ID
     CategoryId *int64`json:"categoryId,omitempty"`
 
-// ExposureType DTO.KYT.ALERT_DETAIL.EXPOSURE_TYPE
+// ExposureType Exposure type
     ExposureType *string`json:"exposureType,omitempty"`
 
-// ExternalId DTO.KYT.ALERT_DETAIL.EXTERNAL_ID
+// ExternalId External ID
     ExternalId *string`json:"externalId,omitempty"`
 
-// Memo DTO.KYT.ALERT_DETAIL.MEMO
+// Memo Memo
     Memo *string`json:"memo,omitempty"`
 
-// Service DTO.KYT.ALERT_DETAIL.SERVICE
+// Service Service name
     Service *string`json:"service,omitempty"`
 }
 
 // KytAlertsResponse defines model for KytAlertsResponse.
 type KytAlertsResponse  struct {
-// Alerts DTO.KYT.TRANSFER_ALERTS_RESPONSE.ALERTS
+// Alerts Alert list
     Alerts []KytAlertDetail`json:"alerts"`
 }
 
 // KytAlteryaIdentification defines model for KytAlteryaIdentification.
 type KytAlteryaIdentification  struct {
-// Address DTO.KYT.ALTERYA_IDENTIFICATION.ADDRESS
+// Address Address
     Address *string`json:"address,omitempty"`
 
-// Chain DTO.KYT.ALTERYA_IDENTIFICATION.CHAIN
+// Chain Blockchain network
     Chain *string`json:"chain,omitempty"`
 
-// Labels DTO.KYT.ALTERYA_IDENTIFICATION.LABELS
+// Labels Label list
     Labels *[]string`json:"labels,omitempty"`
 
-// Object DTO.KYT.ALTERYA_IDENTIFICATION.OBJECT
+// Object Object type
     Object *string`json:"object,omitempty"`
     OnChainActivity *KytOnChainActivity`json:"on_chain_activity,omitempty"`
 
-// Reason DTO.KYT.ALTERYA_IDENTIFICATION.REASON
+// Reason Risk reason
     Reason *string`json:"reason,omitempty"`
 
-// RiskLevel DTO.KYT.ALTERYA_IDENTIFICATION.RISK_LEVEL
+// RiskLevel Risk level
     RiskLevel *string`json:"risk_level,omitempty"`
 
-// RiskScore DTO.KYT.ALTERYA_IDENTIFICATION.RISK_SCORE
+// RiskScore Risk score
     RiskScore *string`json:"risk_score,omitempty"`
 }
 
 // KytDirectExposureDetail defines model for KytDirectExposureDetail.
 type KytDirectExposureDetail  struct {
-// CategoryId DTO.KYT.DIRECT_EXPOSURE_DETAIL.CATEGORY_ID
+// CategoryId Category ID
     CategoryId *int64`json:"categoryId,omitempty"`
 
-// Name DTO.KYT.DIRECT_EXPOSURE_DETAIL.NAME
+// Name Name
     Name *string`json:"name,omitempty"`
 }
 
@@ -256,7 +256,7 @@ type KytDirectExposureResponse  struct {
 
 // KytFraudAssessmentResponse defines model for KytFraudAssessmentResponse.
 type KytFraudAssessmentResponse  struct {
-// AlteryaIdentifications DTO.KYT.WITHDRAWAL_FRAUD_ASSESSMENT_RESPONSE.ALTERYA_IDENTIFICATIONS
+// AlteryaIdentifications Alterya identification list
     AlteryaIdentifications *[]KytAlteryaIdentification`json:"alteryaIdentifications,omitempty"`
 }
 
@@ -265,112 +265,112 @@ type KytNetwork  string
 
 // KytNetworkIdentificationOrg defines model for KytNetworkIdentificationOrg.
 type KytNetworkIdentificationOrg  struct {
-// Name DTO.KYT.NETWORK_IDENTIFICATION_ORG.NAME
+// Name Organization name
     Name *string`json:"name,omitempty"`
 }
 
 // KytNetworkIdentificationsResponse defines model for KytNetworkIdentificationsResponse.
 type KytNetworkIdentificationsResponse  struct {
-// Count DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.COUNT
+// Count Identification count
     Count *int64`json:"count,omitempty"`
 
-// NetworkIdentificationOrgs DTO.KYT.TRANSFER_NETWORK_IDENTIFICATIONS_RESPONSE.NETWORK_IDENTIFICATION_ORGS
+// NetworkIdentificationOrgs Network identification organization list
     NetworkIdentificationOrgs *[]KytNetworkIdentificationOrg`json:"networkIdentificationOrgs,omitempty"`
 }
 
 // KytOnChainActivity defines model for KytOnChainActivity.
 type KytOnChainActivity  struct {
-// FirstTransactionAt DTO.KYT.ON_CHAIN_ACTIVITY.FIRST_TRANSACTION_AT
+// FirstTransactionAt First transaction timestamp
     FirstTransactionAt *int64`json:"first_transaction_at,omitempty"`
 }
 
 // KytRegisterAddressResponse defines model for KytRegisterAddressResponse.
 type KytRegisterAddressResponse  struct {
-// Address DTO.KYT.REGISTER_ADDRESS_RESPONSE.ADDRESS
+// Address Address
     Address string`json:"address"`
 }
 
 // KytTransferBaseResponse defines model for KytTransferBaseResponse.
 type KytTransferBaseResponse  struct {
-// Asset DTO.KYT.TRANSFER_BASE_RESPONSE.ASSET
+// Asset Asset type
     Asset string`json:"asset"`
 
-// AssetAmount DTO.KYT.TRANSFER_BASE_RESPONSE.ASSET_AMOUNT
+// AssetAmount Asset amount
     AssetAmount *string`json:"assetAmount,omitempty"`
 
-// AssetId DTO.KYT.TRANSFER_BASE_RESPONSE.ASSET_ID
+// AssetId Asset ID
     AssetId *string`json:"assetId,omitempty"`
 
-// ExternalId DTO.KYT.TRANSFER_BASE_RESPONSE.EXTERNAL_ID
+// ExternalId External ID (UUID)
     ExternalId string`json:"externalId"`
 
-// Idx DTO.KYT.TRANSFER_BASE_RESPONSE.IDX
+// Idx Index
     Idx *int64`json:"idx,omitempty"`
 
-// Memo DTO.KYT.TRANSFER_BASE_RESPONSE.MEMO
+// Memo Memo information
     Memo *string`json:"memo,omitempty"`
 
-// Network DTO.KYT.TRANSFER_BASE_RESPONSE.NETWORK
+// Network Blockchain network
     Network string`json:"network"`
 
-// OutputAddress DTO.KYT.TRANSFER_BASE_RESPONSE.OUTPUT_ADDRESS
+// OutputAddress Output address
     OutputAddress *string`json:"outputAddress,omitempty"`
 
-// Timestamp DTO.KYT.TRANSFER_BASE_RESPONSE.TIMESTAMP
+// Timestamp Timestamp
     Timestamp *string`json:"timestamp,omitempty"`
 
-// TransferReference DTO.KYT.TRANSFER_BASE_RESPONSE.TRANSFER_REFERENCE
+// TransferReference Transfer reference (transaction hash and address)
     TransferReference string`json:"transferReference"`
 
-// Tx DTO.KYT.TRANSFER_BASE_RESPONSE.TX
+// Tx Transaction hash
     Tx *string`json:"tx,omitempty"`
 
-// UpdatedAt DTO.KYT.TRANSFER_BASE_RESPONSE.UPDATED_AT
+// UpdatedAt Updated timestamp
     UpdatedAt *string`json:"updatedAt,omitempty"`
 
-// UsdAmount DTO.KYT.TRANSFER_BASE_RESPONSE.USD_AMOUNT
+// UsdAmount USD amount
     UsdAmount *string`json:"usdAmount,omitempty"`
 }
 
 // KytWithdrawalAddressIdentificationsResponse defines model for KytWithdrawalAddressIdentificationsResponse.
 type KytWithdrawalAddressIdentificationsResponse  struct {
-// ChainalysisIdentifications DTO.KYT.WITHDRAWAL_ADDRESS_IDENTIFICATIONS_RESPONSE.CHAINALYSIS_IDENTIFICATIONS
+// ChainalysisIdentifications Chainalysis address identification list
     ChainalysisIdentifications *[]KytAddressIdentification`json:"chainalysisIdentifications,omitempty"`
 
-// CustomAddresses DTO.KYT.WITHDRAWAL_ADDRESS_IDENTIFICATIONS_RESPONSE.CUSTOM_ADDRESSES
+// CustomAddresses Custom address list
     CustomAddresses *[]interface{}`json:"customAddresses,omitempty"`
 }
 
 // KytWithdrawalBaseResponse defines model for KytWithdrawalBaseResponse.
 type KytWithdrawalBaseResponse  struct {
-// Address DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ADDRESS
+// Address Address
     Address string`json:"address"`
 
-// Asset DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ASSET
+// Asset Asset type
     Asset string`json:"asset"`
 
-// AssetAmount DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ASSET_AMOUNT
+// AssetAmount Asset amount
     AssetAmount string`json:"assetAmount"`
 
-// AssetId DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ASSET_ID
+// AssetId Asset ID
     AssetId *string`json:"assetId,omitempty"`
 
-// AttemptIdentifier DTO.KYT.WITHDRAWAL_BASE_RESPONSE.ATTEMPT_IDENTIFIER
+// AttemptIdentifier Attempt identifier
     AttemptIdentifier string`json:"attemptIdentifier"`
 
-// ExternalId DTO.KYT.WITHDRAWAL_BASE_RESPONSE.EXTERNAL_ID
+// ExternalId External ID (UUID)
     ExternalId string`json:"externalId"`
 
-// Memo DTO.KYT.WITHDRAWAL_BASE_RESPONSE.MEMO
+// Memo Memo information
     Memo *string`json:"memo,omitempty"`
 
-// Network DTO.KYT.WITHDRAWAL_BASE_RESPONSE.NETWORK
+// Network Blockchain network
     Network string`json:"network"`
 
-// UpdatedAt DTO.KYT.WITHDRAWAL_BASE_RESPONSE.UPDATED_AT
+// UpdatedAt Updated timestamp
     UpdatedAt string`json:"updatedAt"`
 
-// UsdAmount DTO.KYT.WITHDRAWAL_BASE_RESPONSE.USD_AMOUNT
+// UsdAmount USD amount
     UsdAmount string`json:"usdAmount"`
 }
 

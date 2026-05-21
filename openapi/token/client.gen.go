@@ -766,48 +766,56 @@ func (e TraderSortBy) Valid() bool {
 // ChainSymbol Supported blockchain chains
 type ChainSymbol  string
 
+// FeeEstimates Real-time fee estimates for trading a token on a given chain.
+type FeeEstimates  struct {
+    PriorityFeeInNative *string`json:"priorityFeeInNative,omitempty"`
+    TipFeeInNative *string`json:"tipFeeInNative,omitempty"`
+    TotalFeeInNative *string`json:"totalFeeInNative,omitempty"`
+    TradeFeeInNative *string`json:"tradeFeeInNative,omitempty"`
+}
+
 // GoPlusSecurityInfo defines model for GoPlusSecurityInfo.
 type GoPlusSecurityInfo  struct {
-// Available ENTITY.TOKEN_SECURITY.AVAILABLE
+// Available Whether data is available from this source
     Available bool`json:"available"`
 
-// BuyTax ENTITY.TOKEN_SECURITY.BUY_TAX
+// BuyTax Buy tax rate
     BuyTax *string`json:"buyTax,omitempty"`
 
-// ChainSupported ENTITY.TOKEN_SECURITY.CHAIN_SUPPORTED
+// ChainSupported Whether this source supports the token chain
     ChainSupported *bool`json:"chainSupported,omitempty"`
     HolderCount *string`json:"holderCount,omitempty"`
 
-// IsBlacklisted ENTITY.TOKEN_SECURITY.IS_BLACKLISTED
+// IsBlacklisted Whether the contract has blacklist
     IsBlacklisted *bool`json:"isBlacklisted,omitempty"`
 
-// IsFreezable ENTITY.TOKEN_SECURITY.IS_FREEZABLE
+// IsFreezable Whether the token accounts can be frozen
     IsFreezable *bool`json:"isFreezable,omitempty"`
 
-// IsHoneypot ENTITY.TOKEN_SECURITY.IS_HONEYPOT
+// IsHoneypot Whether the token is a honeypot
     IsHoneypot *bool`json:"isHoneypot,omitempty"`
 
-// IsMintable ENTITY.TOKEN_SECURITY.IS_MINTABLE
+// IsMintable Whether the token is mintable
     IsMintable *bool`json:"isMintable,omitempty"`
 
-// IsOpenSource ENTITY.TOKEN_SECURITY.IS_OPEN_SOURCE
+// IsOpenSource Whether the contract is open source
     IsOpenSource *bool`json:"isOpenSource,omitempty"`
 
-// IsProxy ENTITY.TOKEN_SECURITY.IS_PROXY
+// IsProxy Whether it is a proxy contract
     IsProxy *bool`json:"isProxy,omitempty"`
 
-// IsRenounced ENTITY.TOKEN_SECURITY.IS_RENOUNCED
+// IsRenounced Whether the contract ownership is renounced
     IsRenounced *bool`json:"isRenounced,omitempty"`
 
-// LastRefreshedAt ENTITY.TOKEN_SECURITY.LAST_REFRESHED_AT
+// LastRefreshedAt Last refresh timestamp
     LastRefreshedAt *string`json:"lastRefreshedAt,omitempty"`
     LpHolderCount *string`json:"lpHolderCount,omitempty"`
     OwnerAddress *string`json:"ownerAddress,omitempty"`
 
-// Raw ENTITY.TOKEN_SECURITY.RAW
+// Raw Raw security data from the source
     Raw interface{}`json:"raw,omitempty"`
 
-// SellTax ENTITY.TOKEN_SECURITY.SELL_TAX
+// SellTax Sell tax rate
     SellTax *string`json:"sellTax,omitempty"`
     TotalSupply *string`json:"totalSupply,omitempty"`
 }
@@ -831,6 +839,20 @@ type HoneypotIsSecurityInfo  struct {
     LastRefreshedAt *string`json:"lastRefreshedAt,omitempty"`
     Raw interface{}`json:"raw,omitempty"`
     SellTax *string`json:"sellTax,omitempty"`
+}
+
+// LockInfo LP lock information for a token.
+type LockInfo  struct {
+    IsLocked *bool`json:"isLocked,omitempty"`
+    LeftLockPercent *string`json:"leftLockPercent,omitempty"`
+    LockDetail *string`json:"lockDetail,omitempty"`
+    LockPercent *string`json:"lockPercent,omitempty"`
+    LockTags *[]string`json:"lockTags,omitempty"`
+}
+
+// LogoDuplicates Logo duplicate count for a token.
+type LogoDuplicates  struct {
+    SameImageTokenCount int64`json:"sameImageTokenCount"`
 }
 
 // MintBurnType Mint/burn type filter
@@ -915,25 +937,25 @@ type PageResponseDexPool  struct {
 type PageResponseToken  struct {
 // Data Page data
     Data []struct {
-// Address ENTITY.TOKEN.ADDRESS
+// Address Token contract address
     Address string`json:"address"`
 
-// Chain ENTITY.TOKEN.CHAIN
+// Chain Blockchain network identifier
     Chain string`json:"chain"`
 
-// CoingeckoCoinId ENTITY.TOKEN.COINGECKO_COIN_ID
+// CoingeckoCoinId CoinGecko coin identifier
     CoingeckoCoinId *string`json:"coingeckoCoinId,omitempty"`
 
-// Decimals ENTITY.TOKEN.DECIMALS
+// Decimals Number of decimal places
     Decimals int32`json:"decimals"`
 
-// Description ENTITY.TOKEN.DESCRIPTION
+// Description Token description
     Description *string`json:"description,omitempty"`
 
-// DevLastTokenCreatedAt ENTITY.TOKEN.DEV_LAST_TOKEN_CREATED_AT
+// DevLastTokenCreatedAt Timestamp of developer last token creation
     DevLastTokenCreatedAt *string`json:"devLastTokenCreatedAt,omitempty"`
 
-// DevTotalTokens ENTITY.TOKEN.DEV_TOTAL_TOKENS
+// DevTotalTokens Total number of tokens created by the developer
     DevTotalTokens *string`json:"devTotalTokens,omitempty"`
 
 // Extension Token extra metadata
@@ -942,19 +964,19 @@ type PageResponseToken  struct {
 // Extra Token extra metadata
     Extra *TokenExtra`json:"extra,omitempty"`
 
-// ImageUrl ENTITY.TOKEN.IMAGE_URL
+// ImageUrl Token logo image URL
     ImageUrl *string`json:"imageUrl,omitempty"`
 
-// Market ENTITY.TOKEN.MARKET
+// Market Trading market identifier
     Market *string`json:"market,omitempty"`
 
 // MarketData Token market data
     MarketData *TokenMarketData`json:"marketData,omitempty"`
 
-// MetadataAddress ENTITY.TOKEN.METADATA_ADDRESS
+// MetadataAddress On-chain metadata account address
     MetadataAddress *string`json:"metadataAddress,omitempty"`
 
-// Name ENTITY.TOKEN.NAME
+// Name Token display name
     Name string`json:"name"`
 
 // SocialMedias Token social media links
@@ -963,25 +985,25 @@ type PageResponseToken  struct {
 // Stats Token statistics with nested time period data
     Stats *TokenStats`json:"stats,omitempty"`
 
-// Symbol ENTITY.TOKEN.SYMBOL
+// Symbol Token ticker symbol
     Symbol string`json:"symbol"`
 
-// TokenCreatedAt ENTITY.TOKEN.TOKEN_CREATED_AT
+// TokenCreatedAt Token creation timestamp (milliseconds)
     TokenCreatedAt *int64`json:"tokenCreatedAt,omitempty"`
 
-// TokenCreatedBlockHeight ENTITY.TOKEN.TOKEN_CREATED_BLOCK_HEIGHT
+// TokenCreatedBlockHeight Block height when token was created
     TokenCreatedBlockHeight *string`json:"tokenCreatedBlockHeight,omitempty"`
 
-// TokenCreatedSlot ENTITY.TOKEN.TOKEN_CREATED_SLOT
+// TokenCreatedSlot Slot number when token was created
     TokenCreatedSlot *string`json:"tokenCreatedSlot,omitempty"`
 
-// TokenCreatedTxSignature ENTITY.TOKEN.TOKEN_CREATED_TX_SIGNATURE
+// TokenCreatedTxSignature Transaction signature of token creation
     TokenCreatedTxSignature *string`json:"tokenCreatedTxSignature,omitempty"`
 
-// TokenCreators ENTITY.TOKEN.TOKEN_CREATORS
+// TokenCreators List of token creators
     TokenCreators *[]TokenCreator`json:"tokenCreators,omitempty"`
 
-// Uri ENTITY.TOKEN.URI
+// Uri Token metadata URI
     Uri *string`json:"uri,omitempty"`
 }`json:"data"`
 
@@ -1018,10 +1040,10 @@ type PageResponseTokenHolder  struct {
 // AddressLabel Specific address label (e.g. "Binance Hot Wallet 1"). Matches GMGN `name`.
     AddressLabel *string`json:"addressLabel,omitempty"`
 
-// Amount ENTITY.TOKEN_HOLDER.AMOUNT
+// Amount Token holding amount
     Amount string`json:"amount"`
 
-// AmountInUsd ENTITY.TOKEN_HOLDER.AMOUNT_IN_USD
+// AmountInUsd Token holding value in USD
     AmountInUsd string`json:"amountInUsd"`
 
 // AvgBuyPriceUsd Average buy price in USD per token (all-time)
@@ -1117,7 +1139,7 @@ type PageResponseTokenHolder  struct {
 // NetflowUsd Net USD inflow (buy_volume_usd − sell_volume_usd); positive = net buyer
     NetflowUsd *string`json:"netflowUsd,omitempty"`
 
-// Percentage ENTITY.TOKEN_HOLDER.PERCENTAGE
+// Percentage Percentage of total supply held
     Percentage string`json:"percentage"`
 
 // PositionCostUsd Current open position cost in USD
@@ -1188,7 +1210,7 @@ type PageResponseTokenHolder  struct {
 // UnrealizedProfit Unrealized PnL in USD (current position)
     UnrealizedProfit *string`json:"unrealizedProfit,omitempty"`
 
-// WalletAddress ENTITY.TOKEN_HOLDER.WALLET_ADDRESS
+// WalletAddress Holder wallet address
     WalletAddress string`json:"walletAddress"`
 
 // WalletTagV2 Global rank tag on this token when sorted by balance (e.g. "TOP1", "TOP2").
@@ -1216,34 +1238,34 @@ type PageResponseTokenHolder  struct {
 type PageResponseTokenLiquiditySnapshot  struct {
 // Data Page data
     Data []struct {
-// CalculatedAt ENTITY.TOKEN_LIQUIDITY_SNAPSHOT.CALCULATED_AT
+// CalculatedAt Snapshot calculation timestamp (milliseconds)
     CalculatedAt int64`json:"calculatedAt"`
 
-// MaxLiquidityInNative ENTITY.TOKEN_LIQUIDITY_SNAPSHOT.MAX_LIQUIDITY_IN_NATIVE
+// MaxLiquidityInNative Maximum pool liquidity in native token
     MaxLiquidityInNative string`json:"maxLiquidityInNative"`
 
-// MaxLiquidityInUsd ENTITY.TOKEN_LIQUIDITY_SNAPSHOT.MAX_LIQUIDITY_IN_USD
+// MaxLiquidityInUsd Maximum pool liquidity in USD
     MaxLiquidityInUsd string`json:"maxLiquidityInUsd"`
 
-// MaxLiquidityPoolAddress ENTITY.TOKEN_LIQUIDITY_SNAPSHOT.MAX_LIQUIDITY_POOL_ADDRESS
+// MaxLiquidityPoolAddress Address of the pool with maximum liquidity
     MaxLiquidityPoolAddress string`json:"maxLiquidityPoolAddress"`
 
-// PoolCount ENTITY.TOKEN_LIQUIDITY_SNAPSHOT.POOL_COUNT
+// PoolCount Number of active liquidity pools
     PoolCount int64`json:"poolCount"`
 
-// PriceNative ENTITY.TOKEN_LIQUIDITY_SNAPSHOT.PRICE_NATIVE
+// PriceNative Token price in native token at snapshot time
     PriceNative string`json:"priceNative"`
 
-// PriceUsd ENTITY.TOKEN_LIQUIDITY_SNAPSHOT.PRICE_USD
+// PriceUsd Token price in USD at snapshot time
     PriceUsd string`json:"priceUsd"`
 
-// SnapshotTime ENTITY.TOKEN_LIQUIDITY_SNAPSHOT.SNAPSHOT_TIME
+// SnapshotTime Snapshot timestamp (milliseconds)
     SnapshotTime int64`json:"snapshotTime"`
 
-// TotalLiquidityInNative ENTITY.TOKEN_LIQUIDITY_SNAPSHOT.TOTAL_LIQUIDITY_IN_NATIVE
+// TotalLiquidityInNative Total liquidity across all pools in native token
     TotalLiquidityInNative string`json:"totalLiquidityInNative"`
 
-// TotalLiquidityInUsd ENTITY.TOKEN_LIQUIDITY_SNAPSHOT.TOTAL_LIQUIDITY_IN_USD
+// TotalLiquidityInUsd Total liquidity across all pools in USD
     TotalLiquidityInUsd string`json:"totalLiquidityInUsd"`
 }`json:"data"`
 
@@ -1264,22 +1286,22 @@ type PageResponseTokenLiquiditySnapshot  struct {
 type PageResponseTokenMintBurn  struct {
 // Data Page data
     Data []struct {
-// Amount ENTITY.TOKEN_MINT_BURN.AMOUNT
+// Amount Mint/burn amount
     Amount string`json:"amount"`
 
-// BlockHeight ENTITY.TOKEN_MINT_BURN.BLOCK_HEIGHT
+// BlockHeight Block height
     BlockHeight int64`json:"blockHeight"`
 
-// BlockTimestamp ENTITY.TOKEN_MINT_BURN.BLOCK_TIMESTAMP
+// BlockTimestamp Block timestamp (milliseconds)
     BlockTimestamp int64`json:"blockTimestamp"`
 
 // MintBurnType Mint/burn type filter
     MintBurnType MintBurnType`json:"mintBurnType"`
 
-// TokenAddress ENTITY.TOKEN_MINT_BURN.TOKEN_ADDRESS
+// TokenAddress Token contract address
     TokenAddress string`json:"tokenAddress"`
 
-// TransactionSignature ENTITY.TOKEN_MINT_BURN.TRANSACTION_SIGNATURE
+// TransactionSignature Transaction signature
     TransactionSignature string`json:"transactionSignature"`
 }`json:"data"`
 
@@ -1302,6 +1324,9 @@ type PageResponseTokenPrice  struct {
     Data []struct {
 // Address Token address
     Address string`json:"address"`
+
+// PriceInNative Price in native token (alias)
+    PriceInNative *string`json:"priceInNative,omitempty"`
 
 // PriceInSol Price in native token
     PriceInSol *string`json:"priceInSol,omitempty"`
@@ -1538,31 +1563,31 @@ type PageResponseTokenTrader  struct {
 type PageResponseTokenTransfer  struct {
 // Data Page data
     Data []struct {
-// Amount ENTITY.TOKEN_TRANSFER.AMOUNT
+// Amount Transfer amount in token units
     Amount string`json:"amount"`
 
-// AmountInUsd ENTITY.TOKEN_TRANSFER.AMOUNT_IN_USD
+// AmountInUsd Transfer amount in USD
     AmountInUsd *string`json:"amountInUsd,omitempty"`
 
-// BlockTimestamp ENTITY.TOKEN_TRANSFER.BLOCK_TIMESTAMP
+// BlockTimestamp Block timestamp (milliseconds)
     BlockTimestamp int64`json:"blockTimestamp"`
 
-// FromAddress ENTITY.TOKEN_TRANSFER.FROM_ADDRESS
+// FromAddress Sender address
     FromAddress string`json:"fromAddress"`
 
-// Id ENTITY.TOKEN_TRANSFER.ID
+// Id Transfer record identifier
     Id string`json:"id"`
 
 // Status Transfer status: unknown / succeeded / failed
     Status string`json:"status"`
 
-// ToAddress ENTITY.TOKEN_TRANSFER.TO_ADDRESS
+// ToAddress Receiver address
     ToAddress string`json:"toAddress"`
 
-// TokenAddress ENTITY.TOKEN_TRANSFER.TOKEN_ADDRESS
+// TokenAddress Token contract address
     TokenAddress string`json:"tokenAddress"`
 
-// TransactionSignature ENTITY.TOKEN_TRANSFER.TRANSACTION_SIGNATURE
+// TransactionSignature Transaction signature
     TransactionSignature string`json:"transactionSignature"`
 
 // Type Transfer type: unknown / in / out
@@ -1587,6 +1612,13 @@ type PoolSortField  string
 
 // PriceType Price type for candle data
 type PriceType  string
+
+// PrivilegeInfo Privilege information for a token (mint, freeze, update authorities).
+type PrivilegeInfo  struct {
+    Address *string`json:"address,omitempty"`
+    IsRenounced *bool`json:"isRenounced,omitempty"`
+    Name *string`json:"name,omitempty"`
+}
 
 // Resolution Candle resolution
 type Resolution  string
@@ -1626,25 +1658,25 @@ type SortDirection  string
 // TS uses class inheritance to flatten metadata into the top level.
 // Rust uses `#[serde(flatten)]` for the same effect.
 type Token  struct {
-// Address ENTITY.TOKEN.ADDRESS
+// Address Token contract address
     Address string`json:"address"`
 
-// Chain ENTITY.TOKEN.CHAIN
+// Chain Blockchain network identifier
     Chain string`json:"chain"`
 
-// CoingeckoCoinId ENTITY.TOKEN.COINGECKO_COIN_ID
+// CoingeckoCoinId CoinGecko coin identifier
     CoingeckoCoinId *string`json:"coingeckoCoinId,omitempty"`
 
-// Decimals ENTITY.TOKEN.DECIMALS
+// Decimals Number of decimal places
     Decimals int32`json:"decimals"`
 
-// Description ENTITY.TOKEN.DESCRIPTION
+// Description Token description
     Description *string`json:"description,omitempty"`
 
-// DevLastTokenCreatedAt ENTITY.TOKEN.DEV_LAST_TOKEN_CREATED_AT
+// DevLastTokenCreatedAt Timestamp of developer last token creation
     DevLastTokenCreatedAt *string`json:"devLastTokenCreatedAt,omitempty"`
 
-// DevTotalTokens ENTITY.TOKEN.DEV_TOTAL_TOKENS
+// DevTotalTokens Total number of tokens created by the developer
     DevTotalTokens *string`json:"devTotalTokens,omitempty"`
 
 // Extension Token extra metadata
@@ -1653,19 +1685,19 @@ type Token  struct {
 // Extra Token extra metadata
     Extra *TokenExtra`json:"extra,omitempty"`
 
-// ImageUrl ENTITY.TOKEN.IMAGE_URL
+// ImageUrl Token logo image URL
     ImageUrl *string`json:"imageUrl,omitempty"`
 
-// Market ENTITY.TOKEN.MARKET
+// Market Trading market identifier
     Market *string`json:"market,omitempty"`
 
 // MarketData Token market data
     MarketData *TokenMarketData`json:"marketData,omitempty"`
 
-// MetadataAddress ENTITY.TOKEN.METADATA_ADDRESS
+// MetadataAddress On-chain metadata account address
     MetadataAddress *string`json:"metadataAddress,omitempty"`
 
-// Name ENTITY.TOKEN.NAME
+// Name Token display name
     Name string`json:"name"`
 
 // SocialMedias Token social media links
@@ -1674,25 +1706,25 @@ type Token  struct {
 // Stats Token statistics with nested time period data
     Stats *TokenStats`json:"stats,omitempty"`
 
-// Symbol ENTITY.TOKEN.SYMBOL
+// Symbol Token ticker symbol
     Symbol string`json:"symbol"`
 
-// TokenCreatedAt ENTITY.TOKEN.TOKEN_CREATED_AT
+// TokenCreatedAt Token creation timestamp (milliseconds)
     TokenCreatedAt *int64`json:"tokenCreatedAt,omitempty"`
 
-// TokenCreatedBlockHeight ENTITY.TOKEN.TOKEN_CREATED_BLOCK_HEIGHT
+// TokenCreatedBlockHeight Block height when token was created
     TokenCreatedBlockHeight *string`json:"tokenCreatedBlockHeight,omitempty"`
 
-// TokenCreatedSlot ENTITY.TOKEN.TOKEN_CREATED_SLOT
+// TokenCreatedSlot Slot number when token was created
     TokenCreatedSlot *string`json:"tokenCreatedSlot,omitempty"`
 
-// TokenCreatedTxSignature ENTITY.TOKEN.TOKEN_CREATED_TX_SIGNATURE
+// TokenCreatedTxSignature Transaction signature of token creation
     TokenCreatedTxSignature *string`json:"tokenCreatedTxSignature,omitempty"`
 
-// TokenCreators ENTITY.TOKEN.TOKEN_CREATORS
+// TokenCreators List of token creators
     TokenCreators *[]TokenCreator`json:"tokenCreators,omitempty"`
 
-// Uri ENTITY.TOKEN.URI
+// Uri Token metadata URI
     Uri *string`json:"uri,omitempty"`
 }
 
@@ -1725,103 +1757,133 @@ type TokenCandle  struct {
 
 // TokenCreation Token creation info — mirrors TS `TokenCreationDTO`
 type TokenCreation  struct {
-// BlockHash ENTITY.TOKEN_CREATION.BLOCK_HASH
+// BlockHash Block hash of creation transaction
     BlockHash *string`json:"blockHash,omitempty"`
 
-// BlockHeight ENTITY.TOKEN_CREATION.BLOCK_HEIGHT
+// BlockHeight Block height of creation transaction
     BlockHeight int64`json:"blockHeight"`
 
-// BlockSlot ENTITY.TOKEN_CREATION.BLOCK_SLOT
+// BlockSlot Block slot of creation transaction
     BlockSlot int64`json:"blockSlot"`
 
-// BlockTimestamp ENTITY.TOKEN_CREATION.BLOCK_TIMESTAMP
+// BlockTimestamp Block timestamp of creation (milliseconds)
     BlockTimestamp *int64`json:"blockTimestamp,omitempty"`
 
-// TokenAddress ENTITY.TOKEN_CREATION.TOKEN_ADDRESS
+// TokenAddress Token contract address
     TokenAddress string`json:"tokenAddress"`
 
-// TransactionSignature ENTITY.TOKEN_CREATION.TRANSACTION_SIGNATURE
+// TransactionSignature Creation transaction signature
     TransactionSignature string`json:"transactionSignature"`
 
-// Type ENTITY.TOKEN_CREATION.TYPE
+// Type Token creation type
     Type string`json:"type"`
 }
 
 // TokenCreator Token creator info
 type TokenCreator  struct {
-// Address ENTITY.TOKEN_CREATOR.ADDRESS
+// Address Creator wallet address
     Address *string`json:"address,omitempty"`
 
-// IsVerified ENTITY.TOKEN_CREATOR.IS_VERIFIED
+// IsVerified Whether the creator is verified
     IsVerified *bool`json:"isVerified,omitempty"`
 
-// Share ENTITY.TOKEN_CREATOR.SHARE
+// Share Creator revenue share percentage
     Share *int64`json:"share,omitempty"`
 }
 
 // TokenExtra Token extra metadata
 type TokenExtra  struct {
-// CollectionAddress ENTITY.TOKEN_EXTRA.COLLECTION_ADDRESS
+// BannerUrl ENTITY.TOKEN_EXTRA.BANNER_URL
+    BannerUrl *string`json:"bannerUrl,omitempty"`
+
+// CollectionAddress NFT collection address
     CollectionAddress *string`json:"collectionAddress,omitempty"`
 
-// EditionNonce ENTITY.TOKEN_EXTRA.EDITION_NONCE
+// DexscreenerAd ENTITY.TOKEN_EXTRA.DEXSCREENER_AD
+    DexscreenerAd *bool`json:"dexscreenerAd,omitempty"`
+
+// DexscreenerAdAt ENTITY.TOKEN_EXTRA.DEXSCREENER_AD_AT
+    DexscreenerAdAt *int64`json:"dexscreenerAdAt,omitempty"`
+
+// DexscreenerBoostAt ENTITY.TOKEN_EXTRA.DEXSCREENER_BOOST_AT
+    DexscreenerBoostAt *int64`json:"dexscreenerBoostAt,omitempty"`
+
+// DexscreenerBoostFeeInUsd ENTITY.TOKEN_EXTRA.DEXSCREENER_BOOST_FEE_IN_USD
+    DexscreenerBoostFeeInUsd *string`json:"dexscreenerBoostFeeInUsd,omitempty"`
+
+// DexscreenerTrendingBar ENTITY.TOKEN_EXTRA.DEXSCREENER_TRENDING_BAR
+    DexscreenerTrendingBar *bool`json:"dexscreenerTrendingBar,omitempty"`
+
+// DexscreenerTrendingBarAt ENTITY.TOKEN_EXTRA.DEXSCREENER_TRENDING_BAR_AT
+    DexscreenerTrendingBarAt *int64`json:"dexscreenerTrendingBarAt,omitempty"`
+
+// DexscreenerUpdateLink ENTITY.TOKEN_EXTRA.DEXSCREENER_UPDATE_LINK
+    DexscreenerUpdateLink *bool`json:"dexscreenerUpdateLink,omitempty"`
+
+// DexscreenerUpdateLinkAt ENTITY.TOKEN_EXTRA.DEXSCREENER_UPDATE_LINK_AT
+    DexscreenerUpdateLinkAt *int64`json:"dexscreenerUpdateLinkAt,omitempty"`
+
+// EditionNonce Edition nonce value
     EditionNonce *int64`json:"editionNonce,omitempty"`
 
-// FreezeAuthority ENTITY.TOKEN_EXTRA.FREEZE_AUTHORITY
+// FreezeAuthority Freeze authority address
     FreezeAuthority *string`json:"freezeAuthority,omitempty"`
 
-// Fungible ENTITY.TOKEN_EXTRA.FUNGIBLE
+// Fungible Whether the token is fungible
     Fungible *bool`json:"fungible,omitempty"`
 
-// IsMutable ENTITY.TOKEN_EXTRA.IS_MUTABLE
+// IsMutable Whether metadata is mutable
     IsMutable *bool`json:"isMutable,omitempty"`
 
-// IsNative ENTITY.TOKEN_EXTRA.IS_NATIVE
+// IsNative Whether the token is native (e.g., SOL)
     IsNative *bool`json:"isNative,omitempty"`
 
-// IsVerifiedCollection ENTITY.TOKEN_EXTRA.IS_VERIFIED_COLLECTION
+// IsVerifiedCollection Whether the collection is verified
     IsVerifiedCollection *bool`json:"isVerifiedCollection,omitempty"`
 
-// IsWrapped ENTITY.TOKEN_EXTRA.IS_WRAPPED
+// IsWrapped Whether the token is wrapped
     IsWrapped *bool`json:"isWrapped,omitempty"`
 
-// Key ENTITY.TOKEN_EXTRA.KEY
+// Key Metaplex account key type
     Key *string`json:"key,omitempty"`
 
-// LaunchFromProgramAddress ENTITY.TOKEN_EXTRA.LAUNCH_FROM_PROGRAM_ADDRESS
+// LaunchFromProgramAddress Launch platform program address
     LaunchFromProgramAddress *string`json:"launchFromProgramAddress,omitempty"`
 
-// LaunchFromProtocolFamily ENTITY.TOKEN_EXTRA.LAUNCH_FROM_PROTOCOL_FAMILY
+// LaunchFromProtocolFamily Launch platform protocol family
     LaunchFromProtocolFamily *string`json:"launchFromProtocolFamily,omitempty"`
 
-// MigratedAt ENTITY.TOKEN_EXTRA.MIGRATED_AT
+// LaunchQuoteTokenAddress ENTITY.TOKEN_EXTRA.LAUNCH_QUOTE_TOKEN_ADDRESS
+    LaunchQuoteTokenAddress *string`json:"launchQuoteTokenAddress,omitempty"`
+
+// MigratedAt Migration timestamp (milliseconds)
     MigratedAt *int64`json:"migratedAt,omitempty"`
 
-// MigratedToPoolAddress ENTITY.TOKEN_EXTRA.MIGRATED_TO_POOL_ADDRESS
+// MigratedToPoolAddress Migrated-to pool address
     MigratedToPoolAddress *string`json:"migratedToPoolAddress,omitempty"`
 
-// MigratedToProgramAddress ENTITY.TOKEN_EXTRA.MIGRATED_TO_PROGRAM_ADDRESS
+// MigratedToProgramAddress Migrated-to program address
     MigratedToProgramAddress *string`json:"migratedToProgramAddress,omitempty"`
 
-// MigratedToProtocolFamily ENTITY.TOKEN_EXTRA.MIGRATED_TO_PROTOCOL_FAMILY
+// MigratedToProtocolFamily Migrated-to protocol family
     MigratedToProtocolFamily *string`json:"migratedToProtocolFamily,omitempty"`
 
-// MintAuthority ENTITY.TOKEN_EXTRA.MINT_AUTHORITY
+// MintAuthority Mint authority address
     MintAuthority *string`json:"mintAuthority,omitempty"`
 
-// PrimarySaleHappened ENTITY.TOKEN_EXTRA.PRIMARY_SALE_HAPPENED
+// PrimarySaleHappened Whether the primary sale has occurred
     PrimarySaleHappened *bool`json:"primarySaleHappened,omitempty"`
 
-// ProgramAddress ENTITY.TOKEN_EXTRA.PROGRAM_ADDRESS
+// ProgramAddress Token program address
     ProgramAddress *string`json:"programAddress,omitempty"`
 
-// SellerFeeBasisPoints ENTITY.TOKEN_EXTRA.SELLER_FEE_BASIS_POINTS
+// SellerFeeBasisPoints Seller fee in basis points
     SellerFeeBasisPoints *int64`json:"sellerFeeBasisPoints,omitempty"`
 
-// TokenStandard ENTITY.TOKEN_EXTRA.TOKEN_STANDARD
+// TokenStandard Token standard (e.g., Fungible)
     TokenStandard *string`json:"tokenStandard,omitempty"`
 
-// UpdateAuthority ENTITY.TOKEN_EXTRA.UPDATE_AUTHORITY
+// UpdateAuthority Update authority address
     UpdateAuthority *string`json:"updateAuthority,omitempty"`
 }
 
@@ -1846,10 +1908,10 @@ type TokenHolder  struct {
 // AddressLabel Specific address label (e.g. "Binance Hot Wallet 1"). Matches GMGN `name`.
     AddressLabel *string`json:"addressLabel,omitempty"`
 
-// Amount ENTITY.TOKEN_HOLDER.AMOUNT
+// Amount Token holding amount
     Amount string`json:"amount"`
 
-// AmountInUsd ENTITY.TOKEN_HOLDER.AMOUNT_IN_USD
+// AmountInUsd Token holding value in USD
     AmountInUsd string`json:"amountInUsd"`
 
 // AvgBuyPriceUsd Average buy price in USD per token (all-time)
@@ -1945,7 +2007,7 @@ type TokenHolder  struct {
 // NetflowUsd Net USD inflow (buy_volume_usd − sell_volume_usd); positive = net buyer
     NetflowUsd *string`json:"netflowUsd,omitempty"`
 
-// Percentage ENTITY.TOKEN_HOLDER.PERCENTAGE
+// Percentage Percentage of total supply held
     Percentage string`json:"percentage"`
 
 // PositionCostUsd Current open position cost in USD
@@ -2016,7 +2078,7 @@ type TokenHolder  struct {
 // UnrealizedProfit Unrealized PnL in USD (current position)
     UnrealizedProfit *string`json:"unrealizedProfit,omitempty"`
 
-// WalletAddress ENTITY.TOKEN_HOLDER.WALLET_ADDRESS
+// WalletAddress Holder wallet address
     WalletAddress string`json:"walletAddress"`
 
 // WalletTagV2 Global rank tag on this token when sorted by balance (e.g. "TOP1", "TOP2").
@@ -2093,28 +2155,28 @@ type TokenMarketData  struct {
 // All-time-high market cap in USD (max observed since token creation).
     AthMarketCapInUsd *string`json:"athMarketCapInUsd,omitempty"`
 
-// BluechipHoldingsRatio ENTITY.TOKEN_MARKET_DATA.BLUECHIP_HOLDINGS_RATIO
+// BluechipHoldingsRatio Ratio of bluechip holdings to total supply
     BluechipHoldingsRatio *string`json:"bluechipHoldingsRatio,omitempty"`
 
-// BluechipTotalHolders ENTITY.TOKEN_MARKET_DATA.BLUECHIP_TOTAL_HOLDERS
+// BluechipTotalHolders Number of bluechip wallet holders
     BluechipTotalHolders *string`json:"bluechipTotalHolders,omitempty"`
 
-// BluechipTotalHoldings ENTITY.TOKEN_MARKET_DATA.BLUECHIP_TOTAL_HOLDINGS
+// BluechipTotalHoldings Total holdings of bluechip wallets
     BluechipTotalHoldings *string`json:"bluechipTotalHoldings,omitempty"`
 
-// BundleHoldingsRatio ENTITY.TOKEN_MARKET_DATA.BUNDLE_HOLDINGS_RATIO
+// BundleHoldingsRatio Ratio of bundle holdings to total supply
     BundleHoldingsRatio *string`json:"bundleHoldingsRatio,omitempty"`
 
-// BundleTotalHolders ENTITY.TOKEN_MARKET_DATA.BUNDLE_TOTAL_HOLDERS
+// BundleTotalHolders Number of bundle wallet holders
     BundleTotalHolders *string`json:"bundleTotalHolders,omitempty"`
 
-// BundleTotalHoldings ENTITY.TOKEN_MARKET_DATA.BUNDLE_TOTAL_HOLDINGS
+// BundleTotalHoldings Total holdings of bundle wallets
     BundleTotalHoldings *string`json:"bundleTotalHoldings,omitempty"`
 
-// CirculatingSupply ENTITY.TOKEN_MARKET_DATA.CIRCULATING_SUPPLY
+// CirculatingSupply Circulating supply of the token
     CirculatingSupply *string`json:"circulatingSupply,omitempty"`
 
-// CompletionRatio ENTITY.TOKEN_MARKET_DATA.COMPLETION_RATIO
+// CompletionRatio Bonding curve completion ratio
     CompletionRatio *string`json:"completionRatio,omitempty"`
 
 // CreatorsHoldingsRatio ENTITY.TOKEN_MARKET_DATA.CREATORS_HOLDINGS_RATIO
@@ -2126,62 +2188,65 @@ type TokenMarketData  struct {
 // CreatorsTotalHoldings ENTITY.TOKEN_MARKET_DATA.CREATORS_TOTAL_HOLDINGS
     CreatorsTotalHoldings *string`json:"creatorsTotalHoldings,omitempty"`
 
-// DevHoldingsRatio ENTITY.TOKEN_MARKET_DATA.DEV_HOLDINGS_RATIO
+// DevHoldingsRatio Ratio of developer holdings to total supply
     DevHoldingsRatio *string`json:"devHoldingsRatio,omitempty"`
 
-// DevTotalHolders ENTITY.TOKEN_MARKET_DATA.DEV_TOTAL_HOLDERS
+// DevTotalHolders Number of developer wallet holders
     DevTotalHolders *string`json:"devTotalHolders,omitempty"`
 
-// DevTotalHoldings ENTITY.TOKEN_MARKET_DATA.DEV_TOTAL_HOLDINGS
+// DevTotalHoldings Total holdings of developer wallets
     DevTotalHoldings *string`json:"devTotalHoldings,omitempty"`
 
-// FdvInSol ENTITY.TOKEN_MARKET_DATA.FDV_IN_SOL
+// FdvInSol Fully diluted valuation in native token
     FdvInSol *string`json:"fdvInSol,omitempty"`
 
-// FdvInUsd ENTITY.TOKEN_MARKET_DATA.FDV_IN_USD
+// FdvInUsd Fully diluted valuation in USD
     FdvInUsd *string`json:"fdvInUsd,omitempty"`
 
-// FreshHoldingsRatio ENTITY.TOKEN_MARKET_DATA.FRESH_HOLDINGS_RATIO
+// FreshHoldingsRatio Ratio of fresh wallet holdings to total supply
     FreshHoldingsRatio *string`json:"freshHoldingsRatio,omitempty"`
 
-// FreshTotalHolders ENTITY.TOKEN_MARKET_DATA.FRESH_TOTAL_HOLDERS
+// FreshTotalHolders Number of fresh (new) wallet holders
     FreshTotalHolders *string`json:"freshTotalHolders,omitempty"`
 
-// FreshTotalHoldings ENTITY.TOKEN_MARKET_DATA.FRESH_TOTAL_HOLDINGS
+// FreshTotalHoldings Total holdings of fresh wallets
     FreshTotalHoldings *string`json:"freshTotalHoldings,omitempty"`
 
-// Holders ENTITY.TOKEN_MARKET_DATA.HOLDERS
+// Holders Total number of token holders
     Holders *string`json:"holders,omitempty"`
 
-// InsiderHoldingsRatio ENTITY.TOKEN_MARKET_DATA.INSIDER_HOLDINGS_RATIO
+// InsiderHoldingsRatio Ratio of insider holdings to total supply
     InsiderHoldingsRatio *string`json:"insiderHoldingsRatio,omitempty"`
 
-// InsiderTotalHolders ENTITY.TOKEN_MARKET_DATA.INSIDER_TOTAL_HOLDERS
+// InsiderTotalHolders Number of insider wallet holders
     InsiderTotalHolders *string`json:"insiderTotalHolders,omitempty"`
 
-// InsiderTotalHoldings ENTITY.TOKEN_MARKET_DATA.INSIDER_TOTAL_HOLDINGS
+// InsiderTotalHoldings Total holdings of insider wallets
     InsiderTotalHoldings *string`json:"insiderTotalHoldings,omitempty"`
 
-// KolHoldingsRatio ENTITY.TOKEN_MARKET_DATA.KOL_HOLDINGS_RATIO
+// KolHoldingsRatio Ratio of KOL holdings to total supply
     KolHoldingsRatio *string`json:"kolHoldingsRatio,omitempty"`
 
-// KolTotalHolders ENTITY.TOKEN_MARKET_DATA.KOL_TOTAL_HOLDERS
+// KolTotalHolders Number of KOL (Key Opinion Leader) holders
     KolTotalHolders *string`json:"kolTotalHolders,omitempty"`
 
-// KolTotalHoldings ENTITY.TOKEN_MARKET_DATA.KOL_TOTAL_HOLDINGS
+// KolTotalHoldings Total holdings of KOL wallets
     KolTotalHoldings *string`json:"kolTotalHoldings,omitempty"`
 
-// MarketCapInSol ENTITY.TOKEN_MARKET_DATA.MARKET_CAP_IN_SOL
+// MarketCapInSol Market capitalization in native token
     MarketCapInSol *string`json:"marketCapInSol,omitempty"`
 
-// MarketCapInUsd ENTITY.TOKEN_MARKET_DATA.MARKET_CAP_IN_USD
+// MarketCapInUsd Market capitalization in USD
     MarketCapInUsd *string`json:"marketCapInUsd,omitempty"`
 
-// MaxPoolTvlInSol ENTITY.TOKEN_MARKET_DATA.MAX_POOL_TVL_IN_SOL
+// MaxPoolTvlInSol Maximum pool TVL in native token
     MaxPoolTvlInSol *string`json:"maxPoolTvlInSol,omitempty"`
 
-// MaxPoolTvlInUsd ENTITY.TOKEN_MARKET_DATA.MAX_POOL_TVL_IN_USD
+// MaxPoolTvlInUsd Maximum pool TVL in USD
     MaxPoolTvlInUsd *string`json:"maxPoolTvlInUsd,omitempty"`
+
+// MaxSupply ENTITY.TOKEN_MARKET_DATA.MAX_SUPPLY
+    MaxSupply *string`json:"maxSupply,omitempty"`
 
 // PhishingHoldingsRatio ENTITY.TOKEN_MARKET_DATA.PHISHING_HOLDINGS_RATIO
     PhishingHoldingsRatio *string`json:"phishingHoldingsRatio,omitempty"`
@@ -2192,19 +2257,22 @@ type TokenMarketData  struct {
 // PhishingTotalHoldings ENTITY.TOKEN_MARKET_DATA.PHISHING_TOTAL_HOLDINGS
     PhishingTotalHoldings *string`json:"phishingTotalHoldings,omitempty"`
 
-// PriceInSol ENTITY.TOKEN_MARKET_DATA.PRICE_IN_SOL
+// PriceInNative ENTITY.TOKEN_MARKET_DATA.PRICE_IN_NATIVE
+    PriceInNative *string`json:"priceInNative,omitempty"`
+
+// PriceInSol Token price in native token
     PriceInSol *string`json:"priceInSol,omitempty"`
 
-// PriceInUsd ENTITY.TOKEN_MARKET_DATA.PRICE_IN_USD
+// PriceInUsd Token price in USD
     PriceInUsd *string`json:"priceInUsd,omitempty"`
 
-// ProHoldingsRatio ENTITY.TOKEN_MARKET_DATA.PRO_HOLDINGS_RATIO
+// ProHoldingsRatio Ratio of professional trader holdings to total supply
     ProHoldingsRatio *string`json:"proHoldingsRatio,omitempty"`
 
-// ProTotalHolders ENTITY.TOKEN_MARKET_DATA.PRO_TOTAL_HOLDERS
+// ProTotalHolders Number of professional trader holders
     ProTotalHolders *string`json:"proTotalHolders,omitempty"`
 
-// ProTotalHoldings ENTITY.TOKEN_MARKET_DATA.PRO_TOTAL_HOLDINGS
+// ProTotalHoldings Total holdings of professional traders
     ProTotalHoldings *string`json:"proTotalHoldings,omitempty"`
 
 // RatHoldingsRatio ENTITY.TOKEN_MARKET_DATA.RAT_HOLDINGS_RATIO
@@ -2216,13 +2284,13 @@ type TokenMarketData  struct {
 // RatTotalHoldings ENTITY.TOKEN_MARKET_DATA.RAT_TOTAL_HOLDINGS
     RatTotalHoldings *string`json:"ratTotalHoldings,omitempty"`
 
-// SandwishHoldingsRatio ENTITY.TOKEN_MARKET_DATA.SANDWISH_HOLDINGS_RATIO
+// SandwishHoldingsRatio Ratio of sandwich attack holdings to total supply
     SandwishHoldingsRatio *string`json:"sandwishHoldingsRatio,omitempty"`
 
-// SandwishTotalHolders ENTITY.TOKEN_MARKET_DATA.SANDWISH_TOTAL_HOLDERS
+// SandwishTotalHolders Number of sandwich attack wallet holders
     SandwishTotalHolders *string`json:"sandwishTotalHolders,omitempty"`
 
-// SandwishTotalHoldings ENTITY.TOKEN_MARKET_DATA.SANDWISH_TOTAL_HOLDINGS
+// SandwishTotalHoldings Total holdings of sandwich attack wallets
     SandwishTotalHoldings *string`json:"sandwishTotalHoldings,omitempty"`
 
 // SmartHoldingsRatio ENTITY.TOKEN_MARKET_DATA.SMART_HOLDINGS_RATIO
@@ -2234,121 +2302,128 @@ type TokenMarketData  struct {
 // SmartTotalHoldings ENTITY.TOKEN_MARKET_DATA.SMART_TOTAL_HOLDINGS
     SmartTotalHoldings *string`json:"smartTotalHoldings,omitempty"`
 
-// SniperHoldingsRatio ENTITY.TOKEN_MARKET_DATA.SNIPER_HOLDINGS_RATIO
+// SniperHoldingsRatio Ratio of sniper holdings to total supply
     SniperHoldingsRatio *string`json:"sniperHoldingsRatio,omitempty"`
 
-// SniperTotalHolders ENTITY.TOKEN_MARKET_DATA.SNIPER_TOTAL_HOLDERS
+// SniperTotalHolders Number of sniper wallet holders
     SniperTotalHolders *string`json:"sniperTotalHolders,omitempty"`
 
-// SniperTotalHoldings ENTITY.TOKEN_MARKET_DATA.SNIPER_TOTAL_HOLDINGS
+// SniperTotalHoldings Total holdings of sniper wallets
     SniperTotalHoldings *string`json:"sniperTotalHoldings,omitempty"`
 
-// Top100HoldingsRatio ENTITY.TOKEN_MARKET_DATA.TOP100_HOLDINGS_RATIO
+// Top100HoldingsRatio Ratio of top 100 holders to total supply
     Top100HoldingsRatio *string`json:"top100HoldingsRatio,omitempty"`
 
-// Top100TotalHoldings ENTITY.TOKEN_MARKET_DATA.TOP100_TOTAL_HOLDINGS
+// Top100TotalHoldings Total holdings of top 100 holders
     Top100TotalHoldings *string`json:"top100TotalHoldings,omitempty"`
 
-// Top10HoldingsRatio ENTITY.TOKEN_MARKET_DATA.TOP10_HOLDINGS_RATIO
+// Top10HoldingsRatio Ratio of top 10 holders to total supply
     Top10HoldingsRatio *string`json:"top10HoldingsRatio,omitempty"`
 
-// Top10TotalHoldings ENTITY.TOKEN_MARKET_DATA.TOP10_TOTAL_HOLDINGS
+// Top10TotalHoldings Total holdings of top 10 holders
     Top10TotalHoldings *string`json:"top10TotalHoldings,omitempty"`
 
-// Top50HoldingsRatio ENTITY.TOKEN_MARKET_DATA.TOP50_HOLDINGS_RATIO
+// Top50HoldingsRatio Ratio of top 50 holders to total supply
     Top50HoldingsRatio *string`json:"top50HoldingsRatio,omitempty"`
 
-// Top50TotalHoldings ENTITY.TOKEN_MARKET_DATA.TOP50_TOTAL_HOLDINGS
+// Top50TotalHoldings Total holdings of top 50 holders
     Top50TotalHoldings *string`json:"top50TotalHoldings,omitempty"`
 
-// TotalSupply ENTITY.TOKEN_MARKET_DATA.TOTAL_SUPPLY
+// TotalSupply Total supply of the token
     TotalSupply *string`json:"totalSupply,omitempty"`
 
-// TotalTvlInSol ENTITY.TOKEN_MARKET_DATA.TOTAL_TVL_IN_SOL
+// TotalTvlInSol Total value locked in native token
     TotalTvlInSol *string`json:"totalTvlInSol,omitempty"`
 
-// TotalTvlInUsd ENTITY.TOKEN_MARKET_DATA.TOTAL_TVL_IN_USD
+// TotalTvlInUsd Total value locked in USD
     TotalTvlInUsd *string`json:"totalTvlInUsd,omitempty"`
 }
 
 // TokenMetadata Token metadata
 type TokenMetadata  struct {
-// Address ENTITY.TOKEN_METADATA.ADDRESS
+// Address Token contract address
     Address string`json:"address"`
 
-// Chain ENTITY.TOKEN_METADATA.CHAIN
+// Chain Blockchain network identifier
     Chain string`json:"chain"`
 
-// CoingeckoCoinId ENTITY.TOKEN_METADATA.COINGECKO_COIN_ID
+// CoingeckoCoinId CoinGecko coin identifier
     CoingeckoCoinId *string`json:"coingeckoCoinId,omitempty"`
 
-// Decimals ENTITY.TOKEN_METADATA.DECIMALS
+// Decimals Number of decimal places
     Decimals string`json:"decimals"`
 
-// Description ENTITY.TOKEN_METADATA.DESCRIPTION
+// Description Token description
     Description *string`json:"description,omitempty"`
 
-// DevLastTokenCreatedAt ENTITY.TOKEN_METADATA.DEV_LAST_TOKEN_CREATED_AT
+// DevLastTokenCreatedAt Timestamp of developer last token creation
     DevLastTokenCreatedAt *string`json:"devLastTokenCreatedAt,omitempty"`
 
-// DevTotalTokens ENTITY.TOKEN_METADATA.DEV_TOTAL_TOKENS
+// DevTotalTokens Total number of tokens created by the developer
     DevTotalTokens *string`json:"devTotalTokens,omitempty"`
 
 // Extra Token extra metadata
     Extra *TokenExtra`json:"extra,omitempty"`
 
-// ImageUrl ENTITY.TOKEN_METADATA.IMAGE_URL
+// FirstTradeAt ENTITY.TOKEN_METADATA.FIRST_TRADE_AT
+    FirstTradeAt *int64`json:"firstTradeAt,omitempty"`
+
+// ImageUrl Token logo image URL
     ImageUrl *string`json:"imageUrl,omitempty"`
 
-// MetadataAddress ENTITY.TOKEN_METADATA.METADATA_ADDRESS
+// MetadataAddress On-chain metadata account address
     MetadataAddress *string`json:"metadataAddress,omitempty"`
 
-// Name ENTITY.TOKEN_METADATA.NAME
+// Name Token display name
     Name string`json:"name"`
 
 // SocialMedias Token social media links
     SocialMedias *TokenSocialMedias`json:"socialMedias,omitempty"`
 
-// Symbol ENTITY.TOKEN_METADATA.SYMBOL
+// Symbol Token ticker symbol
     Symbol string`json:"symbol"`
 
-// TokenCreatedAt ENTITY.TOKEN_METADATA.TOKEN_CREATED_AT
+// TokenCreatedAt Token creation timestamp (milliseconds)
     TokenCreatedAt *int64`json:"tokenCreatedAt,omitempty"`
 
-// TokenCreatedBlockHeight ENTITY.TOKEN_METADATA.TOKEN_CREATED_BLOCK_HEIGHT
+// TokenCreatedBlockHeight Block height when token was created
     TokenCreatedBlockHeight *string`json:"tokenCreatedBlockHeight,omitempty"`
 
-// TokenCreatedSlot ENTITY.TOKEN_METADATA.TOKEN_CREATED_SLOT
+// TokenCreatedSlot Slot number when token was created
     TokenCreatedSlot *string`json:"tokenCreatedSlot,omitempty"`
 
-// TokenCreatedTxSignature ENTITY.TOKEN_METADATA.TOKEN_CREATED_TX_SIGNATURE
+// TokenCreatedTxSignature Transaction signature of token creation
     TokenCreatedTxSignature *string`json:"tokenCreatedTxSignature,omitempty"`
 
-// TokenCreators ENTITY.TOKEN_METADATA.TOKEN_CREATORS
+// TokenCreators List of token creators
     TokenCreators *[]TokenCreator`json:"tokenCreators,omitempty"`
 
-// UpdatedAt ENTITY.TOKEN_METADATA.UPDATED_AT
+// Translations Token translations for multi-locale display (e.g. Chinese markets).
+// Sourced from CoinGecko `/coins/{id}` localization or community data.
+    Translations *TokenTranslations`json:"translations,omitempty"`
+
+// UpdatedAt Last updated timestamp
     UpdatedAt *string`json:"updatedAt,omitempty"`
 
-// Uri ENTITY.TOKEN_METADATA.URI
+// Uri Token metadata URI
     Uri *string`json:"uri,omitempty"`
 }
 
 // TokenPage Token search result page — mirrors TS `TokenPage`.
 type TokenPage  struct {
-// Data ENTITY.TOKEN_PAGE.DATA
+// Data List of tokens
     Data []Token`json:"data"`
 
-// EndCursor ENTITY.TOKEN_PAGE.END_CURSOR
+// EndCursor Cursor for the end of current page
     EndCursor *string`json:"endCursor,omitempty"`
 
-// HasNext ENTITY.TOKEN_PAGE.HAS_NEXT
+// HasNext Whether there is a next page
     HasNext *bool`json:"hasNext,omitempty"`
 
-// HasPrev ENTITY.TOKEN_PAGE.HAS_PREV
+// HasPrev Whether there is a previous page
     HasPrev *bool`json:"hasPrev,omitempty"`
 
-// StartCursor ENTITY.TOKEN_PAGE.START_CURSOR
+// StartCursor Cursor for the start of current page
     StartCursor *string`json:"startCursor,omitempty"`
 }
 
@@ -2356,6 +2431,9 @@ type TokenPage  struct {
 type TokenPrice  struct {
 // Address Token address
     Address string`json:"address"`
+
+// PriceInNative Price in native token (alias)
+    PriceInNative *string`json:"priceInNative,omitempty"`
 
 // PriceInSol Price in native token
     PriceInSol *string`json:"priceInSol,omitempty"`
@@ -2369,13 +2447,34 @@ type TokenPrice  struct {
 
 // TokenSecurityResponse defines model for TokenSecurityResponse.
 type TokenSecurityResponse  struct {
-// Address ENTITY.TOKEN_SECURITY.ADDRESS
+// Address Token contract address
     Address string`json:"address"`
 
-// Chain ENTITY.TOKEN_SECURITY.CHAIN
+// Chain Chain name
     Chain string`json:"chain"`
+
+// DevTokenBurnAmount ENTITY.TOKEN_SECURITY.DEV_TOKEN_BURN_AMOUNT
+    DevTokenBurnAmount *string`json:"devTokenBurnAmount,omitempty"`
+
+// DevTokenBurnRatio ENTITY.TOKEN_SECURITY.DEV_TOKEN_BURN_RATIO
+    DevTokenBurnRatio *string`json:"devTokenBurnRatio,omitempty"`
     Goplus *GoPlusSecurityInfo`json:"goplus,omitempty"`
     Honeypot *HoneypotIsSecurityInfo`json:"honeypot,omitempty"`
+
+// IsFreezable Whether the token accounts can be frozen
+    IsFreezable *bool`json:"isFreezable,omitempty"`
+
+// IsMintable Whether the token is mintable
+    IsMintable *bool`json:"isMintable,omitempty"`
+
+// IsShowAlert ENTITY.TOKEN_SECURITY.IS_SHOW_ALERT
+    IsShowAlert *bool`json:"isShowAlert,omitempty"`
+
+// LockInfo LP lock information for a token.
+    LockInfo *LockInfo`json:"lockInfo,omitempty"`
+
+// Privileges ENTITY.TOKEN_SECURITY.PRIVILEGES
+    Privileges *[]PrivilegeInfo`json:"privileges,omitempty"`
     Serialized *SerializedSecurityInfo`json:"serialized,omitempty"`
 
 // SourcesAvailable ENTITY.TOKEN_SECURITY.SOURCES_AVAILABLE
@@ -2384,49 +2483,52 @@ type TokenSecurityResponse  struct {
 
 // TokenSocialMedias Token social media links
 type TokenSocialMedias  struct {
-// Bitbucket ENTITY.TOKEN_SOCIAL_MEDIAS.BITBUCKET
+// Bitbucket Bitbucket repository URL
     Bitbucket *string`json:"bitbucket,omitempty"`
 
-// Discord ENTITY.TOKEN_SOCIAL_MEDIAS.DISCORD
+// Discord Discord server URL
     Discord *string`json:"discord,omitempty"`
 
-// Facebook ENTITY.TOKEN_SOCIAL_MEDIAS.FACEBOOK
+// Facebook Facebook page URL
     Facebook *string`json:"facebook,omitempty"`
 
-// Github ENTITY.TOKEN_SOCIAL_MEDIAS.GITHUB
+// Farcaster ENTITY.TOKEN_SOCIAL_MEDIAS.FARCASTER
+    Farcaster *string`json:"farcaster,omitempty"`
+
+// Github GitHub repository URL
     Github *string`json:"github,omitempty"`
 
-// Instagram ENTITY.TOKEN_SOCIAL_MEDIAS.INSTAGRAM
+// Instagram Instagram handle
     Instagram *string`json:"instagram,omitempty"`
 
-// Linkedin ENTITY.TOKEN_SOCIAL_MEDIAS.LINKEDIN
+// Linkedin LinkedIn page URL
     Linkedin *string`json:"linkedin,omitempty"`
 
-// Medium ENTITY.TOKEN_SOCIAL_MEDIAS.MEDIUM
+// Medium Medium blog URL
     Medium *string`json:"medium,omitempty"`
 
-// Reddit ENTITY.TOKEN_SOCIAL_MEDIAS.REDDIT
+// Reddit Reddit community URL
     Reddit *string`json:"reddit,omitempty"`
 
-// Telegram ENTITY.TOKEN_SOCIAL_MEDIAS.TELEGRAM
+// Telegram Telegram group URL
     Telegram *string`json:"telegram,omitempty"`
 
-// Tiktok ENTITY.TOKEN_SOCIAL_MEDIAS.TIKTOK
+// Tiktok TikTok handle
     Tiktok *string`json:"tiktok,omitempty"`
 
-// Twitter ENTITY.TOKEN_SOCIAL_MEDIAS.TWITTER
+// Twitter Twitter handle or URL
     Twitter *string`json:"twitter,omitempty"`
 
-// Website ENTITY.TOKEN_SOCIAL_MEDIAS.WEBSITE
+// Website Official website URL
     Website *string`json:"website,omitempty"`
 
-// Youtube ENTITY.TOKEN_SOCIAL_MEDIAS.YOUTUBE
+// Youtube YouTube channel URL
     Youtube *string`json:"youtube,omitempty"`
 }
 
 // TokenStats Token statistics with nested time period data
 type TokenStats  struct {
-// Address ENTITY.TOKEN_STATS.ADDRESS
+// Address Token contract address
     Address string`json:"address"`
 
 // Periods Trade statistics grouped by time period (1m, 5m, 15m, 30m, 1h, 4h, 6h, 24h).
@@ -2437,166 +2539,166 @@ type TokenStats  struct {
 
 // TokenTradeStatPeriod Single time window trade statistics period
 type TokenTradeStatPeriod  struct {
-// AveragePriceInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.AVERAGE_PRICE_IN_NATIVE
+// AveragePriceInNative Average price in native token
     AveragePriceInNative *string`json:"averagePriceInNative,omitempty"`
 
-// AveragePriceInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.AVERAGE_PRICE_IN_USD
+// AveragePriceInUsd Average price in USD
     AveragePriceInUsd *string`json:"averagePriceInUsd,omitempty"`
 
-// BuySellRatio ENTITY.TOKEN_TRADE_STAT_PERIOD.BUY_SELL_RATIO
+// BuySellRatio Buy to sell ratio
     BuySellRatio *string`json:"buySellRatio,omitempty"`
 
-// BuyVolume ENTITY.TOKEN_TRADE_STAT_PERIOD.BUY_VOLUME
+// BuyVolume Buy volume in token amount
     BuyVolume *string`json:"buyVolume,omitempty"`
 
-// BuyVolumeInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.BUY_VOLUME_IN_NATIVE
+// BuyVolumeInNative Buy volume in native token
     BuyVolumeInNative *string`json:"buyVolumeInNative,omitempty"`
 
-// BuyVolumeInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.BUY_VOLUME_IN_USD
+// BuyVolumeInUsd Buy volume in USD
     BuyVolumeInUsd *string`json:"buyVolumeInUsd,omitempty"`
 
-// Buyers ENTITY.TOKEN_TRADE_STAT_PERIOD.BUYERS
+// Buyers Number of unique buyers
     Buyers *string`json:"buyers,omitempty"`
 
-// Buys ENTITY.TOKEN_TRADE_STAT_PERIOD.BUYS
+// Buys Number of buy trades
     Buys *string`json:"buys,omitempty"`
 
-// CloseInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.CLOSE_IN_NATIVE
+// CloseInNative Closing price in native token
     CloseInNative *string`json:"closeInNative,omitempty"`
 
-// CloseInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.CLOSE_IN_USD
+// CloseInUsd Closing price in USD
     CloseInUsd *string`json:"closeInUsd,omitempty"`
 
-// CurrentLiquidityInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.CURRENT_LIQUIDITY_IN_USD
+// CurrentLiquidityInUsd Current liquidity in USD
     CurrentLiquidityInUsd *string`json:"currentLiquidityInUsd,omitempty"`
 
-// DappProgramCount ENTITY.TOKEN_TRADE_STAT_PERIOD.DAPP_PROGRAM_COUNT
+// DappProgramCount Number of DEX programs
     DappProgramCount *string`json:"dappProgramCount,omitempty"`
 
-// HighInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.HIGH_IN_NATIVE
+// HighInNative Highest price in native token
     HighInNative *string`json:"highInNative,omitempty"`
 
-// HighInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.HIGH_IN_USD
+// HighInUsd Highest price in USD
     HighInUsd *string`json:"highInUsd,omitempty"`
 
-// LiquidityChangeRatio ENTITY.TOKEN_TRADE_STAT_PERIOD.LIQUIDITY_CHANGE_RATIO
+// LiquidityChangeRatio Liquidity change ratio vs previous period
     LiquidityChangeRatio *string`json:"liquidityChangeRatio,omitempty"`
 
-// LowInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.LOW_IN_NATIVE
+// LowInNative Lowest price in native token
     LowInNative *string`json:"lowInNative,omitempty"`
 
-// LowInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.LOW_IN_USD
+// LowInUsd Lowest price in USD
     LowInUsd *string`json:"lowInUsd,omitempty"`
 
-// OpenInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.OPEN_IN_NATIVE
+// OpenInNative Opening price in native token
     OpenInNative *string`json:"openInNative,omitempty"`
 
-// OpenInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.OPEN_IN_USD
+// OpenInUsd Opening price in USD
     OpenInUsd *string`json:"openInUsd,omitempty"`
 
-// PoolCount ENTITY.TOKEN_TRADE_STAT_PERIOD.POOL_COUNT
+// PoolCount Number of liquidity pools
     PoolCount *string`json:"poolCount,omitempty"`
 
-// PrevBuyVolume ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_BUY_VOLUME
+// PrevBuyVolume Previous period buy volume in token amount
     PrevBuyVolume *string`json:"prevBuyVolume,omitempty"`
 
-// PrevBuyVolumeInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_BUY_VOLUME_IN_NATIVE
+// PrevBuyVolumeInNative Previous period buy volume in native token
     PrevBuyVolumeInNative *string`json:"prevBuyVolumeInNative,omitempty"`
 
-// PrevBuyVolumeInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_BUY_VOLUME_IN_USD
+// PrevBuyVolumeInUsd Previous period buy volume in USD
     PrevBuyVolumeInUsd *string`json:"prevBuyVolumeInUsd,omitempty"`
 
-// PrevBuyers ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_BUYERS
+// PrevBuyers Previous period unique buyer count
     PrevBuyers *string`json:"prevBuyers,omitempty"`
 
-// PrevBuys ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_BUYS
+// PrevBuys Previous period buy count
     PrevBuys *string`json:"prevBuys,omitempty"`
 
-// PrevCloseInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_CLOSE_IN_NATIVE
+// PrevCloseInNative Previous period closing price in native token
     PrevCloseInNative *string`json:"prevCloseInNative,omitempty"`
 
-// PrevCloseInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_CLOSE_IN_USD
+// PrevCloseInUsd Previous period closing price in USD
     PrevCloseInUsd *string`json:"prevCloseInUsd,omitempty"`
 
-// PrevDappProgramCount ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_DAPP_PROGRAM_COUNT
+// PrevDappProgramCount Previous period DEX program count
     PrevDappProgramCount *string`json:"prevDappProgramCount,omitempty"`
 
-// PrevHighInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_HIGH_IN_NATIVE
+// PrevHighInNative Previous period highest price in native token
     PrevHighInNative *string`json:"prevHighInNative,omitempty"`
 
-// PrevHighInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_HIGH_IN_USD
+// PrevHighInUsd Previous period highest price in USD
     PrevHighInUsd *string`json:"prevHighInUsd,omitempty"`
 
-// PrevLiquidityInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_LIQUIDITY_IN_USD
+// PrevLiquidityInUsd Previous period liquidity in USD
     PrevLiquidityInUsd *string`json:"prevLiquidityInUsd,omitempty"`
 
-// PrevLowInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_LOW_IN_NATIVE
+// PrevLowInNative Previous period lowest price in native token
     PrevLowInNative *string`json:"prevLowInNative,omitempty"`
 
-// PrevLowInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_LOW_IN_USD
+// PrevLowInUsd Previous period lowest price in USD
     PrevLowInUsd *string`json:"prevLowInUsd,omitempty"`
 
-// PrevOpenInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_OPEN_IN_NATIVE
+// PrevOpenInNative Previous period opening price in native token
     PrevOpenInNative *string`json:"prevOpenInNative,omitempty"`
 
-// PrevOpenInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_OPEN_IN_USD
+// PrevOpenInUsd Previous period opening price in USD
     PrevOpenInUsd *string`json:"prevOpenInUsd,omitempty"`
 
-// PrevPoolCount ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_POOL_COUNT
+// PrevPoolCount Previous period pool count
     PrevPoolCount *string`json:"prevPoolCount,omitempty"`
 
-// PrevSellVolume ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_SELL_VOLUME
+// PrevSellVolume Previous period sell volume in token amount
     PrevSellVolume *string`json:"prevSellVolume,omitempty"`
 
-// PrevSellVolumeInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_SELL_VOLUME_IN_NATIVE
+// PrevSellVolumeInNative Previous period sell volume in native token
     PrevSellVolumeInNative *string`json:"prevSellVolumeInNative,omitempty"`
 
-// PrevSellVolumeInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_SELL_VOLUME_IN_USD
+// PrevSellVolumeInUsd Previous period sell volume in USD
     PrevSellVolumeInUsd *string`json:"prevSellVolumeInUsd,omitempty"`
 
-// PrevSellers ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_SELLERS
+// PrevSellers Previous period unique seller count
     PrevSellers *string`json:"prevSellers,omitempty"`
 
-// PrevSells ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_SELLS
+// PrevSells Previous period sell count
     PrevSells *string`json:"prevSells,omitempty"`
 
-// PrevTrades ENTITY.TOKEN_TRADE_STAT_PERIOD.PREV_TRADES
+// PrevTrades Previous period total trade count
     PrevTrades *string`json:"prevTrades,omitempty"`
 
-// PriceChangeRatioInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.PRICE_CHANGE_RATIO_IN_USD
+// PriceChangeRatioInUsd Price change ratio in USD
     PriceChangeRatioInUsd *string`json:"priceChangeRatioInUsd,omitempty"`
 
-// SellVolume ENTITY.TOKEN_TRADE_STAT_PERIOD.SELL_VOLUME
+// SellVolume Sell volume in token amount
     SellVolume *string`json:"sellVolume,omitempty"`
 
-// SellVolumeInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.SELL_VOLUME_IN_NATIVE
+// SellVolumeInNative Sell volume in native token
     SellVolumeInNative *string`json:"sellVolumeInNative,omitempty"`
 
-// SellVolumeInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.SELL_VOLUME_IN_USD
+// SellVolumeInUsd Sell volume in USD
     SellVolumeInUsd *string`json:"sellVolumeInUsd,omitempty"`
 
-// Sellers ENTITY.TOKEN_TRADE_STAT_PERIOD.SELLERS
+// Sellers Number of unique sellers
     Sellers *string`json:"sellers,omitempty"`
 
-// Sells ENTITY.TOKEN_TRADE_STAT_PERIOD.SELLS
+// Sells Number of sell trades
     Sells *string`json:"sells,omitempty"`
 
-// TotalVolumeInNative ENTITY.TOKEN_TRADE_STAT_PERIOD.TOTAL_VOLUME_IN_NATIVE
+// TotalVolumeInNative Total trading volume in native token
     TotalVolumeInNative *string`json:"totalVolumeInNative,omitempty"`
 
-// TotalVolumeInUsd ENTITY.TOKEN_TRADE_STAT_PERIOD.TOTAL_VOLUME_IN_USD
+// TotalVolumeInUsd Total trading volume in USD
     TotalVolumeInUsd *string`json:"totalVolumeInUsd,omitempty"`
 
-// Traders ENTITY.TOKEN_TRADE_STAT_PERIOD.TRADERS
+// Traders Number of unique traders
     Traders *string`json:"traders,omitempty"`
 
-// Trades ENTITY.TOKEN_TRADE_STAT_PERIOD.TRADES
+// Trades Total number of trades
     Trades *string`json:"trades,omitempty"`
 
-// UpdatedAt ENTITY.TOKEN_TRADE_STAT_PERIOD.UPDATED_AT
+// UpdatedAt Last updated timestamp
     UpdatedAt *string`json:"updatedAt,omitempty"`
 
-// VolumeChangeRatio ENTITY.TOKEN_TRADE_STAT_PERIOD.VOLUME_CHANGE_RATIO
+// VolumeChangeRatio Volume change ratio vs previous period
     VolumeChangeRatio *string`json:"volumeChangeRatio,omitempty"`
 }
 
@@ -2605,8 +2707,17 @@ type TokenTraderTag  string
 
 // TokenTransferTotal Token transfer total count
 type TokenTransferTotal  struct {
-// Total ENTITY.TOKEN_TRANSFER_TOTAL.TOTAL
+// Total Total number of transfers
     Total int64`json:"total"`
+}
+
+// TokenTranslations Token translations for multi-locale display (e.g. Chinese markets).
+// Sourced from CoinGecko `/coins/{id}` localization or community data.
+type TokenTranslations  struct {
+    NameZhcn *string`json:"nameZhcn,omitempty"`
+    SymbolZhcn *string`json:"symbolZhcn,omitempty"`
+    TransName *string`json:"transName,omitempty"`
+    TransSymbol *string`json:"transSymbol,omitempty"`
 }
 
 // TraderSortBy Sort field for top traders query
@@ -2625,35 +2736,35 @@ type bearerAuthContextKey  string
 
 // SearchParams defines parameters for Search.
 type SearchParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// Chains DTO.TOKEN.SEARCH.CHAINS
+// Chains Chain filter
     Chains *[]string`form:"chains,omitempty" json:"chains,omitempty"`
 
-// Q DTO.TOKEN.SEARCH.QUERY
+// Q Search query string for token name, symbol or address
     Q *string`form:"q,omitempty" json:"q,omitempty"`
 
-// Sort DTO.TOKEN.SEARCH.SORT_DIRECTION
+// Sort Sort direction
     Sort *struct {
 union json.RawMessage
 }`form:"sort,omitempty" json:"sort,omitempty"`
 
-// Protocols DTO.TOKEN.SEARCH.PROTOCOLS
+// Protocols Protocol filter
     Protocols *[]string`form:"protocols,omitempty" json:"protocols,omitempty"`
 
-// SortBy DTO.TOKEN.SEARCH.SORT_BY
+// SortBy Field to sort by
     SortBy *SearchSortBy`form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
-// Mode DTO.TOKEN.SEARCH.MODE
+// Mode Search mode: fast (default, returns basic fields) or normal (returns full token details)
     Mode *struct {
 union json.RawMessage
 }`form:"mode,omitempty" json:"mode,omitempty"`
@@ -2663,13 +2774,13 @@ union json.RawMessage
 
 // GetDevTokensParams defines parameters for GetDevTokens.
 type GetDevTokensParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
@@ -2679,399 +2790,399 @@ union json.RawMessage
 
 // ListTokenParams defines parameters for ListToken.
 type ListTokenParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// Sort DTO.TOKEN.LIST.SORT_DIRECTION
+// Sort Sort direction (asc or desc)
     Sort *SortDirection`form:"sort,omitempty" json:"sort,omitempty"`
 
-// SortBy DTO.TOKEN.LIST.QUERY.SORT_BY
+// SortBy Sort by field
     SortBy *TokenListSortField`form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
-// MinH24VolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_H24_VOLUME_IN_USD
+// MinH24VolumeInUsd Minimum 24h volume in USD
     MinH24VolumeInUsd *string`form:"min_h24_volume_in_usd,omitempty" json:"min_h24_volume_in_usd,omitempty"`
 
-// MaxH24VolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_H24_VOLUME_IN_USD
+// MaxH24VolumeInUsd Maximum 24h volume in USD
     MaxH24VolumeInUsd *string`form:"max_h24_volume_in_usd,omitempty" json:"max_h24_volume_in_usd,omitempty"`
 
-// MinH24PriceChangeRatio DTO.TOKEN.LIST.QUERY.MIN_H24_PRICE_CHANGE_RATIO
+// MinH24PriceChangeRatio Minimum 24h price change ratio
     MinH24PriceChangeRatio *string`form:"min_h24_price_change_ratio,omitempty" json:"min_h24_price_change_ratio,omitempty"`
 
-// MaxH24PriceChangeRatio DTO.TOKEN.LIST.QUERY.MAX_H24_PRICE_CHANGE_RATIO
+// MaxH24PriceChangeRatio Maximum 24h price change ratio
     MaxH24PriceChangeRatio *string`form:"max_h24_price_change_ratio,omitempty" json:"max_h24_price_change_ratio,omitempty"`
 
-// MinH24Buys DTO.TOKEN.LIST.QUERY.MIN_H24_BUYS
+// MinH24Buys Minimum 24h buy count
     MinH24Buys *string`form:"min_h24_buys,omitempty" json:"min_h24_buys,omitempty"`
 
-// MaxH24Buys DTO.TOKEN.LIST.QUERY.MAX_H24_BUYS
+// MaxH24Buys Maximum 24h buy count
     MaxH24Buys *string`form:"max_h24_buys,omitempty" json:"max_h24_buys,omitempty"`
 
-// MinH24Sells DTO.TOKEN.LIST.QUERY.MIN_H24_SELLS
+// MinH24Sells Minimum 24h sell count
     MinH24Sells *string`form:"min_h24_sells,omitempty" json:"min_h24_sells,omitempty"`
 
-// MaxH24Sells DTO.TOKEN.LIST.QUERY.MAX_H24_SELLS
+// MaxH24Sells Maximum 24h sell count
     MaxH24Sells *string`form:"max_h24_sells,omitempty" json:"max_h24_sells,omitempty"`
 
-// MinH24Trades DTO.TOKEN.LIST.QUERY.MIN_H24_TRADES
+// MinH24Trades Minimum 24h trade count
     MinH24Trades *string`form:"min_h24_trades,omitempty" json:"min_h24_trades,omitempty"`
 
-// MaxH24Trades DTO.TOKEN.LIST.QUERY.MAX_H24_TRADES
+// MaxH24Trades Maximum 24h trade count
     MaxH24Trades *string`form:"max_h24_trades,omitempty" json:"max_h24_trades,omitempty"`
 
-// MinH24Buyers DTO.TOKEN.LIST.QUERY.MIN_H24_BUYERS
+// MinH24Buyers Minimum 24h buyer count
     MinH24Buyers *string`form:"min_h24_buyers,omitempty" json:"min_h24_buyers,omitempty"`
 
-// MaxH24Buyers DTO.TOKEN.LIST.QUERY.MAX_H24_BUYERS
+// MaxH24Buyers Maximum 24h buyer count
     MaxH24Buyers *string`form:"max_h24_buyers,omitempty" json:"max_h24_buyers,omitempty"`
 
-// MinH24Sellers DTO.TOKEN.LIST.QUERY.MIN_H24_SELLERS
+// MinH24Sellers Minimum 24h seller count
     MinH24Sellers *string`form:"min_h24_sellers,omitempty" json:"min_h24_sellers,omitempty"`
 
-// MaxH24Sellers DTO.TOKEN.LIST.QUERY.MAX_H24_SELLERS
+// MaxH24Sellers Maximum 24h seller count
     MaxH24Sellers *string`form:"max_h24_sellers,omitempty" json:"max_h24_sellers,omitempty"`
 
-// MinH24BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_H24_BUY_VOLUME_IN_USD
+// MinH24BuyVolumeInUsd Minimum 24h buy volume in USD
     MinH24BuyVolumeInUsd *string`form:"min_h24_buy_volume_in_usd,omitempty" json:"min_h24_buy_volume_in_usd,omitempty"`
 
-// MaxH24BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_H24_BUY_VOLUME_IN_USD
+// MaxH24BuyVolumeInUsd Maximum 24h buy volume in USD
     MaxH24BuyVolumeInUsd *string`form:"max_h24_buy_volume_in_usd,omitempty" json:"max_h24_buy_volume_in_usd,omitempty"`
 
-// MinH24SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_H24_SELL_VOLUME_IN_USD
+// MinH24SellVolumeInUsd Minimum 24h sell volume in USD
     MinH24SellVolumeInUsd *string`form:"min_h24_sell_volume_in_usd,omitempty" json:"min_h24_sell_volume_in_usd,omitempty"`
 
-// MaxH24SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_H24_SELL_VOLUME_IN_USD
+// MaxH24SellVolumeInUsd Maximum 24h sell volume in USD
     MaxH24SellVolumeInUsd *string`form:"max_h24_sell_volume_in_usd,omitempty" json:"max_h24_sell_volume_in_usd,omitempty"`
 
-// MinH4VolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_H4_VOLUME_IN_USD
+// MinH4VolumeInUsd Minimum 4h volume in USD
     MinH4VolumeInUsd *string`form:"min_h4_volume_in_usd,omitempty" json:"min_h4_volume_in_usd,omitempty"`
 
-// MaxH4VolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_H4_VOLUME_IN_USD
+// MaxH4VolumeInUsd Maximum 4h volume in USD
     MaxH4VolumeInUsd *string`form:"max_h4_volume_in_usd,omitempty" json:"max_h4_volume_in_usd,omitempty"`
 
-// MinH4PriceChangeRatio DTO.TOKEN.LIST.QUERY.MIN_H4_PRICE_CHANGE_RATIO
+// MinH4PriceChangeRatio Minimum 4h price change ratio
     MinH4PriceChangeRatio *string`form:"min_h4_price_change_ratio,omitempty" json:"min_h4_price_change_ratio,omitempty"`
 
-// MaxH4PriceChangeRatio DTO.TOKEN.LIST.QUERY.MAX_H4_PRICE_CHANGE_RATIO
+// MaxH4PriceChangeRatio Maximum 4h price change ratio
     MaxH4PriceChangeRatio *string`form:"max_h4_price_change_ratio,omitempty" json:"max_h4_price_change_ratio,omitempty"`
 
-// MinH4Buys DTO.TOKEN.LIST.QUERY.MIN_H4_BUYS
+// MinH4Buys Minimum 4h buy count
     MinH4Buys *string`form:"min_h4_buys,omitempty" json:"min_h4_buys,omitempty"`
 
-// MaxH4Buys DTO.TOKEN.LIST.QUERY.MAX_H4_BUYS
+// MaxH4Buys Maximum 4h buy count
     MaxH4Buys *string`form:"max_h4_buys,omitempty" json:"max_h4_buys,omitempty"`
 
-// MinH4Sells DTO.TOKEN.LIST.QUERY.MIN_H4_SELLS
+// MinH4Sells Minimum 4h sell count
     MinH4Sells *string`form:"min_h4_sells,omitempty" json:"min_h4_sells,omitempty"`
 
-// MaxH4Sells DTO.TOKEN.LIST.QUERY.MAX_H4_SELLS
+// MaxH4Sells Maximum 4h sell count
     MaxH4Sells *string`form:"max_h4_sells,omitempty" json:"max_h4_sells,omitempty"`
 
-// MinH4Trades DTO.TOKEN.LIST.QUERY.MIN_H4_TRADES
+// MinH4Trades Minimum 4h trade count
     MinH4Trades *string`form:"min_h4_trades,omitempty" json:"min_h4_trades,omitempty"`
 
-// MaxH4Trades DTO.TOKEN.LIST.QUERY.MAX_H4_TRADES
+// MaxH4Trades Maximum 4h trade count
     MaxH4Trades *string`form:"max_h4_trades,omitempty" json:"max_h4_trades,omitempty"`
 
-// MinH4Buyers DTO.TOKEN.LIST.QUERY.MIN_H4_BUYERS
+// MinH4Buyers Minimum 4h buyer count
     MinH4Buyers *string`form:"min_h4_buyers,omitempty" json:"min_h4_buyers,omitempty"`
 
-// MaxH4Buyers DTO.TOKEN.LIST.QUERY.MAX_H4_BUYERS
+// MaxH4Buyers Maximum 4h buyer count
     MaxH4Buyers *string`form:"max_h4_buyers,omitempty" json:"max_h4_buyers,omitempty"`
 
-// MinH4Sellers DTO.TOKEN.LIST.QUERY.MIN_H4_SELLERS
+// MinH4Sellers Minimum 4h seller count
     MinH4Sellers *string`form:"min_h4_sellers,omitempty" json:"min_h4_sellers,omitempty"`
 
-// MaxH4Sellers DTO.TOKEN.LIST.QUERY.MAX_H4_SELLERS
+// MaxH4Sellers Maximum 4h seller count
     MaxH4Sellers *string`form:"max_h4_sellers,omitempty" json:"max_h4_sellers,omitempty"`
 
-// MinH4BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_H4_BUY_VOLUME_IN_USD
+// MinH4BuyVolumeInUsd Minimum 4h buy volume in USD
     MinH4BuyVolumeInUsd *string`form:"min_h4_buy_volume_in_usd,omitempty" json:"min_h4_buy_volume_in_usd,omitempty"`
 
-// MaxH4BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_H4_BUY_VOLUME_IN_USD
+// MaxH4BuyVolumeInUsd Maximum 4h buy volume in USD
     MaxH4BuyVolumeInUsd *string`form:"max_h4_buy_volume_in_usd,omitempty" json:"max_h4_buy_volume_in_usd,omitempty"`
 
-// MinH4SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_H4_SELL_VOLUME_IN_USD
+// MinH4SellVolumeInUsd Minimum 4h sell volume in USD
     MinH4SellVolumeInUsd *string`form:"min_h4_sell_volume_in_usd,omitempty" json:"min_h4_sell_volume_in_usd,omitempty"`
 
-// MaxH4SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_H4_SELL_VOLUME_IN_USD
+// MaxH4SellVolumeInUsd Maximum 4h sell volume in USD
     MaxH4SellVolumeInUsd *string`form:"max_h4_sell_volume_in_usd,omitempty" json:"max_h4_sell_volume_in_usd,omitempty"`
 
-// MinH1VolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_H1_VOLUME_IN_USD
+// MinH1VolumeInUsd Minimum 1h volume in USD
     MinH1VolumeInUsd *string`form:"min_h1_volume_in_usd,omitempty" json:"min_h1_volume_in_usd,omitempty"`
 
-// MaxH1VolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_H1_VOLUME_IN_USD
+// MaxH1VolumeInUsd Maximum 1h volume in USD
     MaxH1VolumeInUsd *string`form:"max_h1_volume_in_usd,omitempty" json:"max_h1_volume_in_usd,omitempty"`
 
-// MinH1PriceChangeRatio DTO.TOKEN.LIST.QUERY.MIN_H1_PRICE_CHANGE_RATIO
+// MinH1PriceChangeRatio Minimum 1h price change ratio
     MinH1PriceChangeRatio *string`form:"min_h1_price_change_ratio,omitempty" json:"min_h1_price_change_ratio,omitempty"`
 
-// MaxH1PriceChangeRatio DTO.TOKEN.LIST.QUERY.MAX_H1_PRICE_CHANGE_RATIO
+// MaxH1PriceChangeRatio Maximum 1h price change ratio
     MaxH1PriceChangeRatio *string`form:"max_h1_price_change_ratio,omitempty" json:"max_h1_price_change_ratio,omitempty"`
 
-// MinH1Buys DTO.TOKEN.LIST.QUERY.MIN_H1_BUYS
+// MinH1Buys Minimum 1h buy count
     MinH1Buys *string`form:"min_h1_buys,omitempty" json:"min_h1_buys,omitempty"`
 
-// MaxH1Buys DTO.TOKEN.LIST.QUERY.MAX_H1_BUYS
+// MaxH1Buys Maximum 1h buy count
     MaxH1Buys *string`form:"max_h1_buys,omitempty" json:"max_h1_buys,omitempty"`
 
-// MinH1Sells DTO.TOKEN.LIST.QUERY.MIN_H1_SELLS
+// MinH1Sells Minimum 1h sell count
     MinH1Sells *string`form:"min_h1_sells,omitempty" json:"min_h1_sells,omitempty"`
 
-// MaxH1Sells DTO.TOKEN.LIST.QUERY.MAX_H1_SELLS
+// MaxH1Sells Maximum 1h sell count
     MaxH1Sells *string`form:"max_h1_sells,omitempty" json:"max_h1_sells,omitempty"`
 
-// MinH1Trades DTO.TOKEN.LIST.QUERY.MIN_H1_TRADES
+// MinH1Trades Minimum 1h trade count
     MinH1Trades *string`form:"min_h1_trades,omitempty" json:"min_h1_trades,omitempty"`
 
-// MaxH1Trades DTO.TOKEN.LIST.QUERY.MAX_H1_TRADES
+// MaxH1Trades Maximum 1h trade count
     MaxH1Trades *string`form:"max_h1_trades,omitempty" json:"max_h1_trades,omitempty"`
 
-// MinH1Buyers DTO.TOKEN.LIST.QUERY.MIN_H1_BUYERS
+// MinH1Buyers Minimum 1h buyer count
     MinH1Buyers *string`form:"min_h1_buyers,omitempty" json:"min_h1_buyers,omitempty"`
 
-// MaxH1Buyers DTO.TOKEN.LIST.QUERY.MAX_H1_BUYERS
+// MaxH1Buyers Maximum 1h buyer count
     MaxH1Buyers *string`form:"max_h1_buyers,omitempty" json:"max_h1_buyers,omitempty"`
 
-// MinH1Sellers DTO.TOKEN.LIST.QUERY.MIN_H1_SELLERS
+// MinH1Sellers Minimum 1h seller count
     MinH1Sellers *string`form:"min_h1_sellers,omitempty" json:"min_h1_sellers,omitempty"`
 
-// MaxH1Sellers DTO.TOKEN.LIST.QUERY.MAX_H1_SELLERS
+// MaxH1Sellers Maximum 1h seller count
     MaxH1Sellers *string`form:"max_h1_sellers,omitempty" json:"max_h1_sellers,omitempty"`
 
-// MinH1BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_H1_BUY_VOLUME_IN_USD
+// MinH1BuyVolumeInUsd Minimum 1h buy volume in USD
     MinH1BuyVolumeInUsd *string`form:"min_h1_buy_volume_in_usd,omitempty" json:"min_h1_buy_volume_in_usd,omitempty"`
 
-// MaxH1BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_H1_BUY_VOLUME_IN_USD
+// MaxH1BuyVolumeInUsd Maximum 1h buy volume in USD
     MaxH1BuyVolumeInUsd *string`form:"max_h1_buy_volume_in_usd,omitempty" json:"max_h1_buy_volume_in_usd,omitempty"`
 
-// MinH1SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_H1_SELL_VOLUME_IN_USD
+// MinH1SellVolumeInUsd Minimum 1h sell volume in USD
     MinH1SellVolumeInUsd *string`form:"min_h1_sell_volume_in_usd,omitempty" json:"min_h1_sell_volume_in_usd,omitempty"`
 
-// MaxH1SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_H1_SELL_VOLUME_IN_USD
+// MaxH1SellVolumeInUsd Maximum 1h sell volume in USD
     MaxH1SellVolumeInUsd *string`form:"max_h1_sell_volume_in_usd,omitempty" json:"max_h1_sell_volume_in_usd,omitempty"`
 
-// MinM30VolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_M30_VOLUME_IN_USD
+// MinM30VolumeInUsd Minimum 30min volume in USD
     MinM30VolumeInUsd *string`form:"min_m30_volume_in_usd,omitempty" json:"min_m30_volume_in_usd,omitempty"`
 
-// MaxM30VolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_M30_VOLUME_IN_USD
+// MaxM30VolumeInUsd Maximum 30min volume in USD
     MaxM30VolumeInUsd *string`form:"max_m30_volume_in_usd,omitempty" json:"max_m30_volume_in_usd,omitempty"`
 
-// MinM30PriceChangeRatio DTO.TOKEN.LIST.QUERY.MIN_M30_PRICE_CHANGE_RATIO
+// MinM30PriceChangeRatio Minimum 30min price change ratio
     MinM30PriceChangeRatio *string`form:"min_m30_price_change_ratio,omitempty" json:"min_m30_price_change_ratio,omitempty"`
 
-// MaxM30PriceChangeRatio DTO.TOKEN.LIST.QUERY.MAX_M30_PRICE_CHANGE_RATIO
+// MaxM30PriceChangeRatio Maximum 30min price change ratio
     MaxM30PriceChangeRatio *string`form:"max_m30_price_change_ratio,omitempty" json:"max_m30_price_change_ratio,omitempty"`
 
-// MinM30Buys DTO.TOKEN.LIST.QUERY.MIN_M30_BUYS
+// MinM30Buys Minimum 30min buy count
     MinM30Buys *string`form:"min_m30_buys,omitempty" json:"min_m30_buys,omitempty"`
 
-// MaxM30Buys DTO.TOKEN.LIST.QUERY.MAX_M30_BUYS
+// MaxM30Buys Maximum 30min buy count
     MaxM30Buys *string`form:"max_m30_buys,omitempty" json:"max_m30_buys,omitempty"`
 
-// MinM30Sells DTO.TOKEN.LIST.QUERY.MIN_M30_SELLS
+// MinM30Sells Minimum 30min sell count
     MinM30Sells *string`form:"min_m30_sells,omitempty" json:"min_m30_sells,omitempty"`
 
-// MaxM30Sells DTO.TOKEN.LIST.QUERY.MAX_M30_SELLS
+// MaxM30Sells Maximum 30min sell count
     MaxM30Sells *string`form:"max_m30_sells,omitempty" json:"max_m30_sells,omitempty"`
 
-// MinM30Trades DTO.TOKEN.LIST.QUERY.MIN_M30_TRADES
+// MinM30Trades Minimum 30min trade count
     MinM30Trades *string`form:"min_m30_trades,omitempty" json:"min_m30_trades,omitempty"`
 
-// MaxM30Trades DTO.TOKEN.LIST.QUERY.MAX_M30_TRADES
+// MaxM30Trades Maximum 30min trade count
     MaxM30Trades *string`form:"max_m30_trades,omitempty" json:"max_m30_trades,omitempty"`
 
-// MinM30Buyers DTO.TOKEN.LIST.QUERY.MIN_M30_BUYERS
+// MinM30Buyers Minimum 30min buyer count
     MinM30Buyers *string`form:"min_m30_buyers,omitempty" json:"min_m30_buyers,omitempty"`
 
-// MaxM30Buyers DTO.TOKEN.LIST.QUERY.MAX_M30_BUYERS
+// MaxM30Buyers Maximum 30min buyer count
     MaxM30Buyers *string`form:"max_m30_buyers,omitempty" json:"max_m30_buyers,omitempty"`
 
-// MinM30Sellers DTO.TOKEN.LIST.QUERY.MIN_M30_SELLERS
+// MinM30Sellers Minimum 30min seller count
     MinM30Sellers *string`form:"min_m30_sellers,omitempty" json:"min_m30_sellers,omitempty"`
 
-// MaxM30Sellers DTO.TOKEN.LIST.QUERY.MAX_M30_SELLERS
+// MaxM30Sellers Maximum 30min seller count
     MaxM30Sellers *string`form:"max_m30_sellers,omitempty" json:"max_m30_sellers,omitempty"`
 
-// MinM30BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_M30_BUY_VOLUME_IN_USD
+// MinM30BuyVolumeInUsd Minimum 30min buy volume in USD
     MinM30BuyVolumeInUsd *string`form:"min_m30_buy_volume_in_usd,omitempty" json:"min_m30_buy_volume_in_usd,omitempty"`
 
-// MaxM30BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_M30_BUY_VOLUME_IN_USD
+// MaxM30BuyVolumeInUsd Maximum 30min buy volume in USD
     MaxM30BuyVolumeInUsd *string`form:"max_m30_buy_volume_in_usd,omitempty" json:"max_m30_buy_volume_in_usd,omitempty"`
 
-// MinM30SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_M30_SELL_VOLUME_IN_USD
+// MinM30SellVolumeInUsd Minimum 30min sell volume in USD
     MinM30SellVolumeInUsd *string`form:"min_m30_sell_volume_in_usd,omitempty" json:"min_m30_sell_volume_in_usd,omitempty"`
 
-// MaxM30SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_M30_SELL_VOLUME_IN_USD
+// MaxM30SellVolumeInUsd Maximum 30min sell volume in USD
     MaxM30SellVolumeInUsd *string`form:"max_m30_sell_volume_in_usd,omitempty" json:"max_m30_sell_volume_in_usd,omitempty"`
 
-// MinM15VolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_M15_VOLUME_IN_USD
+// MinM15VolumeInUsd Minimum 15min volume in USD
     MinM15VolumeInUsd *string`form:"min_m15_volume_in_usd,omitempty" json:"min_m15_volume_in_usd,omitempty"`
 
-// MaxM15VolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_M15_VOLUME_IN_USD
+// MaxM15VolumeInUsd Maximum 15min volume in USD
     MaxM15VolumeInUsd *string`form:"max_m15_volume_in_usd,omitempty" json:"max_m15_volume_in_usd,omitempty"`
 
-// MinM15PriceChangeRatio DTO.TOKEN.LIST.QUERY.MIN_M15_PRICE_CHANGE_RATIO
+// MinM15PriceChangeRatio Minimum 15min price change ratio
     MinM15PriceChangeRatio *string`form:"min_m15_price_change_ratio,omitempty" json:"min_m15_price_change_ratio,omitempty"`
 
-// MaxM15PriceChangeRatio DTO.TOKEN.LIST.QUERY.MAX_M15_PRICE_CHANGE_RATIO
+// MaxM15PriceChangeRatio Maximum 15min price change ratio
     MaxM15PriceChangeRatio *string`form:"max_m15_price_change_ratio,omitempty" json:"max_m15_price_change_ratio,omitempty"`
 
-// MinM15Buys DTO.TOKEN.LIST.QUERY.MIN_M15_BUYS
+// MinM15Buys Minimum 15min buy count
     MinM15Buys *string`form:"min_m15_buys,omitempty" json:"min_m15_buys,omitempty"`
 
-// MaxM15Buys DTO.TOKEN.LIST.QUERY.MAX_M15_BUYS
+// MaxM15Buys Maximum 15min buy count
     MaxM15Buys *string`form:"max_m15_buys,omitempty" json:"max_m15_buys,omitempty"`
 
-// MinM15Sells DTO.TOKEN.LIST.QUERY.MIN_M15_SELLS
+// MinM15Sells Minimum 15min sell count
     MinM15Sells *string`form:"min_m15_sells,omitempty" json:"min_m15_sells,omitempty"`
 
-// MaxM15Sells DTO.TOKEN.LIST.QUERY.MAX_M15_SELLS
+// MaxM15Sells Maximum 15min sell count
     MaxM15Sells *string`form:"max_m15_sells,omitempty" json:"max_m15_sells,omitempty"`
 
-// MinM15Trades DTO.TOKEN.LIST.QUERY.MIN_M15_TRADES
+// MinM15Trades Minimum 15min trade count
     MinM15Trades *string`form:"min_m15_trades,omitempty" json:"min_m15_trades,omitempty"`
 
-// MaxM15Trades DTO.TOKEN.LIST.QUERY.MAX_M15_TRADES
+// MaxM15Trades Maximum 15min trade count
     MaxM15Trades *string`form:"max_m15_trades,omitempty" json:"max_m15_trades,omitempty"`
 
-// MinM15Buyers DTO.TOKEN.LIST.QUERY.MIN_M15_BUYERS
+// MinM15Buyers Minimum 15min buyer count
     MinM15Buyers *string`form:"min_m15_buyers,omitempty" json:"min_m15_buyers,omitempty"`
 
-// MaxM15Buyers DTO.TOKEN.LIST.QUERY.MAX_M15_BUYERS
+// MaxM15Buyers Maximum 15min buyer count
     MaxM15Buyers *string`form:"max_m15_buyers,omitempty" json:"max_m15_buyers,omitempty"`
 
-// MinM15Sellers DTO.TOKEN.LIST.QUERY.MIN_M15_SELLERS
+// MinM15Sellers Minimum 15min seller count
     MinM15Sellers *string`form:"min_m15_sellers,omitempty" json:"min_m15_sellers,omitempty"`
 
-// MaxM15Sellers DTO.TOKEN.LIST.QUERY.MAX_M15_SELLERS
+// MaxM15Sellers Maximum 15min seller count
     MaxM15Sellers *string`form:"max_m15_sellers,omitempty" json:"max_m15_sellers,omitempty"`
 
-// MinM15BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_M15_BUY_VOLUME_IN_USD
+// MinM15BuyVolumeInUsd Minimum 15min buy volume in USD
     MinM15BuyVolumeInUsd *string`form:"min_m15_buy_volume_in_usd,omitempty" json:"min_m15_buy_volume_in_usd,omitempty"`
 
-// MaxM15BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_M15_BUY_VOLUME_IN_USD
+// MaxM15BuyVolumeInUsd Maximum 15min buy volume in USD
     MaxM15BuyVolumeInUsd *string`form:"max_m15_buy_volume_in_usd,omitempty" json:"max_m15_buy_volume_in_usd,omitempty"`
 
-// MinM15SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_M15_SELL_VOLUME_IN_USD
+// MinM15SellVolumeInUsd Minimum 15min sell volume in USD
     MinM15SellVolumeInUsd *string`form:"min_m15_sell_volume_in_usd,omitempty" json:"min_m15_sell_volume_in_usd,omitempty"`
 
-// MaxM15SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_M15_SELL_VOLUME_IN_USD
+// MaxM15SellVolumeInUsd Maximum 15min sell volume in USD
     MaxM15SellVolumeInUsd *string`form:"max_m15_sell_volume_in_usd,omitempty" json:"max_m15_sell_volume_in_usd,omitempty"`
 
-// MinM5VolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_M5_VOLUME_IN_USD
+// MinM5VolumeInUsd Minimum 5min volume in USD
     MinM5VolumeInUsd *string`form:"min_m5_volume_in_usd,omitempty" json:"min_m5_volume_in_usd,omitempty"`
 
-// MaxM5VolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_M5_VOLUME_IN_USD
+// MaxM5VolumeInUsd Maximum 5min volume in USD
     MaxM5VolumeInUsd *string`form:"max_m5_volume_in_usd,omitempty" json:"max_m5_volume_in_usd,omitempty"`
 
-// MinM5PriceChangeRatio DTO.TOKEN.LIST.QUERY.MIN_M5_PRICE_CHANGE_RATIO
+// MinM5PriceChangeRatio Minimum 5min price change ratio
     MinM5PriceChangeRatio *string`form:"min_m5_price_change_ratio,omitempty" json:"min_m5_price_change_ratio,omitempty"`
 
-// MaxM5PriceChangeRatio DTO.TOKEN.LIST.QUERY.MAX_M5_PRICE_CHANGE_RATIO
+// MaxM5PriceChangeRatio Maximum 5min price change ratio
     MaxM5PriceChangeRatio *string`form:"max_m5_price_change_ratio,omitempty" json:"max_m5_price_change_ratio,omitempty"`
 
-// MinM5Buys DTO.TOKEN.LIST.QUERY.MIN_M5_BUYS
+// MinM5Buys Minimum 5min buy count
     MinM5Buys *string`form:"min_m5_buys,omitempty" json:"min_m5_buys,omitempty"`
 
-// MaxM5Buys DTO.TOKEN.LIST.QUERY.MAX_M5_BUYS
+// MaxM5Buys Maximum 5min buy count
     MaxM5Buys *string`form:"max_m5_buys,omitempty" json:"max_m5_buys,omitempty"`
 
-// MinM5Sells DTO.TOKEN.LIST.QUERY.MIN_M5_SELLS
+// MinM5Sells Minimum 5min sell count
     MinM5Sells *string`form:"min_m5_sells,omitempty" json:"min_m5_sells,omitempty"`
 
-// MaxM5Sells DTO.TOKEN.LIST.QUERY.MAX_M5_SELLS
+// MaxM5Sells Maximum 5min sell count
     MaxM5Sells *string`form:"max_m5_sells,omitempty" json:"max_m5_sells,omitempty"`
 
-// MinM5Trades DTO.TOKEN.LIST.QUERY.MIN_M5_TRADES
+// MinM5Trades Minimum 5min trade count
     MinM5Trades *string`form:"min_m5_trades,omitempty" json:"min_m5_trades,omitempty"`
 
-// MaxM5Trades DTO.TOKEN.LIST.QUERY.MAX_M5_TRADES
+// MaxM5Trades Maximum 5min trade count
     MaxM5Trades *string`form:"max_m5_trades,omitempty" json:"max_m5_trades,omitempty"`
 
-// MinM5Buyers DTO.TOKEN.LIST.QUERY.MIN_M5_BUYERS
+// MinM5Buyers Minimum 5min buyer count
     MinM5Buyers *string`form:"min_m5_buyers,omitempty" json:"min_m5_buyers,omitempty"`
 
-// MaxM5Buyers DTO.TOKEN.LIST.QUERY.MAX_M5_BUYERS
+// MaxM5Buyers Maximum 5min buyer count
     MaxM5Buyers *string`form:"max_m5_buyers,omitempty" json:"max_m5_buyers,omitempty"`
 
-// MinM5Sellers DTO.TOKEN.LIST.QUERY.MIN_M5_SELLERS
+// MinM5Sellers Minimum 5min seller count
     MinM5Sellers *string`form:"min_m5_sellers,omitempty" json:"min_m5_sellers,omitempty"`
 
-// MaxM5Sellers DTO.TOKEN.LIST.QUERY.MAX_M5_SELLERS
+// MaxM5Sellers Maximum 5min seller count
     MaxM5Sellers *string`form:"max_m5_sellers,omitempty" json:"max_m5_sellers,omitempty"`
 
-// MinM5BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_M5_BUY_VOLUME_IN_USD
+// MinM5BuyVolumeInUsd Minimum 5min buy volume in USD
     MinM5BuyVolumeInUsd *string`form:"min_m5_buy_volume_in_usd,omitempty" json:"min_m5_buy_volume_in_usd,omitempty"`
 
-// MaxM5BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_M5_BUY_VOLUME_IN_USD
+// MaxM5BuyVolumeInUsd Maximum 5min buy volume in USD
     MaxM5BuyVolumeInUsd *string`form:"max_m5_buy_volume_in_usd,omitempty" json:"max_m5_buy_volume_in_usd,omitempty"`
 
-// MinM5SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_M5_SELL_VOLUME_IN_USD
+// MinM5SellVolumeInUsd Minimum 5min sell volume in USD
     MinM5SellVolumeInUsd *string`form:"min_m5_sell_volume_in_usd,omitempty" json:"min_m5_sell_volume_in_usd,omitempty"`
 
-// MaxM5SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_M5_SELL_VOLUME_IN_USD
+// MaxM5SellVolumeInUsd Maximum 5min sell volume in USD
     MaxM5SellVolumeInUsd *string`form:"max_m5_sell_volume_in_usd,omitempty" json:"max_m5_sell_volume_in_usd,omitempty"`
 
-// MinM1VolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_M1_VOLUME_IN_USD
+// MinM1VolumeInUsd Minimum 1min volume in USD
     MinM1VolumeInUsd *string`form:"min_m1_volume_in_usd,omitempty" json:"min_m1_volume_in_usd,omitempty"`
 
-// MaxM1VolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_M1_VOLUME_IN_USD
+// MaxM1VolumeInUsd Maximum 1min volume in USD
     MaxM1VolumeInUsd *string`form:"max_m1_volume_in_usd,omitempty" json:"max_m1_volume_in_usd,omitempty"`
 
-// MinM1PriceChangeRatio DTO.TOKEN.LIST.QUERY.MIN_M1_PRICE_CHANGE_RATIO
+// MinM1PriceChangeRatio Minimum 1min price change ratio
     MinM1PriceChangeRatio *string`form:"min_m1_price_change_ratio,omitempty" json:"min_m1_price_change_ratio,omitempty"`
 
-// MaxM1PriceChangeRatio DTO.TOKEN.LIST.QUERY.MAX_M1_PRICE_CHANGE_RATIO
+// MaxM1PriceChangeRatio Maximum 1min price change ratio
     MaxM1PriceChangeRatio *string`form:"max_m1_price_change_ratio,omitempty" json:"max_m1_price_change_ratio,omitempty"`
 
-// MinM1Buys DTO.TOKEN.LIST.QUERY.MIN_M1_BUYS
+// MinM1Buys Minimum 1min buy count
     MinM1Buys *string`form:"min_m1_buys,omitempty" json:"min_m1_buys,omitempty"`
 
-// MaxM1Buys DTO.TOKEN.LIST.QUERY.MAX_M1_BUYS
+// MaxM1Buys Maximum 1min buy count
     MaxM1Buys *string`form:"max_m1_buys,omitempty" json:"max_m1_buys,omitempty"`
 
-// MinM1Sells DTO.TOKEN.LIST.QUERY.MIN_M1_SELLS
+// MinM1Sells Minimum 1min sell count
     MinM1Sells *string`form:"min_m1_sells,omitempty" json:"min_m1_sells,omitempty"`
 
-// MaxM1Sells DTO.TOKEN.LIST.QUERY.MAX_M1_SELLS
+// MaxM1Sells Maximum 1min sell count
     MaxM1Sells *string`form:"max_m1_sells,omitempty" json:"max_m1_sells,omitempty"`
 
-// MinM1Trades DTO.TOKEN.LIST.QUERY.MIN_M1_TRADES
+// MinM1Trades Minimum 1min trade count
     MinM1Trades *string`form:"min_m1_trades,omitempty" json:"min_m1_trades,omitempty"`
 
-// MaxM1Trades DTO.TOKEN.LIST.QUERY.MAX_M1_TRADES
+// MaxM1Trades Maximum 1min trade count
     MaxM1Trades *string`form:"max_m1_trades,omitempty" json:"max_m1_trades,omitempty"`
 
-// MinM1Buyers DTO.TOKEN.LIST.QUERY.MIN_M1_BUYERS
+// MinM1Buyers Minimum 1min buyer count
     MinM1Buyers *string`form:"min_m1_buyers,omitempty" json:"min_m1_buyers,omitempty"`
 
-// MaxM1Buyers DTO.TOKEN.LIST.QUERY.MAX_M1_BUYERS
+// MaxM1Buyers Maximum 1min buyer count
     MaxM1Buyers *string`form:"max_m1_buyers,omitempty" json:"max_m1_buyers,omitempty"`
 
-// MinM1Sellers DTO.TOKEN.LIST.QUERY.MIN_M1_SELLERS
+// MinM1Sellers Minimum 1min seller count
     MinM1Sellers *string`form:"min_m1_sellers,omitempty" json:"min_m1_sellers,omitempty"`
 
-// MaxM1Sellers DTO.TOKEN.LIST.QUERY.MAX_M1_SELLERS
+// MaxM1Sellers Maximum 1min seller count
     MaxM1Sellers *string`form:"max_m1_sellers,omitempty" json:"max_m1_sellers,omitempty"`
 
-// MinM1BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_M1_BUY_VOLUME_IN_USD
+// MinM1BuyVolumeInUsd Minimum 1min buy volume in USD
     MinM1BuyVolumeInUsd *string`form:"min_m1_buy_volume_in_usd,omitempty" json:"min_m1_buy_volume_in_usd,omitempty"`
 
-// MaxM1BuyVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_M1_BUY_VOLUME_IN_USD
+// MaxM1BuyVolumeInUsd Maximum 1min buy volume in USD
     MaxM1BuyVolumeInUsd *string`form:"max_m1_buy_volume_in_usd,omitempty" json:"max_m1_buy_volume_in_usd,omitempty"`
 
-// MinM1SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MIN_M1_SELL_VOLUME_IN_USD
+// MinM1SellVolumeInUsd Minimum 1min sell volume in USD
     MinM1SellVolumeInUsd *string`form:"min_m1_sell_volume_in_usd,omitempty" json:"min_m1_sell_volume_in_usd,omitempty"`
 
-// MaxM1SellVolumeInUsd DTO.TOKEN.LIST.QUERY.MAX_M1_SELL_VOLUME_IN_USD
+// MaxM1SellVolumeInUsd Maximum 1min sell volume in USD
     MaxM1SellVolumeInUsd *string`form:"max_m1_sell_volume_in_usd,omitempty" json:"max_m1_sell_volume_in_usd,omitempty"`
 }
 
@@ -3079,7 +3190,7 @@ union json.RawMessage
 
 // GetMarketDataMultiParams defines parameters for GetMarketDataMulti.
 type GetMarketDataMultiParams  struct {
-// TokenAddresses GLOBAL.TOKENADDRESSES.DESCRIPTION
+// TokenAddresses A list of token addresses in string separated by commas (,). Maximum 100 token addresses allowed
     TokenAddresses string`form:"tokenAddresses" json:"tokenAddresses"`
 }
 
@@ -3087,7 +3198,7 @@ type GetMarketDataMultiParams  struct {
 
 // GetMetadataMultiParams defines parameters for GetMetadataMulti.
 type GetMetadataMultiParams  struct {
-// TokenAddresses GLOBAL.TOKENADDRESSES.DESCRIPTION
+// TokenAddresses A list of token addresses in string separated by commas (,). Maximum 100 token addresses allowed
     TokenAddresses string`form:"tokenAddresses" json:"tokenAddresses"`
 }
 
@@ -3095,13 +3206,13 @@ type GetMetadataMultiParams  struct {
 
 // GetTokensParams defines parameters for GetTokens.
 type GetTokensParams  struct {
-// TokenAddresses GLOBAL.TOKENADDRESSES.DESCRIPTION
+// TokenAddresses A list of token addresses in string separated by commas (,). Maximum 100 token addresses allowed
     TokenAddresses string`form:"tokenAddresses" json:"tokenAddresses"`
 
-// SortBy DTO.TOKEN.REQUEST.SORT_BY
+// SortBy Sort field
     SortBy *TokenField`form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
-// SortDirection DTO.TOKEN.REQUEST.SORT_DIRECTION
+// SortDirection Sort Direction
     SortDirection *struct {
 union json.RawMessage
 }`form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
@@ -3114,21 +3225,21 @@ union json.RawMessage
 
 // GetPairCandlesParams defines parameters for GetPairCandles.
 type GetPairCandlesParams  struct {
-// Resolution DTO.CANDLE.RESOLUTION
+// Resolution Time resolution for candle data
     Resolution Resolution`form:"resolution" json:"resolution"`
 
-// PriceType DTO.CANDLE.PRICE_TYPE
+// PriceType Price type: usd (default) or native token price
     PriceType *struct {
 union json.RawMessage
 }`form:"priceType,omitempty" json:"priceType,omitempty"`
 
-// From DTO.CANDLE.FROM
+// From Start timestamp (Unix epoch in seconds)
     From *int64`form:"from,omitempty" json:"from,omitempty"`
 
-// To DTO.CANDLE.TO
+// To End timestamp (Unix epoch in seconds)
     To *int64`form:"to,omitempty" json:"to,omitempty"`
 
-// Limit DTO.TOKEN.CANDLE.LIMIT
+// Limit Number of candles to return
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 }
 
@@ -3136,21 +3247,21 @@ union json.RawMessage
 
 // GetPoolCandlesParams defines parameters for GetPoolCandles.
 type GetPoolCandlesParams  struct {
-// Resolution DTO.CANDLE.RESOLUTION
+// Resolution Time resolution for candle data
     Resolution Resolution`form:"resolution" json:"resolution"`
 
-// PriceType DTO.CANDLE.PRICE_TYPE
+// PriceType Price type: usd (default) or native token price
     PriceType *struct {
 union json.RawMessage
 }`form:"priceType,omitempty" json:"priceType,omitempty"`
 
-// From DTO.CANDLE.FROM
+// From Start timestamp (Unix epoch in seconds)
     From *int64`form:"from,omitempty" json:"from,omitempty"`
 
-// To DTO.CANDLE.TO
+// To End timestamp (Unix epoch in seconds)
     To *int64`form:"to,omitempty" json:"to,omitempty"`
 
-// Limit DTO.TOKEN.CANDLE.LIMIT
+// Limit Number of candles to return
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 }
 
@@ -3158,7 +3269,7 @@ union json.RawMessage
 
 // GetStatsMultiParams defines parameters for GetStatsMulti.
 type GetStatsMultiParams  struct {
-// TokenAddresses GLOBAL.TOKENADDRESSES.DESCRIPTION
+// TokenAddresses A list of token addresses in string separated by commas (,). Maximum 100 token addresses allowed
     TokenAddresses string`form:"tokenAddresses" json:"tokenAddresses"`
 }
 
@@ -3168,23 +3279,25 @@ type GetStatsMultiParams  struct {
 
 // GetCandlesParams defines parameters for GetCandles.
 type GetCandlesParams  struct {
-// Resolution DTO.CANDLE.RESOLUTION
+// Resolution Time resolution for candle data
     Resolution Resolution`form:"resolution" json:"resolution"`
 
-// PriceType DTO.CANDLE.PRICE_TYPE
+// PriceType Price type: usd (default) or native token price
     PriceType *struct {
 union json.RawMessage
 }`form:"priceType,omitempty" json:"priceType,omitempty"`
 
-// From DTO.CANDLE.FROM
+// From Start timestamp (Unix epoch in seconds)
     From *int64`form:"from,omitempty" json:"from,omitempty"`
 
-// To DTO.CANDLE.TO
+// To End timestamp (Unix epoch in seconds)
     To *int64`form:"to,omitempty" json:"to,omitempty"`
 
-// Limit DTO.TOKEN.CANDLE.LIMIT
+// Limit Number of candles to return
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 }
+
+
 
 
 
@@ -3206,13 +3319,13 @@ type GetHolderTrendParams  struct {
 
 // GetHoldersParams defines parameters for GetHolders.
 type GetHoldersParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
@@ -3234,7 +3347,7 @@ union json.RawMessage
 
 // GetHoldersMultiParams defines parameters for GetHoldersMulti.
 type GetHoldersMultiParams  struct {
-// WalletAddresses GLOBAL.WALLETADDRESSES.DESCRIPTION
+// WalletAddresses A list of wallet addresses in string separated by commas (,). Maximum 100 address addresses allowed
     WalletAddresses string`form:"walletAddresses" json:"walletAddresses"`
 }
 
@@ -3242,18 +3355,18 @@ type GetHoldersMultiParams  struct {
 
 // GetTokenLiquiditySnapshotsParams defines parameters for GetTokenLiquiditySnapshots.
 type GetTokenLiquiditySnapshotsParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// Time DTO.TOKEN.LIQUIDITY_SNAPSHOTS.TIME
+// Time Target Unix timestamp for liquidity snapshot query
     Time *int64`form:"time,omitempty" json:"time,omitempty"`
 }
 
@@ -3263,20 +3376,22 @@ union json.RawMessage
 
 
 
+
+
 // GetMintAndBurnParams defines parameters for GetMintAndBurn.
 type GetMintAndBurnParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// Type DTO.TOKEN.MINT_BURN.TYPE
+// Type Filter type for mint and burn operations
     Type *MintBurnType`form:"type,omitempty" json:"type,omitempty"`
 }
 
@@ -3284,37 +3399,37 @@ union json.RawMessage
 
 // GetPoolsParams defines parameters for GetPools.
 type GetPoolsParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// SortBy DTO.TOKEN.POOLS.SORT_BY
+// SortBy Sort field (tvlInSol or tvlInUsd)
     SortBy *struct {
 union json.RawMessage
 }`form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
-// SortDirection DTO.TOKEN.POOLS.SORT_DIRECTION
+// SortDirection Sort direction (asc or desc)
     SortDirection *struct {
 union json.RawMessage
 }`form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
 
-// MinTvlInSol DTO.TOKEN.POOLS.MIN_TVL_IN_SOL
+// MinTvlInSol Minimum TVL in SOL
     MinTvlInSol *string`form:"minTvlInSol,omitempty" json:"minTvlInSol,omitempty"`
 
-// MaxTvlInSol DTO.TOKEN.POOLS.MAX_TVL_IN_SOL
+// MaxTvlInSol Maximum TVL in SOL
     MaxTvlInSol *string`form:"maxTvlInSol,omitempty" json:"maxTvlInSol,omitempty"`
 
-// MinTvlInUsd DTO.TOKEN.POOLS.MIN_TVL_IN_USD
+// MinTvlInUsd Minimum TVL in USD
     MinTvlInUsd *string`form:"minTvlInUsd,omitempty" json:"minTvlInUsd,omitempty"`
 
-// MaxTvlInUsd DTO.TOKEN.POOLS.MAX_TVL_IN_USD
+// MaxTvlInUsd Maximum TVL in USD
     MaxTvlInUsd *string`form:"maxTvlInUsd,omitempty" json:"maxTvlInUsd,omitempty"`
 }
 
@@ -3322,7 +3437,7 @@ union json.RawMessage
 
 // GetPriceByTimeParams defines parameters for GetPriceByTime.
 type GetPriceByTimeParams  struct {
-// Timestamp DTO.TOKEN.PRICE.TIMESTAMP
+// Timestamp Price timestamp (Unix epoch in seconds)
     Timestamp int64`form:"timestamp" json:"timestamp"`
 }
 
@@ -3330,13 +3445,13 @@ type GetPriceByTimeParams  struct {
 
 // GetPricesParams defines parameters for GetPrices.
 type GetPricesParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
@@ -3348,10 +3463,10 @@ union json.RawMessage
 
 // GetTokenSimilarParams defines parameters for GetTokenSimilar.
 type GetTokenSimilarParams  struct {
-// Type Similarity type: image or name
+// Type Similarity type: Image or Name
     Type *SimilarType`form:"type,omitempty" json:"type,omitempty"`
 
-// Limit Max results (1-100)
+// Limit Maximum number of results (1-100)
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 }
 
@@ -3361,13 +3476,13 @@ type GetTokenSimilarParams  struct {
 
 // GetTopHoldersParams defines parameters for GetTopHolders.
 type GetTopHoldersParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
@@ -3389,13 +3504,13 @@ union json.RawMessage
 
 // GetTokenTopTradersParams defines parameters for GetTokenTopTraders.
 type GetTokenTopTradersParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
@@ -3413,13 +3528,13 @@ union json.RawMessage
 
 // GetTokenTradersParams defines parameters for GetTokenTraders.
 type GetTokenTradersParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
@@ -3429,10 +3544,10 @@ union json.RawMessage
 
 // GetTokenTransferTotalParams defines parameters for GetTokenTransferTotal.
 type GetTokenTransferTotalParams  struct {
-// BeforeTimestamp DTO.TOKEN.TRANSFER.QUERY.BEFORE_TIMESTAMP
+// BeforeTimestamp Filter transfers before this timestamp (Unix epoch seconds)
     BeforeTimestamp *int64`form:"beforeTimestamp,omitempty" json:"beforeTimestamp,omitempty"`
 
-// AfterTimestamp DTO.TOKEN.TRANSFER.QUERY.AFTER_TIMESTAMP
+// AfterTimestamp Filter transfers after this timestamp (Unix epoch seconds)
     AfterTimestamp *int64`form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
 }
 
@@ -3440,23 +3555,27 @@ type GetTokenTransferTotalParams  struct {
 
 // GetTokenTransfersParams defines parameters for GetTokenTransfers.
 type GetTokenTransfersParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// FromTimestamp GLOBAL.FROM_TIMESTAMP.DESCRIPTION
+// FromTimestamp Start timestamp (Unix epoch in seconds)
     FromTimestamp *int64`form:"fromTimestamp,omitempty" json:"fromTimestamp,omitempty"`
 
-// ToTimestamp GLOBAL.TO_TIMESTAMP.DESCRIPTION
+// ToTimestamp End timestamp (Unix epoch in seconds)
     ToTimestamp *int64`form:"toTimestamp,omitempty" json:"toTimestamp,omitempty"`
 }
+
+
+
+
 
 
 
@@ -3630,6 +3749,9 @@ type ClientInterface interface {
 // GetCreation request
     GetCreation(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*http.Response, error)
 
+// GetFeeEstimates request
+    GetFeeEstimates(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*http.Response, error)
+
 // GetHolderTrend request
     GetHolderTrend(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetHolderTrendParams, reqEditors... RequestEditorFn) (*http.Response, error)
 
@@ -3641,6 +3763,9 @@ type ClientInterface interface {
 
 // GetTokenLiquiditySnapshots request
     GetTokenLiquiditySnapshots(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenLiquiditySnapshotsParams, reqEditors... RequestEditorFn) (*http.Response, error)
+
+// GetLogoDuplicates request
+    GetLogoDuplicates(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*http.Response, error)
 
 // GetMarketData request
     GetMarketData(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*http.Response, error)
@@ -3664,7 +3789,7 @@ type ClientInterface interface {
     GetSecurity(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*http.Response, error)
 
 // GetTokenSimilar request
-    GetTokenSimilar(ctx context.Context, chain string, tokenAddress string, params *GetTokenSimilarParams, reqEditors... RequestEditorFn) (*http.Response, error)
+    GetTokenSimilar(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenSimilarParams, reqEditors... RequestEditorFn) (*http.Response, error)
 
 // GetStats request
     GetStats(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*http.Response, error)
@@ -3845,6 +3970,19 @@ func (c *Client) GetCreation(ctx context.Context, chain ChainSymbol, tokenAddres
 }
 
 
+func (c *Client) GetFeeEstimates(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*http.Response, error) {
+    req, err := NewGetFeeEstimatesRequest(c.Server, chain, tokenAddress)
+    if err != nil {
+        return nil, err
+    }
+    req = req.WithContext(ctx)
+    if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+        return nil, err
+    }
+    return c.Client.Do(req)
+}
+
+
 func (c *Client) GetHolderTrend(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetHolderTrendParams, reqEditors... RequestEditorFn) (*http.Response, error) {
     req, err := NewGetHolderTrendRequest(c.Server, chain, tokenAddress, params)
     if err != nil {
@@ -3886,6 +4024,19 @@ func (c *Client) GetHoldersMulti(ctx context.Context, chain ChainSymbol, tokenAd
 
 func (c *Client) GetTokenLiquiditySnapshots(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenLiquiditySnapshotsParams, reqEditors... RequestEditorFn) (*http.Response, error) {
     req, err := NewGetTokenLiquiditySnapshotsRequest(c.Server, chain, tokenAddress, params)
+    if err != nil {
+        return nil, err
+    }
+    req = req.WithContext(ctx)
+    if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+        return nil, err
+    }
+    return c.Client.Do(req)
+}
+
+
+func (c *Client) GetLogoDuplicates(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*http.Response, error) {
+    req, err := NewGetLogoDuplicatesRequest(c.Server, chain, tokenAddress)
     if err != nil {
         return nil, err
     }
@@ -3988,7 +4139,7 @@ func (c *Client) GetSecurity(ctx context.Context, chain ChainSymbol, tokenAddres
 }
 
 
-func (c *Client) GetTokenSimilar(ctx context.Context, chain string, tokenAddress string, params *GetTokenSimilarParams, reqEditors... RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetTokenSimilar(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenSimilarParams, reqEditors... RequestEditorFn) (*http.Response, error) {
     req, err := NewGetTokenSimilarRequest(c.Server, chain, tokenAddress, params)
     if err != nil {
         return nil, err
@@ -7135,6 +7286,61 @@ func NewGetCreationRequest(server string, chain ChainSymbol, tokenAddress string
 
 
 
+// NewGetFeeEstimatesRequest generates requests for GetFeeEstimates
+func NewGetFeeEstimatesRequest(server string, chain ChainSymbol, tokenAddress string) (*http.Request, error) {
+    var err error
+
+    var pathParam0 string
+    
+    
+    
+    pathParam0, err = runtime.StyleParamWithOptions("simple", false, "chain", chain, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+    if err != nil {
+        return nil, err
+    }
+    
+
+    var pathParam1 string
+    
+    
+    
+    pathParam1, err = runtime.StyleParamWithOptions("simple", false, "tokenAddress", tokenAddress, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+    if err != nil {
+        return nil, err
+    }
+    
+
+    serverURL, err := url.Parse(server)
+    if err != nil {
+        return nil, err
+    }
+
+    operationPath := fmt.Sprintf("/v2/token/%s/%s/fee-estimates", pathParam0, pathParam1)
+    if operationPath[0] == '/' {
+        operationPath = "." + operationPath
+    }
+
+    queryURL, err := serverURL.Parse(operationPath)
+    if err != nil {
+        return nil, err
+    }
+
+
+    req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+    if err != nil {
+        return nil, err
+    }
+
+    
+
+
+
+    return req, nil
+}
+
+
+
+
 // NewGetHolderTrendRequest generates requests for GetHolderTrend
 func NewGetHolderTrendRequest(server string, chain ChainSymbol, tokenAddress string, params *GetHolderTrendParams) (*http.Request, error) {
     var err error
@@ -7595,6 +7801,61 @@ func NewGetTokenLiquiditySnapshotsRequest(server string, chain ChainSymbol, toke
         }
         queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
     }
+
+    req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+    if err != nil {
+        return nil, err
+    }
+
+    
+
+
+
+    return req, nil
+}
+
+
+
+
+// NewGetLogoDuplicatesRequest generates requests for GetLogoDuplicates
+func NewGetLogoDuplicatesRequest(server string, chain ChainSymbol, tokenAddress string) (*http.Request, error) {
+    var err error
+
+    var pathParam0 string
+    
+    
+    
+    pathParam0, err = runtime.StyleParamWithOptions("simple", false, "chain", chain, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+    if err != nil {
+        return nil, err
+    }
+    
+
+    var pathParam1 string
+    
+    
+    
+    pathParam1, err = runtime.StyleParamWithOptions("simple", false, "tokenAddress", tokenAddress, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+    if err != nil {
+        return nil, err
+    }
+    
+
+    serverURL, err := url.Parse(server)
+    if err != nil {
+        return nil, err
+    }
+
+    operationPath := fmt.Sprintf("/v2/token/%s/%s/logo-duplicates", pathParam0, pathParam1)
+    if operationPath[0] == '/' {
+        operationPath = "." + operationPath
+    }
+
+    queryURL, err := serverURL.Parse(operationPath)
+    if err != nil {
+        return nil, err
+    }
+
 
     req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
     if err != nil {
@@ -8295,7 +8556,7 @@ func NewGetSecurityRequest(server string, chain ChainSymbol, tokenAddress string
 
 
 // NewGetTokenSimilarRequest generates requests for GetTokenSimilar
-func NewGetTokenSimilarRequest(server string, chain string, tokenAddress string, params *GetTokenSimilarParams) (*http.Request, error) {
+func NewGetTokenSimilarRequest(server string, chain ChainSymbol, tokenAddress string, params *GetTokenSimilarParams) (*http.Request, error) {
     var err error
 
     var pathParam0 string
@@ -9178,6 +9439,9 @@ type ClientWithResponsesInterface interface {
 // GetCreationWithResponse request
     GetCreationWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*GetCreationResponse, error)
 
+// GetFeeEstimatesWithResponse request
+    GetFeeEstimatesWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*GetFeeEstimatesResponse, error)
+
 // GetHolderTrendWithResponse request
     GetHolderTrendWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetHolderTrendParams, reqEditors... RequestEditorFn) (*GetHolderTrendResponse, error)
 
@@ -9189,6 +9453,9 @@ type ClientWithResponsesInterface interface {
 
 // GetTokenLiquiditySnapshotsWithResponse request
     GetTokenLiquiditySnapshotsWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenLiquiditySnapshotsParams, reqEditors... RequestEditorFn) (*GetTokenLiquiditySnapshotsResponse, error)
+
+// GetLogoDuplicatesWithResponse request
+    GetLogoDuplicatesWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*GetLogoDuplicatesResponse, error)
 
 // GetMarketDataWithResponse request
     GetMarketDataWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*GetMarketDataResponse, error)
@@ -9212,7 +9479,7 @@ type ClientWithResponsesInterface interface {
     GetSecurityWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*GetSecurityResponse, error)
 
 // GetTokenSimilarWithResponse request
-    GetTokenSimilarWithResponse(ctx context.Context, chain string, tokenAddress string, params *GetTokenSimilarParams, reqEditors... RequestEditorFn) (*GetTokenSimilarResponse, error)
+    GetTokenSimilarWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenSimilarParams, reqEditors... RequestEditorFn) (*GetTokenSimilarResponse, error)
 
 // GetStatsWithResponse request
     GetStatsWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*GetStatsResponse, error)
@@ -9353,28 +9620,28 @@ type GetMarketDataMultiResponse struct {
 // All-time-high market cap in USD (max observed since token creation).
     AthMarketCapInUsd *string`json:"athMarketCapInUsd,omitempty"`
 
-// BluechipHoldingsRatio ENTITY.TOKEN_MARKET_DATA.BLUECHIP_HOLDINGS_RATIO
+// BluechipHoldingsRatio Ratio of bluechip holdings to total supply
     BluechipHoldingsRatio *string`json:"bluechipHoldingsRatio,omitempty"`
 
-// BluechipTotalHolders ENTITY.TOKEN_MARKET_DATA.BLUECHIP_TOTAL_HOLDERS
+// BluechipTotalHolders Number of bluechip wallet holders
     BluechipTotalHolders *string`json:"bluechipTotalHolders,omitempty"`
 
-// BluechipTotalHoldings ENTITY.TOKEN_MARKET_DATA.BLUECHIP_TOTAL_HOLDINGS
+// BluechipTotalHoldings Total holdings of bluechip wallets
     BluechipTotalHoldings *string`json:"bluechipTotalHoldings,omitempty"`
 
-// BundleHoldingsRatio ENTITY.TOKEN_MARKET_DATA.BUNDLE_HOLDINGS_RATIO
+// BundleHoldingsRatio Ratio of bundle holdings to total supply
     BundleHoldingsRatio *string`json:"bundleHoldingsRatio,omitempty"`
 
-// BundleTotalHolders ENTITY.TOKEN_MARKET_DATA.BUNDLE_TOTAL_HOLDERS
+// BundleTotalHolders Number of bundle wallet holders
     BundleTotalHolders *string`json:"bundleTotalHolders,omitempty"`
 
-// BundleTotalHoldings ENTITY.TOKEN_MARKET_DATA.BUNDLE_TOTAL_HOLDINGS
+// BundleTotalHoldings Total holdings of bundle wallets
     BundleTotalHoldings *string`json:"bundleTotalHoldings,omitempty"`
 
-// CirculatingSupply ENTITY.TOKEN_MARKET_DATA.CIRCULATING_SUPPLY
+// CirculatingSupply Circulating supply of the token
     CirculatingSupply *string`json:"circulatingSupply,omitempty"`
 
-// CompletionRatio ENTITY.TOKEN_MARKET_DATA.COMPLETION_RATIO
+// CompletionRatio Bonding curve completion ratio
     CompletionRatio *string`json:"completionRatio,omitempty"`
 
 // CreatorsHoldingsRatio ENTITY.TOKEN_MARKET_DATA.CREATORS_HOLDINGS_RATIO
@@ -9386,62 +9653,65 @@ type GetMarketDataMultiResponse struct {
 // CreatorsTotalHoldings ENTITY.TOKEN_MARKET_DATA.CREATORS_TOTAL_HOLDINGS
     CreatorsTotalHoldings *string`json:"creatorsTotalHoldings,omitempty"`
 
-// DevHoldingsRatio ENTITY.TOKEN_MARKET_DATA.DEV_HOLDINGS_RATIO
+// DevHoldingsRatio Ratio of developer holdings to total supply
     DevHoldingsRatio *string`json:"devHoldingsRatio,omitempty"`
 
-// DevTotalHolders ENTITY.TOKEN_MARKET_DATA.DEV_TOTAL_HOLDERS
+// DevTotalHolders Number of developer wallet holders
     DevTotalHolders *string`json:"devTotalHolders,omitempty"`
 
-// DevTotalHoldings ENTITY.TOKEN_MARKET_DATA.DEV_TOTAL_HOLDINGS
+// DevTotalHoldings Total holdings of developer wallets
     DevTotalHoldings *string`json:"devTotalHoldings,omitempty"`
 
-// FdvInSol ENTITY.TOKEN_MARKET_DATA.FDV_IN_SOL
+// FdvInSol Fully diluted valuation in native token
     FdvInSol *string`json:"fdvInSol,omitempty"`
 
-// FdvInUsd ENTITY.TOKEN_MARKET_DATA.FDV_IN_USD
+// FdvInUsd Fully diluted valuation in USD
     FdvInUsd *string`json:"fdvInUsd,omitempty"`
 
-// FreshHoldingsRatio ENTITY.TOKEN_MARKET_DATA.FRESH_HOLDINGS_RATIO
+// FreshHoldingsRatio Ratio of fresh wallet holdings to total supply
     FreshHoldingsRatio *string`json:"freshHoldingsRatio,omitempty"`
 
-// FreshTotalHolders ENTITY.TOKEN_MARKET_DATA.FRESH_TOTAL_HOLDERS
+// FreshTotalHolders Number of fresh (new) wallet holders
     FreshTotalHolders *string`json:"freshTotalHolders,omitempty"`
 
-// FreshTotalHoldings ENTITY.TOKEN_MARKET_DATA.FRESH_TOTAL_HOLDINGS
+// FreshTotalHoldings Total holdings of fresh wallets
     FreshTotalHoldings *string`json:"freshTotalHoldings,omitempty"`
 
-// Holders ENTITY.TOKEN_MARKET_DATA.HOLDERS
+// Holders Total number of token holders
     Holders *string`json:"holders,omitempty"`
 
-// InsiderHoldingsRatio ENTITY.TOKEN_MARKET_DATA.INSIDER_HOLDINGS_RATIO
+// InsiderHoldingsRatio Ratio of insider holdings to total supply
     InsiderHoldingsRatio *string`json:"insiderHoldingsRatio,omitempty"`
 
-// InsiderTotalHolders ENTITY.TOKEN_MARKET_DATA.INSIDER_TOTAL_HOLDERS
+// InsiderTotalHolders Number of insider wallet holders
     InsiderTotalHolders *string`json:"insiderTotalHolders,omitempty"`
 
-// InsiderTotalHoldings ENTITY.TOKEN_MARKET_DATA.INSIDER_TOTAL_HOLDINGS
+// InsiderTotalHoldings Total holdings of insider wallets
     InsiderTotalHoldings *string`json:"insiderTotalHoldings,omitempty"`
 
-// KolHoldingsRatio ENTITY.TOKEN_MARKET_DATA.KOL_HOLDINGS_RATIO
+// KolHoldingsRatio Ratio of KOL holdings to total supply
     KolHoldingsRatio *string`json:"kolHoldingsRatio,omitempty"`
 
-// KolTotalHolders ENTITY.TOKEN_MARKET_DATA.KOL_TOTAL_HOLDERS
+// KolTotalHolders Number of KOL (Key Opinion Leader) holders
     KolTotalHolders *string`json:"kolTotalHolders,omitempty"`
 
-// KolTotalHoldings ENTITY.TOKEN_MARKET_DATA.KOL_TOTAL_HOLDINGS
+// KolTotalHoldings Total holdings of KOL wallets
     KolTotalHoldings *string`json:"kolTotalHoldings,omitempty"`
 
-// MarketCapInSol ENTITY.TOKEN_MARKET_DATA.MARKET_CAP_IN_SOL
+// MarketCapInSol Market capitalization in native token
     MarketCapInSol *string`json:"marketCapInSol,omitempty"`
 
-// MarketCapInUsd ENTITY.TOKEN_MARKET_DATA.MARKET_CAP_IN_USD
+// MarketCapInUsd Market capitalization in USD
     MarketCapInUsd *string`json:"marketCapInUsd,omitempty"`
 
-// MaxPoolTvlInSol ENTITY.TOKEN_MARKET_DATA.MAX_POOL_TVL_IN_SOL
+// MaxPoolTvlInSol Maximum pool TVL in native token
     MaxPoolTvlInSol *string`json:"maxPoolTvlInSol,omitempty"`
 
-// MaxPoolTvlInUsd ENTITY.TOKEN_MARKET_DATA.MAX_POOL_TVL_IN_USD
+// MaxPoolTvlInUsd Maximum pool TVL in USD
     MaxPoolTvlInUsd *string`json:"maxPoolTvlInUsd,omitempty"`
+
+// MaxSupply ENTITY.TOKEN_MARKET_DATA.MAX_SUPPLY
+    MaxSupply *string`json:"maxSupply,omitempty"`
 
 // PhishingHoldingsRatio ENTITY.TOKEN_MARKET_DATA.PHISHING_HOLDINGS_RATIO
     PhishingHoldingsRatio *string`json:"phishingHoldingsRatio,omitempty"`
@@ -9452,19 +9722,22 @@ type GetMarketDataMultiResponse struct {
 // PhishingTotalHoldings ENTITY.TOKEN_MARKET_DATA.PHISHING_TOTAL_HOLDINGS
     PhishingTotalHoldings *string`json:"phishingTotalHoldings,omitempty"`
 
-// PriceInSol ENTITY.TOKEN_MARKET_DATA.PRICE_IN_SOL
+// PriceInNative ENTITY.TOKEN_MARKET_DATA.PRICE_IN_NATIVE
+    PriceInNative *string`json:"priceInNative,omitempty"`
+
+// PriceInSol Token price in native token
     PriceInSol *string`json:"priceInSol,omitempty"`
 
-// PriceInUsd ENTITY.TOKEN_MARKET_DATA.PRICE_IN_USD
+// PriceInUsd Token price in USD
     PriceInUsd *string`json:"priceInUsd,omitempty"`
 
-// ProHoldingsRatio ENTITY.TOKEN_MARKET_DATA.PRO_HOLDINGS_RATIO
+// ProHoldingsRatio Ratio of professional trader holdings to total supply
     ProHoldingsRatio *string`json:"proHoldingsRatio,omitempty"`
 
-// ProTotalHolders ENTITY.TOKEN_MARKET_DATA.PRO_TOTAL_HOLDERS
+// ProTotalHolders Number of professional trader holders
     ProTotalHolders *string`json:"proTotalHolders,omitempty"`
 
-// ProTotalHoldings ENTITY.TOKEN_MARKET_DATA.PRO_TOTAL_HOLDINGS
+// ProTotalHoldings Total holdings of professional traders
     ProTotalHoldings *string`json:"proTotalHoldings,omitempty"`
 
 // RatHoldingsRatio ENTITY.TOKEN_MARKET_DATA.RAT_HOLDINGS_RATIO
@@ -9476,13 +9749,13 @@ type GetMarketDataMultiResponse struct {
 // RatTotalHoldings ENTITY.TOKEN_MARKET_DATA.RAT_TOTAL_HOLDINGS
     RatTotalHoldings *string`json:"ratTotalHoldings,omitempty"`
 
-// SandwishHoldingsRatio ENTITY.TOKEN_MARKET_DATA.SANDWISH_HOLDINGS_RATIO
+// SandwishHoldingsRatio Ratio of sandwich attack holdings to total supply
     SandwishHoldingsRatio *string`json:"sandwishHoldingsRatio,omitempty"`
 
-// SandwishTotalHolders ENTITY.TOKEN_MARKET_DATA.SANDWISH_TOTAL_HOLDERS
+// SandwishTotalHolders Number of sandwich attack wallet holders
     SandwishTotalHolders *string`json:"sandwishTotalHolders,omitempty"`
 
-// SandwishTotalHoldings ENTITY.TOKEN_MARKET_DATA.SANDWISH_TOTAL_HOLDINGS
+// SandwishTotalHoldings Total holdings of sandwich attack wallets
     SandwishTotalHoldings *string`json:"sandwishTotalHoldings,omitempty"`
 
 // SmartHoldingsRatio ENTITY.TOKEN_MARKET_DATA.SMART_HOLDINGS_RATIO
@@ -9494,40 +9767,40 @@ type GetMarketDataMultiResponse struct {
 // SmartTotalHoldings ENTITY.TOKEN_MARKET_DATA.SMART_TOTAL_HOLDINGS
     SmartTotalHoldings *string`json:"smartTotalHoldings,omitempty"`
 
-// SniperHoldingsRatio ENTITY.TOKEN_MARKET_DATA.SNIPER_HOLDINGS_RATIO
+// SniperHoldingsRatio Ratio of sniper holdings to total supply
     SniperHoldingsRatio *string`json:"sniperHoldingsRatio,omitempty"`
 
-// SniperTotalHolders ENTITY.TOKEN_MARKET_DATA.SNIPER_TOTAL_HOLDERS
+// SniperTotalHolders Number of sniper wallet holders
     SniperTotalHolders *string`json:"sniperTotalHolders,omitempty"`
 
-// SniperTotalHoldings ENTITY.TOKEN_MARKET_DATA.SNIPER_TOTAL_HOLDINGS
+// SniperTotalHoldings Total holdings of sniper wallets
     SniperTotalHoldings *string`json:"sniperTotalHoldings,omitempty"`
 
-// Top100HoldingsRatio ENTITY.TOKEN_MARKET_DATA.TOP100_HOLDINGS_RATIO
+// Top100HoldingsRatio Ratio of top 100 holders to total supply
     Top100HoldingsRatio *string`json:"top100HoldingsRatio,omitempty"`
 
-// Top100TotalHoldings ENTITY.TOKEN_MARKET_DATA.TOP100_TOTAL_HOLDINGS
+// Top100TotalHoldings Total holdings of top 100 holders
     Top100TotalHoldings *string`json:"top100TotalHoldings,omitempty"`
 
-// Top10HoldingsRatio ENTITY.TOKEN_MARKET_DATA.TOP10_HOLDINGS_RATIO
+// Top10HoldingsRatio Ratio of top 10 holders to total supply
     Top10HoldingsRatio *string`json:"top10HoldingsRatio,omitempty"`
 
-// Top10TotalHoldings ENTITY.TOKEN_MARKET_DATA.TOP10_TOTAL_HOLDINGS
+// Top10TotalHoldings Total holdings of top 10 holders
     Top10TotalHoldings *string`json:"top10TotalHoldings,omitempty"`
 
-// Top50HoldingsRatio ENTITY.TOKEN_MARKET_DATA.TOP50_HOLDINGS_RATIO
+// Top50HoldingsRatio Ratio of top 50 holders to total supply
     Top50HoldingsRatio *string`json:"top50HoldingsRatio,omitempty"`
 
-// Top50TotalHoldings ENTITY.TOKEN_MARKET_DATA.TOP50_TOTAL_HOLDINGS
+// Top50TotalHoldings Total holdings of top 50 holders
     Top50TotalHoldings *string`json:"top50TotalHoldings,omitempty"`
 
-// TotalSupply ENTITY.TOKEN_MARKET_DATA.TOTAL_SUPPLY
+// TotalSupply Total supply of the token
     TotalSupply *string`json:"totalSupply,omitempty"`
 
-// TotalTvlInSol ENTITY.TOKEN_MARKET_DATA.TOTAL_TVL_IN_SOL
+// TotalTvlInSol Total value locked in native token
     TotalTvlInSol *string`json:"totalTvlInSol,omitempty"`
 
-// TotalTvlInUsd ENTITY.TOKEN_MARKET_DATA.TOTAL_TVL_IN_USD
+// TotalTvlInUsd Total value locked in USD
     TotalTvlInUsd *string`json:"totalTvlInUsd,omitempty"`
 }
 }
@@ -9566,64 +9839,71 @@ type GetMetadataMultiResponse struct {
     Body         []byte
 	HTTPResponse *http.Response
     JSON200 *map[string]struct {
-// Address ENTITY.TOKEN_METADATA.ADDRESS
+// Address Token contract address
     Address string`json:"address"`
 
-// Chain ENTITY.TOKEN_METADATA.CHAIN
+// Chain Blockchain network identifier
     Chain string`json:"chain"`
 
-// CoingeckoCoinId ENTITY.TOKEN_METADATA.COINGECKO_COIN_ID
+// CoingeckoCoinId CoinGecko coin identifier
     CoingeckoCoinId *string`json:"coingeckoCoinId,omitempty"`
 
-// Decimals ENTITY.TOKEN_METADATA.DECIMALS
+// Decimals Number of decimal places
     Decimals string`json:"decimals"`
 
-// Description ENTITY.TOKEN_METADATA.DESCRIPTION
+// Description Token description
     Description *string`json:"description,omitempty"`
 
-// DevLastTokenCreatedAt ENTITY.TOKEN_METADATA.DEV_LAST_TOKEN_CREATED_AT
+// DevLastTokenCreatedAt Timestamp of developer last token creation
     DevLastTokenCreatedAt *string`json:"devLastTokenCreatedAt,omitempty"`
 
-// DevTotalTokens ENTITY.TOKEN_METADATA.DEV_TOTAL_TOKENS
+// DevTotalTokens Total number of tokens created by the developer
     DevTotalTokens *string`json:"devTotalTokens,omitempty"`
 
 // Extra Token extra metadata
     Extra *TokenExtra`json:"extra,omitempty"`
 
-// ImageUrl ENTITY.TOKEN_METADATA.IMAGE_URL
+// FirstTradeAt ENTITY.TOKEN_METADATA.FIRST_TRADE_AT
+    FirstTradeAt *int64`json:"firstTradeAt,omitempty"`
+
+// ImageUrl Token logo image URL
     ImageUrl *string`json:"imageUrl,omitempty"`
 
-// MetadataAddress ENTITY.TOKEN_METADATA.METADATA_ADDRESS
+// MetadataAddress On-chain metadata account address
     MetadataAddress *string`json:"metadataAddress,omitempty"`
 
-// Name ENTITY.TOKEN_METADATA.NAME
+// Name Token display name
     Name string`json:"name"`
 
 // SocialMedias Token social media links
     SocialMedias *TokenSocialMedias`json:"socialMedias,omitempty"`
 
-// Symbol ENTITY.TOKEN_METADATA.SYMBOL
+// Symbol Token ticker symbol
     Symbol string`json:"symbol"`
 
-// TokenCreatedAt ENTITY.TOKEN_METADATA.TOKEN_CREATED_AT
+// TokenCreatedAt Token creation timestamp (milliseconds)
     TokenCreatedAt *int64`json:"tokenCreatedAt,omitempty"`
 
-// TokenCreatedBlockHeight ENTITY.TOKEN_METADATA.TOKEN_CREATED_BLOCK_HEIGHT
+// TokenCreatedBlockHeight Block height when token was created
     TokenCreatedBlockHeight *string`json:"tokenCreatedBlockHeight,omitempty"`
 
-// TokenCreatedSlot ENTITY.TOKEN_METADATA.TOKEN_CREATED_SLOT
+// TokenCreatedSlot Slot number when token was created
     TokenCreatedSlot *string`json:"tokenCreatedSlot,omitempty"`
 
-// TokenCreatedTxSignature ENTITY.TOKEN_METADATA.TOKEN_CREATED_TX_SIGNATURE
+// TokenCreatedTxSignature Transaction signature of token creation
     TokenCreatedTxSignature *string`json:"tokenCreatedTxSignature,omitempty"`
 
-// TokenCreators ENTITY.TOKEN_METADATA.TOKEN_CREATORS
+// TokenCreators List of token creators
     TokenCreators *[]TokenCreator`json:"tokenCreators,omitempty"`
 
-// UpdatedAt ENTITY.TOKEN_METADATA.UPDATED_AT
+// Translations Token translations for multi-locale display (e.g. Chinese markets).
+// Sourced from CoinGecko `/coins/{id}` localization or community data.
+    Translations *TokenTranslations`json:"translations,omitempty"`
+
+// UpdatedAt Last updated timestamp
     UpdatedAt *string`json:"updatedAt,omitempty"`
 
-// Uri ENTITY.TOKEN_METADATA.URI
+// Uri Token metadata URI
     Uri *string`json:"uri,omitempty"`
 }
 }
@@ -9770,7 +10050,7 @@ type GetStatsMultiResponse struct {
     Body         []byte
 	HTTPResponse *http.Response
     JSON200 *map[string]struct {
-// Address ENTITY.TOKEN_STATS.ADDRESS
+// Address Token contract address
     Address string`json:"address"`
 
 // Periods Trade statistics grouped by time period (1m, 5m, 15m, 30m, 1h, 4h, 6h, 24h).
@@ -9918,6 +10198,42 @@ func (r GetCreationResponse) ContentType() string {
 
 
 
+type GetFeeEstimatesResponse struct {
+    Body         []byte
+	HTTPResponse *http.Response
+    JSON200 *FeeEstimates
+}
+
+// Status returns HTTPResponse.Status
+func (r GetFeeEstimatesResponse) Status() string {
+    if r.HTTPResponse != nil {
+        return r.HTTPResponse.Status
+    }
+    return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetFeeEstimatesResponse) StatusCode() int {
+    if r.HTTPResponse != nil {
+        return r.HTTPResponse.StatusCode
+    }
+    return 0
+}
+
+
+
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetFeeEstimatesResponse) ContentType() string {
+    if r.HTTPResponse != nil {
+        return r.HTTPResponse.Header.Get("Content-Type")
+    }
+    return ""
+}
+
+
+
+
 type GetHolderTrendResponse struct {
     Body         []byte
 	HTTPResponse *http.Response
@@ -10053,6 +10369,42 @@ func (r GetTokenLiquiditySnapshotsResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetTokenLiquiditySnapshotsResponse) ContentType() string {
+    if r.HTTPResponse != nil {
+        return r.HTTPResponse.Header.Get("Content-Type")
+    }
+    return ""
+}
+
+
+
+
+type GetLogoDuplicatesResponse struct {
+    Body         []byte
+	HTTPResponse *http.Response
+    JSON200 *LogoDuplicates
+}
+
+// Status returns HTTPResponse.Status
+func (r GetLogoDuplicatesResponse) Status() string {
+    if r.HTTPResponse != nil {
+        return r.HTTPResponse.Status
+    }
+    return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetLogoDuplicatesResponse) StatusCode() int {
+    if r.HTTPResponse != nil {
+        return r.HTTPResponse.StatusCode
+    }
+    return 0
+}
+
+
+
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetLogoDuplicatesResponse) ContentType() string {
     if r.HTTPResponse != nil {
         return r.HTTPResponse.Header.Get("Content-Type")
     }
@@ -10738,6 +11090,20 @@ func (c *ClientWithResponses) GetCreationWithResponse(ctx context.Context, chain
 
 
 
+// GetFeeEstimatesWithResponse request returning *GetFeeEstimatesResponse
+func (c *ClientWithResponses) GetFeeEstimatesWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*GetFeeEstimatesResponse, error){
+    rsp, err := c.GetFeeEstimates(ctx, chain, tokenAddress, reqEditors...)
+    if err != nil {
+        return nil, err
+    }
+    return ParseGetFeeEstimatesResponse(rsp)
+}
+
+
+
+
+
+
 // GetHolderTrendWithResponse request returning *GetHolderTrendResponse
 func (c *ClientWithResponses) GetHolderTrendWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetHolderTrendParams, reqEditors... RequestEditorFn) (*GetHolderTrendResponse, error){
     rsp, err := c.GetHolderTrend(ctx, chain, tokenAddress, params, reqEditors...)
@@ -10787,6 +11153,20 @@ func (c *ClientWithResponses) GetTokenLiquiditySnapshotsWithResponse(ctx context
         return nil, err
     }
     return ParseGetTokenLiquiditySnapshotsResponse(rsp)
+}
+
+
+
+
+
+
+// GetLogoDuplicatesWithResponse request returning *GetLogoDuplicatesResponse
+func (c *ClientWithResponses) GetLogoDuplicatesWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, reqEditors... RequestEditorFn) (*GetLogoDuplicatesResponse, error){
+    rsp, err := c.GetLogoDuplicates(ctx, chain, tokenAddress, reqEditors...)
+    if err != nil {
+        return nil, err
+    }
+    return ParseGetLogoDuplicatesResponse(rsp)
 }
 
 
@@ -10893,7 +11273,7 @@ func (c *ClientWithResponses) GetSecurityWithResponse(ctx context.Context, chain
 
 
 // GetTokenSimilarWithResponse request returning *GetTokenSimilarResponse
-func (c *ClientWithResponses) GetTokenSimilarWithResponse(ctx context.Context, chain string, tokenAddress string, params *GetTokenSimilarParams, reqEditors... RequestEditorFn) (*GetTokenSimilarResponse, error){
+func (c *ClientWithResponses) GetTokenSimilarWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenSimilarParams, reqEditors... RequestEditorFn) (*GetTokenSimilarResponse, error){
     rsp, err := c.GetTokenSimilar(ctx, chain, tokenAddress, params, reqEditors...)
     if err != nil {
         return nil, err
@@ -11096,28 +11476,28 @@ var dest map[string]struct {
 // All-time-high market cap in USD (max observed since token creation).
     AthMarketCapInUsd *string`json:"athMarketCapInUsd,omitempty"`
 
-// BluechipHoldingsRatio ENTITY.TOKEN_MARKET_DATA.BLUECHIP_HOLDINGS_RATIO
+// BluechipHoldingsRatio Ratio of bluechip holdings to total supply
     BluechipHoldingsRatio *string`json:"bluechipHoldingsRatio,omitempty"`
 
-// BluechipTotalHolders ENTITY.TOKEN_MARKET_DATA.BLUECHIP_TOTAL_HOLDERS
+// BluechipTotalHolders Number of bluechip wallet holders
     BluechipTotalHolders *string`json:"bluechipTotalHolders,omitempty"`
 
-// BluechipTotalHoldings ENTITY.TOKEN_MARKET_DATA.BLUECHIP_TOTAL_HOLDINGS
+// BluechipTotalHoldings Total holdings of bluechip wallets
     BluechipTotalHoldings *string`json:"bluechipTotalHoldings,omitempty"`
 
-// BundleHoldingsRatio ENTITY.TOKEN_MARKET_DATA.BUNDLE_HOLDINGS_RATIO
+// BundleHoldingsRatio Ratio of bundle holdings to total supply
     BundleHoldingsRatio *string`json:"bundleHoldingsRatio,omitempty"`
 
-// BundleTotalHolders ENTITY.TOKEN_MARKET_DATA.BUNDLE_TOTAL_HOLDERS
+// BundleTotalHolders Number of bundle wallet holders
     BundleTotalHolders *string`json:"bundleTotalHolders,omitempty"`
 
-// BundleTotalHoldings ENTITY.TOKEN_MARKET_DATA.BUNDLE_TOTAL_HOLDINGS
+// BundleTotalHoldings Total holdings of bundle wallets
     BundleTotalHoldings *string`json:"bundleTotalHoldings,omitempty"`
 
-// CirculatingSupply ENTITY.TOKEN_MARKET_DATA.CIRCULATING_SUPPLY
+// CirculatingSupply Circulating supply of the token
     CirculatingSupply *string`json:"circulatingSupply,omitempty"`
 
-// CompletionRatio ENTITY.TOKEN_MARKET_DATA.COMPLETION_RATIO
+// CompletionRatio Bonding curve completion ratio
     CompletionRatio *string`json:"completionRatio,omitempty"`
 
 // CreatorsHoldingsRatio ENTITY.TOKEN_MARKET_DATA.CREATORS_HOLDINGS_RATIO
@@ -11129,62 +11509,65 @@ var dest map[string]struct {
 // CreatorsTotalHoldings ENTITY.TOKEN_MARKET_DATA.CREATORS_TOTAL_HOLDINGS
     CreatorsTotalHoldings *string`json:"creatorsTotalHoldings,omitempty"`
 
-// DevHoldingsRatio ENTITY.TOKEN_MARKET_DATA.DEV_HOLDINGS_RATIO
+// DevHoldingsRatio Ratio of developer holdings to total supply
     DevHoldingsRatio *string`json:"devHoldingsRatio,omitempty"`
 
-// DevTotalHolders ENTITY.TOKEN_MARKET_DATA.DEV_TOTAL_HOLDERS
+// DevTotalHolders Number of developer wallet holders
     DevTotalHolders *string`json:"devTotalHolders,omitempty"`
 
-// DevTotalHoldings ENTITY.TOKEN_MARKET_DATA.DEV_TOTAL_HOLDINGS
+// DevTotalHoldings Total holdings of developer wallets
     DevTotalHoldings *string`json:"devTotalHoldings,omitempty"`
 
-// FdvInSol ENTITY.TOKEN_MARKET_DATA.FDV_IN_SOL
+// FdvInSol Fully diluted valuation in native token
     FdvInSol *string`json:"fdvInSol,omitempty"`
 
-// FdvInUsd ENTITY.TOKEN_MARKET_DATA.FDV_IN_USD
+// FdvInUsd Fully diluted valuation in USD
     FdvInUsd *string`json:"fdvInUsd,omitempty"`
 
-// FreshHoldingsRatio ENTITY.TOKEN_MARKET_DATA.FRESH_HOLDINGS_RATIO
+// FreshHoldingsRatio Ratio of fresh wallet holdings to total supply
     FreshHoldingsRatio *string`json:"freshHoldingsRatio,omitempty"`
 
-// FreshTotalHolders ENTITY.TOKEN_MARKET_DATA.FRESH_TOTAL_HOLDERS
+// FreshTotalHolders Number of fresh (new) wallet holders
     FreshTotalHolders *string`json:"freshTotalHolders,omitempty"`
 
-// FreshTotalHoldings ENTITY.TOKEN_MARKET_DATA.FRESH_TOTAL_HOLDINGS
+// FreshTotalHoldings Total holdings of fresh wallets
     FreshTotalHoldings *string`json:"freshTotalHoldings,omitempty"`
 
-// Holders ENTITY.TOKEN_MARKET_DATA.HOLDERS
+// Holders Total number of token holders
     Holders *string`json:"holders,omitempty"`
 
-// InsiderHoldingsRatio ENTITY.TOKEN_MARKET_DATA.INSIDER_HOLDINGS_RATIO
+// InsiderHoldingsRatio Ratio of insider holdings to total supply
     InsiderHoldingsRatio *string`json:"insiderHoldingsRatio,omitempty"`
 
-// InsiderTotalHolders ENTITY.TOKEN_MARKET_DATA.INSIDER_TOTAL_HOLDERS
+// InsiderTotalHolders Number of insider wallet holders
     InsiderTotalHolders *string`json:"insiderTotalHolders,omitempty"`
 
-// InsiderTotalHoldings ENTITY.TOKEN_MARKET_DATA.INSIDER_TOTAL_HOLDINGS
+// InsiderTotalHoldings Total holdings of insider wallets
     InsiderTotalHoldings *string`json:"insiderTotalHoldings,omitempty"`
 
-// KolHoldingsRatio ENTITY.TOKEN_MARKET_DATA.KOL_HOLDINGS_RATIO
+// KolHoldingsRatio Ratio of KOL holdings to total supply
     KolHoldingsRatio *string`json:"kolHoldingsRatio,omitempty"`
 
-// KolTotalHolders ENTITY.TOKEN_MARKET_DATA.KOL_TOTAL_HOLDERS
+// KolTotalHolders Number of KOL (Key Opinion Leader) holders
     KolTotalHolders *string`json:"kolTotalHolders,omitempty"`
 
-// KolTotalHoldings ENTITY.TOKEN_MARKET_DATA.KOL_TOTAL_HOLDINGS
+// KolTotalHoldings Total holdings of KOL wallets
     KolTotalHoldings *string`json:"kolTotalHoldings,omitempty"`
 
-// MarketCapInSol ENTITY.TOKEN_MARKET_DATA.MARKET_CAP_IN_SOL
+// MarketCapInSol Market capitalization in native token
     MarketCapInSol *string`json:"marketCapInSol,omitempty"`
 
-// MarketCapInUsd ENTITY.TOKEN_MARKET_DATA.MARKET_CAP_IN_USD
+// MarketCapInUsd Market capitalization in USD
     MarketCapInUsd *string`json:"marketCapInUsd,omitempty"`
 
-// MaxPoolTvlInSol ENTITY.TOKEN_MARKET_DATA.MAX_POOL_TVL_IN_SOL
+// MaxPoolTvlInSol Maximum pool TVL in native token
     MaxPoolTvlInSol *string`json:"maxPoolTvlInSol,omitempty"`
 
-// MaxPoolTvlInUsd ENTITY.TOKEN_MARKET_DATA.MAX_POOL_TVL_IN_USD
+// MaxPoolTvlInUsd Maximum pool TVL in USD
     MaxPoolTvlInUsd *string`json:"maxPoolTvlInUsd,omitempty"`
+
+// MaxSupply ENTITY.TOKEN_MARKET_DATA.MAX_SUPPLY
+    MaxSupply *string`json:"maxSupply,omitempty"`
 
 // PhishingHoldingsRatio ENTITY.TOKEN_MARKET_DATA.PHISHING_HOLDINGS_RATIO
     PhishingHoldingsRatio *string`json:"phishingHoldingsRatio,omitempty"`
@@ -11195,19 +11578,22 @@ var dest map[string]struct {
 // PhishingTotalHoldings ENTITY.TOKEN_MARKET_DATA.PHISHING_TOTAL_HOLDINGS
     PhishingTotalHoldings *string`json:"phishingTotalHoldings,omitempty"`
 
-// PriceInSol ENTITY.TOKEN_MARKET_DATA.PRICE_IN_SOL
+// PriceInNative ENTITY.TOKEN_MARKET_DATA.PRICE_IN_NATIVE
+    PriceInNative *string`json:"priceInNative,omitempty"`
+
+// PriceInSol Token price in native token
     PriceInSol *string`json:"priceInSol,omitempty"`
 
-// PriceInUsd ENTITY.TOKEN_MARKET_DATA.PRICE_IN_USD
+// PriceInUsd Token price in USD
     PriceInUsd *string`json:"priceInUsd,omitempty"`
 
-// ProHoldingsRatio ENTITY.TOKEN_MARKET_DATA.PRO_HOLDINGS_RATIO
+// ProHoldingsRatio Ratio of professional trader holdings to total supply
     ProHoldingsRatio *string`json:"proHoldingsRatio,omitempty"`
 
-// ProTotalHolders ENTITY.TOKEN_MARKET_DATA.PRO_TOTAL_HOLDERS
+// ProTotalHolders Number of professional trader holders
     ProTotalHolders *string`json:"proTotalHolders,omitempty"`
 
-// ProTotalHoldings ENTITY.TOKEN_MARKET_DATA.PRO_TOTAL_HOLDINGS
+// ProTotalHoldings Total holdings of professional traders
     ProTotalHoldings *string`json:"proTotalHoldings,omitempty"`
 
 // RatHoldingsRatio ENTITY.TOKEN_MARKET_DATA.RAT_HOLDINGS_RATIO
@@ -11219,13 +11605,13 @@ var dest map[string]struct {
 // RatTotalHoldings ENTITY.TOKEN_MARKET_DATA.RAT_TOTAL_HOLDINGS
     RatTotalHoldings *string`json:"ratTotalHoldings,omitempty"`
 
-// SandwishHoldingsRatio ENTITY.TOKEN_MARKET_DATA.SANDWISH_HOLDINGS_RATIO
+// SandwishHoldingsRatio Ratio of sandwich attack holdings to total supply
     SandwishHoldingsRatio *string`json:"sandwishHoldingsRatio,omitempty"`
 
-// SandwishTotalHolders ENTITY.TOKEN_MARKET_DATA.SANDWISH_TOTAL_HOLDERS
+// SandwishTotalHolders Number of sandwich attack wallet holders
     SandwishTotalHolders *string`json:"sandwishTotalHolders,omitempty"`
 
-// SandwishTotalHoldings ENTITY.TOKEN_MARKET_DATA.SANDWISH_TOTAL_HOLDINGS
+// SandwishTotalHoldings Total holdings of sandwich attack wallets
     SandwishTotalHoldings *string`json:"sandwishTotalHoldings,omitempty"`
 
 // SmartHoldingsRatio ENTITY.TOKEN_MARKET_DATA.SMART_HOLDINGS_RATIO
@@ -11237,40 +11623,40 @@ var dest map[string]struct {
 // SmartTotalHoldings ENTITY.TOKEN_MARKET_DATA.SMART_TOTAL_HOLDINGS
     SmartTotalHoldings *string`json:"smartTotalHoldings,omitempty"`
 
-// SniperHoldingsRatio ENTITY.TOKEN_MARKET_DATA.SNIPER_HOLDINGS_RATIO
+// SniperHoldingsRatio Ratio of sniper holdings to total supply
     SniperHoldingsRatio *string`json:"sniperHoldingsRatio,omitempty"`
 
-// SniperTotalHolders ENTITY.TOKEN_MARKET_DATA.SNIPER_TOTAL_HOLDERS
+// SniperTotalHolders Number of sniper wallet holders
     SniperTotalHolders *string`json:"sniperTotalHolders,omitempty"`
 
-// SniperTotalHoldings ENTITY.TOKEN_MARKET_DATA.SNIPER_TOTAL_HOLDINGS
+// SniperTotalHoldings Total holdings of sniper wallets
     SniperTotalHoldings *string`json:"sniperTotalHoldings,omitempty"`
 
-// Top100HoldingsRatio ENTITY.TOKEN_MARKET_DATA.TOP100_HOLDINGS_RATIO
+// Top100HoldingsRatio Ratio of top 100 holders to total supply
     Top100HoldingsRatio *string`json:"top100HoldingsRatio,omitempty"`
 
-// Top100TotalHoldings ENTITY.TOKEN_MARKET_DATA.TOP100_TOTAL_HOLDINGS
+// Top100TotalHoldings Total holdings of top 100 holders
     Top100TotalHoldings *string`json:"top100TotalHoldings,omitempty"`
 
-// Top10HoldingsRatio ENTITY.TOKEN_MARKET_DATA.TOP10_HOLDINGS_RATIO
+// Top10HoldingsRatio Ratio of top 10 holders to total supply
     Top10HoldingsRatio *string`json:"top10HoldingsRatio,omitempty"`
 
-// Top10TotalHoldings ENTITY.TOKEN_MARKET_DATA.TOP10_TOTAL_HOLDINGS
+// Top10TotalHoldings Total holdings of top 10 holders
     Top10TotalHoldings *string`json:"top10TotalHoldings,omitempty"`
 
-// Top50HoldingsRatio ENTITY.TOKEN_MARKET_DATA.TOP50_HOLDINGS_RATIO
+// Top50HoldingsRatio Ratio of top 50 holders to total supply
     Top50HoldingsRatio *string`json:"top50HoldingsRatio,omitempty"`
 
-// Top50TotalHoldings ENTITY.TOKEN_MARKET_DATA.TOP50_TOTAL_HOLDINGS
+// Top50TotalHoldings Total holdings of top 50 holders
     Top50TotalHoldings *string`json:"top50TotalHoldings,omitempty"`
 
-// TotalSupply ENTITY.TOKEN_MARKET_DATA.TOTAL_SUPPLY
+// TotalSupply Total supply of the token
     TotalSupply *string`json:"totalSupply,omitempty"`
 
-// TotalTvlInSol ENTITY.TOKEN_MARKET_DATA.TOTAL_TVL_IN_SOL
+// TotalTvlInSol Total value locked in native token
     TotalTvlInSol *string`json:"totalTvlInSol,omitempty"`
 
-// TotalTvlInUsd ENTITY.TOKEN_MARKET_DATA.TOTAL_TVL_IN_USD
+// TotalTvlInUsd Total value locked in USD
     TotalTvlInUsd *string`json:"totalTvlInUsd,omitempty"`
 }
 if err := json.Unmarshal(bodyBytes, &dest); err != nil { 
@@ -11301,64 +11687,71 @@ HTTPResponse: rsp,
     switch {
 case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 var dest map[string]struct {
-// Address ENTITY.TOKEN_METADATA.ADDRESS
+// Address Token contract address
     Address string`json:"address"`
 
-// Chain ENTITY.TOKEN_METADATA.CHAIN
+// Chain Blockchain network identifier
     Chain string`json:"chain"`
 
-// CoingeckoCoinId ENTITY.TOKEN_METADATA.COINGECKO_COIN_ID
+// CoingeckoCoinId CoinGecko coin identifier
     CoingeckoCoinId *string`json:"coingeckoCoinId,omitempty"`
 
-// Decimals ENTITY.TOKEN_METADATA.DECIMALS
+// Decimals Number of decimal places
     Decimals string`json:"decimals"`
 
-// Description ENTITY.TOKEN_METADATA.DESCRIPTION
+// Description Token description
     Description *string`json:"description,omitempty"`
 
-// DevLastTokenCreatedAt ENTITY.TOKEN_METADATA.DEV_LAST_TOKEN_CREATED_AT
+// DevLastTokenCreatedAt Timestamp of developer last token creation
     DevLastTokenCreatedAt *string`json:"devLastTokenCreatedAt,omitempty"`
 
-// DevTotalTokens ENTITY.TOKEN_METADATA.DEV_TOTAL_TOKENS
+// DevTotalTokens Total number of tokens created by the developer
     DevTotalTokens *string`json:"devTotalTokens,omitempty"`
 
 // Extra Token extra metadata
     Extra *TokenExtra`json:"extra,omitempty"`
 
-// ImageUrl ENTITY.TOKEN_METADATA.IMAGE_URL
+// FirstTradeAt ENTITY.TOKEN_METADATA.FIRST_TRADE_AT
+    FirstTradeAt *int64`json:"firstTradeAt,omitempty"`
+
+// ImageUrl Token logo image URL
     ImageUrl *string`json:"imageUrl,omitempty"`
 
-// MetadataAddress ENTITY.TOKEN_METADATA.METADATA_ADDRESS
+// MetadataAddress On-chain metadata account address
     MetadataAddress *string`json:"metadataAddress,omitempty"`
 
-// Name ENTITY.TOKEN_METADATA.NAME
+// Name Token display name
     Name string`json:"name"`
 
 // SocialMedias Token social media links
     SocialMedias *TokenSocialMedias`json:"socialMedias,omitempty"`
 
-// Symbol ENTITY.TOKEN_METADATA.SYMBOL
+// Symbol Token ticker symbol
     Symbol string`json:"symbol"`
 
-// TokenCreatedAt ENTITY.TOKEN_METADATA.TOKEN_CREATED_AT
+// TokenCreatedAt Token creation timestamp (milliseconds)
     TokenCreatedAt *int64`json:"tokenCreatedAt,omitempty"`
 
-// TokenCreatedBlockHeight ENTITY.TOKEN_METADATA.TOKEN_CREATED_BLOCK_HEIGHT
+// TokenCreatedBlockHeight Block height when token was created
     TokenCreatedBlockHeight *string`json:"tokenCreatedBlockHeight,omitempty"`
 
-// TokenCreatedSlot ENTITY.TOKEN_METADATA.TOKEN_CREATED_SLOT
+// TokenCreatedSlot Slot number when token was created
     TokenCreatedSlot *string`json:"tokenCreatedSlot,omitempty"`
 
-// TokenCreatedTxSignature ENTITY.TOKEN_METADATA.TOKEN_CREATED_TX_SIGNATURE
+// TokenCreatedTxSignature Transaction signature of token creation
     TokenCreatedTxSignature *string`json:"tokenCreatedTxSignature,omitempty"`
 
-// TokenCreators ENTITY.TOKEN_METADATA.TOKEN_CREATORS
+// TokenCreators List of token creators
     TokenCreators *[]TokenCreator`json:"tokenCreators,omitempty"`
 
-// UpdatedAt ENTITY.TOKEN_METADATA.UPDATED_AT
+// Translations Token translations for multi-locale display (e.g. Chinese markets).
+// Sourced from CoinGecko `/coins/{id}` localization or community data.
+    Translations *TokenTranslations`json:"translations,omitempty"`
+
+// UpdatedAt Last updated timestamp
     UpdatedAt *string`json:"updatedAt,omitempty"`
 
-// Uri ENTITY.TOKEN_METADATA.URI
+// Uri Token metadata URI
     Uri *string`json:"uri,omitempty"`
 }
 if err := json.Unmarshal(bodyBytes, &dest); err != nil { 
@@ -11473,7 +11866,7 @@ HTTPResponse: rsp,
     switch {
 case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 var dest map[string]struct {
-// Address ENTITY.TOKEN_STATS.ADDRESS
+// Address Token contract address
     Address string`json:"address"`
 
 // Periods Trade statistics grouped by time period (1m, 5m, 15m, 30m, 1h, 4h, 6h, 24h).
@@ -11565,6 +11958,34 @@ HTTPResponse: rsp,
     switch {
 case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 var dest TokenCreation
+if err := json.Unmarshal(bodyBytes, &dest); err != nil { 
+ return nil, err 
+}
+response.JSON200 = &dest
+
+}
+
+
+    return response, nil
+}
+
+
+// ParseGetFeeEstimatesResponse parses an HTTP response from a GetFeeEstimatesWithResponse call
+func ParseGetFeeEstimatesResponse(rsp *http.Response) (*GetFeeEstimatesResponse, error) {
+    bodyBytes, err := io.ReadAll(rsp.Body)
+    defer func() { _ = rsp.Body.Close() }()
+    if err != nil {
+        return nil, err
+    }
+
+    response := &GetFeeEstimatesResponse{
+Body: bodyBytes,
+HTTPResponse: rsp,
+}
+
+    switch {
+case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+var dest FeeEstimates
 if err := json.Unmarshal(bodyBytes, &dest); err != nil { 
  return nil, err 
 }
@@ -11677,6 +12098,34 @@ HTTPResponse: rsp,
     switch {
 case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 var dest PageResponseTokenLiquiditySnapshot
+if err := json.Unmarshal(bodyBytes, &dest); err != nil { 
+ return nil, err 
+}
+response.JSON200 = &dest
+
+}
+
+
+    return response, nil
+}
+
+
+// ParseGetLogoDuplicatesResponse parses an HTTP response from a GetLogoDuplicatesWithResponse call
+func ParseGetLogoDuplicatesResponse(rsp *http.Response) (*GetLogoDuplicatesResponse, error) {
+    bodyBytes, err := io.ReadAll(rsp.Body)
+    defer func() { _ = rsp.Body.Close() }()
+    if err != nil {
+        return nil, err
+    }
+
+    response := &GetLogoDuplicatesResponse{
+Body: bodyBytes,
+HTTPResponse: rsp,
+}
+
+    switch {
+case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+var dest LogoDuplicates
 if err := json.Unmarshal(bodyBytes, &dest); err != nil { 
  return nil, err 
 }

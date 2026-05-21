@@ -80,63 +80,63 @@ func (e PageDirection) Valid() bool {
 // ChainSymbol Supported blockchain chains
 type ChainSymbol  string
 
-// ClaimRedPacketRequest DTO.RED_PACKET.CLAIMER
+// ClaimRedPacketRequest Claimer wallet address
 type ClaimRedPacketRequest  struct {
-// Claimer DTO.RED_PACKET.CLAIMER
+// Claimer Claimer wallet address
     Claimer string`json:"claimer"`
 
-// PacketId DTO.RED_PACKET.PACKET_ID
+// PacketId Red packet on-chain ID
     PacketId *string`json:"packetId,omitempty"`
 
-// Password DTO.RED_PACKET.PASSWORD
+// Password Red packet password for claiming
     Password *string`json:"password,omitempty"`
 
-// ShareId DTO.RED_PACKET.SHARE_ID
+// ShareId Share identifier
     ShareId *string`json:"shareId,omitempty"`
 }
 
 // ClaimRedPacketResponse Claim red packet response
 type ClaimRedPacketResponse  struct {
-// TxSerialize DTO.RED_PACKET.SERIALIZED_TX
+// TxSerialize Serialized transaction data
     TxSerialize string`json:"txSerialize"`
 }
 
-// CreateRedPacketRequest DTO.RED_PACKET.CREATOR
+// CreateRedPacketRequest Creator wallet address
 type CreateRedPacketRequest  struct {
-// ClaimAuthority DTO.RED_PACKET.CLAIM_AUTHORITY
+// ClaimAuthority Claim authority address
     ClaimAuthority *string`json:"claimAuthority,omitempty"`
 
-// Creator DTO.RED_PACKET.CREATOR
+// Creator Creator wallet address
     Creator string`json:"creator"`
 
-// Expiration DTO.RED_PACKET.EXPIRATION
+// Expiration Expiration duration in seconds
     Expiration *int64`json:"expiration,omitempty"`
 
-// FixedAmount DTO.RED_PACKET.FIXED_AMOUNT
+// FixedAmount Fixed amount per claim
     FixedAmount *string`json:"fixedAmount,omitempty"`
 
-// MaxClaims DTO.RED_PACKET.MAX_CLAIMS
+// MaxClaims Maximum number of claims allowed
     MaxClaims int32`json:"maxClaims"`
 
-// Memo DTO.RED_PACKET.MEMO
+// Memo Red packet memo message
     Memo *string`json:"memo,omitempty"`
 
-// Mint DTO.RED_PACKET.MINT
+// Mint Token mint address
     Mint string`json:"mint"`
 
-// Password DTO.RED_PACKET.PASSWORD
+// Password Red packet password for claiming
     Password *string`json:"password,omitempty"`
 
-// TotalAmount DTO.RED_PACKET.TOTAL_AMOUNT
+// TotalAmount Total amount in the red packet
     TotalAmount *string`json:"totalAmount,omitempty"`
 }
 
 // CreateRedPacketResponse Create red packet response
 type CreateRedPacketResponse  struct {
-// ShareId DTO.RED_PACKET.SHARE_ID
+// ShareId Share identifier
     ShareId string`json:"shareId"`
 
-// TxSerialize DTO.RED_PACKET.SERIALIZED_TX
+// TxSerialize Serialized transaction data
     TxSerialize string`json:"txSerialize"`
 }
 
@@ -145,130 +145,130 @@ type PageDirection  string
 
 // RedPacket Red packet detail
 type RedPacket  struct {
-// Chain DTO.RED_PACKET.CHAIN
+// Chain Blockchain network for the red packet
     Chain *string`json:"chain,omitempty"`
 
-// ClaimAuthority DTO.RED_PACKET.CLAIM_AUTHORITY
+// ClaimAuthority Claim authority address
     ClaimAuthority *string`json:"claimAuthority,omitempty"`
 
-// ClaimedAmount DTO.RED_PACKET.CLAIMED_AMOUNT
+// ClaimedAmount Amount claimed from the red packet
     ClaimedAmount *string`json:"claimedAmount,omitempty"`
 
-// ClaimedCount DTO.RED_PACKET.CLAIMED_COUNT
+// ClaimedCount Number of claims made
     ClaimedCount *int32`json:"claimedCount,omitempty"`
 
-// CreatedAt DTO.RED_PACKET.CREATED_AT
+// CreatedAt Red packet creation timestamp
     CreatedAt *int64`json:"createdAt,omitempty"`
 
-// Creator DTO.RED_PACKET.CREATOR
+// Creator Creator wallet address
     Creator string`json:"creator"`
 
-// Expiration DTO.RED_PACKET.EXPIRATION
+// Expiration Expiration duration in seconds
     Expiration *int64`json:"expiration,omitempty"`
 
-// Expired DTO.RED_PACKET.WITHDRAWED
+// Expired Whether the red packet has been withdrawn
     Expired *bool`json:"expired,omitempty"`
 
-// ExpiredAt DTO.RED_PACKET.EXPIRES_AT
+// ExpiredAt Expiration timestamp
     ExpiredAt *int64`json:"expiredAt,omitempty"`
 
-// Id DTO.RED_PACKET.ID
+// Id Red packet identifier
     Id string`json:"id"`
 
-// MaxClaims DTO.RED_PACKET.MAX_CLAIMS
+// MaxClaims Maximum number of claims allowed
     MaxClaims int32`json:"maxClaims"`
 
-// Memo DTO.RED_PACKET.MEMO
+// Memo Red packet memo message
     Memo *string`json:"memo,omitempty"`
 
-// Mint DTO.RED_PACKET.MINT
+// Mint Token mint address
     Mint string`json:"mint"`
 
-// RefundedAmount DTO.RED_PACKET.REFUND_AMOUNT
+// RefundedAmount Refunded amount
     RefundedAmount *string`json:"refundedAmount,omitempty"`
 
-// ShareId DTO.RED_PACKET.SHARE_ID
+// ShareId Share identifier
     ShareId *string`json:"shareId,omitempty"`
 
-// TotalAmount DTO.RED_PACKET.TOTAL_AMOUNT
+// TotalAmount Total amount in the red packet
     TotalAmount string`json:"totalAmount"`
 
-// TxHash DTO.RED_PACKET.TX_HASH
+// TxHash Transaction hash
     TxHash *string`json:"txHash,omitempty"`
 }
 
 // RedPacketClaim Red packet claim record
 type RedPacketClaim  struct {
-// Amount DTO.RED_PACKET.AMOUNT
+// Amount Red packet total amount
     Amount string`json:"amount"`
 
-// Chain DTO.RED_PACKET.CHAIN
+// Chain Blockchain network for the red packet
     Chain *string`json:"chain,omitempty"`
 
-// ClaimedAt DTO.RED_PACKET.CLAIMED_AT
+// ClaimedAt Claim timestamp
     ClaimedAt *int64`json:"claimedAt,omitempty"`
 
-// Claimer DTO.RED_PACKET.CLAIMER
+// Claimer Claimer wallet address
     Claimer string`json:"claimer"`
 
-// Creator DTO.RED_PACKET.CREATOR
+// Creator Creator wallet address
     Creator *string`json:"creator,omitempty"`
 
-// Mint DTO.RED_PACKET.MINT
+// Mint Token mint address
     Mint string`json:"mint"`
 
-// PacketId DTO.RED_PACKET.PACKET_ID
+// PacketId Red packet on-chain ID
     PacketId string`json:"packetId"`
 
-// TxHash DTO.RED_PACKET.TX_HASH
+// TxHash Transaction hash
     TxHash *string`json:"txHash,omitempty"`
 }
 
 // RedPacketClaimsPage Paginated red packet claims response
 type RedPacketClaimsPage  struct {
-// EndCursor ENTITY.RED_PACKET_CLAIMS_PAGE.END_CURSOR
+// EndCursor Cursor for the end of current page
     EndCursor *string`json:"endCursor,omitempty"`
 
-// HasNextPage ENTITY.RED_PACKET_CLAIMS_PAGE.HAS_NEXT_PAGE
+// HasNextPage Whether there is a next page
     HasNextPage bool`json:"hasNextPage"`
 
-// Records ENTITY.RED_PACKET_CLAIMS_PAGE.RECORDS
+// Records List of red packet claims
     Records []RedPacketClaim`json:"records"`
 
-// StartCursor ENTITY.RED_PACKET_CLAIMS_PAGE.START_CURSOR
+// StartCursor Cursor for the start of current page
     StartCursor *string`json:"startCursor,omitempty"`
 
-// Total ENTITY.RED_PACKET_CLAIMS_PAGE.TOTAL
+// Total Total number of claims
     Total int64`json:"total"`
 }
 
 // RedPacketSendTxRequest Send red packet transaction request
 type RedPacketSendTxRequest  struct {
-// SignedTx DTO.RED_PACKET.SIGNED_TX
+// SignedTx Signed transaction data
     SignedTx string`json:"signedTx"`
 }
 
 // RedPacketSendTxResponse Send red packet transaction response
 type RedPacketSendTxResponse  struct {
-// Signature DTO.RED_PACKET.SIGNATURE
+// Signature Transaction signature
     Signature string`json:"signature"`
 }
 
 // RedPacketsPage Paginated red packets response
 type RedPacketsPage  struct {
-// EndCursor ENTITY.RED_PACKETS_PAGE.END_CURSOR
+// EndCursor Cursor for the end of current page
     EndCursor *string`json:"endCursor,omitempty"`
 
-// HasNextPage ENTITY.RED_PACKETS_PAGE.HAS_NEXT_PAGE
+// HasNextPage Whether there is a next page
     HasNextPage bool`json:"hasNextPage"`
 
-// Records ENTITY.RED_PACKETS_PAGE.RECORDS
+// Records List of red packets
     Records []RedPacket`json:"records"`
 
-// StartCursor ENTITY.RED_PACKETS_PAGE.START_CURSOR
+// StartCursor Cursor for the start of current page
     StartCursor *string`json:"startCursor,omitempty"`
 
-// Total ENTITY.RED_PACKETS_PAGE.TOTAL
+// Total Total number of red packets
     Total int64`json:"total"`
 }
 
@@ -285,21 +285,21 @@ type bearerAuthContextKey  string
 
 // GetRedpacketsParams defines parameters for GetRedpackets.
 type GetRedpacketsParams  struct {
-// Cursor DTO.RED_PACKET.CURSOR
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.RED_PACKET.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.RED_PACKET.DIRECTION
+// Direction Pagination direction
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// Creator DTO.RED_PACKET.CREATOR
+// Creator Creator wallet address
     Creator *string`form:"creator,omitempty" json:"creator,omitempty"`
 
-// Chain DTO.RED_PACKET.CHAIN
+// Chain Blockchain network for the red packet
     Chain *ChainSymbol`form:"chain,omitempty" json:"chain,omitempty"`
 }
 
@@ -307,13 +307,13 @@ union json.RawMessage
 
 // GetClaimsByAddressParams defines parameters for GetClaimsByAddress.
 type GetClaimsByAddressParams  struct {
-// Cursor DTO.RED_PACKET.CURSOR
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.RED_PACKET.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.RED_PACKET.DIRECTION
+// Direction Pagination direction
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
@@ -323,13 +323,13 @@ union json.RawMessage
 
 // GetRedpacketsByAddressParams defines parameters for GetRedpacketsByAddress.
 type GetRedpacketsByAddressParams  struct {
-// Cursor DTO.RED_PACKET.CURSOR
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.RED_PACKET.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.RED_PACKET.DIRECTION
+// Direction Pagination direction
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
@@ -347,13 +347,13 @@ union json.RawMessage
 
 // GetClaimsParams defines parameters for GetClaims.
 type GetClaimsParams  struct {
-// Cursor DTO.RED_PACKET.CURSOR
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.RED_PACKET.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.RED_PACKET.DIRECTION
+// Direction Pagination direction
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`

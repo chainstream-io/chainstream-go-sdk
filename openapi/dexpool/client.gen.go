@@ -251,18 +251,18 @@ type bearerAuthContextKey  string
 
 // GetDexpoolSnapshotsParams defines parameters for GetDexpoolSnapshots.
 type GetDexpoolSnapshotsParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// Time DTO.DEXPOOL.SNAPSHOTS.TIME
+// Time Target Unix timestamp for snapshot query
     Time *int64`form:"time,omitempty" json:"time,omitempty"`
 }
 

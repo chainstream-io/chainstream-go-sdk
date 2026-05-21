@@ -275,40 +275,40 @@ type PageDirection  string
 type PageResponseTopTrader  struct {
 // Data Page data
     Data []struct {
-// BuyAmount ENTITY.TOP_TRADER.BUY_AMOUNT
+// BuyAmount Total buy amount in token units
     BuyAmount string`json:"buyAmount"`
 
-// BuyAmountInNative ENTITY.TOP_TRADER.BUY_AMOUNT_IN_NATIVE
+// BuyAmountInNative Total buy amount in native token
     BuyAmountInNative string`json:"buyAmountInNative"`
 
-// BuyAmountInUsd ENTITY.TOP_TRADER.BUY_AMOUNT_IN_USD
+// BuyAmountInUsd Total buy amount in USD
     BuyAmountInUsd string`json:"buyAmountInUsd"`
 
-// BuyCount ENTITY.TOP_TRADER.BUY_COUNT
+// BuyCount Number of buy trades
     BuyCount int64`json:"buyCount"`
 
-// SellAmount ENTITY.TOP_TRADER.SELL_AMOUNT
+// SellAmount Total sell amount in token units
     SellAmount string`json:"sellAmount"`
 
-// SellAmountInNative ENTITY.TOP_TRADER.SELL_AMOUNT_IN_NATIVE
+// SellAmountInNative Total sell amount in native token
     SellAmountInNative string`json:"sellAmountInNative"`
 
-// SellAmountInUsd ENTITY.TOP_TRADER.SELL_AMOUNT_IN_USD
+// SellAmountInUsd Total sell amount in USD
     SellAmountInUsd string`json:"sellAmountInUsd"`
 
-// SellCount ENTITY.TOP_TRADER.SELL_COUNT
+// SellCount Number of sell trades
     SellCount int64`json:"sellCount"`
 
-// TokenAddress ENTITY.TOP_TRADER.TOKEN_ADDRESS
+// TokenAddress Token contract address
     TokenAddress string`json:"tokenAddress"`
 
-// TradeAmount ENTITY.TOP_TRADER.TRADE_AMOUNT
+// TradeAmount Total trade amount in token units
     TradeAmount string`json:"tradeAmount"`
 
-// TradeCount ENTITY.TOP_TRADER.TRADE_COUNT
+// TradeCount Total number of trades
     TradeCount int64`json:"tradeCount"`
 
-// WalletAddress ENTITY.TOP_TRADER.WALLET_ADDRESS
+// WalletAddress Trader wallet address
     WalletAddress string`json:"walletAddress"`
 }`json:"data"`
 
@@ -503,19 +503,19 @@ type PageResponseTradeDetail  struct {
 type PageResponseTraderGainersLosersItem  struct {
 // Data Page data
     Data []struct {
-// Address ENTITY.TRADER_GAINERS_LOSERS_ITEM.ADDRESS
+// Address Trader wallet address
     Address string`json:"address"`
 
-// Chain ENTITY.TRADER_GAINERS_LOSERS_ITEM.CHAIN
+// Chain Blockchain network identifier
     Chain string`json:"chain"`
 
-// Pnl ENTITY.TRADER_GAINERS_LOSERS_ITEM.PNL
+// Pnl Profit and loss amount in USD
     Pnl string`json:"pnl"`
 
-// TradeCount ENTITY.TRADER_GAINERS_LOSERS_ITEM.TRADE_COUNT
+// TradeCount Total number of trades
     TradeCount string`json:"tradeCount"`
 
-// Volume ENTITY.TRADER_GAINERS_LOSERS_ITEM.VOLUME
+// Volume Total trading volume in USD
     Volume string`json:"volume"`
 }`json:"data"`
 
@@ -560,42 +560,42 @@ type bearerAuthContextKey  string
 
 // GetTradesParams defines parameters for GetTrades.
 type GetTradesParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+// TokenAddress An address of a token
     TokenAddress *string`form:"tokenAddress,omitempty" json:"tokenAddress,omitempty"`
 
-// WalletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
+// WalletAddress An address of a wallet
     WalletAddress *string`form:"walletAddress,omitempty" json:"walletAddress,omitempty"`
 
-// PoolAddress GLOBAL.POOLADDRESS.DESCRIPTION
+// PoolAddress A pool address
     PoolAddress *string`form:"poolAddress,omitempty" json:"poolAddress,omitempty"`
 
-// BeforeTimestamp DTO.TRADE.BEFORE_TIMESTAMP
+// BeforeTimestamp Start timestamp for filtering trades (Unix epoch in seconds)
     BeforeTimestamp *int64`form:"beforeTimestamp,omitempty" json:"beforeTimestamp,omitempty"`
 
-// AfterTimestamp DTO.TRADE.AFTER_TIMESTAMP
+// AfterTimestamp End timestamp for filtering trades (Unix epoch in seconds)
     AfterTimestamp *int64`form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
 
-// BeforeBlockHeight DTO.TRADE.BEFORE_BLOCK_HEIGHT
+// BeforeBlockHeight Filter trades before this block height
     BeforeBlockHeight *int64`form:"beforeBlockHeight,omitempty" json:"beforeBlockHeight,omitempty"`
 
-// AfterBlockHeight DTO.TRADE.AFTER_BLOCK_HEIGHT
+// AfterBlockHeight Filter trades after this block height
     AfterBlockHeight *int64`form:"afterBlockHeight,omitempty" json:"afterBlockHeight,omitempty"`
 
-// TransactionsSignature DTO.TRADE.TRANSACTIONS_SIGNATURE
+// TransactionsSignature Transaction signature/hash
     TransactionsSignature *string`form:"transactionsSignature,omitempty" json:"transactionsSignature,omitempty"`
 
-// Type DTO.TRADE.TYPE
+// Type Trade type filter
     Type *TradeType`form:"type,omitempty" json:"type,omitempty"`
 }
 
@@ -603,42 +603,42 @@ union json.RawMessage
 
 // GetActivitiesParams defines parameters for GetActivities.
 type GetActivitiesParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+// TokenAddress An address of a token
     TokenAddress *string`form:"tokenAddress,omitempty" json:"tokenAddress,omitempty"`
 
-// WalletAddress GLOBAL.WALLETADDRESS.DESCRIPTION
+// WalletAddress An address of a wallet
     WalletAddress *string`form:"walletAddress,omitempty" json:"walletAddress,omitempty"`
 
-// PoolAddress GLOBAL.POOLADDRESS.DESCRIPTION
+// PoolAddress A pool address
     PoolAddress *string`form:"poolAddress,omitempty" json:"poolAddress,omitempty"`
 
-// BeforeTimestamp DTO.TRADE.BEFORE_TIMESTAMP
+// BeforeTimestamp Start timestamp for filtering trades (Unix epoch in seconds)
     BeforeTimestamp *int64`form:"beforeTimestamp,omitempty" json:"beforeTimestamp,omitempty"`
 
-// AfterTimestamp DTO.TRADE.AFTER_TIMESTAMP
+// AfterTimestamp End timestamp for filtering trades (Unix epoch in seconds)
     AfterTimestamp *int64`form:"afterTimestamp,omitempty" json:"afterTimestamp,omitempty"`
 
-// BeforeBlockHeight DTO.TRADE.BEFORE_BLOCK_HEIGHT
+// BeforeBlockHeight Filter trades before this block height
     BeforeBlockHeight *int64`form:"beforeBlockHeight,omitempty" json:"beforeBlockHeight,omitempty"`
 
-// AfterBlockHeight DTO.TRADE.AFTER_BLOCK_HEIGHT
+// AfterBlockHeight Filter trades after this block height
     AfterBlockHeight *int64`form:"afterBlockHeight,omitempty" json:"afterBlockHeight,omitempty"`
 
-// TransactionsSignature DTO.TRADE.TRANSACTIONS_SIGNATURE
+// TransactionsSignature Transaction signature/hash
     TransactionsSignature *string`form:"transactionsSignature,omitempty" json:"transactionsSignature,omitempty"`
 
-// Type DTO.TRADE.ACTIVITY_TYPE
+// Type Activity type filter
     Type *ActivityType`form:"type,omitempty" json:"type,omitempty"`
 
 // SortBy DTO.TRADE.SORT_BY Sort by: timestamp (default) | totalUsd
@@ -661,29 +661,29 @@ union json.RawMessage
 
 // GetTopTradersParams defines parameters for GetTopTraders.
 type GetTopTradersParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// TokenAddress GLOBAL.TOKENADDRESS.DESCRIPTION
+// TokenAddress An address of a token
     TokenAddress string`form:"tokenAddress" json:"tokenAddress"`
 
-// TimeFrame DTO.TRADE.TIME_FRAME
+// TimeFrame Time frame for filtering trades
     TimeFrame *TimeFrame`form:"timeFrame,omitempty" json:"timeFrame,omitempty"`
 
-// SortType DTO.TRADE.SORT_TYPE
+// SortType Sort type for trade results
     SortType *struct {
 union json.RawMessage
 }`form:"sortType,omitempty" json:"sortType,omitempty"`
 
-// SortBy DTO.TRADE.SORT_BY
+// SortBy Field to sort trades by
     SortBy *struct {
 union json.RawMessage
 }`form:"sortBy,omitempty" json:"sortBy,omitempty"`
@@ -693,23 +693,23 @@ union json.RawMessage
 
 // GetTraderGainersLosersParams defines parameters for GetTraderGainersLosers.
 type GetTraderGainersLosersParams  struct {
-// Cursor DTO.PAGE.CURSOR.DESCRIPTION
+// Cursor Pagination cursor
     Cursor *string`form:"cursor,omitempty" json:"cursor,omitempty"`
 
-// Limit DTO.PAGE.LIMIT
+// Limit Number of results per page
     Limit *int64`form:"limit,omitempty" json:"limit,omitempty"`
 
-// Direction DTO.PAGE.DIRECTION
+// Direction Pagination direction (next or prev)
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// Resolution DTO.TRADER.GAINERS_LOSERS.QUERY.RESOLUTION
+// Resolution PnL time resolution (1d, 7d, or 30d)
     Resolution *struct {
 union json.RawMessage
 }`form:"resolution,omitempty" json:"resolution,omitempty"`
 
-// SortType DTO.TRADER.GAINERS_LOSERS.QUERY.SORT_TYPE
+// SortType Sort order (desc for gainers, asc for losers)
     SortType *struct {
 union json.RawMessage
 }`form:"sortType,omitempty" json:"sortType,omitempty"`
