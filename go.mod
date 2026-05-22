@@ -4,7 +4,7 @@ go 1.23.0
 
 require (
 	github.com/chainstream-io/centrifuge-go v0.0.3
-	github.com/oapi-codegen/runtime v1.1.1
+	github.com/oapi-codegen/runtime v1.2.0
 )
 
 require (
@@ -20,6 +20,6 @@ require (
 	github.com/segmentio/encoding v0.5.1 // indirect
 	github.com/shadowspore/fossil-delta v0.0.0-20241213113458-1d797d70cbe3 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	golang.org/x/sys v0.15.0 // indirect
+	golang.org/x/sys v0.29.0 // indirect
 	google.golang.org/protobuf v1.36.6 // indirect
 )

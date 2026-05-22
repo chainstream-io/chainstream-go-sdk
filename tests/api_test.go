@@ -10,6 +10,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"os"
 	"testing"
 
 	chainstream "github.com/chainstream-io/chainstream-go-sdk/v2"
@@ -19,6 +20,10 @@ import (
 const ACCESS_TOKEN = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImtleXN0b3JlLUNIQU5HRS1NRSJ9.eyJqdGkiOiJJQWxZMGdNRGJ0ZW5jNnNhT1dheDEiLCJzdWIiOiJIR2hWbmpiSWlheDFIcDNUakdUd083WU9FUkJURXRwaSIsImlhdCI6MTc3MDAxMzc0MywiZXhwIjoxNzcwMTAwMTQzLCJjbGllbnRfaWQiOiJIR2hWbmpiSWlheDFIcDNUakdUd083WU9FUkJURXRwaSIsImlzcyI6Imh0dHBzOi8vZGV4LmFzaWEuYXV0aC5jaGFpbnN0cmVhbS5pby8iLCJhdWQiOiJodHRwczovL2FwaS5kZXguY2hhaW5zdHJlYW0uaW8ifQ.TVY_FN1MdMogamLvXnYlVoLSXTZpX1b1c3xtUJNB5peUrZCTY_nLB8oOJ-ysBz3qsZhnUpUnX4LKSfuyGXDlfyasJG5c7yrj5zEYUZfkFKxG7PTtNLzXTF-4z0J7VnkbA-VUz1c1z3gaGDf3TFpo_Mfl6Zqf0v_CgDugciJ0ZbJS68gy_EaMXSBHwU7mm_vC2FUFkUfa8qwL3xvEEbOYxIQXJyHmqddnJew6nSyifHEqC_tSYj-o8GDP6PTbfOwqiyB_-T8valMwygFXYMgGstOUnITgNvJE4ciya3yalLuWONoA3LtoDzAq3wABr-0cyIbHVvQJkDT0VjqvJOv89Q"
 
 func TestGetToken(t *testing.T) {
+	if os.Getenv("CHAINSTREAM_RUN_INTEGRATION") != "1" {
+		t.Skip("set CHAINSTREAM_RUN_INTEGRATION=1 to run live API integration tests")
+	}
+
 	fmt.Println("开始测试 GetToken API...")
 
 	// 初始化 SDK 客户端
