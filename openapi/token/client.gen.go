@@ -59,25 +59,43 @@ func (e ChainSymbol) Valid() bool {
 // Defines values for HolderSortBy.
 const (
 
+  HolderSortByAmountPercentage HolderSortBy = "amountPercentage"
   HolderSortByBuyVolume HolderSortBy = "buyVolume"
+  HolderSortByCreatedAt HolderSortBy = "createdAt"
   HolderSortByHoldingUsd HolderSortBy = "holdingUsd"
   HolderSortByLastActiveAt HolderSortBy = "lastActiveAt"
-  HolderSortByProfit HolderSortBy = "profit"
+  HolderSortByNetflowUsd HolderSortBy = "netflowUsd"
+  HolderSortByRealizedPnl HolderSortBy = "realizedPnl"
   HolderSortBySellVolume HolderSortBy = "sellVolume"
+  HolderSortByTotalPnl HolderSortBy = "totalPnl"
+  HolderSortByUnrealizedPnl HolderSortBy = "unrealizedPnl"
+  HolderSortByUsdValue HolderSortBy = "usdValue"
 )
 
 // Valid indicates whether the value is a known member of the HolderSortBy enum.
 func (e HolderSortBy) Valid() bool {
     switch e {
+    case HolderSortByAmountPercentage:
+        return true
     case HolderSortByBuyVolume:
+        return true
+    case HolderSortByCreatedAt:
         return true
     case HolderSortByHoldingUsd:
         return true
     case HolderSortByLastActiveAt:
         return true
-    case HolderSortByProfit:
+    case HolderSortByNetflowUsd:
+        return true
+    case HolderSortByRealizedPnl:
         return true
     case HolderSortBySellVolume:
+        return true
+    case HolderSortByTotalPnl:
+        return true
+    case HolderSortByUnrealizedPnl:
+        return true
+    case HolderSortByUsdValue:
         return true
     default:
         return false
@@ -698,8 +716,9 @@ const (
   Fresh TokenTraderTag = "fresh"
   Insider TokenTraderTag = "insider"
   Kol TokenTraderTag = "kol"
+  Phishing TokenTraderTag = "phishing"
   Pro TokenTraderTag = "pro"
-  Sandwish TokenTraderTag = "sandwish"
+  Sandwich TokenTraderTag = "sandwich"
   Smart TokenTraderTag = "smart"
   Sniper TokenTraderTag = "sniper"
 )
@@ -719,9 +738,11 @@ func (e TokenTraderTag) Valid() bool {
         return true
     case Kol:
         return true
+    case Phishing:
+        return true
     case Pro:
         return true
-    case Sandwish:
+    case Sandwich:
         return true
     case Smart:
         return true
@@ -737,10 +758,13 @@ func (e TokenTraderTag) Valid() bool {
 const (
 
   TraderSortByBuyVolume TraderSortBy = "buyVolume"
+  TraderSortByCreatedAt TraderSortBy = "createdAt"
   TraderSortByLastActiveAt TraderSortBy = "lastActiveAt"
   TraderSortByNetflowUsd TraderSortBy = "netflowUsd"
-  TraderSortByProfit TraderSortBy = "profit"
+  TraderSortByRealizedPnl TraderSortBy = "realizedPnl"
   TraderSortBySellVolume TraderSortBy = "sellVolume"
+  TraderSortByTotalPnl TraderSortBy = "totalPnl"
+  TraderSortByUnrealizedPnl TraderSortBy = "unrealizedPnl"
 )
 
 // Valid indicates whether the value is a known member of the TraderSortBy enum.
@@ -748,13 +772,19 @@ func (e TraderSortBy) Valid() bool {
     switch e {
     case TraderSortByBuyVolume:
         return true
+    case TraderSortByCreatedAt:
+        return true
     case TraderSortByLastActiveAt:
         return true
     case TraderSortByNetflowUsd:
         return true
-    case TraderSortByProfit:
+    case TraderSortByRealizedPnl:
         return true
     case TraderSortBySellVolume:
+        return true
+    case TraderSortByTotalPnl:
+        return true
+    case TraderSortByUnrealizedPnl:
         return true
     default:
         return false
@@ -1069,6 +1099,7 @@ type PageResponseToken  struct {
 // ScoreBreakdown Score breakdown for search result debugging / explainability.
 // Computed in Rust post-query as an approximation of the OS Painless scoring.
     ScoreBreakdown *ScoreBreakdown`json:"scoreBreakdown,omitempty"`
+    Security *TokenSecuritySummary`json:"security,omitempty"`
 
 // SocialMedias Token social media links
     SocialMedias *TokenSocialMedias`json:"socialMedias,omitempty"`
@@ -1139,6 +1170,11 @@ type PageResponseTokenHolder  struct {
 
 // Amount ENTITY.TOKEN_HOLDER.AMOUNT
     Amount string`json:"amount"`
+
+// AmountInNative Holder's token position value denominated in the chain's native coin (SOL/BNB/ETH).
+// Computed as `price_in_native × amount` using real-time Redis price;
+// falls back to OpenSearch `post_balance_in_native` snapshot when price is unavailable.
+    AmountInNative *string`json:"amountInNative,omitempty"`
 
 // AmountInUsd ENTITY.TOKEN_HOLDER.AMOUNT_IN_USD
     AmountInUsd string`json:"amountInUsd"`
@@ -1608,54 +1644,6 @@ type PageResponseTokenTopTrader  struct {
     StartCursor *string`json:"startCursor,omitempty"`
 }
 
-// PageResponseTokenTrader Generic pagination response
-type PageResponseTokenTrader  struct {
-// Data Page data
-    Data []struct {
-// Address Wallet address
-    Address string`json:"address"`
-
-// BlockTimestamp Block timestamp (sniper)
-    BlockTimestamp *string`json:"blockTimestamp,omitempty"`
-
-// OnchainCreatedAt Onchain account creation time (fresh/dev)
-    OnchainCreatedAt *string`json:"onchainCreatedAt,omitempty"`
-
-// PercentileRankTradeAmountInUsd Percentile rank of trade amount in USD (pro/insider)
-    PercentileRankTradeAmountInUsd *string`json:"percentileRankTradeAmountInUsd,omitempty"`
-
-// PercentileRankTradeCount Percentile rank of trade count (pro)
-    PercentileRankTradeCount *int64`json:"percentileRankTradeCount,omitempty"`
-
-// RankTradeAmountInUsd Rank trade amount in USD (insider)
-    RankTradeAmountInUsd *string`json:"rankTradeAmountInUsd,omitempty"`
-
-// TradeAmountInNative Trade amount in native token (pro/insider)
-    TradeAmountInNative *string`json:"tradeAmountInNative,omitempty"`
-
-// TradeAmountInUsd Trade amount in USD (pro/insider)
-    TradeAmountInUsd *string`json:"tradeAmountInUsd,omitempty"`
-
-// TradeCount Trade count (pro/insider)
-    TradeCount *int64`json:"tradeCount,omitempty"`
-
-// TransactionSignature Transaction signature (sandwish/bundle/sniper)
-    TransactionSignature *string`json:"transactionSignature,omitempty"`
-}`json:"data"`
-
-// EndCursor Cursor for the end of current page
-    EndCursor *string`json:"endCursor,omitempty"`
-
-// HasNext Whether there is a next page
-    HasNext *bool`json:"hasNext,omitempty"`
-
-// HasPrev Whether there is a previous page
-    HasPrev *bool`json:"hasPrev,omitempty"`
-
-// StartCursor Cursor for the start of current page
-    StartCursor *string`json:"startCursor,omitempty"`
-}
-
 // PageResponseTokenTransfer Generic pagination response
 type PageResponseTokenTransfer  struct {
 // Data Page data
@@ -1821,6 +1809,7 @@ type Token  struct {
 // ScoreBreakdown Score breakdown for search result debugging / explainability.
 // Computed in Rust post-query as an approximation of the OS Painless scoring.
     ScoreBreakdown *ScoreBreakdown`json:"scoreBreakdown,omitempty"`
+    Security *TokenSecuritySummary`json:"security,omitempty"`
 
 // SocialMedias Token social media links
     SocialMedias *TokenSocialMedias`json:"socialMedias,omitempty"`
@@ -1921,9 +1910,6 @@ type TokenCreator  struct {
 
 // TokenExtra Token extra metadata
 type TokenExtra  struct {
-// BannerUrl ENTITY.TOKEN_EXTRA.BANNER_URL
-    BannerUrl *string`json:"bannerUrl,omitempty"`
-
 // CollectionAddress ENTITY.TOKEN_EXTRA.COLLECTION_ADDRESS
     CollectionAddress *string`json:"collectionAddress,omitempty"`
 
@@ -1932,6 +1918,9 @@ type TokenExtra  struct {
 
 // DexscreenerAdAt ENTITY.TOKEN_EXTRA.DEXSCREENER_AD_AT
     DexscreenerAdAt *int64`json:"dexscreenerAdAt,omitempty"`
+
+// DexscreenerBannerUrl ENTITY.TOKEN_EXTRA.DEXSCREENER_BANNER_URL
+    DexscreenerBannerUrl *string`json:"dexscreenerBannerUrl,omitempty"`
 
 // DexscreenerBoostAt ENTITY.TOKEN_EXTRA.DEXSCREENER_BOOST_AT
     DexscreenerBoostAt *int64`json:"dexscreenerBoostAt,omitempty"`
@@ -2038,6 +2027,11 @@ type TokenHolder  struct {
 
 // Amount ENTITY.TOKEN_HOLDER.AMOUNT
     Amount string`json:"amount"`
+
+// AmountInNative Holder's token position value denominated in the chain's native coin (SOL/BNB/ETH).
+// Computed as `price_in_native × amount` using real-time Redis price;
+// falls back to OpenSearch `post_balance_in_native` snapshot when price is unavailable.
+    AmountInNative *string`json:"amountInNative,omitempty"`
 
 // AmountInUsd ENTITY.TOKEN_HOLDER.AMOUNT_IN_USD
     AmountInUsd string`json:"amountInUsd"`
@@ -2621,6 +2615,51 @@ type TokenSecurityResponse  struct {
     Serialized *SerializedSecurityInfo`json:"serialized,omitempty"`
 
 // SourcesAvailable ENTITY.TOKEN_SECURITY.SOURCES_AVAILABLE
+    SourcesAvailable *[]string`json:"sourcesAvailable,omitempty"`
+}
+
+// TokenSecuritySummary defines model for TokenSecuritySummary.
+type TokenSecuritySummary  struct {
+// BuyTax ENTITY.TOKEN.SECURITY.BUY_TAX
+    BuyTax *string`json:"buyTax,omitempty"`
+
+// HolderCount ENTITY.TOKEN.SECURITY.HOLDER_COUNT
+    HolderCount *string`json:"holderCount,omitempty"`
+
+// IsBlacklisted ENTITY.TOKEN.SECURITY.IS_BLACKLISTED
+    IsBlacklisted *bool`json:"isBlacklisted,omitempty"`
+
+// IsFreezable ENTITY.TOKEN.SECURITY.IS_FREEZABLE
+    IsFreezable *bool`json:"isFreezable,omitempty"`
+
+// IsHoneypot ENTITY.TOKEN.SECURITY.IS_HONEYPOT
+    IsHoneypot *bool`json:"isHoneypot,omitempty"`
+
+// IsMintable ENTITY.TOKEN.SECURITY.IS_MINTABLE
+    IsMintable *bool`json:"isMintable,omitempty"`
+
+// IsOpenSource ENTITY.TOKEN.SECURITY.IS_OPEN_SOURCE
+    IsOpenSource *bool`json:"isOpenSource,omitempty"`
+
+// IsProxy ENTITY.TOKEN.SECURITY.IS_PROXY
+    IsProxy *bool`json:"isProxy,omitempty"`
+
+// IsRenounced ENTITY.TOKEN.SECURITY.IS_RENOUNCED
+    IsRenounced *bool`json:"isRenounced,omitempty"`
+
+// IsShowAlert ENTITY.TOKEN.SECURITY.IS_SHOW_ALERT
+    IsShowAlert *bool`json:"isShowAlert,omitempty"`
+
+// LpHolderCount ENTITY.TOKEN.SECURITY.LP_HOLDER_COUNT
+    LpHolderCount *string`json:"lpHolderCount,omitempty"`
+
+// OwnerAddress ENTITY.TOKEN.SECURITY.OWNER_ADDRESS
+    OwnerAddress *string`json:"ownerAddress,omitempty"`
+
+// SellTax ENTITY.TOKEN.SECURITY.SELL_TAX
+    SellTax *string`json:"sellTax,omitempty"`
+
+// SourcesAvailable ENTITY.TOKEN.SECURITY.SOURCES_AVAILABLE
     SourcesAvailable *[]string`json:"sourcesAvailable,omitempty"`
 }
 
@@ -3473,13 +3512,14 @@ type GetHoldersParams  struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// SortBy DTO.TOKEN.HOLDERS.SORT_BY Sort by: holdingUsd (default) | lastActiveAt | profit | buyVolume | sellVolume
-    SortBy *struct {
-union json.RawMessage
-}`form:"sortBy,omitempty" json:"sortBy,omitempty"`
+// SortBy DTO.TOKEN.HOLDERS.SORT_BY Sort by: amountPercentage (default) | holdingUsd | usdValue | totalPnl | realizedPnl | unrealizedPnl | buyVolume | sellVolume | netflowUsd | lastActiveAt | createdAt
+    SortBy *HolderSortBy`form:"sortBy,omitempty" json:"sortBy,omitempty"`
+
+// SortDirection Sort direction: desc (default) | asc
+    SortDirection *SortDirection`form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
 
 // Tag Filter by wallet tag: smart | kol | sniper | dev | bundle | bluechip | fresh | insider | pro | sandwich | phishing
-    Tag *string`form:"tag,omitempty" json:"tag,omitempty"`
+    Tag *TokenTraderTag`form:"tag,omitempty" json:"tag,omitempty"`
 
 // MinCostUsd Minimum position cost in USD (inclusive). Filters out holders whose open position cost is below this threshold.
 // Maps to OpenSearch field `position_cost_in_usd`.
@@ -3630,13 +3670,14 @@ type GetTopHoldersParams  struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// SortBy DTO.TOKEN.HOLDERS.SORT_BY Sort by: holdingUsd (default) | lastActiveAt | profit | buyVolume | sellVolume
-    SortBy *struct {
-union json.RawMessage
-}`form:"sortBy,omitempty" json:"sortBy,omitempty"`
+// SortBy DTO.TOKEN.HOLDERS.SORT_BY Sort by: amountPercentage (default) | holdingUsd | usdValue | totalPnl | realizedPnl | unrealizedPnl | buyVolume | sellVolume | netflowUsd | lastActiveAt | createdAt
+    SortBy *HolderSortBy`form:"sortBy,omitempty" json:"sortBy,omitempty"`
+
+// SortDirection Sort direction: desc (default) | asc
+    SortDirection *SortDirection`form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
 
 // Tag Filter by wallet tag: smart | kol | sniper | dev | bundle | bluechip | fresh | insider | pro | sandwich | phishing
-    Tag *string`form:"tag,omitempty" json:"tag,omitempty"`
+    Tag *TokenTraderTag`form:"tag,omitempty" json:"tag,omitempty"`
 
 // MinCostUsd Minimum position cost in USD (inclusive). Filters out holders whose open position cost is below this threshold.
 // Maps to OpenSearch field `position_cost_in_usd`.
@@ -3658,13 +3699,14 @@ type GetTokenTopTradersParams  struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
 
-// SortBy Sort by field: profit (default) | buyVolume | sellVolume | lastActiveAt
-    SortBy *struct {
-union json.RawMessage
-}`form:"sortBy,omitempty" json:"sortBy,omitempty"`
+// SortBy Sort by field: totalPnl (default) | realizedPnl | unrealizedPnl | buyVolume | sellVolume | netflowUsd | lastActiveAt | createdAt
+    SortBy *TraderSortBy`form:"sortBy,omitempty" json:"sortBy,omitempty"`
+
+// SortDirection Sort direction: desc (default) | asc
+    SortDirection *SortDirection`form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
 
 // Tag Filter by wallet tag: smart | kol | sniper | dev | bundle | bluechip | fresh | insider | pro | sandwich | phishing
-    Tag *string`form:"tag,omitempty" json:"tag,omitempty"`
+    Tag *TokenTraderTag`form:"tag,omitempty" json:"tag,omitempty"`
 }
 
 
@@ -3681,6 +3723,15 @@ type GetTokenTradersParams  struct {
     Direction *struct {
 union json.RawMessage
 }`form:"direction,omitempty" json:"direction,omitempty"`
+
+// SortBy Sort by field: totalPnl (default) | realizedPnl | unrealizedPnl | buyVolume | sellVolume | netflowUsd | lastActiveAt | createdAt
+    SortBy *TraderSortBy`form:"sortBy,omitempty" json:"sortBy,omitempty"`
+
+// SortDirection Sort direction: desc (default) | asc
+    SortDirection *SortDirection`form:"sortDirection,omitempty" json:"sortDirection,omitempty"`
+
+// Tag Filter by wallet tag: smart | kol | sniper | dev | bundle | bluechip | fresh | insider | pro | sandwich | phishing
+    Tag *TokenTraderTag`form:"tag,omitempty" json:"tag,omitempty"`
 }
 
 
@@ -3944,7 +3995,7 @@ type ClientInterface interface {
     GetTokenTopTraders(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTopTradersParams, reqEditors... RequestEditorFn) (*http.Response, error)
 
 // GetTokenTraders request
-    GetTokenTraders(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, params *GetTokenTradersParams, reqEditors... RequestEditorFn) (*http.Response, error)
+    GetTokenTraders(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTradersParams, reqEditors... RequestEditorFn) (*http.Response, error)
 
 // GetTokenTransferTotal request
     GetTokenTransferTotal(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTransferTotalParams, reqEditors... RequestEditorFn) (*http.Response, error)
@@ -4334,8 +4385,8 @@ func (c *Client) GetTokenTopTraders(ctx context.Context, chain ChainSymbol, toke
 }
 
 
-func (c *Client) GetTokenTraders(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, params *GetTokenTradersParams, reqEditors... RequestEditorFn) (*http.Response, error) {
-    req, err := NewGetTokenTradersRequest(c.Server, chain, tokenAddress, tag, params)
+func (c *Client) GetTokenTraders(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTradersParams, reqEditors... RequestEditorFn) (*http.Response, error) {
+    req, err := NewGetTokenTradersRequest(c.Server, chain, tokenAddress, params)
     if err != nil {
         return nil, err
     }
@@ -7691,7 +7742,21 @@ func NewGetHoldersRequest(server string, chain ChainSymbol, tokenAddress string,
             
             
             
-            if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sortBy", *params.SortBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "", Format: ""}); err != nil {
+            if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sortBy", *params.SortBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+                return nil, err
+            } else {
+                for _, qp := range strings.Split(queryFrag, "&") {
+                    rawQueryFragments = append(rawQueryFragments, qp)
+                }
+            }
+            
+            }
+        
+             if params.SortDirection != nil { 
+            
+            
+            
+            if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sortDirection", *params.SortDirection, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
                 return nil, err
             } else {
                 for _, qp := range strings.Split(queryFrag, "&") {
@@ -8946,7 +9011,21 @@ func NewGetTopHoldersRequest(server string, chain ChainSymbol, tokenAddress stri
             
             
             
-            if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sortBy", *params.SortBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "", Format: ""}); err != nil {
+            if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sortBy", *params.SortBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+                return nil, err
+            } else {
+                for _, qp := range strings.Split(queryFrag, "&") {
+                    rawQueryFragments = append(rawQueryFragments, qp)
+                }
+            }
+            
+            }
+        
+             if params.SortDirection != nil { 
+            
+            
+            
+            if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sortDirection", *params.SortDirection, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
                 return nil, err
             } else {
                 for _, qp := range strings.Split(queryFrag, "&") {
@@ -9100,7 +9179,21 @@ func NewGetTokenTopTradersRequest(server string, chain ChainSymbol, tokenAddress
             
             
             
-            if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sortBy", *params.SortBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "", Format: ""}); err != nil {
+            if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sortBy", *params.SortBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+                return nil, err
+            } else {
+                for _, qp := range strings.Split(queryFrag, "&") {
+                    rawQueryFragments = append(rawQueryFragments, qp)
+                }
+            }
+            
+            }
+        
+             if params.SortDirection != nil { 
+            
+            
+            
+            if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sortDirection", *params.SortDirection, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
                 return nil, err
             } else {
                 for _, qp := range strings.Split(queryFrag, "&") {
@@ -9146,7 +9239,7 @@ func NewGetTokenTopTradersRequest(server string, chain ChainSymbol, tokenAddress
 
 
 // NewGetTokenTradersRequest generates requests for GetTokenTraders
-func NewGetTokenTradersRequest(server string, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, params *GetTokenTradersParams) (*http.Request, error) {
+func NewGetTokenTradersRequest(server string, chain ChainSymbol, tokenAddress string, params *GetTokenTradersParams) (*http.Request, error) {
     var err error
 
     var pathParam0 string
@@ -9169,22 +9262,12 @@ func NewGetTokenTradersRequest(server string, chain ChainSymbol, tokenAddress st
     }
     
 
-    var pathParam2 string
-    
-    
-    
-    pathParam2, err = runtime.StyleParamWithOptions("simple", false, "tag", tag, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-    if err != nil {
-        return nil, err
-    }
-    
-
     serverURL, err := url.Parse(server)
     if err != nil {
         return nil, err
     }
 
-    operationPath := fmt.Sprintf("/v2/token/%s/%s/traders/%s", pathParam0, pathParam1, pathParam2)
+    operationPath := fmt.Sprintf("/v2/token/%s/%s/traders", pathParam0, pathParam1)
     if operationPath[0] == '/' {
         operationPath = "." + operationPath
     }
@@ -9237,6 +9320,48 @@ func NewGetTokenTradersRequest(server string, chain ChainSymbol, tokenAddress st
             
             
             if queryFrag, err := runtime.StyleParamWithOptions("form", true, "direction", *params.Direction, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "", Format: ""}); err != nil {
+                return nil, err
+            } else {
+                for _, qp := range strings.Split(queryFrag, "&") {
+                    rawQueryFragments = append(rawQueryFragments, qp)
+                }
+            }
+            
+            }
+        
+             if params.SortBy != nil { 
+            
+            
+            
+            if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sortBy", *params.SortBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+                return nil, err
+            } else {
+                for _, qp := range strings.Split(queryFrag, "&") {
+                    rawQueryFragments = append(rawQueryFragments, qp)
+                }
+            }
+            
+            }
+        
+             if params.SortDirection != nil { 
+            
+            
+            
+            if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sortDirection", *params.SortDirection, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+                return nil, err
+            } else {
+                for _, qp := range strings.Split(queryFrag, "&") {
+                    rawQueryFragments = append(rawQueryFragments, qp)
+                }
+            }
+            
+            }
+        
+             if params.Tag != nil { 
+            
+            
+            
+            if queryFrag, err := runtime.StyleParamWithOptions("form", true, "tag", *params.Tag, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
                 return nil, err
             } else {
                 for _, qp := range strings.Split(queryFrag, "&") {
@@ -9634,7 +9759,7 @@ type ClientWithResponsesInterface interface {
     GetTokenTopTradersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTopTradersParams, reqEditors... RequestEditorFn) (*GetTokenTopTradersResponse, error)
 
 // GetTokenTradersWithResponse request
-    GetTokenTradersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, params *GetTokenTradersParams, reqEditors... RequestEditorFn) (*GetTokenTradersResponse, error)
+    GetTokenTradersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTradersParams, reqEditors... RequestEditorFn) (*GetTokenTradersResponse, error)
 
 // GetTokenTransferTotalWithResponse request
     GetTokenTransferTotalWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTransferTotalParams, reqEditors... RequestEditorFn) (*GetTokenTransferTotalResponse, error)
@@ -10965,7 +11090,7 @@ func (r GetTokenTopTradersResponse) ContentType() string {
 type GetTokenTradersResponse struct {
     Body         []byte
 	HTTPResponse *http.Response
-    JSON200 *PageResponseTokenTrader
+    JSON200 *PageResponseTokenTopTrader
 }
 
 // Status returns HTTPResponse.Status
@@ -11481,8 +11606,8 @@ func (c *ClientWithResponses) GetTokenTopTradersWithResponse(ctx context.Context
 
 
 // GetTokenTradersWithResponse request returning *GetTokenTradersResponse
-func (c *ClientWithResponses) GetTokenTradersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, tag TokenTraderTag, params *GetTokenTradersParams, reqEditors... RequestEditorFn) (*GetTokenTradersResponse, error){
-    rsp, err := c.GetTokenTraders(ctx, chain, tokenAddress, tag, params, reqEditors...)
+func (c *ClientWithResponses) GetTokenTradersWithResponse(ctx context.Context, chain ChainSymbol, tokenAddress string, params *GetTokenTradersParams, reqEditors... RequestEditorFn) (*GetTokenTradersResponse, error){
+    rsp, err := c.GetTokenTraders(ctx, chain, tokenAddress, params, reqEditors...)
     if err != nil {
         return nil, err
     }
@@ -12622,7 +12747,7 @@ HTTPResponse: rsp,
 
     switch {
 case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-var dest PageResponseTokenTrader
+var dest PageResponseTokenTopTrader
 if err := json.Unmarshal(bodyBytes, &dest); err != nil { 
  return nil, err 
 }

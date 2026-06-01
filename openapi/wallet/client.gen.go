@@ -585,6 +585,18 @@ type PnlDetailItem  struct {
 // TotalTrades ENTITY.PNL_DETAIL_ITEM.TOTAL_TRADES
     TotalTrades string`json:"totalTrades"`
 
+// TransferInAmountInUsd ENTITY.PNL_DETAIL_ITEM.TRANSFER_IN_AMOUNT_IN_USD — USD value of TFR_IN in the window
+    TransferInAmountInUsd *string`json:"transferInAmountInUsd,omitempty"`
+
+// TransferInCount ENTITY.PNL_DETAIL_ITEM.TRANSFER_IN_COUNT — number of TFR_IN events in the resolution window
+    TransferInCount *string`json:"transferInCount,omitempty"`
+
+// TransferOutAmountInUsd ENTITY.PNL_DETAIL_ITEM.TRANSFER_OUT_AMOUNT_IN_USD — USD value of TFR_OUT in the window
+    TransferOutAmountInUsd *string`json:"transferOutAmountInUsd,omitempty"`
+
+// TransferOutCount ENTITY.PNL_DETAIL_ITEM.TRANSFER_OUT_COUNT — number of TFR_OUT events in the resolution window
+    TransferOutCount *string`json:"transferOutCount,omitempty"`
+
 // UnrealizedProfitInUsd ENTITY.PNL_DETAIL_ITEM.UNREALIZED_PROFIT_IN_USD
     UnrealizedProfitInUsd string`json:"unrealizedProfitInUsd"`
 
@@ -638,6 +650,18 @@ type PnlDetailSummary  struct {
 
 // TotalTrades ENTITY.PNL_DETAIL_SUMMARY.TOTAL_TRADES
     TotalTrades string`json:"totalTrades"`
+
+// TransferInAmountInUsd ENTITY.PNL_DETAIL_SUMMARY.TRANSFER_IN_AMOUNT_IN_USD
+    TransferInAmountInUsd *string`json:"transferInAmountInUsd,omitempty"`
+
+// TransferInCount ENTITY.PNL_DETAIL_SUMMARY.TRANSFER_IN_COUNT — total TFR_IN events across all items
+    TransferInCount *string`json:"transferInCount,omitempty"`
+
+// TransferOutAmountInUsd ENTITY.PNL_DETAIL_SUMMARY.TRANSFER_OUT_AMOUNT_IN_USD
+    TransferOutAmountInUsd *string`json:"transferOutAmountInUsd,omitempty"`
+
+// TransferOutCount ENTITY.PNL_DETAIL_SUMMARY.TRANSFER_OUT_COUNT — total TFR_OUT events across all items
+    TransferOutCount *string`json:"transferOutCount,omitempty"`
 
 // UnrealizedProfitInUsd ENTITY.PNL_DETAIL_SUMMARY.UNREALIZED_PROFIT_IN_USD
     UnrealizedProfitInUsd string`json:"unrealizedProfitInUsd"`

@@ -36,16 +36,22 @@ import (
 // Defines values for ActivitySortBy.
 const (
 
-  Timestamp ActivitySortBy = "timestamp"
-  TotalUsd ActivitySortBy = "totalUsd"
+  TimestampAsc ActivitySortBy = "timestampAsc"
+  TimestampDesc ActivitySortBy = "timestampDesc"
+  TotalUsdAsc ActivitySortBy = "totalUsdAsc"
+  TotalUsdDesc ActivitySortBy = "totalUsdDesc"
 )
 
 // Valid indicates whether the value is a known member of the ActivitySortBy enum.
 func (e ActivitySortBy) Valid() bool {
     switch e {
-    case Timestamp:
+    case TimestampAsc:
         return true
-    case TotalUsd:
+    case TimestampDesc:
+        return true
+    case TotalUsdAsc:
+        return true
+    case TotalUsdDesc:
         return true
     default:
         return false
@@ -259,7 +265,7 @@ func (e TraderPnlResolution) Valid() bool {
 
 
 
-// ActivitySortBy Sort field for activities query
+// ActivitySortBy Sort field and direction for activities query
 type ActivitySortBy  string
 
 // ActivityType Activity type (extends TradeType)
@@ -349,6 +355,16 @@ type PageResponseTradeDetail  struct {
 // Chain Chain identifier
     Chain string`json:"chain"`
 
+// DexFeeInNative DEX protocol fee in native currency.
+// Aggregated from fees_processed[PROTOCOL] entries (trade-processing-pipeline Bug A fix required).
+// Null when no PROTOCOL fee data is available (e.g. SOL — ETL not yet populated).
+    DexFeeInNative *string`json:"dexFeeInNative,omitempty"`
+
+// DexFeeInUsd DEX protocol fee in USD.
+// Uses the same native-price snapshot as dex_fee_in_native; satisfies same-snapshot constraint.
+// Null when no PROTOCOL fee data is available.
+    DexFeeInUsd *string`json:"dexFeeInUsd,omitempty"`
+
 // DexImage DEX image
     DexImage *string`json:"dexImage,omitempty"`
 
@@ -404,6 +420,11 @@ type PageResponseTradeDetail  struct {
 // PostBalance Token balance after this trade (token quantity).
 // Matches GMGN `balance` in activity feed.
     PostBalance *string`json:"postBalance,omitempty"`
+
+// PriorityFeeInNative EVM priority fee (fee_miner_reward ÷ 1e18) in native currency (ETH/BNB).
+// Null on SOL (ETL does not yet provide compute-budget priority fee).
+// Equals (effectiveGasPrice − baseFeePerGas) × gasUsed converted to native units.
+    PriorityFeeInNative *string`json:"priorityFeeInNative,omitempty"`
 
 // RealizedProfitInUsd Realized PnL for this specific trade in USD (non-zero only on Sell events).
 // Matches GMGN `realized_profit`.
@@ -470,7 +491,7 @@ type PageResponseTradeDetail  struct {
 // Matches GMGN `total_trade`.
     TotalTrade *int64`json:"totalTrade,omitempty"`
 
-// TraderTags Trader classification tags (e.g. "kol", "smart", "sniper", "dev", "bundle", "bluechip")
+// TraderTags Trader classification tags (e.g. "kol", "smart", "sniper", "dev", "fresh", "bundle", "bluechip", "insider")
     TraderTags *[]string`json:"traderTags,omitempty"`
 
 // TransactionSignature Transaction signature
@@ -641,19 +662,24 @@ union json.RawMessage
 // Type DTO.TRADE.ACTIVITY_TYPE
     Type *ActivityType`form:"type,omitempty" json:"type,omitempty"`
 
-// SortBy DTO.TRADE.SORT_BY Sort by: timestamp (default) | totalUsd
+// SortBy DTO.TRADE.SORT_BY Sort by: timestampDesc (default) | timestampAsc | totalUsdDesc | totalUsdAsc.
+// Legacy aliases: timestamp -> timestampDesc, totalUsd -> totalUsdDesc.
     SortBy *struct {
 union json.RawMessage
 }`form:"sortBy,omitempty" json:"sortBy,omitempty"`
 
-// TraderTags Filter by trader tag(s). Comma-separated list from: kol, smart, sniper, bundle, dev, bluechip, insider, fresh.
+// TraderTags Filter by trader tag(s). Comma-separated list from: kol, smart, sniper, dev, fresh, bundle, bluechip, insider.
+// GMGN tags without existing activities data are unsupported: whale, top_holder, rat_trader, bot_degen, following, remarks.
 // Returns activities where the trader has ANY of the specified tags.
     TraderTags *string`form:"traderTags,omitempty" json:"traderTags,omitempty"`
 
 // MinAmountUsd Minimum trade value in USD (inclusive). Filters out small trades.
     MinAmountUsd *string`form:"minAmountUsd,omitempty" json:"minAmountUsd,omitempty"`
 
-// Maker Filter by specific maker (trader) wallet address. Equivalent to filtering by accountOwnerAddress.
+// MaxAmountUsd Maximum trade value in USD (inclusive).
+    MaxAmountUsd *string`form:"maxAmountUsd,omitempty" json:"maxAmountUsd,omitempty"`
+
+// Maker Filter by one maker (trader) wallet address. Equivalent to filtering by accountOwnerAddress.
     Maker *string`form:"maker,omitempty" json:"maker,omitempty"`
 }
 
@@ -1342,6 +1368,20 @@ func NewGetActivitiesRequest(server string, chain ChainSymbol, params *GetActivi
             
             
             if queryFrag, err := runtime.StyleParamWithOptions("form", true, "minAmountUsd", *params.MinAmountUsd, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+                return nil, err
+            } else {
+                for _, qp := range strings.Split(queryFrag, "&") {
+                    rawQueryFragments = append(rawQueryFragments, qp)
+                }
+            }
+            
+            }
+        
+             if params.MaxAmountUsd != nil { 
+            
+            
+            
+            if queryFrag, err := runtime.StyleParamWithOptions("form", true, "maxAmountUsd", *params.MaxAmountUsd, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
                 return nil, err
             } else {
                 for _, qp := range strings.Split(queryFrag, "&") {

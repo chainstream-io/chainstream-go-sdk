@@ -340,6 +340,7 @@ type Token  struct {
 // ScoreBreakdown Score breakdown for search result debugging / explainability.
 // Computed in Rust post-query as an approximation of the OS Painless scoring.
     ScoreBreakdown *ScoreBreakdown`json:"scoreBreakdown,omitempty"`
+    Security *TokenSecuritySummary`json:"security,omitempty"`
 
 // SocialMedias Token social media links
     SocialMedias *TokenSocialMedias`json:"socialMedias,omitempty"`
@@ -389,9 +390,6 @@ type TokenCreator  struct {
 
 // TokenExtra Token extra metadata
 type TokenExtra  struct {
-// BannerUrl ENTITY.TOKEN_EXTRA.BANNER_URL
-    BannerUrl *string`json:"bannerUrl,omitempty"`
-
 // CollectionAddress ENTITY.TOKEN_EXTRA.COLLECTION_ADDRESS
     CollectionAddress *string`json:"collectionAddress,omitempty"`
 
@@ -400,6 +398,9 @@ type TokenExtra  struct {
 
 // DexscreenerAdAt ENTITY.TOKEN_EXTRA.DEXSCREENER_AD_AT
     DexscreenerAdAt *int64`json:"dexscreenerAdAt,omitempty"`
+
+// DexscreenerBannerUrl ENTITY.TOKEN_EXTRA.DEXSCREENER_BANNER_URL
+    DexscreenerBannerUrl *string`json:"dexscreenerBannerUrl,omitempty"`
 
 // DexscreenerBoostAt ENTITY.TOKEN_EXTRA.DEXSCREENER_BOOST_AT
     DexscreenerBoostAt *int64`json:"dexscreenerBoostAt,omitempty"`
@@ -680,6 +681,51 @@ type TokenMarketData  struct {
 
 // TotalTvlInUsd ENTITY.TOKEN_MARKET_DATA.TOTAL_TVL_IN_USD
     TotalTvlInUsd *string`json:"totalTvlInUsd,omitempty"`
+}
+
+// TokenSecuritySummary defines model for TokenSecuritySummary.
+type TokenSecuritySummary  struct {
+// BuyTax ENTITY.TOKEN.SECURITY.BUY_TAX
+    BuyTax *string`json:"buyTax,omitempty"`
+
+// HolderCount ENTITY.TOKEN.SECURITY.HOLDER_COUNT
+    HolderCount *string`json:"holderCount,omitempty"`
+
+// IsBlacklisted ENTITY.TOKEN.SECURITY.IS_BLACKLISTED
+    IsBlacklisted *bool`json:"isBlacklisted,omitempty"`
+
+// IsFreezable ENTITY.TOKEN.SECURITY.IS_FREEZABLE
+    IsFreezable *bool`json:"isFreezable,omitempty"`
+
+// IsHoneypot ENTITY.TOKEN.SECURITY.IS_HONEYPOT
+    IsHoneypot *bool`json:"isHoneypot,omitempty"`
+
+// IsMintable ENTITY.TOKEN.SECURITY.IS_MINTABLE
+    IsMintable *bool`json:"isMintable,omitempty"`
+
+// IsOpenSource ENTITY.TOKEN.SECURITY.IS_OPEN_SOURCE
+    IsOpenSource *bool`json:"isOpenSource,omitempty"`
+
+// IsProxy ENTITY.TOKEN.SECURITY.IS_PROXY
+    IsProxy *bool`json:"isProxy,omitempty"`
+
+// IsRenounced ENTITY.TOKEN.SECURITY.IS_RENOUNCED
+    IsRenounced *bool`json:"isRenounced,omitempty"`
+
+// IsShowAlert ENTITY.TOKEN.SECURITY.IS_SHOW_ALERT
+    IsShowAlert *bool`json:"isShowAlert,omitempty"`
+
+// LpHolderCount ENTITY.TOKEN.SECURITY.LP_HOLDER_COUNT
+    LpHolderCount *string`json:"lpHolderCount,omitempty"`
+
+// OwnerAddress ENTITY.TOKEN.SECURITY.OWNER_ADDRESS
+    OwnerAddress *string`json:"ownerAddress,omitempty"`
+
+// SellTax ENTITY.TOKEN.SECURITY.SELL_TAX
+    SellTax *string`json:"sellTax,omitempty"`
+
+// SourcesAvailable ENTITY.TOKEN.SECURITY.SOURCES_AVAILABLE
+    SourcesAvailable *[]string`json:"sourcesAvailable,omitempty"`
 }
 
 // TokenSocialMedias Token social media links
