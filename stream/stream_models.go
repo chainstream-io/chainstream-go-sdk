@@ -10,15 +10,33 @@ const (
 	TokenActivityTypeRemoveLiquidity TokenActivityType = "remove_liquidity"
 )
 
+// PredictionActivityChannelKind represents the prediction activity subscription channel kind
+type PredictionActivityChannelKind string
+
+const (
+	PredictionActivityChannelKindEvent PredictionActivityChannelKind = "event"
+	PredictionActivityChannelKindToken PredictionActivityChannelKind = "token"
+)
+
+// PredictionActivityType represents the type of prediction wallet-token activity
+type PredictionActivityType string
+
+const (
+	PredictionActivityTypeBuy             PredictionActivityType = "buy"
+	PredictionActivityTypeSell            PredictionActivityType = "sell"
+	PredictionActivityTypeRedeem          PredictionActivityType = "redeem"
+	PredictionActivityTypeInventoryAdjust PredictionActivityType = "inventory_adjust"
+)
+
 // ChannelType represents the type of channel
 type ChannelType string
 
 const (
-	ChannelTypeNew       ChannelType = "new"
-	ChannelTypeHot       ChannelType = "trending"
-	ChannelTypeUSStocks  ChannelType = "us_stocks"
+	ChannelTypeNew          ChannelType = "new"
+	ChannelTypeHot          ChannelType = "trending"
+	ChannelTypeUSStocks     ChannelType = "us_stocks"
 	ChannelTypeFinalStretch ChannelType = "graduated"
-	ChannelTypeMigrated    ChannelType = "completed"
+	ChannelTypeMigrated     ChannelType = "completed"
 )
 
 // MetricType represents the type of metric
@@ -60,6 +78,37 @@ type TokenActivity struct {
 	Type      TokenActivityType `json:"type"`
 	TxHash    string            `json:"txHash"`
 	Timestamp int64             `json:"timestamp"`
+}
+
+// PredictionActivity represents prediction market wallet-token activity
+type PredictionActivity struct {
+	ActivityID     string                 `json:"activityId"`
+	Amount         string                 `json:"amount"`
+	AssetIDs       []string               `json:"assetIds"`
+	BlockNumber    int64                  `json:"blockNumber"`
+	ConditionID    string                 `json:"conditionId"`
+	EventSlug      string                 `json:"eventSlug"`
+	LogIndex       int64                  `json:"logIndex"`
+	MarketIcon     string                 `json:"marketIcon"`
+	MarketID       string                 `json:"marketId"`
+	MarketQuestion string                 `json:"marketQuestion"`
+	Outcome        string                 `json:"outcome"`
+	Outcomes       []string               `json:"outcomes"`
+	Price          string                 `json:"price"`
+	Quantity       string                 `json:"quantity"`
+	SeqIndex       int64                  `json:"seqIndex"`
+	Source         string                 `json:"source"`
+	Taker          string                 `json:"taker"`
+	TakerAge       int64                  `json:"takerAge"`
+	TakerImage     string                 `json:"takerImage"`
+	TakerName      string                 `json:"takerName"`
+	TakerOrderHash string                 `json:"takerOrderHash"`
+	TakerPseudonym string                 `json:"takerPseudonym"`
+	TakerTags      []string               `json:"takerTags"`
+	Timestamp      int64                  `json:"timestamp"`
+	TokenID        string                 `json:"tokenId"`
+	TxHash         string                 `json:"txHash"`
+	Type           PredictionActivityType `json:"type"`
 }
 
 // TokenStat represents token statistics with multi-timeframe data

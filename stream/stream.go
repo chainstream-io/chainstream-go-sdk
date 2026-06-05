@@ -11,8 +11,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/token"
 	"github.com/chainstream-io/centrifuge-go"
+	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/token"
 )
 
 // RequestContext represents the request context for WebSocket connections
@@ -273,7 +273,9 @@ func (s *StreamApi) Unsubscribe(channel string, callback StreamCallback[interfac
 
 		// Get subscription and unsubscribe
 		if sub, exists := s.client.GetSubscription(channel); exists && sub != nil {
-			sub.Unsubscribe()
+			if err := sub.Unsubscribe(); err != nil {
+				log.Printf("[streaming] unsubscribe error for channel %s: %v", channel, err)
+			}
 		}
 
 		log.Printf("[streaming] unsubscribed from channel: %s", channel)
@@ -323,6 +325,17 @@ func (s *StreamApi) formatScientificNotation(value interface{}) string {
 	return strValue
 }
 
+func predictionActivityChannel(kind PredictionActivityChannelKind, key string) string {
+	switch kind {
+	case PredictionActivityChannelKindEvent:
+		return fmt.Sprintf("pred:evt:%s:act", key)
+	case PredictionActivityChannelKindToken:
+		return fmt.Sprintf("pred:tok:%s:act", key)
+	default:
+		return ""
+	}
+}
+
 // parseCandle parses candle data from WebSocket message
 func (s *StreamApi) parseCandle(dataMap map[string]interface{}) Candle {
 	return Candle{
@@ -335,6 +348,48 @@ func (s *StreamApi) parseCandle(dataMap map[string]interface{}) Candle {
 		Resolution: getString(dataMap, "r"),
 		Time:       getInt64(dataMap, "t"),
 		Number:     getInt(dataMap, "n"),
+	}
+}
+
+func parsePredictionActivity(root map[string]interface{}) PredictionActivity {
+	dataMap := root
+	if nested, ok := root["a"].(map[string]interface{}); ok {
+		dataMap = nested
+	}
+
+	seqIndex := getInt64(dataMap, "seq")
+	if seqIndex == 0 {
+		seqIndex = getInt64(root, "seq")
+	}
+
+	return PredictionActivity{
+		ActivityID:     getString(dataMap, "id"),
+		Amount:         getString(dataMap, "amt"),
+		AssetIDs:       getStringSlice(dataMap, "as"),
+		BlockNumber:    getInt64(dataMap, "bn"),
+		ConditionID:    getString(dataMap, "cid"),
+		EventSlug:      getString(dataMap, "es"),
+		LogIndex:       getInt64(dataMap, "li"),
+		MarketIcon:     getString(dataMap, "mi"),
+		MarketID:       getString(dataMap, "mid"),
+		MarketQuestion: getString(dataMap, "mq"),
+		Outcome:        getString(dataMap, "oc"),
+		Outcomes:       getStringSlice(dataMap, "ocs"),
+		Price:          getString(dataMap, "p"),
+		Quantity:       getString(dataMap, "q"),
+		SeqIndex:       seqIndex,
+		Source:         getString(dataMap, "src"),
+		Taker:          getString(dataMap, "tk"),
+		TakerAge:       getInt64(dataMap, "ta"),
+		TakerImage:     getString(dataMap, "ti"),
+		TakerName:      getString(dataMap, "tn"),
+		TakerOrderHash: getString(dataMap, "toh"),
+		TakerPseudonym: getString(dataMap, "tp"),
+		TakerTags:      getStringSlice(dataMap, "tt"),
+		Timestamp:      getInt64(dataMap, "ts"),
+		TokenID:        getString(dataMap, "tid"),
+		TxHash:         getString(dataMap, "tx"),
+		Type:           PredictionActivityType(getString(dataMap, "ty")),
 	}
 }
 
@@ -388,6 +443,30 @@ func (s *StreamApi) SubscribePairCandles(chain, pairAddress string, resolution t
 		}
 		callback(s.parseCandle(dataMap))
 	}, filter, "subscribePairCandles")
+}
+
+// SubscribePredictionEventActivities subscribes to prediction activities for an event slug
+func (s *StreamApi) SubscribePredictionEventActivities(eventSlug string, callback StreamCallback[PredictionActivity], filter string) Unsubscribe {
+	channel := predictionActivityChannel(PredictionActivityChannelKindEvent, eventSlug)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataMap, ok := data.(map[string]interface{})
+		if !ok {
+			return
+		}
+		callback(parsePredictionActivity(dataMap))
+	}, filter, "subscribePredictionEventActivities")
+}
+
+// SubscribePredictionTokenActivities subscribes to prediction activities for an outcome token id
+func (s *StreamApi) SubscribePredictionTokenActivities(tokenID string, callback StreamCallback[PredictionActivity], filter string) Unsubscribe {
+	channel := predictionActivityChannel(PredictionActivityChannelKindToken, tokenID)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataMap, ok := data.(map[string]interface{})
+		if !ok {
+			return
+		}
+		callback(parsePredictionActivity(dataMap))
+	}, filter, "subscribePredictionTokenActivities")
 }
 
 // parseTokenStatWindow parses token stat data for a specific time window
@@ -1349,6 +1428,21 @@ func getString(m map[string]interface{}, key string) string {
 		}
 	}
 	return ""
+}
+
+func getStringSlice(m map[string]interface{}, key string) []string {
+	if val, ok := m[key]; ok && val != nil {
+		if list, ok := val.([]interface{}); ok {
+			result := make([]string, 0, len(list))
+			for _, item := range list {
+				if s, ok := item.(string); ok {
+					result = append(result, s)
+				}
+			}
+			return result
+		}
+	}
+	return nil
 }
 
 func getInt(m map[string]interface{}, key string) int {

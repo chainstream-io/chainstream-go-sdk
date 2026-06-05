@@ -10,12 +10,17 @@ linters:
     - revive
     - staticcheck
     - unused
-    - godot
   settings:
     perfsprint:
       strconcat: false
-    godot:
-      scope: declarations
+    revive:
+      rules:
+        - name: exported
+          disabled: true
+        - name: unused-parameter
+          disabled: true
+        - name: var-naming
+          disabled: true
   exclusions:
     generated: lax
     presets:
@@ -43,8 +48,7 @@ linters:
 issues:
   max-same-issues: 0
 formatters:
-  enable:
-    - gofmt
+  enable: []
   exclusions:
     generated: lax
     paths:

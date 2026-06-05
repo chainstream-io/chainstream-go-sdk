@@ -15,6 +15,7 @@ import (
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/ipfs"
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/job"
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/kyt"
+	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/prediction"
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/ranking"
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/redpacket"
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/token"
@@ -27,7 +28,7 @@ import (
 )
 
 // LIB_VERSION is the version of the ChainStream Go SDK
-const LIB_VERSION = "2.1.6"
+const LIB_VERSION = "2.1.7"
 
 // DefaultServerURL is the default ChainStream API server URL.
 const DefaultServerURL = "https://api.chainstream.io"
@@ -78,6 +79,7 @@ type ChainStreamClient struct {
 	Ipfs        *ipfs.ClientWithResponses
 	Job         *job.ClientWithResponses
 	Kyt         *kyt.ClientWithResponses
+	Prediction  *prediction.ClientWithResponses
 	Ranking     *ranking.ClientWithResponses
 	RedPacket   *redpacket.ClientWithResponses
 	Token       *token.ClientWithResponses
@@ -225,6 +227,16 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create kyt client: %w", err)
+	}
+
+	// Create prediction client
+	client.Prediction, err = prediction.NewClientWithResponses(serverURL,
+		prediction.WithHTTPClient(httpClient),
+		prediction.WithRequestEditorFn(authEditorFn[prediction.RequestEditorFn](authToken, walletSigner, options.ApiKey)),
+		prediction.WithRequestEditorFn(userAgentFn[prediction.RequestEditorFn]()),
+	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create prediction client: %w", err)
 	}
 
 	// Create ranking client

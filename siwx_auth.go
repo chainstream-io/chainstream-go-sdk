@@ -2,9 +2,7 @@ package chainstream
 
 import (
 	"context"
-	"crypto/rand"
 	"encoding/base64"
-	"encoding/hex"
 	"fmt"
 	"net/http"
 	"sync"
@@ -92,12 +90,6 @@ func (c *SiwxTokenCache) GetToken() (string, error) {
 	c.token = token
 	c.expiresAt = expiresAt
 	return token, nil
-}
-
-func siwxGenerateNonce() string {
-	b := make([]byte, 16)
-	rand.Read(b)
-	return hex.EncodeToString(b)
 }
 
 // SiwxAuthHeaderFn returns a request editor that adds Authorization: SIWX header.
