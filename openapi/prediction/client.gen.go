@@ -49,11 +49,71 @@ func (e PredictionActivityType) Valid() bool {
 	}
 }
 
+// Defines values for PredictionParticipantRole.
+const (
+	PredictionParticipantRoleMaker   PredictionParticipantRole = "maker"
+	PredictionParticipantRoleTaker   PredictionParticipantRole = "taker"
+	PredictionParticipantRoleUnknown PredictionParticipantRole = "unknown"
+)
+
+// Valid indicates whether the value is a known member of the PredictionParticipantRole enum.
+func (e PredictionParticipantRole) Valid() bool {
+	switch e {
+	case PredictionParticipantRoleMaker, PredictionParticipantRoleTaker, PredictionParticipantRoleUnknown:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PredictionWalletPnlOrder.
+const (
+	PredictionWalletPnlOrderAsc  PredictionWalletPnlOrder = "asc"
+	PredictionWalletPnlOrderDesc PredictionWalletPnlOrder = "desc"
+)
+
+// Valid indicates whether the value is a known member of the PredictionWalletPnlOrder enum.
+func (e PredictionWalletPnlOrder) Valid() bool {
+	switch e {
+	case PredictionWalletPnlOrderAsc, PredictionWalletPnlOrderDesc:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PredictionWalletPnlSortBy.
+const (
+	PredictionWalletPnlSortByRealizedPnl   PredictionWalletPnlSortBy = "realizedPnl"
+	PredictionWalletPnlSortByUnrealizedPnl PredictionWalletPnlSortBy = "unrealizedPnl"
+	PredictionWalletPnlSortByTotalPnl      PredictionWalletPnlSortBy = "totalPnl"
+	PredictionWalletPnlSortByLastActive    PredictionWalletPnlSortBy = "lastActive"
+)
+
+// Valid indicates whether the value is a known member of the PredictionWalletPnlSortBy enum.
+func (e PredictionWalletPnlSortBy) Valid() bool {
+	switch e {
+	case PredictionWalletPnlSortByRealizedPnl, PredictionWalletPnlSortByUnrealizedPnl, PredictionWalletPnlSortByTotalPnl, PredictionWalletPnlSortByLastActive:
+		return true
+	default:
+		return false
+	}
+}
+
 // PredictionActivityOrder Prediction activity sort order
 type PredictionActivityOrder string
 
 // PredictionActivityType Prediction wallet-token activity type
 type PredictionActivityType string
+
+// PredictionParticipantRole defines model for PredictionParticipantRole.
+type PredictionParticipantRole string
+
+// PredictionWalletPnlOrder defines model for PredictionWalletPnlOrder.
+type PredictionWalletPnlOrder string
+
+// PredictionWalletPnlSortBy defines model for PredictionWalletPnlSortBy.
+type PredictionWalletPnlSortBy string
 
 // PredictionActivity defines model for PredictionActivity.
 type PredictionActivity struct {
@@ -63,18 +123,36 @@ type PredictionActivity struct {
 	// Amount Collateral amount for the activity
 	Amount string `json:"amount"`
 
+	AmountInUsd string `json:"amountInUsd,omitempty"`
+
 	// AssetIds Outcome token ids for the market
 	AssetIds []string `json:"assetIds"`
 
 	// BlockNumber Polygon block number
 	BlockNumber int64 `json:"blockNumber"`
 
+	CollateralAmount       string `json:"collateralAmount,omitempty"`
+	CollateralAmountInUsd  string `json:"collateralAmountInUsd,omitempty"`
+	CollateralTokenAddress string `json:"collateralTokenAddress,omitempty"`
+	CollateralTokenSymbol  string `json:"collateralTokenSymbol,omitempty"`
 	// ConditionId Polymarket condition id
 	ConditionId string `json:"conditionId"`
 
+	Counterparty        string `json:"counterparty,omitempty"`
+	EconomicAmount      string `json:"economicAmount,omitempty"`
+	EconomicAmountInUsd string `json:"economicAmountInUsd,omitempty"`
+	EconomicOutcome     string `json:"economicOutcome,omitempty"`
+	EconomicPrice       string `json:"economicPrice,omitempty"`
+	EconomicTokenId     string `json:"economicTokenId,omitempty"`
 	// EventSlug Prediction event slug
 	EventSlug string `json:"eventSlug"`
 
+	FeeAmount       string `json:"feeAmount,omitempty"`
+	FeeAmountInUsd  string `json:"feeAmountInUsd,omitempty"`
+	FeePayer        string `json:"feePayer,omitempty"`
+	FeeRecipient    string `json:"feeRecipient,omitempty"`
+	FeeTokenAddress string `json:"feeTokenAddress,omitempty"`
+	FeeTokenSymbol  string `json:"feeTokenSymbol,omitempty"`
 	// LogIndex Event log index
 	LogIndex int64 `json:"logIndex"`
 
@@ -93,11 +171,21 @@ type PredictionActivity struct {
 	// Outcomes Market outcome labels
 	Outcomes []string `json:"outcomes"`
 
+	ParticipantRole PredictionParticipantRole `json:"participantRole,omitempty"`
+
 	// Price Activity price
 	Price string `json:"price"`
 
+	PricePerShare string `json:"pricePerShare,omitempty"`
+
 	// Quantity Outcome token quantity
 	Quantity string `json:"quantity"`
+
+	RawAmount  string `json:"rawAmount,omitempty"`
+	RawOutcome string `json:"rawOutcome,omitempty"`
+	RawPrice   string `json:"rawPrice,omitempty"`
+	RawTokenId string `json:"rawTokenId,omitempty"`
+	RawType    string `json:"rawType,omitempty"`
 
 	// SeqIndex Monotonic ordering index for cursor pagination
 	SeqIndex int64 `json:"seqIndex"`
@@ -137,6 +225,8 @@ type PredictionActivity struct {
 
 	// Type Activity type
 	Type PredictionActivityType `json:"type"`
+
+	Wallet string `json:"wallet,omitempty"`
 }
 
 // PredictionActivitiesResponse defines model for PredictionActivitiesResponse.
@@ -158,6 +248,109 @@ type PredictionActivitiesResponse struct {
 
 	// RetentionDays ClickHouse hot activity retention in days
 	RetentionDays int32 `json:"retentionDays"`
+}
+
+// PredictionWalletDailyPnl defines model for PredictionWalletDailyPnl.
+type PredictionWalletDailyPnl struct {
+	ActivityCount int64  `json:"activityCount"`
+	Day           string `json:"day"`
+	LossCount     int64  `json:"lossCount"`
+	RealizedPnl   string `json:"realizedPnl"`
+	Volume        string `json:"volume"`
+	WinCount      int64  `json:"winCount"`
+}
+
+// PredictionWalletPnlSummary defines model for PredictionWalletPnlSummary.
+type PredictionWalletPnlSummary struct {
+	AvgEntryCount            string  `json:"avgEntryCount"`
+	AvgHoldingSeconds        string  `json:"avgHoldingSeconds"`
+	AvgInitialCost           string  `json:"avgInitialCost"`
+	BestTradeConditionId     string  `json:"bestTradeConditionId"`
+	BestTradeMarketQuestion  string  `json:"bestTradeMarketQuestion"`
+	BestTradeOutcome         string  `json:"bestTradeOutcome"`
+	BestTradePnl             string  `json:"bestTradePnl"`
+	BestTradePnlShare        string  `json:"bestTradePnlShare"`
+	BestTradeTokenId         string  `json:"bestTradeTokenId"`
+	CurrentValue             string  `json:"currentValue"`
+	LastActivityTs           string  `json:"lastActivityTs"`
+	LossCount                int64   `json:"lossCount"`
+	MarketCount              int64   `json:"marketCount"`
+	OpenPositionCount        int64   `json:"openPositionCount"`
+	ProfitFactor             string  `json:"profitFactor"`
+	RealizedPnl              string  `json:"realizedPnl"`
+	SettlementRatio          string  `json:"settlementRatio"`
+	SettlementWinRate        string  `json:"settlementWinRate"`
+	SevenDayActivityCount    int64   `json:"sevenDayActivityCount"`
+	SevenDayMarketCount      int64   `json:"sevenDayMarketCount"`
+	SevenDayRealizedPnl      string  `json:"sevenDayRealizedPnl"`
+	SevenDayVolume           string  `json:"sevenDayVolume"`
+	StateQuality             string  `json:"stateQuality"`
+	TodayRealizedPnl         string  `json:"todayRealizedPnl"`
+	TodayVolume              string  `json:"todayVolume"`
+	TokenCount               int64   `json:"tokenCount"`
+	Tag                      *string `json:"tag"`
+	TotalBuyAmount           string  `json:"totalBuyAmount"`
+	TotalPnl                 string  `json:"totalPnl"`
+	TotalPnlRatio            string  `json:"totalPnlRatio"`
+	TotalRedeemAmount        string  `json:"totalRedeemAmount"`
+	TotalSellAmount          string  `json:"totalSellAmount"`
+	TotalVolume              string  `json:"totalVolume"`
+	UnrealizedPnl            string  `json:"unrealizedPnl"`
+	Wallet                   string  `json:"wallet"`
+	WinCount                 int64   `json:"winCount"`
+	WinRate                  string  `json:"winRate"`
+	WorstTradeConditionId    string  `json:"worstTradeConditionId"`
+	WorstTradeMarketQuestion string  `json:"worstTradeMarketQuestion"`
+	WorstTradeOutcome        string  `json:"worstTradeOutcome"`
+	WorstTradePnl            string  `json:"worstTradePnl"`
+	WorstTradePnlShare       string  `json:"worstTradePnlShare"`
+	WorstTradeTokenId        string  `json:"worstTradeTokenId"`
+}
+
+// PredictionWalletTokenPnl defines model for PredictionWalletTokenPnl.
+type PredictionWalletTokenPnl struct {
+	AvgEntryPrice     string   `json:"avgEntryPrice"`
+	AvgSellPrice      string   `json:"avgSellPrice"`
+	ConditionId       string   `json:"conditionId"`
+	CostBasis         string   `json:"costBasis"`
+	CurrentValue      string   `json:"currentValue"`
+	EventSlug         string   `json:"eventSlug"`
+	FirstActivityTs   string   `json:"firstActivityTs"`
+	LastActivityId    string   `json:"lastActivityId"`
+	LastActivityTs    string   `json:"lastActivityTs"`
+	LastPrice         string   `json:"lastPrice"`
+	LastSeqIndex      int64    `json:"lastSeqIndex"`
+	LossCount         int64    `json:"lossCount"`
+	MarketId          string   `json:"marketId"`
+	MarketQuestion    string   `json:"marketQuestion"`
+	OpenQuantity      string   `json:"openQuantity"`
+	Outcome           string   `json:"outcome"`
+	RealizedPnl       string   `json:"realizedPnl"`
+	StateQuality      string   `json:"stateQuality"`
+	TokenId           string   `json:"tokenId"`
+	Tags              []string `json:"tags"`
+	TotalBuyAmount    string   `json:"totalBuyAmount"`
+	TotalPnl          string   `json:"totalPnl"`
+	TotalPnlRatio     string   `json:"totalPnlRatio"`
+	TotalRedeemAmount string   `json:"totalRedeemAmount"`
+	TotalSellAmount   string   `json:"totalSellAmount"`
+	TotalVolume       string   `json:"totalVolume"`
+	UnrealizedPnl     string   `json:"unrealizedPnl"`
+	Wallet            string   `json:"wallet"`
+	WinCount          int64    `json:"winCount"`
+}
+
+// PredictionWalletPnlResponse defines model for PredictionWalletPnlResponse.
+type PredictionWalletPnlResponse struct {
+	Cursor    *string                    `json:"cursor"`
+	DailyPnls []PredictionWalletDailyPnl `json:"dailyPnls"`
+	Limit     int64                      `json:"limit"`
+	Order     PredictionWalletPnlOrder   `json:"order"`
+	SortBy    PredictionWalletPnlSortBy  `json:"sortBy"`
+	Summary   PredictionWalletPnlSummary `json:"summary"`
+	Tokens    []PredictionWalletTokenPnl `json:"tokens"`
+	Tag       *string                    `json:"tag"`
+	Wallet    string                     `json:"wallet"`
 }
 
 // GetPredictionEventActivitiesParams defines parameters for GetPredictionEventActivities.
@@ -206,6 +399,30 @@ type GetPredictionMarketActivitiesParams struct {
 
 	// Order Sort order
 	Order *PredictionActivityOrder `form:"order,omitempty" json:"order,omitempty"`
+}
+
+// GetPredictionWalletPnlParams defines parameters for GetPredictionWalletPnl.
+type GetPredictionWalletPnlParams struct {
+	// Cursor Cursor from the previous prediction wallet PNL page
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+
+	// Limit Page size
+	Limit *int64 `form:"limit,omitempty" json:"limit,omitempty"`
+
+	// Tag Optional PNL tag filter, for example worldcup_2026
+	Tag *string `form:"tag,omitempty" json:"tag,omitempty"`
+
+	// TokenId Filter by prediction outcome token id
+	TokenId *string `form:"token_id,omitempty" json:"token_id,omitempty"`
+
+	// ConditionId Filter by Polymarket condition id.
+	ConditionId *string `form:"condition_id,omitempty" json:"condition_id,omitempty"`
+
+	// SortBy Sort field
+	SortBy *PredictionWalletPnlSortBy `form:"sort_by,omitempty" json:"sort_by,omitempty"`
+
+	// Order Sort order
+	Order *PredictionWalletPnlOrder `form:"order,omitempty" json:"order,omitempty"`
 }
 
 // RequestEditorFn is the function signature for the RequestEditor callback function.
@@ -260,6 +477,7 @@ func WithRequestEditorFn(fn RequestEditorFn) ClientOption {
 type ClientInterface interface {
 	GetPredictionEventActivities(ctx context.Context, eventSlug string, params *GetPredictionEventActivitiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 	GetPredictionMarketActivities(ctx context.Context, conditionId string, params *GetPredictionMarketActivitiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	GetPredictionWalletPnl(ctx context.Context, wallet string, params *GetPredictionWalletPnlParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
 
 // GetPredictionEventActivities request.
@@ -278,6 +496,19 @@ func (c *Client) GetPredictionEventActivities(ctx context.Context, eventSlug str
 // GetPredictionMarketActivities request.
 func (c *Client) GetPredictionMarketActivities(ctx context.Context, conditionId string, params *GetPredictionMarketActivitiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetPredictionMarketActivitiesRequest(c.Server, conditionId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// GetPredictionWalletPnl request.
+func (c *Client) GetPredictionWalletPnl(ctx context.Context, wallet string, params *GetPredictionWalletPnlParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetPredictionWalletPnlRequest(c.Server, wallet, params)
 	if err != nil {
 		return nil, err
 	}
@@ -320,6 +551,22 @@ func NewGetPredictionMarketActivitiesRequest(server string, conditionId string, 
 	})
 }
 
+// NewGetPredictionWalletPnlRequest generates requests for GetPredictionWalletPnl.
+func NewGetPredictionWalletPnlRequest(server string, wallet string, params *GetPredictionWalletPnlParams) (*http.Request, error) {
+	return newPredictionActivitiesRequest(server, fmt.Sprintf("/v1/prediction/wallets/%s/pnl", url.PathEscape(wallet)), func(values url.Values) {
+		if params == nil {
+			return
+		}
+		addString(values, "cursor", params.Cursor)
+		addInt64(values, "limit", params.Limit)
+		addString(values, "tag", params.Tag)
+		addString(values, "token_id", params.TokenId)
+		addString(values, "condition_id", params.ConditionId)
+		addPredictionWalletPnlSortBy(values, "sort_by", params.SortBy)
+		addPredictionWalletPnlOrder(values, "order", params.Order)
+	})
+}
+
 func newPredictionActivitiesRequest(server string, operationPath string, addParams func(url.Values)) (*http.Request, error) {
 	serverURL, err := url.Parse(server)
 	if err != nil {
@@ -357,6 +604,18 @@ func addPredictionActivityType(values url.Values, name string, value *Prediction
 }
 
 func addPredictionActivityOrder(values url.Values, name string, value *PredictionActivityOrder) {
+	if value != nil {
+		values.Add(name, string(*value))
+	}
+}
+
+func addPredictionWalletPnlSortBy(values url.Values, name string, value *PredictionWalletPnlSortBy) {
+	if value != nil {
+		values.Add(name, string(*value))
+	}
+}
+
+func addPredictionWalletPnlOrder(values url.Values, name string, value *PredictionWalletPnlOrder) {
 	if value != nil {
 		values.Add(name, string(*value))
 	}
@@ -436,10 +695,34 @@ func (r GetPredictionMarketActivitiesResponse) StatusCode() int {
 	return 0
 }
 
+// GetPredictionWalletPnlResponse is the response for GetPredictionWalletPnl.
+type GetPredictionWalletPnlResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *PredictionWalletPnlResponse
+}
+
+// Status returns HTTPResponse.Status.
+func (r GetPredictionWalletPnlResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode.
+func (r GetPredictionWalletPnlResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 // ClientWithResponsesInterface is the interface specification for ClientWithResponses.
 type ClientWithResponsesInterface interface {
 	GetPredictionEventActivitiesWithResponse(ctx context.Context, eventSlug string, params *GetPredictionEventActivitiesParams, reqEditors ...RequestEditorFn) (*GetPredictionEventActivitiesResponse, error)
 	GetPredictionMarketActivitiesWithResponse(ctx context.Context, conditionId string, params *GetPredictionMarketActivitiesParams, reqEditors ...RequestEditorFn) (*GetPredictionMarketActivitiesResponse, error)
+	GetPredictionWalletPnlWithResponse(ctx context.Context, wallet string, params *GetPredictionWalletPnlParams, reqEditors ...RequestEditorFn) (*GetPredictionWalletPnlResponse, error)
 }
 
 // GetPredictionEventActivitiesWithResponse request returning *GetPredictionEventActivitiesResponse.
@@ -458,6 +741,15 @@ func (c *ClientWithResponses) GetPredictionMarketActivitiesWithResponse(ctx cont
 		return nil, err
 	}
 	return ParseGetPredictionMarketActivitiesResponse(rsp)
+}
+
+// GetPredictionWalletPnlWithResponse request returning *GetPredictionWalletPnlResponse.
+func (c *ClientWithResponses) GetPredictionWalletPnlWithResponse(ctx context.Context, wallet string, params *GetPredictionWalletPnlParams, reqEditors ...RequestEditorFn) (*GetPredictionWalletPnlResponse, error) {
+	rsp, err := c.GetPredictionWalletPnl(ctx, wallet, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetPredictionWalletPnlResponse(rsp)
 }
 
 // ParseGetPredictionEventActivitiesResponse parses an HTTP response from a GetPredictionEventActivitiesWithResponse call.
@@ -502,6 +794,27 @@ func ParseGetPredictionMarketActivitiesResponse(rsp *http.Response) (*GetPredict
 	return response, nil
 }
 
+// ParseGetPredictionWalletPnlResponse parses an HTTP response from a GetPredictionWalletPnlWithResponse call.
+func ParseGetPredictionWalletPnlResponse(rsp *http.Response) (*GetPredictionWalletPnlResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+	response := &GetPredictionWalletPnlResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+	if strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == http.StatusOK {
+		var dest PredictionWalletPnlResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+	}
+	return response, nil
+}
+
 // BodyBytes returns response body bytes.
 func (r GetPredictionEventActivitiesResponse) BodyBytes() []byte {
 	return bytes.Clone(r.Body)
@@ -509,5 +822,10 @@ func (r GetPredictionEventActivitiesResponse) BodyBytes() []byte {
 
 // BodyBytes returns response body bytes.
 func (r GetPredictionMarketActivitiesResponse) BodyBytes() []byte {
+	return bytes.Clone(r.Body)
+}
+
+// BodyBytes returns response body bytes.
+func (r GetPredictionWalletPnlResponse) BodyBytes() []byte {
 	return bytes.Clone(r.Body)
 }

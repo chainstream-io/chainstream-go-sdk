@@ -28,6 +28,15 @@ const (
 	PredictionActivityTypeInventoryAdjust PredictionActivityType = "inventory_adjust"
 )
 
+// PredictionParticipantRole represents the wallet role in a prediction activity
+type PredictionParticipantRole string
+
+const (
+	PredictionParticipantRoleMaker   PredictionParticipantRole = "maker"
+	PredictionParticipantRoleTaker   PredictionParticipantRole = "taker"
+	PredictionParticipantRoleUnknown PredictionParticipantRole = "unknown"
+)
+
 // ChannelType represents the type of channel
 type ChannelType string
 
@@ -82,33 +91,58 @@ type TokenActivity struct {
 
 // PredictionActivity represents prediction market wallet-token activity
 type PredictionActivity struct {
-	ActivityID     string                 `json:"activityId"`
-	Amount         string                 `json:"amount"`
-	AssetIDs       []string               `json:"assetIds"`
-	BlockNumber    int64                  `json:"blockNumber"`
-	ConditionID    string                 `json:"conditionId"`
-	EventSlug      string                 `json:"eventSlug"`
-	LogIndex       int64                  `json:"logIndex"`
-	MarketIcon     string                 `json:"marketIcon"`
-	MarketID       string                 `json:"marketId"`
-	MarketQuestion string                 `json:"marketQuestion"`
-	Outcome        string                 `json:"outcome"`
-	Outcomes       []string               `json:"outcomes"`
-	Price          string                 `json:"price"`
-	Quantity       string                 `json:"quantity"`
-	SeqIndex       int64                  `json:"seqIndex"`
-	Source         string                 `json:"source"`
-	Taker          string                 `json:"taker"`
-	TakerAge       int64                  `json:"takerAge"`
-	TakerImage     string                 `json:"takerImage"`
-	TakerName      string                 `json:"takerName"`
-	TakerOrderHash string                 `json:"takerOrderHash"`
-	TakerPseudonym string                 `json:"takerPseudonym"`
-	TakerTags      []string               `json:"takerTags"`
-	Timestamp      int64                  `json:"timestamp"`
-	TokenID        string                 `json:"tokenId"`
-	TxHash         string                 `json:"txHash"`
-	Type           PredictionActivityType `json:"type"`
+	ActivityID             string                    `json:"activityId"`
+	Amount                 string                    `json:"amount"`
+	AmountInUsd            string                    `json:"amountInUsd,omitempty"`
+	AssetIDs               []string                  `json:"assetIds"`
+	BlockNumber            int64                     `json:"blockNumber"`
+	CollateralAmount       string                    `json:"collateralAmount,omitempty"`
+	CollateralAmountInUsd  string                    `json:"collateralAmountInUsd,omitempty"`
+	CollateralTokenAddress string                    `json:"collateralTokenAddress,omitempty"`
+	CollateralTokenSymbol  string                    `json:"collateralTokenSymbol,omitempty"`
+	ConditionID            string                    `json:"conditionId"`
+	Counterparty           string                    `json:"counterparty,omitempty"`
+	EconomicAmount         string                    `json:"economicAmount,omitempty"`
+	EconomicAmountInUsd    string                    `json:"economicAmountInUsd,omitempty"`
+	EconomicOutcome        string                    `json:"economicOutcome,omitempty"`
+	EconomicPrice          string                    `json:"economicPrice,omitempty"`
+	EconomicTokenID        string                    `json:"economicTokenId,omitempty"`
+	EventSlug              string                    `json:"eventSlug"`
+	FeeAmount              string                    `json:"feeAmount,omitempty"`
+	FeeAmountInUsd         string                    `json:"feeAmountInUsd,omitempty"`
+	FeePayer               string                    `json:"feePayer,omitempty"`
+	FeeRecipient           string                    `json:"feeRecipient,omitempty"`
+	FeeTokenAddress        string                    `json:"feeTokenAddress,omitempty"`
+	FeeTokenSymbol         string                    `json:"feeTokenSymbol,omitempty"`
+	LogIndex               int64                     `json:"logIndex"`
+	MarketIcon             string                    `json:"marketIcon"`
+	MarketID               string                    `json:"marketId"`
+	MarketQuestion         string                    `json:"marketQuestion"`
+	Outcome                string                    `json:"outcome"`
+	Outcomes               []string                  `json:"outcomes"`
+	ParticipantRole        PredictionParticipantRole `json:"participantRole,omitempty"`
+	Price                  string                    `json:"price"`
+	PricePerShare          string                    `json:"pricePerShare,omitempty"`
+	Quantity               string                    `json:"quantity"`
+	RawAmount              string                    `json:"rawAmount,omitempty"`
+	RawOutcome             string                    `json:"rawOutcome,omitempty"`
+	RawPrice               string                    `json:"rawPrice,omitempty"`
+	RawTokenID             string                    `json:"rawTokenId,omitempty"`
+	RawType                string                    `json:"rawType,omitempty"`
+	SeqIndex               int64                     `json:"seqIndex"`
+	Source                 string                    `json:"source"`
+	Taker                  string                    `json:"taker"`
+	TakerAge               int64                     `json:"takerAge"`
+	TakerImage             string                    `json:"takerImage"`
+	TakerName              string                    `json:"takerName"`
+	TakerOrderHash         string                    `json:"takerOrderHash"`
+	TakerPseudonym         string                    `json:"takerPseudonym"`
+	TakerTags              []string                  `json:"takerTags"`
+	Timestamp              int64                     `json:"timestamp"`
+	TokenID                string                    `json:"tokenId"`
+	TxHash                 string                    `json:"txHash"`
+	Type                   PredictionActivityType    `json:"type"`
+	Wallet                 string                    `json:"wallet,omitempty"`
 }
 
 // TokenStat represents token statistics with multi-timeframe data
