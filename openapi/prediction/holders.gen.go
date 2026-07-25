@@ -109,6 +109,7 @@ type PredictionHolderOutcomeStats struct {
 	MedianYield        *float64                `json:"medianYield,omitempty"`
 	Outcome            *string                 `json:"outcome,omitempty"`
 	Ratio              *float64                `json:"ratio,omitempty"`
+	ScoreRatio         *float64                `json:"scoreRatio,omitempty"`
 	Shark              *PredictionHolderCohort `json:"shark,omitempty"`
 	SmartMoney         *PredictionHolderCohort `json:"smartMoney,omitempty"`
 	TokenId            *string                 `json:"tokenId,omitempty"`

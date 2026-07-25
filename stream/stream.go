@@ -494,6 +494,23 @@ func (s *StreamApi) SubscribePredictionTokenActivities(tokenID string, callback 
 	}, filter, "subscribePredictionTokenActivities")
 }
 
+// SubscribePredictionSmartMoneyFeed subscribes to the Smart Money LiveFeed.
+// tag filters by market tag (e.g. "worldcup_2026"). Pass empty string for global feed.
+func (s *StreamApi) SubscribePredictionSmartMoneyFeed(tag string, callback StreamCallback[PredictionActivity], filter string) Unsubscribe {
+	scope := "_global"
+	if tag != "" {
+		scope = tag
+	}
+	channel := fmt.Sprintf("pred:feed:smart:%s:act", scope)
+	return s.Subscribe(channel, func(data interface{}) {
+		dataMap, ok := data.(map[string]interface{})
+		if !ok {
+			return
+		}
+		callback(parsePredictionActivity(dataMap))
+	}, filter, "subscribePredictionSmartMoneyFeed")
+}
+
 // parseTokenStatWindow parses token stat data for a specific time window
 func (s *StreamApi) parseTokenStatWindow(dataMap map[string]interface{}, suffix string) (
 	buys, sells, buyers, sellers, trades, dappProgramCount, poolCount *int,
