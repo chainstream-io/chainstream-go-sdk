@@ -1,0 +1,641 @@
+{
+  "POST /v2/dex/eip155:9007199254740993/route": {
+    "status": 201,
+    "body": {
+      "args": {
+        "dex": "zerox",
+        "userAddress": "0x8181c09C4E2574F8541493a2A38EE2b35a05D282",
+        "inputMint": "0x1111111111111111111111111111111111111111",
+        "outputMint": "0x2222222222222222222222222222222222222222",
+        "amount": "900719925474099312345",
+        "swapMode": "ExactIn",
+        "slippageBps": 50
+      },
+      "routeInfo": {
+        "provider": "zerox",
+        "quoteId": "c939bfe3-1cd4-40f6-a725-5687172c8c71",
+        "mode": "ExactIn",
+        "sellToken": "0x1111111111111111111111111111111111111111",
+        "buyToken": "0x2222222222222222222222222222222222222222",
+        "sellAmount": "900719925474099312345",
+        "buyAmount": "1000",
+        "minBuyAmount": "990",
+        "quotedFees": {
+          "integratorFee": {
+            "type": "volume",
+            "token": "0x1111111111111111111111111111111111111111",
+            "amount": "2251799813685248280"
+          }
+        }
+      },
+      "execution": {
+        "version": 1,
+        "quoteId": "c939bfe3-1cd4-40f6-a725-5687172c8c71",
+        "kind": "swap",
+        "chainId": "9007199254740993",
+        "expiresAt": 1900000030000
+      },
+      "serializedTx": "6AFkglIIlCIiIiIiIiIiIiIiIiIiIiIiIiIigIISNIcgAAAAAAABgIA=",
+      "platformFeePolicy": {
+        "bps": 25,
+        "kind": "volume",
+        "token": "sell",
+        "recipient": "0x3333333333333333333333333333333333333333"
+      },
+      "elapsedTime": 9
+    }
+  },
+  "POST /v2/dex/third/execution/build": {
+    "status": 201,
+    "body": {
+      "routeInfo": {
+        "provider": "zerox",
+        "quoteId": "c939bfe3-1cd4-40f6-a725-5687172c8c71",
+        "mode": "ExactIn",
+        "sellToken": "0x1111111111111111111111111111111111111111",
+        "buyToken": "0x2222222222222222222222222222222222222222",
+        "sellAmount": "900719925474099312345",
+        "buyAmount": "1000",
+        "minBuyAmount": "990",
+        "quotedFees": {
+          "integratorFee": {
+            "type": "volume",
+            "token": "0x1111111111111111111111111111111111111111",
+            "amount": "2251799813685248280"
+          }
+        }
+      },
+      "execution": {
+        "version": 1,
+        "quoteId": "c939bfe3-1cd4-40f6-a725-5687172c8c71",
+        "kind": "swap",
+        "chainId": "9007199254740993",
+        "expiresAt": 1900000030000
+      },
+      "serializedTx": "6AFkglIIlCIiIiIiIiIiIiIiIiIiIiIiIiIigIISNIcgAAAAAAABgIA=",
+      "platformFeePolicy": {
+        "bps": 25,
+        "kind": "volume",
+        "token": "sell",
+        "recipient": "0x3333333333333333333333333333333333333333"
+      }
+    }
+  },
+  "GET /v2/dex/eip155:9007199254740993/quote": {
+    "status": 200,
+    "body": {
+      "routeInfo": {
+        "provider": "zerox",
+        "quoteId": "722f374e-f0e7-4510-bd86-e36b8b640e24",
+        "mode": "ExactOut",
+        "sellToken": "0x1111111111111111111111111111111111111111",
+        "buyToken": "0x2222222222222222222222222222222222222222",
+        "buyAmount": "900719925474099312345",
+        "maxSellAmount": "900719925474099312355",
+        "estimatedNetSellAmount": "900719925474099312345",
+        "quotedFees": {
+          "integratorFee": {
+            "amount": "2251799813685248280",
+            "token": "0x1111111111111111111111111111111111111111",
+            "type": "volume"
+          }
+        }
+      },
+      "execution": {
+        "version": 1,
+        "quoteId": "722f374e-f0e7-4510-bd86-e36b8b640e24",
+        "kind": "swap",
+        "chainId": "9007199254740993",
+        "expiresAt": 1900000030000
+      },
+      "serializedTx": "6AJkglIIlCIiIiIiIiIiIiIiIiIiIiIiIiIigIISNIcgAAAAAAABgIA=",
+      "platformFeePolicy": {
+        "kind": "volume",
+        "bps": 25,
+        "recipient": "0x3333333333333333333333333333333333333333",
+        "token": "sell"
+      }
+    }
+  },
+  "POST /v2/dex/third/route": {
+    "status": 201,
+    "body": {
+      "args": {
+        "dex": "zerox",
+        "userAddress": "0x8181c09C4E2574F8541493a2A38EE2b35a05D282",
+        "inputMint": "0x1111111111111111111111111111111111111111",
+        "outputMint": "0x2222222222222222222222222222222222222222",
+        "amount": "900719925474099312345",
+        "swapMode": "ExactIn",
+        "slippageBps": 50
+      },
+      "routeInfo": {
+        "provider": "zerox",
+        "quoteId": "16e4860d-d92d-471b-90cf-70570f5829e7",
+        "mode": "ExactIn",
+        "sellToken": "0x1111111111111111111111111111111111111111",
+        "buyToken": "0x2222222222222222222222222222222222222222",
+        "sellAmount": "900719925474099312345",
+        "buyAmount": "1000",
+        "minBuyAmount": "990",
+        "quotedFees": {
+          "integratorFee": {
+            "type": "volume",
+            "token": "0x1111111111111111111111111111111111111111",
+            "amount": "2251799813685248280"
+          }
+        }
+      },
+      "execution": {
+        "version": 1,
+        "quoteId": "16e4860d-d92d-471b-90cf-70570f5829e7",
+        "kind": "swap",
+        "chainId": "9007199254740993",
+        "expiresAt": 1900000030000
+      },
+      "serializedTx": "6ANkglIIlCIiIiIiIiIiIiIiIiIiIiIiIiIigIISNIcgAAAAAAABgIA=",
+      "platformFeePolicy": {
+        "bps": 25,
+        "kind": "volume",
+        "token": "sell",
+        "recipient": "0x3333333333333333333333333333333333333333"
+      },
+      "elapsedTime": 4
+    }
+  },
+  "POST /v2/transaction/third/send": {
+    "status": 201,
+    "body": {
+      "signature": "0xe0d0bbf6b7616ed14ee6781fee6d697ce7bf0c025bf3a8db34c750c1d185c917",
+      "jobId": "execution:4d73a4b6-63fc-4c45-80fc-d6f831e07c2e",
+      "execution": {
+        "orderId": "4d73a4b6-63fc-4c45-80fc-d6f831e07c2e",
+        "quoteId": "2eca1ffc-c7c6-4898-ba49-d0b4e3eb6ba0",
+        "chainId": "9007199254740993",
+        "kind": "swap",
+        "state": "submitted",
+        "transactionHash": "0xe0d0bbf6b7616ed14ee6781fee6d697ce7bf0c025bf3a8db34c750c1d185c917",
+        "actualBuyAmount": null,
+        "actualRefundAmount": null,
+        "updatedAt": 1900000000000
+      },
+      "elapsedTime": 81
+    }
+  },
+  "GET /v2/transaction/third/orders/4d73a4b6-63fc-4c45-80fc-d6f831e07c2e": {
+    "status": 200,
+    "body": {
+      "orderId": "4d73a4b6-63fc-4c45-80fc-d6f831e07c2e",
+      "quoteId": "2eca1ffc-c7c6-4898-ba49-d0b4e3eb6ba0",
+      "chainId": "9007199254740993",
+      "kind": "swap",
+      "state": "submitted",
+      "transactionHash": "0xe0d0bbf6b7616ed14ee6781fee6d697ce7bf0c025bf3a8db34c750c1d185c917",
+      "actualBuyAmount": null,
+      "actualRefundAmount": null,
+      "updatedAt": 1900000000000
+    }
+  },
+  "GET /v2/job/execution:4d73a4b6-63fc-4c45-80fc-d6f831e07c2e": {
+    "status": 200,
+    "body": {
+      "id": "execution:4d73a4b6-63fc-4c45-80fc-d6f831e07c2e",
+      "status": "completed",
+      "success": true,
+      "execution": {
+        "orderId": "4d73a4b6-63fc-4c45-80fc-d6f831e07c2e",
+        "quoteId": "2eca1ffc-c7c6-4898-ba49-d0b4e3eb6ba0",
+        "chainId": "9007199254740993",
+        "kind": "swap",
+        "state": "succeeded",
+        "transactionHash": "0xe0d0bbf6b7616ed14ee6781fee6d697ce7bf0c025bf3a8db34c750c1d185c917",
+        "actualBuyAmount": null,
+        "actualRefundAmount": null,
+        "updatedAt": 1900000060000
+      }
+    }
+  },
+  "SSE /v2/job/execution:4d73a4b6-63fc-4c45-80fc-d6f831e07c2e/streaming": {
+    "status": 200,
+    "body": "\nid: 1\ndata: {\"id\":\"execution:4d73a4b6-63fc-4c45-80fc-d6f831e07c2e\",\"status\":\"completed\",\"success\":true,\"execution\":{\"orderId\":\"4d73a4b6-63fc-4c45-80fc-d6f831e07c2e\",\"quoteId\":\"2eca1ffc-c7c6-4898-ba49-d0b4e3eb6ba0\",\"chainId\":\"9007199254740993\",\"kind\":\"swap\",\"state\":\"succeeded\",\"transactionHash\":\"0xe0d0bbf6b7616ed14ee6781fee6d697ce7bf0c025bf3a8db34c750c1d185c917\",\"actualBuyAmount\":null,\"actualRefundAmount\":null,\"updatedAt\":1900000060000}}\n\n",
+    "eventData": {
+      "id": "execution:4d73a4b6-63fc-4c45-80fc-d6f831e07c2e",
+      "status": "completed",
+      "success": true,
+      "execution": {
+        "orderId": "4d73a4b6-63fc-4c45-80fc-d6f831e07c2e",
+        "quoteId": "2eca1ffc-c7c6-4898-ba49-d0b4e3eb6ba0",
+        "chainId": "9007199254740993",
+        "kind": "swap",
+        "state": "succeeded",
+        "transactionHash": "0xe0d0bbf6b7616ed14ee6781fee6d697ce7bf0c025bf3a8db34c750c1d185c917",
+        "actualBuyAmount": null,
+        "actualRefundAmount": null,
+        "updatedAt": 1900000060000
+      }
+    }
+  },
+  "POST /v2/dex/aggregator/quote/zerox": {
+    "status": 201,
+    "body": {
+      "routeInfo": {
+        "provider": "zerox",
+        "quoteId": "7dfffd60-8daa-47d3-9777-5a93c0e430b2",
+        "mode": "ExactOut",
+        "sellToken": "0x1111111111111111111111111111111111111111",
+        "buyToken": "0x2222222222222222222222222222222222222222",
+        "buyAmount": "123",
+        "maxSellAmount": "900719925474099312355",
+        "estimatedNetSellAmount": "900719925474099312345",
+        "quotedFees": {
+          "integratorFee": {
+            "amount": "2251799813685248280",
+            "token": "0x1111111111111111111111111111111111111111",
+            "type": "volume"
+          }
+        }
+      },
+      "execution": {
+        "version": 1,
+        "quoteId": "7dfffd60-8daa-47d3-9777-5a93c0e430b2",
+        "kind": "swap",
+        "chainId": "9007199254740993",
+        "expiresAt": 1900000090000
+      },
+      "serializedTx": "6AhkglIIlCIiIiIiIiIiIiIiIiIiIiIiIiIigIISNIcgAAAAAAABgIA=",
+      "platformFeePolicy": {
+        "kind": "volume",
+        "bps": 25,
+        "recipient": "0x3333333333333333333333333333333333333333",
+        "token": "sell"
+      }
+    }
+  },
+  "POST /v2/dex/aggregator/swap/zerox": {
+    "status": 201,
+    "body": {
+      "routeInfo": {
+        "provider": "zerox",
+        "quoteId": "7dfffd60-8daa-47d3-9777-5a93c0e430b2",
+        "mode": "ExactOut",
+        "sellToken": "0x1111111111111111111111111111111111111111",
+        "buyToken": "0x2222222222222222222222222222222222222222",
+        "buyAmount": "123",
+        "maxSellAmount": "900719925474099312355",
+        "estimatedNetSellAmount": "900719925474099312345",
+        "quotedFees": {
+          "integratorFee": {
+            "type": "volume",
+            "token": "0x1111111111111111111111111111111111111111",
+            "amount": "2251799813685248280"
+          }
+        }
+      },
+      "execution": {
+        "version": 1,
+        "quoteId": "7dfffd60-8daa-47d3-9777-5a93c0e430b2",
+        "kind": "swap",
+        "chainId": "9007199254740993",
+        "expiresAt": 1900000090000
+      },
+      "serializedTx": "6AhkglIIlCIiIiIiIiIiIiIiIiIiIiIiIiIigIISNIcgAAAAAAABgIA=",
+      "platformFeePolicy": {
+        "bps": 25,
+        "kind": "volume",
+        "token": "sell",
+        "recipient": "0x3333333333333333333333333333333333333333"
+      }
+    }
+  },
+  "POST /v2/dex/bsc/gasless/quote": {
+    "status": 201,
+    "body": {
+      "routeInfo": {
+        "provider": "zerox",
+        "quoteId": "72c289cf-2721-4314-a194-9bc362e1624e",
+        "mode": "ExactIn",
+        "sellToken": "0x1111111111111111111111111111111111111111",
+        "buyToken": "0x2222222222222222222222222222222222222222",
+        "sellAmount": "900719925474099312345",
+        "buyAmount": "1000",
+        "minBuyAmount": "990",
+        "quotedFees": {
+          "integratorFee": {
+            "amount": "2251799813685248280",
+            "token": "0x1111111111111111111111111111111111111111",
+            "type": "volume"
+          }
+        }
+      },
+      "execution": {
+        "version": 1,
+        "quoteId": "72c289cf-2721-4314-a194-9bc362e1624e",
+        "kind": "gasless",
+        "chainId": "56",
+        "expiresAt": 1900000090000,
+        "signingData": {
+          "trade": {
+            "type": "settler_metatransaction",
+            "hash": "0xae9bd350c1d0f0464bed70ec1b9ced216733be5a16b67197b57a526707405935",
+            "eip712": {
+              "types": {
+                "PermitWitnessTransferFrom": [
+                  {
+                    "name": "permitted",
+                    "type": "TokenPermissions"
+                  },
+                  {
+                    "name": "spender",
+                    "type": "address"
+                  },
+                  {
+                    "name": "nonce",
+                    "type": "uint256"
+                  },
+                  {
+                    "name": "deadline",
+                    "type": "uint256"
+                  },
+                  {
+                    "name": "slippageAndActions",
+                    "type": "SlippageAndActions"
+                  }
+                ],
+                "TokenPermissions": [
+                  {
+                    "name": "token",
+                    "type": "address"
+                  },
+                  {
+                    "name": "amount",
+                    "type": "uint256"
+                  }
+                ],
+                "SlippageAndActions": [
+                  {
+                    "name": "recipient",
+                    "type": "address"
+                  },
+                  {
+                    "name": "buyToken",
+                    "type": "address"
+                  },
+                  {
+                    "name": "minAmountOut",
+                    "type": "uint256"
+                  },
+                  {
+                    "name": "actions",
+                    "type": "bytes[]"
+                  }
+                ]
+              },
+              "primaryType": "PermitWitnessTransferFrom",
+              "domain": {
+                "name": "Permit2",
+                "chainId": 56,
+                "verifyingContract": "0x1111111111111111111111111111111111111111"
+              },
+              "message": {
+                "permitted": {
+                  "token": "0x1111111111111111111111111111111111111111",
+                  "amount": "900719925474099312345"
+                },
+                "spender": "0x2222222222222222222222222222222222222222",
+                "nonce": "9",
+                "deadline": "1900000150",
+                "slippageAndActions": {
+                  "recipient": "0x8181c09C4E2574F8541493a2A38EE2b35a05D282",
+                  "buyToken": "0x2222222222222222222222222222222222222222",
+                  "minAmountOut": "990",
+                  "actions": [
+                    "0x1234"
+                  ]
+                }
+              }
+            }
+          },
+          "approval": {
+            "type": "permit",
+            "hash": "0x0a0e5b39a6d5d07c3db91a6ca82f25a54cb397c323e9b3a65f91323689da2047",
+            "eip712": {
+              "types": {
+                "Permit": [
+                  {
+                    "name": "owner",
+                    "type": "address"
+                  },
+                  {
+                    "name": "spender",
+                    "type": "address"
+                  },
+                  {
+                    "name": "value",
+                    "type": "uint256"
+                  },
+                  {
+                    "name": "nonce",
+                    "type": "uint256"
+                  },
+                  {
+                    "name": "deadline",
+                    "type": "uint256"
+                  }
+                ]
+              },
+              "primaryType": "Permit",
+              "domain": {
+                "name": "Token",
+                "version": "1",
+                "chainId": 56,
+                "verifyingContract": "0x1111111111111111111111111111111111111111"
+              },
+              "message": {
+                "owner": "0x8181c09C4E2574F8541493a2A38EE2b35a05D282",
+                "spender": "0x1111111111111111111111111111111111111111",
+                "value": "900719925474099312345",
+                "nonce": "0",
+                "deadline": "1900000120"
+              }
+            }
+          }
+        }
+      },
+      "platformFeePolicy": {
+        "kind": "volume",
+        "bps": 25,
+        "recipient": "0x3333333333333333333333333333333333333333",
+        "token": "sell"
+      }
+    }
+  },
+  "POST /v2/transaction/bsc/gasless/submit": {
+    "status": 201,
+    "body": {
+      "orderId": "0aa8f200-5626-4875-9f77-f4722908c78a",
+      "quoteId": "72c289cf-2721-4314-a194-9bc362e1624e",
+      "chainId": "56",
+      "kind": "gasless",
+      "state": "submission_unknown",
+      "tradeHash": "0xae9bd350c1d0f0464bed70ec1b9ced216733be5a16b67197b57a526707405935",
+      "actualBuyAmount": null,
+      "actualRefundAmount": null,
+      "updatedAt": 1900000060000
+    }
+  },
+  "POST /v2/bridge/aggregator/route/zerox": {
+    "status": 201,
+    "body": {
+      "routeInfo": {
+        "provider": "zerox",
+        "quoteId": "529aca6a-ac2d-4c69-851e-3329c0c9d6ba",
+        "mode": "ExactIn",
+        "sellToken": "0x1111111111111111111111111111111111111111",
+        "buyToken": "0x2222222222222222222222222222222222222222",
+        "sellAmount": "900719925474099312345",
+        "buyAmount": "1000",
+        "minBuyAmount": "990",
+        "quotedFees": {
+          "integratorFee": {
+            "amount": "2251799813685248280",
+            "token": "0x1111111111111111111111111111111111111111",
+            "type": "volume"
+          }
+        }
+      },
+      "execution": {
+        "version": 1,
+        "quoteId": "529aca6a-ac2d-4c69-851e-3329c0c9d6ba",
+        "kind": "crossChain",
+        "chainId": "9007199254740993",
+        "destinationChainId": "56",
+        "expiresAt": 1900000150000
+      },
+      "serializedTx": "6ApkglIIlCIiIiIiIiIiIiIiIiIiIiIiIiIigIISNIcgAAAAAAABgIA=",
+      "platformFeePolicy": {
+        "kind": "volume",
+        "bps": 25,
+        "recipient": "0x3333333333333333333333333333333333333333",
+        "token": "sell"
+      }
+    }
+  },
+  "POST /v2/bridge/aggregator/quote/zerox": {
+    "status": 201,
+    "body": {
+      "routeInfo": {
+        "provider": "zerox",
+        "quoteId": "529aca6a-ac2d-4c69-851e-3329c0c9d6ba",
+        "mode": "ExactIn",
+        "sellToken": "0x1111111111111111111111111111111111111111",
+        "buyToken": "0x2222222222222222222222222222222222222222",
+        "sellAmount": "900719925474099312345",
+        "buyAmount": "1000",
+        "minBuyAmount": "990",
+        "quotedFees": {
+          "integratorFee": {
+            "type": "volume",
+            "token": "0x1111111111111111111111111111111111111111",
+            "amount": "2251799813685248280"
+          }
+        }
+      },
+      "execution": {
+        "version": 1,
+        "quoteId": "529aca6a-ac2d-4c69-851e-3329c0c9d6ba",
+        "kind": "crossChain",
+        "chainId": "9007199254740993",
+        "destinationChainId": "56",
+        "expiresAt": 1900000150000
+      },
+      "serializedTx": "6ApkglIIlCIiIiIiIiIiIiIiIiIiIiIiIiIigIISNIcgAAAAAAABgIA=",
+      "platformFeePolicy": {
+        "bps": 25,
+        "kind": "volume",
+        "token": "sell",
+        "recipient": "0x3333333333333333333333333333333333333333"
+      }
+    }
+  },
+  "GET /v2/job/execution:ec27030a-7793-4ff0-a0c1-77f6f0f37d76": {
+    "status": 200,
+    "body": {
+      "id": "execution:ec27030a-7793-4ff0-a0c1-77f6f0f37d76",
+      "status": "pending",
+      "execution": {
+        "orderId": "ec27030a-7793-4ff0-a0c1-77f6f0f37d76",
+        "quoteId": "529aca6a-ac2d-4c69-851e-3329c0c9d6ba",
+        "chainId": "9007199254740993",
+        "kind": "crossChain",
+        "state": "source_confirmed",
+        "transactionHash": "0x0e69990221700247aca44d32b9e8eaaef007656e1297c7a504fd5b58049c987e",
+        "actualBuyAmount": null,
+        "actualRefundAmount": null,
+        "updatedAt": 1900000120000
+      }
+    }
+  },
+  "POST /v2/dex/eth/route": {
+    "status": 201,
+    "body": {
+      "args": {
+        "dex": "kyberswap",
+        "inputMint": "0x1111111111111111111111111111111111111111",
+        "outputMint": "0x2222222222222222222222222222222222222222",
+        "userAddress": "0x8181c09C4E2574F8541493a2A38EE2b35a05D282",
+        "amount": "100",
+        "swapMode": "ExactIn",
+        "slippage": 5
+      },
+      "routeInfo": {
+        "legacy": true
+      },
+      "serializedTx": "a3liZXI=",
+      "elapsedTime": 0
+    }
+  },
+  "POST /v2/dex/sol/route": {
+    "status": 201,
+    "body": {
+      "args": {
+        "dex": "jupiter",
+        "inputMint": "So11111111111111111111111111111111111111112",
+        "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "userAddress": "So11111111111111111111111111111111111111112",
+        "amount": "100",
+        "swapMode": "ExactIn",
+        "slippage": 5
+      },
+      "routeInfo": {
+        "legacy": true
+      },
+      "serializedTx": "c29s",
+      "elapsedTime": 0
+    }
+  },
+  "POST /v2/transaction/sol/send": {
+    "status": 201,
+    "body": {
+      "signature": "legacy-signature",
+      "elapsedTime": 0,
+      "jobId": "legacy-job"
+    }
+  },
+  "GET /v2/job/legacy-job": {
+    "status": 200,
+    "body": {
+      "id": "legacy-job",
+      "status": "completed",
+      "success": true
+    }
+  },
+  "SSE /v2/job/legacy-job/streaming": {
+    "status": 200,
+    "body": "\nid: 1\ndata: {\"id\":\"legacy-job\",\"status\":\"completed\",\"success\":true}\n\n",
+    "eventData": {
+      "id": "legacy-job",
+      "status": "completed",
+      "success": true
+    }
+  }
+}

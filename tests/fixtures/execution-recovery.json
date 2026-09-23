@@ -1,0 +1,15 @@
+{
+  "route": "GET /v2/transaction/third/orders/by-idempotency?idempotencyKey=recovery%3A%2F%3F%26%3D%2B%25encoded",
+  "status": 200,
+  "body": {
+    "orderId": "e81cd4c4-f9d9-41f3-a92d-0686a0612e37",
+    "quoteId": "1dbc86f2-02ff-4c08-9bd0-1ce1c37bdf13",
+    "chainId": "9007199254740993",
+    "kind": "swap",
+    "state": "submitted",
+    "transactionHash": "0x1a0d8902310fddeb5161682521d243455b32f5c32f2f32734556bda5a925a44a",
+    "actualBuyAmount": null,
+    "actualRefundAmount": null,
+    "updatedAt": 1900000000000
+  }
+}

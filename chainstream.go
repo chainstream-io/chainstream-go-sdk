@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/blockchain"
+	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/bridgeaggregator"
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/dex"
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/dexpool"
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/ipfs"
@@ -18,6 +19,7 @@ import (
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/prediction"
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/ranking"
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/redpacket"
+	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/swapaggregator"
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/token"
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/trade"
 	"github.com/chainstream-io/chainstream-go-sdk/v2/openapi/transaction"
@@ -28,7 +30,7 @@ import (
 )
 
 // LIB_VERSION is the version of the ChainStream Go SDK
-const LIB_VERSION = "2.1.11"
+const LIB_VERSION = "2.1.12"
 
 // DefaultServerURL is the default ChainStream API server URL.
 const DefaultServerURL = "https://api.chainstream.io"
@@ -73,21 +75,23 @@ type ChainStreamClient struct {
 	requestCtx *stream.RequestContext
 
 	// API module clients
-	Blockchain  *blockchain.ClientWithResponses
-	Dex         *dex.ClientWithResponses
-	DexPool     *dexpool.ClientWithResponses
-	Ipfs        *ipfs.ClientWithResponses
-	Job         *job.ClientWithResponses
-	Kyt         *kyt.ClientWithResponses
-	Prediction  *prediction.ClientWithResponses
-	Ranking     *ranking.ClientWithResponses
-	RedPacket   *redpacket.ClientWithResponses
-	Token       *token.ClientWithResponses
-	Trade       *trade.ClientWithResponses
-	Transaction *transaction.ClientWithResponses
-	Wallet      *wallet.ClientWithResponses
-	Watchlist   *watchlist.ClientWithResponses
-	Webhook     *webhook.ClientWithResponses
+	SwapAggregator   *swapaggregator.ClientWithResponses
+	BridgeAggregator *bridgeaggregator.ClientWithResponses
+	Blockchain       *blockchain.ClientWithResponses
+	Dex              *dex.ClientWithResponses
+	DexPool          *dexpool.ClientWithResponses
+	Ipfs             *ipfs.ClientWithResponses
+	Job              *job.ClientWithResponses
+	Kyt              *kyt.ClientWithResponses
+	Prediction       *prediction.ClientWithResponses
+	Ranking          *ranking.ClientWithResponses
+	RedPacket        *redpacket.ClientWithResponses
+	Token            *token.ClientWithResponses
+	Trade            *trade.ClientWithResponses
+	Transaction      *transaction.ClientWithResponses
+	Wallet           *wallet.ClientWithResponses
+	Watchlist        *watchlist.ClientWithResponses
+	Webhook          *webhook.ClientWithResponses
 
 	// WebSocket streaming API
 	Stream *stream.StreamApi
@@ -207,6 +211,24 @@ func createChainStreamClient(accessToken string, tokenProvider TokenProvider, wa
 	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create dex client: %w", err)
+	}
+
+	client.BridgeAggregator, err = bridgeaggregator.NewClientWithResponses(serverURL,
+		bridgeaggregator.WithHTTPClient(httpClient),
+		bridgeaggregator.WithRequestEditorFn(authEditorFn[bridgeaggregator.RequestEditorFn](getBearerToken, walletSigner, options.ApiKey)),
+		bridgeaggregator.WithRequestEditorFn(userAgentFn[bridgeaggregator.RequestEditorFn]()),
+	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create bridgeaggregator client: %w", err)
+	}
+
+	client.SwapAggregator, err = swapaggregator.NewClientWithResponses(serverURL,
+		swapaggregator.WithHTTPClient(httpClient),
+		swapaggregator.WithRequestEditorFn(authEditorFn[swapaggregator.RequestEditorFn](getBearerToken, walletSigner, options.ApiKey)),
+		swapaggregator.WithRequestEditorFn(userAgentFn[swapaggregator.RequestEditorFn]()),
+	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create swapaggregator client: %w", err)
 	}
 
 	// Create dexpool client

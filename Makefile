@@ -76,21 +76,26 @@ test: build_deps
 
 # Default client generation (modular)
 .PHONY: client
-client: client-modules
+client: client-execution
 
 # Module directories (under openapi/)
-MODULES := blockchain dex dexpool ipfs job kyt prediction ranking redpacket token trade transaction wallet watchlist webhook
+MODULES := bridgeaggregator swapaggregator blockchain dex dexpool ipfs job kyt prediction ranking redpacket token trade transaction wallet watchlist webhook
 OPENAPI_DIR := ./openapi
 
 # OpenAPI preprocessed file
 OPENAPI_PREPROCESSED := ../openapi-preprocessed.yaml
 
+OAPI_CODEGEN_VERSION := v2.7.0
+
 # Generate all clients by module
 .PHONY: client-modules
-client-modules: clean-generated
+client-modules:
+	@ oapi-codegen -version | grep -q "$(OAPI_CODEGEN_VERSION)" || { echo "oapi-codegen $(OAPI_CODEGEN_VERSION) required"; exit 1; }
 	@ printf "\nGenerating modular clients...\n"
 	@ cd ../python && uv run python ../scripts/preprocess_openapi.py ../openapi.yaml ../openapi-preprocessed.yaml
 	@ $(foreach mod,$(MODULES),mkdir -p $(OPENAPI_DIR)/$(mod);)
+	@ oapi-codegen -package bridgeaggregator -generate types,client -include-tags "Bridge Aggregator" -o $(OPENAPI_DIR)/bridgeaggregator/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package swapaggregator -generate types,client -include-tags "Swap Aggregator" -o $(OPENAPI_DIR)/swapaggregator/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating blockchain client...\n"
 	@ oapi-codegen -package blockchain -generate types,client -include-tags Blockchain -o $(OPENAPI_DIR)/blockchain/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating dex client...\n"
@@ -121,9 +126,25 @@ client-modules: clean-generated
 	@ oapi-codegen -package watchlist -generate types,client -include-tags Watchlist -o $(OPENAPI_DIR)/watchlist/client.gen.go $(OPENAPI_PREPROCESSED)
 	@ printf "Generating webhook client...\n"
 	@ oapi-codegen -package webhook -generate types,client -include-tags Webhook -o $(OPENAPI_DIR)/webhook/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ cd ../python && uv run python ../scripts/fix_execution_go_unions.py ../go/openapi
+	@ gofmt -w openapi/dex/client.gen.go openapi/job/client.gen.go openapi/transaction/client.gen.go
 	@ printf "\nAll modular clients generated successfully!\n"
 
-# Clean all generated files
+# Clean generator output only; preserve custom contract decoders and tests.
 .PHONY: clean-generated
 clean-generated:
-	@ rm -rf $(OPENAPI_DIR)/*
+	@ $(foreach mod,$(MODULES),rm -f $(OPENAPI_DIR)/$(mod)/client.gen.go;)
+
+# Scope-aware execution update: other modules retain their compatibility baseline.
+.PHONY: client-execution
+client-execution:
+	@ oapi-codegen -version | grep -q "$(OAPI_CODEGEN_VERSION)" || { echo "oapi-codegen $(OAPI_CODEGEN_VERSION) required"; exit 1; }
+	@ cd ../python && uv run python ../scripts/preprocess_openapi.py ../openapi.yaml ../openapi-preprocessed.yaml
+	@ mkdir -p openapi/bridgeaggregator openapi/swapaggregator
+	@ oapi-codegen -package dex -generate types,client -include-tags Dex -o openapi/dex/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package job -generate types,client -include-tags Job -o openapi/job/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package transaction -generate types,client -include-tags Transaction -o openapi/transaction/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package bridgeaggregator -generate types,client -include-tags "Bridge Aggregator" -o openapi/bridgeaggregator/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ oapi-codegen -package swapaggregator -generate types,client -include-tags "Swap Aggregator" -o openapi/swapaggregator/client.gen.go $(OPENAPI_PREPROCESSED)
+	@ cd ../python && uv run python ../scripts/fix_execution_go_unions.py ../go/openapi
+	@ gofmt -w openapi/dex/client.gen.go openapi/job/client.gen.go openapi/transaction/client.gen.go
